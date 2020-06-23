@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Game of Codes. Analyze and improve on your codeforces user profile. See how have you performed, what you need to do now, personalised contests made just for you, outstanding graphics giving you a gaming feel in competitive coding. Scale up your data structures and algorithms with this amazing tool">
+    <link rel="shortcut icon" href="resources/logo/logo_light.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Game of Codes: Profile</title>
+    <link rel="stylesheet" href="css/profilestyle.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+        <a class="navbar-brand logo" href="#">
+            <img src="resources/logo/logo_light.png" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                	<a class="nav-link" href="#">Dashboard</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Compare</a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Profile<div class="line1"></div><span class="sr-only">current</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Code Blast</a>
+                </li>
+            </ul>
+            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+            <button type="button" class="btn btn-dark search"><img src="resources/icons/search 1.svg" alt=""></button>
+            </form>
+        </div>
+    </nav>
+
+    <!-- Container -->
+    <div style="overflow: auto;" id="main-content">
+    <div class="container-fluid" id="1main-content" style="overflow: auto;">
+            <div class="superheroimg">
+            </div>
+            <div class="profilegraph"><img src="" alt="graphical analysis"></div>
+            <div class="recent-contests">
+                <h1>RECENT CONTESTS</h1>
+                <div class="line"></div>
+            </div>
+
+            <div class="hidden weak_topics recent-contests">
+                <h1>Weak Topics</h1>
+                <div class="line"></div>
+            </div>
+            <div class="hidden strong_topics recent-contests">
+                <h1>Strong Topics</h1>
+                <div class="line"></div>
+            </div>
+            <div class="hidden recent_submissions recent-contests">
+                <h1>Recent Submissions</h1>
+                <div class="line"></div>
+            </div>
+            <div class="hidden statistics recent-contests">
+                <h1>Statistics</h1>
+                <div class="line"></div>
+            </div>
+    </div>
+
+    <div class="container-fluid">
+        <div id="username"><a href="#">USERNAME</a></div>
+        <div id="userstatistics"><a href="#">USER STATISTICS</a></div>
+    </div>
+    </div>
+
+    <!-- Footer -->
+    
+    <footer class="user-stats">
+        <div class="item1">
+            <h1 class="inactive-item">WEAK TOPICS</h1>
+        </div>
+        <div class="item2">
+            <h1 class="inactive-item">STRONG TOPICS</h1>
+        </div>
+        <div class="item3">
+            <h1 class="inactive-item">RECENT SUBMISSIONS</h1>
+        </div>
+        <div class="item4">
+            <h1 class="inactive-item">STATISTICS</h1>
+        </div>
+    </footer>
+    
+<script src="js/profilescript.js"></script>
+</body>
+</html>
