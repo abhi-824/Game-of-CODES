@@ -1,5 +1,34 @@
 # Game-of-CODES
-A tool by programmers, for programmers and It was hard to think of third line of rhythm.
+Reassigned Work:(see FIGMA file for reference)
+
+Desktop 1: Abhinandan, Amogh
+
+Desktop 1A-6: Done
+
+Unsolved Mysteries: Muskaan,Abhinandan
+
+Weak Topics/Strong Topics: Amogh, Abhinandan, Muskaan
+
+Training Zone:Kartik, Akshat
+
+Profile-Analysis:  Shubhang, abhilaasha(Desktop 9 and 10)
+
+Unsolved Mysteries
+Attempted but have no AC verdict
+
+Weak + Strong Topics
+Design and develop algorithm for Segregation.
+
+Training Zone
+UI and design, Guide,
+2 ways : Difficulty wise and Topic Wise (Integrate A2oJ ladder questions)
+
+Profile
+Profile Dashboard
+User Statistics
+
+
+EVERYONE SHOULD BUILD THE UI FIRST, AFTER WHICH WE WOULD HEAD ON TO THE BACKEND WORK.
 
 ## Contribution Guidelines
 Make PR only to the "develop" branch. As if the only after that it will be shifted to master branch. PRs made directly to the Master barnch might not be merged. 
