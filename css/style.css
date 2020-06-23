@@ -12,6 +12,19 @@ body {
   );
   height: 100vh;
 }
+.container1{
+  background: url('../resources/backgorunds/hulk.jpg') no-repeat center center/cover;
+  height:100vh;
+}
+.container2{
+  
+  position: absolute;
+  top: 0px;
+  left:0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+}
 /* hidden */
 .hidden{
   display:none!important;
@@ -84,7 +97,7 @@ body {
 }
 .line1{
   /* display:inline-block; */
-  width: 100px;
+  /* width: 100px; */
   height:2px;
   background: #53DAD2;
   /* background:#fff; */
