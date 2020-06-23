@@ -1,53 +1,103 @@
-*{
-    box-sizing: border-box;
-    margin:0;
-}
-body{
-    background: linear-gradient(180deg, #040404 0%, #0F1010 99.99%, rgba(56, 56, 56, 0) 100%);
-    font-family: Roboto;
-}
-.logo img{
-    width: 131px;
-    height: 125px;
-}
-.nav-items li{
-   list-style: none;
-   margin-right: 70;
-}
-nav{
-    height: 125px;
-    display:flex;
-    align-items: center;
-    justify-content: space-between;
-}
-nav ul{
-    display:flex;
-}
-a{
-    text-decoration: none;
-}
-.active{
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 24px;
-    line-height: 28px;
+@import url("https://fonts.googleapis.com/css2?family=Nova+Square&family=Philosopher&display=swap");
 
-    color: #FFFFFF;
-
+body {
+  background-color: black;
+  font-family: "Nova Square", sans-serif;
+  color: white;
+  background: linear-gradient(
+    180deg,
+    #040404 0%,
+    #0f1010 99.99%,
+    rgba(56, 56, 56, 0) 100%
+  );
+  height: 100vh;
 }
-.inactive{
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 24px;
-    line-height: 28px;
 
-    color: rgba(255, 255, 255, 0.5);
-
-    mix-blend-mode: normal;
+/* navbar */
+.navbar {
+  background-color: black;
 }
-.nav-btn-container img{
-    width: 42px;
-    height: 42px;
+.logo img {
+  width: 131px;
+  height: 100px;
+  padding-right: 3rem;
+}
+.search img {
+  width: 20px;
+  height: 20px;
+}
+.form-control {
+  width: 250px;
+}
+.nav-item {
+  padding-left: 3rem;
+}
+
+/* User heading content */
+
+.heading h1 {
+  width: 300px;
+  height: 168px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 40px;
+  line-height: 72px;
+  color: #ffffff;
+  margin-left: 2rem;
+}
+.daily-mix {
+  width: 450px;
+  height: 300px;
+  background: rgba(20, 20, 20, 0.47);
+  border-radius: 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 3rem;
+}
+.daily-mix h1 {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 26px;
+  line-height: 40px;
+  padding: 1rem;
+  color: #e7e7e7;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: center;
+}
+
+/* Footer content */
+
+.user-stats {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  opacity: 0.6;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  grid-gap: 1rem;
+  align-items: center;
+}
+.user-stats h1 {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 40px;
+  text-align: center;
+  color: #ffffff;
+  padding: 1rem;
+}
+.item1,
+.item2,
+.item3,
+.item4 {
+  background: #4a4a4a;
+  border: 1px solid #000000;
+  width: 24vw;
+  height: auto;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
