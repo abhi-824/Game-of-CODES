@@ -4,41 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Game of Codes. Analyze and improve on your codeforces user profile. See how have you performed, what you need to do now, personalised contests made just for you, outstanding graphics giving you a gaming feel in competitive coding. Scale up your data structures and algorithms with this amazing tool">
-    <link rel="stylesheet" href="">
-    <link rel="shortcut icon" href="images/logo/logo_light.png">
+    <link rel="shortcut icon" href="resources/logo/logo_light.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <title>Game of Codes</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- code with comments please -->
-    <!-- Code structure:
-        nav for navbar(including logo =, search, avatar)
-        header for header content
-            daily  mix contests div
-        div for Weak topics, stronng topics etc.
-    -->
-    
-    <div class="nav-container">
-        <div class="wrapper">
-            <nav>
-                <a href="" class="logo">
-                    <img src="resources/logo/logo_light.png" alt="">
-                </a>
-                <ul class="nav-items">
-                    <li><a href="#" class="active">Dashboard</a></li>
-                    <li><a href="#" class="inactive">Compare</a></li>
-                    <li><a href="#" class="inactive">Profile</a></li>
-                    <li><a href="#" class="inactive">CodeBlast</a></li>
-                    <li>
-                        <a href="" class="nav-btn-container">
-                            <img src="resources/icons/search 1.svg" alt="">
-                        </a>
-                        <a href="" class="avatar"></a>
-                    </li>
-                </ul>
-            </nav>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+        <a class="navbar-brand logo" href="#">
+            <img src="resources/logo/logo_light.png" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                
+                <a class="nav-link" href="#">Dashboard<div class="line1"></div><span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Compare</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Code Blast</a>
+                </li>
+            </ul>
+            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+            <button type="button" class="btn btn-dark search"><img src="resources/icons/search 1.svg" alt=""></ button>
+            </form>
         </div>
-    </div>
+    </nav>
+    <!-- Container -->
     <div class="header-container">
         <div class="wrapper">
             <div class="heading">
@@ -48,37 +49,39 @@
                 <h1>DAILY MIX Contests</h1>
                 <div class="line"></div>
             </div>
+            <div class="hidden weak_topics daily-mix">
+                <h1>Weak Topics</h1>
+                <div class="line"></div>
+            </div>
+            <div class="hidden strong_topics daily-mix">
+                <h1>Strong Topics</h1>
+                <div class="line"></div>
+            </div>
+            <div class="hidden ladders daily-mix">
+                <h1>Ladders</h1>
+                <div class="line"></div>
+            </div>
+            <div class="hidden unsolved_mysteries daily-mix">
+                <h1>Unsolved Mysteries</h1>
+                <div class="line"></div>
+            </div>
         </div>
     </div>
+    <!-- Footer -->
     <div class="user-stats">
         <div class="item1">
-            <h1 class="inactive">WEAK TOPICS</h1>
+            <h1 class="inactive-item">WEAK TOPICS</h1>
         </div>
         <div class="item2">
-            <h1 class="inactive">STRONG TOPICS</h1>
+            <h1 class="inactive-item">STRONG TOPICS</h1>
         </div>
         <div class="item3">
-            <h1 class="inactive">LADDERS</h1>
+            <h1 class="inactive-item">LADDERS</h1>
         </div>
         <div class="item4">
-            <h1 class="inactive">UNSOLVED MYSTERIES</h1>
+            <h1 class="inactive-item">UNSOLVED MYSTERIES</h1>
         </div>
     </div>
+    <script src="js/script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
