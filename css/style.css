@@ -1,1 +1,53 @@
-/* Write css here */
+*{
+    box-sizing: border-box;
+    margin:0;
+}
+body{
+    background: linear-gradient(180deg, #040404 0%, #0F1010 99.99%, rgba(56, 56, 56, 0) 100%);
+    font-family: Roboto;
+}
+.logo img{
+    width: 131px;
+    height: 125px;
+}
+.nav-items li{
+   list-style: none;
+   margin-right: 70;
+}
+nav{
+    height: 125px;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+nav ul{
+    display:flex;
+}
+a{
+    text-decoration: none;
+}
+.active{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+
+    color: #FFFFFF;
+
+}
+.inactive{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+
+    color: rgba(255, 255, 255, 0.5);
+
+    mix-blend-mode: normal;
+}
+.nav-btn-container img{
+    width: 42px;
+    height: 42px;
+}
