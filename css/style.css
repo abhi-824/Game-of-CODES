@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Nova+Square&family=Philosopher&display=swap");
-
 body {
   background-color: black;
   font-family: "Nova Square", sans-serif;
@@ -13,7 +12,7 @@ body {
   height: 100vh;
 }
 .container1{
-  background: url('../resources/backgorunds/hulk.jpg') no-repeat center center/cover;
+  background: url('../resources/backgrounds/hulk.jpg') no-repeat center center/cover;
   height:100vh;
 }
 .container2{
