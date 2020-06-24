@@ -32,3 +32,5 @@ EVERYONE SHOULD BUILD THE UI FIRST, AFTER WHICH WE WOULD HEAD ON TO THE BACKEND 
 
 ## Contribution Guidelines
 Make PR only to the "develop" branch. As if the only after that it will be shifted to master branch. PRs made directly to the Master barnch might not be merged. 
+PLEASE DO THE FOLLOWING THINGS:
+>Change url in calculations.js to the local file url(as we have not hosted it yet)ending with "?handle="
