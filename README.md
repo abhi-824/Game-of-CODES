@@ -1,7 +1,7 @@
 # Game-of-CODES
 Reassigned Work:(see FIGMA file for reference)
 
-Desktop 1: Abhinandan, Amogh
+Desktop 1: Done
 
 Desktop 1A-6: Done
 
