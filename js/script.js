@@ -1,3 +1,28 @@
+var handle_name='';
+window.onload = function () {
+    var url = document.location.href,
+        params = url.split('?')[1].split('&'),
+        data = {}, tmp;
+        for (var i = 0, l = params.length; i < l; i++) {
+            tmp = params[i].split('=');
+            data[tmp[0]] = tmp[1];
+        }
+        // console.log(data);
+    document.querySelector('.form-control').value = `${data.handle}`;
+}
+handle_name=document.querySelector('.form-control').value;
+
+let api_url = 'https://codeforces.com/api/';
+$(document).ready(function() {
+req1 = $.get(api_url + 'user.status', { handle: handle_name }, function(
+    data,
+    status
+  )
+  {
+    // console.log(data);
+  }
+)})
+
 let item=document.querySelector('.item1');
 let item2=document.querySelector('.item2');
 let item3=document.querySelector('.item3');
