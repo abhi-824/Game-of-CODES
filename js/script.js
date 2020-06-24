@@ -13,15 +13,7 @@ window.onload = function () {
 handle_name=document.querySelector('.form-control').value;
 
 let api_url = 'https://codeforces.com/api/';
-$(document).ready(function() {
-req1 = $.get(api_url + 'user.status', { handle: handle_name }, function(
-    data,
-    status
-  )
-  {
-    // console.log(data);
-  }
-)})
+
 
 let item=document.querySelector('.item1');
 let item2=document.querySelector('.item2');
@@ -32,16 +24,22 @@ let weak_topics=document.querySelector('.weak_topics');
 let strong_topics=document.querySelector('.strong_topics');
 let ladders=document.querySelector('.ladders');
 let unsolved_mysteries=document.querySelector('.unsolved_mysteries');
-item.addEventListener('click',function(e){
-    // console.log("aur bhai kya haal chaal");
+function show_please(item)
+{
     item.style.width="30vw";
     item.style.height="25vh";
-    item2.style.width="24vw";
-    item2.style.height="auto";
-    item3.style.width="24vw";
-    item3.style.height="auto";
-    item4.style.width="24vw";
-    item4.style.height="auto";
+}
+function hide_please(item)
+{
+    item.style.width="24vw";
+    item.style.height="auto";
+}
+item.addEventListener('click',function(e){
+    // console.log("aur bhai kya haal chaal");
+    show_please(item);
+    hide_please(item2);
+    hide_please(item3);
+    hide_please(item4);
     daily_mix_contests.remove();
     weak_topics.classList.remove('hidden');
     unsolved_mysteries.classList.add('hidden');
@@ -52,15 +50,10 @@ item.addEventListener('click',function(e){
 });
 item2.addEventListener('click',function(e){
     // console.log("aur bhai kya haal chaal");
-    item2.style.width="30vw";
-    item2.style.height="25vh";
-    item.style.width="24vw";
-    item.style.height="auto";
-    item3.style.width="24vw";
-    item3.style.height="auto";
-    item4.style.width="24vw";
-    item4.style.height="auto";
-    
+    show_please(item2);
+    hide_please(item);
+    hide_please(item3);
+    hide_please(item4);
     daily_mix_contests.remove();
     strong_topics.classList.remove('hidden');
     unsolved_mysteries.classList.add('hidden');
@@ -71,14 +64,10 @@ item2.addEventListener('click',function(e){
 });
 item3.addEventListener('click',function(e){
     // console.log("aur bhai kya haal chaal");
-    item3.style.width="30vw";
-    item3.style.height="25vh";
-    item.style.width="24vw";
-    item.style.height="auto";
-    item2.style.width="24vw";
-    item2.style.height="auto";
-    item4.style.width="24vw";
-    item4.style.height="auto";
+    show_please(item3);
+    hide_please(item2);
+    hide_please(item);
+    hide_please(item4);
     daily_mix_contests.remove();
     ladders.classList.remove('hidden');
     unsolved_mysteries.classList.add('hidden');
@@ -89,14 +78,10 @@ item3.addEventListener('click',function(e){
 });
 item4.addEventListener('click',function(e){
     // console.log("aur bhai kya haal chaal");
-    item4.style.width="30vw";
-    item4.style.height="25vh";
-    item.style.width="24vw";
-    item.style.height="auto";
-    item3.style.width="24vw";
-    item3.style.height="auto";
-    item2.style.width="24vw";
-    item2.style.height="auto";
+    show_please(item4);
+    hide_please(item2);
+    hide_please(item3);
+    hide_please(item);
     daily_mix_contests.remove();
     unsolved_mysteries.classList.remove('hidden');
     weak_topics.classList.add('hidden');
