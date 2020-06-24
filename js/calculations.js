@@ -6,6 +6,6 @@ button.addEventListener('click',function(e){
     url=url+handle;
     console.log(handle);
     document.location.href = url;
-    // e.preventDefault();
+    e.preventDefault();
 })
 
