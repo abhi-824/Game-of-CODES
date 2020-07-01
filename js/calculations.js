@@ -1,5 +1,5 @@
 let handle='';
-let url='file:///F:/Game-of-CODES-master/dashboard.html?handle=';
+let url='index.html?handle=';
 let button=document.querySelector('#handle_button');
 button.addEventListener('click',function(e){
     handle=document.querySelector('#handle').value;
