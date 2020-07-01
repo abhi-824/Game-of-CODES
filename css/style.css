@@ -16,9 +16,9 @@ body {
   height:100vh;
 }
 .container2{
-  
+
   position: absolute;
-  top: 0px;
+  top: 0;
   left:0;
   right: 0;
   bottom: 0;
@@ -70,7 +70,7 @@ body {
   align-items: center;
   margin-right: 3rem;
 }
-.daily-mix h1 {
+.daily-mix h1{
   font-style: normal;
   font-weight: normal;
   font-size: 26px;
@@ -136,4 +136,27 @@ body {
   height: auto;
   box-sizing: border-box;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.item1:hover, .item2:hover, .item3:hover, .item4:hover {
+  transform: scale(1.5);
+}
+
+.Profile-Photo:hover {
+  transform: scale(1.2);
+}
+
+.recent-contests {
+  width: 430px;
+  height: 400px;
+  background: rgba(20, 20, 20, 0.47);
+  border-radius: 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 3rem;
+}
+
+.modal-dialog {
+  width : 1000px;
 }
