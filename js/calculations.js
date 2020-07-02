@@ -1,5 +1,5 @@
 let handle='';
-let url='let url='dashboard.html?handle=';';
+let url='dashboard.html?handle=';
 let button=document.querySelector('#handle_button');
 let button1=document.querySelector('#handle');
 button1.value='';
