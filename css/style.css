@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Nova+Square&family=Philosopher&display=swap");
+
 body {
   background-color: black;
   font-family: "Nova Square", sans-serif;
@@ -59,6 +60,9 @@ body {
   line-height: 72px;
   color: #ffffff;
   margin-left: 2rem;
+}
+.inner{
+  display:none;
 }
 .daily-mix {
   width: 450px;
@@ -138,9 +142,9 @@ body {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.item1:hover, .item2:hover, .item3:hover, .item4:hover {
-  transform: scale(1.5);
-}
+/* .item1:hover, .item2:hover, .item3:hover, .item4:hover {
+  /* transform: scale(1.5); */
+/* } */ 
 
 .Profile-Photo:hover {
   transform: scale(1.2);
