@@ -5,6 +5,7 @@
     float:right;
     align-items: center;
     justify-content: center;
+    
 }
 body{
     background: rgba(0, 0, 0, 0.904);
@@ -21,7 +22,7 @@ nav{
     opacity:0.9;
 }
 .daily-mix {
-    width: 200px;
+    width: 170px;
     float:right;
     padding: 0;
     height: 300px;
@@ -48,7 +49,7 @@ nav{
     padding:0;
     margin:0;
     font-family:"Audiowide";
-
+    font-size:35px;
 }
 .daily-mix h1{
     font-size:20px;
@@ -57,10 +58,9 @@ nav{
     display:flex;
     flex-direction: row;
     margin:0;
-    padding:0.5rem 1rem;
 }
 .nav-item{
-    padding:0rem 0.4rem;
+    padding:0rem 0.3rem;
 }
 .outer{
     display: none!important;
@@ -71,9 +71,6 @@ nav{
     font-size:20px;
     padding:0rem 1rem;
 }
-.wrapper{
-    align-items: unset;
-}
 .user-stats {
     width: auto;
     opacity: 0.6;
@@ -82,4 +79,7 @@ nav{
     flex-direction: column;
     /* grid-gap: 1rem; */
     align-items: center;
+}
+.user-stats h1{
+    font-size:13px;
 }
