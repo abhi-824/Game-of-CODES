@@ -1,40 +1,126 @@
-var handle_name='';
+let user_contests = "https://codeforces.com/api/user.rating?handle=";
+let api_url = 'https://codeforces.com/api/';
+const url_info = " https://codeforces.com/api/user.info?handles=";
+const url = "https://codeforces.com/api/user.status?handle=";
+let solved = new Set()
+let user_contest = [];
+let contests_problems = new Set();
+let upsolved = new Set();
+var handle_name = '';
 window.onload = function () {
     var url = document.location.href,
         params = url.split('?')[1].split('&'),
         data = {}, tmp;
-        for (var i = 0, l = params.length; i < l; i++) {
-            tmp = params[i].split('=');
-            data[tmp[0]] = tmp[1];
-        }
-        // console.log(data);
+    for (var i = 0, l = params.length; i < l; i++) {
+        tmp = params[i].split('=');
+        data[tmp[0]] = tmp[1];
+    }
+    // console.log(data);
+    handle_name = data.handle;
     document.querySelector('.form-control').value = `${data.handle}`;
 }
-handle_name=document.querySelector('.form-control').value;
+handle_name = document.querySelector('.form-control').value;
+// get solved set
+$(document).ready(function () {
+    async function getsubmissions1() {
+        $(".upsolve").empty()
+        let modified_url = url + handle_name
 
-let api_url = 'https://codeforces.com/api/';
+        const jsondata = await fetch(modified_url)
+        const jsdata = await jsondata.json()
+        // console.log(jsdata.result)
+        let unsolved = new Set()
+        let unsolved_link = [];
+        unsolved.clear()
+        solved.clear()
+        // console.log(data);
+        for (let i = 0; i < jsdata.result.length; i++) {
+            if (jsdata.result[i].verdict == "OK") {
+                let str = jsdata.result[i].problem.contestId + "-" + jsdata.result[i].problem.index
+                solved.add(
+                    str
+                )
+            }
+        }
+        // console.log(solved)
+        no_of_success = solved.size;
+        let no = document.querySelector('.no');
+        no.innerHTML = no_of_success;
+        // console.log(no_of_success)
+    }
+    getsubmissions1()
+    // //console.log(solved);
+    // get user name and avatar
+    async function getname() {
+        //console.log(handle_name)
+        let modified_url2 = url_info + handle_name
 
+        const jsondata2 = await fetch(modified_url2)
+        const jsdata2 = await jsondata2.json()
+        //console.log(jsdata2.result)
+        let name = jsdata2.result[0].firstName;
+        //console.log(jsdata2.result)
 
-let item=document.querySelector('.item1');
-let item2=document.querySelector('.item2');
-let item3=document.querySelector('.item3');
-let item4=document.querySelector('.item4');
-let daily_mix_contests=document.querySelector('.daily-mix');
-let weak_topics=document.querySelector('.weak_topics');
-let strong_topics=document.querySelector('.strong_topics');
-let ladders=document.querySelector('.ladders');
-let unsolved_mysteries=document.querySelector('.unsolved_mysteries');
-function show_please(item)
-{
-    item.style.width="30vw";
-    item.style.height="25vh";
+        let user = document.querySelector('.user');
+        let user_avatar = document.querySelector('.user_avatar');
+        let str = jsdata2.result[0].titlePhoto;
+        let p = "http://";
+        str = str.substr(2);
+        let arr = [p, str];
+        let stt = arr.join('');
+        user_avatar.innerHTML = `<img src="${stt}" class="avatar"></img>`
+        user.innerHTML = name;
+    }
+    getname();
+    // for retreiving all contests problems
+    async function getsubmissions() {
+        $(".upsolve").empty()
+        let modified_url = user_contests + handle_name
+
+        const jsondata = await fetch(modified_url)
+        const jsdata = await jsondata.json()
+        //console.log(jsdata.result)
+        for (let i = jsdata.result.length - 1; i >= 0; i--) {
+            const user_contest_res = `https://codeforces.com/api/contest.standings?contestId=${jsdata.result[i].contestId}&from=1&count=5`;
+            const jsondata3 = await fetch(user_contest_res);
+            const jsdata2 = await jsondata3.json();
+            //console.log(jsdata2.result.problems);
+            for (let j = 0; j < jsdata2.result.problems.length; j++) {
+                contests_problems.add(`${jsdata2.result.problems[j].contestId}-${jsdata2.result.problems[j].index}`);
+            }
+        }
+        console.log(contests_problems);
+        console.log(solved);
+        for (const it of contests_problems) {
+            if (solved.has(it)===false) {
+                let str=it
+                upsolved.add(str);
+                console.log(it);
+            }
+        }
+        console.log(upsolved);
+    }
+    getsubmissions()
+})
+let item = document.querySelector('.item1');
+let item2 = document.querySelector('.item2');
+let item3 = document.querySelector('.item3');
+let item4 = document.querySelector('.item4');
+let daily_mix_contests = document.querySelector('.daily-mix');
+let weak_topics = document.querySelector('.weak_topics');
+let no_of_success;
+let strong_topics = document.querySelector('.strong_topics');
+let upsolve = document.querySelector('.upsolve');
+let unsolved_mysteries = document.querySelector('.unsolved_mysteries');
+function show_please(item) {
+    item.style.width = "30vw";
+    item.style.height = "25vh";
 }
-function hide_please(item)
-{
-    item.style.width="24vw";
-    item.style.height="auto";
+function hide_please(item) {
+    item.style.width = "24vw";
+    item.style.height = "auto";
 }
-item.addEventListener('click',function(e){
+item.addEventListener('click', function (e) {
     // console.log("aur bhai kya haal chaal");
     show_please(item);
     hide_please(item2);
@@ -43,12 +129,12 @@ item.addEventListener('click',function(e){
     daily_mix_contests.remove();
     weak_topics.classList.remove('hidden');
     unsolved_mysteries.classList.add('hidden');
-    ladders.classList.add('hidden');
+    upsolve.classList.add('hidden');
     strong_topics.classList.add('hidden');
     // insert_weak_topics();
     e.preventDefault();
 });
-item2.addEventListener('click',function(e){
+item2.addEventListener('click', function (e) {
     // console.log("aur bhai kya haal chaal");
     show_please(item2);
     hide_please(item);
@@ -57,26 +143,31 @@ item2.addEventListener('click',function(e){
     daily_mix_contests.remove();
     strong_topics.classList.remove('hidden');
     unsolved_mysteries.classList.add('hidden');
-    ladders.classList.add('hidden');
+    upsolve.classList.add('hidden');
     weak_topics.classList.add('hidden');
     // insert_weak_topics();
+
     e.preventDefault();
 });
-item3.addEventListener('click',function(e){
+item3.addEventListener('click', function (e) {
     // console.log("aur bhai kya haal chaal");
     show_please(item3);
     hide_please(item2);
     hide_please(item);
     hide_please(item4);
     daily_mix_contests.remove();
-    ladders.classList.remove('hidden');
+    upsolve.classList.remove('hidden');
     unsolved_mysteries.classList.add('hidden');
     weak_topics.classList.add('hidden');
     strong_topics.classList.add('hidden');
     // insert_weak_topics();
+    upsolve.classList.remove('hidden');
+    weak_topics.classList.add('hidden');
+    unsolved_mysteries.classList.add('hidden');
+    strong_topics.classList.add('hidden');
     e.preventDefault();
 });
-item4.addEventListener('click',function(e){
+item4.addEventListener('click', function (e) {
     // console.log("aur bhai kya haal chaal");
     show_please(item4);
     hide_please(item2);
@@ -85,8 +176,13 @@ item4.addEventListener('click',function(e){
     daily_mix_contests.remove();
     unsolved_mysteries.classList.remove('hidden');
     weak_topics.classList.add('hidden');
-    ladders.classList.add('hidden');
+    upsolve.classList.add('hidden');
     strong_topics.classList.add('hidden');
     // insert_weak_topics();
+
+    unsolved_mysteries.classList.remove('hidden');
+    weak_topics.classList.add('hidden');
+    upsolve.classList.add('hidden');
+    strong_topics.classList.add('hidden');
     e.preventDefault();
-});
+})
