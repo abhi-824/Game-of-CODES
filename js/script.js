@@ -1,3 +1,13 @@
+let item = document.querySelector('.item1');
+let item2 = document.querySelector('.item2');
+let item3 = document.querySelector('.item3');
+let item4 = document.querySelector('.item4');
+let daily_mix_contests = document.querySelector('.daily-mix');
+let weak_topics = document.querySelector('.weak_topics');
+let no_of_success;
+let strong_topics = document.querySelector('.strong_topics');
+let upsolve = document.querySelector('.upsolve');
+let unsolved_mysteries = document.querySelector('.unsolved_mysteries');
 let user_contests = "https://codeforces.com/api/user.rating?handle=";
 let api_url = 'https://codeforces.com/api/';
 const url_info = " https://codeforces.com/api/user.info?handles=";
@@ -5,7 +15,7 @@ const url = "https://codeforces.com/api/user.status?handle=";
 let solved = new Set()
 let user_contest = [];
 let contests_problems = new Set();
-let upsolved = new Set();
+let upsolved = [];
 var handle_name = '';
 window.onload = function () {
     var url = document.location.href,
@@ -20,10 +30,10 @@ window.onload = function () {
     document.querySelector('.form-control').value = `${data.handle}`;
 }
 handle_name = document.querySelector('.form-control').value;
-// get solved set
 $(document).ready(function () {
+    // get solved set
     async function getsubmissions1() {
-        $(".upsolve").empty()
+        // $(".upsolve").empty()/
         let modified_url = url + handle_name
 
         const jsondata = await fetch(modified_url)
@@ -74,7 +84,7 @@ $(document).ready(function () {
     getname();
     // for retreiving all contests problems
     async function getsubmissions() {
-        $(".upsolve").empty()
+        // $(".upsolve").empty()
         let modified_url = user_contests + handle_name
 
         const jsondata = await fetch(modified_url)
@@ -84,34 +94,44 @@ $(document).ready(function () {
             const user_contest_res = `https://codeforces.com/api/contest.standings?contestId=${jsdata.result[i].contestId}&from=1&count=5`;
             const jsondata3 = await fetch(user_contest_res);
             const jsdata2 = await jsondata3.json();
-            //console.log(jsdata2.result.problems);
+            // console.log(jsdata2.result.problems);
             for (let j = 0; j < jsdata2.result.problems.length; j++) {
-                contests_problems.add(`${jsdata2.result.problems[j].contestId}-${jsdata2.result.problems[j].index}`);
+                contests_problems.add([`${jsdata2.result.problems[j].contestId}-${jsdata2.result.problems[j].index}`,jsdata2.result.problems[j].rating]);
             }
         }
         console.log(contests_problems);
         console.log(solved);
         for (const it of contests_problems) {
-            if (solved.has(it)===false) {
+            if (solved.has(it[0])===false) {
                 let str=it
-                upsolved.add(str);
+                
+                upsolved.push([it[1],str]);
                 console.log(it);
             }
         }
+        upsolved.sort();
         console.log(upsolved);
+        let table=document.querySelector('.problems')
+        for(let i=0;i<upsolved.length;i++)
+        {
+            let tr=document.createElement('tr');
+            let th1=document.createElement('th');
+            let th2=document.createElement('th');
+            let th3=document.createElement('th');
+            th2.innerHTML=upsolved[i][0];
+            th1.innerHTML=upsolved[i][1][0];
+            th3.innerHTML=upsolved[i][1][0];
+            tr.appendChild(th1);
+            tr.appendChild(th2);
+            tr.appendChild(th3);
+            table.appendChild(tr);
+        }
     }
     getsubmissions()
+
+
+
 })
-let item = document.querySelector('.item1');
-let item2 = document.querySelector('.item2');
-let item3 = document.querySelector('.item3');
-let item4 = document.querySelector('.item4');
-let daily_mix_contests = document.querySelector('.daily-mix');
-let weak_topics = document.querySelector('.weak_topics');
-let no_of_success;
-let strong_topics = document.querySelector('.strong_topics');
-let upsolve = document.querySelector('.upsolve');
-let unsolved_mysteries = document.querySelector('.unsolved_mysteries');
 function show_please(item) {
     item.style.width = "30vw";
     item.style.height = "25vh";
@@ -161,10 +181,7 @@ item3.addEventListener('click', function (e) {
     weak_topics.classList.add('hidden');
     strong_topics.classList.add('hidden');
     // insert_weak_topics();
-    upsolve.classList.remove('hidden');
-    weak_topics.classList.add('hidden');
-    unsolved_mysteries.classList.add('hidden');
-    strong_topics.classList.add('hidden');
+
     e.preventDefault();
 });
 item4.addEventListener('click', function (e) {
@@ -179,10 +196,5 @@ item4.addEventListener('click', function (e) {
     upsolve.classList.add('hidden');
     strong_topics.classList.add('hidden');
     // insert_weak_topics();
-
-    unsolved_mysteries.classList.remove('hidden');
-    weak_topics.classList.add('hidden');
-    upsolve.classList.add('hidden');
-    strong_topics.classList.add('hidden');
     e.preventDefault();
 })
