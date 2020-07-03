@@ -124,6 +124,9 @@ table tr{
 .upsolve{
   overflow:scroll;
 }
+.unsolved_mysteries{
+  overflow:scroll;
+}
 /* Footer content */
 
 .user-stats {
