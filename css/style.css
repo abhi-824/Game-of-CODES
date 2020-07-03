@@ -62,6 +62,9 @@ body {
   color: #ffffff;
   margin-left: 2rem;
 }
+table tr{
+  color:#fff;
+}
 .heading p{
   font-size:1rem;
 }
@@ -118,7 +121,9 @@ body {
   margin:0;
 
 }
-
+.upsolve{
+  overflow:scroll;
+}
 /* Footer content */
 
 .user-stats {
