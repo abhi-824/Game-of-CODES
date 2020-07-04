@@ -35,6 +35,24 @@ function hello () {
     console.log(document.querySelector('.form-control').value);
     $(document).ready(function () {
         // get solved set
+        function convert_to_link(str)
+        {   
+            let p='';
+            let q='';
+            for(let i=0;i<str.length;i++)
+            {
+                if(str[i]==='-'){
+                    for(let j=i+1;j<str.length;j++){
+                        q+=str[j];
+
+                    }
+                    break;
+                }
+                p+=str[i];
+            }
+            let link=`https://codeforces.com/problemset/problem/${p}/${q}`
+            return link;
+        }
         async function getsubmissions1() {
             // $(".upsolve").empty()/
             let modified_url = url2 + handle_name
@@ -123,7 +141,8 @@ function hello () {
                 let th3=document.createElement('th');
                 th2.innerHTML=upsolved[i][0];
                 th1.innerHTML=upsolved[i][1][0];
-                th3.innerHTML=upsolved[i][1][0];
+                // th3.innerHTML=convert_to_link();
+                th3.innerHTML=`<a href="${convert_to_link(upsolved[i][1][0])}">Let's Do it</a>`;
                 tr.appendChild(th1);
                 tr.appendChild(th2);
                 tr.appendChild(th3);
@@ -154,9 +173,9 @@ function hello () {
                         let fl=0;
                         for(let it of unsolved_problems)
                         {
-                            if(it[1]===str&&it[0]===jsdata.result[i].problem.rating)
+                            if(it[1]===str)
                             {
-                                fl=1;
+                                fl=1;   
                             }
                         }
                         if(fl===0)
@@ -180,7 +199,7 @@ function hello () {
                 let th3=document.createElement('th');
                 th2.innerHTML=unsolved_problems_array[i][0];
                 th1.innerHTML=unsolved_problems_array[i][1];
-                th3.innerHTML=unsolved_problems_array[i][1];
+                th3.innerHTML=`<a href="${convert_to_link(unsolved_problems_array[i][1])}">Let's Do it</a>`;
                 tr.appendChild(th1);
                 tr.appendChild(th2);
                 tr.appendChild(th3);
