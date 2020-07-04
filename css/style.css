@@ -12,6 +12,19 @@ body {
   );
   height: 100vh;
 }
+a{
+  text-decoration: none;
+  color:#fff;
+
+}
+a:hover{
+  color:rgb(15, 15, 14); 
+  background:rgba(212, 255, 42, 0.603);
+  padding:0.4rem;
+  transition:1s;
+  text-decoration: none;
+  border-radius: 10px;
+}
 .container1{
   background: url('../resources/backgrounds/hulk.jpg') no-repeat center center/cover;
   height:100vh;
