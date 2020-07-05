@@ -115,7 +115,9 @@ table tr{
   grid-template-columns: 2fr 1fr;
   align-items: center;
 }
-
+.weak_topics,.strong_topics{
+  overflow: scroll;
+}
 .line{
   /* display:inline-block; */
   width: 140px;
