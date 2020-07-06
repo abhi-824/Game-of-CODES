@@ -31,13 +31,13 @@
                         <a class="nav-link" href="#">Dashboard<div class="line1"></div><span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Compare</a>
+                            <a class="nav-link" href="compare.html">Compare</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Profile</a>
+                            <a class="nav-link" href="Profile.html">Profile</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Code Blast</a>
+                            <a class="nav-link" href="Codeblast.html">Code Blast</a>
                         </li>
                         <li class="user_avatar nav-item">
                         </li>
@@ -75,6 +75,10 @@
                     <div class="hidden upsolve daily-mix">
                         <h1>UPSOLVE</h1>
                         <div class="line"></div>
+                        <div class="d-flex align-items-center spinner">
+                            <strong>Loading...</strong>
+                            <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+                          </div>
                         <table class="problems table">
                             <tr>
                                 <th scope="col">Problem ID</th>
@@ -87,6 +91,18 @@
                         <h1>Unsolved Mysteries</h1>
                         <div class="line"></div>
                         <table class="unsolved_problems table">
+                            <tr>
+                                <th scope="col">Problem ID</th>
+                                <th scope="col">Difficulty</th>
+                                <th scope="col">Contest ID</th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="hidden problemsets">
+                        <h1>Difficulty Wise Problems</h1>
+                        <p>Only for you</p>
+                        <div class="line"></div>
+                        <table class="problemset table">
                             <tr>
                                 <th scope="col">Problem ID</th>
                                 <th scope="col">Difficulty</th>
