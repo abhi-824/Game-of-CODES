@@ -101,6 +101,18 @@ table tr{
   align-items: center;
   margin-right: 3rem;
 }
+.problemsets{
+  
+  width: 850px;
+  height: 500px;
+  background: rgba(20, 20, 20, 0.47);
+  border-radius: 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 3rem;
+  overflow: scroll;
+}
 .daily-mix h1{
   font-style: normal;
   font-weight: normal;
@@ -109,6 +121,18 @@ table tr{
   padding-top:2rem;
   /* padding: 1rem; */
   color: #e7e7e7;
+}
+.problemsets h1{
+  font-style: normal;
+  font-weight: normal;
+  font-size: 26px;
+  line-height: 40px;
+  padding-top:2rem;
+  /* padding: 1rem; */
+  color: #e7e7e7;
+}
+.problemsets p{
+  font-size: 1rem;
 }
 .wrapper {
   display: grid;
