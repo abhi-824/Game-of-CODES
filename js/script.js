@@ -68,12 +68,12 @@ function hello() {
     tmp = params[i].split("=");
     data[tmp[0]] = tmp[1];
   }
-  // console.log(data);
+  // //console.log(data);
   document.querySelector(".form-control").value = `${data.handle}`;
-  console.log(data.handle);
+  //console.log(data.handle);
   handle_name = data.handle;
-  // console.log(handle_name);
-  console.log(document.querySelector(".form-control").value);
+  // //console.log(handle_name);
+  //console.log(document.querySelector(".form-control").value);
   $(document).ready(function () {
     // get solved set
     function convert_to_link(str) {
@@ -97,12 +97,12 @@ function hello() {
 
       const jsondata = await fetch(modified_url);
       const jsdata = await jsondata.json();
-      // console.log(jsdata.result)
+      // //console.log(jsdata.result)
       let unsolved = new Set();
       let unsolved_link = [];
       unsolved.clear();
       solved.clear();
-      // console.log(data);
+      // //console.log(data);
       for (let i = 0; i < all_topics_name.length; i++) {
         tag_map.set(all_topics_name[i], 0);
       }
@@ -141,17 +141,17 @@ function hello() {
       }
       let sum = 0;
       let no2 = 0;
-      // console.log(tag_map)
+      // //console.log(tag_map)
       for (let i of tag_map.values()) {
         if (i > 0) {
           sum += i;
-          console.log(sum);
+          //console.log(sum);
           no2 += 1;
         }
-        // console.log(i);
+        // //console.log(i);
       }
       let avg = sum / no2;
-      console.log(avg);
+      //console.log(avg);
 
       for (let i of tag_map) {
         if (i[1] < avg) {
@@ -161,43 +161,76 @@ function hello() {
         }
       }
 
-      console.log(strong_topicss);
-      console.log(weak_topicss);
-      console.log(tag_map);
+      //console.log(strong_topicss);
+      //console.log(weak_topicss);
+      //console.log(tag_map);
       let tb = document.querySelector(".weak_topicss");
       for (let i = 0; i < weak_topicss.length; i++) {
         let tr = document.createElement("tr");
         let th1 = document.createElement("th");
+        let th2 = document.createElement("button");
+        th2.classList.add("btn");
+        th2.classList.add("btn-light");
+        th2.classList.add("practice_topic");
         th1.innerHTML = weak_topicss[i];
+        th2.innerHTML = "Practice it(Chal Phod)";
+
         tr.appendChild(th1);
+        tr.appendChild(th2);
         tb.appendChild(tr);
       }
       let tb1 = document.querySelector(".strong_topicss");
       for (let i = 0; i < strong_topicss.length; i++) {
         let tr = document.createElement("tr");
         let th1 = document.createElement("th");
+        let th2 = document.createElement("button");
         th1.innerHTML = strong_topicss[i];
+        th2.classList.add("btn");
+        th2.classList.add("btn-light");
+        th2.classList.add("practice_topic");
+        th2.innerHTML = "Practice it(Chal Phod)";
         tr.appendChild(th1);
+        tr.appendChild(th2);
         tb1.appendChild(tr);
       }
-      // console.log(solved)
+      // //console.log(solved)
       no_of_success = solved.size;
       let no = document.querySelector(".no");
       no.innerHTML = no_of_success;
-      // console.log(no_of_success)
+      // //console.log(no_of_success)
+      let practice_each_topic = document.querySelectorAll(".practice_topic");
+      console.log(practice_each_topic);
+      for (let i = 0; i < practice_each_topic.length; i++) {
+        practice_each_topic[i].addEventListener("click", function (e) {
+          console.log("Imptehan ho gyi intezaar ki");
+          console.log(
+            practice_each_topic[i].parentElement.firstChild.innerHTML
+          );
+          // get_problems(
+          //   practice_each_topic[i].parentElement.firstChild.innerHTML
+          // );
+          item.classList.add("hidden");
+          item2.classList.add("hidden");
+          item3.classList.add("hidden");
+          item4.classList.add("hidden");
+          document.querySelector('.heading').classList.add('hidden');
+          document.querySelector('.problemsets').classList.remove('hidden');
+          e.preventDefault();
+        });
+      }
     }
     getsubmissions1();
-    // //console.log(solved);
+    // ////console.log(solved);
     // get user name and avatar
     async function getname() {
-      //console.log(handle_name)
+      ////console.log(handle_name)
       let modified_url2 = url_info + handle_name;
 
       const jsondata2 = await fetch(modified_url2);
       const jsdata2 = await jsondata2.json();
-      //console.log(jsdata2.result)
+      ////console.log(jsdata2.result)
       let name = jsdata2.result[0].firstName;
-      //console.log(jsdata2.result)
+      ////console.log(jsdata2.result)
 
       let user = document.querySelector(".user");
       let user_avatar = document.querySelector(".user_avatar");
@@ -210,19 +243,19 @@ function hello() {
       user.innerHTML = name;
     }
     getname();
-    // for retreiving all contests problems
+    // for retreiving all upsolved problems
     async function getsubmissions() {
       // $(".upsolve").empty()
       let modified_url = user_contests + handle_name;
 
       const jsondata = await fetch(modified_url);
       const jsdata = await jsondata.json();
-      //console.log(jsdata.result)
+      ////console.log(jsdata.result)
       for (let i = jsdata.result.length - 1; i >= 0; i--) {
         const user_contest_res = `https://codeforces.com/api/contest.standings?contestId=${jsdata.result[i].contestId}&from=1&count=5`;
         const jsondata3 = await fetch(user_contest_res);
         const jsdata2 = await jsondata3.json();
-        // console.log(jsdata2.result.problems);
+        // //console.log(jsdata2.result.problems);
         for (let j = 0; j < jsdata2.result.problems.length; j++) {
           contests_problems.add([
             `${jsdata2.result.problems[j].contestId}-${jsdata2.result.problems[j].index}`,
@@ -230,18 +263,18 @@ function hello() {
           ]);
         }
       }
-      // console.log(contests_problems);
-      // console.log(solved);
+      // //console.log(contests_problems);
+      // //console.log(solved);
       for (const it of contests_problems) {
         if (solved.has(it[0]) === false) {
           let str = it;
 
           upsolved.push([it[1], str]);
-          // console.log(it);
+          // //console.log(it);
         }
       }
       upsolved.sort();
-      // console.log(upsolved);
+      // //console.log(upsolved);
       let table = document.querySelector(".problems");
       for (let i = 0; i < upsolved.length; i++) {
         let tr = document.createElement("tr");
@@ -259,6 +292,7 @@ function hello() {
         tr.appendChild(th3);
         table.appendChild(tr);
       }
+      document.querySelector('.spinner').classList.add("hidden");
     }
     getsubmissions();
     // for retreiving the unsolved questions
@@ -266,7 +300,7 @@ function hello() {
       let modified_url = url2 + handle_name;
       const jsondata = await fetch(modified_url);
       const jsdata = await jsondata.json();
-      // console.log(jsdata.result);
+      // //console.log(jsdata.result);
       let j = 0;
 
       for (let i = 0; i < jsdata.result.length; i++) {
@@ -291,7 +325,7 @@ function hello() {
         unsolved_problems_array.push(it);
       }
       unsolved_problems_array.sort();
-      console.log(unsolved_problems_array);
+      //console.log(unsolved_problems_array);
       let table = document.querySelector(".unsolved_problems");
       for (let i = 0; i < unsolved_problems_array.length; i++) {
         let tr = document.createElement("tr");
@@ -347,7 +381,7 @@ function hello() {
     e.preventDefault();
   });
   item3.addEventListener("click", function (e) {
-    // console.log("aur bhai kya haal chaal");
+    // //console.log("aur bhai kya haal chaal");
     show_please(item3);
     hide_please(item2);
     hide_please(item);
@@ -362,7 +396,7 @@ function hello() {
     e.preventDefault();
   });
   item4.addEventListener("click", function (e) {
-    // console.log("aur bhai kya haal chaal");
+    // //console.log("aur bhai kya haal chaal");
     show_please(item4);
     hide_please(item2);
     hide_please(item3);
@@ -389,4 +423,4 @@ function hello() {
   });
 }
 window.onload = hello;
-// console.log(handle_name)
+// //console.log(handle_name)
