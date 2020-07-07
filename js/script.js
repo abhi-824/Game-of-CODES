@@ -2,6 +2,8 @@ let item = document.querySelector(".item1");
 let item2 = document.querySelector(".item2");
 let item3 = document.querySelector(".item3");
 let item4 = document.querySelector(".item4");
+let show_daily_mix = document.querySelector(".daily-btn");
+let show_daily_mix2 = document.querySelector(".daily-btn2");
 let daily_mix_contests = document.querySelector(".daily-mix");
 let weak_topics = document.querySelector(".weak_topics");
 let no_of_success;
@@ -91,7 +93,8 @@ function hello() {
       let link = `https://codeforces.com/problemset/problem/${p}/${q}`;
       return link;
     }
-    async function getsubmissions1() {
+    // getting week nd strong topics
+    async function getsubmissions() {
       // $(".upsolve").empty()/
       let modified_url = url2 + handle_name;
 
@@ -115,6 +118,154 @@ function hello() {
             "-" +
             jsdata.result[i].problem.index;
           solved.add(str);
+          no_of_success = solved.size;
+        }
+      }
+    }
+    getsubmissions();
+    // ////console.log(solved);
+    // get user name and avatar
+    async function getname() {
+      ////console.log(handle_name)
+      let modified_url2 = url_info + handle_name;
+
+      const jsondata2 = await fetch(modified_url2);
+      const jsdata2 = await jsondata2.json();
+      ////console.log(jsdata2.result)
+      let name = jsdata2.result[0].firstName;
+      ////console.log(jsdata2.result)
+
+      let user = document.querySelector(".user");
+      let user_avatar = document.querySelector(".user_avatar");
+      let str = jsdata2.result[0].titlePhoto;
+      let p = "http://";
+      str = str.substr(2);
+      let arr = [p, str];
+      let stt = arr.join("");
+      user_avatar.innerHTML = `<img src="${stt}" class="avatar"></img>`;
+      user.innerHTML = name;
+    }
+    getname();
+    // for retreiving all upsolved problems
+    async function getUpsolved() {
+      // $(".upsolve").empty()
+      let modified_url = user_contests + handle_name;
+
+      const jsondata = await fetch(modified_url);
+      const jsdata = await jsondata.json();
+      ////console.log(jsdata.result)
+      for (let i = jsdata.result.length - 1; i >= 0; i--) {
+        const user_contest_res = `https://codeforces.com/api/contest.standings?contestId=${jsdata.result[i].contestId}&from=1&count=5`;
+        const jsondata3 = await fetch(user_contest_res);
+        const jsdata2 = await jsondata3.json();
+        // //console.log(jsdata2.result.problems);
+        for (let j = 0; j < jsdata2.result.problems.length; j++) {
+          contests_problems.add([
+            `${jsdata2.result.problems[j].contestId}-${jsdata2.result.problems[j].index}`,
+            jsdata2.result.problems[j].rating,
+          ]);
+        }
+      }
+      // //console.log(contests_problems);
+      // //console.log(solved);
+      for (const it of contests_problems) {
+        if (solved.has(it[0]) === false) {
+          let str = it;
+
+          upsolved.push([it[1], str]);
+          // //console.log(it);
+        }
+      }
+      upsolved.sort();
+      // //console.log(upsolved);
+      let table = document.querySelector(".problems");
+      for (let i = 0; i < upsolved.length; i++) {
+        let tr = document.createElement("tr");
+        let th1 = document.createElement("th");
+        let th2 = document.createElement("th");
+        let th3 = document.createElement("th");
+        th2.innerHTML = upsolved[i][0];
+        th1.innerHTML = upsolved[i][1][0];
+        // th3.innerHTML=convert_to_link();
+        th3.innerHTML = `<a href="${convert_to_link(
+          upsolved[i][1][0]
+        )}">Let's Do it</a>`;
+        tr.appendChild(th1);
+        tr.appendChild(th2);
+        tr.appendChild(th3);
+        table.appendChild(tr);
+      }
+      document.querySelector(".spinner").classList.add("hidden");
+    }
+    getUpsolved();
+    // for retreiving the unsolved questions
+    async function getUnsolved() {
+      let modified_url = url2 + handle_name;
+      const jsondata = await fetch(modified_url);
+      const jsdata = await jsondata.json();
+      // //console.log(jsdata.result);
+      let j = 0;
+
+      for (let i = 0; i < jsdata.result.length; i++) {
+        let str = `${jsdata.result[i].problem.contestId}-${jsdata.result[i].problem.index}`;
+        if (solved.has(str) === false) {
+          let arra = [jsdata.result[i].problem.rating, str];
+          if (j === 0) {
+            unsolved_problems.add(arra);
+            j = 1;
+          } else {
+            let fl = 0;
+            for (let it of unsolved_problems) {
+              if (it[1] === str) {
+                fl = 1;
+              }
+            }
+            if (fl === 0) unsolved_problems.add(arra);
+          }
+        }
+      }
+      for (let it of unsolved_problems) {
+        unsolved_problems_array.push(it);
+      }
+      unsolved_problems_array.sort();
+      //console.log(unsolved_problems_array);
+      let table = document.querySelector(".unsolved_problems");
+      for (let i = 0; i < unsolved_problems_array.length; i++) {
+        let tr = document.createElement("tr");
+        let th1 = document.createElement("th");
+        let th2 = document.createElement("th");
+        let th3 = document.createElement("th");
+        th2.innerHTML = unsolved_problems_array[i][0];
+        th1.innerHTML = unsolved_problems_array[i][1];
+        th3.innerHTML = `<a href="${convert_to_link(
+          unsolved_problems_array[i][1]
+        )}">Let's Do it</a>`;
+        tr.appendChild(th1);
+        tr.appendChild(th2);
+        tr.appendChild(th3);
+        table.appendChild(tr);
+      }
+    }
+    getUnsolved();
+
+    // getting week nd strong topics
+    async function getTopics() {
+      // $(".upsolve").empty()/
+      let modified_url = url2 + handle_name;
+
+      const jsondata = await fetch(modified_url);
+      const jsdata = await jsondata.json();
+      // //console.log(jsdata.result)
+      let unsolved = new Set();
+      let unsolved_link = [];
+      // //console.log(data);
+      for (let i = 0; i < all_topics_name.length; i++) {
+        tag_map.set(all_topics_name[i], 0);
+      }
+      let jj = 0;
+
+      for (let i = 0; i < jsdata.result.length; i++) {
+        if (jsdata.result[i].verdict == "OK") {
           let tags = jsdata.result[i].problem.tags;
           if (jsdata.result[i].problem.rating > 1400) {
             for (let i = 0; i < tags.length; i++) {
@@ -171,9 +322,10 @@ function hello() {
         let th2 = document.createElement("button");
         th2.classList.add("btn");
         th2.classList.add("btn-light");
+        th2.classList.add("btn-sm");
         th2.classList.add("practice_topic");
         th1.innerHTML = weak_topicss[i];
-        th2.innerHTML = "Practice it(Chal Phod)";
+        th2.innerHTML = "Practice it";
 
         tr.appendChild(th1);
         tr.appendChild(th2);
@@ -187,8 +339,9 @@ function hello() {
         th1.innerHTML = strong_topicss[i];
         th2.classList.add("btn");
         th2.classList.add("btn-light");
+        th2.classList.add("btn-sm");
         th2.classList.add("practice_topic");
-        th2.innerHTML = "Practice it(Chal Phod)";
+        th2.innerHTML = "Practice it";
         tr.appendChild(th1);
         tr.appendChild(th2);
         tb1.appendChild(tr);
@@ -206,144 +359,19 @@ function hello() {
           console.log(
             practice_each_topic[i].parentElement.firstChild.innerHTML
           );
-          // get_problems(
-          //   practice_each_topic[i].parentElement.firstChild.innerHTML
-          // );
+
           item.classList.add("hidden");
           item2.classList.add("hidden");
           item3.classList.add("hidden");
           item4.classList.add("hidden");
-          document.querySelector('.heading').classList.add('hidden');
-          document.querySelector('.problemsets').classList.remove('hidden');
+          document.querySelector(".heading").classList.add("hidden");
+          document.querySelector(".problemsets").classList.remove("hidden");
+          show_daily_mix2.classList.remove("hidden");
           e.preventDefault();
         });
       }
     }
-    getsubmissions1();
-    // ////console.log(solved);
-    // get user name and avatar
-    async function getname() {
-      ////console.log(handle_name)
-      let modified_url2 = url_info + handle_name;
-
-      const jsondata2 = await fetch(modified_url2);
-      const jsdata2 = await jsondata2.json();
-      ////console.log(jsdata2.result)
-      let name = jsdata2.result[0].firstName;
-      ////console.log(jsdata2.result)
-
-      let user = document.querySelector(".user");
-      let user_avatar = document.querySelector(".user_avatar");
-      let str = jsdata2.result[0].titlePhoto;
-      let p = "http://";
-      str = str.substr(2);
-      let arr = [p, str];
-      let stt = arr.join("");
-      user_avatar.innerHTML = `<img src="${stt}" class="avatar"></img>`;
-      user.innerHTML = name;
-    }
-    getname();
-    // for retreiving all upsolved problems
-    async function getsubmissions() {
-      // $(".upsolve").empty()
-      let modified_url = user_contests + handle_name;
-
-      const jsondata = await fetch(modified_url);
-      const jsdata = await jsondata.json();
-      ////console.log(jsdata.result)
-      for (let i = jsdata.result.length - 1; i >= 0; i--) {
-        const user_contest_res = `https://codeforces.com/api/contest.standings?contestId=${jsdata.result[i].contestId}&from=1&count=5`;
-        const jsondata3 = await fetch(user_contest_res);
-        const jsdata2 = await jsondata3.json();
-        // //console.log(jsdata2.result.problems);
-        for (let j = 0; j < jsdata2.result.problems.length; j++) {
-          contests_problems.add([
-            `${jsdata2.result.problems[j].contestId}-${jsdata2.result.problems[j].index}`,
-            jsdata2.result.problems[j].rating,
-          ]);
-        }
-      }
-      // //console.log(contests_problems);
-      // //console.log(solved);
-      for (const it of contests_problems) {
-        if (solved.has(it[0]) === false) {
-          let str = it;
-
-          upsolved.push([it[1], str]);
-          // //console.log(it);
-        }
-      }
-      upsolved.sort();
-      // //console.log(upsolved);
-      let table = document.querySelector(".problems");
-      for (let i = 0; i < upsolved.length; i++) {
-        let tr = document.createElement("tr");
-        let th1 = document.createElement("th");
-        let th2 = document.createElement("th");
-        let th3 = document.createElement("th");
-        th2.innerHTML = upsolved[i][0];
-        th1.innerHTML = upsolved[i][1][0];
-        // th3.innerHTML=convert_to_link();
-        th3.innerHTML = `<a href="${convert_to_link(
-          upsolved[i][1][0]
-        )}">Let's Do it</a>`;
-        tr.appendChild(th1);
-        tr.appendChild(th2);
-        tr.appendChild(th3);
-        table.appendChild(tr);
-      }
-      document.querySelector('.spinner').classList.add("hidden");
-    }
-    getsubmissions();
-    // for retreiving the unsolved questions
-    async function getunsolved() {
-      let modified_url = url2 + handle_name;
-      const jsondata = await fetch(modified_url);
-      const jsdata = await jsondata.json();
-      // //console.log(jsdata.result);
-      let j = 0;
-
-      for (let i = 0; i < jsdata.result.length; i++) {
-        let str = `${jsdata.result[i].problem.contestId}-${jsdata.result[i].problem.index}`;
-        if (solved.has(str) === false) {
-          let arra = [jsdata.result[i].problem.rating, str];
-          if (j === 0) {
-            unsolved_problems.add(arra);
-            j = 1;
-          } else {
-            let fl = 0;
-            for (let it of unsolved_problems) {
-              if (it[1] === str) {
-                fl = 1;
-              }
-            }
-            if (fl === 0) unsolved_problems.add(arra);
-          }
-        }
-      }
-      for (let it of unsolved_problems) {
-        unsolved_problems_array.push(it);
-      }
-      unsolved_problems_array.sort();
-      //console.log(unsolved_problems_array);
-      let table = document.querySelector(".unsolved_problems");
-      for (let i = 0; i < unsolved_problems_array.length; i++) {
-        let tr = document.createElement("tr");
-        let th1 = document.createElement("th");
-        let th2 = document.createElement("th");
-        let th3 = document.createElement("th");
-        th2.innerHTML = unsolved_problems_array[i][0];
-        th1.innerHTML = unsolved_problems_array[i][1];
-        th3.innerHTML = `<a href="${convert_to_link(
-          unsolved_problems_array[i][1]
-        )}">Let's Do it</a>`;
-        tr.appendChild(th1);
-        tr.appendChild(th2);
-        tr.appendChild(th3);
-        table.appendChild(tr);
-      }
-    }
-    getunsolved();
+    getTopics();
   });
   function show_please(item) {
     item.style.width = "30vw";
@@ -363,6 +391,7 @@ function hello() {
     unsolved_mysteries.classList.add("hidden");
     upsolve.classList.add("hidden");
     strong_topics.classList.add("hidden");
+    show_daily_mix.classList.remove("hidden");
     // insert_weak_topics();
     e.preventDefault();
   });
@@ -375,6 +404,7 @@ function hello() {
     strong_topics.classList.remove("hidden");
     unsolved_mysteries.classList.add("hidden");
     upsolve.classList.add("hidden");
+    show_daily_mix.classList.remove("hidden");
     weak_topics.classList.add("hidden");
     // insert_weak_topics();
 
@@ -390,6 +420,7 @@ function hello() {
     upsolve.classList.remove("hidden");
     unsolved_mysteries.classList.add("hidden");
     weak_topics.classList.add("hidden");
+    show_daily_mix.classList.remove("hidden");
     strong_topics.classList.add("hidden");
     // insert_weak_topics();
 
@@ -405,11 +436,12 @@ function hello() {
     unsolved_mysteries.classList.remove("hidden");
     weak_topics.classList.add("hidden");
     upsolve.classList.add("hidden");
+    show_daily_mix.classList.remove("hidden");
     strong_topics.classList.add("hidden");
     // insert_weak_topics();
     e.preventDefault();
   });
-  document.querySelector(".heading").addEventListener("click", function (e) {
+  document.querySelector(".daily-btn").addEventListener("click", function (e) {
     hide_please(item4);
     hide_please(item2);
     hide_please(item3);
@@ -418,7 +450,28 @@ function hello() {
     unsolved_mysteries.classList.add("hidden");
     weak_topics.classList.add("hidden");
     upsolve.classList.add("hidden");
+    show_daily_mix.classList.add("hidden");
     strong_topics.classList.add("hidden");
+    e.preventDefault();
+  });
+  document.querySelector(".daily-btn2").addEventListener("click", function (e) {
+    hide_please(item4);
+    hide_please(item2);
+    hide_please(item3);
+    hide_please(item);
+    daily_mix_contests.classList.remove("hidden");
+    unsolved_mysteries.classList.add("hidden");
+    weak_topics.classList.add("hidden");
+    upsolve.classList.add("hidden");
+    show_daily_mix.classList.add("hidden");
+    strong_topics.classList.add("hidden");
+    item.classList.remove("hidden");
+    item2.classList.remove("hidden");
+    item3.classList.remove("hidden");
+    item4.classList.remove("hidden");
+    document.querySelector(".problemsets").classList.add("hidden");
+    document.querySelector(".heading").classList.remove("hidden");
+    show_daily_mix2.classList.add("hidden");
     e.preventDefault();
   });
 }
