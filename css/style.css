@@ -29,6 +29,10 @@ a:hover{
   background: url('../resources/backgrounds/hulk.jpg') no-repeat center center/cover;
   height:100vh;
 }
+.container3{
+  background: url('../resources/backgrounds/thor.png') no-repeat center center/cover ;
+  height:100vh;
+}
 .container2{
 
   position: absolute;
@@ -36,7 +40,7 @@ a:hover{
   left:0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.7);
 }
 /* hidden */
 .hidden{
