@@ -121,7 +121,114 @@ function hello() {
           no_of_success = solved.size;
         }
       }
-    }
+      for (let i = 0; i < jsdata.result.length; i++) {
+            if (jsdata.result[i].verdict == "OK") {
+              let tags = jsdata.result[i].problem.tags;
+              if (jsdata.result[i].problem.rating > 1400) {
+                for (let i = 0; i < tags.length; i++) {
+                  jj = tag_map.get(tags[i]);
+    
+                  tag_map.set(tags[i], jj + 1);
+                }
+              } else {
+                for (let i = 0; i < tags.length; i++) {
+                  jj = tag_map.get(tags[i]);
+                  tag_map.set(tags[i], jj + 0.5);
+                }
+              }
+            } else {
+              let tags = jsdata.result[i].problem.tags;
+              for (let i = 0; i < tags.length; i++) {
+                jj = tag_map.get(tags[i]);
+    
+                tag_map.set(tags[i], jj - 0.3);
+              }
+            }
+          }
+          let sum = 0;
+          let no2 = 0;
+          // //console.log(tag_map)
+          for (let i of tag_map.values()) {
+            if (i > 0) {
+              sum += i;
+              //console.log(sum);
+              no2 += 1;
+            }
+            // //console.log(i);
+          }
+          let avg = sum / no2;
+          //console.log(avg);
+    
+          for (let i of tag_map) {
+            if (i[1] < avg) {
+              weak_topicss.push(i[0]);
+            } else {
+              strong_topicss.push(i[0]);
+            }
+          }
+    
+          //console.log(strong_topicss);
+          //console.log(weak_topicss);
+          //console.log(tag_map);
+          let tb = document.querySelector(".weak_topicss");
+          for (let i = 0; i < weak_topicss.length; i++) {
+            let tr = document.createElement("tr");
+            let th1 = document.createElement("th");
+            let th2 = document.createElement("button");
+            th2.classList.add("btn");
+            th2.classList.add("btn-light");
+            th2.classList.add("btn-sm");
+            th2.classList.add("practice_topic");
+            th1.innerHTML = weak_topicss[i];
+            th2.innerHTML = "Practice it";
+    
+            tr.appendChild(th1);
+            tr.appendChild(th2);
+            tb.appendChild(tr);
+          }
+          let tb1 = document.querySelector(".strong_topicss");
+          for (let i = 0; i < strong_topicss.length; i++) {
+            let tr = document.createElement("tr");
+            let th1 = document.createElement("th");
+            let th2 = document.createElement("button");
+            th1.innerHTML = strong_topicss[i];
+            th2.classList.add("btn");
+            th2.classList.add("btn-light");
+            th2.classList.add("btn-sm");
+            th2.classList.add("practice_topic");
+            th2.innerHTML = "Practice it";
+            tr.appendChild(th1);
+            tr.appendChild(th2);
+            tb1.appendChild(tr);
+          }
+          // //console.log(solved)
+          no_of_success = solved.size;
+          let no = document.querySelector(".no");
+          no.innerHTML = no_of_success;
+          // //console.log(no_of_success)
+          let practice_each_topic = document.querySelectorAll(".practice_topic");
+          console.log(practice_each_topic);
+          for (let i = 0; i < practice_each_topic.length; i++) {
+            practice_each_topic[i].addEventListener("click", function (e) {
+              console.log("Imptehan ho gyi intezaar ki");
+              console.log(
+                practice_each_topic[i].parentElement.firstChild.innerHTML
+              );
+    
+              item.classList.add("hidden");
+              item2.classList.add("hidden");
+              item3.classList.add("hidden");
+              item4.classList.add("hidden");
+              document.querySelector(".heading").classList.add("hidden");
+              document.querySelector(".problemsets").classList.remove("hidden");
+              show_daily_mix2.classList.remove("hidden");
+              e.preventDefault();
+            });
+          }
+    
+        }
+  
+
     getsubmissions();
     // ////console.log(solved);
     // get user name and avatar
@@ -153,12 +260,12 @@ function hello() {
 
       const jsondata = await fetch(modified_url);
       const jsdata = await jsondata.json();
-      ////console.log(jsdata.result)
+      // console.log(jsdata.result)
       for (let i = jsdata.result.length - 1; i >= 0; i--) {
         const user_contest_res = `https://codeforces.com/api/contest.standings?contestId=${jsdata.result[i].contestId}&from=1&count=5`;
         const jsondata3 = await fetch(user_contest_res);
         const jsdata2 = await jsondata3.json();
-        // //console.log(jsdata2.result.problems);
+        console.log(jsdata2.result.problems);
         for (let j = 0; j < jsdata2.result.problems.length; j++) {
           contests_problems.add([
             `${jsdata2.result.problems[j].contestId}-${jsdata2.result.problems[j].index}`,
@@ -248,130 +355,7 @@ function hello() {
     }
     getUnsolved();
 
-    // getting week nd strong topics
-    async function getTopics() {
-      // $(".upsolve").empty()/
-      let modified_url = url2 + handle_name;
-
-      const jsondata = await fetch(modified_url);
-      const jsdata = await jsondata.json();
-      // //console.log(jsdata.result)
-      let unsolved = new Set();
-      let unsolved_link = [];
-      // //console.log(data);
-      for (let i = 0; i < all_topics_name.length; i++) {
-        tag_map.set(all_topics_name[i], 0);
-      }
-      let jj = 0;
-
-      for (let i = 0; i < jsdata.result.length; i++) {
-        if (jsdata.result[i].verdict == "OK") {
-          let tags = jsdata.result[i].problem.tags;
-          if (jsdata.result[i].problem.rating > 1400) {
-            for (let i = 0; i < tags.length; i++) {
-              jj = tag_map.get(tags[i]);
-
-              tag_map.set(tags[i], jj + 1);
-            }
-          } else {
-            for (let i = 0; i < tags.length; i++) {
-              jj = tag_map.get(tags[i]);
-              tag_map.set(tags[i], jj + 0.5);
-            }
-          }
-          // if (jsdata.result[i].verdict !== "OK") {
-          //     jj=-jj;
-        } else {
-          let tags = jsdata.result[i].problem.tags;
-          for (let i = 0; i < tags.length; i++) {
-            jj = tag_map.get(tags[i]);
-
-            tag_map.set(tags[i], jj - 0.3);
-          }
-        }
-      }
-      let sum = 0;
-      let no2 = 0;
-      // //console.log(tag_map)
-      for (let i of tag_map.values()) {
-        if (i > 0) {
-          sum += i;
-          //console.log(sum);
-          no2 += 1;
-        }
-        // //console.log(i);
-      }
-      let avg = sum / no2;
-      //console.log(avg);
-
-      for (let i of tag_map) {
-        if (i[1] < avg) {
-          weak_topicss.push(i[0]);
-        } else {
-          strong_topicss.push(i[0]);
-        }
-      }
-
-      //console.log(strong_topicss);
-      //console.log(weak_topicss);
-      //console.log(tag_map);
-      let tb = document.querySelector(".weak_topicss");
-      for (let i = 0; i < weak_topicss.length; i++) {
-        let tr = document.createElement("tr");
-        let th1 = document.createElement("th");
-        let th2 = document.createElement("button");
-        th2.classList.add("btn");
-        th2.classList.add("btn-light");
-        th2.classList.add("btn-sm");
-        th2.classList.add("practice_topic");
-        th1.innerHTML = weak_topicss[i];
-        th2.innerHTML = "Practice it";
-
-        tr.appendChild(th1);
-        tr.appendChild(th2);
-        tb.appendChild(tr);
-      }
-      let tb1 = document.querySelector(".strong_topicss");
-      for (let i = 0; i < strong_topicss.length; i++) {
-        let tr = document.createElement("tr");
-        let th1 = document.createElement("th");
-        let th2 = document.createElement("button");
-        th1.innerHTML = strong_topicss[i];
-        th2.classList.add("btn");
-        th2.classList.add("btn-light");
-        th2.classList.add("btn-sm");
-        th2.classList.add("practice_topic");
-        th2.innerHTML = "Practice it";
-        tr.appendChild(th1);
-        tr.appendChild(th2);
-        tb1.appendChild(tr);
-      }
-      // //console.log(solved)
-      no_of_success = solved.size;
-      let no = document.querySelector(".no");
-      no.innerHTML = no_of_success;
-      // //console.log(no_of_success)
-      let practice_each_topic = document.querySelectorAll(".practice_topic");
-      console.log(practice_each_topic);
-      for (let i = 0; i < practice_each_topic.length; i++) {
-        practice_each_topic[i].addEventListener("click", function (e) {
-          console.log("Imptehan ho gyi intezaar ki");
-          console.log(
-            practice_each_topic[i].parentElement.firstChild.innerHTML
-          );
-
-          item.classList.add("hidden");
-          item2.classList.add("hidden");
-          item3.classList.add("hidden");
-          item4.classList.add("hidden");
-          document.querySelector(".heading").classList.add("hidden");
-          document.querySelector(".problemsets").classList.remove("hidden");
-          show_daily_mix2.classList.remove("hidden");
-          e.preventDefault();
-        });
-      }
-    }
-    getTopics();
+    
   });
   function show_please(item) {
     item.style.width = "30vw";
