@@ -11,7 +11,9 @@ body {
     rgba(56, 56, 56, 0) 100%
   );
   height: 100vh;
+  overflow-x: hidden;
 }
+
 a{
   text-decoration: none;
   color:#fff;
@@ -109,19 +111,6 @@ table tr{
   margin-right: 3rem;
 }
 
-.problemsets{
-  
-  float:right;
-  width: 500px;
-  height: 450px;
-  background: rgba(20, 20, 20, 0.47);
-  border-radius: 35px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-right: 3rem;
-  overflow: scroll;
-}
 .daily-mix h1{
   font-style: normal;
   font-weight: normal;
@@ -150,6 +139,7 @@ table tr{
 }
 .weak_topics,.strong_topics{
   overflow: scroll;
+  overflow-x: hidden;
 }
 .line{
   /* display:inline-block; */
@@ -171,9 +161,12 @@ table tr{
 }
 .upsolve{
   overflow:scroll;
+  overflow-x:hidden;
 }
 .unsolved_mysteries{
   overflow:scroll;
+  overflow-x:hidden;
+
 }
 /* Footer content */
 

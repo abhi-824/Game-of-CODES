@@ -262,35 +262,22 @@ function hello() {
 
               datapoints.push({ label: key[0], y: key[1] });
             }
-            // function drawChart(){
-            //   console.log(datapoints);
-            //   let chart= new  google.visualization.DataTable();
-            //   let vchart = new google.visualization.ColumnChart(document.getElementById('chartContainer'));
-            //   chart.addColumn("number", "Level");
-            //   chart.addColumn("number", "solved");
-            //   chart.addRows(datapoints);
-            //   var options = {
-            //     width: Math.max($('#levels').width(), levels.getNumberOfRows() * 50),
-            //     height: 300,
-            //     title: 'Levels of ' + handle,
-            //     legend: 'none',
-            //     fontName: 'Roboto',
-            //     titleTextStyle: titleTextStyle,
-            //     vAxis: { format: '0' },
-            //     colors: ['#3F51B5']
-            //   };
-            //   vchart.draw(chart, options);  
-            // }
-            // google.charts.setOnLoadCallback(drawChart);
-            
             var chart = new CanvasJS.Chart("chartContainer", {
               animationEnabled: true,
-
+              theme:"dark1",
+              backgroundColor:null,
               title: {
-                text: `Your rating wise correct submissions for ${tag_name}`,
+                text: `Rating wise correct submissions for ${tag_name}`,
+              },
+              
+              axisX:{
+                title:'Difficulty Rating',
+                interval: 100,
               },
               data: [
                 {
+
+                  indexLabel: "{y}",
                   type: "column",
                   dataPoints: datapoints,
                 },
@@ -300,13 +287,34 @@ function hello() {
             console.log(new_tag_map);
           }
           get_topic_graph();
-          item.classList.add("hidden");
-          item2.classList.add("hidden");
-          item3.classList.add("hidden");
-          item4.classList.add("hidden");
+          // item.classList.add("hidden");
+          item.classList.add("animated");
+          item.classList.add("hinge");
+          item2.classList.add("animated");
+          item2.classList.add("hinge");
+          item3.classList.add("animated");
+          item3.classList.add("hinge");
+          // item2.classList.add("hidden");
+          // item3.classList.add("hidden");
+          // item4.classList.add("hidden");
+          document.querySelector('#chartContainer').classList.add("animated");
+          document.querySelector('#chartContainer').classList.add("bounceInLeft");
+          item4.classList.add("animated");
+          item4.classList.add("hinge");
           // weak_topics.classList.add("hidden");
+          // document.querySelector(".heading").classList.add("animated");
+          // document.querySelector(".heading").classList.add("zoomOutDown");
+          // document.querySelector('.container').classList.add("animated")
+          // document.querySelector('.container').classList.add("bounceIn")
+          weak_topics.classList.remove("animated");
+          weak_topics.classList.remove("bounceInLeft");
+          weak_topics.classList.add("animated");
+          weak_topics.classList.add("bounceInLeft");
+          
           document.querySelector(".heading").classList.add("hidden");
           document.querySelector(".problemsets").classList.remove("hidden");
+          document.querySelector(".problemsets").classList.add("animated");
+          document.querySelector(".problemsets").classList.add("zoomInDown");
           show_daily_mix2.classList.remove("hidden");
           e.preventDefault();
         });
@@ -375,7 +383,6 @@ function hello() {
         tr.appendChild(th3);
         table.appendChild(tr);
       }
-      document.querySelector(".spinner").classList.add("hidden");
     }
 
     getUpsolved();
@@ -431,10 +438,12 @@ function hello() {
   });
   function show_please(item) {
     item.style.width = "30vw";
+    item.style.transition="1s";
     item.style.height = "25vh";
   }
   function hide_please(item) {
     item.style.width = "24vw";
+    item.style.transition="0.5s";
     item.style.height = "auto";
   }
   item.addEventListener("click", function (e) {
@@ -444,6 +453,8 @@ function hello() {
     hide_please(item4);
     daily_mix_contests.classList.add("hidden");
     weak_topics.classList.remove("hidden");
+    weak_topics.classList.add("animated");
+    weak_topics.classList.add("bounceInRight");
     unsolved_mysteries.classList.add("hidden");
     upsolve.classList.add("hidden");
     strong_topics.classList.add("hidden");
@@ -461,7 +472,9 @@ function hello() {
     upsolve.classList.add("hidden");
     show_daily_mix.classList.remove("hidden");
     weak_topics.classList.add("hidden");
-
+    
+    strong_topics.classList.add("animated");
+    strong_topics.classList.add("bounceInRight");
     e.preventDefault();
   });
   item3.addEventListener("click", function (e) {
@@ -476,6 +489,8 @@ function hello() {
     show_daily_mix.classList.remove("hidden");
     strong_topics.classList.add("hidden");
 
+    upsolve.classList.add("animated");
+    upsolve.classList.add("bounceInRight");
     e.preventDefault();
   });
   item4.addEventListener("click", function (e) {
@@ -489,6 +504,9 @@ function hello() {
     upsolve.classList.add("hidden");
     show_daily_mix.classList.remove("hidden");
     strong_topics.classList.add("hidden");
+    
+    unsolved_mysteries.classList.add("animated");
+    unsolved_mysteries.classList.add("bounceInRight");
     e.preventDefault();
   });
   document.querySelector(".daily-btn").addEventListener("click", function (e) {
@@ -497,11 +515,14 @@ function hello() {
     hide_please(item3);
     hide_please(item);
     daily_mix_contests.classList.remove("hidden");
+    daily_mix_contests.classList.add("animated");
+    daily_mix_contests.classList.add("bounceInDown");
     unsolved_mysteries.classList.add("hidden");
     weak_topics.classList.add("hidden");
     upsolve.classList.add("hidden");
     show_daily_mix.classList.add("hidden");
     strong_topics.classList.add("hidden");
+    
     e.preventDefault();
   });
   document.querySelector(".daily-btn2").addEventListener("click", function (e) {
@@ -519,6 +540,10 @@ function hello() {
     item2.classList.remove("hidden");
     item3.classList.remove("hidden");
     item4.classList.remove("hidden");
+    item4.classList.remove("hinge");
+    item3.classList.remove("hinge");
+    item2.classList.remove("hinge");
+    item.classList.remove("hinge");
     document.querySelector(".problemsets").classList.add("hidden");
     document.querySelector(".heading").classList.remove("hidden");
     document.querySelector("#chartContainer").classList.add("hidden");

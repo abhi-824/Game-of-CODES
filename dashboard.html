@@ -19,7 +19,14 @@
     />
     <meta name="mobile-web-app-capable" content="yes" />
     <link rel="manifest" href="manifest.json" />
-
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="resources/logo/logo_dark.png" />
     <link
       rel="stylesheet"
@@ -91,6 +98,12 @@
           </button>
 
           <div class="wrapper">
+            
+            <div
+              id="chartContainer"
+              class="hidden"
+              style="height: 370px; width: 500px;"
+            ></div>
             <div class="heading">
               <h1 class="head">HEY <span class="user"></span>, LET’S ROCK</h1>
               <p class="user-s">
@@ -144,52 +157,17 @@
                 </tr>
               </table>
             </div>
-            <div
-              id="chartContainer"
-              class="hidden"
-              style="height: 370px; width: 500px;"
-            ></div>
-            <div class="dropdown hidden">
-              <button
-                class="btn btn-secondary dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Weak Topics
-              </button>
-              <div class="dropdown-menu list-of-weak-topics hidden" aria-labelledby="dropdownMenuButton">
-              </div>
-            </div>
-            <div class="dropdown hidden">
-              <button
-                class="btn btn-secondary dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Weak Topics
-              </button>
-              <div class="dropdown-menu list-of-strong-topics hidden" aria-labelledby="dropdownMenuButton">
-              </div>
-            </div>
+              
             <div class="hidden problemsets">
               <h1>Difficulty Wise Problems</h1>
-              <p>Only for you</p>
               <div class="line"></div>
-              <table class="problemset table">
-                <tr>
-                  <th scope="col">Problem ID</th>
-                  <th scope="col">Difficulty</th>
-                  <th scope="col">Contest ID</th>
-                </tr>
-              </table>
+              <p>Only for you</p>
+              <p>Do this set one to Unlock next one</p>
+              <p>Name: <span class="ques_name"></span></p>
+              <p>Difficulty: <span class="ques_diff"></span></p>
+              <button class="btn btn-dark">Let's Crush It</button>
+              
             </div>
-          </div>
         </div>
         <!-- Footer -->
         <div class="user-stats">
