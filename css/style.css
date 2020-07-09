@@ -111,7 +111,8 @@ table tr{
 
 .problemsets{
   
-  width: 850px;
+  float:right;
+  width: 500px;
   height: 450px;
   background: rgba(20, 20, 20, 0.47);
   border-radius: 35px;

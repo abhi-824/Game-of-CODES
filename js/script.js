@@ -21,6 +21,8 @@ let user_contest = [];
 let contests_problems = new Set();
 let upsolved = [];
 let handle_name;
+google.charts.load('current', {'packages':['corechart']});
+
 let website_url = "Profile.html?handle=";
 let all_topics_name = [
   "implementation",
@@ -207,19 +209,102 @@ function hello() {
       let no = document.querySelector(".no");
       no.innerHTML = no_of_success;
       let practice_each_topic = document.querySelectorAll(".practice_topic");
-      console.log(practice_each_topic);
 
       for (let i = 0; i < practice_each_topic.length; i++) {
         practice_each_topic[i].addEventListener("click", function (e) {
-          console.log("Imptehan ho gyi intezaar ki");
-          console.log(
-            practice_each_topic[i].parentElement.firstChild.innerHTML
-          );
+          let new_tag_map = new Map();
+          for (let i = 800; i < 3200; i += 100) {
+            new_tag_map.set(i, 0);
+          }
+          let tag_name =
+            practice_each_topic[i].parentElement.firstChild.innerHTML;
+          // console.log(tag_name);
 
+          async function get_topic_graph() {
+            let modified_url2 = url2 + handle_name;
+            const jsondata2 = await fetch(modified_url2);
+            const jsdata = await jsondata2.json();
+            let already = new Set();
+            console.log(jsdata.result);
+            let str =
+              jsdata.result[i].problem.contestId +
+              "-" +
+              jsdata.result[i].problem.index;
+            for (let i = 0; i < jsdata.result.length; i++) {
+              let tags = jsdata.result[i].problem.tags;
+              for (let j = 0; j < tags.length; j++) {
+                if (tags[j] === tag_name) {
+                  // console.log(jsdata.result[i].verdict)
+                  if (jsdata.result[i].verdict === "OK") {
+                    if (jsdata.result[i].problem.rating != undefined) {
+                      let val = new_tag_map.get(
+                        jsdata.result[i].problem.rating
+                      );
+                      new_tag_map.set(jsdata.result[i].problem.rating, val + 1);
+                    } else {
+                      let val = new_tag_map.get(
+                        jsdata.result[i].problem.points
+                      );
+                      new_tag_map.set(jsdata.result[i].problem.points, val + 1);
+                    }
+                    already.add(str);
+                  }
+                }
+              }
+            }
+            // console.log(new_tag_map);
+            document
+              .querySelector("#chartContainer")
+              .classList.remove("hidden");
+            let datapoints = [];
+            for (key of new_tag_map) {
+              console.log(key);
+
+              datapoints.push({ label: key[0], y: key[1] });
+            }
+            // function drawChart(){
+            //   console.log(datapoints);
+            //   let chart= new  google.visualization.DataTable();
+            //   let vchart = new google.visualization.ColumnChart(document.getElementById('chartContainer'));
+            //   chart.addColumn("number", "Level");
+            //   chart.addColumn("number", "solved");
+            //   chart.addRows(datapoints);
+            //   var options = {
+            //     width: Math.max($('#levels').width(), levels.getNumberOfRows() * 50),
+            //     height: 300,
+            //     title: 'Levels of ' + handle,
+            //     legend: 'none',
+            //     fontName: 'Roboto',
+            //     titleTextStyle: titleTextStyle,
+            //     vAxis: { format: '0' },
+            //     colors: ['#3F51B5']
+            //   };
+            //   vchart.draw(chart, options);  
+            // }
+            // google.charts.setOnLoadCallback(drawChart);
+            
+            var chart = new CanvasJS.Chart("chartContainer", {
+              animationEnabled: true,
+
+              title: {
+                text: `Your rating wise correct submissions for ${tag_name}`,
+              },
+              data: [
+                {
+                  type: "column",
+                  dataPoints: datapoints,
+                },
+              ],
+            });
+            chart.render();
+            console.log(new_tag_map);
+          }
+          get_topic_graph();
           item.classList.add("hidden");
           item2.classList.add("hidden");
           item3.classList.add("hidden");
           item4.classList.add("hidden");
+          // weak_topics.classList.add("hidden");
           document.querySelector(".heading").classList.add("hidden");
           document.querySelector(".problemsets").classList.remove("hidden");
           show_daily_mix2.classList.remove("hidden");
@@ -258,7 +343,6 @@ function hello() {
         const user_contest_res = `https://codeforces.com/api/contest.standings?contestId=${jsdata.result[i].contestId}&from=1&count=5`;
         const jsondata3 = await fetch(user_contest_res);
         const jsdata2 = await jsondata3.json();
-        console.log(jsdata2.result.problems);
         for (let j = 0; j < jsdata2.result.problems.length; j++) {
           contests_problems.add([
             `${jsdata2.result.problems[j].contestId}-${jsdata2.result.problems[j].index}`,
@@ -437,6 +521,7 @@ function hello() {
     item4.classList.remove("hidden");
     document.querySelector(".problemsets").classList.add("hidden");
     document.querySelector(".heading").classList.remove("hidden");
+    document.querySelector("#chartContainer").classList.add("hidden");
     show_daily_mix2.classList.add("hidden");
     e.preventDefault();
   });
