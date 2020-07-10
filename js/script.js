@@ -21,7 +21,7 @@ let user_contest = [];
 let contests_problems = new Set();
 let upsolved = [];
 let handle_name;
-google.charts.load('current', {'packages':['corechart']});
+google.charts.load("current", { packages: ["corechart"] });
 
 let website_url = "Profile.html?handle=";
 let all_topics_name = [
@@ -94,7 +94,7 @@ function hello() {
       let link = `https://codeforces.com/problemset/problem/${p}/${q}`;
       return link;
     }
-    // getting solved set and weak nd strong topics
+    // getting solved set and weak nd strong topics and daily mix contests
     async function getsubmissions() {
       let modified_url = url2 + handle_name;
 
@@ -259,24 +259,22 @@ function hello() {
             let datapoints = [];
             for (key of new_tag_map) {
               console.log(key);
-
               datapoints.push({ label: key[0], y: key[1] });
             }
             var chart = new CanvasJS.Chart("chartContainer", {
               animationEnabled: true,
-              theme:"dark1",
-              backgroundColor:null,
+              theme: "dark1",
+              backgroundColor: null,
               title: {
                 text: `Rating wise correct submissions for ${tag_name}`,
               },
-              
-              axisX:{
-                title:'Difficulty Rating',
+
+              axisX: {
+                title: "Difficulty Rating",
                 interval: 100,
               },
               data: [
                 {
-
                   indexLabel: "{y}",
                   type: "column",
                   dataPoints: datapoints,
@@ -297,8 +295,10 @@ function hello() {
           // item2.classList.add("hidden");
           // item3.classList.add("hidden");
           // item4.classList.add("hidden");
-          document.querySelector('#chartContainer').classList.add("animated");
-          document.querySelector('#chartContainer').classList.add("bounceInLeft");
+          document.querySelector("#chartContainer").classList.add("animated");
+          document
+            .querySelector("#chartContainer")
+            .classList.add("bounceInLeft");
           item4.classList.add("animated");
           item4.classList.add("hinge");
           // weak_topics.classList.add("hidden");
@@ -310,7 +310,7 @@ function hello() {
           weak_topics.classList.remove("bounceInLeft");
           weak_topics.classList.add("animated");
           weak_topics.classList.add("bounceInLeft");
-          
+
           document.querySelector(".heading").classList.add("hidden");
           document.querySelector(".problemsets").classList.remove("hidden");
           document.querySelector(".problemsets").classList.add("animated");
@@ -319,6 +319,179 @@ function hello() {
           e.preventDefault();
         });
       }
+      document
+        .querySelector(".generateDailyMix")
+        .addEventListener("click", function (e) {
+          let weak_index1 = Math.floor(Math.random() * weak_topicss.length);
+          let weak_index2 = Math.floor(Math.random() * weak_topicss.length);
+          let weak_index3 = Math.floor(Math.random() * weak_topicss.length);
+          let strong_index1 = Math.floor(Math.random() * strong_topicss.length);
+          let strong_index2 = Math.floor(Math.random() * strong_topicss.length);
+          let weak_topic1 = weak_topicss[weak_index1];
+          let weak_topic2 = weak_topicss[weak_index2];
+          let weak_topic3 = weak_topicss[weak_index3];
+          let strong_topic1 = strong_topicss[strong_index1];
+          let strong_topic2 = strong_topicss[strong_index2];
+          console.log(weak_topicss.length);
+          console.log(strong_topicss.length);
+          console.log(weak_index1);
+          console.log(weak_index2);
+          console.log(weak_index3);
+          console.log(strong_index1);
+          console.log(strong_index2);
+          console.log(weak_topic1);
+          console.log(weak_topic2);
+          console.log(weak_topic3);
+          console.log(strong_topic1);
+          console.log(strong_topic2);
+          function generate_easy_question(arr, no) {
+            let result = [];
+
+            for (let i = 0; i < arr.problems.length; i++) {
+              let str = arr.problems[i].contestId + "-" + arr.problems[i].index;
+              if(solved.has(str)){
+                continue;
+              }
+              if (no == 0) {
+                break;
+              }
+              if (arr.problems[i].rating !== undefined) {
+                if (arr.problems[i].rating <= 1200) {
+                  no--;
+                  result.push(arr.problems[i]);
+                }
+              } else {
+                if (arr.problems[i].points <= 1200) {
+                  no--;
+                  result.push(arr.problems[i]);
+                }
+              }
+            }
+            return result;
+          }
+          function generate_medium_question(arr, no) {
+            let result = [];
+
+            for (let i = 0; i < arr.problems.length; i++) {
+              let str = arr.problems[i].contestId + "-" + arr.problems[i].index;
+              if(solved.has(str)){
+                continue;
+              }
+              if (no == 0) {
+                break;
+              }
+              if (arr.problems[i].rating !== undefined) {
+                if (arr.problems[i].rating <= 1700&&arr.problems[i].rating>1200) {
+                  no--;
+                  result.push(arr.problems[i]);
+                }
+              } else {
+                if (arr.problems[i].points <= 1700&&arr.problems[i].points >= 1200) {
+                  no--;
+                  result.push(arr.problems[i]);
+                }
+              }
+            }
+            return result;
+          }
+          function generate_hard_question(arr, no) {
+            let result = [];
+
+            for (let i = 0; i < arr.problems.length; i++) {
+              let str = arr.problems[i].contestId + "-" + arr.problems[i].index;
+              if(solved.has(str)){
+                continue;
+              }
+              if (no == 0) {
+                break;
+              }
+              if (arr.problems[i].rating !== undefined) {
+                if (arr.problems[i].rating <= 2400&&arr.problems[i].rating>1900) {
+                  no--;
+                  result.push(arr.problems[i]);
+                }
+              } else {
+                if (arr.problems[i].points >= 1500&&arr.problems[i].points <= 1900) {
+                  no--;
+                  result.push(arr.problems[i]);
+                }
+              }
+            }
+            return result;
+          }
+          function make_list(A){
+              let str=A.contestId+'-'+A.index;
+              let p=convert_to_link(str);
+              let li=document.createElement('li');
+              li.innerHTML=`<a href=${p}>${str}</a>`;
+              return li;
+          }
+          async function get_daily_mix_A() {
+            let modified_url = `https://codeforces.com/api/problemset.problems?tags=${weak_topic1}`;
+            const jsondata = await fetch(modified_url);
+            const jsdata = await jsondata.json();
+            let A=generate_easy_question(jsdata.result, 1);
+            for(let i=0;i<A.length;i++){
+              let li=make_list(A[i]);
+              document.querySelector('.list-of-problems-for-daily-mix').appendChild(li);
+            }
+            console.log(jsdata.result);
+          }
+          
+          async function get_daily_mix_B() {
+            let modified_url = `https://codeforces.com/api/problemset.problems?tags=${weak_topic1}`;
+            const jsondata = await fetch(modified_url);
+            const jsdata = await jsondata.json();
+            let A=generate_medium_question(jsdata.result, 1);
+            for(let i=0;i<A.length;i++){
+            let li=make_list(A[i]);
+            document.querySelector('.list-of-problems-for-daily-mix').appendChild(li);
+            }
+            console.log(jsdata.result);
+          }
+          
+          async function get_daily_mix_C() {
+            let modified_url = `https://codeforces.com/api/problemset.problems?tags=${weak_topic1}`;
+            const jsondata = await fetch(modified_url);
+            const jsdata = await jsondata.json();
+            let A=generate_medium_question(jsdata.result, 1);
+            for(let i=0;i<A.length;i++){
+              let li=make_list(A[i]);
+              document.querySelector('.list-of-problems-for-daily-mix').appendChild(li);
+              }
+              console.log(jsdata.result);
+          }
+          
+          async function get_daily_mix_D() {
+            let modified_url = `https://codeforces.com/api/problemset.problems?tags=${weak_topic1}`;
+            const jsondata = await fetch(modified_url);
+            const jsdata = await jsondata.json();
+            let A=generate_hard_question(jsdata.result, 1);
+            for(let i=0;i<A.length;i++){
+              let li=make_list(A[i]);
+              document.querySelector('.list-of-problems-for-daily-mix').appendChild(li);
+              }
+              console.log(jsdata.result);
+          }
+          
+          async function get_daily_mix_E() {
+            let modified_url = `https://codeforces.com/api/problemset.problems?tags=${weak_topic1}`;
+            const jsondata = await fetch(modified_url);
+            const jsdata = await jsondata.json();
+            let A=generate_hard_question(jsdata.result, 1);
+            for(let i=0;i<A.length;i++){
+              let li=make_list(A[i]);
+              document.querySelector('.list-of-problems-for-daily-mix').appendChild(li);
+              }
+              console.log(jsdata.result);
+          }
+          get_daily_mix_A();
+          get_daily_mix_B();
+          get_daily_mix_C();
+          get_daily_mix_D();
+          get_daily_mix_E();
+          e.preventDefault();
+        });
     }
 
     getsubmissions();
@@ -438,12 +611,12 @@ function hello() {
   });
   function show_please(item) {
     item.style.width = "30vw";
-    item.style.transition="1s";
+    item.style.transition = "1s";
     item.style.height = "25vh";
   }
   function hide_please(item) {
     item.style.width = "24vw";
-    item.style.transition="0.5s";
+    item.style.transition = "0.5s";
     item.style.height = "auto";
   }
   item.addEventListener("click", function (e) {
@@ -472,7 +645,7 @@ function hello() {
     upsolve.classList.add("hidden");
     show_daily_mix.classList.remove("hidden");
     weak_topics.classList.add("hidden");
-    
+
     strong_topics.classList.add("animated");
     strong_topics.classList.add("bounceInRight");
     e.preventDefault();
@@ -504,7 +677,7 @@ function hello() {
     upsolve.classList.add("hidden");
     show_daily_mix.classList.remove("hidden");
     strong_topics.classList.add("hidden");
-    
+
     unsolved_mysteries.classList.add("animated");
     unsolved_mysteries.classList.add("bounceInRight");
     e.preventDefault();
@@ -522,7 +695,7 @@ function hello() {
     upsolve.classList.add("hidden");
     show_daily_mix.classList.add("hidden");
     strong_topics.classList.add("hidden");
-    
+
     e.preventDefault();
   });
   document.querySelector(".daily-btn2").addEventListener("click", function (e) {

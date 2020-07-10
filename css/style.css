@@ -17,15 +17,6 @@ body {
 a{
   text-decoration: none;
   color:#fff;
-
-}
-a:hover{
-  color:rgb(15, 15, 14); 
-  background:rgba(212, 255, 42, 0.603);
-  padding:0.4rem;
-  transition:1s;
-  text-decoration: none;
-  border-radius: 10px;
 }
 .container1{
   background: url('../resources/backgrounds/hulk.jpg') no-repeat center center/cover;
@@ -69,7 +60,9 @@ a:hover{
 }
 
 /* User heading content */
-
+.btn-elegant{
+  color:#fff;
+}
 .heading  p{
   padding:0px;
   margin:0px;
@@ -120,6 +113,9 @@ table tr{
   /* padding: 1rem; */
   color: #e7e7e7;
 }
+.problemsets{
+  padding:1rem;
+}
 .problemsets h1{
   font-style: normal;
   font-weight: normal;
@@ -133,6 +129,7 @@ table tr{
   font-size: 1rem;
 }
 .wrapper {
+  padding:0rem 1rem;
   display: grid;
   grid-template-columns: 2fr 1fr;
   align-items: center;
