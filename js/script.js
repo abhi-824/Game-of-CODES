@@ -298,19 +298,10 @@ function hello() {
           document.querySelector("#chartContainer").classList.add("animated");
           document
             .querySelector("#chartContainer")
-            .classList.add("bounceInLeft");
+            .classList.add("bounceInRight");
           item4.classList.add("animated");
           item4.classList.add("hinge");
-          // weak_topics.classList.add("hidden");
-          // document.querySelector(".heading").classList.add("animated");
-          // document.querySelector(".heading").classList.add("zoomOutDown");
-          // document.querySelector('.container').classList.add("animated")
-          // document.querySelector('.container').classList.add("bounceIn")
-          weak_topics.classList.remove("animated");
-          weak_topics.classList.remove("bounceInLeft");
-          weak_topics.classList.add("animated");
-          weak_topics.classList.add("bounceInLeft");
-
+          
           document.querySelector(".heading").classList.add("hidden");
           document.querySelector(".problemsets").classList.remove("hidden");
           document.querySelector(".problemsets").classList.add("animated");
@@ -548,7 +539,7 @@ function hello() {
         let th3 = document.createElement("th");
         th2.innerHTML = upsolved[i][0];
         th1.innerHTML = upsolved[i][1][0];
-        th3.innerHTML = `<a href="${convert_to_link(
+        th3.innerHTML = `<a class="question" href="${convert_to_link(
           upsolved[i][1][0]
         )}">Let's Do it</a>`;
         tr.appendChild(th1);
@@ -598,7 +589,7 @@ function hello() {
         let th3 = document.createElement("th");
         th2.innerHTML = unsolved_problems_array[i][0];
         th1.innerHTML = unsolved_problems_array[i][1];
-        th3.innerHTML = `<a href="${convert_to_link(
+        th3.innerHTML = `<a class="question" href="${convert_to_link(
           unsolved_problems_array[i][1]
         )}">Let's Do it</a>`;
         tr.appendChild(th1);
@@ -630,7 +621,11 @@ function hello() {
     weak_topics.classList.add("bounceInRight");
     unsolved_mysteries.classList.add("hidden");
     upsolve.classList.add("hidden");
-    strong_topics.classList.add("hidden");
+    strong_topics.classList.add("hidden");    
+    show_daily_mix2.classList.remove("hidden");
+
+    document.querySelector(".heading").classList.add("hidden");
+
     show_daily_mix.classList.remove("hidden");
     e.preventDefault();
   });
@@ -645,6 +640,9 @@ function hello() {
     upsolve.classList.add("hidden");
     show_daily_mix.classList.remove("hidden");
     weak_topics.classList.add("hidden");
+    show_daily_mix2.classList.remove("hidden");
+
+    document.querySelector(".heading").classList.add("hidden");
 
     strong_topics.classList.add("animated");
     strong_topics.classList.add("bounceInRight");
@@ -661,7 +659,9 @@ function hello() {
     weak_topics.classList.add("hidden");
     show_daily_mix.classList.remove("hidden");
     strong_topics.classList.add("hidden");
+    show_daily_mix2.classList.remove("hidden");
 
+    document.querySelector(".heading").classList.add("hidden");
     upsolve.classList.add("animated");
     upsolve.classList.add("bounceInRight");
     e.preventDefault();
@@ -677,7 +677,9 @@ function hello() {
     upsolve.classList.add("hidden");
     show_daily_mix.classList.remove("hidden");
     strong_topics.classList.add("hidden");
+    show_daily_mix2.classList.remove("hidden");
 
+    document.querySelector(".heading").classList.add("hidden");
     unsolved_mysteries.classList.add("animated");
     unsolved_mysteries.classList.add("bounceInRight");
     e.preventDefault();

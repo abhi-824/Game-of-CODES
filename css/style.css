@@ -13,7 +13,9 @@ body {
   height: 100vh;
   overflow-x: hidden;
 }
-
+.question{
+  color:#fff!important;
+}
 a{
   text-decoration: none;
   color:#fff;

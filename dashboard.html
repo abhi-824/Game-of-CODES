@@ -99,11 +99,6 @@
           </button>
           <div class="wrapper">
             
-            <div
-              id="chartContainer"
-              class="hidden"
-              style="height: 370px; width: 500px;"
-            ></div>
             <div class="heading">
               <h1 class="head">HEY <span class="user"></span>, LET’S ROCK</h1>
               <p class="user-s">
@@ -120,7 +115,7 @@
               <h1>DAILY MIX Contests</h1>
               <div class="line"></div>
               <ul class="list-of-problems-for-daily-mix">
-
+                
               </ul>
             </div>
             <div class="hidden weak_topics daily-mix">
@@ -136,25 +131,27 @@
             <div class="hidden upsolve daily-mix">
               <h1>UPSOLVE</h1>
               <div class="line"></div>
+              <p>(Sorted by difficulty)</p>
               <div class="d-flex align-items-center spinner">
                 <strong>Loading...</strong>
                 <div
-                  class="spinner-border ml-auto"
-                  role="status"
-                  aria-hidden="true"
+                class="spinner-border ml-auto"
+                role="status"
+                aria-hidden="true"
                 ></div>
               </div>
               <table class="problems table">
                 <tr>
-                  <th scope="col">Problem ID</th>
-                  <th scope="col">Difficulty</th>
-                  <th scope="col">Contest ID</th>
-                </tr>
-              </table>
+                    <th scope="col">Problem ID</th>
+                    <th scope="col">Difficulty</th>
+                    <th scope="col">Contest ID</th>
+                  </tr>
+                </table>
             </div>
             <div class="hidden unsolved_mysteries daily-mix">
               <h1>Unsolved Mysteries</h1>
               <div class="line"></div>
+              <p>(Sorted by difficulty)</p>
               <table class="unsolved_problems table">
                 <tr>
                   <th scope="col">Problem ID</th>
@@ -163,7 +160,12 @@
                 </tr>
               </table>
             </div>
-              
+            <div
+              id="chartContainer"
+              class="hidden"
+              style="height: 370px; width: 500px;"
+            ></div>
+            
             <div class="hidden problemsets">
               <h1>Difficulty Wise Problems</h1>
               <div class="line"></div>
