@@ -16,39 +16,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
-  <script type="text/javascript">
-    window.onload = function() {
-      var dataPoints = [];
-      var i = 0;
-      var chart = new CanvasJS.Chart("chartContainer", {
-        theme: "dark2",
-        animationEnabled: true,
-        animationDuration: 3000,
-        zoomEnabled: true,
-        title: {
-          text: ""
-        },
-        data: [{
-          type: "column",
-          xValueType: "dateTime",
-          dataPoints: dataPoints,
-        }]
-      });
-      $.getJSON("https://codeforces.com/api/user.rating?handle=MiFaFaOvO", function(data) {
-        $.each(data.result, function(key, value) {
-          dataPoints.push({
-            x: (parseInt(data.result[i].ratingUpdateTimeSeconds) * 1000),
-            y: parseInt(data.result[i].newRating)
-          });
-          i++;
-        });
-        chart.render();
-      });
-    }
-  </script>
-
   <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
-  <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+  <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
 
 </head>
 
@@ -68,16 +37,16 @@
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
 
-              <a class="nav-link" href="dashboard.html">Dashboard</a>
+              <a class="nav-link" href="dashboard.html">Dashboard<div class="line1"></div><span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="Compare.html">Compare</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="#">Profile<div class="line1"></div></a>
+              <a class="nav-link" href="Profile.html">Profile</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Code Blast</a>
+              <a class="nav-link" href="Codeblast.html">Code Blast</a>
             </li>
           </ul>
           <input class="form-control" type="search" placeholder="Search" aria-label="Search">
@@ -88,60 +57,56 @@
       <!-- container -->
       <div class="container" style="padding-top: 1.5rem;">
         <div class="row">
-          <div class="col-4">
-            <img class="Profile-Photo" style=" border-radius:50%;" src="resources/backgrounds/avengers.png" alt="Profile Photo" width="300" height="380">
+          <div class="column-1 col-4">
+            <img class="Profile-Photo" style=" border-radius:50%;" src="" alt="Profile Photo" width="300" height="380">
             <h3 style="padding: 2.5rem 3.75rem 0 0; text-align: center;" class="username">USERNAME</h3>
           </div>
-          <div class="col-4">
-            <h3 ><strong>Check Your Progress!</strong></h3>
+
+          <div class="column-2 col-4">
+            <h3><strong>Check Your Progress!</strong></h3>
             <br>
-            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
-              1. Your Rating Change Over Time
+
+            <button type="button" id="mybtn1" class="btn btn-dark text-left btn-sm" >
+              1. Rating Change Over Time
             </button>
-
-            <!-- Modal -->
-            <div class="modal fade modal-dialog modal-dialog-centered" id="exampleModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h3 style="color:black; text-align:center; font-family: Arial, Helvetica, sans-serif;" class="modal-title" id="exampleModalLabel">Your Rating Change Over Time</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body" id="chartContainer" style="height: 300px; width: 90%;">
-                  </div>
-                  <div class="modal-footer">
-                    <p style="color:black; text-align:center; font-family: Arial, Helvetica, sans-serif;"><strong>NOTE : </strong>Move your mouse through a part of the graph to zoom it. After zooming you can move through left or right by selecting the left button on top right corner. Pressing the right button on the corner will reset the graph.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
+            <br>
+            <br>
+            <button type="button" id="mybtn2" class="btn btn-dark text-left btn-sm" >
+              2. All Submissions Final Verdict
+            </button>
+            <br>
+            <br>
+            <button type="button" id="mybtn3" class="btn btn-dark text-left btn-sm" >
+              3. Problem-Rating-Wise All Submissions
+            </button>
+            <br>
+            <br>
+            <!--<button type="button" id="mybtn4" class="btn btn-dark text-left btn-sm" >
+              4. Problem-Rating-Wise Accepted Submissions
+            </button>
+            <br>
+            <br>-->
+            <button id="hide-graph" type="button" class="btn btn-dark hidden text-left btn-sm">Hide Graph</button>
           </div>
-          <div style="padding-left:100px;" class="col-4">
+
+          <div style="padding-left:100px;" class="column-3 col-4">
             <h3 style="padding-top: 2rem;" class="recent-contests"><strong>Recent Contests</strong></h3>
           </div>
+          <div class="hidden col-4" id="myChart1" style="height: 400px; width: 90%;"></div>
+          <div class="hidden col-4" id="myChart2" style="height: 400px; width: 90%;"></div>
+          <div class="hidden col-4" id="myChart3" style="height: 400px; width: 90%;"></div>
+          <!--<div class="hidden col-4" id="myChart4" style="height: 400px; width: 90%;"></div>-->
         </div>
       </div>
+
       <!-- Footer -->
-      <div class="user-stats">
-        <div class="item1">
-          <h1 class="moja1 inactive-item">WEAK TOPICS</h1>
-        </div>
-        <div class="item2">
-          <h1 class="moja2 inactive-item">STRONG TOPICS</h1>
-        </div>
-        <div class="item3">
-          <h1 class="moja3 inactive-item">LADDERS</h1>
-        </div>
-        <div class="item4">
-          <h1 class="moja4 inactive-item">UNSOLVED MYSTERIES</h1>
-        </div>
-      </div>
+     
     </div>
   </div>
-  <script src="js/profile.js"></script>
+
+<script src="js/profile.js"></script>
+  <script src="js/script.js"></script>
+
 </body>
 
 </html>
