@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Nova+Square&family=Philosopher&display=swap");
+
 body {
   background-color: black;
   font-family: "Nova Square", sans-serif;
@@ -10,19 +11,33 @@ body {
     rgba(56, 56, 56, 0) 100%
   );
   height: 100vh;
+  overflow-x: hidden;
+}
+.question{
+  color:#fff!important;
+}
+a{
+  text-decoration: none;
+  color:#fff;
 }
 .container1{
-  background: url('../resources/backgrounds/hulk.jpg') no-repeat center center/cover;
+  background: url('../resources/backgrounds/hulk.jpg') no-repeat center/cover;
+  background-attachment: fixed;
+  height:200vh;
+}
+.container3{
+  background: url('../resources/backgrounds/thor.png') no-repeat center center/cover ;
   height:100vh;
 }
 .container2{
-  
+
   position: absolute;
-  top: 0px;
+  top: 0;
   left:0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,0.5);
+  height:200vh;
+  background-color: rgba(0,0,0,0.7);
 }
 /* hidden */
 .hidden{
@@ -49,8 +64,14 @@ body {
 }
 
 /* User heading content */
-
-.heading h1 {
+.btn-elegant{
+  color:#fff;
+}
+.heading  p{
+  padding:0px;
+  margin:0px;
+}
+.heading {
   width: 300px;
   height: 168px;
   font-style: normal;
@@ -59,6 +80,22 @@ body {
   line-height: 72px;
   color: #ffffff;
   margin-left: 2rem;
+}
+table tr{
+  color:#fff;
+}
+.heading p{
+  font-size:1rem;
+}
+.user_avatar img{
+  width:50px;
+  height:50px;
+  /* boder-radius:50%; */
+  border-radius: 50%;
+  /* padding: 0rem 2rem ; */
+}
+.inner{
+  display:none;
 }
 .daily-mix {
   width: 450px;
@@ -70,7 +107,8 @@ body {
   align-items: center;
   margin-right: 3rem;
 }
-.daily-mix h1 {
+
+.daily-mix h1{
   font-style: normal;
   font-weight: normal;
   font-size: 26px;
@@ -79,12 +117,31 @@ body {
   /* padding: 1rem; */
   color: #e7e7e7;
 }
+.problemsets{
+  padding:1rem;
+}
+.problemsets h1{
+  font-style: normal;
+  font-weight: normal;
+  font-size: 26px;
+  line-height: 40px;
+  padding-top:2rem;
+  /* padding: 1rem; */
+  color: #e7e7e7;
+}
+.problemsets p{
+  font-size: 1rem;
+}
 .wrapper {
+  padding:0rem 1rem;
   display: grid;
   grid-template-columns: 2fr 1fr;
   align-items: center;
 }
-
+.weak_topics,.strong_topics{
+  overflow: scroll;
+  overflow-x: hidden;
+}
 .line{
   /* display:inline-block; */
   width: 140px;
@@ -103,12 +160,20 @@ body {
   margin:0;
 
 }
+.upsolve{
+  overflow:scroll;
+  overflow-x:hidden;
+}
+.unsolved_mysteries{
+  overflow:scroll;
+  overflow-x:hidden;
 
+}
 /* Footer content */
 
 .user-stats {
   position: absolute;
-  bottom: 0;
+  bottom: 100vh;
   width: 100%;
   opacity: 0.6;
   display: grid;
@@ -136,4 +201,27 @@ body {
   height: auto;
   box-sizing: border-box;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* .item1:hover, .item2:hover, .item3:hover, .item4:hover {
+  /* transform: scale(1.5); */
+/* } */ 
+
+.Profile-Photo:hover {
+  transform: scale(1.2);
+}
+
+.recent-contests {
+  width: 430px;
+  height: 400px;
+  background: rgba(20, 20, 20, 0.47);
+  border-radius: 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 3rem;
+}
+
+.modal-dialog {
+  width : 1000px;
 }
