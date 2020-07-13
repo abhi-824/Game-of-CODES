@@ -439,7 +439,7 @@ function hello() {
               document.querySelector('.problem-name-A').innerHTML=A[0].name;
               let link=document.createElement('div');
               let p=convert_to_link(`${A[0].contestId}-${A[0].index}`);
-              link.innerHTML=`<a href="p">Let's Do It</a>`;
+              link.innerHTML=`<a href="${p}">Let's Do It</a>`;
               document.querySelector('.linkA').appendChild(link);
               // li.classList.add("list-group-item");
               // document.querySelector('.list-of-problems-for-daily-mix').appendChild(li);
@@ -456,6 +456,11 @@ function hello() {
             for(let i=0;i<A.length;i++){
             // let li=make_list(A[i]);
               document.querySelector('.problem-name-B').innerHTML=A[0].name;
+              let link=document.createElement('div');
+              
+              let p=convert_to_link(`${A[0].contestId}-${A[0].index}`);
+              link.innerHTML=`<a href="${p}">Let's Do It</a>`;
+              document.querySelector('.linkB').appendChild(link);
               // document.querySelector('.list-of-problems-for-daily-mix').appendChild(li);
             }
             //console.log(jsdata.result);
@@ -470,6 +475,11 @@ function hello() {
               let li=make_list(A[i]);
               // li.classList.add("list-group-item");
               document.querySelector('.problem-name-C').innerHTML=A[0].name;
+              let link=document.createElement('div');
+              
+              let p=convert_to_link(`${A[0].contestId}-${A[0].index}`);
+              link.innerHTML=`<a href="${p}">Let's Do It</a>`;
+              document.querySelector('.linkC').appendChild(link);
               // document.querySelector('.list-of-problems-for-daily-mix').appendChild(li);
               }
               //console.log(jsdata.result);
@@ -483,7 +493,11 @@ function hello() {
             for(let i=0;i<A.length;i++){
               // let li=make_list(A[i]);
               document.querySelector('.problem-name-D').innerHTML=A[0].name;
+              let link=document.createElement('div');
 
+              let p=convert_to_link(`${A[0].contestId}-${A[0].index}`);
+              link.innerHTML=`<a href="${p}">Let's Do It</a>`;
+              document.querySelector('.linkD').appendChild(link);
               // li.classList.add("list-group-item");
               // document.querySelector('.list-of-problems-for-daily-mix').appendChild(li);
               }
@@ -499,6 +513,10 @@ function hello() {
               let li=make_list(A[i]);
               document.querySelector('.problem-name-E').innerHTML=A[0].name;
 
+              let link=document.createElement('div');
+              let p=convert_to_link(`${A[0].contestId}-${A[0].index}`);
+              link.innerHTML=`<a href="${p}">Let's Do It</a>`;
+              document.querySelector('.linkE').appendChild(link);
               // li.classList.add("list-group-item");
               // document.querySelector('.list-of-problems-for-daily-mix').appendChild(li);
               }
