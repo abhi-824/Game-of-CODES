@@ -33,8 +33,14 @@
       type="text/javascript"
       src="https://www.gstatic.com/charts/loader.js"
     ></script>
+    <link
+      rel="stylesheet"
+      media="screen and (max-width: 768px)"
+      href="css/mobile.css"
+    />
   </head>
   <style>
+    @import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
     body {
       background-color: black;
       font-family: "Nova Square", sans-serif;
@@ -46,6 +52,9 @@
         rgba(56, 56, 56, 0) 100%
       );
       height: 100vh;
+    }
+    .hidden {
+      display: none;
     }
     .container1 {
       background: url("resources/backgrounds/car_brown.jpg") no-repeat center
@@ -63,6 +72,13 @@
     .logo img {
       width: 131px;
       height: 125px;
+    }
+    .handle {
+      position: absolute;
+      top: 30%;
+      right: 8%;
+      float: right;
+      width: 40%;
     }
     #handleform {
       float: right;
@@ -85,12 +101,58 @@
       padding: 0.2rem;
       width: 100px;
     }
+    .see1 {
+      width: 50%;
+    }
+    h1 {
+      font-family: "Indie Flower", cursive;
+      padding: 1rem;
+    }
+    h1 > p {
+      font-size: 0.7em;
+    }
   </style>
   <body>
     <div class="container1">
       <div class="container2">
         <div class="logo">
           <img src="resources/logo/logo_light.png" alt="" />
+        </div>
+        <div class="see1">
+          <h1 class="motivate1">
+            You Can
+            <span
+              class="txt-type"
+              data-wait="1000"
+              data-words='["throw your hands up","beat the clock","move a mountain","break ROCKS","be a Master"]'
+            ></span>
+            <br />
+            DON'T WAIT FOR LUCK<br />
+            <br />
+            DEDICATE YOURSELF AND YOU CAN FIND YOURSELF<br /><br />
+            <p>
+              Listen to the song here:
+              <audio controls src="resources/audio/hall-of-fame.mp4"></audio>
+            </p>
+          </h1>
+
+          <h1 class="motivate2">
+            This is
+            <span
+              class="txt-type2"
+              data-wait="1000"
+              data-words='["ten percent luck","twenty percent skill","15 % concentrated power of will","5% Pleasure","50 % pain"]'
+            ></span>
+            <br />
+            And a hundered percent reason to REMEMBER THE NAME<br /><br />
+            <p>
+              Listen to the song here:
+              <audio
+                controls
+                src="resources/audio/remember-the-name.mp4"
+              ></audio>
+            </p>
+          </h1>
         </div>
         <div class="handle">
           <div class="inp">
@@ -134,5 +196,6 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"
     ></script>
     <script src="js/calculations.js"></script>
+    <script src="js/landing.js"></script>
   </body>
 </html>

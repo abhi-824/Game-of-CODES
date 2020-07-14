@@ -440,6 +440,10 @@ function hello() {
               let link=document.createElement('div');
               let p=convert_to_link(`${A[0].contestId}-${A[0].index}`);
               link.innerHTML=`<a href="${p}">Let's Do It</a>`;
+              let div = document.getElementsByClassName('linkA');
+              while(div.firstChild){
+                  div.removeChild(div.firstChild);
+              }
               document.querySelector('.linkA').appendChild(link);
               // li.classList.add("list-group-item");
               // document.querySelector('.list-of-problems-for-daily-mix').appendChild(li);
@@ -457,7 +461,10 @@ function hello() {
             // let li=make_list(A[i]);
               document.querySelector('.problem-name-B').innerHTML=A[0].name;
               let link=document.createElement('div');
-              
+              let div = document.getElementsByClassName('linkB');
+              while(div.firstChild){
+                  div.removeChild(div.firstChild);
+              }
               let p=convert_to_link(`${A[0].contestId}-${A[0].index}`);
               link.innerHTML=`<a href="${p}">Let's Do It</a>`;
               document.querySelector('.linkB').appendChild(link);
@@ -476,9 +483,13 @@ function hello() {
               // li.classList.add("list-group-item");
               document.querySelector('.problem-name-C').innerHTML=A[0].name;
               let link=document.createElement('div');
-              
+              let div = document.getElementsByClassName('linkC');
+              while(div.firstChild){
+                  div.removeChild(div.firstChild);
+              }
               let p=convert_to_link(`${A[0].contestId}-${A[0].index}`);
               link.innerHTML=`<a href="${p}">Let's Do It</a>`;
+          
               document.querySelector('.linkC').appendChild(link);
               // document.querySelector('.list-of-problems-for-daily-mix').appendChild(li);
               }
@@ -494,7 +505,10 @@ function hello() {
               // let li=make_list(A[i]);
               document.querySelector('.problem-name-D').innerHTML=A[0].name;
               let link=document.createElement('div');
-
+              let div = document.getElementsByClassName('linkD');
+              while(div.firstChild){
+                  div.removeChild(div.firstChild);
+              }
               let p=convert_to_link(`${A[0].contestId}-${A[0].index}`);
               link.innerHTML=`<a href="${p}">Let's Do It</a>`;
               document.querySelector('.linkD').appendChild(link);
@@ -512,7 +526,10 @@ function hello() {
             for(let i=0;i<A.length;i++){
               let li=make_list(A[i]);
               document.querySelector('.problem-name-E').innerHTML=A[0].name;
-
+              let div = document.getElementsByClassName('linkE');
+              while(div.firstChild){
+                  div.removeChild(div.firstChild);
+              }
               let link=document.createElement('div');
               let p=convert_to_link(`${A[0].contestId}-${A[0].index}`);
               link.innerHTML=`<a href="${p}">Let's Do It</a>`;
