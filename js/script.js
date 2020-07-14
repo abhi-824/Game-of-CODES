@@ -259,7 +259,7 @@ function hello() {
             let datapoints = [];
             for (key of new_tag_map) {
               //console.log(key);
-              datapoints.push({ label: key[0], y: key[1] });
+              datapoints.push({ x: key[0], y: key[1] });
             }
             var chart = new CanvasJS.Chart("chartContainer", {
               animationEnabled: true,
@@ -314,14 +314,13 @@ function hello() {
         .querySelector(".generateDailyMix")
         .addEventListener("click", function (e) {
           item.classList.add("animated");
-          document.querySelector(".heading").classList.add("hidden");
+          document.querySelector(".wrapper").classList.add("hidden");
           item.classList.add("hinge");
           show_daily_mix2.classList.remove("hidden");
           item2.classList.add("animated");
           item2.classList.add("hinge");
           item3.classList.add("animated");
           item3.classList.add("hinge");
-          
           item4.classList.add("animated");
           item4.classList.add("hinge");
           document.querySelector('.container').classList.remove("hidden");
@@ -335,18 +334,7 @@ function hello() {
           let weak_topic3 = weak_topicss[weak_index3];
           let strong_topic1 = strong_topicss[strong_index1];
           let strong_topic2 = strong_topicss[strong_index2];
-          //console.log(weak_topicss.length);
-          //console.log(strong_topicss.length);
-          //console.log(weak_index1);
-          //console.log(weak_index2);
-          //console.log(weak_index3);
-          //console.log(strong_index1);
-          //console.log(strong_index2);
-          //console.log(weak_topic1);
-          //console.log(weak_topic2);
-          //console.log(weak_topic3);
-          //console.log(strong_topic1);
-          //console.log(strong_topic2);
+         
           function generate_easy_question(arr, no) {
             let result = [];
 
@@ -440,8 +428,10 @@ function hello() {
               let link=document.createElement('div');
               let p=convert_to_link(`${A[0].contestId}-${A[0].index}`);
               link.innerHTML=`<a href="${p}">Let's Do It</a>`;
-              let div = document.getElementsByClassName('linkA');
+              let div = document.querySelector('.linkA');
+              console.log(div);
               while(div.firstChild){
+                console.log(div.firstChild)
                   div.removeChild(div.firstChild);
               }
               document.querySelector('.linkA').appendChild(link);
@@ -461,7 +451,7 @@ function hello() {
             // let li=make_list(A[i]);
               document.querySelector('.problem-name-B').innerHTML=A[0].name;
               let link=document.createElement('div');
-              let div = document.getElementsByClassName('linkB');
+              let div = document.querySelector('.linkB');
               while(div.firstChild){
                   div.removeChild(div.firstChild);
               }
@@ -483,7 +473,7 @@ function hello() {
               // li.classList.add("list-group-item");
               document.querySelector('.problem-name-C').innerHTML=A[0].name;
               let link=document.createElement('div');
-              let div = document.getElementsByClassName('linkC');
+              let div = document.querySelector('linkC');
               while(div.firstChild){
                   div.removeChild(div.firstChild);
               }
@@ -505,7 +495,7 @@ function hello() {
               // let li=make_list(A[i]);
               document.querySelector('.problem-name-D').innerHTML=A[0].name;
               let link=document.createElement('div');
-              let div = document.getElementsByClassName('linkD');
+              let div = document.querySelector('linkD');
               while(div.firstChild){
                   div.removeChild(div.firstChild);
               }
@@ -526,7 +516,7 @@ function hello() {
             for(let i=0;i<A.length;i++){
               let li=make_list(A[i]);
               document.querySelector('.problem-name-E').innerHTML=A[0].name;
-              let div = document.getElementsByClassName('linkE');
+              let div = document.querySelector('linkE');
               while(div.firstChild){
                   div.removeChild(div.firstChild);
               }
@@ -780,6 +770,7 @@ function hello() {
     item2.classList.remove("hidden");
     item3.classList.remove("hidden");
     item4.classList.remove("hidden");
+          document.querySelector(".wrapper").classList.remove("hidden");
     item4.classList.remove("hinge");
     item3.classList.remove("hinge");
     item2.classList.remove("hinge");
