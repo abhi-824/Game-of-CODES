@@ -47,6 +47,71 @@
       src="https://www.gstatic.com/charts/loader.js"
     ></script>
   </head>
+  <style>
+    
+    .cont1 {
+      width: 1000px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .cont1 .card1 {
+      position: relative;
+      width: 300px;
+      height: 200px;
+      margin:16px;
+    }
+    .cont1 .card1 .face {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transition: 0.5s;
+    }
+    .cont1 .card1 .face.face1 {
+      background: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+      transform-origin: bottom;
+    }
+    .cont1 .card1 .face.face1 img {
+        max-width: 200px;
+    }
+    .cont1 .card1 .face.face1 h2 {
+      margin: 10px 0 0;
+      color: #fff;
+      text-align: center;
+      font-size: 1.5em;
+    }
+    .cont1 .card1:hover .face.face1 {
+      transform: translateY(-100%) rotateX(90deg);
+      background: #ff0057;
+    }
+    
+    .cont1 .card1 .face.face2 {
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding:20px;
+        transform-origin: top;
+        transform:translateY(100%) rotateX(90deg);
+    }
+    .cont1 .card1:hover .face.face2 {
+
+        transform:translateY(0%) rotateX(0deg);
+    }
+    .wrap{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
   <body>
     <!-- Navigation Bar -->
     <div class="container1">
@@ -193,73 +258,129 @@
             <h1 class="inactive-item">UNSOLVED MYSTERIES</h1>
           </div>
         </div>
-        <div class="container hidden">
-          <div class="box">
-            <div class="content">
-              <h2>A</h2>
-              <h3><span class="problem-name-A"></span></h3>
-              <p>
-                Attempts : <span class="attempts"></span><br>
-                Difficulty: <span class="difficulty"></span><br>
-                Tags: <span class="tags"></span><br>
-                Number of Submissions: <span class="submissions"></span><br>
-                Editorial Link: <div class="linkA"></div>
-              </p>
+        <div class="wrap">
+          <div class="cont1 hidden">
+            <div class="card1">
+              <div class="face face1">
+                <div class="content">
+                  <img src="resources/iimages/abhi.svg" alt="" />
+                  <h2>Set 1</h2>
+                </div>
+              </div>
+              <div class="face face2">
+                <div class="content">
+                  <button class="btn btn-dark generate_daily">Crush It</button>.
+                </div>
+              </div>
+            </div>
+            <div class="card1">
+              <div class="face face1">
+                <div class="content">
+                  <img src="resources/iimages/abhi.svg" alt="" />
+                  <h2>Set 2</h2>
+                </div>
+              </div>
+              <div class="face face2">
+                <div class="content">
+                  <button class="btn btn-dark generate_daily">Crush It</button>.
+                </div>
+              </div>
+            </div>
+            <div class="card1">
+              <div class="face face1">
+                <div class="content">
+                  <img src="resources/iimages/abhi.svg" alt="" />
+                  <h2>Set 3</h2>
+                </div>
+              </div>
+              <div class="face face2">
+                <div class="content">
+                  <button class="btn btn-dark generate_daily">Crush It</button>.
+                </div>
+              </div>
+            </div>
+            <div class="card1">
+              <div class="face face1">
+                <div class="content">
+                  <img src="resources/iimages/abhi.svg" alt="" />
+                  <h2>Set 4</h2>
+                </div>
+              </div>
+              <div class="face face2">
+                <div class="content">
+                  <button class="btn btn-dark generate_daily">Crush It</button>.
+                </div>
+              </div>
             </div>
           </div>
-    
-          <div class="box">
-            <div class="content">
-              <h2>B</h2>
-              <h3><span class="problem-name-B"></span></h3>
-              <p> 
-                Attempts : <span class="attempts"></span><br>
-                Difficulty: <span class="difficulty"></span><br>
-                Tags: <span class="tags"></span><br>
-                Number of Submissions: <span class="submissions"></span><br>
-                Editorial Link: <div class="linkB"></div>
-              </p>
+          <div class="container hidden">
+            <div class="box">
+              <div class="content">
+                <h2>A</h2>
+                <h3><span class="problem-name-A"></span></h3>
+                <p>
+                  Attempts : <span class="attempts"></span><br>
+                  Difficulty: <span class="difficulty"></span><br>
+                  Tags: <span class="tags"></span><br>
+                  Number of Submissions: <span class="submissions"></span><br>
+                  Editorial Link: <div class="linkA"></div>
+                </p>
+              </div>
             </div>
-          </div>
-    
-          <div class="box">
-            <div class="content">
-              <h2>C</h2>
-              <h3><span class="problem-name-C"></span></h3>
-              <p>
-                Attempts : <span class="attempts"></span><br>
-                Difficulty: <span class="difficulty"></span><br>
-                Tags: <span class="tags"></span><br>
-                Number of Submissions: <span class="submissions"></span><br>
-                Editorial Link:<div class="linkC"></div>
-              </p>
+      
+            <div class="box">
+              <div class="content">
+                <h2>B</h2>
+                <h3><span class="problem-name-B"></span></h3>
+                <p> 
+                  Attempts : <span class="attempts"></span><br>
+                  Difficulty: <span class="difficulty"></span><br>
+                  Tags: <span class="tags"></span><br>
+                  Number of Submissions: <span class="submissions"></span><br>
+                  Editorial Link: <div class="linkB"></div>
+                </p>
+              </div>
             </div>
-          </div>
-    
-          <div class="box">
-            <div class="content">
-              <h2>D</h2>
-              <h3><span class="problem-name-D"></span></h3>
-              <p>
-                Attempts : <span class="attempts"></span><br>
-                Difficulty: <span class="difficulty"></span><br>
-                Tags: <span class="tags"></span><br>
-                Number of Submissions: <span class="submissions"></span><br>
-                Editorial Link:<div class="linkD"></div>
-              </p>
+      
+            <div class="box">
+              <div class="content">
+                <h2>C</h2>
+                <h3><span class="problem-name-C"></span></h3>
+                <p>
+                  Attempts : <span class="attempts"></span><br>
+                  Difficulty: <span class="difficulty"></span><br>
+                  Tags: <span class="tags"></span><br>
+                  Number of Submissions: <span class="submissions"></span><br>
+                  Editorial Link:<div class="linkC"></div>
+                </p>
+              </div>
             </div>
-          </div>
-          <div class="box">
-            <div class="content">
-              <h2>E</h2>
-              <h3><span class="problem-name-E"></span></h3>
-              <p>
-                Attempts : <span class="attempts"></span><br>
-                Difficulty: <span class="difficulty"></span><br>
-                Tags: <span class="tags"></span><br>
-                Number of Submissions: <span class="submissions"></span><br>
-                Editorial Link:<div class="linkE"></div>
-              </p>
+      
+            <div class="box">
+              <div class="content">
+                <h2>D</h2>
+                <h3><span class="problem-name-D"></span></h3>
+                <p>
+                  Attempts : <span class="attempts"></span><br>
+                  Difficulty: <span class="difficulty"></span><br>
+                  Tags: <span class="tags"></span><br>
+                  Number of Submissions: <span class="submissions"></span><br>
+                  Editorial Link:<div class="linkD"></div>
+                </p>
+              </div>
+            </div>
+            <div class="box">
+              <div class="content">
+                <h2>E</h2>
+                <h3><span class="problem-name-E"></span></h3>
+                <p>
+                  Attempts : <span class="attempts"></span><br>
+                  Difficulty: <span class="difficulty"></span><br>
+                  Tags: <span class="tags"></span><br>
+                  Number of Submissions: <span class="submissions"></span><br>
+                  Editorial Link:<div class="linkE"></div>
+                </p>
+              </div>
             </div>
           </div>
         </div>

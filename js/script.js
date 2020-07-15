@@ -100,8 +100,8 @@ function hello() {
       let modified_url = url2 + handle_name;
       const jsondata = await fetch(modified_url);
       const jsdata = await jsondata.json();
-      user_submissions=jsdata.result;
-      
+      user_submissions = jsdata.result;
+
       let unsolved = new Set();
 
       unsolved.clear();
@@ -241,12 +241,18 @@ function hello() {
                       let val = new_tag_map.get(
                         user_submissions[i].problem.rating
                       );
-                      new_tag_map.set(user_submissions[i].problem.rating, val + 1);
+                      new_tag_map.set(
+                        user_submissions[i].problem.rating,
+                        val + 1
+                      );
                     } else {
                       let val = new_tag_map.get(
                         user_submissions[i].problem.points
                       );
-                      new_tag_map.set(user_submissions[i].problem.points, val + 1);
+                      new_tag_map.set(
+                        user_submissions[i].problem.points,
+                        val + 1
+                      );
                     }
                     already.add(str);
                   }
@@ -269,7 +275,7 @@ function hello() {
               title: {
                 text: `Rating wise correct submissions for ${tag_name}`,
               },
-        
+
               axisX: {
                 title: "Difficulty Rating",
                 interval: 100,
@@ -302,7 +308,7 @@ function hello() {
             .classList.add("bounceInRight");
           item4.classList.add("animated");
           item4.classList.add("hinge");
-          
+
           document.querySelector(".heading").classList.add("hidden");
           document.querySelector(".problemsets").classList.remove("hidden");
           document.querySelector(".problemsets").classList.add("animated");
@@ -318,13 +324,14 @@ function hello() {
           document.querySelector(".wrapper").classList.add("hidden");
           item.classList.add("hinge");
           show_daily_mix2.classList.remove("hidden");
+          document.querySelector(".cont1").classList.remove("hidden");
           item2.classList.add("animated");
           item2.classList.add("hinge");
           item3.classList.add("animated");
           item3.classList.add("hinge");
           item4.classList.add("animated");
           item4.classList.add("hinge");
-          document.querySelector('.container').classList.remove("hidden");
+          // document.querySelector('.container').classList.remove("hidden");
           let weak_index1 = Math.floor(Math.random() * weak_topicss.length);
           let weak_index2 = Math.floor(Math.random() * weak_topicss.length);
           let weak_index3 = Math.floor(Math.random() * weak_topicss.length);
@@ -335,13 +342,13 @@ function hello() {
           let weak_topic3 = weak_topicss[weak_index3];
           let strong_topic1 = strong_topicss[strong_index1];
           let strong_topic2 = strong_topicss[strong_index2];
-         
+
           function generate_easy_question(arr, no) {
             let result = [];
 
             for (let i = 0; i < arr.problems.length; i++) {
               let str = arr.problems[i].contestId + "-" + arr.problems[i].index;
-              if(solved.has(str)){
+              if (solved.has(str)) {
                 continue;
               }
               if (no == 0) {
@@ -366,19 +373,25 @@ function hello() {
 
             for (let i = 0; i < arr.problems.length; i++) {
               let str = arr.problems[i].contestId + "-" + arr.problems[i].index;
-              if(solved.has(str)){
+              if (solved.has(str)) {
                 continue;
               }
               if (no == 0) {
                 break;
               }
               if (arr.problems[i].rating !== undefined) {
-                if (arr.problems[i].rating <= 1700&&arr.problems[i].rating>1200) {
+                if (
+                  arr.problems[i].rating <= 1700 &&
+                  arr.problems[i].rating > 1200
+                ) {
                   no--;
                   result.push(arr.problems[i]);
                 }
               } else {
-                if (arr.problems[i].points <= 1700&&arr.problems[i].points >= 1200) {
+                if (
+                  arr.problems[i].points <= 1700 &&
+                  arr.problems[i].points >= 1200
+                ) {
                   no--;
                   result.push(arr.problems[i]);
                 }
@@ -391,19 +404,25 @@ function hello() {
 
             for (let i = 0; i < arr.problems.length; i++) {
               let str = arr.problems[i].contestId + "-" + arr.problems[i].index;
-              if(solved.has(str)){
+              if (solved.has(str)) {
                 continue;
               }
               if (no == 0) {
                 break;
               }
               if (arr.problems[i].rating !== undefined) {
-                if (arr.problems[i].rating <= 2400&&arr.problems[i].rating>1900) {
+                if (
+                  arr.problems[i].rating <= 2400 &&
+                  arr.problems[i].rating > 1900
+                ) {
                   no--;
                   result.push(arr.problems[i]);
                 }
               } else {
-                if (arr.problems[i].points >= 1500&&arr.problems[i].points <= 1900) {
+                if (
+                  arr.problems[i].points >= 1500 &&
+                  arr.problems[i].points <= 1900
+                ) {
                   no--;
                   result.push(arr.problems[i]);
                 }
@@ -411,132 +430,153 @@ function hello() {
             }
             return result;
           }
-          function make_list(A){
-              let str=A.contestId+'-'+A.index;
-              let p=convert_to_link(str);
-              let li=document.createElement('li');
-              li.innerHTML=`<a href=${p}>${str}</a>`;
-              return li;
+          function make_list(A) {
+            let str = A.contestId + "-" + A.index;
+            let p = convert_to_link(str);
+            let li = document.createElement("li");
+            li.innerHTML = `<a href=${p}>${str}</a>`;
+            return li;
           }
           async function get_daily_mix_A() {
-            
             let modified_url = `https://codeforces.com/api/problemset.problems?tags=${weak_topic1}`;
             const jsondata = await fetch(modified_url);
             const jsdata = await jsondata.json();
-            let A=generate_easy_question(jsdata.result, 1);
-            for(let i=0;i<A.length;i++){
+            let A = generate_easy_question(jsdata.result, 1);
+            for (let i = 0; i < A.length; i++) {
               console.log(A);
-              document.querySelector('.problem-name-A').innerHTML=A[0].name;
-              let link=document.createElement('div');
-              let p=convert_to_link(`${A[0].contestId}-${A[0].index}`);
-              link.innerHTML=`<a href="${p}">Let's Do It</a>`;
-              let div = document.querySelector('.linkA');
+              document.querySelector(".problem-name-A").innerHTML = A[0].name;
+              let link = document.createElement("div");
+              let p = convert_to_link(`${A[0].contestId}-${A[0].index}`);
+              link.innerHTML = `<a href="${p}">Let's Do It</a>`;
+              let div = document.querySelector(".linkA");
               console.log(div);
-              while(div.firstChild){
-                console.log(div.firstChild)
-                  div.removeChild(div.firstChild);
+              while (div.firstChild) {
+                console.log(div.firstChild);
+                div.removeChild(div.firstChild);
               }
-              document.querySelector('.linkA').appendChild(link);
+              document.querySelector(".linkA").appendChild(link);
               // li.classList.add("list-group-item");
               // document.querySelector('.list-of-problems-for-daily-mix').appendChild(li);
             }
 
             //console.log(jsdata.result);
           }
-          
+
           async function get_daily_mix_B() {
             let modified_url = `https://codeforces.com/api/problemset.problems?tags=${weak_topic2}`;
             const jsondata = await fetch(modified_url);
             const jsdata = await jsondata.json();
-            let A=generate_medium_question(jsdata.result, 1);
-            for(let i=0;i<A.length;i++){
-            // let li=make_list(A[i]);
-              document.querySelector('.problem-name-B').innerHTML=A[0].name;
-              let link=document.createElement('div');
-              let div = document.querySelector('.linkB');
-              while(div.firstChild){
-                  div.removeChild(div.firstChild);
+            let A = generate_medium_question(jsdata.result, 1);
+            for (let i = 0; i < A.length; i++) {
+              // let li=make_list(A[i]);
+              document.querySelector(".problem-name-B").innerHTML = A[0].name;
+              let link = document.createElement("div");
+              let div = document.querySelector(".linkB");
+              while (div.firstChild) {
+                div.removeChild(div.firstChild);
               }
-              let p=convert_to_link(`${A[0].contestId}-${A[0].index}`);
-              link.innerHTML=`<a href="${p}">Let's Do It</a>`;
-              document.querySelector('.linkB').appendChild(link);
+              let p = convert_to_link(`${A[0].contestId}-${A[0].index}`);
+              link.innerHTML = `<a href="${p}">Let's Do It</a>`;
+              document.querySelector(".linkB").appendChild(link);
               // document.querySelector('.list-of-problems-for-daily-mix').appendChild(li);
             }
             //console.log(jsdata.result);
           }
-          
+
           async function get_daily_mix_C() {
             let modified_url = `https://codeforces.com/api/problemset.problems?tags=${strong_topic1}`;
             const jsondata = await fetch(modified_url);
             const jsdata = await jsondata.json();
-            let A=generate_medium_question(jsdata.result, 1);
-            for(let i=0;i<A.length;i++){
-              let li=make_list(A[i]);
+            let A = generate_medium_question(jsdata.result, 1);
+            for (let i = 0; i < A.length; i++) {
+              let li = make_list(A[i]);
               // li.classList.add("list-group-item");
-              document.querySelector('.problem-name-C').innerHTML=A[0].name;
-              let link=document.createElement('div');
-              let div = document.querySelector('linkC');
-              while(div.firstChild){
-                  div.removeChild(div.firstChild);
+              document.querySelector(".problem-name-C").innerHTML = A[0].name;
+              let link = document.createElement("div");
+              let div2 = document.querySelector(".linkC");
+              while (div2.firstChild) {
+                div2.removeChild(div2.firstChild);
               }
-              let p=convert_to_link(`${A[0].contestId}-${A[0].index}`);
-              link.innerHTML=`<a href="${p}">Let's Do It</a>`;
-          
-              document.querySelector('.linkC').appendChild(link);
+              let p = convert_to_link(`${A[0].contestId}-${A[0].index}`);
+              link.innerHTML = `<a href="${p}">Let's Do It</a>`;
+              console.log(link);
+              document.querySelector(".linkC").appendChild(link);
               // document.querySelector('.list-of-problems-for-daily-mix').appendChild(li);
-              }
-              //console.log(jsdata.result);
+            }
+            //console.log(jsdata.result);
           }
-          
+
           async function get_daily_mix_D() {
             let modified_url = `https://codeforces.com/api/problemset.problems?tags=${weak_topic3}`;
             const jsondata = await fetch(modified_url);
             const jsdata = await jsondata.json();
-            let A=generate_hard_question(jsdata.result, 1);
-            for(let i=0;i<A.length;i++){
+            let A = generate_hard_question(jsdata.result, 1);
+            for (let i = 0; i < A.length; i++) {
               // let li=make_list(A[i]);
-              document.querySelector('.problem-name-D').innerHTML=A[0].name;
-              let link=document.createElement('div');
-              let div = document.querySelector('linkD');
-              while(div.firstChild){
-                  div.removeChild(div.firstChild);
+              document.querySelector(".problem-name-D").innerHTML = A[0].name;
+              let link = document.createElement("div");
+              let div = document.querySelector(".linkD");
+              while (div.firstChild) {
+                div.removeChild(div.firstChild);
               }
-              let p=convert_to_link(`${A[0].contestId}-${A[0].index}`);
-              link.innerHTML=`<a href="${p}">Let's Do It</a>`;
-              document.querySelector('.linkD').appendChild(link);
+              let p = convert_to_link(`${A[0].contestId}-${A[0].index}`);
+              link.innerHTML = `<a href="${p}">Let's Do It</a>`;
+              document.querySelector(".linkD").appendChild(link);
               // li.classList.add("list-group-item");
               // document.querySelector('.list-of-problems-for-daily-mix').appendChild(li);
-              }
-              //console.log(jsdata.result);
+            }
+            //console.log(jsdata.result);
           }
-          
+
           async function get_daily_mix_E() {
             let modified_url = `https://codeforces.com/api/problemset.problems?tags=${strong_topic2}`;
             const jsondata = await fetch(modified_url);
             const jsdata = await jsondata.json();
-            let A=generate_hard_question(jsdata.result, 1);
-            for(let i=0;i<A.length;i++){
-              let li=make_list(A[i]);
-              document.querySelector('.problem-name-E').innerHTML=A[0].name;
-              let div = document.querySelector('linkE');
-              while(div.firstChild){
-                  div.removeChild(div.firstChild);
+            let A = generate_hard_question(jsdata.result, 1);
+            for (let i = 0; i < A.length; i++) {
+              let li = make_list(A[i]);
+              document.querySelector(".problem-name-E").innerHTML = A[0].name;
+              let div = document.querySelector(".linkE");
+              while (div.firstChild) {
+                div.removeChild(div.firstChild);
               }
-              let link=document.createElement('div');
-              let p=convert_to_link(`${A[0].contestId}-${A[0].index}`);
-              link.innerHTML=`<a href="${p}">Let's Do It</a>`;
-              document.querySelector('.linkE').appendChild(link);
+              let link = document.createElement("div");
+              let p = convert_to_link(`${A[0].contestId}-${A[0].index}`);
+              link.innerHTML = `<a href="${p}">Let's Do It</a>`;
+              document.querySelector(".linkE").appendChild(link);
               // li.classList.add("list-group-item");
               // document.querySelector('.list-of-problems-for-daily-mix').appendChild(li);
-              }
-              //console.log(jsdata.result);
+            }
+            //console.log(jsdata.result);
           }
-          
-          get_daily_mix_A();
-          get_daily_mix_B();
-          get_daily_mix_C();
-          get_daily_mix_D();
-          get_daily_mix_E();
+          let p = document.querySelectorAll(".generate_daily");
+          for (let i = 0; i < p.length; i++) {
+            p[i].addEventListener("click", function (e) {
+      
+              // document.querySelector('.container').classList.remove("hidden");
+              weak_index1 = Math.floor(Math.random() * weak_topicss.length);
+              weak_index2 = Math.floor(Math.random() * weak_topicss.length);
+              weak_index3 = Math.floor(Math.random() * weak_topicss.length);
+              strong_index1 = Math.floor(
+                Math.random() * strong_topicss.length
+              );
+              strong_index2 = Math.floor(
+                Math.random() * strong_topicss.length
+              );
+              weak_topic1 = weak_topicss[weak_index1];
+              weak_topic2 = weak_topicss[weak_index2];
+              weak_topic3 = weak_topicss[weak_index3];
+              strong_topic1 = strong_topicss[strong_index1];
+              strong_topic2 = strong_topicss[strong_index2];
+              get_daily_mix_A();
+              get_daily_mix_B();
+              get_daily_mix_C();
+              get_daily_mix_D();
+              get_daily_mix_E();
+              document.querySelector(".container").classList.remove("hidden");
+              e.preventDefault();
+            });
+          }
           e.preventDefault();
         });
     }
@@ -603,7 +643,7 @@ function hello() {
         tr.appendChild(th3);
         table.appendChild(tr);
       }
-      document.querySelector('.d-flex').classList.add('hidden');
+      document.querySelector(".d-flex").classList.add("hidden");
     }
 
     getUpsolved();
@@ -678,7 +718,7 @@ function hello() {
     weak_topics.classList.add("bounceInRight");
     unsolved_mysteries.classList.add("hidden");
     upsolve.classList.add("hidden");
-    strong_topics.classList.add("hidden");    
+    strong_topics.classList.add("hidden");
     show_daily_mix2.classList.remove("hidden");
 
     document.querySelector(".heading").classList.add("hidden");
@@ -764,6 +804,7 @@ function hello() {
     hide_please(item);
     daily_mix_contests.classList.remove("hidden");
     unsolved_mysteries.classList.add("hidden");
+    document.querySelector(".cont1").classList.add("hidden");
     weak_topics.classList.add("hidden");
     upsolve.classList.add("hidden");
     show_daily_mix.classList.add("hidden");
@@ -773,7 +814,7 @@ function hello() {
     item2.classList.remove("hidden");
     item3.classList.remove("hidden");
     item4.classList.remove("hidden");
-          document.querySelector(".wrapper").classList.remove("hidden");
+    document.querySelector(".wrapper").classList.remove("hidden");
     item4.classList.remove("hinge");
     item3.classList.remove("hinge");
     item2.classList.remove("hinge");
