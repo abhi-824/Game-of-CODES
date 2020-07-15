@@ -335,3 +335,60 @@ table tr {
   color: #000;
   background: #fff;
 }
+
+a:hover {
+  text-decoration: none;
+}
+
+/* User statistics page CSS*/
+.superheroimg {
+  margin-left: 5%;
+  margin-right: 2%;
+  float: left;
+  width: 21%;
+  height: 441px;
+  left: 58px;
+  top: 102px;
+  background: url(../resources/icons/Rect10.png);
+  border-radius: 150px;
+  border: 1px solid white;
+}
+
+.statistics {
+  background-color: rgba(109, 83, 83, 0.48);
+  width: 60%;
+  /*height: 500px;*/
+  float: right;
+  margin-right: 5%;
+  padding: 40px;
+}
+
+.stat{
+  height: 47px;
+  background-color: #C4C4C4;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: black;
+  padding: 5px;
+  font-size: 20px;
+
+
+}
+
+.heatmap {
+  height: 205px;
+  width: 95%;
+  border-image: 1px solid white;
+}
+
+#username {
+  margin-left: 5%;
+  width: 20%;
+  text-align: center;
+  margin-right: 2%;
+  margin-top: 2%;
+  margin-bottom: 1%;
+  font-size: 20px;
+  border: 1px solid grey;
+  background: rgba(43, 41, 41, 0.35);
+}
