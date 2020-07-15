@@ -36,15 +36,15 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+            <li class="nav-item">
 
-              <a class="nav-link" href="dashboard.html">Dashboard<div class="line1"></div><span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="dashboard.html">Dashboard</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="Compare.html">Compare</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="Profile.html">Profile</a>
+            <li class="nav-item active">
+              <a class="nav-link" href="Profile.html">Profile<span class="sr-only">(current)</span><div class="line1"></div></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="Codeblast.html">Code Blast</a>
@@ -61,6 +61,7 @@
           <div class="column-1 col-4">
             <img class="Profile-Photo" style=" border-radius:50%;" src="" alt="Profile Photo" width="300" height="380">
             <h3 style="padding: 2.5rem 3.75rem 0 0; text-align: center;" class="username">USERNAME</h3>
+            <h4 style="padding: 2.5rem 3.75rem 0 0; text-align: center;" class="username"><a href="profile_user_stats.html">USER STATISTICS</a></h4>
           </div>
 
           <div class="column-2 col-4">
@@ -90,7 +91,7 @@
             <button id="hide-graph" type="button" class="btn btn-dark hidden text-left btn-sm">Hide Graph</button>
           </div>
 
-          <div style="padding-left:100px;" class="column-3 col-4">
+          <div style="padding-left:100px; float: right;" class="column-3 col-4">
             <h3 style="padding-top: 2rem;" class="recent-contests"><strong>Recent Contests</strong></h3>
           </div>
           <div class="hidden col-4" id="myChart1" style="height: 400px; width: 90%;"></div>
