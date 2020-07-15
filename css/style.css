@@ -30,6 +30,13 @@ a {
     center/cover;
   height: 100vh;
 }
+
+.container4 {
+  background: url("../resources/backgrounds/jonathan-borba-zfPOelmDc-M-unsplash.jpg")
+    no-repeat center center/cover;
+  background-attachment: fixed;
+  height: 200vh;
+}
 .container2 {
   position: absolute;
   top: 0;
@@ -142,6 +149,7 @@ table tr {
 .strong_topics {
   overflow: scroll;
   overflow-x: hidden;
+  /* z-index:100; */
 }
 .line {
   /* display:inline-block; */
@@ -363,16 +371,14 @@ a:hover {
   padding: 40px;
 }
 
-.stat{
+.stat {
   height: 47px;
-  background-color: #C4C4C4;
+  background-color: #c4c4c4;
   margin-top: 20px;
   margin-bottom: 20px;
   color: black;
   padding: 5px;
   font-size: 20px;
-
-
 }
 
 .heatmap {

@@ -2,6 +2,7 @@ let item = document.querySelector(".item1");
 let item2 = document.querySelector(".item2");
 let item3 = document.querySelector(".item3");
 let item4 = document.querySelector(".item4");
+let user_submissions;
 let show_daily_mix = document.querySelector(".daily-btn");
 let show_daily_mix2 = document.querySelector(".daily-btn2");
 let daily_mix_contests = document.querySelector(".daily-mix");
@@ -97,10 +98,10 @@ function hello() {
     // getting solved set and weak nd strong topics and daily mix contests
     async function getsubmissions() {
       let modified_url = url2 + handle_name;
-
       const jsondata = await fetch(modified_url);
       const jsdata = await jsondata.json();
-
+      user_submissions=jsdata.result;
+      
       let unsolved = new Set();
 
       unsolved.clear();
@@ -220,32 +221,32 @@ function hello() {
             practice_each_topic[i].parentElement.firstChild.innerHTML;
           // //console.log(tag_name);
 
-          async function get_topic_graph() {
-            let modified_url2 = url2 + handle_name;
-            const jsondata2 = await fetch(modified_url2);
-            const jsdata = await jsondata2.json();
+          function get_topic_graph() {
+            // let modified_url2 = url2 + handle_name;
+            // const jsondata2 = await fetch(modified_url2);
+            // const jsdata = await jsondata2.json();
             let already = new Set();
-            //console.log(jsdata.result);
+            //console.log(user_submissions);
             let str =
-              jsdata.result[i].problem.contestId +
+              user_submissions[i].problem.contestId +
               "-" +
-              jsdata.result[i].problem.index;
-            for (let i = 0; i < jsdata.result.length; i++) {
-              let tags = jsdata.result[i].problem.tags;
+              user_submissions[i].problem.index;
+            for (let i = 0; i < user_submissions.length; i++) {
+              let tags = user_submissions[i].problem.tags;
               for (let j = 0; j < tags.length; j++) {
                 if (tags[j] === tag_name) {
-                  // //console.log(jsdata.result[i].verdict)
-                  if (jsdata.result[i].verdict === "OK") {
-                    if (jsdata.result[i].problem.rating != undefined) {
+                  // //console.log(user_submissions[i].verdict)
+                  if (user_submissions[i].verdict === "OK") {
+                    if (user_submissions[i].problem.rating != undefined) {
                       let val = new_tag_map.get(
-                        jsdata.result[i].problem.rating
+                        user_submissions[i].problem.rating
                       );
-                      new_tag_map.set(jsdata.result[i].problem.rating, val + 1);
+                      new_tag_map.set(user_submissions[i].problem.rating, val + 1);
                     } else {
                       let val = new_tag_map.get(
-                        jsdata.result[i].problem.points
+                        user_submissions[i].problem.points
                       );
-                      new_tag_map.set(jsdata.result[i].problem.points, val + 1);
+                      new_tag_map.set(user_submissions[i].problem.points, val + 1);
                     }
                     already.add(str);
                   }
@@ -268,7 +269,7 @@ function hello() {
               title: {
                 text: `Rating wise correct submissions for ${tag_name}`,
               },
-
+        
               axisX: {
                 title: "Difficulty Rating",
                 interval: 100,
@@ -418,6 +419,7 @@ function hello() {
               return li;
           }
           async function get_daily_mix_A() {
+            
             let modified_url = `https://codeforces.com/api/problemset.problems?tags=${weak_topic1}`;
             const jsondata = await fetch(modified_url);
             const jsdata = await jsondata.json();
@@ -529,6 +531,7 @@ function hello() {
               }
               //console.log(jsdata.result);
           }
+          
           get_daily_mix_A();
           get_daily_mix_B();
           get_daily_mix_C();
