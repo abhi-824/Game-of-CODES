@@ -22,6 +22,7 @@ let user_contest = [];
 let contests_problems = new Set();
 let upsolved = [];
 let handle_name;
+let tag_name
 google.charts.load("current", { packages: ["corechart"] });
 
 let website_url = "Profile.html?handle=";
@@ -217,9 +218,138 @@ function hello() {
           for (let i = 800; i < 3200; i += 100) {
             new_tag_map.set(i, 0);
           }
-          let tag_name =
+           tag_name =
             practice_each_topic[i].parentElement.firstChild.innerHTML;
           // //console.log(tag_name);
+          
+            function generate_easy_question(arr, no) {
+            let result = [];
+
+            for (let i = 0; i < arr.problems.length; i++) {
+              let str = arr.problems[i].contestId + "-" + arr.problems[i].index;
+              if(solved.has(str)){
+                continue;
+              }
+              if (no == 0) {
+                break;
+              }
+              if (arr.problems[i].rating !== undefined) {
+                if (arr.problems[i].rating <= 1200) {
+                  no--;
+                  result.push(arr.problems[i]);
+                }
+              } else {
+                if (arr.problems[i].points <= 1200) {
+                  no--;
+                  result.push(arr.problems[i]);
+                }
+              }
+            }
+            return result;
+          }
+          function generate_medium_question(arr, no) {
+            let result = [];
+
+            for (let i = 0; i < arr.problems.length; i++) {
+              let str = arr.problems[i].contestId + "-" + arr.problems[i].index;
+              if(solved.has(str)){
+                continue;
+              }
+              if (no == 0) {
+                break;
+              }
+              if (arr.problems[i].rating !== undefined) {
+                if (arr.problems[i].rating <= 1700&&arr.problems[i].rating>1200) {
+                  no--;
+                  result.push(arr.problems[i]);
+                }
+              } else {
+                if (arr.problems[i].points <= 1700&&arr.problems[i].points >= 1200) {
+                  no--;
+                  result.push(arr.problems[i]);
+                }
+              }
+            }
+            return result;
+          }
+          function generate_hard_question(arr, no) {
+            let result = [];
+
+            for (let i = 0; i < arr.problems.length; i++) {
+              let str = arr.problems[i].contestId + "-" + arr.problems[i].index;
+              if(solved.has(str)){
+                continue;
+              }
+              if (no == 0) {
+                break;
+              }
+              if (arr.problems[i].rating !== undefined) {
+                if (arr.problems[i].rating <= 2400&&arr.problems[i].rating>1900) {
+                  no--;
+                  result.push(arr.problems[i]);
+                }
+              } else {
+                if (arr.problems[i].points >= 1500&&arr.problems[i].points <= 1900) {
+                  no--;
+                  result.push(arr.problems[i]);
+                }
+              }
+            }
+            return result;
+          }
+          function make_list(A){
+              let str=A.contestId+'-'+A.index;
+              let p=convert_to_link(str);
+              let li=document.createElement('li');
+              li.innerHTML=`<a href=${p}>${str}</a>`;
+              return li;
+          }
+
+          async function get_questions(){
+            let modified_url = `https://codeforces.com/api/problemset.problems?tags=${tag_name}`;
+            console.log(modified_url)
+            const jsondata = await fetch(modified_url);
+            const jsdata = await jsondata.json();
+            let E=generate_easy_question(jsdata.result, 5);
+            let M=generate_medium_question(jsdata.result,10);
+            let H=generate_hard_question(jsdata.result,9);
+            console.log(E)
+            console.log(M)
+            console.log(H)
+            let arr1=[]
+            arr1.push(E[0]); arr1.push(M[0]); arr1.push(H[0])
+            console.log("arr1")
+            console.log(arr1)
+            let arr2=[]
+            arr2.push(E[1]); arr2.push(M[1]); arr2.push(H[1])
+            console.log("arr2")
+            console.log(arr2)
+            let arr3=[]
+            arr3.push(E[2]); arr3.push(M[2]); arr3.push(H[2])
+            console.log("arr3")
+            console.log(arr3)
+            let arr4=[]
+            arr4.push(E[3]); arr4.push(M[3]); arr4.push(H[3])
+            console.log("arr4")
+            console.log(arr4)
+            let arr5=[]
+            arr5.push(E[4]); arr5.push(M[4]); arr5.push(H[4])
+            console.log("arr5")
+            console.log(arr5)
+            let arr6=[]
+            arr6.push(M[5]); arr6.push(M[6]); arr6.push(H[5])
+            console.log("arr6")
+            console.log(arr6)
+            let arr7=[]
+            arr7.push(M[7]); arr7.push(M[8]); arr7.push(H[6])
+            console.log("arr7")
+            console.log(arr7)
+            let arr8=[]
+            arr8.push(M[9]); arr8.push(H[7]); arr8.push(H[8])
+            console.log("arr8")
+            console.log(arr8)
+        }
+        get_questions()  
 
           function get_topic_graph() {
             // let modified_url2 = url2 + handle_name;
