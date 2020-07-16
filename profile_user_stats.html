@@ -8,6 +8,15 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <title>Game of Codes: Profile User Statistics</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -21,18 +30,18 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                	<a class="nav-link" href="#">Dashboard</a>
+                	<a class="nav-link" href="dashboard.html">Dashboard</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Compare</a>
+                    <a class="nav-link" href="compare.html">Compare</a>
                 </li>
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Profile<div class="line1"></div><span class="sr-only">current</span></a>
+                    <a class="nav-link" href="profile.html">Profile<div class="line1"></div><span class="sr-only">current</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Code Blast</a>
+                    <a class="nav-link" href="codeblast.html">Code Blast</a>
                 </li>
             </ul>
             <input class="form-control" type="search" placeholder="Search" aria-label="Search">
@@ -56,7 +65,7 @@
     </div>
 
     <div class="container-fluid">
-        <div id="username"><a href="#">USERNAME</a></div>
+        <div class="username" id="username"><a href="#">USERNAME</a></div>
     </div>
 
     <div align="center">
@@ -81,6 +90,17 @@
         </div>
     </footer> -->
 
-<script src="js/profilescript.js"></script>
+<!-- <script src="js/profilescript.js"></script> -->
+<script src="js/script.js"></script>
+<script src="js/profile.js"></script>
+<script>
+    function getHandle() {
+        var url = document.location.href,
+        params = url.split("=")[1];
+        return params;
+  }
+
+  user_handle = getHandle();
+</script>
 </body>
 </html> 
