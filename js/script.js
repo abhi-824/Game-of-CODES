@@ -834,3 +834,11 @@ function hello() {
   });
 }
 window.onload = hello;
+document.querySelector("#userstatistics").addEventListener("click", function (e) {
+    let handle = document.querySelector(".form-control").value;
+    website_url1 = website_url1 + handle;
+    document.location.href = website_url1;
+    url = "profile_user_stats.html?handle=";
+    e.preventDefault();
+});
+
