@@ -451,26 +451,26 @@ function hello() {
               }
               let fl = 0;
               for (let j = 0; j < set1.length; j++) {
-                if (set1[j][0] === jsdata.result.problems[i].name) {
+                if (set1[j][0].name === jsdata.result.problems[i].name) {
                   console.log(jsdata.result.problems[i].name)
                   fl = 1;
                   break;
                 }
               }
               for (let j = 0; j < set2.length; j++) {
-                if (set2[j][0] === jsdata.result.problems[i].name) {
+                if (set2[j][0].name === jsdata.result.problems[i].name) {
                   fl = 1;
                   break;
                 }
               }
               for (let j = 0; j < set3.length; j++) {
-                if (set3[j][0] === jsdata.result.problems[i].name) {
+                if (set3[j][0].name === jsdata.result.problems[i].name) {
                   fl = 1;
                   break;
                 }
               }
               for (let j = 0; j < set4.length; j++) {
-                if (set4[j][0] === jsdata.result.problems[i].name) {
+                if (set4[j][0].name === jsdata.result.problems[i].name) {
                   fl = 1;
                   break;
                 }
@@ -527,25 +527,25 @@ function hello() {
               }
               let fl = 0;
               for (let j = 0; j < set1.length; j++) {
-                if (set1[j][0] === jsdata.result.problems[i].name) {
+                if (set1[j][0].name === jsdata.result.problems[i].name) {
                   fl = 1;
                   break;
                 }
               }
               for (let j = 0; j < set2.length; j++) {
-                if (set2[j][0] === jsdata.result.problems[i].name) {
+                if (set2[j][0].name === jsdata.result.problems[i].name) {
                   fl = 1;
                   break;
                 }
               }
               for (let j = 0; j < set3.length; j++) {
-                if (set3[j][0] === jsdata.result.problems[i].name) {
+                if (set3[j][0].name === jsdata.result.problems[i].name) {
                   fl = 1;
                   break;
                 }
               }
               for (let j = 0; j < set4.length; j++) {
-                if (set4[j][0] === jsdata.result.problems[i].name) {
+                if (set4[j][0].name === jsdata.result.problems[i].name) {
                   fl = 1;
                   break;
                 }
@@ -610,25 +610,25 @@ function hello() {
               }
               let fl = 0;
               for (let j = 0; j < set1.length; j++) {
-                if (set1[j][0] === jsdata.result.problems[i].name) {
+                if (set1[j][0].name === jsdata.result.problems[i].name) {
                   fl = 1;
                   break;
                 }
               }
               for (let j = 0; j < set2.length; j++) {
-                if (set2[j][0] === jsdata.result.problems[i].name) {
+                if (set2[j][0].name === jsdata.result.problems[i].name) {
                   fl = 1;
                   break;
                 }
               }
               for (let j = 0; j < set3.length; j++) {
-                if (set3[j][0] === jsdata.result.problems[i].name) {
+                if (set3[j][0].name === jsdata.result.problems[i].name) {
                   fl = 1;
                   break;
                 }
               }
               for (let j = 0; j < set4.length; j++) {
-                if (set4[j][0] === jsdata.result.problems[i].name) {
+                if (set4[j][0].name === jsdata.result.problems[i].name) {
                   fl = 1;
                   break;
                 }
@@ -690,25 +690,26 @@ function hello() {
               }
               let fl = 0;
               for (let j = 0; j < set1.length; j++) {
-                if (set1[j][0] === jsdata.result.problems[i].name) {
+                if (set1[j][0].name === jsdata.result.problems[i].name) {
+                  console.log(set1[j][0].name)
                   fl = 1;
                   break;
                 }
               }
               for (let j = 0; j < set2.length; j++) {
-                if (set2[j][0] === jsdata.result.problems[i].name) {
+                if (set2[j][0].name === jsdata.result.problems[i].name) {
                   fl = 1;
                   break;
                 }
               }
               for (let j = 0; j < set3.length; j++) {
-                if (set3[j][0] === jsdata.result.problems[i].name) {
+                if (set3[j][0].name === jsdata.result.problems[i].name) {
                   fl = 1;
                   break;
                 }
               }
               for (let j = 0; j < set4.length; j++) {
-                if (set4[j][0] === jsdata.result.problems[i].name) {
+                if (set4[j][0].name === jsdata.result.problems[i].name) {
                   fl = 1;
                   break;
                 }
@@ -770,25 +771,25 @@ function hello() {
               }
               let fl = 0;
               for (let j = 0; j < set1.length; j++) {
-                if (set1[j][0] === jsdata.result.problems[i].name) {
+                if (set1[j][0].name === jsdata.result.problems[i].name) {
                   fl = 1;
                   break;
                 }
               }
               for (let j = 0; j < set2.length; j++) {
-                if (set2[j][0] === jsdata.result.problems[i].name) {
+                if (set2[j][0].name === jsdata.result.problems[i].name) {
                   fl = 1;
                   break;
                 }
               }
               for (let j = 0; j < set3.length; j++) {
-                if (set3[j][0] === jsdata.result.problems[i].name) {
+                if (set3[j][0].name === jsdata.result.problems[i].name) {
                   fl = 1;
                   break;
                 }
               }
               for (let j = 0; j < set4.length; j++) {
-                if (set4[j][0] === jsdata.result.problems[i].name) {
+                if (set4[j][0].name === jsdata.result.problems[i].name) {
                   fl = 1;
                   break;
                 }
@@ -843,7 +844,7 @@ function hello() {
             strong_topic1 = strong_topicss[strong_index1];
             strong_topic2 = strong_topicss[strong_index2];
 
-            get_daily_mix_A(i + 1);s
+            get_daily_mix_A(i + 1);
 
             p[i].addEventListener("click", function (e) {
               let curr_set = [];
@@ -1185,11 +1186,11 @@ function hello() {
   });
 }
 window.onload = hello;
-document.querySelector("#userstatistics").addEventListener("click", function (e) {
-  let handle = document.querySelector(".form-control").value;
-  website_url1 = website_url1 + handle;
-  document.location.href = website_url1;
-  url = "profile_user_stats.html?handle=";
-  e.preventDefault();
-});
+// document.querySelector("#userstatistics").addEventListener("click", function (e) {
+//   let handle = document.querySelector(".form-control").value;
+//   website_url1 = website_url1 + handle;
+//   document.location.href = website_url1;
+//   url = "profile_user_stats.html?handle=";
+//   e.preventDefault();
+// });
 
