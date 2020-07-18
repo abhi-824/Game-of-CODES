@@ -934,13 +934,14 @@ function hello() {
     }
 
     getsubmissions();
+    console.log(no_of_success)
     // get user name and avatar
     async function getname() {
       let modified_url2 = url_info + handle_name;
 
       const jsondata2 = await fetch(modified_url2);
       const jsdata2 = await jsondata2.json();
-      let name = jsdata2.result[0].firstName;
+      let name = jsdata2.result[0].firstName || "user";
 
       let user = document.querySelector(".user");
       let user_avatar = document.querySelector(".user_avatar");
@@ -1184,13 +1185,10 @@ function hello() {
     url = "Profile.html?handle=";
     e.preventDefault();
   });
+
+ 	//console.log(no_of_success);
+	//console.log(solved.size);
 }
 window.onload = hello;
-// document.querySelector("#userstatistics").addEventListener("click", function (e) {
-//   let handle = document.querySelector(".form-control").value;
-//   website_url1 = website_url1 + handle;
-//   document.location.href = website_url1;
-//   url = "profile_user_stats.html?handle=";
-//   e.preventDefault();
-// });
+
 
