@@ -52,14 +52,14 @@
 
     <!-- Container -->
     <div style="overflow: auto;" id="main-content">
-    <div class="container-fluid" id="1main-content" style="overflow: auto;">
-            <div class="superheroimg">
+    <div class="container-fluid" id="1main-content" style="overflow: auto;" align="center">
+            <div class="superheroimg"><img id="profile-photo" src="">
             </div>
             <div class="statistics">
-                <div class="stat">CURRENT RANK: </div>
-                <div class="stat">BEST RANK: </div>
+                <div class="stat" id="cur_rating">CURRENT RATING: </div>
+                <div class="stat" id="max_rating">BEST RATING: </div>
                 <div class="stat">ACCURACY RATE: </div>
-                <div class="stat">SUBMISSIONS: </div>
+                <div class="stat" id="submissions">SUBMISSIONS: </div>
                 <div class="stat">MATCHES WON: </div>
             </div>   
     </div>
@@ -98,9 +98,9 @@
         var url = document.location.href,
         params = url.split("=")[1];
         return params;
-  }
-
-  user_handle = getHandle();
+    }
+    user_handle = getHandle();
 </script>
+<script src="js/user_stats.js"></script>
 </body>
 </html> 

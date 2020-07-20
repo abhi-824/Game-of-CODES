@@ -25,14 +25,15 @@ const urlRatings = "https://codeforces.com/api/user.rating?handle=";
 const urlSubmissions = "https://codeforces.com/api/user.status?handle=";
 const urlUserAvatar = "https://codeforces.com/api/user.info?handles=";
 var user_handle;
+var user_avatar;
 
 function getHandle() {
   var url = document.location.href,
     params = url.split("=")[1];
-     return params;
-  }
+    return params;
+}
 
-  user_handle = getHandle();
+user_handle = getHandle();
 
 $(document).ready(function() {
   async function getUserRatings() {
@@ -206,72 +207,72 @@ $(document).ready(function() {
     console.log(dataPointsSubRat);
   }
 
-//async function getUserSubRatOK() {
-//  let finalUserSubRatOK = urlSubmissions + user_handle + "&from=1";
+  //async function getUserSubRatOK() {
+  //  let finalUserSubRatOK = urlSubmissions + user_handle + "&from=1";
 
-//  const jsonDataSubRatOK = await fetch(finalUserSubRatOK);
-//  const jsDataSubRatOK = await jsonDataSubRatOK.json();
+  //  const jsonDataSubRatOK = await fetch(finalUserSubRatOK);
+  //  const jsDataSubRatOK = await jsonDataSubRatOK.json();
 
-//  for (let k = 0; k < jsDataSubRatOK.result.length; k++) {
-//    if (jsDataSubRatOK.result[k].verdict == "OK") {
-//    if (jsDataSubRatOK.result[k].problem.rating < 1200) {
-//      okProbRat1199++;
-//    } else if (jsDataSubRatOK.result[k].problem.rating > 1199 && jsDataSubRatOK.result[k].problem.rating < 1600) {
-//      okProbRat1200_1599++;
-//    } else if (jsDataSubRatOK.result[k].problem.rating > 1599 && jsDataSubRatOK.result[k].problem.rating < 2000) {
-//      okProbRat1600_1999++;
-//    } else if (jsDataSubRatOK.result[k].problem.rating > 1999 && jsDataSubRatOK.result[k].problem.rating < 2400) {
-//      okProbRat2000_2399++;
-//    } else if (jsDataSubRatOK.result[k].problem.rating > 2399 && jsDataSubRatOK.result[k].problem.rating < 2800) {
-//      okProbRat2400_2799++;
-//    } else if (jsDataSubRatOK.result[k].problem.rating > 2799) {
-//      okProbRat2800++;
-//    }
-//  }
-//
-//  dataPointsSubRatOK.push({
-//    y: okProbRat1199,
-//    indexLabel: "<1200"
-//  });
-//  dataPointsSubRatOK.push({
-//    y: okProbRat1200_1599,
-//    indexLabel: "1200-1599"
-//  });
-//  dataPointsSubRatOK.push({
-//    y: okProbRat1600_1999,
-//    indexLabel: "1600-1999"
-//  });
-//  dataPointsSubRatOK.push({
-//    y: okProbRat2000_2399,
-//    indexLabel: "2000-2399"
-//  });
-//  dataPointsSubRatOK.push({
-//    y: okProbRat2400_2799,
-//    indexLabel: "2400-2799"
-//  });
-//  dataPointsSubRatOK.push({
-//    y: okProbRat2800,
-//    indexLabel: ">2800"
-//  });
+  //  for (let k = 0; k < jsDataSubRatOK.result.length; k++) {
+  //    if (jsDataSubRatOK.result[k].verdict == "OK") {
+  //    if (jsDataSubRatOK.result[k].problem.rating < 1200) {
+  //      okProbRat1199++;
+  //    } else if (jsDataSubRatOK.result[k].problem.rating > 1199 && jsDataSubRatOK.result[k].problem.rating < 1600) {
+  //      okProbRat1200_1599++;
+  //    } else if (jsDataSubRatOK.result[k].problem.rating > 1599 && jsDataSubRatOK.result[k].problem.rating < 2000) {
+  //      okProbRat1600_1999++;
+  //    } else if (jsDataSubRatOK.result[k].problem.rating > 1999 && jsDataSubRatOK.result[k].problem.rating < 2400) {
+  //      okProbRat2000_2399++;
+  //    } else if (jsDataSubRatOK.result[k].problem.rating > 2399 && jsDataSubRatOK.result[k].problem.rating < 2800) {
+  //      okProbRat2400_2799++;
+  //    } else if (jsDataSubRatOK.result[k].problem.rating > 2799) {
+  //      okProbRat2800++;
+  //    }
+  //  }
+  //
+  //  dataPointsSubRatOK.push({
+  //    y: okProbRat1199,
+  //    indexLabel: "<1200"
+  //  });
+  //  dataPointsSubRatOK.push({
+  //    y: okProbRat1200_1599,
+  //    indexLabel: "1200-1599"
+  //  });
+  //  dataPointsSubRatOK.push({
+  //    y: okProbRat1600_1999,
+  //    indexLabel: "1600-1999"
+  //  });
+  //  dataPointsSubRatOK.push({
+  //    y: okProbRat2000_2399,
+  //    indexLabel: "2000-2399"
+  //  });
+  //  dataPointsSubRatOK.push({
+  //    y: okProbRat2400_2799,
+  //    indexLabel: "2400-2799"
+  //  });
+  //  dataPointsSubRatOK.push({
+  //    y: okProbRat2800,
+  //    indexLabel: ">2800"
+  //  });
 
-//  var chart = new CanvasJS.Chart("myChart4", {
-//    theme: "dark2",
-//    animationEnabled: true,
-//    title: {
-//      text: "Your Problem-Rating-Wise Accepted Submissions"
-//    },
-//    data: [{
-//      type: "doughnut",
-//      showInLegend: true,
-//      toolTipContent: "{y} - #percent %",
-//      yValueFormatString: "",
-//      legendText: "{indexLabel}",
-//      dataPoints: dataPointsSubRatOK,
-//    }]
-//  });
-//  chart.render();
-//  console.log(dataPointsSubRatOK);
-//  }
+  //  var chart = new CanvasJS.Chart("myChart4", {
+  //    theme: "dark2",
+  //    animationEnabled: true,
+  //    title: {
+  //      text: "Your Problem-Rating-Wise Accepted Submissions"
+  //    },
+  //    data: [{
+  //      type: "doughnut",
+  //      showInLegend: true,
+  //      toolTipContent: "{y} - #percent %",
+  //      yValueFormatString: "",
+  //      legendText: "{indexLabel}",
+  //      dataPoints: dataPointsSubRatOK,
+  //    }]
+  //  });
+  //  chart.render();
+  //  console.log(dataPointsSubRatOK);
+  //  }
 
   async function getUserAvatar() {
     let finalUserAvatarUrl = urlUserAvatar + user_handle;
@@ -283,6 +284,8 @@ $(document).ready(function() {
     let tempArr = [temp,userPhoto];
     let finalPhoto = tempArr.join("");
     $(".Profile-Photo").attr("src",finalPhoto);
+    //user avatar
+    user_avatar = finalPhoto;
   }
 
   getUserRatings();
@@ -290,8 +293,8 @@ $(document).ready(function() {
   getUserSubRat();
   //getUserSubRatOK();
   getUserAvatar();
-
 });
+
 
 $(".username").text(user_handle);
 
@@ -345,3 +348,14 @@ $("#hide-graph").on("click", function(e) {
   e.preventDefault();
 });
 window.onload = console.log("hello");
+
+
+document.querySelector("#userstatistics").addEventListener("click", function (e) {
+    console.log("on stats page");
+    //let handle = document.querySelector(".form-control").value;
+    var user_stats_url = "profile_user_stats.html?handle=";
+    user_stats_url += user_handle;
+    document.location.href = user_stats_url;
+    //url = "profile_user_stats.html?handle=";
+    e.preventDefault();
+});
