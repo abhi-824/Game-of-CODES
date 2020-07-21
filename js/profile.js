@@ -25,7 +25,6 @@ const urlRatings = "https://codeforces.com/api/user.rating?handle=";
 const urlSubmissions = "https://codeforces.com/api/user.status?handle=";
 const urlUserAvatar = "https://codeforces.com/api/user.info?handles=";
 var user_handle;
-var user_avatar;
 
 function getHandle() {
   var url = document.location.href,
@@ -284,8 +283,6 @@ $(document).ready(function() {
     let tempArr = [temp,userPhoto];
     let finalPhoto = tempArr.join("");
     $(".Profile-Photo").attr("src",finalPhoto);
-    //user avatar
-    user_avatar = finalPhoto;
   }
 
   getUserRatings();
@@ -357,5 +354,45 @@ document.querySelector("#userstatistics").addEventListener("click", function (e)
     user_stats_url += user_handle;
     document.location.href = user_stats_url;
     //url = "profile_user_stats.html?handle=";
+    e.preventDefault();
+});
+
+document.querySelector("#dashboard").addEventListener("click", function (e) {
+    console.log("Going to dashboard!");
+
+    var dash_url = "dashboard.html?handle=";
+    dash_url += user_handle;
+    document.location.href = dash_url;
+
+    e.preventDefault();
+});
+
+document.querySelector("#profile").addEventListener("click", function (e) {
+    console.log("Going back to profile page!");
+
+    var prof_url = "profile.html?handle=";
+    prof_url += user_handle;
+    document.location.href = prof_url;
+    
+    e.preventDefault();
+});
+
+document.querySelector("#compare").addEventListener("click", function (e) {
+    console.log("Going to the compare page . . .");
+
+    var comp_url = "compare.html?handle=";
+    comp_url += user_handle;
+    document.location.href = comp_url;
+    
+    e.preventDefault();
+});
+
+document.querySelector("#codeblast").addEventListener("click", function (e) {
+    console.log("Going to codeblast!");
+
+    var cblast_url = "codeblast.html?handle=";
+    cblast_url += user_handle;
+    document.location.href = cblast_url;
+    
     e.preventDefault();
 });
