@@ -317,673 +317,676 @@ function hello() {
           e.preventDefault();
         });
       }
-      // document
-      //   .querySelector(".generateDailyMix")
-      //   .addEventListener("click", function (e) {
-      item.classList.add("animated");
-      document.querySelector(".wrapper").classList.add("hidden");
-      item.classList.add("hinge");
-      show_daily_mix2.classList.remove("hidden");
-      document.querySelector(".cont1").classList.remove("hidden");
-      item2.classList.add("animated");
-      item2.classList.add("hinge");
-      item3.classList.add("animated");
-      item3.classList.add("hinge");
-      item4.classList.add("animated");
-      item4.classList.add("hinge");
-      // document.querySelector('.container').classList.remove("hidden");
-      let weak_index1 = Math.floor(Math.random() * weak_topicss.length);
-      let weak_index2 = Math.floor(Math.random() * weak_topicss.length);
-      let weak_index3 = Math.floor(Math.random() * weak_topicss.length);
-      let strong_index1 = Math.floor(Math.random() * strong_topicss.length);
-      let strong_index2 = Math.floor(Math.random() * strong_topicss.length);
-      let weak_topic1 = weak_topicss[weak_index1];
-      let weak_topic2 = weak_topicss[weak_index2];
-      let weak_topic3 = weak_topicss[weak_index3];
-      let strong_topic1 = strong_topicss[strong_index1];
-      let strong_topic2 = strong_topicss[strong_index2];
+      document
+        .querySelector(".generateDailyMix")
+        .addEventListener("click", function (e) {
+          item.classList.add("animated");
+          document.querySelector(".wrapper").classList.add("hidden");
+          item.classList.add("hinge");
+          show_daily_mix2.classList.remove("hidden");
+          document.querySelector(".cont1").classList.remove("hidden");
+          item2.classList.add("animated");
+          item2.classList.add("hinge");
+          item3.classList.add("animated");
+          item3.classList.add("hinge");
+          item4.classList.add("animated");
+          item4.classList.add("hinge");
+          // document.querySelector('.container').classList.remove("hidden");
+          let weak_index1 = Math.floor(Math.random() * weak_topicss.length);
+          let weak_index2 = Math.floor(Math.random() * weak_topicss.length);
+          let weak_index3 = Math.floor(Math.random() * weak_topicss.length);
+          let strong_index1 = Math.floor(Math.random() * strong_topicss.length);
+          let strong_index2 = Math.floor(Math.random() * strong_topicss.length);
+          let weak_topic1 = weak_topicss[weak_index1];
+          let weak_topic2 = weak_topicss[weak_index2];
+          let weak_topic3 = weak_topicss[weak_index3];
+          let strong_topic1 = strong_topicss[strong_index1];
+          let strong_topic2 = strong_topicss[strong_index2];
 
-      function generate_easy_question(arr, no) {
-        let result = [];
+          function generate_easy_question(arr, no) {
+            let result = [];
 
-        for (let i = 0; i < arr.problems.length; i++) {
-          let str = arr.problems[i].contestId + "-" + arr.problems[i].index;
-          if (solved.has(str)) {
-            continue;
-          }
-          if (no == 0) {
-            break;
-          }
-          if (arr.problems[i].rating !== undefined) {
-            if (arr.problems[i].rating <= 1200) {
-              no--;
-              result.push(arr.problems[i]);
+            for (let i = 0; i < arr.problems.length; i++) {
+              let str = arr.problems[i].contestId + "-" + arr.problems[i].index;
+              if (solved.has(str)) {
+                continue;
+              }
+              if (no == 0) {
+                break;
+              }
+              if (arr.problems[i].rating !== undefined) {
+                if (arr.problems[i].rating <= 1200) {
+                  no--;
+                  result.push(arr.problems[i]);
+                }
+              } else {
+                if (arr.problems[i].points <= 1200) {
+                  no--;
+                  result.push(arr.problems[i]);
+                }
+              }
             }
-          } else {
-            if (arr.problems[i].points <= 1200) {
-              no--;
-              result.push(arr.problems[i]);
-            }
+            return result;
           }
-        }
-        return result;
-      }
-      function generate_medium_question(arr, no) {
-        let result = [];
+          function generate_medium_question(arr, no) {
+            let result = [];
 
-        for (let i = 0; i < arr.problems.length; i++) {
-          let str = arr.problems[i].contestId + "-" + arr.problems[i].index;
-          if (solved.has(str)) {
-            continue;
-          }
-          if (no == 0) {
-            break;
-          }
-          if (arr.problems[i].rating !== undefined) {
-            if (
-              arr.problems[i].rating <= 1700 &&
-              arr.problems[i].rating > 1200
-            ) {
-              no--;
-              result.push(arr.problems[i]);
+            for (let i = 0; i < arr.problems.length; i++) {
+              let str = arr.problems[i].contestId + "-" + arr.problems[i].index;
+              if (solved.has(str)) {
+                continue;
+              }
+              if (no == 0) {
+                break;
+              }
+              if (arr.problems[i].rating !== undefined) {
+                if (
+                  arr.problems[i].rating <= 1700 &&
+                  arr.problems[i].rating > 1200
+                ) {
+                  no--;
+                  result.push(arr.problems[i]);
+                }
+              } else {
+                if (
+                  arr.problems[i].points <= 1700 &&
+                  arr.problems[i].points >= 1200
+                ) {
+                  no--;
+                  result.push(arr.problems[i]);
+                }
+              }
             }
-          } else {
-            if (
-              arr.problems[i].points <= 1700 &&
-              arr.problems[i].points >= 1200
-            ) {
-              no--;
-              result.push(arr.problems[i]);
-            }
+            return result;
           }
-        }
-        return result;
-      }
-      function generate_hard_question(arr, no) {
-        let result = [];
+          function generate_hard_question(arr, no) {
+            let result = [];
 
-        for (let i = 0; i < arr.problems.length; i++) {
-          let str = arr.problems[i].contestId + "-" + arr.problems[i].index;
-          if (solved.has(str)) {
-            continue;
-          }
-          if (no == 0) {
-            break;
-          }
-          if (arr.problems[i].rating !== undefined) {
-            if (
-              arr.problems[i].rating <= 2400 &&
-              arr.problems[i].rating > 1900
-            ) {
-              no--;
-              result.push(arr.problems[i]);
+            for (let i = 0; i < arr.problems.length; i++) {
+              let str = arr.problems[i].contestId + "-" + arr.problems[i].index;
+              if (solved.has(str)) {
+                continue;
+              }
+              if (no == 0) {
+                break;
+              }
+              if (arr.problems[i].rating !== undefined) {
+                if (
+                  arr.problems[i].rating <= 2400 &&
+                  arr.problems[i].rating > 1900
+                ) {
+                  no--;
+                  result.push(arr.problems[i]);
+                }
+              } else {
+                if (
+                  arr.problems[i].points >= 1500 &&
+                  arr.problems[i].points <= 1900
+                ) {
+                  no--;
+                  result.push(arr.problems[i]);
+                }
+              }
             }
-          } else {
-            if (
-              arr.problems[i].points >= 1500 &&
-              arr.problems[i].points <= 1900
-            ) {
-              no--;
-              result.push(arr.problems[i]);
+            return result;
+          }
+          let set1 = [];
+          let set2 = [];
+          let set3 = [];
+          let set4 = [];
+          async function get_daily_mix_A(set_no) {
+            let modified_url = `https://codeforces.com/api/problemset.problems?tags=${weak_topic1}`;
+            const jsondata = await fetch(modified_url);
+            const jsdata = await jsondata.json();
+            // let A = generate_easy_question(jsdata.result, 1);
+            let result = [];
+            let no = 1;
+            for (let i = 0; i < jsdata.result.problems.length; i++) {
+              let str =
+                jsdata.result.problems[i].contestId +
+                "-" +
+                jsdata.result.problems[i].index;
+              if (solved.has(str)) {
+                continue;
+              }
+              let fl = 0;
+              console.log(set1.length);
+              console.log(set2.length);
+              console.log(set3.length);
+              console.log(set4.length);
+              for (let j = 0; j < set1.length; j++) {
+                if (set1[j][0] === jsdata.result.problems[i].name) {
+                  console.log(jsdata.result.problems[i].name);
+                  fl = 1;
+                  break;
+                }
+              }
+              for (let j = 0; j < set2.length; j++) {
+                if (set2[j][0] === jsdata.result.problems[i].name) {
+                  fl = 1;
+                  console.log(jsdata.result.problems[i].name);
+                  break;
+                }
+              }
+              for (let j = 0; j < set3.length; j++) {
+                if (set3[j][0] === jsdata.result.problems[i].name) {
+                  fl = 1;
+                  console.log(jsdata.result.problems[i].name);
+                  break;
+                }
+              }
+              for (let j = 0; j < set4.length; j++) {
+                if (set4[j][0] === jsdata.result.problems[i].name) {
+                  fl = 1;
+                  console.log(jsdata.result.problems[i].name);
+                  break;
+                }
+              }
+              if (fl === 1) {
+                continue;
+              }
+              if (no == 0) {
+                break;
+              }
+              if (jsdata.result.problems[i].rating !== undefined) {
+                if (jsdata.result.problems[i].rating <= 1200) {
+                  no = no - 1;
+                  result.push(jsdata.result.problems[i]);
+                }
+              } else {
+                if (jsdata.result.problems[i].points <= 1200) {
+                  no = no - 1;
+                  result.push(jsdata.result.problems[i]);
+                }
+              }
             }
-          }
-        }
-        return result;
-      }
-      let set1 = [];
-      let set2 = [];
-      let set3 = [];
-      let set4 = [];
-      async function get_daily_mix_A(set_no) {
-        let modified_url = `https://codeforces.com/api/problemset.problems?tags=${weak_topic1}`;
-        const jsondata = await fetch(modified_url);
-        const jsdata = await jsondata.json();
-        // let A = generate_easy_question(jsdata.result, 1);
-        let result = [];
-        let no = 1;
-        for (let i = 0; i < jsdata.result.problems.length; i++) {
-          let str =
-            jsdata.result.problems[i].contestId +
-            "-" +
-            jsdata.result.problems[i].index;
-          if (solved.has(str)) {
-            continue;
-          }
-          let fl = 0;
-          console.log(set1.length);
-          console.log(set2.length);
-          console.log(set3.length);
-          console.log(set4.length);
-          for (let j = 0; j < set1.length; j++) {
-            if (set1[j][0] === jsdata.result.problems[i].name) {
-              console.log(jsdata.result.problems[i].name);
-              fl = 1;
-              break;
+            let A = result;
+            for (let i = 0; i < A.length; i++) {
+              console.log(A);
+              if (set_no === 1) {
+                set1.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
+              } else if (set_no === 2) {
+                set2.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
+              } else if (set_no === 3) {
+                set3.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
+              } else if (set_no === 4) {
+                set4.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
+              }
             }
-          }
-          for (let j = 0; j < set2.length; j++) {
-            if (set2[j][0] === jsdata.result.problems[i].name) {
-              fl = 1;
-              console.log(jsdata.result.problems[i].name);
-              break;
-            }
-          }
-          for (let j = 0; j < set3.length; j++) {
-            if (set3[j][0] === jsdata.result.problems[i].name) {
-              fl = 1;
-              console.log(jsdata.result.problems[i].name);
-              break;
-            }
-          }
-          for (let j = 0; j < set4.length; j++) {
-            if (set4[j][0] === jsdata.result.problems[i].name) {
-              fl = 1;
-              console.log(jsdata.result.problems[i].name);
-              break;
-            }
-          }
-          if (fl === 1) {
-            continue;
-          }
-          if (no == 0) {
-            break;
-          }
-          if (jsdata.result.problems[i].rating !== undefined) {
-            if (jsdata.result.problems[i].rating <= 1200) {
-              no = no - 1;
-              result.push(jsdata.result.problems[i]);
-            }
-          } else {
-            if (jsdata.result.problems[i].points <= 1200) {
-              no = no - 1;
-              result.push(jsdata.result.problems[i]);
-            }
-          }
-        }
-        let A = result;
-        for (let i = 0; i < A.length; i++) {
-          console.log(A);
-          if (set_no === 1) {
-            set1.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
-          } else if (set_no === 2) {
-            set2.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
-          } else if (set_no === 3) {
-            set3.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
-          } else if (set_no === 4) {
-            set4.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
-          }
-        }
-        get_daily_mix_B(set_no);
-        //console.log(jsdata.result);
-      }
-
-      async function get_daily_mix_B(set_no) {
-        let modified_url = `https://codeforces.com/api/problemset.problems?tags=${weak_topic2}`;
-        const jsondata = await fetch(modified_url);
-        const jsdata = await jsondata.json();
-        // let A = generate_medium_question(jsdata.result, 1);
-        let result = [];
-        let no = 1;
-        for (let i = 0; i < jsdata.result.problems.length; i++) {
-          let str =
-            jsdata.result.problems[i].contestId +
-            "-" +
-            jsdata.result.problems[i].index;
-          if (solved.has(str)) {
-            continue;
-          }
-          let fl = 0;
-          for (let j = 0; j < set1.length; j++) {
-            if (set1[j][0] === jsdata.result.problems[i].name) {
-              fl = 1;
-              console.log(jsdata.result.problems[i].name);
-              break;
-            }
-          }
-          for (let j = 0; j < set2.length; j++) {
-            if (set2[j][0] === jsdata.result.problems[i].name) {
-              fl = 1;
-              console.log(jsdata.result.problems[i].name);
-              break;
-            }
-          }
-          for (let j = 0; j < set3.length; j++) {
-            if (set3[j][0] === jsdata.result.problems[i].name) {
-              fl = 1;
-              console.log(jsdata.result.problems[i].name);
-              break;
-            }
-          }
-          for (let j = 0; j < set4.length; j++) {
-            if (set4[j][0] === jsdata.result.problems[i].name) {
-              fl = 1;
-              console.log(jsdata.result.problems[i].name);
-              break;
-            }
-          }
-          if (fl === 1) {
-            continue;
-          }
-          if (no == 0) {
-            break;
+            get_daily_mix_B(set_no);
+            //console.log(jsdata.result);
           }
 
-          if (jsdata.result.problems[i].rating !== undefined) {
-            if (
-              jsdata.result.problems[i].rating <= 1700 &&
-              jsdata.result.problems[i].rating > 1200
-            ) {
-              no--;
-              result.push(jsdata.result.problems[i]);
-            }
-          } else {
-            if (
-              jsdata.result.problems[i].points <= 1700 &&
-              jsdata.result.problems[i].points >= 1200
-            ) {
-              no--;
-              result.push(jsdata.result.problems[i]);
-            }
-          }
-        }
-        let A = result;
+          async function get_daily_mix_B(set_no) {
+            let modified_url = `https://codeforces.com/api/problemset.problems?tags=${weak_topic2}`;
+            const jsondata = await fetch(modified_url);
+            const jsdata = await jsondata.json();
+            // let A = generate_medium_question(jsdata.result, 1);
+            let result = [];
+            let no = 1;
+            for (let i = 0; i < jsdata.result.problems.length; i++) {
+              let str =
+                jsdata.result.problems[i].contestId +
+                "-" +
+                jsdata.result.problems[i].index;
+              if (solved.has(str)) {
+                continue;
+              }
+              let fl = 0;
+              for (let j = 0; j < set1.length; j++) {
+                if (set1[j][0] === jsdata.result.problems[i].name) {
+                  fl = 1;
+                  console.log(jsdata.result.problems[i].name);
+                  break;
+                }
+              }
+              for (let j = 0; j < set2.length; j++) {
+                if (set2[j][0] === jsdata.result.problems[i].name) {
+                  fl = 1;
+                  console.log(jsdata.result.problems[i].name);
+                  break;
+                }
+              }
+              for (let j = 0; j < set3.length; j++) {
+                if (set3[j][0] === jsdata.result.problems[i].name) {
+                  fl = 1;
+                  console.log(jsdata.result.problems[i].name);
+                  break;
+                }
+              }
+              for (let j = 0; j < set4.length; j++) {
+                if (set4[j][0] === jsdata.result.problems[i].name) {
+                  fl = 1;
+                  console.log(jsdata.result.problems[i].name);
+                  break;
+                }
+              }
+              if (fl === 1) {
+                continue;
+              }
+              if (no == 0) {
+                break;
+              }
 
-        for (let i = 0; i < A.length; i++) {
-          if (set_no === 1) {
-            set1.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
-          } else if (set_no === 2) {
-            set2.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
-          } else if (set_no === 3) {
-            set3.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
-          } else if (set_no === 4) {
-            set4.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
-          }
-        }
+              if (jsdata.result.problems[i].rating !== undefined) {
+                if (
+                  jsdata.result.problems[i].rating <= 1700 &&
+                  jsdata.result.problems[i].rating > 1200
+                ) {
+                  no--;
+                  result.push(jsdata.result.problems[i]);
+                }
+              } else {
+                if (
+                  jsdata.result.problems[i].points <= 1700 &&
+                  jsdata.result.problems[i].points >= 1200
+                ) {
+                  no--;
+                  result.push(jsdata.result.problems[i]);
+                }
+              }
+            }
+            let A = result;
 
-        get_daily_mix_C(set_no);
-        //console.log(jsdata.result);
-      }
+            for (let i = 0; i < A.length; i++) {
+              if (set_no === 1) {
+                set1.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
+              } else if (set_no === 2) {
+                set2.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
+              } else if (set_no === 3) {
+                set3.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
+              } else if (set_no === 4) {
+                set4.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
+              }
+            }
 
-      async function get_daily_mix_C(set_no) {
-        let modified_url = `https://codeforces.com/api/problemset.problems?tags=${strong_topic1}`;
-        const jsondata = await fetch(modified_url);
-        const jsdata = await jsondata.json();
-        // let A = generate_medium_question(jsdata.result, 1);
-        let result = [];
-        let no = 1;
-        for (let i = 0; i < jsdata.result.problems.length; i++) {
-          let str =
-            jsdata.result.problems[i].contestId +
-            "-" +
-            jsdata.result.problems[i].index;
-          if (solved.has(str)) {
-            continue;
-          }
-          let fl = 0;
-          for (let j = 0; j < set1.length; j++) {
-            if (set1[j][0] === jsdata.result.problems[i].name) {
-              fl = 1;
-              console.log(jsdata.result.problems[i].name);
-              break;
-            }
-          }
-          for (let j = 0; j < set2.length; j++) {
-            if (set2[j][0] === jsdata.result.problems[i].name) {
-              fl = 1;
-              console.log(jsdata.result.problems[i].name);
-              break;
-            }
-          }
-          for (let j = 0; j < set3.length; j++) {
-            if (set3[j][0] === jsdata.result.problems[i].name) {
-              fl = 1;
-              break;
-            }
-          }
-          for (let j = 0; j < set4.length; j++) {
-            if (set4[j][0] === jsdata.result.problems[i].name) {
-              fl = 1;
-              console.log(jsdata.result.problems[i].name);
-              break;
-            }
-          }
-          if (fl === 1) {
-            continue;
-          }
-          if (no == 0) {
-            break;
-          }
-          if (jsdata.result.problems[i].rating !== undefined) {
-            if (
-              jsdata.result.problems[i].rating <= 1700 &&
-              jsdata.result.problems[i].rating > 1200
-            ) {
-              no--;
-              result.push(jsdata.result.problems[i]);
-            }
-          } else {
-            if (
-              jsdata.result.problems[i].points <= 1700 &&
-              jsdata.result.problems[i].points >= 1200
-            ) {
-              no--;
-              result.push(jsdata.result.problems[i]);
-            }
-          }
-        }
-        let A = result;
-        for (let i = 0; i < A.length; i++) {
-          if (set_no === 1) {
-            set1.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
-          } else if (set_no === 2) {
-            set2.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
-          } else if (set_no === 3) {
-            set3.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
-          } else if (set_no === 4) {
-            set4.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
-          }
-        }
-        //console.log(jsdata.result);
-        get_daily_mix_D(set_no);
-      }
-
-      async function get_daily_mix_D(set_no) {
-        let modified_url = `https://codeforces.com/api/problemset.problems?tags=${weak_topic3}`;
-        const jsondata = await fetch(modified_url);
-        const jsdata = await jsondata.json();
-        // let A = generate_hard_question(jsdata.result, 1);
-        let result = [];
-        let no = 1;
-        for (let i = 0; i < jsdata.result.problems.length; i++) {
-          let str =
-            jsdata.result.problems[i].contestId +
-            "-" +
-            jsdata.result.problems[i].index;
-          if (solved.has(str)) {
-            continue;
-          }
-          let fl = 0;
-          for (let j = 0; j < set1.length; j++) {
-            if (set1[j][0] === jsdata.result.problems[i].name) {
-              console.log(set2[j][0]);
-              fl = 1;
-              console.log(jsdata.result.problems[i].name);
-              break;
-            }
-          }
-          for (let j = 0; j < set2.length; j++) {
-            if (set2[j][0] === jsdata.result.problems[i].name) {
-              fl = 1;
-              console.log(jsdata.result.problems[i].name);
-              break;
-            }
-          }
-          for (let j = 0; j < set3.length; j++) {
-            if (set3[j][0] === jsdata.result.problems[i].name) {
-              fl = 1;
-              console.log(jsdata.result.problems[i].name);
-              break;
-            }
-          }
-          for (let j = 0; j < set4.length; j++) {
-            if (set4[j][0] === jsdata.result.problems[i].name) {
-              fl = 1;
-              console.log(jsdata.result.problems[i].name);
-              break;
-            }
-          }
-          if (fl === 1) {
-            continue;
-          }
-          if (no == 0) {
-            break;
+            get_daily_mix_C(set_no);
+            //console.log(jsdata.result);
           }
 
-          if (jsdata.result.problems[i].rating !== undefined) {
-            if (
-              jsdata.result.problems[i].rating <= 2400 &&
-              jsdata.result.problems[i].rating > 1900
-            ) {
-              no--;
-              result.push(jsdata.result.problems[i]);
+          async function get_daily_mix_C(set_no) {
+            let modified_url = `https://codeforces.com/api/problemset.problems?tags=${strong_topic1}`;
+            const jsondata = await fetch(modified_url);
+            const jsdata = await jsondata.json();
+            // let A = generate_medium_question(jsdata.result, 1);
+            let result = [];
+            let no = 1;
+            for (let i = 0; i < jsdata.result.problems.length; i++) {
+              let str =
+                jsdata.result.problems[i].contestId +
+                "-" +
+                jsdata.result.problems[i].index;
+              if (solved.has(str)) {
+                continue;
+              }
+              let fl = 0;
+              for (let j = 0; j < set1.length; j++) {
+                if (set1[j][0] === jsdata.result.problems[i].name) {
+                  fl = 1;
+                  console.log(jsdata.result.problems[i].name);
+                  break;
+                }
+              }
+              for (let j = 0; j < set2.length; j++) {
+                if (set2[j][0] === jsdata.result.problems[i].name) {
+                  fl = 1;
+                  console.log(jsdata.result.problems[i].name);
+                  break;
+                }
+              }
+              for (let j = 0; j < set3.length; j++) {
+                if (set3[j][0] === jsdata.result.problems[i].name) {
+                  fl = 1;
+                  break;
+                }
+              }
+              for (let j = 0; j < set4.length; j++) {
+                if (set4[j][0] === jsdata.result.problems[i].name) {
+                  fl = 1;
+                  console.log(jsdata.result.problems[i].name);
+                  break;
+                }
+              }
+              if (fl === 1) {
+                continue;
+              }
+              if (no == 0) {
+                break;
+              }
+              if (jsdata.result.problems[i].rating !== undefined) {
+                if (
+                  jsdata.result.problems[i].rating <= 1700 &&
+                  jsdata.result.problems[i].rating > 1200
+                ) {
+                  no--;
+                  result.push(jsdata.result.problems[i]);
+                }
+              } else {
+                if (
+                  jsdata.result.problems[i].points <= 1700 &&
+                  jsdata.result.problems[i].points >= 1200
+                ) {
+                  no--;
+                  result.push(jsdata.result.problems[i]);
+                }
+              }
             }
-          } else {
-            if (
-              jsdata.result.problems[i].points >= 1500 &&
-              jsdata.result.problems[i].points <= 1900
-            ) {
-              no--;
-              result.push(jsdata.result.problems[i]);
+            let A = result;
+            for (let i = 0; i < A.length; i++) {
+              if (set_no === 1) {
+                set1.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
+              } else if (set_no === 2) {
+                set2.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
+              } else if (set_no === 3) {
+                set3.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
+              } else if (set_no === 4) {
+                set4.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
+              }
             }
+            //console.log(jsdata.result);
+            get_daily_mix_D(set_no);
           }
-        }
-        let A = result;
-        for (let i = 0; i < A.length; i++) {
-          if (set_no === 1) {
-            set1.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
-          } else if (set_no === 2) {
-            set2.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
-          } else if (set_no === 3) {
-            set3.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
-          } else if (set_no === 4) {
-            set4.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
-          }
-        }
-        get_daily_mix_E(set_no);
-      }
 
-      async function get_daily_mix_E(set_no) {
-        let modified_url = `https://codeforces.com/api/problemset.problems?tags=${strong_topic2}`;
-        const jsondata = await fetch(modified_url);
-        const jsdata = await jsondata.json();
-        // let A = generate_hard_question(jsdata.result, 1);
-        let result = [];
-        let no = 1;
-        for (let i = 0; i < jsdata.result.problems.length; i++) {
-          let str =
-            jsdata.result.problems[i].contestId +
-            "-" +
-            jsdata.result.problems[i].index;
-          if (solved.has(str)) {
-            continue;
-          }
-          let fl = 0;
-          for (let j = 0; j < set1.length; j++) {
-            if (set2[j][0] === jsdata.result.problems[i].name) {
-              fl = 1;
-              console.log(jsdata.result.problems[i].name);
-              break;
-            }
-          }
-          for (let j = 0; j < set2.length; j++) {
-            if (set2[j][0] === jsdata.result.problems[i].name) {
-              fl = 1;
-              console.log(jsdata.result.problems[i].name);
-              break;
-            }
-          }
-          for (let j = 0; j < set3.length; j++) {
-            if (set3[j][0] === jsdata.result.problems[i].name) {
-              fl = 1;
-              console.log(jsdata.result.problems[i].name);
-              break;
-            }
-          }
-          for (let j = 0; j < set4.length; j++) {
-            if (set4[j][0] === jsdata.result.problems[i].name) {
-              fl = 1;
-              console.log(jsdata.result.problems[i].name);
-              break;
-            }
-          }
-          if (fl === 1) {
-            continue;
-          }
-          if (no == 0) {
-            break;
-          }
-          if (jsdata.result.problems[i].rating !== undefined) {
-            if (
-              jsdata.result.problems[i].rating <= 2400 &&
-              jsdata.result.problems[i].rating > 1900
-            ) {
-              no--;
-              result.push(jsdata.result.problems[i]);
-            }
-          } else {
-            if (
-              jsdata.result.problems[i].points >= 1500 &&
-              jsdata.result.problems[i].points <= 1900
-            ) {
-              no--;
-              result.push(jsdata.result.problems[i]);
-            }
-          }
-        }
-        let A = result;
-        for (let i = 0; i < A.length; i++) {
-          if (set_no === 1) {
-            set1.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
-          } else if (set_no === 2) {
-            set2.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
-          } else if (set_no === 3) {
-            set3.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
-          } else if (set_no === 4) {
-            set4.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
-          }
-        }
-      }
-      let p = document.querySelectorAll(".generate_daily");
-      for (let i = 0; i < 4; i++) {
-        weak_index1 = Math.floor(Math.random() * weak_topicss.length);
-        weak_index2 = Math.floor(Math.random() * weak_topicss.length);
-        weak_index3 = Math.floor(Math.random() * weak_topicss.length);
-        strong_index1 = Math.floor(Math.random() * strong_topicss.length);
-        strong_index2 = Math.floor(Math.random() * strong_topicss.length);
-        weak_topic1 = weak_topicss[weak_index1];
-        weak_topic2 = weak_topicss[weak_index2];
-        weak_topic3 = weak_topicss[weak_index3];
-        strong_topic1 = strong_topicss[strong_index1];
-        strong_topic2 = strong_topicss[strong_index2];
+          async function get_daily_mix_D(set_no) {
+            let modified_url = `https://codeforces.com/api/problemset.problems?tags=${weak_topic3}`;
+            const jsondata = await fetch(modified_url);
+            const jsdata = await jsondata.json();
+            // let A = generate_hard_question(jsdata.result, 1);
+            let result = [];
+            let no = 1;
+            for (let i = 0; i < jsdata.result.problems.length; i++) {
+              let str =
+                jsdata.result.problems[i].contestId +
+                "-" +
+                jsdata.result.problems[i].index;
+              if (solved.has(str)) {
+                continue;
+              }
+              let fl = 0;
+              for (let j = 0; j < set1.length; j++) {
+                if (set1[j][0] === jsdata.result.problems[i].name) {
+                  console.log(set2[j][0]);
+                  fl = 1;
+                  console.log(jsdata.result.problems[i].name);
+                  break;
+                }
+              }
+              for (let j = 0; j < set2.length; j++) {
+                if (set2[j][0] === jsdata.result.problems[i].name) {
+                  fl = 1;
+                  console.log(jsdata.result.problems[i].name);
+                  break;
+                }
+              }
+              for (let j = 0; j < set3.length; j++) {
+                if (set3[j][0] === jsdata.result.problems[i].name) {
+                  fl = 1;
+                  console.log(jsdata.result.problems[i].name);
+                  break;
+                }
+              }
+              for (let j = 0; j < set4.length; j++) {
+                if (set4[j][0] === jsdata.result.problems[i].name) {
+                  fl = 1;
+                  console.log(jsdata.result.problems[i].name);
+                  break;
+                }
+              }
+              if (fl === 1) {
+                continue;
+              }
+              if (no == 0) {
+                break;
+              }
 
-        get_daily_mix_A(i + 1);
-        console.log(set1);
-        console.log(set2);
-        console.log(set3);
-        console.log(set4);
-        p[i].addEventListener("click", function (e) {
-          let curr_set = [];
-          if (i === 0) {
-            curr_set = set1;
-          } else if (i === 1) {
-            curr_set = set2;
-          } else if (i === 2) {
-            curr_set = set3;
-          } else if (i === 3) {
-            curr_set = set4;
+              if (jsdata.result.problems[i].rating !== undefined) {
+                if (
+                  jsdata.result.problems[i].rating <= 2400 &&
+                  jsdata.result.problems[i].rating > 1900
+                ) {
+                  no--;
+                  result.push(jsdata.result.problems[i]);
+                }
+              } else {
+                if (
+                  jsdata.result.problems[i].points >= 1500 &&
+                  jsdata.result.problems[i].points <= 1900
+                ) {
+                  no--;
+                  result.push(jsdata.result.problems[i]);
+                }
+              }
+            }
+            let A = result;
+            for (let i = 0; i < A.length; i++) {
+              if (set_no === 1) {
+                set1.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
+              } else if (set_no === 2) {
+                set2.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
+              } else if (set_no === 3) {
+                set3.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
+              } else if (set_no === 4) {
+                set4.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
+              }
+            }
+            get_daily_mix_E(set_no);
           }
-          let div = document.querySelector(".problem-name-E");
-          // console.log(div);
-          while (div.firstChild) {
-            // console.log(div.firstChild);
-            div.removeChild(div.firstChild);
+
+          async function get_daily_mix_E(set_no) {
+            let modified_url = `https://codeforces.com/api/problemset.problems?tags=${strong_topic2}`;
+            const jsondata = await fetch(modified_url);
+            const jsdata = await jsondata.json();
+            // let A = generate_hard_question(jsdata.result, 1);
+            let result = [];
+            let no = 1;
+            for (let i = 0; i < jsdata.result.problems.length; i++) {
+              let str =
+                jsdata.result.problems[i].contestId +
+                "-" +
+                jsdata.result.problems[i].index;
+              if (solved.has(str)) {
+                continue;
+              }
+              let fl = 0;
+              for (let j = 0; j < set1.length; j++) {
+                if (set2[j][0] === jsdata.result.problems[i].name) {
+                  fl = 1;
+                  console.log(jsdata.result.problems[i].name);
+                  break;
+                }
+              }
+              for (let j = 0; j < set2.length; j++) {
+                if (set2[j][0] === jsdata.result.problems[i].name) {
+                  fl = 1;
+                  console.log(jsdata.result.problems[i].name);
+                  break;
+                }
+              }
+              for (let j = 0; j < set3.length; j++) {
+                if (set3[j][0] === jsdata.result.problems[i].name) {
+                  fl = 1;
+                  console.log(jsdata.result.problems[i].name);
+                  break;
+                }
+              }
+              for (let j = 0; j < set4.length; j++) {
+                if (set4[j][0] === jsdata.result.problems[i].name) {
+                  fl = 1;
+                  console.log(jsdata.result.problems[i].name);
+                  break;
+                }
+              }
+              if (fl === 1) {
+                continue;
+              }
+              if (no == 0) {
+                break;
+              }
+              if (jsdata.result.problems[i].rating !== undefined) {
+                if (
+                  jsdata.result.problems[i].rating <= 2400 &&
+                  jsdata.result.problems[i].rating > 1900
+                ) {
+                  no--;
+                  result.push(jsdata.result.problems[i]);
+                }
+              } else {
+                if (
+                  jsdata.result.problems[i].points >= 1500 &&
+                  jsdata.result.problems[i].points <= 1900
+                ) {
+                  no--;
+                  result.push(jsdata.result.problems[i]);
+                }
+              }
+            }
+            let A = result;
+            for (let i = 0; i < A.length; i++) {
+              if (set_no === 1) {
+                set1.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
+              } else if (set_no === 2) {
+                set2.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
+              } else if (set_no === 3) {
+                set3.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
+              } else if (set_no === 4) {
+                set4.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
+              }
+            }
           }
-           div = document.querySelector(".problem-name-D");
-          // console.log(div);
-          while (div.firstChild) {
-            // console.log(div.firstChild);
-            div.removeChild(div.firstChild);
-          }
-           div = document.querySelector(".problem-name-C");
-          // console.log(div);
-          while (div.firstChild) {
-            // console.log(div.firstChild);
-            div.removeChild(div.firstChild);
-          }
-           div = document.querySelector(".problem-name-B");
-          // console.log(div);
-          while (div.firstChild) {
-            // console.log(div.firstChild);
-            div.removeChild(div.firstChild);
-          }
-           div = document.querySelector(".problem-name-A");
-          // console.log(div);
-          while (div.firstChild) {
-            // console.log(div.firstChild);
-            div.removeChild(div.firstChild);
-          }
-          for (let i = 0; i < curr_set.length; i++) {
-            let link = document.createElement("div");
-            let p = convert_to_link(`${curr_set[i][1]}`);
-            link.innerHTML = `<a href="${p}">Let's Do It</a>`;
-            if (i == 0) {
-              document.querySelector(".problem-name-A").innerHTML =
-                curr_set[i][0];
-              let div = document.querySelector(".linkA");
+
+          let p = document.querySelectorAll(".generate_daily");
+          for (let i = 0; i < 4; i++) {
+            weak_index1 = Math.floor(Math.random() * weak_topicss.length);
+            weak_index2 = Math.floor(Math.random() * weak_topicss.length);
+            weak_index3 = Math.floor(Math.random() * weak_topicss.length);
+            strong_index1 = Math.floor(Math.random() * strong_topicss.length);
+            strong_index2 = Math.floor(Math.random() * strong_topicss.length);
+            weak_topic1 = weak_topicss[weak_index1];
+            weak_topic2 = weak_topicss[weak_index2];
+            weak_topic3 = weak_topicss[weak_index3];
+            strong_topic1 = strong_topicss[strong_index1];
+            strong_topic2 = strong_topicss[strong_index2];
+
+            get_daily_mix_A(i + 1);
+            console.log(set1);
+            console.log(set2);
+            console.log(set3);
+            console.log(set4);
+            p[i].addEventListener("click", function (e) {
+              let curr_set = [];
+              if (i === 0) {
+                curr_set = set1;
+              } else if (i === 1) {
+                curr_set = set2;
+              } else if (i === 2) {
+                curr_set = set3;
+              } else if (i === 3) {
+                curr_set = set4;
+              }
+              let div = document.querySelector(".problem-name-E");
               // console.log(div);
               while (div.firstChild) {
                 // console.log(div.firstChild);
                 div.removeChild(div.firstChild);
               }
-              document.querySelector(".linkA").appendChild(link);
-            }
-            if (i == 1) {
-              document.querySelector(".problem-name-B").innerHTML =
-                curr_set[i][0];
-
-              let div = document.querySelector(".linkB");
-              console.log(div);
+              div = document.querySelector(".problem-name-D");
+              // console.log(div);
               while (div.firstChild) {
-                console.log(div.firstChild);
+                // console.log(div.firstChild);
                 div.removeChild(div.firstChild);
               }
-              document.querySelector(".linkB").appendChild(link);
-            }
-            if (i == 2) {
-              document.querySelector(".problem-name-C").innerHTML =
-                curr_set[i][0];
-
-              let div = document.querySelector(".linkC");
-              console.log(div);
+              div = document.querySelector(".problem-name-C");
+              // console.log(div);
               while (div.firstChild) {
-                console.log(div.firstChild);
+                // console.log(div.firstChild);
                 div.removeChild(div.firstChild);
               }
-              document.querySelector(".linkC").appendChild(link);
-            }
-            if (i == 3) {
-              document.querySelector(".problem-name-D").innerHTML =
-                curr_set[i][0];
-
-              let div = document.querySelector(".linkD");
-              console.log(div);
+              div = document.querySelector(".problem-name-B");
+              // console.log(div);
               while (div.firstChild) {
-                console.log(div.firstChild);
+                // console.log(div.firstChild);
                 div.removeChild(div.firstChild);
               }
-              document.querySelector(".linkD").appendChild(link);
-            }
-            if (i == 4) {
-              document.querySelector(".problem-name-E").innerHTML =
-                curr_set[i][0];
-
-              let div = document.querySelector(".linkE");
-              console.log(div);
+              div = document.querySelector(".problem-name-A");
+              // console.log(div);
               while (div.firstChild) {
-                console.log(div.firstChild);
+                // console.log(div.firstChild);
                 div.removeChild(div.firstChild);
               }
-              document.querySelector(".linkE").appendChild(link);
-            }
+              for (let i = 0; i < curr_set.length; i++) {
+                let link = document.createElement("div");
+                let p = convert_to_link(`${curr_set[i][1]}`);
+                link.innerHTML = `<a href="${p}">Let's Do It</a>`;
+                if (i == 0) {
+                  document.querySelector(".problem-name-A").innerHTML =
+                    curr_set[i][0];
+                  let div = document.querySelector(".linkA");
+                  // console.log(div);
+                  while (div.firstChild) {
+                    // console.log(div.firstChild);
+                    div.removeChild(div.firstChild);
+                  }
+                  document.querySelector(".linkA").appendChild(link);
+                }
+                if (i == 1) {
+                  document.querySelector(".problem-name-B").innerHTML =
+                    curr_set[i][0];
+
+                  let div = document.querySelector(".linkB");
+                  console.log(div);
+                  while (div.firstChild) {
+                    console.log(div.firstChild);
+                    div.removeChild(div.firstChild);
+                  }
+                  document.querySelector(".linkB").appendChild(link);
+                }
+                if (i == 2) {
+                  document.querySelector(".problem-name-C").innerHTML =
+                    curr_set[i][0];
+
+                  let div = document.querySelector(".linkC");
+                  console.log(div);
+                  while (div.firstChild) {
+                    console.log(div.firstChild);
+                    div.removeChild(div.firstChild);
+                  }
+                  document.querySelector(".linkC").appendChild(link);
+                }
+                if (i == 3) {
+                  document.querySelector(".problem-name-D").innerHTML =
+                    curr_set[i][0];
+
+                  let div = document.querySelector(".linkD");
+                  console.log(div);
+                  while (div.firstChild) {
+                    console.log(div.firstChild);
+                    div.removeChild(div.firstChild);
+                  }
+                  document.querySelector(".linkD").appendChild(link);
+                }
+                if (i == 4) {
+                  document.querySelector(".problem-name-E").innerHTML =
+                    curr_set[i][0];
+
+                  let div = document.querySelector(".linkE");
+                  console.log(div);
+                  while (div.firstChild) {
+                    console.log(div.firstChild);
+                    div.removeChild(div.firstChild);
+                  }
+                  document.querySelector(".linkE").appendChild(link);
+                }
+              }
+              document.querySelector(".container").classList.remove("hidden");
+              document.querySelector(".container").classList.add("animated");
+              document
+                .querySelector(".container")
+                .classList.add("bounceInRight");
+              e.preventDefault();
+            });
           }
-          document.querySelector(".container").classList.remove("hidden");
-          document.querySelector(".container").classList.add("animated");
-          document.querySelector(".container").classList.add("bounceInRight");
           e.preventDefault();
         });
-      }
-      // e.preventDefault();
-      // });
     }
 
     getsubmissions();
@@ -1274,5 +1277,4 @@ document.querySelector("#codeblast1").addEventListener("click", function (e) {
   document.location.href = cblast_url;
 
   e.preventDefault();
-});  
-
+});
