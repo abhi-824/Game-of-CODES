@@ -30,18 +30,18 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                	<a class="nav-link" href="dashboard.html">Dashboard</a>
+                	<a class="nav-link" href="dashboard.html" id="dashboard">Dashboard</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="compare.html">Compare</a>
+                    <a class="nav-link" href="compare.html" id="compare">Compare</a>
                 </li>
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="profile.html">Profile<div class="line1"></div><span class="sr-only">current</span></a>
+                    <a class="nav-link" href="profile.html" id="profile">Profile<div class="line1"></div><span class="sr-only">current</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="codeblast.html">Code Blast</a>
+                    <a class="nav-link" href="codeblast.html" id="codeblast">Code Blast</a>
                 </li>
             </ul>
             <input class="form-control" type="search" placeholder="Search" aria-label="Search">
@@ -58,9 +58,9 @@
             <div class="statistics">
                 <div class="stat" id="cur_rating">CURRENT RATING: </div>
                 <div class="stat" id="max_rating">BEST RATING: </div>
-                <div class="stat">ACCURACY RATE: </div>
+                <div class="stat" id="acc_rate">ACCURACY RATE: </div>
                 <div class="stat" id="submissions">SUBMISSIONS: </div>
-                <div class="stat">MATCHES WON: </div>
+                <div class="stat" id="matches_won">MATCHES WON: </div>
             </div>   
     </div>
 
@@ -92,15 +92,15 @@
 
 <!-- <script src="js/profilescript.js"></script> -->
 <script src="js/script.js"></script>
-<script src="js/profile.js"></script>
-<script>
+<!-- <script src="js/profile.js"></script> -->
+<!-- <script>
     function getHandle() {
         var url = document.location.href,
         params = url.split("=")[1];
         return params;
     }
     user_handle = getHandle();
-</script>
+</script> -->
 <script src="js/user_stats.js"></script>
 </body>
 </html> 
