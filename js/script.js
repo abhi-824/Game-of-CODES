@@ -1178,13 +1178,43 @@ function hello() {
     show_daily_mix2.classList.add("hidden");
     e.preventDefault();
   });
-  document.querySelector(".profile").addEventListener("click", function (e) {
+  document.querySelector("#profile1").addEventListener("click", function (e) {
     let handle = document.querySelector(".form-control").value;
     website_url = website_url + handle;
     document.location.href = website_url;
     url = "Profile.html?handle=";
     e.preventDefault();
   });
+
+  document.querySelector("#dashboard1").addEventListener("click", function (e) {
+    //console.log("Going to dashboard!");
+    let handle = document.querySelector(".form-control").value;
+    let dash_url = "dashboard.html?handle=";
+    dash_url += handle;
+    document.location.href = dash_url;
+
+    e.preventDefault();
+  });
+
+  document.querySelector("#compare1").addEventListener("click", function (e) {
+    //console.log("Going to dashboard!");
+    let handle = document.querySelector(".form-control").value;
+    let comp_url = "compare.html?handle=";
+    comp_url += handle;
+    document.location.href = comp_url;
+
+    e.preventDefault();
+  });
+
+  document.querySelector("#codeblast1").addEventListener("click", function (e) {
+    //console.log("Going to dashboard!");
+    let handle = document.querySelector(".form-control").value;
+    let cblast_url = "codeblast.html?handle=";
+    cblast_url += handle;
+    document.location.href = cblast_url;
+
+    e.preventDefault();
+  });  
 
  	//console.log(no_of_success);
 	//console.log(solved.size);
