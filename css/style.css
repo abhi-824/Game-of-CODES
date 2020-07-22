@@ -25,6 +25,11 @@ a {
   background-attachment: fixed;
   height: 200vh;
 }
+.container7 {
+  background: url("../resources/backgrounds/image1.jpg") no-repeat center/cover;
+  background-attachment: fixed;
+  height: 200vh;
+}
 .container3 {
   background: url("../resources/backgrounds/thor.png") no-repeat center
     center/cover;
@@ -38,6 +43,15 @@ a {
   height: 200vh;
 }
 .container2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 200vh;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.container8 {
   position: absolute;
   top: 0;
   left: 0;
