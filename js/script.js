@@ -866,14 +866,13 @@ function hello() {
             weak_topic3 = weak_topicss[weak_index3];
             strong_topic1 = strong_topicss[strong_index1];
             strong_topic2 = strong_topicss[strong_index2];
-            
+
             get_daily_mix_A(i + 1);
             //console.log(set1);
             //console.log(set2);
             //console.log(set3);
             //console.log(set4);
-            
-            
+
             p[i].addEventListener("click", function (e) {
               let curr_set = [];
               if (i === 0) {
@@ -885,9 +884,8 @@ function hello() {
               } else if (i === 3) {
                 curr_set = set4;
               }
-              if(curr_set.length!==5)
-              {
-                get_daily_mix_A(i+1);
+              if (curr_set.length !== 5) {
+                get_daily_mix_A(i + 1);
                 if (i === 0) {
                   curr_set = set1;
                 } else if (i === 1) {
