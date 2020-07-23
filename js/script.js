@@ -1291,3 +1291,44 @@ document.querySelector("#codeblast1").addEventListener("click", function (e) {
 
   e.preventDefault();
 });
+
+
+// FOR FUTURE CONTESTS
+
+var request = new XMLHttpRequest()
+const app = document.getElementById("futurecontest")
+
+    request.open('GET', 'https://codeforces.com/api/contest.list', true)
+
+    request.onload = function() {
+        
+      var data = JSON.parse(this.response)
+      if (request.status >= 200 && request.status < 400) 
+      {
+          data["result"].forEach(contest => {
+             
+              var cid = contest.id
+              var cname = contest.name
+              var link = "https://codeforces.com/contestRegistration/" + cid
+
+              if(contest.phase==="BEFORE")
+              {
+                  const a = document.createElement('a')
+                  a.textContent="Register"
+                  a.href=link
+
+                  const li = document.createElement('li')
+                  li.textContent=cname
+
+                   app.appendChild(li)
+                   app.appendChild(a)
+
+              }
+          });             
+      }
+
+  }
+
+  request.send()
+
+  // FUTURE CONTESTS END
