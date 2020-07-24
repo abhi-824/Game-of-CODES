@@ -78,7 +78,7 @@ $(document).ready(function() {
 document.querySelector("#dashboard").addEventListener("click", function (e) {
     console.log("Going to dashboard!");
 
-    var dash_url = "dashboard.html?handle=";
+    let dash_url = "dashboard.html?handle=";
     dash_url += user_handle;
     document.location.href = dash_url;
 
@@ -88,7 +88,7 @@ document.querySelector("#dashboard").addEventListener("click", function (e) {
 document.querySelector("#profile").addEventListener("click", function (e) {
     console.log("Going back to profile page!");
 
-    var prof_url = "profile.html?handle=";
+    let prof_url = "profile.html?handle=";
     prof_url += user_handle;
     document.location.href = prof_url;
     
@@ -98,7 +98,7 @@ document.querySelector("#profile").addEventListener("click", function (e) {
 document.querySelector("#compare").addEventListener("click", function (e) {
     console.log("Going to the compare page . . .");
 
-    var comp_url = "compare.html?handle=";
+    let comp_url = "compare.html?handle=";
     comp_url += user_handle;
     document.location.href = comp_url;
     
@@ -108,13 +108,32 @@ document.querySelector("#compare").addEventListener("click", function (e) {
 document.querySelector("#codeblast").addEventListener("click", function (e) {
     console.log("Going to codeblast!");
 
-    var cblast_url = "codeblast.html?handle=";
+    let cblast_url = "codeblast.html?handle=";
     cblast_url += user_handle;
     document.location.href = cblast_url;
     
     e.preventDefault();
 });
 
+document.querySelector("#topic-wise").addEventListener("click", function (e) {
+    console.log("Going to topic-wise training zone!");
+
+    let tz_url = "training_zone_topic_wise.html?handle=";
+    tz_url += user_handle;
+    document.location.href = tz_url;
+    
+    e.preventDefault();
+});
+
+document.querySelector("#level-wise").addEventListener("click", function (e) {
+    console.log("Going to level-wise training zone!");
+
+    let tz_url = "training_zone_level_wise.html?handle=";
+    tz_url += user_handle;
+    document.location.href = tz_url;
+    
+    e.preventDefault();
+});
 
 
 // document.querySelector("#username").addEventListener("click", function (e) {
