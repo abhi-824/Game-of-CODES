@@ -219,14 +219,14 @@ function hello() {
           }
           let tag_name =
             practice_each_topic[i].parentElement.firstChild.innerHTML;
-          // //console.log(tag_name);
+          // ////console.log(tag_name);
 
           function get_topic_graph() {
             // let modified_url2 = url2 + handle_name;
             // const jsondata2 = await fetch(modified_url2);
             // const jsdata = await jsondata2.json();
             let already = new Set();
-            //console.log(user_submissions);
+            ////console.log(user_submissions);
             let str =
               user_submissions[i].problem.contestId +
               "-" +
@@ -235,7 +235,7 @@ function hello() {
               let tags = user_submissions[i].problem.tags;
               for (let j = 0; j < tags.length; j++) {
                 if (tags[j] === tag_name) {
-                  // //console.log(user_submissions[i].verdict)
+                  // ////console.log(user_submissions[i].verdict)
                   if (user_submissions[i].verdict === "OK") {
                     if (user_submissions[i].problem.rating != undefined) {
                       let val = new_tag_map.get(
@@ -259,13 +259,13 @@ function hello() {
                 }
               }
             }
-            // //console.log(new_tag_map);
+            // ////console.log(new_tag_map);
             document
               .querySelector("#chartContainer")
               .classList.remove("hidden");
             let datapoints = [];
             for (key of new_tag_map) {
-              //console.log(key);
+              ////console.log(key);
               datapoints.push({ x: key[0], y: key[1] });
             }
             var chart = new CanvasJS.Chart("chartContainer", {
@@ -289,7 +289,7 @@ function hello() {
               ],
             });
             chart.render();
-            //console.log(new_tag_map);
+            ////console.log(new_tag_map);
           }
           get_topic_graph();
           // item.classList.add("hidden");
@@ -450,28 +450,35 @@ function hello() {
                 continue;
               }
               let fl = 0;
+              //console.log(set1.length);
+              //console.log(set2.length);
+              //console.log(set3.length);
+              //console.log(set4.length);
               for (let j = 0; j < set1.length; j++) {
-                if (set1[j][0].name === jsdata.result.problems[i].name) {
-                  console.log(jsdata.result.problems[i].name)
+                if (set1[j][0] === jsdata.result.problems[i].name) {
+                  //console.log(jsdata.result.problems[i].name);
                   fl = 1;
                   break;
                 }
               }
               for (let j = 0; j < set2.length; j++) {
-                if (set2[j][0].name === jsdata.result.problems[i].name) {
+                if (set2[j][0] === jsdata.result.problems[i].name) {
                   fl = 1;
+                  //console.log(jsdata.result.problems[i].name);
                   break;
                 }
               }
               for (let j = 0; j < set3.length; j++) {
-                if (set3[j][0].name === jsdata.result.problems[i].name) {
+                if (set3[j][0] === jsdata.result.problems[i].name) {
                   fl = 1;
+                  //console.log(jsdata.result.problems[i].name);
                   break;
                 }
               }
               for (let j = 0; j < set4.length; j++) {
-                if (set4[j][0].name === jsdata.result.problems[i].name) {
+                if (set4[j][0] === jsdata.result.problems[i].name) {
                   fl = 1;
+                  //console.log(jsdata.result.problems[i].name);
                   break;
                 }
               }
@@ -483,19 +490,19 @@ function hello() {
               }
               if (jsdata.result.problems[i].rating !== undefined) {
                 if (jsdata.result.problems[i].rating <= 1200) {
-                  no--;
+                  no = no - 1;
                   result.push(jsdata.result.problems[i]);
                 }
               } else {
                 if (jsdata.result.problems[i].points <= 1200) {
-                  no--;
+                  no = no - 1;
                   result.push(jsdata.result.problems[i]);
                 }
               }
             }
             let A = result;
             for (let i = 0; i < A.length; i++) {
-              console.log(A);
+              //console.log(A);
               if (set_no === 1) {
                 set1.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
               } else if (set_no === 2) {
@@ -507,7 +514,7 @@ function hello() {
               }
             }
             get_daily_mix_B(set_no);
-            //console.log(jsdata.result);
+            ////console.log(jsdata.result);
           }
 
           async function get_daily_mix_B(set_no) {
@@ -527,26 +534,30 @@ function hello() {
               }
               let fl = 0;
               for (let j = 0; j < set1.length; j++) {
-                if (set1[j][0].name === jsdata.result.problems[i].name) {
+                if (set1[j][0] === jsdata.result.problems[i].name) {
                   fl = 1;
+                  //console.log(jsdata.result.problems[i].name);
                   break;
                 }
               }
               for (let j = 0; j < set2.length; j++) {
-                if (set2[j][0].name === jsdata.result.problems[i].name) {
+                if (set2[j][0] === jsdata.result.problems[i].name) {
                   fl = 1;
+                  //console.log(jsdata.result.problems[i].name);
                   break;
                 }
               }
               for (let j = 0; j < set3.length; j++) {
-                if (set3[j][0].name === jsdata.result.problems[i].name) {
+                if (set3[j][0] === jsdata.result.problems[i].name) {
                   fl = 1;
+                  //console.log(jsdata.result.problems[i].name);
                   break;
                 }
               }
               for (let j = 0; j < set4.length; j++) {
-                if (set4[j][0].name === jsdata.result.problems[i].name) {
+                if (set4[j][0] === jsdata.result.problems[i].name) {
                   fl = 1;
+                  //console.log(jsdata.result.problems[i].name);
                   break;
                 }
               }
@@ -590,7 +601,7 @@ function hello() {
             }
 
             get_daily_mix_C(set_no);
-            //console.log(jsdata.result);
+            ////console.log(jsdata.result);
           }
 
           async function get_daily_mix_C(set_no) {
@@ -610,26 +621,29 @@ function hello() {
               }
               let fl = 0;
               for (let j = 0; j < set1.length; j++) {
-                if (set1[j][0].name === jsdata.result.problems[i].name) {
+                if (set1[j][0] === jsdata.result.problems[i].name) {
                   fl = 1;
+                  //console.log(jsdata.result.problems[i].name);
                   break;
                 }
               }
               for (let j = 0; j < set2.length; j++) {
-                if (set2[j][0].name === jsdata.result.problems[i].name) {
+                if (set2[j][0] === jsdata.result.problems[i].name) {
                   fl = 1;
+                  //console.log(jsdata.result.problems[i].name);
                   break;
                 }
               }
               for (let j = 0; j < set3.length; j++) {
-                if (set3[j][0].name === jsdata.result.problems[i].name) {
+                if (set3[j][0] === jsdata.result.problems[i].name) {
                   fl = 1;
                   break;
                 }
               }
               for (let j = 0; j < set4.length; j++) {
-                if (set4[j][0].name === jsdata.result.problems[i].name) {
+                if (set4[j][0] === jsdata.result.problems[i].name) {
                   fl = 1;
+                  //console.log(jsdata.result.problems[i].name);
                   break;
                 }
               }
@@ -669,7 +683,7 @@ function hello() {
                 set4.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
               }
             }
-            //console.log(jsdata.result);
+            ////console.log(jsdata.result);
             get_daily_mix_D(set_no);
           }
 
@@ -690,27 +704,31 @@ function hello() {
               }
               let fl = 0;
               for (let j = 0; j < set1.length; j++) {
-                if (set1[j][0].name === jsdata.result.problems[i].name) {
-                  console.log(set1[j][0].name)
+                if (set1[j][0] === jsdata.result.problems[i].name) {
+                  //console.log(set2[j][0]);
                   fl = 1;
+                  //console.log(jsdata.result.problems[i].name);
                   break;
                 }
               }
               for (let j = 0; j < set2.length; j++) {
-                if (set2[j][0].name === jsdata.result.problems[i].name) {
+                if (set2[j][0] === jsdata.result.problems[i].name) {
                   fl = 1;
+                  //console.log(jsdata.result.problems[i].name);
                   break;
                 }
               }
               for (let j = 0; j < set3.length; j++) {
-                if (set3[j][0].name === jsdata.result.problems[i].name) {
+                if (set3[j][0] === jsdata.result.problems[i].name) {
                   fl = 1;
+                  //console.log(jsdata.result.problems[i].name);
                   break;
                 }
               }
               for (let j = 0; j < set4.length; j++) {
-                if (set4[j][0].name === jsdata.result.problems[i].name) {
+                if (set4[j][0] === jsdata.result.problems[i].name) {
                   fl = 1;
+                  //console.log(jsdata.result.problems[i].name);
                   break;
                 }
               }
@@ -720,7 +738,7 @@ function hello() {
               if (no == 0) {
                 break;
               }
-              
+
               if (jsdata.result.problems[i].rating !== undefined) {
                 if (
                   jsdata.result.problems[i].rating <= 2400 &&
@@ -771,26 +789,30 @@ function hello() {
               }
               let fl = 0;
               for (let j = 0; j < set1.length; j++) {
-                if (set1[j][0].name === jsdata.result.problems[i].name) {
+                if (set1[j][0] === jsdata.result.problems[i].name) {
                   fl = 1;
+                  //console.log(jsdata.result.problems[i].name);
                   break;
                 }
               }
               for (let j = 0; j < set2.length; j++) {
-                if (set2[j][0].name === jsdata.result.problems[i].name) {
+                if (set2[j][0] === jsdata.result.problems[i].name) {
                   fl = 1;
+                  //console.log(jsdata.result.problems[i].name);
                   break;
                 }
               }
               for (let j = 0; j < set3.length; j++) {
-                if (set3[j][0].name === jsdata.result.problems[i].name) {
+                if (set3[j][0] === jsdata.result.problems[i].name) {
                   fl = 1;
+                  //console.log(jsdata.result.problems[i].name);
                   break;
                 }
               }
               for (let j = 0; j < set4.length; j++) {
-                if (set4[j][0].name === jsdata.result.problems[i].name) {
+                if (set4[j][0] === jsdata.result.problems[i].name) {
                   fl = 1;
+                  //console.log(jsdata.result.problems[i].name);
                   break;
                 }
               }
@@ -831,8 +853,9 @@ function hello() {
               }
             }
           }
+
           let p = document.querySelectorAll(".generate_daily");
-          for (let i = 0; i < p.length; i++) {
+          for (let i = 0; i < 4; i++) {
             weak_index1 = Math.floor(Math.random() * weak_topicss.length);
             weak_index2 = Math.floor(Math.random() * weak_topicss.length);
             weak_index3 = Math.floor(Math.random() * weak_topicss.length);
@@ -845,6 +868,10 @@ function hello() {
             strong_topic2 = strong_topicss[strong_index2];
 
             get_daily_mix_A(i + 1);
+            //console.log(set1);
+            //console.log(set2);
+            //console.log(set3);
+            //console.log(set4);
 
             p[i].addEventListener("click", function (e) {
               let curr_set = [];
@@ -857,6 +884,48 @@ function hello() {
               } else if (i === 3) {
                 curr_set = set4;
               }
+              if (curr_set.length !== 5) {
+                get_daily_mix_A(i + 1);
+                if (i === 0) {
+                  curr_set = set1;
+                } else if (i === 1) {
+                  curr_set = set2;
+                } else if (i === 2) {
+                  curr_set = set3;
+                } else if (i === 3) {
+                  curr_set = set4;
+                }
+              }
+              let div = document.querySelector(".problem-name-E");
+              // //console.log(div);
+              while (div.firstChild) {
+                // //console.log(div.firstChild);
+                div.removeChild(div.firstChild);
+              }
+              div = document.querySelector(".problem-name-D");
+              // //console.log(div);
+              while (div.firstChild) {
+                // //console.log(div.firstChild);
+                div.removeChild(div.firstChild);
+              }
+              div = document.querySelector(".problem-name-C");
+              // //console.log(div);
+              while (div.firstChild) {
+                // //console.log(div.firstChild);
+                div.removeChild(div.firstChild);
+              }
+              div = document.querySelector(".problem-name-B");
+              // //console.log(div);
+              while (div.firstChild) {
+                // //console.log(div.firstChild);
+                div.removeChild(div.firstChild);
+              }
+              div = document.querySelector(".problem-name-A");
+              // //console.log(div);
+              while (div.firstChild) {
+                // //console.log(div.firstChild);
+                div.removeChild(div.firstChild);
+              }
               for (let i = 0; i < curr_set.length; i++) {
                 let link = document.createElement("div");
                 let p = convert_to_link(`${curr_set[i][1]}`);
@@ -865,9 +934,9 @@ function hello() {
                   document.querySelector(".problem-name-A").innerHTML =
                     curr_set[i][0];
                   let div = document.querySelector(".linkA");
-                  console.log(div);
+                  // //console.log(div);
                   while (div.firstChild) {
-                    console.log(div.firstChild);
+                    // //console.log(div.firstChild);
                     div.removeChild(div.firstChild);
                   }
                   document.querySelector(".linkA").appendChild(link);
@@ -877,9 +946,9 @@ function hello() {
                     curr_set[i][0];
 
                   let div = document.querySelector(".linkB");
-                  console.log(div);
+                  //console.log(div);
                   while (div.firstChild) {
-                    console.log(div.firstChild);
+                    //console.log(div.firstChild);
                     div.removeChild(div.firstChild);
                   }
                   document.querySelector(".linkB").appendChild(link);
@@ -889,9 +958,9 @@ function hello() {
                     curr_set[i][0];
 
                   let div = document.querySelector(".linkC");
-                  console.log(div);
+                  //console.log(div);
                   while (div.firstChild) {
-                    console.log(div.firstChild);
+                    //console.log(div.firstChild);
                     div.removeChild(div.firstChild);
                   }
                   document.querySelector(".linkC").appendChild(link);
@@ -901,9 +970,9 @@ function hello() {
                     curr_set[i][0];
 
                   let div = document.querySelector(".linkD");
-                  console.log(div);
+                  //console.log(div);
                   while (div.firstChild) {
-                    console.log(div.firstChild);
+                    //console.log(div.firstChild);
                     div.removeChild(div.firstChild);
                   }
                   document.querySelector(".linkD").appendChild(link);
@@ -913,9 +982,9 @@ function hello() {
                     curr_set[i][0];
 
                   let div = document.querySelector(".linkE");
-                  console.log(div);
+                  //console.log(div);
                   while (div.firstChild) {
-                    console.log(div.firstChild);
+                    //console.log(div.firstChild);
                     div.removeChild(div.firstChild);
                   }
                   document.querySelector(".linkE").appendChild(link);
@@ -934,7 +1003,6 @@ function hello() {
     }
 
     getsubmissions();
-    console.log(no_of_success)
     // get user name and avatar
     async function getname() {
       let modified_url2 = url_info + handle_name;
@@ -1185,40 +1253,97 @@ function hello() {
     url = "Profile.html?handle=";
     e.preventDefault();
   });
-
-  document.querySelector("#dashboard1").addEventListener("click", function (e) {
-    //console.log("Going to dashboard!");
-    let handle = document.querySelector(".form-control").value;
-    let dash_url = "dashboard.html?handle=";
-    dash_url += handle;
-    document.location.href = dash_url;
-
-    e.preventDefault();
-  });
-
-  document.querySelector("#compare1").addEventListener("click", function (e) {
-    //console.log("Going to dashboard!");
-    let handle = document.querySelector(".form-control").value;
-    let comp_url = "compare.html?handle=";
-    comp_url += handle;
-    document.location.href = comp_url;
-
-    e.preventDefault();
-  });
-
-  document.querySelector("#codeblast1").addEventListener("click", function (e) {
-    //console.log("Going to dashboard!");
-    let handle = document.querySelector(".form-control").value;
-    let cblast_url = "codeblast.html?handle=";
-    cblast_url += handle;
-    document.location.href = cblast_url;
-
-    e.preventDefault();
-  });  
-
- 	//console.log(no_of_success);
-	//console.log(solved.size);
 }
 window.onload = hello;
+// document.querySelector("#userstatistics").addEventListener("click", function (e) {
+//   let handle = document.querySelector(".form-control").value;
+//   website_url1 = website_url1 + handle;
+//   document.location.href = website_url1;
+//   url = "profile_user_stats.html?handle=";
+//   e.preventDefault();
+// });
+document.querySelector("#dashboard1").addEventListener("click", function (e) {
+  ////console.log("Going to dashboard!");
+  let handle = document.querySelector(".form-control").value;
+  let dash_url = "dashboard.html?handle=";
+  dash_url += handle;
+  document.location.href = dash_url;
 
+  e.preventDefault();
+});
+
+document.querySelector("#compare1").addEventListener("click", function (e) {
+  ////console.log("Going to dashboard!");
+  let handle = document.querySelector(".form-control").value;
+  let comp_url = "compare.html?handle=";
+  comp_url += handle;
+  document.location.href = comp_url;
+
+  e.preventDefault();
+});
+
+document.querySelector("#codeblast1").addEventListener("click", function (e) {
+  ////console.log("Going to dashboard!");
+  let handle = document.querySelector(".form-control").value;
+  let cblast_url = "codeblast.html?handle=";
+  cblast_url += handle;
+  document.location.href = cblast_url;
+
+  e.preventDefault();
+});
+
+document.querySelector("#topic_wise").addEventListener("click", function (e) {
+  ////console.log("Going to dashboard!");
+  let handle = document.querySelector(".form-control").value;
+  let cblast_url = "training_zone_topic_wise.html?handle=";
+  cblast_url += handle;
+  document.location.href = cblast_url;
+
+  e.preventDefault();
+});
+document.querySelector("#level_wise").addEventListener("click", function (e) {
+  ////console.log("Going to dashboard!");
+  let handle = document.querySelector(".form-control").value;
+  let cblast_url = "training_zone_level_wise.html?handle=";
+  cblast_url += handle;
+  document.location.href = cblast_url;
+
+  e.preventDefault();
+});
+
+var request = new XMLHttpRequest()
+const app = document.getElementById("futurecontest")
+
+    request.open('GET', 'https://codeforces.com/api/contest.list', true)
+
+    request.onload = function() {
+
+      var data = JSON.parse(this.response)
+      if (request.status >= 200 && request.status < 400) 
+      {
+          data["result"].forEach(contest => {
+
+              var cid = contest.id
+              var cname = contest.name
+              var link = "https://codeforces.com/contestRegistration/" + cid
+
+              if(contest.phase==="BEFORE")
+              {
+                  const a = document.createElement('a')
+                  a.textContent="Register"
+                  a.href=link
+
+                  const li = document.createElement('li')
+                  li.textContent=cname
+
+                   app.appendChild(li)
+                   app.appendChild(a)
+
+              }
+          });             
+      }
+
+  }
+
+  request.send()
 

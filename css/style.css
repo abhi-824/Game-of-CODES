@@ -13,6 +13,21 @@ body {
   height: 100vh;
   overflow-x: hidden;
 }
+
+
+.dropdown-content1 {
+  display: none;
+  position: absolute;
+  background-color: #2e2d2e;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.dropdown1:hover .dropdown-content1 {
+  display: block;
+}
 .question {
   color: #fff !important;
 }
@@ -22,6 +37,11 @@ a {
 }
 .container1 {
   background: url("../resources/backgrounds/hulk.jpg") no-repeat center/cover;
+  background-attachment: fixed;
+  height: 200vh;
+}
+.container7 {
+  background: url("../resources/backgrounds/image1.jpg") no-repeat center/cover;
   background-attachment: fixed;
   height: 200vh;
 }
@@ -38,6 +58,15 @@ a {
   height: 200vh;
 }
 .container2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 200vh;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.container8 {
   position: absolute;
   top: 0;
   left: 0;
