@@ -1292,8 +1292,24 @@ document.querySelector("#codeblast1").addEventListener("click", function (e) {
   e.preventDefault();
 });
 
+document.querySelector("#topic_wise").addEventListener("click", function (e) {
+  ////console.log("Going to dashboard!");
+  let handle = document.querySelector(".form-control").value;
+  let cblast_url = "training_zone_topic_wise.html?handle=";
+  cblast_url += handle;
+  document.location.href = cblast_url;
 
-// FOR FUTURE CONTESTS
+  e.preventDefault();
+});
+document.querySelector("#level_wise").addEventListener("click", function (e) {
+  ////console.log("Going to dashboard!");
+  let handle = document.querySelector(".form-control").value;
+  let cblast_url = "training_zone_level_wise.html?handle=";
+  cblast_url += handle;
+  document.location.href = cblast_url;
+
+  e.preventDefault();
+});
 
 var request = new XMLHttpRequest()
 const app = document.getElementById("futurecontest")
@@ -1301,12 +1317,12 @@ const app = document.getElementById("futurecontest")
     request.open('GET', 'https://codeforces.com/api/contest.list', true)
 
     request.onload = function() {
-        
+
       var data = JSON.parse(this.response)
       if (request.status >= 200 && request.status < 400) 
       {
           data["result"].forEach(contest => {
-             
+
               var cid = contest.id
               var cname = contest.name
               var link = "https://codeforces.com/contestRegistration/" + cid
@@ -1331,4 +1347,3 @@ const app = document.getElementById("futurecontest")
 
   request.send()
 
-  // FUTURE CONTESTS END

@@ -54,31 +54,25 @@
       height: 100vh;
     }
     .hidden {
-      display: none;
+      display: none!important;
     }
     .container1 {
       background: url("resources/backgrounds/car_brown.jpg") no-repeat center
         center/cover;
-      height: 100vh;
+      height: 200vh;
+      background-attachment: fixed;
     }
     .container2 {
       position: absolute;
       top: 0px;
       left: 0;
       right: 0;
-      bottom: 0;
+      height:200vh;
       background-color: rgba(0, 0, 0, 0.5);
     }
     .logo img {
       width: 131px;
       height: 125px;
-    }
-    .handle {
-      position: absolute;
-      top: 30%;
-      right: 8%;
-      float: right;
-      width: 40%;
     }
     #handleform {
       float: right;
@@ -101,15 +95,22 @@
       padding: 0.2rem;
       width: 100px;
     }
-    .see1 {
-      width: 50%;
-    }
     h1 {
       font-family: "Indie Flower", cursive;
       padding: 1rem;
     }
     h1 > p {
       font-size: 0.7em;
+    }
+    .motivate1{
+      display:flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .motivate2{
+      display:flex;
+      justify-content: space-between;
+      align-items: center;
     }
   </style>
   <body>
@@ -120,38 +121,35 @@
         </div>
         <div class="see1">
           <h1 class="motivate1">
-            You Can
-            <span
-              class="txt-type"
-              data-wait="1000"
-              data-words='["throw your hands up","beat the clock","move a mountain","break ROCKS","be a Master"]'
-            ></span>
-            <br />
-            DON'T WAIT FOR LUCK<br />
-            <br />
-            DEDICATE YOURSELF AND YOU CAN FIND YOURSELF<br /><br />
-            <p>
-              Listen to the song here:
-              <audio controls src="resources/audio/hall-of-fame.mp4"></audio>
-            </p>
+            <div class="content">
+              You Can
+              <span
+                class="txt-type"
+                data-wait="1000"
+                data-words='["throw your hands up","beat the clock","move a mountain","break ROCKS","be a Master"]'
+              ></span>
+              <br />
+              DON'T WAIT FOR LUCK<br />
+              <br />
+              DEDICATE YOURSELF AND YOU CAN FIND YOURSELF
+            </div>
+            
+              <iframe width="500" height="300" src="https://www.youtube.com/embed/PdGi5g2eatk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            
           </h1>
 
           <h1 class="motivate2">
-            This is
+            <div class="content">
+              This is
             <span
               class="txt-type2"
               data-wait="1000"
               data-words='["ten percent luck","twenty percent skill","15 % concentrated power of will","5% Pleasure","50 % pain"]'
             ></span>
             <br />
-            And a hundered percent reason to REMEMBER THE NAME<br /><br />
-            <p>
-              Listen to the song here:
-              <audio
-                controls
-                src="resources/audio/remember-the-name.mp4"
-              ></audio>
-            </p>
+            And a hundered percent reason to REMEMBER THE NAME
+            </div>
+            <iframe width="500" height="300" src="https://www.youtube.com/embed/Jf9gvpP2Yr8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </h1>
         </div>
         <div class="handle">
@@ -187,7 +185,7 @@
     ></script>
     <!-- Bootstrap core JavaScript -->
     <script
-      type="text/javascript"
+      type="text/javascript "
       src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"
     ></script>
     <!-- MDB core JavaScript -->
