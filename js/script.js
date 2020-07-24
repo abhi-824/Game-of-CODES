@@ -1311,24 +1311,41 @@ document.querySelector("#level_wise").addEventListener("click", function (e) {
   e.preventDefault();
 });
 
+// FOR FUTURE CONTESTS
+
 var request = new XMLHttpRequest()
 const app = document.getElementById("futurecontest")
 
     request.open('GET', 'https://codeforces.com/api/contest.list', true)
 
     request.onload = function() {
+        
 
       var data = JSON.parse(this.response)
       if (request.status >= 200 && request.status < 400) 
       {
           data["result"].forEach(contest => {
+             
 
               var cid = contest.id
               var cname = contest.name
+
+              // GETTING TIME UNTIL CONTEST STARTS AND CONVERTING TO HH:MM:SS
+
+              var totalSeconds = contest.relativeTimeSeconds
+              totalSeconds = totalSeconds*(-1)
+              var chours = Math.floor(totalSeconds / 3600);
+              totalSeconds %= 3600;
+              // var cminutes = Math.floor(totalSeconds / 60);
+              // var cseconds = totalSeconds % 60;
+
+
               var link = "https://codeforces.com/contestRegistration/" + cid
 
               if(contest.phase==="BEFORE")
               {
+
+                
                   const a = document.createElement('a')
                   a.textContent="Register"
                   a.href=link
@@ -1336,8 +1353,16 @@ const app = document.getElementById("futurecontest")
                   const li = document.createElement('li')
                   li.textContent=cname
 
-                   app.appendChild(li)
-                   app.appendChild(a)
+                  const h6 = document.createElement('h6')
+                  h6.textContent="Time until start " + chours + " hours"
+                  
+                  /* WOULD BE NEEDED FOR MM:SS
+                  ":" + cminutes + ":" +cseconds
+                  */
+                  app.appendChild(li)
+                  app.appendChild(h6)
+                  app.appendChild(a)
+
 
               }
           });             
@@ -1347,3 +1372,4 @@ const app = document.getElementById("futurecontest")
 
   request.send()
 
+  // FUTURE CONTESTS END
