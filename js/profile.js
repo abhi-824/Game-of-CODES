@@ -396,3 +396,23 @@ document.querySelector("#codeblast").addEventListener("click", function (e) {
     
     e.preventDefault();
 });
+
+document.querySelector("#topic-wise").addEventListener("click", function (e) {
+    console.log("Going to topic-wise training zone!");
+
+    let tz_url = "training_zone_topic_wise.html?handle=";
+    tz_url += user_handle;
+    document.location.href = tz_url;
+    
+    e.preventDefault();
+});
+
+document.querySelector("#level-wise").addEventListener("click", function (e) {
+    console.log("Going to level-wise training zone!");
+
+    let tz_url = "training_zone_level_wise.html?handle=";
+    tz_url += user_handle;
+    document.location.href = tz_url;
+    
+    e.preventDefault();
+});
