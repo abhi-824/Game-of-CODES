@@ -322,6 +322,7 @@ function hello() {
         .addEventListener("click", function (e) {
           item.classList.add("animated");
           document.querySelector(".wrapper").classList.add("hidden");
+          document.querySelector(".update").classList.remove("hidden");
           item.classList.add("hinge");
           show_daily_mix2.classList.remove("hidden");
           document.querySelector(".cont1").classList.remove("hidden");
@@ -998,6 +999,106 @@ function hello() {
               e.preventDefault();
             });
           }
+          document
+            .querySelector(".update")
+            .addEventListener("click", function (e) {
+              let solved2=new Set();
+              async function get_result() {
+                let modified_url = url2 + handle_name;
+                const jsondata = await fetch(modified_url);
+                const jsdata = await jsondata.json();
+                user_submissions = jsdata.result;
+
+
+                solved2.clear();
+
+                let jj = 0;
+                // for retreiving solved set
+                for (let i = 0; i < jsdata.result.length; i++) {
+                  if (jsdata.result[i].verdict == "OK") {
+                    let str =
+                      jsdata.result[i].problem.contestId +
+                      "-" +
+                      jsdata.result[i].problem.index;
+                    solved.add(str);
+                    no_of_success = solved.size;
+                  }
+                }
+              }
+              get_result();
+              for (let i = 0; i < 4; i++) {
+                let curr_set = [];
+                if (i === 0) {
+                  curr_set = set1;
+                } else if (i === 1) {
+                  curr_set = set2;
+                } else if (i === 2) {
+                  curr_set = set3;
+                } else if (i === 3) {
+                  curr_set = set4;
+                }
+                let cnt=0;
+                for(let j=0;j<curr_set.length;j++)
+                {
+                  if(solved.has(curr_set[j][1]))
+                  {
+                    curr_set[j][1]=0;
+                    if(j===0)
+                    {
+                      document.querySelector(".problem-name-A").innerHTML =`Goto Next, You have done it.`
+                      document.querySelector(".linkA").classList.add("hidden");
+                    }
+                    
+                    if(j===1)
+                    {
+                      document.querySelector(".problem-name-B").innerHTML =`Goto Next, You have done it.`
+                      document.querySelector(".linkB").classList.add("hidden");
+                    }
+                    
+                    if(j===2)
+                    {
+                      document.querySelector(".problem-name-C").innerHTML =`Goto Next, You have done it.`
+                      document.querySelector(".linkC").classList.add("hidden");
+                    }
+                    
+                    if(j===3)
+                    {
+                      document.querySelector(".problem-name-D").innerHTML =`Goto Next, You have done it.`
+                      document.querySelector(".linkD").classList.add("hidden");
+                    }
+                    
+                    if(j===4)
+                    {
+                      document.querySelector(".problem-name-E").innerHTML =`Goto Next, You have done it.`
+                      document.querySelector(".linkE").classList.add("hidden");
+                    }
+                    cnt+=1;
+                    
+                  }
+                }
+
+                if(cnt==5){
+                  if(i==0){
+                    document.querySelector('.g_2').classList.add("hidden");
+                    document.querySelector('.g2').classList.remove("hidden");
+                  }
+                  if(i==1){
+                    document.querySelector('.g_3').classList.add("hidden");
+                    document.querySelector('.g3').classList.remove("hidden");
+                  }
+                  if(i==2){
+                    document.querySelector('.g_4').classList.add("hidden");
+                    document.querySelector('.g4').classList.remove("hidden");
+                  }
+                  if(i==3){
+                    document.querySelector('.g_5').classList.add("hidden");
+                    document.querySelector('.g5').classList.remove("hidden");
+                  }
+                }
+              }
+
+              e.preventDefault();
+            });
           e.preventDefault();
         });
     }
@@ -1226,6 +1327,7 @@ function hello() {
     daily_mix_contests.classList.remove("hidden");
     unsolved_mysteries.classList.add("hidden");
     document.querySelector(".cont1").classList.add("hidden");
+    document.querySelector(".update").classList.add("hidden");
     weak_topics.classList.add("hidden");
     upsolve.classList.add("hidden");
     show_daily_mix.classList.add("hidden");
@@ -1255,13 +1357,6 @@ function hello() {
   });
 }
 window.onload = hello;
-// document.querySelector("#userstatistics").addEventListener("click", function (e) {
-//   let handle = document.querySelector(".form-control").value;
-//   website_url1 = website_url1 + handle;
-//   document.location.href = website_url1;
-//   url = "profile_user_stats.html?handle=";
-//   e.preventDefault();
-// });
 document.querySelector("#dashboard1").addEventListener("click", function (e) {
   ////console.log("Going to dashboard!");
   let handle = document.querySelector(".form-control").value;
@@ -1313,63 +1408,51 @@ document.querySelector("#level_wise").addEventListener("click", function (e) {
 
 // FOR FUTURE CONTESTS
 
-var request = new XMLHttpRequest()
-const app = document.getElementById("futurecontest")
+var request = new XMLHttpRequest();
+const app = document.getElementById("futurecontest");
 
-    request.open('GET', 'https://codeforces.com/api/contest.list', true)
+request.open("GET", "https://codeforces.com/api/contest.list", true);
 
-    request.onload = function() {
-        
+request.onload = function () {
+  var data = JSON.parse(this.response);
+  if (request.status >= 200 && request.status < 400) {
+    data["result"].forEach((contest) => {
+      var cid = contest.id;
+      var cname = contest.name;
 
-      var data = JSON.parse(this.response)
-      if (request.status >= 200 && request.status < 400) 
-      {
-          data["result"].forEach(contest => {
-             
+      // GETTING TIME UNTIL CONTEST STARTS AND CONVERTING TO HH:MM:SS
 
-              var cid = contest.id
-              var cname = contest.name
+      var totalSeconds = contest.relativeTimeSeconds;
+      totalSeconds = totalSeconds * -1;
+      var chours = Math.floor(totalSeconds / 3600);
+      totalSeconds %= 3600;
+      // var cminutes = Math.floor(totalSeconds / 60);
+      // var cseconds = totalSeconds % 60;
 
-              // GETTING TIME UNTIL CONTEST STARTS AND CONVERTING TO HH:MM:SS
+      var link = "https://codeforces.com/contestRegistration/" + cid;
 
-              var totalSeconds = contest.relativeTimeSeconds
-              totalSeconds = totalSeconds*(-1)
-              var chours = Math.floor(totalSeconds / 3600);
-              totalSeconds %= 3600;
-              // var cminutes = Math.floor(totalSeconds / 60);
-              // var cseconds = totalSeconds % 60;
+      if (contest.phase === "BEFORE") {
+        const a = document.createElement("a");
+        a.textContent = "Register";
+        a.href = link;
 
+        const li = document.createElement("li");
+        li.textContent = cname;
 
-              var link = "https://codeforces.com/contestRegistration/" + cid
+        const h6 = document.createElement("h6");
+        h6.textContent = "Time until start " + chours + " hours";
 
-              if(contest.phase==="BEFORE")
-              {
-
-                
-                  const a = document.createElement('a')
-                  a.textContent="Register"
-                  a.href=link
-
-                  const li = document.createElement('li')
-                  li.textContent=cname
-
-                  const h6 = document.createElement('h6')
-                  h6.textContent="Time until start " + chours + " hours"
-                  
-                  /* WOULD BE NEEDED FOR MM:SS
+        /* WOULD BE NEEDED FOR MM:SS
                   ":" + cminutes + ":" +cseconds
                   */
-                  app.appendChild(li)
-                  app.appendChild(h6)
-                  app.appendChild(a)
-
-
-              }
-          });             
+        app.appendChild(li);
+        app.appendChild(h6);
+        app.appendChild(a);
       }
-
+    });
   }
+};
 
-  request.send()
+request.send();
 
-  // FUTURE CONTESTS END
+// FUTURE CONTESTS END
