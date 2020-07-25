@@ -1665,6 +1665,7 @@ document.querySelector("#level_wise").addEventListener("click", function (e) {
   e.preventDefault();
 });
 
+
 // FOR FUTURE CONTESTS
 
 var request = new XMLHttpRequest();
@@ -1688,6 +1689,9 @@ request.onload = function () {
       // var cminutes = Math.floor(totalSeconds / 60);
       // var cseconds = totalSeconds % 60;
 
+              var link = "https://codeforces.com/contestRegistration/" + cid
+              let months_list = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', "Aug", "Sept", "Oct", "Nov", "Dec"];
+
       var link = "https://codeforces.com/contestRegistration/" + cid;
 
       if (contest.phase === "BEFORE") {
@@ -1695,11 +1699,34 @@ request.onload = function () {
         a.textContent = "Register";
         a.href = link;
 
+	              let start_time = contest.startTimeSeconds*1000;
+	              let full_date = new Date(start_time);
+	              let date = full_date.getDate();
+	              let month = full_date.getMonth();
+	              month = months_list[month];
+	              let hour = full_date.getHours();
+	              let minutes = full_date.getMinutes();
+	              if(minutes<10){
+	              	minutes = "0" + minutes.toString();
+	              }
+
+	              console.log(full_date, date, month, hour, minutes);
+                	
+                  const a = document.createElement('a')
+                  a.textContent="Register"
+                  a.href=link
+
         const li = document.createElement("li");
         li.textContent = cname;
 
+
         const h6 = document.createElement("h6");
         h6.textContent = "Time until start " + chours + " hours";
+
+                  const h6 = document.createElement('h6')
+                  h6.textContent="Contest Date: " + date + " " + month + ", " + hour + ":" + minutes;
+                  
+                  /* WOULD BE NEEDED FOR MM:SS
 
         /* WOULD BE NEEDED FOR MM:SS
                   ":" + cminutes + ":" +cseconds
