@@ -151,7 +151,7 @@ table tr {
 }
 .daily-mix {
   width: 450px;
-  /*height: 300px;*/
+  height: 300px;
   background: rgba(20, 20, 20, 0.47);
   border-radius: 35px;
   display: flex;
@@ -519,10 +519,7 @@ a:hover {
   width: 200px;
   border-radius: 150px;
   border: 1px solid white;
-/* End User-Statistics page CSS */
-=======
-
-/* FOR PROFILE.HTML */
+}
 .container1forprofile {
   background: url("../resources/backgrounds/hulk.jpg") no-repeat center/cover;
   background-attachment: fixed;
