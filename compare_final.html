@@ -59,52 +59,111 @@
       src="https://www.gstatic.com/charts/loader.js"
     ></script>
   </head>
+  <style>
+    .topic-lists {
+      display: flex;
+      flex-direction: row;
+    }
+    .weak_topics,
+    .strong_topics {
+      /* overflow: hidden; */
+      width: 100%;
+      padding: 0 2rem;
+    }
+    .users {
+      display: flex;
+      padding: 0 0.4rem;
+    }
+    .user1{
+      padding:0 1rem;
+    }
+    .handle1,.handle2,.handle_1,.handle_2 {
+      font-size: 1.5rem;
+    }
+  </style>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
-      <a class="navbar-brand logo" href="#">
-        <h1 class="inner">GAME OF CODES</h1>
-        <img src="resources/logo/logo_light.png" alt="" />
-      </a>
-      <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                                <!-- <span class="navbar-toggler-icon"></span> -->
-      <!-- </button> -->
-      <!-- <div class="collapse navbar-collapse" id="navbarText"> -->
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" id="dashboard1" href="#">Dashboard </a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="compare.html" id="compare1"
-            >Compare
-            <div class="line1"></div>
-            <span class="sr-only">(current)</span></a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link profile" href="Profile.html" id="profile1"
-            >Profile</a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="Codeblast.html" id="codeblast1"
-            >Code Blast</a
-          >
-        </li>
-        <li class="user_avatar nav-item"></li>
-      </ul>
-      <input
-        class="form-control outer"
-        type="search"
-        placeholder="Search"
-        aria-label="Search"
-      />
-      <button type="button" class="btn outer btn-dark search">
-        <img class="outer" src="resources/icons/search 1.svg" alt="" />
-      </button>
-      <!-- </form> -->
-      <!-- </div> -->
-    </nav>
-
+    <div class="container111">
+      <div class="container112">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+          <a class="navbar-brand logo" href="#">
+            <h1 class="inner">GAME OF CODES</h1>
+            <img src="resources/logo/logo_light.png" alt="" />
+          </a>
+          <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                                    <!-- <span class="navbar-toggler-icon"></span> -->
+          <!-- </button> -->
+          <!-- <div class="collapse navbar-collapse" id="navbarText"> -->
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" id="dashboard1" href="#">Dashboard </a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="compare.html" id="compare1"
+                >Compare
+                <div class="line1"></div>
+                <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link profile" href="Profile.html" id="profile1"
+                >Profile</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Codeblast.html" id="codeblast1"
+                >Code Blast</a
+              >
+            </li>
+            <li class="user_avatar nav-item"></li>
+          </ul>
+          <input
+            class="form-control outer"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button type="button" class="btn outer btn-dark search">
+            <img class="outer" src="resources/icons/search 1.svg" alt="" />
+          </button>
+          <!-- </form> -->
+          <!-- </div> -->
+        </nav>
+        <!-- insert chart here -->
+    
+    
+        <!-- Weak and strong topics -->
+        <div class="topic-lists">
+          <div class="weak_topics daily-mix">
+            <h1>Weak Topics</h1>
+            <div class="line"></div>
+            <div class="users">
+              <div class="user1">
+                <span class="handle1"></span>
+                <table class="weak_topicss"></table>
+              </div>
+              <div class="user2">
+                <span class="handle2"></span>
+                <table class="weak_topicss2"></table>
+              </div>
+            </div>
+          </div>
+          <div class="strong_topics daily-mix">
+            <h1>Strong Topics</h1>
+            <div class="line"></div>
+            <div class="users">
+              <div class="user1">
+                <span class="handle_1"></span>
+                <table class="strong_topicss"></table>
+              </div>
+              <div class="user2">
+                <span class="handle_2"></span>
+                <table class="strong_topicss2"></table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <script src="js/compare.js"></script>
     <script

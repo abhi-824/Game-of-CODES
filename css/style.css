@@ -57,7 +57,22 @@ a {
   background-attachment: fixed;
   height: 200vh;
 }
+.container111 {
+  background: url("../resources/backgrounds/car_black.jpg")
+    no-repeat center center/cover;
+  background-attachment: fixed;
+  height: 200vh;
+}
 .container2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 200vh;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.container112 {
   position: absolute;
   top: 0;
   left: 0;
