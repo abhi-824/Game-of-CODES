@@ -515,3 +515,19 @@ a:hover {
   border-radius: 150px;
   border: 1px solid white;
 }
+
+/* FOR PROFILE.HTML */
+.container1forprofile {
+  background: url("../resources/backgrounds/hulk.jpg") no-repeat center/cover;
+  background-attachment: fixed;
+  height: 370vh;
+}
+.container2forprofile {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 370vh;
+  background-color: rgba(0, 0, 0, 0.7);
+}

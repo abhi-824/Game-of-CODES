@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,8 +23,8 @@
 
 <body>
   <!-- Navigation Bar -->
-  <div class="container1">
-    <div class="container2">
+  <div class="container1forprofile">
+    <div class="container2forprofile">
 
       <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
         <a class="navbar-brand logo" href="#">
@@ -73,45 +72,54 @@
             <h3 style="padding: 2.5rem 3.75rem 0 0; text-align: center;" class="username">USERNAME</h3>
             <h4 style="padding: 2.5rem 3.75rem 0 0; text-align: center;" id="userstatistics"><a href="profile_user_stats.html">User Statistics</a></h4>
           </div>
-
-          <div class="column-2 col-4">
+        </div>
+        
+          <!-- <div class="column-2 col-4">
             <h3><strong>Check Your Progress!</strong></h3>
-            <br>
+            <br> -->
+    
+            
+          <div style="padding-left:100px; float: right;" class="column-3 col-4">
+            <h3 style="padding-top: 2rem;" class="recent-contests"><strong>Recent Contests</strong></h3>
+          </div>
+          <!--<div class="hidden col-4" id="myChart4" style="height: 400px; width: 90%;"></div>-->
+          </div>
 
-            <button type="button" id="mybtn1" class="btn btn-dark text-left btn-sm" >
-              1. Rating Change Over Time
-            </button>
-            <br>
-            <br>
-            <button type="button" id="mybtn2" class="btn btn-dark text-left btn-sm" >
-              2. All Submissions Final Verdict
-            </button>
-            <br>
-            <br>
-            <button type="button" id="mybtn3" class="btn btn-dark text-left btn-sm" >
-              3. Problem-Rating-Wise All Submissions
-            </button>
-            <br>
-            <br>
-            <!--<button type="button" id="mybtn4" class="btn btn-dark text-left btn-sm" >
+          <div class="hidden col-4" id="myChart1" style="height: 400px; width: 90%; margin: 0 auto;"></div>
+            <div class="charttitle" align="center">Rating Change Over Time</div>
+          <br>
+          <br>
+          
+          <div class="hidden col-4" id="myChart3" style="height: 400px; width: 90%; margin: 0 auto;"></div>
+            <div class="charttitle" align="center">Problem-Rating-Wise All Submissions</div>
+          <br>
+          <br>
+  
+         
+          <div class="hidden col-4" id="myChart2" style="height: 400px; width: 90%; margin: 0 auto;"></div>
+           <div align="center">All Submissions Final Verdict</div>
+          <br>
+          <br>
+
+          <div style="padding-left:100px; float: right;">
+            <h3 style="padding-top: 2rem;" class="recent-contests"><strong>Weak Topics</strong></h3>
+          </div>
+          <div style="padding-left:100px; float: left;">  
+            <h3 style="padding-top: 2rem;" class="recent-contests"><strong>Strong Topics</strong></h3>
+          </div>
+
+          <!--<button type="button" id="mybtn4" class="btn btn-dark text-left btn-sm" >
               4. Problem-Rating-Wise Accepted Submissions
             </button>
             <br>
             <br>-->
-            <button id="hide-graph" type="button" class="btn btn-dark hidden text-left btn-sm">Hide Graph</button>
-          </div>
+            <!-- <button id="hide-graph" type="button" class="btn btn-dark hidden text-left btn-sm">Hide Graph</button> -->
+          
 
-          <div style="padding-left:100px; float: right;" class="column-3 col-4">
-            <h3 style="padding-top: 2rem;" class="recent-contests"><strong>Recent Contests</strong></h3>
-          </div>
-          <div class="hidden col-4" id="myChart1" style="height: 400px; width: 90%;"></div>
-          <div class="hidden col-4" id="myChart2" style="height: 400px; width: 90%;"></div>
-          <div class="hidden col-4" id="myChart3" style="height: 400px; width: 90%;"></div>
-          <!--<div class="hidden col-4" id="myChart4" style="height: 400px; width: 90%;"></div>-->
-        </div>
+
       </div>
 
-      <!-- Footer -->
+      <!-- Footer
       <div class="user-stats">
         <div class="item1">
           <h1 class="inactive-item">WEAK TOPICS</h1>
@@ -127,7 +135,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
 <script src="js/profile.js"></script>
 <script src="js/script.js"></script>

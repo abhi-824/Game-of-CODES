@@ -64,7 +64,8 @@ $(document).ready(function() {
 
     chart.render();
     console.log(dataPointsRatings);
-
+    $("#myChart1").removeClass("hidden");
+    
   }
 
   async function getUserSubmissions() {
@@ -138,6 +139,7 @@ $(document).ready(function() {
     });
     chart.render();
     console.log(dataPointsSubmissions);
+    $("#myChart2").removeClass("hidden");
   }
 
   async function getUserSubRat() {
@@ -204,6 +206,7 @@ $(document).ready(function() {
     });
     chart.render();
     console.log(dataPointsSubRat);
+    $("#myChart3").removeClass("hidden");
   }
 
   //async function getUserSubRatOK() {
@@ -295,55 +298,55 @@ $(document).ready(function() {
 
 $(".username").text(user_handle);
 
-$("#mybtn1").on("click", function(e) {
-  $(".column-3").addClass("hidden");
-  $("#myChart2").addClass("hidden");
-  $("#myChart3").addClass("hidden");
-  //$("#myChart4").addClass("hidden");
-  $("#myChart1").removeClass("hidden");
-  $("#hide-graph").removeClass("hidden");
-  e.preventDefault();
-});
+// $("#mybtn1").on("click", function(e) {
+//   $(".column-3").addClass("hidden");
+//   $("#myChart2").addClass("hidden");
+//   $("#myChart3").addClass("hidden");
+//   //$("#myChart4").addClass("hidden");
+//   $("#myChart1").removeClass("hidden");
+//   $("#hide-graph").removeClass("hidden");
+//   e.preventDefault();
+// });
 
-$("#mybtn2").on("click", function(e) {
-  $(".column-3").addClass("hidden");
-  $("#myChart1").addClass("hidden");
-  $("#myChart3").addClass("hidden");
-  //$("#myChart4").addClass("hidden");
-  $("#myChart2").removeClass("hidden");
-  $("#hide-graph").removeClass("hidden");
-  e.preventDefault();
-});
+// $("#mybtn2").on("click", function(e) {
+//   $(".column-3").addClass("hidden");
+//   $("#myChart1").addClass("hidden");
+//   $("#myChart3").addClass("hidden");
+//   //$("#myChart4").addClass("hidden");
+//   $("#myChart2").removeClass("hidden");
+//   $("#hide-graph").removeClass("hidden");
+//   e.preventDefault();
+// });
 
-$("#mybtn3").on("click", function(e) {
-  $(".column-3").addClass("hidden");
-  $("#myChart1").addClass("hidden");
-  $("#myChart2").addClass("hidden");
-  //$("#myChart4").addClass("hidden");
-  $("#myChart3").removeClass("hidden");
-  $("#hide-graph").removeClass("hidden");
-  e.preventDefault();
-});
+// $("#mybtn3").on("click", function(e) {
+//   $(".column-3").addClass("hidden");
+//   $("#myChart1").addClass("hidden");
+//   $("#myChart2").addClass("hidden");
+//   //$("#myChart4").addClass("hidden");
+//   $("#myChart3").removeClass("hidden");
+//   $("#hide-graph").removeClass("hidden");
+//   e.preventDefault();
+// });
 
-$("#mybtn4").on("click", function(e) {
-  $(".column-3").addClass("hidden");
-  $("#myChart1").addClass("hidden");
-  $("#myChart2").addClass("hidden");
-  $("#myChart3").addClass("hidden");
-  //$("#myChart4").removeClass("hidden");
-  $("#hide-graph").removeClass("hidden");
-  e.preventDefault();
-});
+// $("#mybtn4").on("click", function(e) {
+//   $(".column-3").addClass("hidden");
+//   $("#myChart1").addClass("hidden");
+//   $("#myChart2").addClass("hidden");
+//   $("#myChart3").addClass("hidden");
+//   //$("#myChart4").removeClass("hidden");
+//   $("#hide-graph").removeClass("hidden");
+//   e.preventDefault();
+// });
 
-$("#hide-graph").on("click", function(e) {
-  $("#myChart1").addClass("hidden");
-  $("#myChart2").addClass("hidden");
-  $("#myChart3").addClass("hidden");
-  //$("#myChart4").addClass("hidden");
-  $(".column-3").removeClass("hidden");
-  $("#hide-graph").addClass("hidden");
-  e.preventDefault();
-});
+// $("#hide-graph").on("click", function(e) {
+//   $("#myChart1").addClass("hidden");
+//   $("#myChart2").addClass("hidden");
+//   $("#myChart3").addClass("hidden");
+//   //$("#myChart4").addClass("hidden");
+//   $(".column-3").removeClass("hidden");
+//   $("#hide-graph").addClass("hidden");
+//   e.preventDefault();
+// });
 window.onload = console.log("hello");
 
 
