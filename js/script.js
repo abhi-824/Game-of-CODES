@@ -370,7 +370,6 @@ function hello() {
           get_questions();
           let p = document.querySelectorAll(".generate_daily2");
           console.log(p);
-          document.querySelector("#time").classList.remove("hidden");
           for (let i = 0; i < 8; i++) {
             p[i].addEventListener("click", function (e) {
               let curr_set = [];
@@ -1628,7 +1627,6 @@ function hello() {
     upsolve.classList.add("hidden");
     show_daily_mix.classList.add("hidden");
     document.querySelector(".container").classList.add("hidden");
-    document.querySelector("#time").classList.add("hidden");
     strong_topics.classList.add("hidden");
     item.classList.remove("hidden");
     item2.classList.remove("hidden");
@@ -1798,7 +1796,7 @@ function startTimer(duration, display) {
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
 
-    display.textContent =minutes + ":" + seconds;
+    display.textContent = minutes + ":" + seconds;
 
     if (--timer < 0) {
       timer = duration;
