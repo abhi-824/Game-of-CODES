@@ -1132,6 +1132,7 @@ function hello() {
             p[i].addEventListener("click", function (e) {
               var r = confirm("This would start a timer!!");
               if (r == true) {
+                document.querySelector('#time').classList.remove("hidden");
                 var two_hours = 60 * 2 * 60,
                   display = document.querySelector("#time");
                 startTimer(two_hours, display);
@@ -1617,6 +1618,7 @@ function hello() {
     hide_please(item2);
     hide_please(item3);
     hide_please(item);
+    document.querySelector('#time').classList.add("hidden");
     daily_mix_contests.classList.remove("hidden");
     unsolved_mysteries.classList.add("hidden");
     document.querySelector(".cont1").classList.add("hidden");
