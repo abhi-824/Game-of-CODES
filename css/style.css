@@ -162,7 +162,13 @@ table tr {
   max-height: 75vh;
   overflow: auto;
 }
-
+#time{
+  float:right;
+  margin: 0rem 2rem;
+  background: #333;
+  padding: 1rem;
+  color:red;
+}
 .daily-mix h1 {
   font-style: normal;
   font-weight: normal;

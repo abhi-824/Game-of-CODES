@@ -370,6 +370,7 @@ function hello() {
           get_questions();
           let p = document.querySelectorAll(".generate_daily2");
           console.log(p);
+          document.querySelector("#time").classList.remove("hidden");
           for (let i = 0; i < 8; i++) {
             p[i].addEventListener("click", function (e) {
               let curr_set = [];
@@ -1130,18 +1131,12 @@ function hello() {
             //console.log(set4);
 
             p[i].addEventListener("click", function (e) {
-              let curr_set = [];
-              if (i === 0) {
-                curr_set = set1;
-              } else if (i === 1) {
-                curr_set = set2;
-              } else if (i === 2) {
-                curr_set = set3;
-              } else if (i === 3) {
-                curr_set = set4;
-              }
-              if (curr_set.length !== 5) {
-                get_daily_mix_A(i + 1);
+              var r = confirm("This would start a timer!!");
+              if (r == true) {
+                var two_hours = 60 * 2 * 60,
+                  display = document.querySelector("#time");
+                startTimer(two_hours, display);
+                let curr_set = [];
                 if (i === 0) {
                   curr_set = set1;
                 } else if (i === 1) {
@@ -1151,107 +1146,150 @@ function hello() {
                 } else if (i === 3) {
                   curr_set = set4;
                 }
-              }
-              let div = document.querySelector(".problem-name-E");
-              // //console.log(div);
-              while (div.firstChild) {
-                // //console.log(div.firstChild);
-                div.removeChild(div.firstChild);
-              }
-              div = document.querySelector(".problem-name-D");
-              // //console.log(div);
-              while (div.firstChild) {
-                // //console.log(div.firstChild);
-                div.removeChild(div.firstChild);
-              }
-              div = document.querySelector(".problem-name-C");
-              // //console.log(div);
-              while (div.firstChild) {
-                // //console.log(div.firstChild);
-                div.removeChild(div.firstChild);
-              }
-              div = document.querySelector(".problem-name-B");
-              // //console.log(div);
-              while (div.firstChild) {
-                // //console.log(div.firstChild);
-                div.removeChild(div.firstChild);
-              }
-              div = document.querySelector(".problem-name-A");
-              // //console.log(div);
-              while (div.firstChild) {
-                // //console.log(div.firstChild);
-                div.removeChild(div.firstChild);
-              }
-              for (let i = 0; i < curr_set.length; i++) {
-                let link = document.createElement("div");
-                let p = convert_to_link(`${curr_set[i][1]}`);
-                link.innerHTML = `<a href="${p}">Let's Do It</a>`;
-                if (i == 0) {
-                  document.querySelector(".problem-name-A").innerHTML =
-                    curr_set[i][0];
-                  let div = document.querySelector(".linkA");
-                  // //console.log(div);
-                  while (div.firstChild) {
-                    // //console.log(div.firstChild);
-                    div.removeChild(div.firstChild);
+                if (curr_set.length !== 5) {
+                  get_daily_mix_A(i + 1);
+                  if (i === 0) {
+                    curr_set = set1;
+                  } else if (i === 1) {
+                    curr_set = set2;
+                  } else if (i === 2) {
+                    curr_set = set3;
+                  } else if (i === 3) {
+                    curr_set = set4;
                   }
-                  document.querySelector(".linkA").appendChild(link);
                 }
-                if (i == 1) {
-                  document.querySelector(".problem-name-B").innerHTML =
-                    curr_set[i][0];
+                let div = document.querySelector(".problem-name-E");
+                // //console.log(div);
+                while (div.firstChild) {
+                  // //console.log(div.firstChild);
+                  div.removeChild(div.firstChild);
+                }
+                div = document.querySelector(".problem-name-D");
+                // //console.log(div);
+                while (div.firstChild) {
+                  // //console.log(div.firstChild);
+                  div.removeChild(div.firstChild);
+                }
+                div = document.querySelector(".problem-name-C");
+                // //console.log(div);
+                while (div.firstChild) {
+                  // //console.log(div.firstChild);
+                  div.removeChild(div.firstChild);
+                }
+                div = document.querySelector(".problem-name-B");
+                // //console.log(div);
+                while (div.firstChild) {
+                  // //console.log(div.firstChild);
+                  div.removeChild(div.firstChild);
+                }
+                div = document.querySelector(".problem-name-A");
+                // //console.log(div);
+                while (div.firstChild) {
+                  // //console.log(div.firstChild);
+                  div.removeChild(div.firstChild);
+                }
+                for (let i = 0; i < curr_set.length; i++) {
+                  let link = document.createElement("div");
+                  let p = convert_to_link(`${curr_set[i][1]}`);
+                  link.innerHTML = `<a href="${p}">Let's Do It</a>`;
+                  if (i == 0) {
+                    document.querySelector(".problem-name-A").innerHTML =
+                      curr_set[i][0];
+                    let div = document.querySelector(".linkA");
+                    // //console.log(div);
+                    while (div.firstChild) {
+                      // //console.log(div.firstChild);
+                      div.removeChild(div.firstChild);
+                    }
+                    document.querySelector(".linkA").appendChild(link);
+                  }
+                  if (i == 1) {
+                    document.querySelector(".problem-name-B").innerHTML =
+                      curr_set[i][0];
 
-                  let div = document.querySelector(".linkB");
-                  //console.log(div);
-                  while (div.firstChild) {
-                    //console.log(div.firstChild);
-                    div.removeChild(div.firstChild);
+                    let div = document.querySelector(".linkB");
+                    //console.log(div);
+                    while (div.firstChild) {
+                      //console.log(div.firstChild);
+                      div.removeChild(div.firstChild);
+                    }
+                    document.querySelector(".linkB").appendChild(link);
                   }
-                  document.querySelector(".linkB").appendChild(link);
-                }
-                if (i == 2) {
-                  document.querySelector(".problem-name-C").innerHTML =
-                    curr_set[i][0];
+                  if (i == 2) {
+                    document.querySelector(".problem-name-C").innerHTML =
+                      curr_set[i][0];
 
-                  let div = document.querySelector(".linkC");
-                  //console.log(div);
-                  while (div.firstChild) {
-                    //console.log(div.firstChild);
-                    div.removeChild(div.firstChild);
+                    let div = document.querySelector(".linkC");
+                    //console.log(div);
+                    while (div.firstChild) {
+                      //console.log(div.firstChild);
+                      div.removeChild(div.firstChild);
+                    }
+                    document.querySelector(".linkC").appendChild(link);
                   }
-                  document.querySelector(".linkC").appendChild(link);
-                }
-                if (i == 3) {
-                  document.querySelector(".problem-name-D").innerHTML =
-                    curr_set[i][0];
+                  if (i == 3) {
+                    document.querySelector(".problem-name-D").innerHTML =
+                      curr_set[i][0];
 
-                  let div = document.querySelector(".linkD");
-                  //console.log(div);
-                  while (div.firstChild) {
-                    //console.log(div.firstChild);
-                    div.removeChild(div.firstChild);
+                    let div = document.querySelector(".linkD");
+                    //console.log(div);
+                    while (div.firstChild) {
+                      //console.log(div.firstChild);
+                      div.removeChild(div.firstChild);
+                    }
+                    document.querySelector(".linkD").appendChild(link);
                   }
-                  document.querySelector(".linkD").appendChild(link);
-                }
-                if (i == 4) {
-                  document.querySelector(".problem-name-E").innerHTML =
-                    curr_set[i][0];
+                  if (i == 4) {
+                    document.querySelector(".problem-name-E").innerHTML =
+                      curr_set[i][0];
 
-                  let div = document.querySelector(".linkE");
-                  //console.log(div);
-                  while (div.firstChild) {
-                    //console.log(div.firstChild);
-                    div.removeChild(div.firstChild);
+                    let div = document.querySelector(".linkE");
+                    //console.log(div);
+                    while (div.firstChild) {
+                      //console.log(div.firstChild);
+                      div.removeChild(div.firstChild);
+                    }
+                    document.querySelector(".linkE").appendChild(link);
                   }
-                  document.querySelector(".linkE").appendChild(link);
                 }
+                document.querySelector(".container").classList.remove("hidden");
+                document.querySelector(".container").classList.add("animated");
+                document
+                  .querySelector(".container")
+                  .classList.add("bounceInRight");
+                e.preventDefault();
+              } else {
+                hide_please(item4);
+                hide_please(item2);
+                hide_please(item3);
+                hide_please(item);
+                daily_mix_contests.classList.remove("hidden");
+                unsolved_mysteries.classList.add("hidden");
+                document.querySelector(".cont1").classList.add("hidden");
+                document.querySelectorAll(".cont1")[1].classList.add("hidden");
+                document.querySelector(".update").classList.add("hidden");
+                document.querySelector(".update2").classList.add("hidden");
+                weak_topics.classList.add("hidden");
+                upsolve.classList.add("hidden");
+                show_daily_mix.classList.add("hidden");
+                document.querySelector(".container").classList.add("hidden");
+                strong_topics.classList.add("hidden");
+                item.classList.remove("hidden");
+                item2.classList.remove("hidden");
+                item3.classList.remove("hidden");
+                item4.classList.remove("hidden");
+                document.querySelector(".wrapper").classList.remove("hidden");
+                item4.classList.remove("hinge");
+                item3.classList.remove("hinge");
+                item2.classList.remove("hinge");
+                item.classList.remove("hinge");
+                document.querySelector(".problemsets").classList.add("hidden");
+                document.querySelector(".heading").classList.remove("hidden");
+                document
+                  .querySelector("#chartContainer")
+                  .classList.add("hidden");
+                show_daily_mix2.classList.add("hidden");
               }
-              document.querySelector(".container").classList.remove("hidden");
-              document.querySelector(".container").classList.add("animated");
-              document
-                .querySelector(".container")
-                .classList.add("bounceInRight");
-              e.preventDefault();
             });
           }
           document
@@ -1590,6 +1628,7 @@ function hello() {
     upsolve.classList.add("hidden");
     show_daily_mix.classList.add("hidden");
     document.querySelector(".container").classList.add("hidden");
+    document.querySelector("#time").classList.add("hidden");
     strong_topics.classList.add("hidden");
     item.classList.remove("hidden");
     item2.classList.remove("hidden");
@@ -1746,3 +1785,23 @@ request.onload = function () {
 request.send();
 
 // FUTURE CONTESTS END
+
+// Timer for countdown
+function startTimer(duration, display) {
+  var timer = duration,
+    minutes,
+    seconds;
+  setInterval(function () {
+    minutes = parseInt(timer / 60, 10);
+    seconds = parseInt(timer % 60, 10);
+
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+    display.textContent =minutes + ":" + seconds;
+
+    if (--timer < 0) {
+      timer = duration;
+    }
+  }, 1000);
+}
