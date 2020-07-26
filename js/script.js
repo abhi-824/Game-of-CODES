@@ -460,107 +460,105 @@ function hello() {
               e.preventDefault();
             });
           }
-          // document
-          //   .querySelector(".update")
-          //   .addEventListener("click", function (e) {
-          //     let solved2 = new Set();
-          //     async function get_result() {
-          //       let modified_url = url2 + handle_name;
-          //       const jsondata = await fetch(modified_url);
-          //       const jsdata = await jsondata.json();
-          //       user_submissions = jsdata.result;
+          document.querySelector(".update2").classList.remove("hidden");
+          document
+            .querySelector(".update2")
+            .addEventListener("click", function (e) {
+              let solved2 = new Set();
+              async function get_result() {
+                let modified_url = url2 + handle_name;
+                const jsondata = await fetch(modified_url);
+                const jsdata = await jsondata.json();
+                user_submissions = jsdata.result;
 
-          //       solved2.clear();
+                solved2.clear();
 
-          //       let jj = 0;
-          //       // for retreiving solved set
-          //       for (let i = 0; i < jsdata.result.length; i++) {
-          //         if (jsdata.result[i].verdict == "OK") {
-          //           let str =
-          //             jsdata.result[i].problem.contestId +
-          //             "-" +
-          //             jsdata.result[i].problem.index;
-          //           solved.add(str);
-          //           no_of_success = solved.size;
-          //         }
-          //       }
-          //     }
-          //     get_result();
-          //     for (let i = 0; i < 4; i++) {
-          //       let curr_set = [];
-          //       if (i === 0) {
-          //         curr_set = set1;
-          //       } else if (i === 1) {
-          //         curr_set = set2;
-          //       } else if (i === 2) {
-          //         curr_set = set3;
-          //       } else if (i === 3) {
-          //         curr_set = set4;
-          //       }
-          //       let cnt = 0;
-          //       for (let j = 0; j < curr_set.length; j++) {
-          //         if (solved.has(curr_set[j][1])) {
-          //           curr_set[j][1] = 0;
-          //           if (j === 0) {
-          //             document.querySelector(
-          //               ".problem-name-A"
-          //             ).innerHTML = `Goto Next, You have done it.`;
-          //             document.querySelector(".linkA").classList.add("hidden");
-          //           }
+                let jj = 0;
+                // for retreiving solved set
+                for (let i = 0; i < jsdata.result.length; i++) {
+                  if (jsdata.result[i].verdict == "OK") {
+                    let str =
+                      jsdata.result[i].problem.contestId +
+                      "-" +
+                      jsdata.result[i].problem.index;
+                    solved.add(str);
+                    no_of_success = solved.size;
+                  }
+                }
+              }
+              get_result();
+              for (let i = 0; i < 8; i++) {
+                let curr_set = [];
+                if (i === 0) {
+                  curr_set = arr1;
+                } else if (i === 1) {
+                  curr_set = arr2;
+                } else if (i === 2) {
+                  curr_set = arr3;
+                } else if (i === 3) {
+                  curr_set = arr4;
+                } else if (i === 4) {
+                  curr_set = arr5;
+                } else if (i === 5) {
+                  curr_set = arr6;
+                } else if (i === 6) {
+                  curr_set = arr7;
+                } else if (i === 7) {
+                  curr_set = arr8;
+                }
+                let cnt = 0;
+                for (let j = 0; j < curr_set.length; j++) {
+                  if (
+                    solved.has(`${curr_set[j].contestId}-${curr_set[j].id}`)
+                  ) {
+                    curr_set[j] = 0;
+                    if (j === 0) {
+                      document.querySelector(
+                        ".problem-name-1"
+                      ).innerHTML = `Goto Next, You have done it.`;
+                      document.querySelector(".link1").classList.add("hidden");
+                    }
 
-          //           if (j === 1) {
-          //             document.querySelector(
-          //               ".problem-name-B"
-          //             ).innerHTML = `Goto Next, You have done it.`;
-          //             document.querySelector(".linkB").classList.add("hidden");
-          //           }
+                    if (j === 1) {
+                      document.querySelector(
+                        ".problem-name-2"
+                      ).innerHTML = `Goto Next, You have done it.`;
+                      document.querySelector(".link2").classList.add("hidden");
+                    }
 
-          //           if (j === 2) {
-          //             document.querySelector(
-          //               ".problem-name-C"
-          //             ).innerHTML = `Goto Next, You have done it.`;
-          //             document.querySelector(".linkC").classList.add("hidden");
-          //           }
+                    if (j === 2) {
+                      document.querySelector(
+                        ".problem-name-3"
+                      ).innerHTML = `Goto Next, You have done it.`;
+                      document.querySelector(".link3").classList.add("hidden");
+                    }
 
-          //           if (j === 3) {
-          //             document.querySelector(
-          //               ".problem-name-D"
-          //             ).innerHTML = `Goto Next, You have done it.`;
-          //             document.querySelector(".linkD").classList.add("hidden");
-          //           }
+                    cnt += 1;
+                  }
+                }
 
-          //           if (j === 4) {
-          //             document.querySelector(
-          //               ".problem-name-E"
-          //             ).innerHTML = `Goto Next, You have done it.`;
-          //             document.querySelector(".linkE").classList.add("hidden");
-          //           }
-          //           cnt += 1;
-          //         }
-          //       }
+                if (cnt == 3) {
+                  if (i == 0) {
+                    document.querySelector(".g_2").classList.add("hidden");
+                    document.querySelector(".g2").classList.remove("hidden");
+                  }
+                  if (i == 1) {
+                    document.querySelector(".g_3").classList.add("hidden");
+                    document.querySelector(".g3").classList.remove("hidden");
+                  }
+                  if (i == 2) {
+                    document.querySelector(".g_4").classList.add("hidden");
+                    document.querySelector(".g4").classList.remove("hidden");
+                  }
+                  if (i == 3) {
+                    document.querySelector(".g_5").classList.add("hidden");
+                    document.querySelector(".g5").classList.remove("hidden");
+                  }
+                }
+              }
 
-          //       if (cnt == 5) {
-          //         if (i == 0) {
-          //           document.querySelector(".g_2").classList.add("hidden");
-          //           document.querySelector(".g2").classList.remove("hidden");
-          //         }
-          //         if (i == 1) {
-          //           document.querySelector(".g_3").classList.add("hidden");
-          //           document.querySelector(".g3").classList.remove("hidden");
-          //         }
-          //         if (i == 2) {
-          //           document.querySelector(".g_4").classList.add("hidden");
-          //           document.querySelector(".g4").classList.remove("hidden");
-          //         }
-          //         if (i == 3) {
-          //           document.querySelector(".g_5").classList.add("hidden");
-          //           document.querySelector(".g5").classList.remove("hidden");
-          //         }
-          //       }
-          //     }
-
-          //     e.preventDefault();
-          //   });
+              e.preventDefault();
+            });
           e.preventDefault();
           // ////console.log(tag_name);
 
@@ -1132,18 +1130,13 @@ function hello() {
             //console.log(set4);
 
             p[i].addEventListener("click", function (e) {
-              let curr_set = [];
-              if (i === 0) {
-                curr_set = set1;
-              } else if (i === 1) {
-                curr_set = set2;
-              } else if (i === 2) {
-                curr_set = set3;
-              } else if (i === 3) {
-                curr_set = set4;
-              }
-              if (curr_set.length !== 5) {
-                get_daily_mix_A(i + 1);
+              var r = confirm("This would start a timer!!");
+              if (r == true) {
+                document.querySelector('#time').classList.remove("hidden");
+                var two_hours = 60 * 2 * 60,
+                  display = document.querySelector("#time");
+                startTimer(two_hours, display);
+                let curr_set = [];
                 if (i === 0) {
                   curr_set = set1;
                 } else if (i === 1) {
@@ -1153,107 +1146,150 @@ function hello() {
                 } else if (i === 3) {
                   curr_set = set4;
                 }
-              }
-              let div = document.querySelector(".problem-name-E");
-              // //console.log(div);
-              while (div.firstChild) {
-                // //console.log(div.firstChild);
-                div.removeChild(div.firstChild);
-              }
-              div = document.querySelector(".problem-name-D");
-              // //console.log(div);
-              while (div.firstChild) {
-                // //console.log(div.firstChild);
-                div.removeChild(div.firstChild);
-              }
-              div = document.querySelector(".problem-name-C");
-              // //console.log(div);
-              while (div.firstChild) {
-                // //console.log(div.firstChild);
-                div.removeChild(div.firstChild);
-              }
-              div = document.querySelector(".problem-name-B");
-              // //console.log(div);
-              while (div.firstChild) {
-                // //console.log(div.firstChild);
-                div.removeChild(div.firstChild);
-              }
-              div = document.querySelector(".problem-name-A");
-              // //console.log(div);
-              while (div.firstChild) {
-                // //console.log(div.firstChild);
-                div.removeChild(div.firstChild);
-              }
-              for (let i = 0; i < curr_set.length; i++) {
-                let link = document.createElement("div");
-                let p = convert_to_link(`${curr_set[i][1]}`);
-                link.innerHTML = `<a href="${p}">Let's Do It</a>`;
-                if (i == 0) {
-                  document.querySelector(".problem-name-A").innerHTML =
-                    curr_set[i][0];
-                  let div = document.querySelector(".linkA");
-                  // //console.log(div);
-                  while (div.firstChild) {
-                    // //console.log(div.firstChild);
-                    div.removeChild(div.firstChild);
+                if (curr_set.length !== 5) {
+                  get_daily_mix_A(i + 1);
+                  if (i === 0) {
+                    curr_set = set1;
+                  } else if (i === 1) {
+                    curr_set = set2;
+                  } else if (i === 2) {
+                    curr_set = set3;
+                  } else if (i === 3) {
+                    curr_set = set4;
                   }
-                  document.querySelector(".linkA").appendChild(link);
                 }
-                if (i == 1) {
-                  document.querySelector(".problem-name-B").innerHTML =
-                    curr_set[i][0];
+                let div = document.querySelector(".problem-name-E");
+                // //console.log(div);
+                while (div.firstChild) {
+                  // //console.log(div.firstChild);
+                  div.removeChild(div.firstChild);
+                }
+                div = document.querySelector(".problem-name-D");
+                // //console.log(div);
+                while (div.firstChild) {
+                  // //console.log(div.firstChild);
+                  div.removeChild(div.firstChild);
+                }
+                div = document.querySelector(".problem-name-C");
+                // //console.log(div);
+                while (div.firstChild) {
+                  // //console.log(div.firstChild);
+                  div.removeChild(div.firstChild);
+                }
+                div = document.querySelector(".problem-name-B");
+                // //console.log(div);
+                while (div.firstChild) {
+                  // //console.log(div.firstChild);
+                  div.removeChild(div.firstChild);
+                }
+                div = document.querySelector(".problem-name-A");
+                // //console.log(div);
+                while (div.firstChild) {
+                  // //console.log(div.firstChild);
+                  div.removeChild(div.firstChild);
+                }
+                for (let i = 0; i < curr_set.length; i++) {
+                  let link = document.createElement("div");
+                  let p = convert_to_link(`${curr_set[i][1]}`);
+                  link.innerHTML = `<a href="${p}">Let's Do It</a>`;
+                  if (i == 0) {
+                    document.querySelector(".problem-name-A").innerHTML =
+                      curr_set[i][0];
+                    let div = document.querySelector(".linkA");
+                    // //console.log(div);
+                    while (div.firstChild) {
+                      // //console.log(div.firstChild);
+                      div.removeChild(div.firstChild);
+                    }
+                    document.querySelector(".linkA").appendChild(link);
+                  }
+                  if (i == 1) {
+                    document.querySelector(".problem-name-B").innerHTML =
+                      curr_set[i][0];
 
-                  let div = document.querySelector(".linkB");
-                  //console.log(div);
-                  while (div.firstChild) {
-                    //console.log(div.firstChild);
-                    div.removeChild(div.firstChild);
+                    let div = document.querySelector(".linkB");
+                    //console.log(div);
+                    while (div.firstChild) {
+                      //console.log(div.firstChild);
+                      div.removeChild(div.firstChild);
+                    }
+                    document.querySelector(".linkB").appendChild(link);
                   }
-                  document.querySelector(".linkB").appendChild(link);
-                }
-                if (i == 2) {
-                  document.querySelector(".problem-name-C").innerHTML =
-                    curr_set[i][0];
+                  if (i == 2) {
+                    document.querySelector(".problem-name-C").innerHTML =
+                      curr_set[i][0];
 
-                  let div = document.querySelector(".linkC");
-                  //console.log(div);
-                  while (div.firstChild) {
-                    //console.log(div.firstChild);
-                    div.removeChild(div.firstChild);
+                    let div = document.querySelector(".linkC");
+                    //console.log(div);
+                    while (div.firstChild) {
+                      //console.log(div.firstChild);
+                      div.removeChild(div.firstChild);
+                    }
+                    document.querySelector(".linkC").appendChild(link);
                   }
-                  document.querySelector(".linkC").appendChild(link);
-                }
-                if (i == 3) {
-                  document.querySelector(".problem-name-D").innerHTML =
-                    curr_set[i][0];
+                  if (i == 3) {
+                    document.querySelector(".problem-name-D").innerHTML =
+                      curr_set[i][0];
 
-                  let div = document.querySelector(".linkD");
-                  //console.log(div);
-                  while (div.firstChild) {
-                    //console.log(div.firstChild);
-                    div.removeChild(div.firstChild);
+                    let div = document.querySelector(".linkD");
+                    //console.log(div);
+                    while (div.firstChild) {
+                      //console.log(div.firstChild);
+                      div.removeChild(div.firstChild);
+                    }
+                    document.querySelector(".linkD").appendChild(link);
                   }
-                  document.querySelector(".linkD").appendChild(link);
-                }
-                if (i == 4) {
-                  document.querySelector(".problem-name-E").innerHTML =
-                    curr_set[i][0];
+                  if (i == 4) {
+                    document.querySelector(".problem-name-E").innerHTML =
+                      curr_set[i][0];
 
-                  let div = document.querySelector(".linkE");
-                  //console.log(div);
-                  while (div.firstChild) {
-                    //console.log(div.firstChild);
-                    div.removeChild(div.firstChild);
+                    let div = document.querySelector(".linkE");
+                    //console.log(div);
+                    while (div.firstChild) {
+                      //console.log(div.firstChild);
+                      div.removeChild(div.firstChild);
+                    }
+                    document.querySelector(".linkE").appendChild(link);
                   }
-                  document.querySelector(".linkE").appendChild(link);
                 }
+                document.querySelector(".container").classList.remove("hidden");
+                document.querySelector(".container").classList.add("animated");
+                document
+                  .querySelector(".container")
+                  .classList.add("bounceInRight");
+                e.preventDefault();
+              } else {
+                hide_please(item4);
+                hide_please(item2);
+                hide_please(item3);
+                hide_please(item);
+                daily_mix_contests.classList.remove("hidden");
+                unsolved_mysteries.classList.add("hidden");
+                document.querySelector(".cont1").classList.add("hidden");
+                document.querySelectorAll(".cont1")[1].classList.add("hidden");
+                document.querySelector(".update").classList.add("hidden");
+                document.querySelector(".update2").classList.add("hidden");
+                weak_topics.classList.add("hidden");
+                upsolve.classList.add("hidden");
+                show_daily_mix.classList.add("hidden");
+                document.querySelector(".container").classList.add("hidden");
+                strong_topics.classList.add("hidden");
+                item.classList.remove("hidden");
+                item2.classList.remove("hidden");
+                item3.classList.remove("hidden");
+                item4.classList.remove("hidden");
+                document.querySelector(".wrapper").classList.remove("hidden");
+                item4.classList.remove("hinge");
+                item3.classList.remove("hinge");
+                item2.classList.remove("hinge");
+                item.classList.remove("hinge");
+                document.querySelector(".problemsets").classList.add("hidden");
+                document.querySelector(".heading").classList.remove("hidden");
+                document
+                  .querySelector("#chartContainer")
+                  .classList.add("hidden");
+                show_daily_mix2.classList.add("hidden");
               }
-              document.querySelector(".container").classList.remove("hidden");
-              document.querySelector(".container").classList.add("animated");
-              document
-                .querySelector(".container")
-                .classList.add("bounceInRight");
-              e.preventDefault();
             });
           }
           document
@@ -1582,11 +1618,13 @@ function hello() {
     hide_please(item2);
     hide_please(item3);
     hide_please(item);
+    document.querySelector('#time').classList.add("hidden");
     daily_mix_contests.classList.remove("hidden");
     unsolved_mysteries.classList.add("hidden");
     document.querySelector(".cont1").classList.add("hidden");
     document.querySelectorAll(".cont1")[1].classList.add("hidden");
     document.querySelector(".update").classList.add("hidden");
+    document.querySelector(".update2").classList.add("hidden");
     weak_topics.classList.add("hidden");
     upsolve.classList.add("hidden");
     show_daily_mix.classList.add("hidden");
@@ -1665,7 +1703,6 @@ document.querySelector("#level_wise").addEventListener("click", function (e) {
   e.preventDefault();
 });
 
-
 // FOR FUTURE CONTESTS
 
 var request = new XMLHttpRequest();
@@ -1689,8 +1726,21 @@ request.onload = function () {
       // var cminutes = Math.floor(totalSeconds / 60);
       // var cseconds = totalSeconds % 60;
 
-              var link = "https://codeforces.com/contestRegistration/" + cid
-              let months_list = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', "Aug", "Sept", "Oct", "Nov", "Dec"];
+      var link = "https://codeforces.com/contestRegistration/" + cid;
+      let months_list = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sept",
+        "Oct",
+        "Nov",
+        "Dec",
+      ];
 
       var link = "https://codeforces.com/contestRegistration/" + cid;
 
@@ -1699,34 +1749,27 @@ request.onload = function () {
         a.textContent = "Register";
         a.href = link;
 
-	              let start_time = contest.startTimeSeconds*1000;
-	              let full_date = new Date(start_time);
-	              let date = full_date.getDate();
-	              let month = full_date.getMonth();
-	              month = months_list[month];
-	              let hour = full_date.getHours();
-	              let minutes = full_date.getMinutes();
-	              if(minutes<10){
-	              	minutes = "0" + minutes.toString();
-	              }
+        let start_time = contest.startTimeSeconds * 1000;
+        let full_date = new Date(start_time);
+        let date = full_date.getDate();
+        let month = full_date.getMonth();
+        month = months_list[month];
+        let hour = full_date.getHours();
+        let minutes = full_date.getMinutes();
+        if (minutes < 10) {
+          minutes = "0" + minutes.toString();
+        }
 
-	              console.log(full_date, date, month, hour, minutes);
-                	
-                  const a = document.createElement('a')
-                  a.textContent="Register"
-                  a.href=link
+        console.log(full_date, date, month, hour, minutes);
 
         const li = document.createElement("li");
         li.textContent = cname;
 
-
         const h6 = document.createElement("h6");
-        h6.textContent = "Time until start " + chours + " hours";
+        h6.textContent =
+          "Contest Date: " + date + " " + month + ", " + hour + ":" + minutes;
 
-                  const h6 = document.createElement('h6')
-                  h6.textContent="Contest Date: " + date + " " + month + ", " + hour + ":" + minutes;
-                  
-                  /* WOULD BE NEEDED FOR MM:SS
+        /* WOULD BE NEEDED FOR MM:SS
 
         /* WOULD BE NEEDED FOR MM:SS
                   ":" + cminutes + ":" +cseconds
@@ -1742,3 +1785,23 @@ request.onload = function () {
 request.send();
 
 // FUTURE CONTESTS END
+
+// Timer for countdown
+function startTimer(duration, display) {
+  var timer = duration,
+    minutes,
+    seconds;
+  setInterval(function () {
+    minutes = parseInt(timer / 60, 10);
+    seconds = parseInt(timer % 60, 10);
+
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+    display.textContent = minutes + ":" + seconds;
+
+    if (--timer < 0) {
+      timer = duration;
+    }
+  }, 1000);
+}
