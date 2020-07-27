@@ -277,13 +277,15 @@ table tr {
 
 .recent-contests {
   width: 430px;
-  height: 400px;
+  height: 300px;
   background: rgba(20, 20, 20, 0.47);
   border-radius: 35px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   margin-right: 3rem;
+  margin-bottom: 70px;
+}
+
+.recent-contests ul{
+  font-size: 24px;
 }
 
 .modal-dialog {
