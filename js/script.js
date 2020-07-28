@@ -12,6 +12,7 @@ let strong_topics = document.querySelector(".strong_topics");
 let upsolve = document.querySelector(".upsolve");
 let unsolved_mysteries = document.querySelector(".unsolved_mysteries");
 let unsolved_problems = new Set();
+let tag_name;
 let unsolved_problems_array = [];
 let user_contests = "https://codeforces.com/api/user.rating?handle=";
 let api_url = "https://codeforces.com/api/";
@@ -219,6 +220,346 @@ function hello() {
           }
           let tag_name =
             practice_each_topic[i].parentElement.firstChild.innerHTML;
+          function generate_easy_question(arr, no) {
+            let result = [];
+
+            for (let i = 0; i < arr.problems.length; i++) {
+              let str = arr.problems[i].contestId + "-" + arr.problems[i].index;
+              if (solved.has(str)) {
+                continue;
+              }
+              if (no == 0) {
+                break;
+              }
+              if (arr.problems[i].rating !== undefined) {
+                if (arr.problems[i].rating <= 1200) {
+                  no--;
+                  result.push(arr.problems[i]);
+                }
+              } else {
+                if (arr.problems[i].points <= 1200) {
+                  no--;
+                  result.push(arr.problems[i]);
+                }
+              }
+            }
+            return result;
+          }
+          function generate_medium_question(arr, no) {
+            let result = [];
+
+            for (let i = 0; i < arr.problems.length; i++) {
+              let str = arr.problems[i].contestId + "-" + arr.problems[i].index;
+              if (solved.has(str)) {
+                continue;
+              }
+              if (no == 0) {
+                break;
+              }
+              if (arr.problems[i].rating !== undefined) {
+                if (
+                  arr.problems[i].rating <= 1700 &&
+                  arr.problems[i].rating > 1200
+                ) {
+                  no--;
+                  result.push(arr.problems[i]);
+                }
+              } else {
+                if (
+                  arr.problems[i].points <= 1700 &&
+                  arr.problems[i].points >= 1200
+                ) {
+                  no--;
+                  result.push(arr.problems[i]);
+                }
+              }
+            }
+            return result;
+          }
+          function generate_hard_question(arr, no) {
+            let result = [];
+
+            for (let i = 0; i < arr.problems.length; i++) {
+              let str = arr.problems[i].contestId + "-" + arr.problems[i].index;
+              if (solved.has(str)) {
+                continue;
+              }
+              if (no == 0) {
+                break;
+              }
+              if (arr.problems[i].rating !== undefined) {
+                if (
+                  arr.problems[i].rating <= 2400 &&
+                  arr.problems[i].rating > 1900
+                ) {
+                  no--;
+                  result.push(arr.problems[i]);
+                }
+              } else {
+                if (
+                  arr.problems[i].points >= 1500 &&
+                  arr.problems[i].points <= 1900
+                ) {
+                  no--;
+                  result.push(arr.problems[i]);
+                }
+              }
+            }
+            return result;
+          }
+          function make_list(A) {
+            let str = A.contestId + "-" + A.index;
+            let p = convert_to_link(str);
+            let li = document.createElement("li");
+            li.innerHTML = `<a href=${p}>${str}</a>`;
+            return li;
+          }
+          let arr1 = [];
+          let arr2 = [];
+          let arr3 = [];
+          let arr4 = [];
+          let arr5 = [];
+          let arr6 = [];
+          let arr7 = [];
+          let arr8 = [];
+
+          async function get_questions() {
+            let modified_url = `https://codeforces.com/api/problemset.problems?tags=${tag_name}`;
+            console.log(modified_url);
+            const jsondata = await fetch(modified_url);
+            const jsdata = await jsondata.json();
+            let E = generate_easy_question(jsdata.result, 5);
+            let M = generate_medium_question(jsdata.result, 10);
+            let H = generate_hard_question(jsdata.result, 9);
+            console.log(E);
+            console.log(M);
+            console.log(H);
+            arr1.push(E[0]);
+            arr1.push(M[0]);
+            arr1.push(H[0]);
+            arr2.push(E[1]);
+            arr2.push(M[1]);
+            arr2.push(H[1]);
+            arr3.push(E[2]);
+            arr3.push(M[2]);
+            arr3.push(H[2]);
+            arr4.push(E[3]);
+            arr4.push(M[3]);
+            arr4.push(H[3]);
+            arr5.push(E[4]);
+            arr5.push(M[4]);
+            arr5.push(H[4]);
+            arr6.push(M[5]);
+            arr6.push(M[6]);
+            arr6.push(H[5]);
+            arr7.push(M[7]);
+            arr7.push(M[8]);
+            arr7.push(H[6]);
+            arr8.push(M[9]);
+            arr8.push(H[7]);
+            arr8.push(H[8]);
+            console.log(arr1);
+            console.log(arr2);
+            console.log(arr3);
+            console.log(arr4);
+            console.log(arr5);
+            console.log(arr6);
+            console.log(arr7);
+            console.log(arr8);
+          }
+          get_questions();
+          let p = document.querySelectorAll(".generate_daily2");
+          console.log(p);
+          for (let i = 0; i < 8; i++) {
+            p[i].addEventListener("click", function (e) {
+              let curr_set = [];
+              if (i === 0) {
+                curr_set = arr1;
+              } else if (i === 1) {
+                curr_set = arr2;
+              } else if (i === 2) {
+                curr_set = arr3;
+              } else if (i === 3) {
+                curr_set = arr4;
+              } else if (i === 4) {
+                curr_set = arr5;
+              } else if (i === 5) {
+                curr_set = arr6;
+              } else if (i === 6) {
+                curr_set = arr7;
+              } else if (i === 7) {
+                curr_set = arr8;
+              }
+              div = document.querySelector(".problem-name-3");
+              // //console.log(div);
+              while (div.firstChild) {
+                // //console.log(div.firstChild);
+                div.removeChild(div.firstChild);
+              }
+              div = document.querySelector(".problem-name-2");
+              // //console.log(div);
+              while (div.firstChild) {
+                // //console.log(div.firstChild);
+                div.removeChild(div.firstChild);
+              }
+              div = document.querySelector(".problem-name-1");
+              // //console.log(div);
+              while (div.firstChild) {
+                // //console.log(div.firstChild);
+                div.removeChild(div.firstChild);
+              }
+              for (let i = 0; i < curr_set.length; i++) {
+                let link = document.createElement("div");
+                let p = convert_to_link(
+                  `${curr_set[i].contestId}-${curr_set[i].index}`
+                );
+                link.innerHTML = `<a href="${p}">Let's Do It</a>`;
+                if (i == 0) {
+                  document.querySelector(".problem-name-1").innerHTML =
+                    curr_set[i].name;
+                  let div = document.querySelector(".link1");
+                  // //console.log(div);
+                  while (div.firstChild) {
+                    // //console.log(div.firstChild);
+                    div.removeChild(div.firstChild);
+                  }
+                  document.querySelector(".link1").appendChild(link);
+                }
+                if (i == 1) {
+                  document.querySelector(".problem-name-2").innerHTML =
+                    curr_set[i].name;
+
+                  let div = document.querySelector(".link2");
+                  //console.log(div);
+                  while (div.firstChild) {
+                    //console.log(div.firstChild);
+                    div.removeChild(div.firstChild);
+                  }
+                  document.querySelector(".link2").appendChild(link);
+                }
+                if (i == 2) {
+                  document.querySelector(".problem-name-3").innerHTML =
+                    curr_set[i].name;
+
+                  let div = document.querySelector(".link3");
+                  //console.log(div);
+                  while (div.firstChild) {
+                    //console.log(div.firstChild);
+                    div.removeChild(div.firstChild);
+                  }
+                  document.querySelector(".link3").appendChild(link);
+                }
+              }
+              document
+                .querySelector(".container768")
+                .classList.remove("hidden");
+              document.querySelector(".container768").classList.add("animated");
+              document
+                .querySelector(".container768")
+                .classList.add("bounceInRight");
+              e.preventDefault();
+            });
+          }
+          document.querySelector(".update2").classList.remove("hidden");
+          document
+            .querySelector(".update2")
+            .addEventListener("click", function (e) {
+              let solved2 = new Set();
+              async function get_result() {
+                let modified_url = url2 + handle_name;
+                const jsondata = await fetch(modified_url);
+                const jsdata = await jsondata.json();
+                user_submissions = jsdata.result;
+
+                solved2.clear();
+
+                let jj = 0;
+                // for retreiving solved set
+                for (let i = 0; i < jsdata.result.length; i++) {
+                  if (jsdata.result[i].verdict == "OK") {
+                    let str =
+                      jsdata.result[i].problem.contestId +
+                      "-" +
+                      jsdata.result[i].problem.index;
+                    solved.add(str);
+                    no_of_success = solved.size;
+                  }
+                }
+              }
+              get_result();
+              for (let i = 0; i < 8; i++) {
+                let curr_set = [];
+                if (i === 0) {
+                  curr_set = arr1;
+                } else if (i === 1) {
+                  curr_set = arr2;
+                } else if (i === 2) {
+                  curr_set = arr3;
+                } else if (i === 3) {
+                  curr_set = arr4;
+                } else if (i === 4) {
+                  curr_set = arr5;
+                } else if (i === 5) {
+                  curr_set = arr6;
+                } else if (i === 6) {
+                  curr_set = arr7;
+                } else if (i === 7) {
+                  curr_set = arr8;
+                }
+                let cnt = 0;
+                for (let j = 0; j < curr_set.length; j++) {
+                  if (
+                    solved.has(`${curr_set[j].contestId}-${curr_set[j].id}`)
+                  ) {
+                    curr_set[j] = 0;
+                    if (j === 0) {
+                      document.querySelector(
+                        ".problem-name-1"
+                      ).innerHTML = `Goto Next, You have done it.`;
+                      document.querySelector(".link1").classList.add("hidden");
+                    }
+
+                    if (j === 1) {
+                      document.querySelector(
+                        ".problem-name-2"
+                      ).innerHTML = `Goto Next, You have done it.`;
+                      document.querySelector(".link2").classList.add("hidden");
+                    }
+
+                    if (j === 2) {
+                      document.querySelector(
+                        ".problem-name-3"
+                      ).innerHTML = `Goto Next, You have done it.`;
+                      document.querySelector(".link3").classList.add("hidden");
+                    }
+
+                    cnt += 1;
+                  }
+                }
+
+                if (cnt == 3) {
+                  if (i == 0) {
+                    document.querySelector(".g_2").classList.add("hidden");
+                    document.querySelector(".g2").classList.remove("hidden");
+                  }
+                  if (i == 1) {
+                    document.querySelector(".g_3").classList.add("hidden");
+                    document.querySelector(".g3").classList.remove("hidden");
+                  }
+                  if (i == 2) {
+                    document.querySelector(".g_4").classList.add("hidden");
+                    document.querySelector(".g4").classList.remove("hidden");
+                  }
+                  if (i == 3) {
+                    document.querySelector(".g_5").classList.add("hidden");
+                    document.querySelector(".g5").classList.remove("hidden");
+                  }
+                }
+              }
+
+              e.preventDefault();
+            });
+          e.preventDefault();
           // ////console.log(tag_name);
 
           function get_topic_graph() {
@@ -311,6 +652,8 @@ function hello() {
 
           document.querySelector(".heading").classList.add("hidden");
           document.querySelector(".problemsets").classList.remove("hidden");
+          document.querySelector(".cont1").classList.remove("hidden");
+          document.querySelector(".container768").classList.remove("hidden");
           document.querySelector(".problemsets").classList.add("animated");
           document.querySelector(".problemsets").classList.add("zoomInDown");
           show_daily_mix2.classList.remove("hidden");
@@ -322,9 +665,10 @@ function hello() {
         .addEventListener("click", function (e) {
           item.classList.add("animated");
           document.querySelector(".wrapper").classList.add("hidden");
+          document.querySelector(".update").classList.remove("hidden");
           item.classList.add("hinge");
           show_daily_mix2.classList.remove("hidden");
-          document.querySelector(".cont1").classList.remove("hidden");
+          document.querySelectorAll(".cont1")[1].classList.remove("hidden");
           item2.classList.add("animated");
           item2.classList.add("hinge");
           item3.classList.add("animated");
@@ -342,94 +686,6 @@ function hello() {
           let weak_topic3 = weak_topicss[weak_index3];
           let strong_topic1 = strong_topicss[strong_index1];
           let strong_topic2 = strong_topicss[strong_index2];
-
-          function generate_easy_question(arr, no) {
-            let result = [];
-
-            for (let i = 0; i < arr.problems.length; i++) {
-              let str = arr.problems[i].contestId + "-" + arr.problems[i].index;
-              if (solved.has(str)) {
-                continue;
-              }
-              if (no == 0) {
-                break;
-              }
-              if (arr.problems[i].rating !== undefined) {
-                if (arr.problems[i].rating <= 1200) {
-                  no--;
-                  result.push(arr.problems[i]);
-                }
-              } else {
-                if (arr.problems[i].points <= 1200) {
-                  no--;
-                  result.push(arr.problems[i]);
-                }
-              }
-            }
-            return result;
-          }
-          function generate_medium_question(arr, no) {
-            let result = [];
-
-            for (let i = 0; i < arr.problems.length; i++) {
-              let str = arr.problems[i].contestId + "-" + arr.problems[i].index;
-              if (solved.has(str)) {
-                continue;
-              }
-              if (no == 0) {
-                break;
-              }
-              if (arr.problems[i].rating !== undefined) {
-                if (
-                  arr.problems[i].rating <= 1700 &&
-                  arr.problems[i].rating > 1200
-                ) {
-                  no--;
-                  result.push(arr.problems[i]);
-                }
-              } else {
-                if (
-                  arr.problems[i].points <= 1700 &&
-                  arr.problems[i].points >= 1200
-                ) {
-                  no--;
-                  result.push(arr.problems[i]);
-                }
-              }
-            }
-            return result;
-          }
-          function generate_hard_question(arr, no) {
-            let result = [];
-
-            for (let i = 0; i < arr.problems.length; i++) {
-              let str = arr.problems[i].contestId + "-" + arr.problems[i].index;
-              if (solved.has(str)) {
-                continue;
-              }
-              if (no == 0) {
-                break;
-              }
-              if (arr.problems[i].rating !== undefined) {
-                if (
-                  arr.problems[i].rating <= 2400 &&
-                  arr.problems[i].rating > 1900
-                ) {
-                  no--;
-                  result.push(arr.problems[i]);
-                }
-              } else {
-                if (
-                  arr.problems[i].points >= 1500 &&
-                  arr.problems[i].points <= 1900
-                ) {
-                  no--;
-                  result.push(arr.problems[i]);
-                }
-              }
-            }
-            return result;
-          }
           let set1 = [];
           let set2 = [];
           let set3 = [];
@@ -874,18 +1130,13 @@ function hello() {
             //console.log(set4);
 
             p[i].addEventListener("click", function (e) {
-              let curr_set = [];
-              if (i === 0) {
-                curr_set = set1;
-              } else if (i === 1) {
-                curr_set = set2;
-              } else if (i === 2) {
-                curr_set = set3;
-              } else if (i === 3) {
-                curr_set = set4;
-              }
-              if (curr_set.length !== 5) {
-                get_daily_mix_A(i + 1);
+              var r = confirm("This would start a timer!!");
+              if (r == true) {
+                document.querySelector('#time').classList.remove("hidden");
+                var two_hours = 60 * 2 * 60,
+                  display = document.querySelector("#time");
+                startTimer(two_hours, display);
+                let curr_set = [];
                 if (i === 0) {
                   curr_set = set1;
                 } else if (i === 1) {
@@ -895,109 +1146,253 @@ function hello() {
                 } else if (i === 3) {
                   curr_set = set4;
                 }
-              }
-              let div = document.querySelector(".problem-name-E");
-              // //console.log(div);
-              while (div.firstChild) {
-                // //console.log(div.firstChild);
-                div.removeChild(div.firstChild);
-              }
-              div = document.querySelector(".problem-name-D");
-              // //console.log(div);
-              while (div.firstChild) {
-                // //console.log(div.firstChild);
-                div.removeChild(div.firstChild);
-              }
-              div = document.querySelector(".problem-name-C");
-              // //console.log(div);
-              while (div.firstChild) {
-                // //console.log(div.firstChild);
-                div.removeChild(div.firstChild);
-              }
-              div = document.querySelector(".problem-name-B");
-              // //console.log(div);
-              while (div.firstChild) {
-                // //console.log(div.firstChild);
-                div.removeChild(div.firstChild);
-              }
-              div = document.querySelector(".problem-name-A");
-              // //console.log(div);
-              while (div.firstChild) {
-                // //console.log(div.firstChild);
-                div.removeChild(div.firstChild);
-              }
-              for (let i = 0; i < curr_set.length; i++) {
-                let link = document.createElement("div");
-                let p = convert_to_link(`${curr_set[i][1]}`);
-                link.innerHTML = `<a href="${p}">Let's Do It</a>`;
-                if (i == 0) {
-                  document.querySelector(".problem-name-A").innerHTML =
-                    curr_set[i][0];
-                  let div = document.querySelector(".linkA");
-                  // //console.log(div);
-                  while (div.firstChild) {
-                    // //console.log(div.firstChild);
-                    div.removeChild(div.firstChild);
+                if (curr_set.length !== 5) {
+                  get_daily_mix_A(i + 1);
+                  if (i === 0) {
+                    curr_set = set1;
+                  } else if (i === 1) {
+                    curr_set = set2;
+                  } else if (i === 2) {
+                    curr_set = set3;
+                  } else if (i === 3) {
+                    curr_set = set4;
                   }
-                  document.querySelector(".linkA").appendChild(link);
                 }
-                if (i == 1) {
-                  document.querySelector(".problem-name-B").innerHTML =
-                    curr_set[i][0];
+                let div = document.querySelector(".problem-name-E");
+                // //console.log(div);
+                while (div.firstChild) {
+                  // //console.log(div.firstChild);
+                  div.removeChild(div.firstChild);
+                }
+                div = document.querySelector(".problem-name-D");
+                // //console.log(div);
+                while (div.firstChild) {
+                  // //console.log(div.firstChild);
+                  div.removeChild(div.firstChild);
+                }
+                div = document.querySelector(".problem-name-C");
+                // //console.log(div);
+                while (div.firstChild) {
+                  // //console.log(div.firstChild);
+                  div.removeChild(div.firstChild);
+                }
+                div = document.querySelector(".problem-name-B");
+                // //console.log(div);
+                while (div.firstChild) {
+                  // //console.log(div.firstChild);
+                  div.removeChild(div.firstChild);
+                }
+                div = document.querySelector(".problem-name-A");
+                // //console.log(div);
+                while (div.firstChild) {
+                  // //console.log(div.firstChild);
+                  div.removeChild(div.firstChild);
+                }
+                for (let i = 0; i < curr_set.length; i++) {
+                  let link = document.createElement("div");
+                  let p = convert_to_link(`${curr_set[i][1]}`);
+                  link.innerHTML = `<a href="${p}">Let's Do It</a>`;
+                  if (i == 0) {
+                    document.querySelector(".problem-name-A").innerHTML =
+                      curr_set[i][0];
+                    let div = document.querySelector(".linkA");
+                    // //console.log(div);
+                    while (div.firstChild) {
+                      // //console.log(div.firstChild);
+                      div.removeChild(div.firstChild);
+                    }
+                    document.querySelector(".linkA").appendChild(link);
+                  }
+                  if (i == 1) {
+                    document.querySelector(".problem-name-B").innerHTML =
+                      curr_set[i][0];
 
-                  let div = document.querySelector(".linkB");
-                  //console.log(div);
-                  while (div.firstChild) {
-                    //console.log(div.firstChild);
-                    div.removeChild(div.firstChild);
+                    let div = document.querySelector(".linkB");
+                    //console.log(div);
+                    while (div.firstChild) {
+                      //console.log(div.firstChild);
+                      div.removeChild(div.firstChild);
+                    }
+                    document.querySelector(".linkB").appendChild(link);
                   }
-                  document.querySelector(".linkB").appendChild(link);
-                }
-                if (i == 2) {
-                  document.querySelector(".problem-name-C").innerHTML =
-                    curr_set[i][0];
+                  if (i == 2) {
+                    document.querySelector(".problem-name-C").innerHTML =
+                      curr_set[i][0];
 
-                  let div = document.querySelector(".linkC");
-                  //console.log(div);
-                  while (div.firstChild) {
-                    //console.log(div.firstChild);
-                    div.removeChild(div.firstChild);
+                    let div = document.querySelector(".linkC");
+                    //console.log(div);
+                    while (div.firstChild) {
+                      //console.log(div.firstChild);
+                      div.removeChild(div.firstChild);
+                    }
+                    document.querySelector(".linkC").appendChild(link);
                   }
-                  document.querySelector(".linkC").appendChild(link);
-                }
-                if (i == 3) {
-                  document.querySelector(".problem-name-D").innerHTML =
-                    curr_set[i][0];
+                  if (i == 3) {
+                    document.querySelector(".problem-name-D").innerHTML =
+                      curr_set[i][0];
 
-                  let div = document.querySelector(".linkD");
-                  //console.log(div);
-                  while (div.firstChild) {
-                    //console.log(div.firstChild);
-                    div.removeChild(div.firstChild);
+                    let div = document.querySelector(".linkD");
+                    //console.log(div);
+                    while (div.firstChild) {
+                      //console.log(div.firstChild);
+                      div.removeChild(div.firstChild);
+                    }
+                    document.querySelector(".linkD").appendChild(link);
                   }
-                  document.querySelector(".linkD").appendChild(link);
-                }
-                if (i == 4) {
-                  document.querySelector(".problem-name-E").innerHTML =
-                    curr_set[i][0];
+                  if (i == 4) {
+                    document.querySelector(".problem-name-E").innerHTML =
+                      curr_set[i][0];
 
-                  let div = document.querySelector(".linkE");
-                  //console.log(div);
-                  while (div.firstChild) {
-                    //console.log(div.firstChild);
-                    div.removeChild(div.firstChild);
+                    let div = document.querySelector(".linkE");
+                    //console.log(div);
+                    while (div.firstChild) {
+                      //console.log(div.firstChild);
+                      div.removeChild(div.firstChild);
+                    }
+                    document.querySelector(".linkE").appendChild(link);
                   }
-                  document.querySelector(".linkE").appendChild(link);
                 }
+                document.querySelector(".container").classList.remove("hidden");
+                document.querySelector(".container").classList.add("animated");
+                document
+                  .querySelector(".container")
+                  .classList.add("bounceInRight");
+                e.preventDefault();
+              } else {
+                hide_please(item4);
+                hide_please(item2);
+                hide_please(item3);
+                hide_please(item);
+                daily_mix_contests.classList.remove("hidden");
+                unsolved_mysteries.classList.add("hidden");
+                document.querySelector(".cont1").classList.add("hidden");
+                document.querySelectorAll(".cont1")[1].classList.add("hidden");
+                document.querySelector(".update").classList.add("hidden");
+                document.querySelector(".update2").classList.add("hidden");
+                weak_topics.classList.add("hidden");
+                upsolve.classList.add("hidden");
+                show_daily_mix.classList.add("hidden");
+                document.querySelector(".container").classList.add("hidden");
+                strong_topics.classList.add("hidden");
+                item.classList.remove("hidden");
+                item2.classList.remove("hidden");
+                item3.classList.remove("hidden");
+                item4.classList.remove("hidden");
+                document.querySelector(".wrapper").classList.remove("hidden");
+                item4.classList.remove("hinge");
+                item3.classList.remove("hinge");
+                item2.classList.remove("hinge");
+                item.classList.remove("hinge");
+                document.querySelector(".problemsets").classList.add("hidden");
+                document.querySelector(".heading").classList.remove("hidden");
+                document
+                  .querySelector("#chartContainer")
+                  .classList.add("hidden");
+                show_daily_mix2.classList.add("hidden");
               }
-              document.querySelector(".container").classList.remove("hidden");
-              document.querySelector(".container").classList.add("animated");
-              document
-                .querySelector(".container")
-                .classList.add("bounceInRight");
-              e.preventDefault();
             });
           }
+          document
+            .querySelector(".update")
+            .addEventListener("click", function (e) {
+              let solved2 = new Set();
+              async function get_result() {
+                let modified_url = url2 + handle_name;
+                const jsondata = await fetch(modified_url);
+                const jsdata = await jsondata.json();
+                user_submissions = jsdata.result;
+
+                solved2.clear();
+
+                let jj = 0;
+                // for retreiving solved set
+                for (let i = 0; i < jsdata.result.length; i++) {
+                  if (jsdata.result[i].verdict == "OK") {
+                    let str =
+                      jsdata.result[i].problem.contestId +
+                      "-" +
+                      jsdata.result[i].problem.index;
+                    solved.add(str);
+                    no_of_success = solved.size;
+                  }
+                }
+              }
+              get_result();
+              for (let i = 0; i < 4; i++) {
+                let curr_set = [];
+                if (i === 0) {
+                  curr_set = set1;
+                } else if (i === 1) {
+                  curr_set = set2;
+                } else if (i === 2) {
+                  curr_set = set3;
+                } else if (i === 3) {
+                  curr_set = set4;
+                }
+                let cnt = 0;
+                for (let j = 0; j < curr_set.length; j++) {
+                  if (solved.has(curr_set[j][1])) {
+                    curr_set[j][1] = 0;
+                    if (j === 0) {
+                      document.querySelector(
+                        ".problem-name-A"
+                      ).innerHTML = `Goto Next, You have done it.`;
+                      document.querySelector(".linkA").classList.add("hidden");
+                    }
+
+                    if (j === 1) {
+                      document.querySelector(
+                        ".problem-name-B"
+                      ).innerHTML = `Goto Next, You have done it.`;
+                      document.querySelector(".linkB").classList.add("hidden");
+                    }
+
+                    if (j === 2) {
+                      document.querySelector(
+                        ".problem-name-C"
+                      ).innerHTML = `Goto Next, You have done it.`;
+                      document.querySelector(".linkC").classList.add("hidden");
+                    }
+
+                    if (j === 3) {
+                      document.querySelector(
+                        ".problem-name-D"
+                      ).innerHTML = `Goto Next, You have done it.`;
+                      document.querySelector(".linkD").classList.add("hidden");
+                    }
+
+                    if (j === 4) {
+                      document.querySelector(
+                        ".problem-name-E"
+                      ).innerHTML = `Goto Next, You have done it.`;
+                      document.querySelector(".linkE").classList.add("hidden");
+                    }
+                    cnt += 1;
+                  }
+                }
+
+                if (cnt == 5) {
+                  if (i == 0) {
+                    document.querySelector(".g_2").classList.add("hidden");
+                    document.querySelector(".g2").classList.remove("hidden");
+                  }
+                  if (i == 1) {
+                    document.querySelector(".g_3").classList.add("hidden");
+                    document.querySelector(".g3").classList.remove("hidden");
+                  }
+                  if (i == 2) {
+                    document.querySelector(".g_4").classList.add("hidden");
+                    document.querySelector(".g4").classList.remove("hidden");
+                  }
+                  if (i == 3) {
+                    document.querySelector(".g_5").classList.add("hidden");
+                    document.querySelector(".g5").classList.remove("hidden");
+                  }
+                }
+              }
+
+              e.preventDefault();
+            });
           e.preventDefault();
         });
     }
@@ -1223,9 +1618,13 @@ function hello() {
     hide_please(item2);
     hide_please(item3);
     hide_please(item);
+    document.querySelector('#time').classList.add("hidden");
     daily_mix_contests.classList.remove("hidden");
     unsolved_mysteries.classList.add("hidden");
     document.querySelector(".cont1").classList.add("hidden");
+    document.querySelectorAll(".cont1")[1].classList.add("hidden");
+    document.querySelector(".update").classList.add("hidden");
+    document.querySelector(".update2").classList.add("hidden");
     weak_topics.classList.add("hidden");
     upsolve.classList.add("hidden");
     show_daily_mix.classList.add("hidden");
@@ -1255,13 +1654,6 @@ function hello() {
   });
 }
 window.onload = hello;
-// document.querySelector("#userstatistics").addEventListener("click", function (e) {
-//   let handle = document.querySelector(".form-control").value;
-//   website_url1 = website_url1 + handle;
-//   document.location.href = website_url1;
-//   url = "profile_user_stats.html?handle=";
-//   e.preventDefault();
-// });
 document.querySelector("#dashboard1").addEventListener("click", function (e) {
   ////console.log("Going to dashboard!");
   let handle = document.querySelector(".form-control").value;
@@ -1313,63 +1705,103 @@ document.querySelector("#level_wise").addEventListener("click", function (e) {
 
 // FOR FUTURE CONTESTS
 
-var request = new XMLHttpRequest()
-const app = document.getElementById("futurecontest")
+var request = new XMLHttpRequest();
+const app = document.getElementById("futurecontest");
 
-    request.open('GET', 'https://codeforces.com/api/contest.list', true)
+request.open("GET", "https://codeforces.com/api/contest.list", true);
 
-    request.onload = function() {
-        
+request.onload = function () {
+  var data = JSON.parse(this.response);
+  if (request.status >= 200 && request.status < 400) {
+    data["result"].forEach((contest) => {
+      var cid = contest.id;
+      var cname = contest.name;
 
-      var data = JSON.parse(this.response)
-      if (request.status >= 200 && request.status < 400) 
-      {
-          data["result"].forEach(contest => {
-             
+      // GETTING TIME UNTIL CONTEST STARTS AND CONVERTING TO HH:MM:SS
 
-              var cid = contest.id
-              var cname = contest.name
+      var totalSeconds = contest.relativeTimeSeconds;
+      totalSeconds = totalSeconds * -1;
+      var chours = Math.floor(totalSeconds / 3600);
+      totalSeconds %= 3600;
+      // var cminutes = Math.floor(totalSeconds / 60);
+      // var cseconds = totalSeconds % 60;
 
-              // GETTING TIME UNTIL CONTEST STARTS AND CONVERTING TO HH:MM:SS
+      var link = "https://codeforces.com/contestRegistration/" + cid;
+      let months_list = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sept",
+        "Oct",
+        "Nov",
+        "Dec",
+      ];
 
-              var totalSeconds = contest.relativeTimeSeconds
-              totalSeconds = totalSeconds*(-1)
-              var chours = Math.floor(totalSeconds / 3600);
-              totalSeconds %= 3600;
-              // var cminutes = Math.floor(totalSeconds / 60);
-              // var cseconds = totalSeconds % 60;
+      var link = "https://codeforces.com/contestRegistration/" + cid;
 
+      if (contest.phase === "BEFORE") {
+        const a = document.createElement("a");
+        a.textContent = "Register";
+        a.href = link;
 
-              var link = "https://codeforces.com/contestRegistration/" + cid
+        let start_time = contest.startTimeSeconds * 1000;
+        let full_date = new Date(start_time);
+        let date = full_date.getDate();
+        let month = full_date.getMonth();
+        month = months_list[month];
+        let hour = full_date.getHours();
+        let minutes = full_date.getMinutes();
+        if (minutes < 10) {
+          minutes = "0" + minutes.toString();
+        }
 
-              if(contest.phase==="BEFORE")
-              {
+        console.log(full_date, date, month, hour, minutes);
 
-                
-                  const a = document.createElement('a')
-                  a.textContent="Register"
-                  a.href=link
+        const li = document.createElement("li");
+        li.textContent = cname;
 
-                  const li = document.createElement('li')
-                  li.textContent=cname
+        const h6 = document.createElement("h6");
+        h6.textContent =
+          "Contest Date: " + date + " " + month + ", " + hour + ":" + minutes;
 
-                  const h6 = document.createElement('h6')
-                  h6.textContent="Time until start " + chours + " hours"
-                  
-                  /* WOULD BE NEEDED FOR MM:SS
+        /* WOULD BE NEEDED FOR MM:SS
+
+        /* WOULD BE NEEDED FOR MM:SS
                   ":" + cminutes + ":" +cseconds
                   */
-                  app.appendChild(li)
-                  app.appendChild(h6)
-                  app.appendChild(a)
-
-
-              }
-          });             
+        app.appendChild(li);
+        app.appendChild(h6);
+        app.appendChild(a);
       }
-
+    });
   }
+};
 
-  request.send()
+request.send();
 
-  // FUTURE CONTESTS END
+// FUTURE CONTESTS END
+
+// Timer for countdown
+function startTimer(duration, display) {
+  var timer = duration,
+    minutes,
+    seconds;
+  setInterval(function () {
+    minutes = parseInt(timer / 60, 10);
+    seconds = parseInt(timer % 60, 10);
+
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+    display.textContent = minutes + ":" + seconds;
+
+    if (--timer < 0) {
+      timer = duration;
+    }
+  }, 1000);
+}

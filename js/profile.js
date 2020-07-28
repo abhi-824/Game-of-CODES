@@ -71,10 +71,16 @@ $(document).ready(function() {
   async function getUserSubmissions() {
     let finalUrlSubmissions = urlSubmissions + user_handle + "&from=1";
 
+    let recent_contests = new Set();
+
     const jsonDataSubmissions = await fetch(finalUrlSubmissions);
     const jsDataSubmissions = await jsonDataSubmissions.json();
 
     for (let j = 0; j < jsDataSubmissions.result.length; j++) {
+      //for recent contests attempted by user
+      if(jsDataSubmissions.result[j].contestId){
+        recent_contests.add(parseInt(jsDataSubmissions.result[j].contestId));
+      }
       if (jsDataSubmissions.result[j].verdict == "OK") {
         ok++;
       } else if (jsDataSubmissions.result[j].verdict == "COMPILATION_ERROR") {
@@ -90,6 +96,16 @@ $(document).ready(function() {
       } else {
         others++;
       }
+    }
+
+    let ln = Math.min(recent_contests.size, 5); //only the most recent 5 contests are picked 
+    recent_contests = Array.from(recent_contests);
+    const rc = document.getElementById("recent-contests");
+    const rc_url = "https://codeforces.com/contest/";
+    for(let i=0; i<ln; i++){
+      let li = document.createElement('li');
+      li.innerHTML = "<a href='" + rc_url + recent_contests[i].toString() + "'> Contest ID: " + recent_contests[i].toString() + "</a>";
+      rc.appendChild(li)
     }
 
     dataPointsSubmissions.push({

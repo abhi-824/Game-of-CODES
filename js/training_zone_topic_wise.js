@@ -11,6 +11,11 @@ const url2 = "https://codeforces.com/api/user.status?handle=";
 let solved = new Set();
 let user_contest = [];
 let handle_name;
+let div2_a=document.querySelectorAll('.div2_a')
+let div2_b=document.querySelectorAll('.div2_b')
+let div2_c=document.querySelectorAll('.div2_c')
+let div2_d=document.querySelectorAll('.div2_d')
+let div2_e=document.querySelectorAll('.div2_e')
 google.charts.load("current", { packages: ["corechart"] });
 
 let all_topics_name = [
@@ -263,5 +268,149 @@ function hello() {
     }
   }
   getsubmissions();
+  function convert_to_id(link){
+    let j;
+    let contest;let id;
+    for(let i=link.length;i>=0;i--)
+    {
+      if(link[i]==='/')
+      {
+
+        j=i-1;
+        break;
+      }
+      else{
+        id+=link[i];
+      }
+    }
+    for(j;j>=0;j--)
+    {
+      if(link[j]==='/')
+      {
+        break;
+      }
+      else{
+        contest+=link[j];
+      }
+    }
+    return `${contest}-${id}`;
+  }
+  function check_for_solved_problems(){
+    for(let i=0;i<div2_a.length;i++)
+    {
+      let str=convert_to_id(div2_a[i].href);
+      if(solved.has(str))
+      {
+        div2_a[i].classList.add("already_taken");
+      }
+    }
+    for(let i=0;i<div2_b.length;i++)
+    {
+      let str=convert_to_id(div2_b[i].href);
+      if(solved.has(str))
+      {
+        div2_b[i].classList.add("already_taken");
+      }
+    }
+    for(let i=0;i<div2_c.length;i++)
+    {
+      let str=convert_to_id(div2_c[i].href);
+      if(solved.has(str))
+      {
+        div2_c[i].classList.add("already_taken");
+      }
+    }
+    for(let i=0;i<div2_d.length;i++)
+    {
+      let str=convert_to_id(div2_d[i].href);
+      if(solved.has(str))
+      {
+        div2_d[i].classList.add("already_taken");
+      }
+    }
+    for(let i=0;i<div2_e.length;i++)
+    {
+      let str=convert_to_id(div2_e[i].href);
+      if(solved.has(str))
+      {
+        div2_e[i].classList.add("already_taken");
+      }
+    }
+  }
+  check_for_solved_problems();
+  let tag_problems=new Map();
+  function generate_topics(str){
+
+  }
+  function make_list_of_tags(){
+    for(let i=0;i<div2_a.length;i++)
+    {
+      if(div2_a[i].classList.length!==3){
+        let str=convert_to_id(div2_a[i].href);
+        let tags=generate_topics(str);
+        for(let i=0;i<tags.length;i++)
+        {
+          let val=tag_problems[tags[i]];
+          val.push(str)
+          tag_problems.set(tags[i],val);
+        }
+      }
+    }
+    for(let i=0;i<div2_b.length;i++)
+    {
+      if(div2_b[i].classList.length!==3){
+        let str=convert_to_id(div2_b[i].href);
+        let tags=generate_topics(str);
+        for(let i=0;i<tags.length;i++)
+        {
+          let val=tag_problems[tags[i]];
+          val.push(str)
+          tag_problems.set(tags[i],val);
+        }
+      }
+    }
+    for(let i=0;i<div2_c.length;i++)
+    {
+      if(div2_a[i].classList.length!==3){
+        let str=convert_to_id(div2_c[i].href);
+        let tags=generate_topics(str);
+        for(let i=0;i<tags.length;i++)
+        {
+          let val=tag_problems[tags[i]];
+          val.push(str)
+          tag_problems.set(tags[i],val);
+        }
+      }
+    }
+    for(let i=0;i<div2_d.length;i++)
+    {
+      if(div2_d[i].classList.length!==3){
+        let str=convert_to_id(div2_d[i].href);
+        let tags=generate_topics(str);
+        for(let i=0;i<tags.length;i++)
+        {
+          let val=tag_problems[tags[i]];
+          val.push(str)
+          tag_problems.set(tags[i],val);
+        }
+      }
+    }
+    
+    for(let i=0;i<div2_e.length;i++)
+    {
+      if(div2_e[i].classList.length!==3){
+        let str=convert_to_id(div2_e[i].href);
+        let tags=generate_topics(str);
+        for(let i=0;i<tags.length;i++)
+        {
+          let val=tag_problems[tags[i]];
+          val.push(str)
+          tag_problems.set(tags[i],val);
+        }
+      }
+    }
+  }  
+  make_list_of_tags();
+  
 }
 window.onload = hello;

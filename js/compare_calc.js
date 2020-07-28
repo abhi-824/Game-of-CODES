@@ -18,6 +18,7 @@ button.addEventListener("click", function (e) {
   console.log(handle);
   if (!handle || handle === handle1) {
     alert("Please enter User handle");
+    url = "compare_final.html?handle=";
   } else {
     document.location.href = url;
     url = "compare_final.html?handle=";
