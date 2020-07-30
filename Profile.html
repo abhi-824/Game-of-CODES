@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,8 +23,8 @@
 
 <body>
   <!-- Navigation Bar -->
-  <div class="container1">
-    <div class="container2">
+  <div class="container1forprofile">
+    <div class="container2forprofile">
 
       <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
         <a class="navbar-brand logo" href="#">
@@ -36,18 +35,30 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+            <li class="nav-item">
 
-              <a class="nav-link" href="dashboard.html">Dashboard<div class="line1"></div><span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="dashboard.html" id="dashboard">Dashboard</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Compare.html">Compare</a>
+              <a class="nav-link" href="compare.html" id="compare">Compare</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="Profile.html" id="profile">Profile<span class="sr-only">(current)</span>
+                <div class="line1"></div>
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Profile.html">Profile</a>
+              <a class="nav-link" href="codeblast.html" id="codeblast">Code Blast</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Codeblast.html">Code Blast</a>
+              <div class="dropdown dropdown1">
+                <button class="btn nav-link" type="button" data-toggle="dropdown">Training Zone
+                  <!-- <span class="caret"></span></button> -->
+                  <ul class="dropdown-content1" style="list-style-type: none;">
+                    <li><a href="training_zone_topic_wise.html" id="topic-wise">Topic Wise</a></li>
+                    <li><a href="training_zone_level_wise.html" id="level-wise">Level Wise</a></li>
+                  </ul>
+              </div>
             </li>
           </ul>
           <input class="form-control" type="search" placeholder="Search" aria-label="Search">
@@ -61,46 +72,58 @@
           <div class="column-1 col-4">
             <img class="Profile-Photo" style=" border-radius:50%;" src="" alt="Profile Photo" width="300" height="380">
             <h3 style="padding: 2.5rem 3.75rem 0 0; text-align: center;" class="username">USERNAME</h3>
+            <h4 style="padding: 2.5rem 3.75rem 0 0; text-align: center;" id="userstatistics"><a href="profile_user_stats.html">User Statistics</a></h4>
           </div>
+        </div>
 
-          <div class="column-2 col-4">
+        <!-- <div class="column-2 col-4">
             <h3><strong>Check Your Progress!</strong></h3>
-            <br>
+            <br> -->
 
-            <button type="button" id="mybtn1" class="btn btn-dark text-left btn-sm" >
-              1. Rating Change Over Time
-            </button>
-            <br>
-            <br>
-            <button type="button" id="mybtn2" class="btn btn-dark text-left btn-sm" >
-              2. All Submissions Final Verdict
-            </button>
-            <br>
-            <br>
-            <button type="button" id="mybtn3" class="btn btn-dark text-left btn-sm" >
-              3. Problem-Rating-Wise All Submissions
-            </button>
-            <br>
-            <br>
-            <!--<button type="button" id="mybtn4" class="btn btn-dark text-left btn-sm" >
+
+        <div style="padding-left:100px; float: right;" class="recent-contests">
+          <h3 style="padding-top: 2rem;"><strong>Recent Contests</strong></h3>
+          <ul id="recent-contests">
+          </ul>
+        </div>
+        <!--<div class="hidden col-4" id="myChart4" style="height: 400px; width: 90%;"></div>-->
+      </div>
+
+      <div id="myChart1" style="height: 500px; width: 80%; margin: 0 auto; padding-top: 50px;"></div>
+      <div style="padding-top: 50px;" class="charttitle" align="center">Rating Change Over Time</div>
+      <br>
+      <br>
+
+      <div id="myChart3" style="height: 500px; width: 80%; margin: 0 auto; padding-top: 50px;"></div>
+      <div style="padding-top: 50px;" class="charttitle" align="center">Problem-Rating-Wise All Submissions</div>
+      <br>
+      <br>
+
+
+      <div id="myChart2" style="height: 500px; width: 80%; margin: 0 auto; padding-top: 50px;"></div>
+      <div style="padding-top: 50px;" align="center">All Submissions Final Verdict</div>
+      <br>
+      <br>
+
+      <div style="padding-left:100px; float: right;">
+        <h3 style="padding-top: 2rem;" class="recent-contests"><strong>Weak Topics</strong></h3>
+      </div>
+      <div style="padding-left:100px; float: left;">
+        <h3 style="padding-top: 2rem;" class="recent-contests"><strong>Strong Topics</strong></h3>
+      </div>
+
+      <!--<button type="button" id="mybtn4" class="btn btn-dark text-left btn-sm" >
               4. Problem-Rating-Wise Accepted Submissions
             </button>
             <br>
             <br>-->
-            <button id="hide-graph" type="button" class="btn btn-dark hidden text-left btn-sm">Hide Graph</button>
-          </div>
+      <!-- <button id="hide-graph" type="button" class="btn btn-dark hidden text-left btn-sm">Hide Graph</button> -->
 
-          <div style="padding-left:100px;" class="column-3 col-4">
-            <h3 style="padding-top: 2rem;" class="recent-contests"><strong>Recent Contests</strong></h3>
-          </div>
-          <div class="hidden col-4" id="myChart1" style="height: 400px; width: 90%;"></div>
-          <div class="hidden col-4" id="myChart2" style="height: 400px; width: 90%;"></div>
-          <div class="hidden col-4" id="myChart3" style="height: 400px; width: 90%;"></div>
-          <!--<div class="hidden col-4" id="myChart4" style="height: 400px; width: 90%;"></div>-->
-        </div>
-      </div>
 
-      <!-- Footer -->
+
+    </div>
+
+    <!-- Footer
       <div class="user-stats">
         <div class="item1">
           <h1 class="inactive-item">WEAK TOPICS</h1>
@@ -116,10 +139,10 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
-<script src="js/profile.js"></script>
-  <script src="js/script.js"></script>
+    <script src="js/profile.js"></script>
+    <script src="js/script.js"></script>
 
 </body>
 
