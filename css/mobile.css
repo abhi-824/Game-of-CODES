@@ -7,6 +7,9 @@
     justify-content: center;
     
 }
+.see1{
+    display:none;
+}
 body{
     background: rgba(0, 0, 0, 0.904);
 }
