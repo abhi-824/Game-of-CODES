@@ -53,34 +53,56 @@
       media="screen and (max-width: 768px)"
       href="css/mobile.css"
     />
-    <script src="https://ajax.googleapis.com/ajax/libs/ jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script
       type="text/javascript"
       src="https://www.gstatic.com/charts/loader.js"
     ></script>
   </head>
   <style>
+    .container111 {
+      background-attachment: fixed;
+      height: 350vh;
+    }
+
+    .container112 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 350vh;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
     .topic-lists {
       display: flex;
       flex-direction: row;
     }
+
     .weak_topics,
     .strong_topics {
       /* overflow: hidden; */
       width: 100%;
       padding: 0 2rem;
     }
+
     .users {
       display: flex;
       padding: 0 0.4rem;
     }
-    .user1{
-      padding:0 1rem;
+
+    .user1 {
+      padding: 0 1rem;
     }
-    .handle1,.handle2,.handle_1,.handle_2 {
+
+    .handle1,
+    .handle2,
+    .handle_1,
+    .handle_2 {
       font-size: 1.5rem;
     }
   </style>
+
   <body>
     <div class="container111">
       <div class="container112">
@@ -110,7 +132,7 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Codeblast.html" id="codeblast1"
+              <a class="nav-link" href="codeblast.html" id="codeblast1"
                 >Code Blast</a
               >
             </li>
@@ -129,10 +151,75 @@
           <!-- </div> -->
         </nav>
         <!-- insert chart here -->
-    
-    
+
+        <div
+          class="compareTable table-responsive container-fluid"
+          style="padding-top: 20px; width: 60%; margin: 0 auto;"
+        >
+          <table
+            class="table table-borderless table-hover table-sm animated fadeIn slower"
+          >
+            <thead>
+              <tr>
+                <th scope="col" style="width: 40%;"></th>
+                <th class="Handle1" scope="col" style="width: 30%;"></th>
+                <th class="Handle2" scope="col" style="width: 30%;"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Current Rank</th>
+                <td class="curRank1"></td>
+                <td class="curRank2"></td>
+              </tr>
+              <tr>
+                <th scope="row">Max Rank</th>
+                <td class="maxRank1"></td>
+                <td class="maxRank2"></td>
+              </tr>
+              <tr>
+                <th scope="row">Current Rating</th>
+                <td class="curRating1"></td>
+                <td class="curRating2"></td>
+              </tr>
+              <tr>
+                <th scope="row">Max Rating</th>
+                <td class="maxRating1"></td>
+                <td class="maxRating2"></td>
+              </tr>
+              <tr>
+                <th scope="row">Number of Contests</th>
+                <td class="numOfContest1"></td>
+                <td class="numOfContest2"></td>
+              </tr>
+              <tr>
+                <th scope="row">Number of Accepted Solutions</th>
+                <td class="ok1"></td>
+                <td class="ok2"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div
+          id="compareChart1"
+          style="height: 500px; width: 80%; margin: 0 auto; padding-top: 60px;"
+        ></div>
+        <h5 style="padding-top: 70px; text-align: center;">
+          <strong>NOTE: </strong> Drag your mouse over a part of the graph to
+          zoom it.
+        </h5>
+        <div
+          id="compareChart2"
+          style="height: 500px; width: 80%; margin: 0 auto; padding-top: 50px;"
+        ></div>
+        <div
+          id="compareChart3"
+          style="height: 500px; width: 80%; margin: 0 auto; padding-top: 130px;"
+        ></div>
+
         <!-- Weak and strong topics -->
-        <div class="topic-lists">
+        <div class="topic-lists" style="padding-top: 170px;">
           <div class="weak_topics daily-mix">
             <h1>Weak Topics</h1>
             <div class="line"></div>
