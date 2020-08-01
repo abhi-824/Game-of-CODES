@@ -1706,7 +1706,7 @@ document.querySelector("#level_wise").addEventListener("click", function (e) {
 // FOR FUTURE CONTESTS
 
 var request = new XMLHttpRequest();
-const app = document.getElementById("futurecontest");
+let app = document.querySelector(".future-contests");
 
 request.open("GET", "https://codeforces.com/api/contest.list", true);
 
@@ -1745,6 +1745,7 @@ request.onload = function () {
       var link = "https://codeforces.com/contestRegistration/" + cid;
 
       if (contest.phase === "BEFORE") {
+        const b=document.createElement("th");
         const a = document.createElement("a");
         a.textContent = "Register";
         a.href = link;
@@ -1767,16 +1768,18 @@ request.onload = function () {
 
         const h6 = document.createElement("h6");
         h6.textContent =
-          "Contest Date: " + date + " " + month + ", " + hour + ":" + minutes;
+           date + " " + month + ", " + hour + ":" + minutes;
 
         /* WOULD BE NEEDED FOR MM:SS
 
         /* WOULD BE NEEDED FOR MM:SS
                   ":" + cminutes + ":" +cseconds
                   */
-        app.appendChild(li);
-        app.appendChild(h6);
-        app.appendChild(a);
+        b.appendChild(li);
+        b.appendChild(h6);
+        b.appendChild(a);
+        b.classList.add("table_row")
+        app.appendChild(b);
       }
     });
   }

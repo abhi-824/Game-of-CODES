@@ -13,7 +13,30 @@ body {
   height: 100vh;
   overflow-x: hidden;
 }
-
+.table_row{
+  display:grid;
+  grid-template-columns: 3fr 2fr 1fr;
+  color:white;
+  grid-gap:0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+.table_row a{
+  color:#333;
+  background: #fff;
+  text-align: center;  
+  align-items: center;
+  padding:0.4rem 0.5rem;
+  border-radius: 20px;;
+}
+.table-row li{
+  list-style: none;
+}
+.table_row a:hover{
+  background:rgb(0, 71, 153);
+  color:rgb(216, 253, 8);
+  transition:0.5s;
+}
 
 .dropdown-content1 {
   display: none;
