@@ -29,12 +29,12 @@ var user_handle;
 function getHandle() {
   var url = document.location.href,
     params = url.split("=")[1];
-    return params;
+  return params;
 }
 
 user_handle = getHandle();
 
-$(document).ready(function() {
+$(document).ready(function () {
   async function getUserRatings() {
     let finalUrlRatings = urlRatings + user_handle;
 
@@ -43,29 +43,30 @@ $(document).ready(function() {
 
     for (let i = 0; i < jsDataRatings.result.length; i++) {
       dataPointsRatings.push({
-        x: (parseInt(jsDataRatings.result[i].ratingUpdateTimeSeconds) * 1000),
-        y: parseInt(jsDataRatings.result[i].newRating)
+        x: parseInt(jsDataRatings.result[i].ratingUpdateTimeSeconds) * 1000,
+        y: parseInt(jsDataRatings.result[i].newRating),
       });
     }
 
     var chart = new CanvasJS.Chart("myChart1", {
+      backgroundColor: null,
       animationEnabled: true,
       animationDuration: 2000,
       theme: "dark1",
       title: {
         text: "Your Ratings",
       },
-      data: [{
-        type: "line",
-        xValueType: "dateTime",
-        dataPoints: dataPointsRatings,
-      }, ],
+      data: [
+        {
+          type: "line",
+          xValueType: "dateTime",
+          dataPoints: dataPointsRatings,
+        },
+      ],
     });
 
     chart.render();
     console.log(dataPointsRatings);
-    $("#myChart1").removeClass("hidden");
-    
   }
 
   async function getUserSubmissions() {
@@ -78,7 +79,7 @@ $(document).ready(function() {
 
     for (let j = 0; j < jsDataSubmissions.result.length; j++) {
       //for recent contests attempted by user
-      if(jsDataSubmissions.result[j].contestId){
+      if (jsDataSubmissions.result[j].contestId) {
         recent_contests.add(parseInt(jsDataSubmissions.result[j].contestId));
       }
       if (jsDataSubmissions.result[j].verdict == "OK") {
@@ -91,71 +92,81 @@ $(document).ready(function() {
         wrongAnswer++;
       } else if (jsDataSubmissions.result[j].verdict == "TIME_LIMIT_EXCEEDED") {
         timeLimitExceeded++;
-      } else if (jsDataSubmissions.result[j].verdict == "MEMORY_LIMIT_EXCEEDED") {
+      } else if (
+        jsDataSubmissions.result[j].verdict == "MEMORY_LIMIT_EXCEEDED"
+      ) {
         memoryLimitExceeded++;
       } else {
         others++;
       }
     }
 
-    let ln = Math.min(recent_contests.size, 5); //only the most recent 5 contests are picked 
+    let ln = Math.min(recent_contests.size, 5); //only the most recent 5 contests are picked
     recent_contests = Array.from(recent_contests);
     const rc = document.getElementById("recent-contests");
     const rc_url = "https://codeforces.com/contest/";
-    for(let i=0; i<ln; i++){
-      let li = document.createElement('li');
-      li.innerHTML = "<a href='" + rc_url + recent_contests[i].toString() + "'> Contest ID: " + recent_contests[i].toString() + "</a>";
-      rc.appendChild(li)
+    for (let i = 0; i < ln; i++) {
+      let li = document.createElement("li");
+      li.innerHTML =
+        "<a href='" +
+        rc_url +
+        recent_contests[i].toString() +
+        "'> Contest ID: " +
+        recent_contests[i].toString() +
+        "</a>";
+      rc.appendChild(li);
     }
 
     dataPointsSubmissions.push({
       y: ok,
-      indexLabel: "OK"
+      indexLabel: "OK",
     });
     dataPointsSubmissions.push({
       y: compilationError,
-      indexLabel: "COMPILATION_ERROR"
+      indexLabel: "COMPILATION_ERROR",
     });
     dataPointsSubmissions.push({
       y: runTimeError,
-      indexLabel: "RUNTIME_ERROR"
+      indexLabel: "RUNTIME_ERROR",
     });
     dataPointsSubmissions.push({
       y: wrongAnswer,
-      indexLabel: "WRONG_ANSWER"
+      indexLabel: "WRONG_ANSWER",
     });
     dataPointsSubmissions.push({
       y: timeLimitExceeded,
-      indexLabel: "TIME_LIMIT_EXCEEDED"
+      indexLabel: "TIME_LIMIT_EXCEEDED",
     });
     dataPointsSubmissions.push({
       y: memoryLimitExceeded,
-      indexLabel: "MEMORY_LIMIT_EXCEEDED"
+      indexLabel: "MEMORY_LIMIT_EXCEEDED",
     });
     dataPointsSubmissions.push({
       y: others,
-      indexLabel: "OTHERS"
+      indexLabel: "OTHERS",
     });
 
     var chart = new CanvasJS.Chart("myChart2", {
       theme: "dark2",
+      backgroundColor: null,
       animationEnabled: true,
       animationDuration: 2000,
       title: {
-        text: "Your Submissions"
+        text: "Your Submissions",
       },
-      data: [{
-        type: "pie",
-        showInLegend: true,
-        toolTipContent: "{y} - #percent %",
-        yValueFormatString: "",
-        legendText: "{indexLabel}",
-        dataPoints: dataPointsSubmissions,
-      }]
+      data: [
+        {
+          type: "pie",
+          showInLegend: true,
+          toolTipContent: "{y} - #percent %",
+          yValueFormatString: "",
+          legendText: "{indexLabel}",
+          dataPoints: dataPointsSubmissions,
+        },
+      ],
     });
     chart.render();
     console.log(dataPointsSubmissions);
-    $("#myChart2").removeClass("hidden");
   }
 
   async function getUserSubRat() {
@@ -167,13 +178,25 @@ $(document).ready(function() {
     for (let k = 0; k < jsDataSubRat.result.length; k++) {
       if (jsDataSubRat.result[k].problem.rating < 1200) {
         probRat1199++;
-      } else if (jsDataSubRat.result[k].problem.rating > 1199 && jsDataSubRat.result[k].problem.rating < 1600) {
+      } else if (
+        jsDataSubRat.result[k].problem.rating > 1199 &&
+        jsDataSubRat.result[k].problem.rating < 1600
+      ) {
         probRat1200_1599++;
-      } else if (jsDataSubRat.result[k].problem.rating > 1599 && jsDataSubRat.result[k].problem.rating < 2000) {
+      } else if (
+        jsDataSubRat.result[k].problem.rating > 1599 &&
+        jsDataSubRat.result[k].problem.rating < 2000
+      ) {
         probRat1600_1999++;
-      } else if (jsDataSubRat.result[k].problem.rating > 1999 && jsDataSubRat.result[k].problem.rating < 2400) {
+      } else if (
+        jsDataSubRat.result[k].problem.rating > 1999 &&
+        jsDataSubRat.result[k].problem.rating < 2400
+      ) {
         probRat2000_2399++;
-      } else if (jsDataSubRat.result[k].problem.rating > 2399 && jsDataSubRat.result[k].problem.rating < 2800) {
+      } else if (
+        jsDataSubRat.result[k].problem.rating > 2399 &&
+        jsDataSubRat.result[k].problem.rating < 2800
+      ) {
         probRat2400_2799++;
       } else if (jsDataSubRat.result[k].problem.rating > 2799) {
         probRat2800++;
@@ -181,48 +204,52 @@ $(document).ready(function() {
     }
 
     dataPointsSubRat.push({
+      x: 1,
       y: probRat1199,
-      indexLabel: "<1200"
+      label: "<1200",
     });
     dataPointsSubRat.push({
+      x: 2,
       y: probRat1200_1599,
-      indexLabel: "1200-1599"
+      label: "1200-1599",
     });
     dataPointsSubRat.push({
+      x: 3,
       y: probRat1600_1999,
-      indexLabel: "1600-1999"
+      label: "1600-1999",
     });
     dataPointsSubRat.push({
+      x: 4,
       y: probRat2000_2399,
-      indexLabel: "2000-2399"
+      label: "2000-2399",
     });
     dataPointsSubRat.push({
+      x: 5,
       y: probRat2400_2799,
-      indexLabel: "2400-2799"
+      label: "2400-2799",
     });
-    dataPointsSubmissions.push({
+    dataPointsSubRat.push({
+      x: 6,
       y: probRat2800,
-      indexLabel: ">2800"
+      label: ">2800",
     });
 
     var chart = new CanvasJS.Chart("myChart3", {
+      backgroundColor: null,
       theme: "dark2",
       animationEnabled: true,
       title: {
-        text: "Your Problem-Rating-Wise All Submissions"
+        text: "Your Problem-Rating-Wise All Submissions",
       },
-      data: [{
-        type: "doughnut",
-        showInLegend: true,
-        toolTipContent: "{y} - #percent %",
-        yValueFormatString: "",
-        legendText: "{indexLabel}",
-        dataPoints: dataPointsSubRat,
-      }]
+      data: [
+        {
+          type: "column",
+          dataPoints: dataPointsSubRat,
+        },
+      ],
     });
     chart.render();
     console.log(dataPointsSubRat);
-    $("#myChart3").removeClass("hidden");
   }
 
   //async function getUserSubRatOK() {
@@ -274,6 +301,7 @@ $(document).ready(function() {
   //  });
 
   //  var chart = new CanvasJS.Chart("myChart4", {
+  //    backgroundColor: null,
   //    theme: "dark2",
   //    animationEnabled: true,
   //    title: {
@@ -299,18 +327,17 @@ $(document).ready(function() {
     const jsDataAvatar = await jsonDataAvatar.json();
     let userPhoto = jsDataAvatar.result[0].titlePhoto;
     let temp = "http:";
-    let tempArr = [temp,userPhoto];
+    let tempArr = [temp, userPhoto];
     let finalPhoto = tempArr.join("");
-    $(".Profile-Photo").attr("src",finalPhoto);
+    $(".Profile-Photo").attr("src", finalPhoto);
   }
 
   getUserRatings();
   getUserSubmissions();
-  getUserSubRat();
+  setTimeout(getUserSubRat, 1000);
   //getUserSubRatOK();
   getUserAvatar();
 });
-
 
 $(".username").text(user_handle);
 
@@ -365,8 +392,9 @@ $(".username").text(user_handle);
 // });
 window.onload = console.log("hello");
 
-
-document.querySelector("#userstatistics").addEventListener("click", function (e) {
+document
+  .querySelector("#userstatistics")
+  .addEventListener("click", function (e) {
     console.log("on stats page");
     //let handle = document.querySelector(".form-control").value;
     var user_stats_url = "profile_user_stats.html?handle=";
@@ -374,64 +402,64 @@ document.querySelector("#userstatistics").addEventListener("click", function (e)
     document.location.href = user_stats_url;
     //url = "profile_user_stats.html?handle=";
     e.preventDefault();
-});
+  });
 
 document.querySelector("#dashboard").addEventListener("click", function (e) {
-    console.log("Going to dashboard!");
+  console.log("Going to dashboard!");
 
-    var dash_url = "dashboard.html?handle=";
-    dash_url += user_handle;
-    document.location.href = dash_url;
+  var dash_url = "dashboard.html?handle=";
+  dash_url += user_handle;
+  document.location.href = dash_url;
 
-    e.preventDefault();
+  e.preventDefault();
 });
 
 document.querySelector("#profile").addEventListener("click", function (e) {
-    console.log("Going back to profile page!");
+  console.log("Going back to profile page!");
 
-    var prof_url = "profile.html?handle=";
-    prof_url += user_handle;
-    document.location.href = prof_url;
-    
-    e.preventDefault();
+  var prof_url = "profile.html?handle=";
+  prof_url += user_handle;
+  document.location.href = prof_url;
+
+  e.preventDefault();
 });
 
 document.querySelector("#compare").addEventListener("click", function (e) {
-    console.log("Going to the compare page . . .");
+  console.log("Going to the compare page . . .");
 
-    var comp_url = "compare.html?handle=";
-    comp_url += user_handle;
-    document.location.href = comp_url;
-    
-    e.preventDefault();
+  var comp_url = "compare.html?handle=";
+  comp_url += user_handle;
+  document.location.href = comp_url;
+
+  e.preventDefault();
 });
 
 document.querySelector("#codeblast").addEventListener("click", function (e) {
-    console.log("Going to codeblast!");
+  console.log("Going to codeblast!");
 
-    var cblast_url = "codeblast.html?handle=";
-    cblast_url += user_handle;
-    document.location.href = cblast_url;
-    
-    e.preventDefault();
+  var cblast_url = "codeblast.html?handle=";
+  cblast_url += user_handle;
+  document.location.href = cblast_url;
+
+  e.preventDefault();
 });
 
 document.querySelector("#topic-wise").addEventListener("click", function (e) {
-    console.log("Going to topic-wise training zone!");
+  console.log("Going to topic-wise training zone!");
 
-    let tz_url = "training_zone_topic_wise.html?handle=";
-    tz_url += user_handle;
-    document.location.href = tz_url;
-    
-    e.preventDefault();
+  let tz_url = "training_zone_topic_wise.html?handle=";
+  tz_url += user_handle;
+  document.location.href = tz_url;
+
+  e.preventDefault();
 });
 
 document.querySelector("#level-wise").addEventListener("click", function (e) {
-    console.log("Going to level-wise training zone!");
+  console.log("Going to level-wise training zone!");
 
-    let tz_url = "training_zone_level_wise.html?handle=";
-    tz_url += user_handle;
-    document.location.href = tz_url;
-    
-    e.preventDefault();
+  let tz_url = "training_zone_level_wise.html?handle=";
+  tz_url += user_handle;
+  document.location.href = tz_url;
+
+  e.preventDefault();
 });
