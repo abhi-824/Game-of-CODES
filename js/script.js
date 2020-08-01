@@ -653,7 +653,7 @@ function hello() {
           document.querySelector(".heading").classList.add("hidden");
           document.querySelector(".problemsets").classList.remove("hidden");
           document.querySelector(".cont1").classList.remove("hidden");
-          document.querySelector(".container768").classList.remove("hidden");
+          // document.querySelector(".container768").classList.remove("hidden");
           document.querySelector(".problemsets").classList.add("animated");
           document.querySelector(".problemsets").classList.add("zoomInDown");
           show_daily_mix2.classList.remove("hidden");
@@ -1133,6 +1133,7 @@ function hello() {
               var r = confirm("This would start a timer!!");
               if (r == true) {
                 document.querySelector('#time').classList.remove("hidden");
+                document.querySelector('.contest-time').classList.remove("hidden");
                 var two_hours = 60 * 2 * 60,
                   display = document.querySelector("#time");
                 startTimer(two_hours, display);
@@ -1619,6 +1620,7 @@ function hello() {
     hide_please(item3);
     hide_please(item);
     document.querySelector('#time').classList.add("hidden");
+    document.querySelector('.contest-time').classList.add("hidden");
     daily_mix_contests.classList.remove("hidden");
     unsolved_mysteries.classList.add("hidden");
     document.querySelector(".cont1").classList.add("hidden");

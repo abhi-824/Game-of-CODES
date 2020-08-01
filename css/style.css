@@ -172,6 +172,9 @@ table tr {
 .inner {
   display: none;
 }
+.chartContainer{
+  padding:1rem;
+}
 .daily-mix {
   width: 450px;
   height: 300px;
@@ -184,6 +187,12 @@ table tr {
   margin-top: 10px;
   max-height: 75vh;
   overflow: auto;
+}
+.contest-time{
+  display:grid;
+  grid-template-columns: 1fr 0.2fr;
+  grid-gap:1rem;
+  padding:0 1rem;
 }
 #time{
   float:right;
