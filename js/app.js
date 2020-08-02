@@ -29,14 +29,15 @@ function roll(){
     // console.log(y_d);
     BFS();
 }
-document.querySelector('.dfs').addEventListener("click",function(e){
+document.querySelector('.dfs').addEventListener("click",roll2)
+function roll2(){
     x_o=x_origin();
     y_o=y_origin();
     x_d=x_destination();
     y_d=y_destination();
-    DFS();
-    e.preventDefault();
-})
+    
+    DFsS();
+}
 document.querySelector('.a_star').addEventListener("click",function(e){
     x_o=x_origin();
     y_o=y_origin();

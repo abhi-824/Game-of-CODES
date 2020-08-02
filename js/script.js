@@ -214,6 +214,8 @@ function hello() {
 
       for (let i = 0; i < practice_each_topic.length; i++) {
         practice_each_topic[i].addEventListener("click", function (e) {
+          document.querySelector(".container1").style.height="200vh";
+          document.querySelector(".container2").style.height="200vh";
           let new_tag_map = new Map();
           for (let i = 800; i < 3200; i += 100) {
             new_tag_map.set(i, 0);
@@ -1609,6 +1611,8 @@ function hello() {
     unsolved_mysteries.classList.add("hidden");
     weak_topics.classList.add("hidden");
     upsolve.classList.add("hidden");
+    document.querySelector(".container1").style.height="100vh";
+    document.querySelector(".container2").style.height="100vh";
     show_daily_mix.classList.add("hidden");
     strong_topics.classList.add("hidden");
 
@@ -1619,6 +1623,8 @@ function hello() {
     hide_please(item2);
     hide_please(item3);
     hide_please(item);
+    document.querySelector(".container1").style.height="100vh";
+    document.querySelector(".container2").style.height="100vh";
     document.querySelector('#time').classList.add("hidden");
     document.querySelector('.contest-time').classList.add("hidden");
     daily_mix_contests.classList.remove("hidden");

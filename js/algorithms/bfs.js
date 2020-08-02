@@ -1,6 +1,6 @@
 function BFS() {
   c_delay = 0;
-  let q = [];
+  let q = []; 
   affa=[];
   vis=[];
   let dist = [];

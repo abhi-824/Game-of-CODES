@@ -26,10 +26,10 @@ function y_destination() {
     }
   }
 }
-function isValid(curX, curY) {
-  if (curX < 0 || curY < 0 || vis[curX][curY] == 1) {
+function isValid(X, Y) {
+  if (X < 0 || Y <= 0 || vis[X][Y] === 1||fl===1) {
     return false;
-  } else if (curX > box_no2 || curY > box_no) {
+  } else if (X >= box_no2 ||Y >= box_no) {
     return false;
   } else {
     return true;

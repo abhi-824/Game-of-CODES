@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Nova+Square&family=Philosopher&display=swap");
-
+html {
+  zoom: 0.8;
+}
 body {
   background-color: black;
   font-family: "Nova Square", sans-serif;
@@ -61,12 +63,12 @@ a {
 .container1 {
   background: url("../resources/backgrounds/hulk.jpg") no-repeat center/cover;
   background-attachment: fixed;
-  height: 200vh;
+  height: 100vh;
 }
 .container7 {
   background: url("../resources/backgrounds/image1.jpg") no-repeat center/cover;
   background-attachment: fixed;
-  height: 200vh;
+  height: 100vh;
 }
 .container3 {
   background: url("../resources/backgrounds/thor.png") no-repeat center
@@ -92,7 +94,7 @@ a {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 200vh;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.7);
 }
 .container112 {
@@ -269,7 +271,7 @@ table tr {
 
 .user-stats {
   position: absolute;
-  bottom: 100vh;
+  bottom:0;
   width: 100%;
   opacity: 0.6;
   display: grid;
