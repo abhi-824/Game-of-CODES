@@ -73,12 +73,45 @@ a {
     center/cover;
   height: 100vh;
 }
-
+.start-topic{
+  padding:0.6rem;
+}
+.container825{
+  display:flex;
+}
+.content1{
+  display:flex;
+  position: absolute;
+  top:25%;
+  left:8%;
+  z-index:100000;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding:2rem;
+}
+.heading_topic{
+  font-family: NovaMono;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 48px;
+  line-height: 67px;
+}
+.start-topic{
+  background: rgba(225, 255, 41, 0.33);
+  border-radius: 78px;
+}
+.start-topic:hover{
+  transition:0.5s;
+  background:rgb(101, 226, 17);
+  color:rgb(0, 0, 0);
+}
 .container4 {
   background: url("../resources/backgrounds/jonathan-borba-zfPOelmDc-M-unsplash.jpg")
     no-repeat center center/cover;
   background-attachment: fixed;
-  height: 200vh;
+  height: 100vh;
 }
 .container111 {
   background: url("../resources/backgrounds/car_black.jpg")
@@ -122,8 +155,8 @@ a {
   background-color: black;
 }
 .logo img {
-  width: 131px;
-  height: 100px;
+  width: auto;
+  height: 60px;
   padding-right: 3rem;
 }
 .search img {

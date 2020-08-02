@@ -84,6 +84,7 @@ function hello() {
 
   $(document).ready(function () {
     // get solved set
+    
     function convert_to_link(str) {
       let p = "";
       let q = "";
