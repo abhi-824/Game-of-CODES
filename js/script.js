@@ -24,7 +24,10 @@ let contests_problems = new Set();
 let upsolved = [];
 let handle_name;
 google.charts.load("current", { packages: ["corechart"] });
-
+document.querySelector('.search-img').addEventListener("click",function(e){
+  document.querySelector(".search_kro").classList.remove("hidden");
+  document.querySelector(".search_kro").classList.add("bounceInRight");
+})
 let website_url = "Profile.html?handle=";
 let all_topics_name = [
   "implementation",

@@ -141,7 +141,8 @@
             
             <li class="nav-item">
               <div class="dropdown1">
-                <span class="nav-link">Visualisers</span>
+                <span class="nav-link">Visualisers <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                </span>
                 <div class="dropdown-content1 animated bounceIn">
               <a class="nav-link" href="sorting_vis.html" id="sorting_vis">Sorting Visualiser</a>
               <a class="nav-link" href="grid_vis.html" id="sorting_vis">Grid Visualiser</a>
@@ -158,11 +159,11 @@
             <li class="nav-item">
               
               <div class="dropdown1">
-                <span class="nav-link">Training Zone</span>
+                <span class="nav-link">Training Zone <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
                 <div class="dropdown-content1 animated bounceIn">
-                  <a href="training_zone_topic_wise.html" id="topic_wise">Topic Wise</a>
-                  <a href="training_zone_level_wise.html" id="level_wise">Level Wise</a>
-                  <a href="generate_daily_mix.html" id="generate_daily_mix">Daily Contests</a>
+                  <a class="nav-link" href="training_zone_topic_wise.html" id="topic_wise">Topic Wise</a>
+                  <a class="nav-link" href="training_zone_level_wise.html" id="level_wise">Level Wise</a>
+                  <a class="nav-link" href="generate_daily_mix.html" id="generate_daily_mix">Daily Contests</a>
 
                 </div>
               </div> 
@@ -171,13 +172,13 @@
             
           </ul>
           <input
-            class="form-control outer"
+            class="form-control outer hidden search_kro"
             type="search"
             placeholder="Search"
             aria-label="Search"
           />
           <button type="button" class="btn outer btn-dark search">
-            <img class="outer" src="resources/icons/search 1.svg" alt="" />
+            <img class="outer search-img" src="resources/icons/search 1.svg" alt="" />
           </button>
           <!-- </form> -->
           <!-- </div> -->
@@ -255,7 +256,7 @@
           <div
             id="chartContainer"
             class="hidden"
-            style="height: 370px; width: 1100px;"
+            style="height: 370px; width: 1100px; padding:2rem;"
           ></div>
           
           <div class="hidden problemsets">
