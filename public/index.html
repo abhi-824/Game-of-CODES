@@ -109,13 +109,34 @@
           <!-- </div> -->
         </nav>
         <div class="login_page">
-          <div class="login">
+          <!-- <div class="login">
             <input type="text" class="room_id" placeholder="Enter Room ID">
-          </div>
-          <div class="buttons">
-            <button class="join-room btn-primary join_room">Join Existing Room</button>
-            <button class="btn btn-secondary create_room">Create a room</button>
-          </div>
+          </div> -->
+          <!-- <div class="buttons">
+            <button class="join-room btn-primary join_room">Join Room</button>
+          </div> -->
+          <form action="code_blast_enter.html">
+            <!-- <div class="form-control"> -->
+              <label for="username">Username</label>
+              <input
+                type="text"
+                name="username"
+                id="user_name"
+                placeholder="Enter username..."
+                required
+              >
+            <!-- </div> -->
+            <!-- <div class="form-control"> -->
+              <label for="room">Room</label>
+              <input 
+              type="text"
+              name="room"
+              id="room_id"
+              placeholder="Enter Room ID"
+              required>
+            <!-- </div> -->
+            <button type="submit" class="btn btn-primary">Join Chat</button>
+          </form>
         </div>
         
       </div>
