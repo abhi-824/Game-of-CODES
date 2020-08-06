@@ -1714,6 +1714,15 @@ document.querySelector("#level_wise").addEventListener("click", function (e) {
 
   e.preventDefault();
 });
+document.querySelector("#codeblast1").addEventListener("click", function (e) {
+  ////console.log("Going to dashboard!");
+  let handle = document.querySelector(".form-control").value;
+  let cblast_url = "Codeblast.html?handle=";
+  cblast_url += handle;
+  document.location.href = cblast_url;
+  e.preventDefault();
+  
+});
 
 // FOR FUTURE CONTESTS
 
