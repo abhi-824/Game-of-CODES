@@ -3,7 +3,7 @@ const http = require("http");
 const express = require("express");
 const socketio = require("socket.io");
 const formatMessage=require('./utils/messages')
-const {userJoin,getCurrentUser,userLeave,getRoomUsers}=require('./utils/users')
+const {userJoin,getCurrentUser,userLeave,getRoomUsers,make_ready,allready}=require('./utils/users')
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
@@ -21,9 +21,16 @@ io.on("connection", (socket) => {
       if(user)
       {
           io.to(user.room).emit('message',formatMessage('BOSS',`${user.username} has left the chat`));
-    io.to(user.room).emit('roomUsers',{room:user.room,users:getRoomUsers(user.room)})
-
+          io.to(user.room).emit('roomUsers',{room:user.room,users:getRoomUsers(user.room)})
       }
+  })
+  socket.on('ready',({username,room})=>{
+    const user=make_ready(socket.id,username,room,1);
+    if(allready())
+    {
+      io.to(user.room).emit("start_contest")
+      // start_contest();
+    }
   })
   socket.on('joinRoom',({username,room})=>{
 

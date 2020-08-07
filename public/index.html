@@ -40,6 +40,24 @@
       src="https://www.gstatic.com/charts/loader.js"
     ></script>
   </head>
+  <style>
+    .hidden{
+      display: none;
+    }
+    .error{
+      background:red;
+      width:100%;
+    }
+    
+    .success{
+      background:green;
+      width:100%;
+    }
+    .disabled{
+      background:red;
+
+    }
+  </style>
   <body>
     <!-- Navigation Bar -->
     <div class="container3">
@@ -109,13 +127,36 @@
           <!-- </div> -->
         </nav>
         <div class="login_page">
-          <!-- <div class="login">
-            <input type="text" class="room_id" placeholder="Enter Room ID">
-          </div> -->
-          <!-- <div class="buttons">
-            <button class="join-room btn-primary join_room">Join Room</button>
-          </div> -->
-          <form action="code_blast_enter.html">
+          <div class="error hidden">Handle doesn't exist</div>
+          <div class="success hidden">Handle exists</div>
+          <br>
+          <div class="buttons">
+            <button class="join-room btn-primary join_room">Join Existing Room</button>
+            <button class="join-room btn-primary create_room">Create Room</button>
+          </div>
+          <form action="code_blast_enter.html" class="hidden form">
+            <!-- <div class="form-control"> -->
+              <label for="username">Username</label>
+              <input
+                type="text"
+                name="username"
+                id="user_name"
+                placeholder="Enter username..."
+                required
+              >
+            <!-- </div> -->
+            <!-- <div class="form-control"> -->
+              <label for="room">Room</label>
+              <input 
+              type="text"
+              name="room"
+              id="room_id"
+              placeholder="Enter Room ID"
+              required>
+            <!-- </div> -->
+            <button type="submit" class="btn btn-primary">Join Chat</button>
+          </form>
+          <form action="code_blast_enter.html" class="hidden form2">
             <!-- <div class="form-control"> -->
               <label for="username">Username</label>
               <input
