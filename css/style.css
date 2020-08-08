@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Nova+Square&family=Philosopher&display=swap");
-
 body {
   background-color: black;
   font-family: "Nova Square", sans-serif;
+  font-size:1rem;
   color: white;
   background: linear-gradient(
     180deg,
@@ -13,7 +13,30 @@ body {
   height: 100vh;
   overflow-x: hidden;
 }
-
+.table_row{
+  display:grid;
+  grid-template-columns: 3fr 2fr 1fr;
+  color:white;
+  grid-gap:0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+.table_row a{
+  color:#333;
+  background: #fff;
+  text-align: center;  
+  align-items: center;
+  padding:0.4rem 0.5rem;
+  border-radius: 20px;;
+}
+.table-row li{
+  list-style: none;
+}
+.table_row a:hover{
+  background:rgb(0, 71, 153);
+  color:rgb(216, 253, 8);
+  transition:0.5s;
+}
 
 .dropdown-content1 {
   display: none;
@@ -38,24 +61,75 @@ a {
 .container1 {
   background: url("../resources/backgrounds/hulk.jpg") no-repeat center/cover;
   background-attachment: fixed;
-  height: 200vh;
+  height: 100vh;
 }
 .container7 {
   background: url("../resources/backgrounds/image1.jpg") no-repeat center/cover;
   background-attachment: fixed;
-  height: 200vh;
+  height: 100vh;
 }
 .container3 {
   background: url("../resources/backgrounds/thor.png") no-repeat center
     center/cover;
   height: 100vh;
 }
-
+.start-topic{
+  padding:0.6rem;
+}
+.login_page{
+  display:flex;
+  flex-direction: column;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  left:40%;
+  top:20%;
+}
+.room_id{
+  padding:0.5rem 1rem;
+  border: none;
+  margin:2rem;
+  /* background:rgba(51, 51, 51, 0.301); */
+}
+.btn-primary{
+  margin:0rem 0.5rem;
+}
+.container825{
+  display:flex;
+}
+.content1{
+  display:flex;
+  position: absolute;
+  top:25%;
+  left:8%;
+  z-index:100000;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding:2rem;
+}
+.heading_topic{
+  font-family: NovaMono;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 48px;
+  line-height: 67px;
+}
+.start-topic{
+  background: rgba(225, 255, 41, 0.33);
+  border-radius: 78px;
+}
+.start-topic:hover{
+  transition:0.5s;
+  background:rgb(101, 226, 17);
+  color:rgb(0, 0, 0);
+}
 .container4 {
   background: url("../resources/backgrounds/jonathan-borba-zfPOelmDc-M-unsplash.jpg")
     no-repeat center center/cover;
   background-attachment: fixed;
-  height: 200vh;
+  height: 100vh;
 }
 .container111 {
   background: url("../resources/backgrounds/car_black.jpg")
@@ -69,7 +143,7 @@ a {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 200vh;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.7);
 }
 .container112 {
@@ -87,7 +161,7 @@ a {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 200vh;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.7);
 }
 /* hidden */
@@ -99,8 +173,8 @@ a {
   background-color: black;
 }
 .logo img {
-  width: 131px;
-  height: 100px;
+  width: auto;
+  height: 60px;
   padding-right: 3rem;
 }
 .search img {
@@ -127,7 +201,7 @@ a {
   height: 168px;
   font-style: normal;
   font-weight: normal;
-  font-size: 40px;
+  font-size: 35px;
   line-height: 72px;
   color: #ffffff;
   margin-left: 2rem;
@@ -137,17 +211,20 @@ table tr {
   color: #fff;
 }
 .heading p {
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 .user_avatar img {
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   /* boder-radius:50%; */
   border-radius: 50%;
   /* padding: 0rem 2rem ; */
 }
 .inner {
   display: none;
+}
+.chartContainer{
+  padding:1rem;
 }
 .daily-mix {
   width: 450px;
@@ -161,6 +238,12 @@ table tr {
   margin-top: 10px;
   max-height: 75vh;
   overflow: auto;
+}
+.contest-time{
+  display:grid;
+  grid-template-columns: 1fr 0.2fr;
+  grid-gap:1rem;
+  padding:0 1rem;
 }
 #time{
   float:right;
@@ -237,7 +320,7 @@ table tr {
 
 .user-stats {
   position: absolute;
-  bottom: 100vh;
+  bottom:0;
   width: 100%;
   opacity: 0.6;
   display: grid;

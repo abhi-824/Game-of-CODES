@@ -142,39 +142,61 @@
             <img src="resources/logo/logo_light.png" alt="" />
           </a>
           <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                          <!-- <span class="navbar-toggler-icon"></span> -->
+                    <!-- <span class="navbar-toggler-icon"></span> -->
           <!-- </button> -->
           <!-- <div class="collapse navbar-collapse" id="navbarText"> -->
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#"
+            <li class="nav-item ">
+              <a class="nav-link" id="dashboard1" href="#"
                 >Dashboard
-                <span class="sr-only">(current)</span></a
+               </a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="compare.html">Compare</a>
+              <a class="nav-link" href="compare.html" id="compare1">Compare</a>
+            </li>
+            
+            <li class="nav-item">
+              <div class="dropdown1">
+                <span class="nav-link">Visualisers <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                </span>
+                <div class="dropdown-content1 animated bounceIn">
+              <a class="nav-link" href="sorting_vis.html" id="sorting_vis">Sorting Visualiser</a>
+              <a class="nav-link" href="grid_vis.html" id="sorting_vis">Grid Visualiser</a>
+
+                </div>
+              </div> 
             </li>
             <li class="nav-item">
-              <a class="nav-link profile" href="Profile.html">Profile</a>
+              <a class="nav-link profile" href="Profile.html" id="profile1">Profile</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Codeblast.html">Code Blast</a>
+              <a class="nav-link" href="Codeblast.html" id="codeblast1">Code Blast</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="training_zone_topic_wise.html">TRAINING ZONE</a>
-                <div class="line1"></div>
-              </li>
+            <li class="nav-item active">
+              
+              <div class="dropdown1">
+                <span class="nav-link">Training Zone <i class="fa fa-chevron-circle-down" aria-hidden="true"></i> <div class="line1"></div>
+                  <span class="sr-only">(current)</span></span>
+                <div class="dropdown-content1 animated bounceIn">
+                  <a class="nav-link" href="training_zone_topic_wise.html" id="topic_wise">Topic Wise</a>
+                  <a class="nav-link" href="training_zone_level_wise.html" id="level_wise">Level Wise</a>
+                  <a class="nav-link" href="generate_daily_mix.html" id="generate_daily_mix">Daily Contests</a>
+
+                </div>
+              </div> 
+            </li>
             <li class="user_avatar nav-item"></li>
+            
           </ul>
           <input
-            class="form-control outer"
+            class="form-control outer hidden search_kro"
             type="search"
             placeholder="Search"
             aria-label="Search"
           />
-          <button type="button" class="btn outer btn-dark search">
-            <img class="outer" src="resources/icons/search 1.svg" alt="" />
+          <button type="button" class="btn outer search">
+            <img class="outer search-img" src="resources/icons/search 1.svg" alt="" />
           </button>
           <!-- </form> -->
           <!-- </div> -->
@@ -199,7 +221,7 @@
             ></div>
             <div class="set">
               <div class="right-arrow"></div>
-              <div class="content"><button class="btn btn-large start">START</button></div>
+              <div class="content"><button class="btn btn-secondary hidden btn-large start">START</button></div>
               <div class="left-arrow"></div>
             </div>
         </div>

@@ -183,6 +183,7 @@ function hello() {
     for (let i = 0; i < practice_each_topic.length; i++) {
       practice_each_topic[i].addEventListener("click", function (e) {
         let new_tag_map = new Map();
+        document.querySelector('.btn-secondary').classList.remove("hidden");
         for (let i = 800; i < 3200; i += 100) {
           new_tag_map.set(i, 0);
         }

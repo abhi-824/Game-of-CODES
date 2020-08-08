@@ -138,6 +138,18 @@
             <li class="nav-item">
               <a class="nav-link" href="compare.html" id="compare1">Compare</a>
             </li>
+            
+            <li class="nav-item">
+              <div class="dropdown1">
+                <span class="nav-link">Visualisers <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                </span>
+                <div class="dropdown-content1 animated bounceIn">
+              <a class="nav-link" href="sorting_vis.html" id="sorting_vis">Sorting Visualiser</a>
+              <a class="nav-link" href="grid_vis.html" id="sorting_vis">Grid Visualiser</a>
+
+                </div>
+              </div> 
+            </li>
             <li class="nav-item">
               <a class="nav-link profile" href="Profile.html" id="profile1">Profile</a>
             </li>
@@ -147,10 +159,12 @@
             <li class="nav-item">
               
               <div class="dropdown1">
-                <span class="nav-link">Training Zone</span>
+                <span class="nav-link">Training Zone <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
                 <div class="dropdown-content1 animated bounceIn">
-                  <a href="training_zone_topic_wise.html" id="topic_wise">Topic Wise</a>
-                  <a href="training_zone_level_wise.html" id="level_wise">Level Wise</a>
+                  <a class="nav-link" href="training_zone_topic_wise.html" id="topic_wise">Topic Wise</a>
+                  <a class="nav-link" href="training_zone_level_wise.html" id="level_wise">Level Wise</a>
+                  <a class="nav-link" href="generate_daily_mix.html" id="generate_daily_mix">Daily Contests</a>
+
                 </div>
               </div> 
             </li>
@@ -158,13 +172,13 @@
             
           </ul>
           <input
-            class="form-control outer"
+            class="form-control outer hidden search_kro"
             type="search"
             placeholder="Search"
             aria-label="Search"
           />
           <button type="button" class="btn outer btn-dark search">
-            <img class="outer" src="resources/icons/search 1.svg" alt="" />
+            <img class="outer search-img" src="resources/icons/search 1.svg" alt="" />
           </button>
           <!-- </form> -->
           <!-- </div> -->
@@ -191,9 +205,9 @@
             <div class="daily-mix" id="futurecontest">
               <h1>Future Contests</h1>
               <!-- <div class="line1"></div> -->
-              <ul class="future-contests container-fluid">
+              <table class="future-contests table">
                 
-              </ul>
+              </table>
             </div>
             <div class="hidden weak_topics daily-mix">
               <h1>Weak Topics</h1>
@@ -242,7 +256,7 @@
           <div
             id="chartContainer"
             class="hidden"
-            style="height: 370px; width: 1100px;"
+            style="height: 370px; width: 1100px; padding:2rem;"
           ></div>
           
           <div class="hidden problemsets">
@@ -258,8 +272,7 @@
                  </div>
                  <div class="face face2">
                    <div class="content">
-                     
-                     <p>The day goes as you want it to go</p>
+                    
                      <p>Today is the time</p>
                      <button class="btn btn-dark generate_daily2">Let's Rock</button>
                      
@@ -453,7 +466,10 @@
         </div>
         <button class="btn btn-dark update hidden">Update</button>
         <button class="btn btn-dark update2 hidden">Update</button>
-        <div id="time"></div>
+        <div class="contest-time hidden">
+          <h1>CONTEST IS RUNNING</h1>
+          <div id="time"></div>
+        </div>
         <div class="wrap">
            <div class="cont1 hidden">
             <div class="card1">
@@ -608,5 +624,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="js/script.js"></script>
+    <script src="js/additional.js"></script>
   </body>
 </html>

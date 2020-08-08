@@ -28,41 +28,67 @@
 
       <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
         <a class="navbar-brand logo" href="#">
-          <img src="resources/logo/logo_light.png" alt="">
+          <h1 class="inner">GAME OF CODES</h1>
+          <img src="resources/logo/logo_light.png" alt="" />
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarText">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
+        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                  <!-- <span class="navbar-toggler-icon"></span> -->
+        <!-- </button> -->
+        <!-- <div class="collapse navbar-collapse" id="navbarText"> -->
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" id="dashboard1" href="#"
+              >Dashboard
+              <div class="line1"></div>
+              <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="compare.html" id="compare1">Compare</a>
+          </li>
+          
+          <li class="nav-item">
+            <div class="dropdown1">
+              <span class="nav-link">Visualisers</span>
+              <div class="dropdown-content1 animated bounceIn">
+            <a class="nav-link" href="sorting_vis.html" id="sorting_vis">Sorting Visualiser</a>
+            <a class="nav-link" href="sorting_vis.html" id="sorting_vis">Grid Visualiser</a>
 
-              <a class="nav-link" href="dashboard.html" id="dashboard">Dashboard</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="Compare.html" id="compare">Compare</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="Profile.html" id="profile">Profile<span class="sr-only">(current)</span><div class="line1"></div></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="Codeblast.html" id="codeblast">Code Blast</a>
-            </li>
-            <li class="nav-item">
-              <div class="dropdown dropdown1">
-                <button class="btn nav-link" type="button" data-toggle="dropdown">Training Zone
-                <!-- <span class="caret"></span></button> -->
-                <ul class="dropdown-content1" style="list-style-type: none;">
-                    <li><a href="training_zone_topic_wise.html" id="topic-wise">Topic Wise</a></li>
-                    <li><a href="training_zone_level_wise.html" id="level-wise">Level Wise</a></li>
-                </ul>
-              </div> 
-            </li>
-          </ul>
-          <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-          <button type="button" class="btn btn-dark search"><img src="resources/icons/search 1.svg" alt=""></ button>
-            </form>
-        </div>
+              </div>
+            </div> 
+          </li>
+          <li class="nav-item">
+            <a class="nav-link profile" href="Profile.html" id="profile1">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Codeblast.html" id="codeblast1">Code Blast</a>
+          </li>
+          <li class="nav-item">
+            
+            <div class="dropdown1">
+              <span class="nav-link">Training Zone</span>
+              <div class="dropdown-content1 animated bounceIn">
+                <a href="training_zone_topic_wise.html" id="topic_wise">Topic Wise</a>
+                <a href="training_zone_level_wise.html" id="level_wise">Level Wise</a>
+                <a href="generate_daily_mix.html" id="generate_daily_mix">Daily Contests</a>
+
+              </div>
+            </div> 
+          </li>
+          <li class="user_avatar nav-item"></li>
+          
+        </ul>
+        <input
+          class="form-control outer"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <button type="button" class="btn outer btn-dark search">
+          <img class="outer" src="resources/icons/search 1.svg" alt="" />
+        </button>
+        <!-- </form> -->
+        <!-- </div> -->
       </nav>
       <!-- container -->
       <div class="container" style="padding-top: 1.5rem;">
@@ -73,55 +99,57 @@
             <h4 style="padding: 2.5rem 3.75rem 0 0; text-align: center;" id="userstatistics"><a href="profile_user_stats.html">User Statistics</a></h4>
           </div>
         </div>
-        
-          <!-- <div class="column-2 col-4">
+
+        <!-- <div class="column-2 col-4">
             <h3><strong>Check Your Progress!</strong></h3>
             <br> -->
-    
-            
-          <div style="padding-left:100px; float: right;" class="recent-contests">
-            <h3 style="padding-top: 2rem;"><strong>Recent Contests</strong></h3>
-            <ul id="recent-contests">
-            </ul>
-          </div>
-          <!--<div class="hidden col-4" id="myChart4" style="height: 400px; width: 90%;"></div>-->
-          </div>
 
-          <div class="hidden col-4" id="myChart1" style="height: 400px; width: 90%; margin: 0 auto;"></div>
-            <div class="charttitle" align="center">Rating Change Over Time</div>
-          <br>
-          <br>
-          
-          <div class="hidden col-4" id="myChart3" style="height: 400px; width: 90%; margin: 0 auto;"></div>
-            <div class="charttitle" align="center">Problem-Rating-Wise All Submissions</div>
-          <br>
-          <br>
-  
-         
-          <div class="hidden col-4" id="myChart2" style="height: 400px; width: 90%; margin: 0 auto;"></div>
-           <div align="center">All Submissions Final Verdict</div>
-          <br>
-          <br>
 
-          <div style="padding-left:100px; float: right;">
-            <h3 style="padding-top: 2rem;" class="recent-contests"><strong>Weak Topics</strong></h3>
-          </div>
-          <div style="padding-left:100px; float: left;">  
-            <h3 style="padding-top: 2rem;" class="recent-contests"><strong>Strong Topics</strong></h3>
-          </div>
+        <div style="padding-left:100px; float: right;" class="recent-contests">
+          <h3 style="padding-top: 2rem;"><strong>Recent Contests</strong></h3>
+          <ul id="recent-contests">
+          </ul>
+        </div>
+        <!--<div class="hidden col-4" id="myChart4" style="height: 400px; width: 90%;"></div>-->
+      </div>
 
-          <!--<button type="button" id="mybtn4" class="btn btn-dark text-left btn-sm" >
+      <div id="myChart1" style="height: 500px; width: 80%; margin: 0 auto; padding-top: 50px;"></div>
+      <div style="padding-top: 50px;" class="charttitle" align="center">Rating Change Over Time</div>
+      <br>
+      <br>
+
+      <div id="myChart3" style="height: 500px; width: 80%; margin: 0 auto; padding-top: 50px;"></div>
+      <div style="padding-top: 50px;" class="charttitle" align="center">Problem-Rating-Wise All Submissions</div>
+      <br>
+      <br>
+
+
+      <div id="myChart2" style="height: 500px; width: 80%; margin: 0 auto; padding-top: 50px;"></div>
+      <div style="padding-top: 50px;" align="center">All Submissions Final Verdict</div>
+      <br>
+      <br>
+
+      <div style="padding-left:100px; float: right;">
+        <h3 style="padding-top: 2rem;" class="recent-contests"><strong>Weak Topics</strong></h3>
+      </div>
+      <div style="padding-left:100px; float: left;">
+        <h3 style="padding-top: 2rem;" class="recent-contests"><strong>Strong Topics</strong></h3>
+      </div>
+
+      <!--<button type="button" id="mybtn4" class="btn btn-dark text-left btn-sm" >
+>>>>>>> ba32d89dab76d9dce624054179b540806ac58492
               4. Problem-Rating-Wise Accepted Submissions
             </button>
             <br>
             <br>-->
-            <!-- <button id="hide-graph" type="button" class="btn btn-dark hidden text-left btn-sm">Hide Graph</button> -->
-          
+      <!-- <button id="hide-graph" type="button" class="btn btn-dark hidden text-left btn-sm">Hide Graph</button> -->
 
 
-      </div>
 
-      <!-- Footer
+    </div>
+
+    <!-- Footer
+>>>>>>> ba32d89dab76d9dce624054179b540806ac58492
       <div class="user-stats">
         <div class="item1">
           <h1 class="inactive-item">WEAK TOPICS</h1>
@@ -139,8 +167,9 @@
     </div>
   </div> -->
 
-<script src="js/profile.js"></script>
-<script src="js/script.js"></script>
+
+    <script src="js/profile.js"></script>
+    <script src="js/script.js"></script>
 
 </body>
 

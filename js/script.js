@@ -24,7 +24,10 @@ let contests_problems = new Set();
 let upsolved = [];
 let handle_name;
 google.charts.load("current", { packages: ["corechart"] });
-
+document.querySelector('.search-img').addEventListener("click",function(e){
+  document.querySelector(".search_kro").classList.remove("hidden");
+  document.querySelector(".search_kro").classList.add("bounceInRight");
+})
 let website_url = "Profile.html?handle=";
 let all_topics_name = [
   "implementation",
@@ -81,6 +84,7 @@ function hello() {
 
   $(document).ready(function () {
     // get solved set
+    
     function convert_to_link(str) {
       let p = "";
       let q = "";
@@ -214,6 +218,8 @@ function hello() {
 
       for (let i = 0; i < practice_each_topic.length; i++) {
         practice_each_topic[i].addEventListener("click", function (e) {
+          document.querySelector(".container1").style.height="200vh";
+          document.querySelector(".container2").style.height="200vh";
           let new_tag_map = new Map();
           for (let i = 800; i < 3200; i += 100) {
             new_tag_map.set(i, 0);
@@ -653,7 +659,7 @@ function hello() {
           document.querySelector(".heading").classList.add("hidden");
           document.querySelector(".problemsets").classList.remove("hidden");
           document.querySelector(".cont1").classList.remove("hidden");
-          document.querySelector(".container768").classList.remove("hidden");
+          // document.querySelector(".container768").classList.remove("hidden");
           document.querySelector(".problemsets").classList.add("animated");
           document.querySelector(".problemsets").classList.add("zoomInDown");
           show_daily_mix2.classList.remove("hidden");
@@ -1133,6 +1139,7 @@ function hello() {
               var r = confirm("This would start a timer!!");
               if (r == true) {
                 document.querySelector('#time').classList.remove("hidden");
+                document.querySelector('.contest-time').classList.remove("hidden");
                 var two_hours = 60 * 2 * 60,
                   display = document.querySelector("#time");
                 startTimer(two_hours, display);
@@ -1608,6 +1615,8 @@ function hello() {
     unsolved_mysteries.classList.add("hidden");
     weak_topics.classList.add("hidden");
     upsolve.classList.add("hidden");
+    document.querySelector(".container1").style.height="100vh";
+    document.querySelector(".container2").style.height="100vh";
     show_daily_mix.classList.add("hidden");
     strong_topics.classList.add("hidden");
 
@@ -1618,7 +1627,10 @@ function hello() {
     hide_please(item2);
     hide_please(item3);
     hide_please(item);
+    document.querySelector(".container1").style.height="100vh";
+    document.querySelector(".container2").style.height="100vh";
     document.querySelector('#time').classList.add("hidden");
+    document.querySelector('.contest-time').classList.add("hidden");
     daily_mix_contests.classList.remove("hidden");
     unsolved_mysteries.classList.add("hidden");
     document.querySelector(".cont1").classList.add("hidden");
@@ -1702,11 +1714,20 @@ document.querySelector("#level_wise").addEventListener("click", function (e) {
 
   e.preventDefault();
 });
+document.querySelector("#codeblast1").addEventListener("click", function (e) {
+  ////console.log("Going to dashboard!");
+  let handle = document.querySelector(".form-control").value;
+  let cblast_url = "Codeblast.html?handle=";
+  cblast_url += handle;
+  document.location.href = cblast_url;
+  e.preventDefault();
+  
+});
 
 // FOR FUTURE CONTESTS
 
 var request = new XMLHttpRequest();
-const app = document.getElementById("futurecontest");
+let app = document.querySelector(".future-contests");
 
 request.open("GET", "https://codeforces.com/api/contest.list", true);
 
@@ -1745,6 +1766,7 @@ request.onload = function () {
       var link = "https://codeforces.com/contestRegistration/" + cid;
 
       if (contest.phase === "BEFORE") {
+        const b=document.createElement("th");
         const a = document.createElement("a");
         a.textContent = "Register";
         a.href = link;
@@ -1767,16 +1789,18 @@ request.onload = function () {
 
         const h6 = document.createElement("h6");
         h6.textContent =
-          "Contest Date: " + date + " " + month + ", " + hour + ":" + minutes;
+           date + " " + month + ", " + hour + ":" + minutes;
 
         /* WOULD BE NEEDED FOR MM:SS
 
         /* WOULD BE NEEDED FOR MM:SS
                   ":" + cminutes + ":" +cseconds
                   */
-        app.appendChild(li);
-        app.appendChild(h6);
-        app.appendChild(a);
+        b.appendChild(li);
+        b.appendChild(h6);
+        b.appendChild(a);
+        b.classList.add("table_row")
+        app.appendChild(b);
       }
     });
   }
