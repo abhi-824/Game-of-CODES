@@ -85,28 +85,28 @@ async function getProblems() {
   problems = jsdata.result.problems;
   console.log(problems);
   set1.push(question(set1, problems, 800, 1100));
-  set1.push(question(set1, problems, 1100, 1400));
-  set1.push(question(set1, problems, 1400, 1600));
-  set1.push(question(set1, problems, 1600, 1700));
-  set1.push(question(set1, problems, 1700, 1800));
+  set1.push(question(set1, problems, 1100, 1300));
+  set1.push(question(set1, problems, 1300, 1400));
+  set1.push(question(set1, problems, 1400, 1500));
+  set1.push(question(set1, problems, 1500, 1600));
 
   set2.push(question(set2, problems, 900, 1200));
   set2.push(question(set2, problems, 1200, 1500));
-  set2.push(question(set2, problems, 1500, 1700));
+  set2.push(question(set2, problems, 1500, 1600));
+  set2.push(question(set2, problems, 1600, 1700));
   set2.push(question(set2, problems, 1700, 1800));
-  set2.push(question(set2, problems, 1800, 1900));
 
   set3.push(question(set3, problems, 1000, 1300));
   set3.push(question(set3, problems, 1300, 1600));
   set3.push(question(set3, problems, 1600, 1700));
-  set3.push(question(set3, problems, 1700, 1900));
-  set3.push(question(set3, problems, 1900, 2000));
+  set3.push(question(set3, problems, 1700, 1800));
+  set3.push(question(set3, problems, 1800, 1900));
 
   set4.push(question(set4, problems, 1100, 1400));
   set4.push(question(set4, problems, 1400, 1700));
   set4.push(question(set4, problems, 1700, 1900));
-  set4.push(question(set4, problems, 1900, 2000));
-  set4.push(question(set4, problems, 2000, 2400));
+  set4.push(question(set4, problems, 1800, 1900));
+  set4.push(question(set4, problems, 1900, 2200));
 
   console.log(set1);
   console.log(set2);
