@@ -112,6 +112,18 @@
       justify-content: space-between;
       align-items: center;
     }
+    
+.hidden{
+  display: none;
+  }
+.error{
+  background:red;
+  width:100%;
+  }
+.success{
+  background:green;
+  width:100%;
+  }
   </style>
   <body>
     <div class="container1">
@@ -169,6 +181,10 @@
                 Submit
               </button>
             </form>
+            <div class="handlemsg" align="center">
+              <div class="error hidden">Handle doesn't exist</div>
+              <div class="success hidden">Handle exists</div>
+            </div>
           </div>
         </div>
       </div>

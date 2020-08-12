@@ -441,11 +441,11 @@ table tr {
 }
 .container768 .box {
   position: relative;
-  height: 300px;
+  height: 200px;
   background: #000000;
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   border: 1px solid #000;
 }
 .container768 .box:before {

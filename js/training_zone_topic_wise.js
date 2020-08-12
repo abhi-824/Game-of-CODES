@@ -182,6 +182,8 @@ function hello() {
 
     for (let i = 0; i < practice_each_topic.length; i++) {
       practice_each_topic[i].addEventListener("click", function (e) {
+        document.querySelector('.container4').style.height="200vh";
+        document.querySelector('.container2').style.height="200vh";
         let new_tag_map = new Map();
         document.querySelector('.btn-secondary').classList.remove("hidden");
         for (let i = 800; i < 3200; i += 100) {
@@ -260,6 +262,12 @@ function hello() {
           //console.log(new_tag_map);
         }
         get_topic_graph();
+        // get_problems();
+        document.querySelector('.start').addEventListener('click',function(){
+          document.location.href=`training_zone_topic_explained.html?tag=${tag_name}&${handle_name}`;
+        })
+        // display_sets();
+        // display_problems();
         document.querySelector("#chartContainer").classList.add("animated");
         document
           .querySelector("#chartContainer")
