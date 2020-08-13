@@ -71,8 +71,10 @@ function question(set, problems, low, high) {
       set2.includes(str) === false &&
       set3.includes(str) === false &&
       set4.includes(str) === false &&
-      str !== undefined
+      str !== undefined &&
+      problems[i].tags.includes("*special") === false
     ) {
+      // console.log(problems[i]);
       return str;
     }
   }
@@ -83,6 +85,7 @@ async function getProblems() {
   const jsondata = await fetch(modified_url);
   const jsdata = await jsondata.json();
   problems = jsdata.result.problems;
+  console.log(problems);
   console.log(problems);
   set1.push(question(set1, problems, 800, 1100));
   set1.push(question(set1, problems, 1100, 1300));
@@ -132,20 +135,20 @@ for (let i = 0; i < buttons.length; i++) {
   });
 }
 function convert_to_link(str) {
-    let p = "";
-    let q = "";
-    for (let i = 0; i < str.length; i++) {
-      if (str[i] === "-") {
-        for (let j = i + 1; j < str.length; j++) {
-          q += str[j];
-        }
-        break;
+  let p = "";
+  let q = "";
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === "-") {
+      for (let j = i + 1; j < str.length; j++) {
+        q += str[j];
       }
-      p += str[i];
+      break;
     }
-    let link = `https://codeforces.com/problemset/problem/${p}/${q}`;
-    return link;
+    p += str[i];
   }
+  let link = `https://codeforces.com/problemset/problem/${p}/${q}`;
+  return link;
+}
 function display_problems(set) {
   document.querySelector(".container768").classList.add("animated");
   document.querySelector(".container768").classList.remove("hidden");
@@ -160,11 +163,11 @@ function display_problems(set) {
   let link3 = document.createElement("div");
   let link4 = document.createElement("div");
   let link5 = document.createElement("div");
-  let p = convert_to_link(`${ set[0]}`);
-  let p2= convert_to_link(`${ set[1]}`);
-  let p3 = convert_to_link(`${ set[2]}`);
-  let p4 = convert_to_link(`${ set[3]}`);
-  let p5 = convert_to_link(`${ set[4]}`);
+  let p = convert_to_link(`${set[0]}`);
+  let p2 = convert_to_link(`${set[1]}`);
+  let p3 = convert_to_link(`${set[2]}`);
+  let p4 = convert_to_link(`${set[3]}`);
+  let p5 = convert_to_link(`${set[4]}`);
   link1.innerHTML = `<a href="${p}" target="_blank">Do It</a>`;
   link2.innerHTML = `<a href="${p2}"  target="_blank">Do It</a>`;
   link3.innerHTML = `<a href="${p3}"  target="_blank">Do It</a>`;
