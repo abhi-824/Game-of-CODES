@@ -4,7 +4,32 @@ function gettopic() {
   params = params.split("&")[0];
   return params;
 }
+function notifyMe(){
 
+  if (!window.Notification) {
+    console.log('Browser does not support notifications.');
+  } else {
+    // check if permission is already granted
+    if (Notification.permission === 'granted') {
+        // show notification here
+        var notify = new Notification('Timer is Over!!', {
+          body: 'Timr is Over but not the question, so do it first :)',
+          icon: 'https://bit.ly/2DYqRrh',
+      });
+    } else {
+        // request permission from user
+        Notification.requestPermission().then(function(p) {
+           if(p === 'granted') {
+               // show notification here
+           } else {
+               console.log('User blocked notifications.');
+           }
+        }).catch(function(err) {
+            console.error(err);
+        });
+    }
+  }
+}
 // function gettopic() {
 //     var url = document.location.href,
 //       params = url.split("&")[1];
@@ -26,6 +51,11 @@ let set3 = [];
 let set4 = [];
 document.querySelector(".start-topic").addEventListener("click", function (e) {
   e.preventDefault();
+  if (confirm("Do You want to start a timer?")) {
+    var two_hours = 10,
+      display = document.querySelector(".timer");
+    startTimer(two_hours, display);
+  }
   document.querySelector(".cont1").classList.remove("hidden");
   document.querySelector(".cont1").classList.add("animated");
   document.querySelector(".cont1").classList.add("BounceInRight");
@@ -34,6 +64,7 @@ document.querySelector(".start-topic").addEventListener("click", function (e) {
   document.querySelector(".start-topic").classList.add("animated");
   document.querySelector(".start-topic").classList.add("bounceOutLeft");
 });
+
 const url2 = "https://codeforces.com/api/user.status?handle=";
 let solved = new Set();
 async function getSolved() {
@@ -179,4 +210,35 @@ function display_problems(set) {
   document.querySelectorAll(".content1")[4].appendChild(link4);
   document.querySelectorAll(".content1")[5].appendChild(link5);
   // document.querySelector(".container768").classList.add("bounceInRight");
+}
+
+// Timer for countdown
+function startTimer(duration, display) {
+  var timer = duration,
+    minutes,
+    seconds;
+  let x=setInterval(function () {
+    minutes = parseInt(timer / 60, 10);
+    seconds = parseInt(timer % 60, 10);
+
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+    display.textContent = minutes + ":" + seconds;
+
+    if (--timer < 0) {
+      timer = duration;
+    }
+    if(display.textContent==='00:00')
+    {
+
+      notifyMe();
+      clearInterval(x);
+    }
+  }, 1000);
+}
+function update()
+{
+  
+  
 }

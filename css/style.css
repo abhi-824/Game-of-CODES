@@ -239,6 +239,14 @@ table tr {
   max-height: 75vh;
   overflow: auto;
 }
+.timer{
+  position: absolute;
+  right:5%;
+  top:10%;
+  background:rgb(23, 10, 56);
+  font-size:3rem;
+  padding:0.3rem 1rem;
+}
 .contest-time{
   display:grid;
   grid-template-columns: 1fr 0.2fr;
@@ -448,6 +456,7 @@ table tr {
   /* align-items: center; */
   border: 1px solid #000;
 }
+
 .container768 .box:before {
   content: "";
   position: absolute;
