@@ -52,7 +52,7 @@ let set4 = [];
 document.querySelector(".start-topic").addEventListener("click", function (e) {
   e.preventDefault();
   if (confirm("Do You want to start a timer?")) {
-    var two_hours = 10,
+    var two_hours = 2*60*60,
       display = document.querySelector(".timer");
     startTimer(two_hours, display);
   }
