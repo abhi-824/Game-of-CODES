@@ -623,7 +623,7 @@ a:hover {
 .container1forprofile {
   background: url("../resources/backgrounds/hulk.jpg") no-repeat center/cover;
   background-attachment: fixed;
-  height: 370vh;
+  height: 470vh;
 }
 .container2forprofile {
   position: absolute;
@@ -631,6 +631,6 @@ a:hover {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 370vh;
+  height: 470vh;
   background-color: rgba(0, 0, 0, 0.7);
 }

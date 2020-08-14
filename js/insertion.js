@@ -1,6 +1,5 @@
 function Insertion_sort(){
     c_delay=0;
-    
     for(let i=0;i<array_size.value;i++)
     {
         let val=div_heights[i];
@@ -22,4 +21,5 @@ function Insertion_sort(){
         div_heights[hole]=val;
         update_div(hole,div_heights[hole],"teal");
     }
+
 }

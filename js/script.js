@@ -396,6 +396,8 @@ function hello() {
               } else if (i === 7) {
                 curr_set = arr8;
               }
+              document.querySelector(".container1").style.height="300vh";
+              document.querySelector(".container2").style.height="300vh";
               div = document.querySelector(".problem-name-3");
               // //console.log(div);
               while (div.firstChild) {

@@ -54,7 +54,3 @@ document.querySelector('.dij').addEventListener("click",function(e){
     dij();
     e.preventDefault();
 })
-function disable_buttons()
-{
-    
-}

@@ -2,14 +2,52 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description"
-    content="Game of Codes. Analyze and improve on your codeforces user profile. See how have you performed, what you need to do now, personalised contests made just for you, outstanding graphics giving you a gaming feel in competitive coding. Scale up your data structures and algorithms with this amazing tool">
-  <link rel="shortcut icon" href="resources/logo/logo_dark.png">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-  <title>Game of Codes</title>
-  <link rel="stylesheet" href="css/style.css">>
+  <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Game of Codes. Analyze and improve on your codeforces user profile. See how have you performed, what you need to do now, personalised contests made just for you, outstanding graphics giving you a gaming feel in competitive coding. Scale up your data structures and algorithms with this amazing tool"
+    />
+    <meta property="og:url" content="https://game-of-codes.netlify.com" />
+    <meta property="og:title" content="Game Of CODES" />
+    <meta
+      property="og:description"
+      content="Improve your rating and save time by doing Personalised Questions"
+    />
+    <meta
+      property="og:image"
+      content="https://game-of-codes.netlify.com/resources/logo/logo_dark.jpg"
+    />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <link rel="manifest" href="manifest.json" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="resources/logo/logo_dark.png" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <title>Game of Codes|DashBoard</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      media="screen and (max-width: 768px)"
+      href="css/mobile.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/ jquery/3.4.1/jquery.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://www.gstatic.com/charts/loader.js"
+    ></script>  
+    <!-- <link rel="stylesheet" href="css/style.css">> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -18,7 +56,6 @@
 
   <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
   <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
-
 </head>
 
 <body>
@@ -49,10 +86,11 @@
           
           <li class="nav-item">
             <div class="dropdown1">
-              <span class="nav-link">Visualisers</span>
+              <span class="nav-link">Visualisers <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+              </span>
               <div class="dropdown-content1 animated bounceIn">
             <a class="nav-link" href="sorting_vis.html" id="sorting_vis">Sorting Visualiser</a>
-            <a class="nav-link" href="sorting_vis.html" id="sorting_vis">Grid Visualiser</a>
+            <a class="nav-link" href="grid_vis.html" id="sorting_vis">Grid Visualiser</a>
 
               </div>
             </div> 
@@ -66,11 +104,11 @@
           <li class="nav-item">
             
             <div class="dropdown1">
-              <span class="nav-link">Training Zone</span>
+              <span class="nav-link">Training Zone <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
               <div class="dropdown-content1 animated bounceIn">
-                <a href="training_zone_topic_wise.html" id="topic_wise">Topic Wise</a>
-                <a href="training_zone_level_wise.html" id="level_wise">Level Wise</a>
-                <a href="generate_daily_mix.html" id="generate_daily_mix">Daily Contests</a>
+                <a class="nav-link" href="training_zone_topic_wise.html" id="topic_wise">Topic Wise</a>
+                <a class="nav-link" href="training_zone_level_wise.html" id="level_wise">Level Wise</a>
+                <a class="nav-link" href="generate_daily_mix.html" id="generate_daily_mix">Daily Contests</a>
 
               </div>
             </div> 
@@ -79,13 +117,13 @@
           
         </ul>
         <input
-          class="form-control outer"
+          class="form-control outer hidden search_kro"
           type="search"
           placeholder="Search"
           aria-label="Search"
         />
         <button type="button" class="btn outer btn-dark search">
-          <img class="outer" src="resources/icons/search 1.svg" alt="" />
+          <img class="outer search-img" src="resources/icons/search 1.svg" alt="" />
         </button>
         <!-- </form> -->
         <!-- </div> -->
