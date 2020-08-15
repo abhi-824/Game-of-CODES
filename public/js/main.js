@@ -22,6 +22,7 @@ socket.on('message',message=>{
     output_mess(message);
 
     chatMessages.scrollTop=chatMessages.scrollHeight;
+    document.querySelector(".messages").scrollTop=document.querySelector(".messages").scrollHeight;
 })
 
 form.addEventListener('submit',(e)=>{
