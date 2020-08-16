@@ -696,6 +696,15 @@ a:hover {
   font-size:1rem;
   margin-right:1.5rem;
   background:rgb(52, 156, 10);
+  color:#fff;
+}
+.chat-header .ready_btn:hover{
+  background: rgb(196, 216, 19);
+  color:#333;
+  transition:  0.5s;
+}
+.chat-header .disabled{
+  background:red;
 }
 .chat-main{
   display: grid;

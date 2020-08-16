@@ -5,13 +5,14 @@ const socket=io();
 const {username, room}=Qs.parse(location.search,{
     ignoreQueryPrefix:true
 })
-document.querySelector('.ready_btn').addEventListener('click',function(){
+document.querySelector('.ready_btn').addEventListener('click',function(e){
     socket.emit('ready',{username,room});
-    document.querySelector('.ready_btn').classList.add("disabled")
+    document.querySelector('.ready_btn').classList.add("disabled");
+    e.preventDefault();
 })
 socket.emit('joinRoom',{username,room})
 socket.on('start_contest',()=>{
-    console.log("hoja shuru")
+    
 })
 socket.on('roomUsers',({room,users})=>{
     outputRoomName(room);

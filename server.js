@@ -3,7 +3,7 @@ const http = require("http");
 const express = require("express");
 const socketio = require("socket.io");
 const formatMessage=require('./utils/messages')
-const {userJoin,getCurrentUser,userLeave,getRoomUsers,make_ready,allready}=require('./utils/users')
+const {userJoin,getCurrentUser,userLeave,getRoomUsers,make_ready,allready,giveProblems}=require('./utils/users')
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
@@ -28,7 +28,7 @@ io.on("connection", (socket) => {
     const user=make_ready(socket.id,username,room,1);
     if(allready())
     {
-      io.to(user.room).emit("start_contest")
+      io.to(user.room).emit("start_contest",giveProblems());
       // start_contest();
     }
   })

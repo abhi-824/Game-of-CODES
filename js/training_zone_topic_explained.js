@@ -1,6 +1,6 @@
 function gettopic() {
   var url = document.location.href,
-    params = url.split("=")[1];
+  params = url.split("=")[1];
   params = params.split("&")[0];
   return params;
 }
