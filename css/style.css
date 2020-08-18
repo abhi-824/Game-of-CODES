@@ -634,3 +634,14 @@ a:hover {
   height: 470vh;
   background-color: rgba(0, 0, 0, 0.7);
 }
+.ask_perm{
+  position: absolute;
+  right:10%;
+  top:20%;
+}
+.time_chalo{
+  font-size:4rem;
+  position:absolute;
+  right:10%;
+  top:20%;
+}

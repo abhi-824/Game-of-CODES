@@ -1469,6 +1469,19 @@ function hello() {
         table.appendChild(tr);
       }
       document.querySelector(".d-flex").classList.add("hidden");
+      document.querySelector(".yes").addEventListener("click",function(e){
+        let val=document.querySelector(".time_val").value;
+        startTimer(val*60,document.querySelector(".time_chalo"));
+        document.querySelector(".ask_perm").classList.add("animated");
+        document.querySelector(".ask_perm").classList.add("bounceOutLeft");
+        e.preventDefault();
+      })
+      
+      document.querySelector(".no").addEventListener("click",function(e){
+        document.querySelector(".ask_perm").classList.add("hidden");
+        console.log("h")
+        e.preventDefault();
+      })
     }
 
     getUpsolved();
@@ -1478,7 +1491,7 @@ function hello() {
       const jsondata = await fetch(modified_url);
       const jsdata = await jsondata.json();
       let j = 0;
-
+  
       for (let i = 0; i < jsdata.result.length; i++) {
         let str = `${jsdata.result[i].problem.contestId}-${jsdata.result[i].problem.index}`;
         if (solved.has(str) === false) {
@@ -1576,6 +1589,8 @@ function hello() {
     hide_please(item);
     hide_please(item4);
     daily_mix_contests.classList.add("hidden");
+    
+    document.querySelector(".ask_perm").classList.remove("hidden");
     upsolve.classList.remove("hidden");
     unsolved_mysteries.classList.add("hidden");
     weak_topics.classList.add("hidden");

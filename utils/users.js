@@ -77,9 +77,42 @@ function giveProblems() {
         solved.has(str) === false
       ) {
         //to be continued
-        problems.push({str,c);
+        problems.push(str);
+        break;
       }
     }
+    for (let i = 0; i < jsdata.result.length; i++) {
+      let str =
+        jsdata.result[i].problem.contestId +
+        "-" +
+        jsdata.result[i].problem.index;
+      if (
+        jsdata.result[i].problem.rating > 1300 &&
+        jsdata.result[i].rating <= 1700 &&
+        solved.has(str) === false
+      ) {
+        //to be continued
+        problems.push(str);
+        break;
+      }
+    }
+    
+    for (let i = 0; i < jsdata.result.length; i++) {
+      let str =
+        jsdata.result[i].problem.contestId +
+        "-" +
+        jsdata.result[i].problem.index;
+      if (
+        jsdata.result[i].problem.rating > 1600 &&
+        jsdata.result[i].rating <= 2000 &&
+        solved.has(str) === false
+      ) {
+        //to be continued
+        problems.push(str);
+        break;
+      }
+    }
+    
   }
   getFinal();
 }
