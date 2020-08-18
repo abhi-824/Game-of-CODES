@@ -1462,7 +1462,7 @@ function hello() {
         th1.innerHTML = upsolved[i][1][0];
         th3.innerHTML = `<a class="question" href="${convert_to_link(
           upsolved[i][1][0]
-        )}">Let's Do it</a>`;
+        )}" target="_blank">Let's Do it</a>`;
         tr.appendChild(th1);
         tr.appendChild(th2);
         tr.appendChild(th3);

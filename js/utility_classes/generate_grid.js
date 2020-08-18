@@ -56,14 +56,13 @@ function generate_grid() {
       }
     });
     cell[i].addEventListener("click", function (e) {
-
         cell[i].style.background = "black";
         cell[i].classList.add("src");
         cell[275].innerHTML='';
         cell[i].innerHTML="<i class='fas fa-hand-point-right fa-2x'>";
         cell[p].innerHTML='';
         cell[i].classList.remove("obst");
-        cell[p].classList.add("obst");
+        cell[p].classList.add("obst");  
         cell[p].classList.remove("src");
         p=i;
       });

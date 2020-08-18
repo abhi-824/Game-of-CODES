@@ -19,14 +19,14 @@ function DFsS()
     vis[x_o][y_o]=0;
     // console.log(cell[770])
     dfs_on_grid(x_o,y_o);
-    console.log(bffa)
-    let i = bffa[x_d][y_d];
-  console.log(i);
-  for (i; i != 0; ) {
-    // console.log(i); 
-    reconstruct(i);
-    i = bffa[i[0]][i[1]];
-  }
+//     console.log(bffa)
+//     let i = bffa[x_d][y_d];
+//   console.log(i);
+//   for (i; i != 0; ) {
+//     // console.log(i); 
+//     reconstruct(i);
+//     i = bffa[i[0]][i[1]];
+//   }
 }
 let fl=0;
 function dfs_on_grid(x,y)
