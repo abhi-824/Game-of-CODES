@@ -645,3 +645,60 @@ a:hover {
   right:10%;
   top:20%;
 }
+.buttons{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  justify-content: space-between;
+  padding:1rem 2rem;
+}
+.btn1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-sundar{
+  background:rgb(14, 38, 177);
+  color:#fff;
+  padding:0.5rem 0.5rem;
+  border-radius: 20px;
+}
+.btn-sundar:hover{
+  background:#fff;
+  color:rgb(14, 38, 177);
+  transition:0.5s;
+}
+.btn-sundar2{
+  background:rgb(14, 177, 41);
+  color:#fff;
+  padding:0.5rem 0.5rem;
+  border-radius: 20px;
+}
+.btn-sundar2:hover{
+  background:#fff;
+  color:rgb(14, 177, 49);
+  transition:0.5s;
+}
+.problemkilist{
+  display:flex;
+  flex-direction: column;
+  padding:1rem;
+}
+.problemhye{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap:0.7rem;
+  padding:1rem;
+}
+.problemhye a{
+  padding:0.5rem 0.5rem;
+  width:auto;
+  border-radius: 20px;
+  background: rgba(0, 156, 8, 0.89);
+}
+.problemhye a:hover{
+  padding:0.7rem 0.7rem;
+  border-radius: 30px;
+  background: rgb(55, 67, 235);
+  color:#fff;
+  transition: 0.5s;
+}

@@ -1623,6 +1623,7 @@ function hello() {
   });
   document.querySelector(".daily-btn").addEventListener("click", function (e) {
     hide_please(item4);
+    document.querySelector('.ask_perm').classList.add("hidden");
     hide_please(item2);
     hide_please(item3);
     hide_please(item);
@@ -1647,6 +1648,7 @@ function hello() {
     document.querySelector(".container1").style.height="100vh";
     document.querySelector(".container2").style.height="100vh";
     document.querySelector('#time').classList.add("hidden");
+    document.querySelector('.ask_perm').classList.add("hidden");
     document.querySelector('.contest-time').classList.add("hidden");
     daily_mix_contests.classList.remove("hidden");
     unsolved_mysteries.classList.add("hidden");
