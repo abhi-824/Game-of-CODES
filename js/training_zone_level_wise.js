@@ -158,20 +158,20 @@ function animations() {
 }
 
 function convert_to_link(str) {
-  let p = "";
-  let q = "";
-  for (let i = 0; i < str.length; i++) {
-    if (str[i] === "-") {
-      for (let j = i + 1; j < str.length; j++) {
-        q += str[j];
+    let p = "";
+    let q = "";
+    for (let i = 0; i < str.length; i++) {
+      if (str[i] === "-") {
+        for (let j = i + 1; j < str.length; j++) {
+          q += str[j];
+        }
+        break;
       }
-      break;
+      p += str[i];
     }
-    p += str[i];
+    let link = `https://codeforces.com/problemset/problem/${p}/${q}`;
+    return link;
   }
-  let link = `https://codeforces.com/problemset/problem/${p}/${q}`;
-  return link;
-}
 function startTimer(duration, display) {
   var timer = duration,
     minutes,
@@ -194,7 +194,6 @@ function startTimer(duration, display) {
     }
   }, 1000);
 }
-function update_problems() {}
 let height = 100;
 function add_problems() {
   let l1 = document.querySelector(".problemkilist");
@@ -214,8 +213,51 @@ function add_problems() {
 function update_problems(){
     getSolved();
     let jai_shree_ram=document.querySelectorAll(".problemhye");
+    let jai_hanuman=document.querySelectorAll(".problemkilist");
     for(let i=0;i<jai_shree_ram.length;i++)
     {
+        let link =jai_shree_ram[i].childNodes[1].href;
+        let contestId="";
+        let index="";
+        let j=0;
+        for(let i=0;i<link.length;i++)
+        {
+            if(link[i]>'9'||link[i]<'0'){
+                j++;
+            }
+            else
+            {
+                break;
+            }
+        }
+        for(let i=j;i<link.length;i++){
+            if(link[i]!='/')
+            {
+                contestId+=link[i];
+                j++;
+            }
+            else{
+                break;
+            }
+        }
+        j++;
+        
+        for(let i=j;i<link.length;i++){
+            if(link[i]!='/')
+            {
+                index+=link[i];
+                j++;
+            }
+            else{
+                break;
+            }
+        }
+        let str=contestId+'-'+index;
+        if(solved.has(str))
+        {
+            jai_hanuman.removeChild(jai_hanuman.childNodes[i]);
+        }
 
+    
     }
 }
