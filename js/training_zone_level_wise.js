@@ -86,8 +86,8 @@ async function retreivel1() {
     let div = document.createElement("div");
     div.classList.add("problemhye");
     div.innerHTML = `<span>${problems[i].name}</span><a href="${convert_to_link(
-      problems[i].contestID + "-" + problems[i].index
-    )} target="_blank">Let's Do It</a><span>${problems[i].rating}</span>`;
+      problems[i].contestId + "-" + problems[i].index
+    )}" target="_blank">Let's Do It</a><span>${problems[i].rating}</span>`;
 
     document.querySelector(".problemkilist").appendChild(div);
   }
@@ -111,8 +111,8 @@ async function retreivel2() {
     let div = document.createElement("div");
     div.classList.add("problemhye");
     div.innerHTML = `<span>${problems[i].name}</span><a href="${convert_to_link(
-      problems[i].contestID + "-" + problems[i].index
-    )} target="_blank">Let's Do It</a><span>${problems[i].rating}</span>`;
+      `${problems[i].contestId}${problems[i].index}`
+    )}" target="_blank">Let's Do It</a><span>${problems[i].rating}</span>`;
 
     document.querySelector(".problemkilist").appendChild(div);
   }
@@ -138,8 +138,8 @@ async function retreivel3() {
     let div = document.createElement("div");
     div.classList.add("problemhye");
     div.innerHTML = `<span>${problems[i].name}</span><a href="${convert_to_link(
-      problems[i].contestID + "-" + problems[i].index
-    )} target="_blank">Let's Do It</a><span>${problems[i].rating}</span>`;
+      problems[i].contestId + "-" + problems[i].index
+    )}" target="_blank">Let's Do It</a><span>${problems[i].rating}</span>`;
 
     document.querySelector(".problemkilist").appendChild(div);
   }
@@ -210,4 +210,12 @@ function add_problems() {
   if (l1.classList.contains("lev2")) {
     retreivel2();
   }
+}
+function update_problems(){
+    getSolved();
+    let jai_shree_ram=document.querySelectorAll(".problemhye");
+    for(let i=0;i<jai_shree_ram.length;i++)
+    {
+
+    }
 }
