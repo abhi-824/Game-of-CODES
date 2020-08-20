@@ -61,6 +61,8 @@ function fetch_problems(problems, low, high) {
       }
     }
   }
+  
+  document.querySelector(".d-flex").classList.add("hidden");
   return problem_list;
 }
 
@@ -69,6 +71,7 @@ let problems = [];
 async function retreivel1() {
   animations();
   document.querySelector(".problemkilist").classList.add("lev1");
+  document.querySelector(".problemkilist").classList.remove("hidden");
 
   if (confirm("Do You want to start a timer?")) {
     var two_hours = 2 * 60 * 60,
@@ -111,7 +114,7 @@ async function retreivel2() {
     let div = document.createElement("div");
     div.classList.add("problemhye");
     div.innerHTML = `<span>${problems[i].name}</span><a href="${convert_to_link(
-      `${problems[i].contestId}${problems[i].index}`
+      `${problems[i].contestId}-${problems[i].index}`
     )}" target="_blank">Let's Do It</a><span>${problems[i].rating}</span>`;
 
     document.querySelector(".problemkilist").appendChild(div);
