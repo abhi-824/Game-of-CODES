@@ -355,7 +355,7 @@ table tr {
   width: 24vw;
   height: auto;
   box-sizing: border-box;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 /* .item1:hover, .item2:hover, .item3:hover, .item4:hover {
@@ -666,6 +666,23 @@ a:hover {
   background:#fff;
   color:rgb(14, 38, 177);
   transition:0.5s;
+}
+.tr-wr{
+  background: #000;
+
+}
+#target-val{
+  background: rgba(163, 92, 255, 0.753);
+  padding:0.2rem 0.5rem;
+  border-radius: 20px;
+  border:0px;
+  color:#fff; 
+}
+.target-yaar{
+  padding:0.5rem 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 .btn-sundar2{
   background:rgb(14, 177, 41);
