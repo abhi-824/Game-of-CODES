@@ -3,7 +3,7 @@ let item2 = document.querySelector(".item2");
 let item3 = document.querySelector(".item3");
 let item4 = document.querySelector(".item4");
 let user_submissions;
-let target_val=document.getElementById("yarget-val").value;
+
 
 let show_daily_mix = document.querySelector(".daily-btn");
 let show_daily_mix2 = document.querySelector(".daily-btn2");
@@ -1850,3 +1850,15 @@ function startTimer(duration, display) {
     }
   }, 1000);
 }
+document.querySelector(".set-target").addEventListener("click",function(e){
+  let target_val=document.getElementById("target-val").value;
+  async function getTargetBoys(){
+    let modified_url = "https://codeforces.com/api/user.status?handle=" + handle_name;
+      const jsondata = await fetch(modified_url);
+      const jsdata = await jsondata.json();
+      user_submissions = jsdata.result;
+      
+  }
+  console.log(target_val)
+  e.preventDefault();
+})
