@@ -3,7 +3,12 @@ document.querySelector(".l2").addEventListener("click", retreivel2);
 document.querySelector(".l3").addEventListener("click", retreivel3);
 document.querySelector(".update").addEventListener("click", update_problems);
 document.querySelector(".add").addEventListener("click", add_problems);
+var load_kk=document.querySelector(".load-kro");
 
+
+window.addEventListener("load",function(){
+  load_kk.classList.add("disapper")
+})
 const url2 = "https://codeforces.com/api/user.status?handle=";
 
 function getHandle() {

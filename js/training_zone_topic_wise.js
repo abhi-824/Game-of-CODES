@@ -17,7 +17,12 @@ let div2_c=document.querySelectorAll('.div2_c')
 let div2_d=document.querySelectorAll('.div2_d')
 let div2_e=document.querySelectorAll('.div2_e')
 google.charts.load("current", { packages: ["corechart"] });
+var load_kk=document.querySelector(".load-kro");
 
+
+window.addEventListener("load",function(){
+  load_kk.classList.add("disapper")
+})
 let all_topics_name = [
   "implementation",
   "dp",

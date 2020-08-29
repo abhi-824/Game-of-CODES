@@ -3,8 +3,12 @@ let item2 = document.querySelector(".item2");
 let item3 = document.querySelector(".item3");
 let item4 = document.querySelector(".item4");
 let user_submissions;
+var load_kk=document.querySelector(".load-kro");
 
 
+window.addEventListener("load",function(){
+  load_kk.classList.add("disapper")
+})
 let show_daily_mix = document.querySelector(".daily-btn");
 let show_daily_mix2 = document.querySelector(".daily-btn2");
 let daily_mix_contests = document.querySelector(".daily-mix");

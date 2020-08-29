@@ -8,7 +8,12 @@ var user_avatar;
 var accuracy_rate;
 var user_rating;
 var max_rating;
+var load_kk=document.querySelector(".load-kro");
 
+
+window.addEventListener("load",function(){
+  load_kk.classList.add("disapper")
+})
 const urlSubmissions1 = "https://codeforces.com/api/user.status?handle=";
 const urlUserAvatar1 = "https://codeforces.com/api/user.info?handles=";
 

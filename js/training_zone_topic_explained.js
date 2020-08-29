@@ -4,6 +4,12 @@ function gettopic() {
   params = params.split("&")[0];
   return params;
 }
+var load_kk=document.querySelector(".load-kro");
+
+
+window.addEventListener("load",function(){
+  load_kk.classList.add("disapper")
+})
 function notifyMe(){
 
   if (!window.Notification) {

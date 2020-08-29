@@ -719,3 +719,23 @@ a:hover {
   color:#fff;
   transition: 0.5s;
 }
+.load-kro{
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: black;
+  height:100vh;
+  width:100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.disapper{
+  animation: vanish 1s forwards;
+}
+@keyframes vanish{
+  100%{
+    opacity: 0;
+    visibility: hidden;
+  }
+}

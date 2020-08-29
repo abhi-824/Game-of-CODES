@@ -11,7 +11,12 @@ const url2 = "https://codeforces.com/api/user.status?handle=";
 let solved = new Set();
 let user_contest = [];
 let handle_name;
+var load_kk=document.querySelector(".load-kro");
 
+
+window.addEventListener("load",function(){
+  load_kk.classList.add("disapper")
+})  
 // for charts
 var dataPointsRatings1 = [];
 var dataPointsRatings2 = [];

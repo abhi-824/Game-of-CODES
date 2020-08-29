@@ -1,3 +1,9 @@
+var load_kk=document.querySelector(".load-kro");
+
+
+window.addEventListener("load",function(){
+  load_kk.classList.add("disapper")
+})
 let box_no;
 let box_no2;
 let column_height;
