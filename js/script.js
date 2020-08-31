@@ -34,6 +34,11 @@ document.querySelector('.search-img').addEventListener("click",function(e){
   document.querySelector(".search_kro").classList.remove("hidden");
   document.querySelector(".search_kro").classList.add("bounceInRight");
 })
+document.querySelector(".skip-button").addEventListener("click",function(e){
+
+  document.querySelector(".tr-wr").classList.add("hidden");
+  e.preventDefault();
+})
 let website_url = "Profile.html?handle=";
 let all_topics_name = [
   "implementation",
