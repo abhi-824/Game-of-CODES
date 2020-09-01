@@ -6,45 +6,44 @@ function gettopic() {
 }
 var load_kk=document.querySelector(".load-kro");
 
-
 window.addEventListener("load",function(){
   load_kk.classList.add("disapper")
 })
 function notifyMe(){
-
+  
   if (!window.Notification) {
     console.log('Browser does not support notifications.');
   } else {
     // check if permission is already granted
     if (Notification.permission === 'granted') {
-        // show notification here
-        var notify = new Notification('Timer is Over!!', {
-          body: 'Timr is Over but not the question, so do it first :)',
+      // show notification here
+      var notify = new Notification('Timer is Over!!', {
+        body: 'Timr is Over but not the question, so do it first :)',
           icon: 'https://bit.ly/2DYqRrh',
       });
     } else {
-        // request permission from user
-        Notification.requestPermission().then(function(p) {
-           if(p === 'granted') {
-               // show notification here
+      // request permission from user
+      Notification.requestPermission().then(function(p) {
+        if(p === 'granted') {
+          // show notification here
            } else {
-               console.log('User blocked notifications.');
-           }
-        }).catch(function(err) {
+             console.log('User blocked notifications.');
+            }
+          }).catch(function(err) {
             console.error(err);
-        });
+          });
+        }
+      }
     }
-  }
-}
-// function gettopic() {
-//     var url = document.location.href,
-//       params = url.split("&")[1];
-//     return params;
-//   }
-
+    // function gettopic() {
+      //     var url = document.location.href,
+      //       params = url.split("&")[1];
+      //     return params;
+      //   }
+      
 function getHandle() {
   var url = document.location.href,
-    params = url.split("=")[1];
+  params = url.split("=")[1];
   params = params.split("&")[1];
   return params;
 }
@@ -59,7 +58,7 @@ document.querySelector(".start-topic").addEventListener("click", function (e) {
   e.preventDefault();
   if (confirm("Do You want to start a timer?")) {
     var two_hours = 2*60*60,
-      display = document.querySelector(".timer");
+    display = document.querySelector(".timer");
     startTimer(two_hours, display);
   }
   document.querySelector(".cont1").classList.remove("hidden");
@@ -79,17 +78,17 @@ async function getSolved() {
   const jsdata = await jsondata.json();
 
   let unsolved = new Set();
-
+  
   unsolved.clear();
   solved.clear();
-
+  
   // for retreiving solved set
   for (let i = 0; i < jsdata.result.length; i++) {
     if (jsdata.result[i].verdict == "OK") {
       let str =
-        jsdata.result[i].problem.contestId +
-        "-" +
-        jsdata.result[i].problem.index;
+      jsdata.result[i].problem.contestId +
+      "-" +
+      jsdata.result[i].problem.index;
       solved.add(str);
     }
   }
@@ -110,15 +109,15 @@ function question(set, problems, low, high) {
       set4.includes(str) === false &&
       str !== undefined &&
       problems[i].tags.includes("*special") === false
-    ) {
-      // console.log(problems[i]);
+      ) {
+        // console.log(problems[i]);
       return str;
     }
   }
 }
 async function getProblems() {
   let modified_url =
-    "https://codeforces.com/api/problemset.problems?tags=" + tag_name;
+  "https://codeforces.com/api/problemset.problems?tags=" + tag_name;
   const jsondata = await fetch(modified_url);
   const jsdata = await jsondata.json();
   problems = jsdata.result.problems;
@@ -129,25 +128,25 @@ async function getProblems() {
   set1.push(question(set1, problems, 1300, 1400));
   set1.push(question(set1, problems, 1400, 1500));
   set1.push(question(set1, problems, 1500, 1600));
-
+  
   set2.push(question(set2, problems, 900, 1200));
   set2.push(question(set2, problems, 1200, 1500));
   set2.push(question(set2, problems, 1500, 1600));
   set2.push(question(set2, problems, 1600, 1700));
   set2.push(question(set2, problems, 1700, 1800));
-
+  
   set3.push(question(set3, problems, 1000, 1300));
   set3.push(question(set3, problems, 1300, 1600));
   set3.push(question(set3, problems, 1600, 1700));
   set3.push(question(set3, problems, 1700, 1800));
   set3.push(question(set3, problems, 1800, 1900));
-
+  
   set4.push(question(set4, problems, 1100, 1400));
   set4.push(question(set4, problems, 1400, 1700));
   set4.push(question(set4, problems, 1700, 1900));
   set4.push(question(set4, problems, 1800, 1900));
   set4.push(question(set4, problems, 1900, 2200));
-
+  
   console.log(set1);
   console.log(set2);
   console.log(set3);
@@ -156,6 +155,7 @@ async function getProblems() {
 console.log(tag_name);
 let buttons = document.querySelectorAll(".generate_daily2");
 for (let i = 0; i < buttons.length; i++) {
+  document.querySelector(".update_kro").classList.remove("hidden");
   buttons[i].addEventListener("click", function (e) {
     if (i === 0) {
       display_problems(set1);
@@ -221,12 +221,12 @@ function display_problems(set) {
 // Timer for countdown
 function startTimer(duration, display) {
   var timer = duration,
-    minutes,
-    seconds;
+  minutes,
+  seconds;
   let x=setInterval(function () {
     minutes = parseInt(timer / 60, 10);
     seconds = parseInt(timer % 60, 10);
-
+    
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
 
@@ -237,14 +237,26 @@ function startTimer(duration, display) {
     }
     if(display.textContent==='00:00')
     {
-
+      
       notifyMe();
       clearInterval(x);
     }
   }, 1000);
 }
+document.querySelector(".update_kro").addEventListener("click",update);
 function update()
 {
-  
+  getSolved();
+  let yummy=document.querySelectorAll(".problems_hai_bhai");
+  for(let i=0;i<yummy.length;i++)
+  {
+    console.log(yummy[i].innerHTML);
+    if(solved.has(yummy[i].innerHTML))
+    {
+      yummy[i].innerHTML="You Did It, You ..."
+
+
+    }
+  }
   
 }
