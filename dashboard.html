@@ -41,14 +41,13 @@
       media="screen and (max-width: 768px)"
       href="css/mobile.css"
     />
-    <script src="https://ajax.googleapis.com/ajax/libs/ jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script
       type="text/javascript"
       src="https://www.gstatic.com/charts/loader.js"
     ></script>
   </head>
   <style>
-    
     .cont1 {
       width: 1000px;
       position: relative;
@@ -117,10 +116,10 @@
   <body>
     <!-- Navigation Bar -->
     <div class="container1">
+      <div class="load-kro">
+        <img src="resources/vid/Animated GIF-downsized_large.gif" alt="">
+      </div>
       <div class="container2">
-        <div class="load-kro">
-          <img src="resources/vid/Animated GIF-downsized_large.gif" alt="">
-        </div>
         <div class="tr-wr">
           <div class="target-yaar">
             <div class="target-lo">
@@ -143,16 +142,22 @@
             </div>
           </div>
         </div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
-          <a class="navbar-brand logo" href="#">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-transparent ">
+          <!-- <a class="navbar-brand logo" href="#">
             <h1 class="inner">GAME OF CODES</h1>
+            
             <img src="resources/logo/logo_light.png" alt="" />
-          </a>
-          <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                    <!-- <span class="navbar-toggler-icon"></span> -->
-          <!-- </button> -->
-          <!-- <div class="collapse navbar-collapse" id="navbarText"> -->
-          <ul class="navbar-nav mr-auto">
+          </a> -->
+          <div class="hamburger">
+            <div class="line33"></div>
+            <div class="line33"></div>
+            <div class="line33"></div>
+          </div>
+            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+            </button> -->
+          <!-- <div class="collapse navbar-collapse" id="navbarText">  -->
+          <ul class="navbar-nav nav-links mr-auto mt-2 mt-lg-0">
             <li class="nav-item active">
               <a class="nav-link" id="dashboard1" href="#"
                 >Dashboard
@@ -165,15 +170,17 @@
             </li>
             
             <li class="nav-item">
-              <div class="dropdown1">
-                <span class="nav-link">Visualisers <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
-                </span>
-                <div class="dropdown-content1 animated bounceIn">
-              <a class="nav-link" href="sorting_vis.html" id="sorting_vis">Sorting Visualiser</a>
-              <a class="nav-link" href="grid_vis.html" id="sorting_vis">Grid Visualiser</a>
+              <a href="">
+                <div class="dropdown1">
+                  <span class="nav-link">Visualisers <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                  </span>
+                  <div class="dropdown-content1 animated bounceIn">
+                <a class="nav-link" href="sorting_vis.html" id="sorting_vis">Sorting Visualiser</a>
+                <a class="nav-link" href="grid_vis.html" id="grid_vis">Grid Visualiser</a>
+              </div>
+            </div> 
+              </a>
 
-                </div>
-              </div> 
             </li>
             <li class="nav-item">
               <a class="nav-link profile" href="Profile.html" id="profile1">Profile</a>
@@ -182,20 +189,23 @@
               <a class="nav-link" href="Codeblast.html" id="codeblast1">Code Blast</a>
             </li>
             <li class="nav-item">
-              
-              <div class="dropdown1">
-                <span class="nav-link">Training Zone <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
-                <div class="dropdown-content1 animated bounceIn">
-                  <a class="nav-link" href="training_zone_topic_wise.html" id="topic_wise">Topic Wise</a>
-                  <a class="nav-link" href="training_zone_level_wise.html" id="level_wise">Level Wise</a>
-                  <a class="nav-link" href="generate_daily_mix.html" id="generate_daily_mix">Daily Contests</a>
+              <a href="">
 
-                </div>
-              </div> 
+                <div class="dropdown1">
+                  <span class="nav-link">Training Zone <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
+                  <div class="dropdown-content1 animated bounceIn">
+                    <a class="nav-link" href="training_zone_topic_wise.html" id="topic_wise">Topic Wise</a>
+                    <a class="nav-link" href="training_zone_level_wise.html" id="level_wise">Level Wise</a>
+                    <a class="nav-link" href="generate_daily_mix.html" id="generate_daily_mix">Daily Contests</a>
+  
+                  </div>
+                </div> 
+              </a>
             </li>
             <li class="user_avatar nav-item"></li>
             
           </ul>
+        
           <input
             class="form-control outer hidden search_kro"
             type="search"
@@ -205,6 +215,7 @@
           <button type="button" class="btn outer btn-dark search">
             <img class="outer search-img" src="resources/icons/search 1.svg" alt="" />
           </button>
+        <!-- </div> -->
           <!-- </form> -->
           <!-- </div> -->
         </nav>
@@ -278,11 +289,15 @@
             </div><br>
           </div>
           <div class="ask_perm hidden">
-            Do You want to start a timer?
-            <button class="btn btn-primary yes">YES</button>
-            <button class="btn btn-secondary no">NO</button>
-            <label for="time">Minutes: </label>
-            <input type="number" class="time_val" name="time">
+            <p>
+              Do You want to start a timer?
+            </p>
+            <div>
+              <button class="btn btn-primary yes">YES</button>
+              <button class="btn btn-secondary no">NO</button>
+              <!-- <label for="time">Minutes: </label> -->
+              <input type="number" class="time_val" width="20px" name="time">
+            </div>
           </div>
           <br>
           <div
@@ -367,7 +382,7 @@
                 <div class="face face1">
                   <div class="content">
                     <img src="resources/iimages/abhi.svg" alt="" />
-                    <h2>Set 4</h2>
+                    <h2>Set 5</h2>
                   </div>
                 </div>
                 <div class="face face2">
@@ -385,7 +400,7 @@
                 <div class="face face1">
                   <div class="content">
                     <img src="resources/iimages/abhi.svg" alt="" />
-                    <h2>Set 4</h2>
+                    <h2>Set 6</h2>
                   </div>
                 </div>
                 <div class="face face2">
@@ -403,7 +418,7 @@
                 <div class="face face1">
                   <div class="content">
                     <img src="resources/iimages/abhi.svg" alt="" />
-                    <h2>Set 4</h2>
+                    <h2>Set 7</h2>
                   </div>
                 </div>
                 <div class="face face2">
@@ -421,7 +436,7 @@
                 <div class="face face1">
                   <div class="content">
                     <img src="resources/iimages/abhi.svg" alt="" />
-                    <h2>Set 4</h2>
+                    <h2>Set 8</h2>
                   </div>
                 </div>
                 <div class="face face2">

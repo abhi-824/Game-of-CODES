@@ -1,88 +1,78 @@
-@import url("https://fonts.googleapis.com/css2?family=Audiowide");  
-.wrapper {
-    display: flex;
-    flex-direction: column;
-    float:right;
-    align-items: center;
-    justify-content: center;
-    
-}
-.see1{
-    display:none;
-}
-body{
-    background: rgba(0, 0, 0, 0.904);
-}
-.container1{
-    background:none;
-    height:100vh;
-}
-.container2{
-    background:none;
-}
+
 nav{
-    background:url('../resources/backgrounds/hulk.jpg') no-repeat center center/cover;
-    opacity:0.9;
+  /* height:10vh; */
+  background:transparent;
+
 }
-.daily-mix {
-    width: 170px;
-    float:right;
-    padding: 0;
-    height: 300px;
-    background: rgba(20, 20, 20, 0.47);
-    border-radius: 35px;
-    /* display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; */
-    /* margin-right: 3rem; */
+.nav-links{
+  display: flex;
+  height:100%;
+  width:100%;
+  background: black;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
 }
-.logo img {
-    width: 0px;
-    height:0px;
-    /* padding-right: 3rem; */
+@media screen and (max-width: 768px){
+  .line33{
+      width: 30px;
+      height:3px;
+      background: white;
+      margin:5px;
+  }
+  nav{
+      position: relative;
+
+  }
+  .hamburger{
+      position: absolute;
+      cursor: pointer;
+      right:5%;
+      top:20%;
+      z-index: 2;
+  }
+
+  .nav-links{
+      position: fixed;
+      height:100vh;
+      width:100%;
+      flex-direction: column;
+      clip-path: circle(0px at 90% -20%);
+      -webkit-clip-path:circle(0px at 90% -20%);
+      transition: all 0.7s ease-out;
+      pointer-events: none;
+  }
+  .nav-links.open{
+      clip-path: circle(1500px at 90% -20%);
+      -webkit-clip-path:circle(1500px at 90% -20%);
+      pointer-events: all;
+  }
+  .landing{
+      flex-direction: column;
+  }
 }
-.navbar-brand{
-    padding:0;
-    margin:0;
-    height:auto;
+.user-stats{
+  /* position: relative;
+  display:flex; */
+  grid-gap:0;
+  /* flex-direction: column; */
 }
-.inner{
-    display:block;
-    padding:0;
-    margin:0;
-    font-family:"Audiowide";
-    font-size:35px;
+.item1,
+.item2,
+.item3,
+.item4 {
+  width: 100%;
+  height: 130px;
+} 
+#futurecontest{
+  display: none;
 }
-.daily-mix h1{
-    font-size:20px;
+.tr-wr{
+  display:none;
 }
-.navbar-nav{
-    display:flex;
-    flex-direction: row;
-    margin:0;
-}
-.nav-item{
-    padding:0rem 0.3rem;
-}
-.outer{
-    display: none!important;
-}
-.heading h1{
-    width:auto;
-    height:auto;
-    font-size:20px;
-    padding:0rem 1rem;
-}
-.user-stats {
-    width: auto;
-    opacity: 0.6;
-    display: flex;
-    /* overflow:hidden; */
-    flex-direction: column;
-    /* grid-gap: 1rem; */
-    align-items: center;
-}
-.user-stats h1{
-    font-size:13px;
+.ask_perm{
+  position: relative;
+  margin-left:5rem;
+  display: flex;
+  flex-direction: column;
 }

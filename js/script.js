@@ -3,12 +3,17 @@ let item2 = document.querySelector(".item2");
 let item3 = document.querySelector(".item3");
 let item4 = document.querySelector(".item4");
 let user_submissions;
-var load_kk=document.querySelector(".load-kro");
+var load_kk = document.querySelector(".load-kro");
+const hamburger = document.querySelector(".hamburger");
+const navlinks = document.querySelector(".nav-links");
+const links = document.querySelector(".nav-links li");
 
-
-window.addEventListener("load",function(){
-  load_kk.classList.add("disapper")
-})
+hamburger.addEventListener("click", () => {
+  navlinks.classList.toggle("open");
+});
+window.addEventListener("load", function () {
+  load_kk.classList.add("disapper");
+});
 let show_daily_mix = document.querySelector(".daily-btn");
 let show_daily_mix2 = document.querySelector(".daily-btn2");
 let daily_mix_contests = document.querySelector(".daily-mix");
@@ -30,15 +35,14 @@ let contests_problems = new Set();
 let upsolved = [];
 let handle_name;
 google.charts.load("current", { packages: ["corechart"] });
-document.querySelector('.search-img').addEventListener("click",function(e){
+document.querySelector(".search-img").addEventListener("click", function (e) {
   document.querySelector(".search_kro").classList.remove("hidden");
   document.querySelector(".search_kro").classList.add("bounceInRight");
-})
-document.querySelector(".skip-button").addEventListener("click",function(e){
-
+});
+document.querySelector(".skip-button").addEventListener("click", function (e) {
   document.querySelector(".tr-wr").classList.add("hidden");
   e.preventDefault();
-})
+});
 let website_url = "Profile.html?handle=";
 let all_topics_name = [
   "implementation",
@@ -95,7 +99,7 @@ function hello() {
 
   $(document).ready(function () {
     // get solved set
-    
+
     function convert_to_link(str) {
       let p = "";
       let q = "";
@@ -229,8 +233,8 @@ function hello() {
 
       for (let i = 0; i < practice_each_topic.length; i++) {
         practice_each_topic[i].addEventListener("click", function (e) {
-          document.querySelector(".container1").style.height="200vh";
-          document.querySelector(".container2").style.height="200vh";
+          document.querySelector(".container1").style.height = "200vh";
+          document.querySelector(".container2").style.height = "200vh";
           let new_tag_map = new Map();
           for (let i = 800; i < 3200; i += 100) {
             new_tag_map.set(i, 0);
@@ -407,8 +411,8 @@ function hello() {
               } else if (i === 7) {
                 curr_set = arr8;
               }
-              document.querySelector(".container1").style.height="300vh";
-              document.querySelector(".container2").style.height="300vh";
+              document.querySelector(".container1").style.height = "300vh";
+              document.querySelector(".container2").style.height = "300vh";
               div = document.querySelector(".problem-name-3");
               // //console.log(div);
               while (div.firstChild) {
@@ -1151,8 +1155,10 @@ function hello() {
             p[i].addEventListener("click", function (e) {
               var r = confirm("This would start a timer!!");
               if (r == true) {
-                document.querySelector('#time').classList.remove("hidden");
-                document.querySelector('.contest-time').classList.remove("hidden");
+                document.querySelector("#time").classList.remove("hidden");
+                document
+                  .querySelector(".contest-time")
+                  .classList.remove("hidden");
                 var two_hours = 60 * 2 * 60,
                   display = document.querySelector("#time");
                 startTimer(two_hours, display);
@@ -1480,19 +1486,19 @@ function hello() {
         table.appendChild(tr);
       }
       document.querySelector(".d-flex").classList.add("hidden");
-      document.querySelector(".yes").addEventListener("click",function(e){
-        let val=document.querySelector(".time_val").value;
-        startTimer(val*60,document.querySelector(".time_chalo"));
+      document.querySelector(".yes").addEventListener("click", function (e) {
+        let val = document.querySelector(".time_val").value;
+        startTimer(val * 60, document.querySelector(".time_chalo"));
         document.querySelector(".ask_perm").classList.add("animated");
         document.querySelector(".ask_perm").classList.add("bounceOutLeft");
         e.preventDefault();
-      })
-      
-      document.querySelector(".no").addEventListener("click",function(e){
+      });
+
+      document.querySelector(".no").addEventListener("click", function (e) {
         document.querySelector(".ask_perm").classList.add("hidden");
-        console.log("h")
+        console.log("h");
         e.preventDefault();
-      })
+      });
     }
 
     getUpsolved();
@@ -1502,7 +1508,7 @@ function hello() {
       const jsondata = await fetch(modified_url);
       const jsdata = await jsondata.json();
       let j = 0;
-  
+
       for (let i = 0; i < jsdata.result.length; i++) {
         let str = `${jsdata.result[i].problem.contestId}-${jsdata.result[i].problem.index}`;
         if (solved.has(str) === false) {
@@ -1600,7 +1606,7 @@ function hello() {
     hide_please(item);
     hide_please(item4);
     daily_mix_contests.classList.add("hidden");
-    
+
     document.querySelector(".ask_perm").classList.remove("hidden");
     upsolve.classList.remove("hidden");
     unsolved_mysteries.classList.add("hidden");
@@ -1634,7 +1640,7 @@ function hello() {
   });
   document.querySelector(".daily-btn").addEventListener("click", function (e) {
     hide_please(item4);
-    document.querySelector('.ask_perm').classList.add("hidden");
+    document.querySelector(".ask_perm").classList.add("hidden");
     hide_please(item2);
     hide_please(item3);
     hide_please(item);
@@ -1644,8 +1650,8 @@ function hello() {
     unsolved_mysteries.classList.add("hidden");
     weak_topics.classList.add("hidden");
     upsolve.classList.add("hidden");
-    document.querySelector(".container1").style.height="100vh";
-    document.querySelector(".container2").style.height="100vh";
+    document.querySelector(".container1").style.height = "100vh";
+    document.querySelector(".container2").style.height = "100vh";
     show_daily_mix.classList.add("hidden");
     strong_topics.classList.add("hidden");
 
@@ -1656,11 +1662,11 @@ function hello() {
     hide_please(item2);
     hide_please(item3);
     hide_please(item);
-    document.querySelector(".container1").style.height="100vh";
-    document.querySelector(".container2").style.height="100vh";
-    document.querySelector('#time').classList.add("hidden");
-    document.querySelector('.ask_perm').classList.add("hidden");
-    document.querySelector('.contest-time').classList.add("hidden");
+    document.querySelector(".container1").style.height = "100vh";
+    document.querySelector(".container2").style.height = "100vh";
+    document.querySelector("#time").classList.add("hidden");
+    document.querySelector(".ask_perm").classList.add("hidden");
+    document.querySelector(".contest-time").classList.add("hidden");
     daily_mix_contests.classList.remove("hidden");
     unsolved_mysteries.classList.add("hidden");
     document.querySelector(".cont1").classList.add("hidden");
@@ -1751,7 +1757,6 @@ document.querySelector("#codeblast1").addEventListener("click", function (e) {
   cblast_url += handle;
   document.location.href = cblast_url;
   e.preventDefault();
-  
 });
 
 // FOR FUTURE CONTESTS
@@ -1796,7 +1801,7 @@ request.onload = function () {
       var link = "https://codeforces.com/contestRegistration/" + cid;
 
       if (contest.phase === "BEFORE") {
-        const b=document.createElement("th");
+        const b = document.createElement("th");
         const a = document.createElement("a");
         a.textContent = "Register";
         a.href = link;
@@ -1818,8 +1823,7 @@ request.onload = function () {
         li.textContent = cname;
 
         const h6 = document.createElement("h6");
-        h6.textContent =
-           date + " " + month + ", " + hour + ":" + minutes;
+        h6.textContent = date + " " + month + ", " + hour + ":" + minutes;
 
         /* WOULD BE NEEDED FOR MM:SS
 
@@ -1829,7 +1833,7 @@ request.onload = function () {
         b.appendChild(li);
         b.appendChild(h6);
         b.appendChild(a);
-        b.classList.add("table_row")
+        b.classList.add("table_row");
         app.appendChild(b);
       }
     });
@@ -1859,15 +1863,15 @@ function startTimer(duration, display) {
     }
   }, 1000);
 }
-document.querySelector(".set-target").addEventListener("click",function(e){
-  let target_val=document.getElementById("target-val").value;
-  async function getTargetBoys(){
-    let modified_url = "https://codeforces.com/api/user.status?handle=" + handle_name;
-      const jsondata = await fetch(modified_url);
-      const jsdata = await jsondata.json();
-      user_submissions = jsdata.result;
-      
+document.querySelector(".set-target").addEventListener("click", function (e) {
+  let target_val = document.getElementById("target-val").value;
+  async function getTargetBoys() {
+    let modified_url =
+      "https://codeforces.com/api/user.status?handle=" + handle_name;
+    const jsondata = await fetch(modified_url);
+    const jsdata = await jsondata.json();
+    user_submissions = jsdata.result;
   }
-  console.log(target_val)
+  console.log(target_val);
   e.preventDefault();
-})
+});
