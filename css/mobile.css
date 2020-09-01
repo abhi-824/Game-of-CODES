@@ -1,8 +1,12 @@
-
+*{
+  margin:0;
+  padding:0;
+}
 nav{
   /* height:10vh; */
   background:transparent;
-
+  margin:0;
+  padding:0;
 }
 .nav-links{
   display: flex;
@@ -33,18 +37,22 @@ nav{
   }
 
   .nav-links{
+    top:0;
       position: fixed;
+      bottom: 140px;
+      overflow: scroll;
+      left:0;
       height:100vh;
-      width:100%;
+      width:100vw;
       flex-direction: column;
-      clip-path: circle(0px at 90% -20%);
-      -webkit-clip-path:circle(0px at 90% -20%);
+      clip-path: circle(0px at 80% -10%);
+      -webkit-clip-path:circle(0px at 80% -10%);
       transition: all 0.7s ease-out;
       pointer-events: none;
   }
   .nav-links.open{
-      clip-path: circle(1500px at 90% -20%);
-      -webkit-clip-path:circle(1500px at 90% -20%);
+      clip-path: circle(1500px at 80% -10%);
+      -webkit-clip-path:circle(1500px at 100% -10%);
       pointer-events: all;
   }
   .landing{
