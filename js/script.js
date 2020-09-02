@@ -4,6 +4,7 @@ let item3 = document.querySelector(".item3");
 let item4 = document.querySelector(".item4");
 let user_submissions;
 var load_kk = document.querySelector(".load-kro");
+var load_kkk = document.querySelector(".load-kro2");
 const hamburger = document.querySelector(".hamburger");
 const navlinks = document.querySelector(".nav-links");
 const links = document.querySelector(".nav-links li");
@@ -686,6 +687,7 @@ function hello() {
       document
         .querySelector(".generateDailyMix")
         .addEventListener("click", function (e) {
+          load_kkk.classList.remove("hidden");
           item.classList.add("animated");
           document.querySelector(".wrapper").classList.add("hidden");
           document.querySelector(".update").classList.remove("hidden");
@@ -721,9 +723,8 @@ function hello() {
             "https://codeforces.com/api/problemset.problems",
             true
           );
-
           request.onload = function () {
-            
+
             var data = JSON.parse(this.response);
             proper_result = data.result;
             //console.log(proper_result);
@@ -1363,7 +1364,10 @@ function hello() {
               ////console.log(set2);
               ////console.log(set3);
               ////console.log(set4);
-            }
+          load_kkk.classList.add("disapper");
+          document.querySelector(".container1").style.height="200vh";
+          document.querySelector(".container2").style.height="200vh";
+        }
           };
           request.send();
           document

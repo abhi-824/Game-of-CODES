@@ -725,10 +725,27 @@ a:hover {
   position: fixed;
   top: 0;
   left: 0;
+  z-index:100000;
   background: black;
   height:100vh;
   width:100vw;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.load-kro2{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index:100000;
+  background: black;
+  height:100vh;
+  width:100vw;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
