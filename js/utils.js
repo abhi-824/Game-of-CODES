@@ -1,4 +1,8 @@
-
+const hamburger = document.querySelector(".hamburger");
+const navlinks = document.querySelector(".nav-links");
+hamburger.addEventListener("click", () => {
+  navlinks.classList.toggle("open");
+});
 document.querySelector("#dashboard1").addEventListener("click", function (e) {
     //////console.log("Going to dashboard!");
     let handle = document.querySelector(".form-control").value;

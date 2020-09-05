@@ -69,7 +69,7 @@ a {
   height: 100vh;
 }
 .container3 {
-  /* background: url("../resources/backgrounds/thor.png") no-repeat center */
+  background: url("../resources/backgrounds/thor.png") no-repeat center
     center/cover;
   height: 100vh;
 }

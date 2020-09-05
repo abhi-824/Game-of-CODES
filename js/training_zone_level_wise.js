@@ -264,6 +264,7 @@ function update_problems(){
         let str=contestId+'-'+index;
         if(solved.has(str))
         {
+          console.log(jai_hanuman);
             jai_hanuman.removeChild(jai_hanuman.childNodes[i]);
         }
 
