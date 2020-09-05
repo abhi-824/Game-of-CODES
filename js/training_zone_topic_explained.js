@@ -48,6 +48,8 @@ function getHandle() {
   return params;
 }
 handle_name = getHandle();
+document.querySelector(".form-control").value = handle_name;
+
 console.log(handle_name);
 tag_name = gettopic();
 let set1 = [];

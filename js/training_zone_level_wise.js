@@ -18,6 +18,7 @@ function getHandle() {
   return params;
 }
 let handle_name = getHandle();
+document.querySelector(".form-control").value = handle_name;
 
 let solved = new Set();
 async function getSolved() {

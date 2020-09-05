@@ -410,7 +410,7 @@ document
     e.preventDefault();
   });
 
-document.querySelector("#dashboard").addEventListener("click", function (e) {
+document.querySelector("#dashboard1").addEventListener("click", function (e) {
   console.log("Going to dashboard!");
 
   var dash_url = "dashboard.html?handle=";
@@ -420,7 +420,7 @@ document.querySelector("#dashboard").addEventListener("click", function (e) {
   e.preventDefault();
 });
 
-document.querySelector("#profile").addEventListener("click", function (e) {
+document.querySelector("#profile1").addEventListener("click", function (e) {
   console.log("Going back to profile page!");
 
   var prof_url = "profile.html?handle=";
@@ -430,7 +430,7 @@ document.querySelector("#profile").addEventListener("click", function (e) {
   e.preventDefault();
 });
 
-document.querySelector("#compare").addEventListener("click", function (e) {
+document.querySelector("#compare1").addEventListener("click", function (e) {
   console.log("Going to the compare page . . .");
 
   var comp_url = "compare.html?handle=";
@@ -440,7 +440,7 @@ document.querySelector("#compare").addEventListener("click", function (e) {
   e.preventDefault();
 });
 
-document.querySelector("#codeblast").addEventListener("click", function (e) {
+document.querySelector("#codeblast1").addEventListener("click", function (e) {
   console.log("Going to codeblast!");
 
   var cblast_url = "codeblast.html?handle=";
@@ -450,7 +450,7 @@ document.querySelector("#codeblast").addEventListener("click", function (e) {
   e.preventDefault();
 });
 
-document.querySelector("#topic-wise").addEventListener("click", function (e) {
+document.querySelector("#topic_wise").addEventListener("click", function (e) {
   console.log("Going to topic-wise training zone!");
 
   let tz_url = "training_zone_topic_wise.html?handle=";
@@ -460,7 +460,7 @@ document.querySelector("#topic-wise").addEventListener("click", function (e) {
   e.preventDefault();
 });
 
-document.querySelector("#level-wise").addEventListener("click", function (e) {
+document.querySelector("#level_wise").addEventListener("click", function (e) {
   console.log("Going to level-wise training zone!");
 
   let tz_url = "training_zone_level_wise.html?handle=";
