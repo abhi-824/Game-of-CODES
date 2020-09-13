@@ -79,3 +79,28 @@ if(a===1)
 else{
   document.querySelector('.motivate2').classList.add("hidden");
 }
+
+document.querySelector("#handle").addEventListener("input",function(e){
+  async function find_user() {
+    handle = document.querySelector("#handle").value;
+
+    let modified_url = "https://codeforces.com/api/user.info?handles=" + handle;
+    const jsondata = await fetch(modified_url);
+    const jsdata = await jsondata.json();
+    if (jsdata.status === "FAILED") {
+      document.querySelector(".error").classList.remove("hidden");
+      button.style.cursor="not-allowed";
+      document.querySelector(".success").classList.add("hidden");
+      return false;
+    } else {
+      document.querySelector(".error").classList.add("hidden");
+      document.querySelector(".success").classList.remove("hidden");
+      let button = document.querySelector("#handle_button");
+      console.log("h")
+      button.style.cursor="pointer";
+      e.preventDefault();
+      return true;
+    }
+  }
+  find_user();
+})

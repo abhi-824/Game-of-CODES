@@ -4,20 +4,32 @@ let button = document.querySelector("#handle_button");
 let button1 = document.querySelector("#handle");
 button1.value = "";
 button1.focus();
+
 button.addEventListener("click", function (e) {
-  if (check_valid_user()) {
-    button1.val = "";
-    handle = document.querySelector("#handle").value;
-    url = url + handle;
-    console.log(handle);
-
-    console.log(url);
-    document.location.href = url;
-
-    url = "dashboard.html?handle=";
+  if(button.style.cursor==='pointer')
+  {
+  // if (check_valid_user()) {
+      button1.val = "";
+      handle = document.querySelector("#handle").value;
+      url = url + handle;
+      console.log(handle);
+  
+      console.log(url);
+      document.location.href = url;
+  
+      url = "dashboard.html?handle=";
+    // }
+    e.preventDefault();
   }
-  e.preventDefault();
-});
+  else
+  {
+   
+      alert("Codeforces Handle not valid!  Put up your specs! XD")
+      e.preventDefault();
+    
+  }
+  });
+
 function check_valid_user() {
   let handle = document.querySelector("#handle").value;
   if(find_user()){
