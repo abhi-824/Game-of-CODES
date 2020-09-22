@@ -1,4 +1,6 @@
 const path = require("path");
+const problems = [];
+const fetch = require("node-fetch");
 const http = require("http");
 const express = require("express");
 const socketio = require("socket.io");
@@ -26,9 +28,90 @@ io.on("connection", (socket) => {
   })
   socket.on('ready',({username,room})=>{
     const user=make_ready(socket.id,username,room,1);
+    const users=getRoomUsers(room);
     if(allready())
     {
-      io.to(user.room).emit("start_contest",giveProblems());
+      
+      // giveProblems();
+      async function getFinal() {
+        let solved = new Set();
+        for (let i = 0; i < users.length; i++) {
+          let handle_name = users[i].username;
+          // async function getSetGo() {
+          let modified_url = `https://codeforces.com/api/user.status?handle=${handle_name}`;
+          const jsondata = await fetch(modified_url);
+          const jsdata = await jsondata.json();
+          for (let i = 0; i < jsdata.result.length; i++) {
+            if (jsdata.result[i].verdict == 'OK') {
+              let str =
+                jsdata.result[i].problem.contestId +
+                '-' +
+                jsdata.result[i].problem.index;
+              solved.add(str);
+            }
+          }
+          // }
+          // getSetGo();
+        }
+        // console.log(solved);
+    
+        let modified_url2 = `https://codeforces.com/api/problemset.problems`;
+        const jsondata2 = await fetch(modified_url2);
+        const jsdata2 = await jsondata2.json();
+      
+        for (let i = 0; i < jsdata2.result.problems.length; i++) {
+          let str =
+            jsdata2.result.problems[i].contestId +
+            '-' +
+            jsdata2.result.problems[i].index;
+          if (
+            jsdata2.result.problems[i].rating > 900 &&
+            jsdata2.result.problems[i].rating <= 1400 &&
+            solved.has(str) === false
+          ) {
+            //to be continued
+    
+            problems.push(str);
+            break;
+          }
+        }
+        for (let i = 0; i < jsdata2.result.problems.length; i++) {
+          let str =
+            jsdata2.result.problems[i].contestId +
+            '-' +
+            jsdata2.result.problems[i].index;
+          if (
+            jsdata2.result.problems[i].rating > 1300 &&
+            jsdata2.result.problems[i].rating <= 1700 &&
+            solved.has(str) === false
+          ) {
+            //to be continued
+            problems.push(str);
+            break;
+          }
+        }
+    
+        for (let i = 0; i < jsdata2.result.problems.length; i++) {
+          let str =
+            jsdata2.result.problems[i].contestId +
+            '-' +
+            jsdata2.result.problems[i].index;
+          if (
+            jsdata2.result.problems[i].rating > 1600 &&
+            jsdata2 .result.problems[i].rating <= 2000 &&
+            solved.has(str) === false
+          ) {
+            //to be continued
+            problems.push(str);
+            break;
+          }
+        }
+        console.log(problems);
+        // problem_set=problems;
+        io.to(user.room).emit("start_contest",problems);
+      }
+      getFinal();
+      // console.log(problems);
       // start_contest();
     }
   })

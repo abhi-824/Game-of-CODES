@@ -11,8 +11,14 @@ document.querySelector('.ready_btn').addEventListener('click',function(e){
     e.preventDefault();
 })
 socket.emit('joinRoom',{username,room})
-socket.on('start_contest',()=>{
-    
+socket.on('start_contest',problems=>{
+    // console.log("hey");
+    var load_kkk = document.querySelector('.load-kro2');
+    load_kkk.classList.remove('hidden');
+    load_kkk.classList.add('disapper');
+    document.querySelector(".chat-container").remove();
+    console.log(problems);
+
 })
 socket.on('roomUsers',({room,users})=>{
     outputRoomName(room);
