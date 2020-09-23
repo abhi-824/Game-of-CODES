@@ -31,7 +31,7 @@ const io = socketio(server);
 
 //django unchained
 
-app.use(express.static(path.join(__dirname, 'public2')));
+app.use(express.static(path.join(__dirname, 'publicis')));
 io.on('connection', (socket) => {
 	console.log('new ws connection');
 
