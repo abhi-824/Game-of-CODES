@@ -31,10 +31,9 @@ const io = socketio(server);
 
 //django unchained
 
-app.use(express.static(path.join(__dirname, 'public')));
-io.on('connection', (socket) => { 
-  
-  console.log('new ws connection');
+app.use(express.static(path.join(__dirname, 'public2')));
+io.on('connection', (socket) => {
+	console.log('new ws connection');
 
 	socket.on('disconnect', () => {
 		const user = userLeave(socket.id);
@@ -49,9 +48,8 @@ io.on('connection', (socket) => {
 			});
 		}
 	});
-  
-  
-  socket.on('ready', ({ username, room }) => {
+
+	socket.on('ready', ({ username, room }) => {
 		const user = make_ready(socket.id, username, room, 1);
 		const users = getRoomUsers(room);
 		if (allready()) {
@@ -139,9 +137,8 @@ io.on('connection', (socket) => {
 			// start_contest();
 		}
 	});
-  
-  
-  socket.on('joinRoom', ({ username, room }) => {
+
+	socket.on('joinRoom', ({ username, room }) => {
 		const user = userJoin(socket.id, username, room);
 		socket.join(user.room);
 
@@ -162,11 +159,10 @@ io.on('connection', (socket) => {
 			users: getRoomUsers(user.room),
 		});
 	});
-  
-  
-  socket.on('bringResults', ({ username, room, problems }) => {
+
+	socket.on('bringResults', ({ username, room, problems }) => {
 		async function getFinal() {
-      console.log("hello");
+			console.log('hello');
 			io.to(room).emit('start_loader', problems);
 			let solved = new Set();
 			let handle_name = username;
@@ -181,34 +177,26 @@ io.on('connection', (socket) => {
 						jsdata.result[i].problem.index;
 					solved.add(str);
 				}
-      }
-      let result_jo=[];
-      for (let i = 0; i < problems.length; i++)
-      {
+			}
+			let result_jo = [];
+			for (let i = 0; i < problems.length; i++) {
 				if (solved.has(problems[i])) {
 					result_jo[i] = 1;
-        }
-        else{
-          
+				} else {
 					result_jo[i] = 0;
-          
-        }
-      }
-      io.to(room).emit('le_result', result_jo);
-
+				}
+			}
+			io.to(room).emit('le_result', result_jo);
 		}
 		getFinal();
 	});
-  
-  
-  socket.on('chatMessage', (msg) => {
+
+	socket.on('chatMessage', (msg) => {
 		const user = getCurrentUser(socket.id);
 		io.to(user.room).emit('message', formatMessage(user.username, msg));
-  });
-  
-
+	});
 });
 
-server.listen(PORT, host, function() {
-  console.log("Server started.......");
+server.listen(PORT, host, function () {
+	console.log('Server started.......');
 });
