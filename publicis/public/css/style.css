@@ -789,3 +789,9 @@ a:hover {
 .disapper {
 	animation: vanish 1s forwards;
 }
+@keyframes vanish {
+	100% {
+		opacity: 0;
+		visibility: hidden;
+	}
+}
