@@ -14,9 +14,6 @@ function dashboard(handle_name) {
 	hamburger.addEventListener('click', () => {
 		navlinks.classList.toggle('open');
 	});
-	window.addEventListener('load', function () {
-		load_kk.classList.add('disapper');
-	});
 	let show_daily_mix = document.querySelector('.daily-btn');
 	let show_daily_mix2 = document.querySelector('.daily-btn2');
 	let daily_mix_contests = document.querySelector('.daily-mix');
