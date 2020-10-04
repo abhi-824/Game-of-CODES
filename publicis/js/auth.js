@@ -29,6 +29,8 @@ auth.onAuthStateChanged((user) => {
 		document.querySelector('.container1').classList.add('hidden');
 	}
 });
+
+// for signup
 const signupform = document.querySelector('#signup-form');
 signupform.addEventListener('submit', (e) => {
 	const email = signupform['signup-email'].value;

@@ -49,6 +49,10 @@
          ></script>
    </head>
    <style>
+      .container3{
+     background: rgb(36,9,0);
+      background: linear-gradient(90deg, rgba(36,9,0,1) 0%, rgba(80,121,9,1) 29%, rgba(40,119,155,1) 67%, rgba(56,2,224,1) 85%, rgba(0,212,255,1) 100%); 
+    }
       .container4567{
          background-color: #f8f7fa;
       }
@@ -237,8 +241,8 @@
                         <span class="nav-link">Visualisers <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
                         </span>
                         <div class="dropdown-content1 animated bounceIn">
-                           <a class="nav-link sorting_vis_pls" href="sorting_vis.html" id="sorting_vis">Sorting Visualiser</a>
-                           <a class="nav-link grid_vis_pls" href="grid_vis.html" id="grid_vis">Grid Visualiser</a>
+                           <a class="nav-link sorting_vis_pls" href="#" id="sorting_vis">Sorting Visualiser</a>
+                           <a class="nav-link grid_vis_pls" href="#" id="grid_vis">Grid Visualiser</a>
                         </div>
                      </div>
                   </li>
@@ -246,7 +250,7 @@
                      <a class="nav-link profile" href="Profile.html" id="profile1">Profile</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link codeblast" href="public/index.html" id="codeblast1">Code Blast</a>
+                     <a class="nav-link codeblast" href="#" id="codeblast1">Code Blast</a>
                   </li>
                   <li class="nav-item">
                      <a class="nav-link community" href="community.html">Community</a>
@@ -1730,7 +1734,7 @@
          </div>
       </div>
       <!-- for codeblast -->
-      <div class="container3 hidden">
+      <div class="container3">
          <div class="container2">
             <nav class="navbar navbar-expand-lg navbar-dark bg-transparent ">
                <!-- <a class="navbar-brand logo" href="#">
@@ -1806,39 +1810,33 @@
                <!-- </form> -->
                <!-- </div> -->
             </nav>
-            <div class="container1234">
-               <!-- <div class="login_page"> -->
+           <div class="container1234">
+   
+             <!-- <div class="login_page"> -->
                <!-- <div class="buttons"> -->
-               <form action="code_blast_enter.html" class="login_page">
-                  <!-- <div class="form-control"> -->
-                  <!-- <label for="username">Username</label> -->
-                  <h1 style="margin: 1rem;">CODEBLAST</h1>
-                  <input
-                     type="text"
-                     name="username"
-                     id="user_name"
-                     placeholder="Enter username..."
-                     required
-                     >
-                  <!-- </div> -->
-                  <!-- <div class="form-control"> -->
-                  <!-- <label for="room">Room</label> -->
-                  <input 
+     
+                 <form action="code_blast_enter.html" class="login_page">
+                   <!-- <div class="form-control"> -->
+                     <!-- <label for="username">Username</label> -->
+                     <h1 style="margin: 1rem;">CODEBLAST</h1>
+                    
+                     <input 
                      type="text" 
                      style="margin:2rem"
                      name="room"
                      id="room_id"
                      placeholder="Enter Room ID"
                      required>
-                  <!-- </div> -->
-                  <br>
-                  <button type="submit" class="btn btn-primary">Join Room</button>
-               </form>
+                   <!-- </div> -->
+                   <br>
+                   <button type="submit" class="btn btn-primary join_romms">Join Room</button>
+                 </form>
                <!-- </div> -->
-            </div>
-            <!-- </div> -->
+             </div>
+           <!-- </div> -->
+           
          </div>
-      </div>
+       </div>
       <div class="container2222 hidden">
          <div class="timer"></div>
          <div class="chat-container">
@@ -1937,8 +1935,8 @@
          container.classList.remove("right-panel-active");
          });
       </script>
-      <script src="js/app.js"></script>
       <script src="js/init.js"></script>
+      <script src="js/app.js"></script>
       <script src="js/auth.js"></script>
       <script src="js/utility_classes/generate_grid.js"></script>
       <script src="js/utility_classes/generating_x_y.js"></script>
@@ -1956,12 +1954,14 @@
       <script src="js/quick.js"></script>
       <script src="js/script.js"></script>
       <script src="js/training_zone_topic_wise.js"></script>
-      <script src="js/compare_calc.js"></script>
       <script src="js/compare.js"></script>
       <script src="js/profile.js"></script>
       <script src="js/training_zone_level_wise.js"></script>
       <script src="js/training_zone_topic_wise.js"></script>
       <script src="js/training_zone_topic_explained.js"></script>
+      <script src="/socket.io/socket.io.js"></script>
+      <script src="public/js/main.js"></script>
+      <script src="public/js/main2.js"></script>
       <script src="js/events.js"></script>
    </body>
 </html>
