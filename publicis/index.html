@@ -1,0 +1,1968 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta
+         name="description"
+         content="Game of Codes. Analyze and improve on your codeforces user profile. See how have you performed, what you need to do now, personalised contests made just for you, outstanding graphics giving you a gaming feel in competitive coding. Scale up your data structures and algorithms with this amazing tool"
+         />
+      <meta property="og:url" content="https://game-of-codes.netlify.com" />
+      <meta property="og:title" content="Game Of CODES" />
+      <meta
+         property="og:description"
+         content="Improve your rating and save time by doing Personalised Questions"
+         />
+      <meta
+         property="og:image"
+         content="https://game-of-codes.netlify.com/resources/logo/logo_dark.jpg"
+         />
+      <meta name="mobile-web-app-capable" content="yes" />
+      <link rel="manifest" href="manifest.json" />
+      <!-- Font Awesome -->
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+      <!-- Google Fonts -->
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+      <!-- Bootstrap core CSS -->
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+      <!-- Material Design Bootstrap -->
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+      <link rel="shortcut icon" href="resources/logo/logo_dark.png" />
+      <link
+         rel="stylesheet"
+         href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+         crossorigin="anonymous"
+         />
+      <link rel="stylesheet" href="login.css">
+      <title>Game of Codes</title>
+      <link rel="stylesheet" href="css/style.css" />
+      <link
+         rel="stylesheet"
+         media="screen and (max-width: 768px)"
+         href="css/mobile.css"
+         />
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script
+         type="text/javascript"
+         src="https://www.gstatic.com/charts/loader.js"
+         ></script>
+   </head>
+   <style>
+      .container3{
+     background: rgb(36,9,0);
+      background: linear-gradient(90deg, rgba(36,9,0,1) 0%, rgba(80,121,9,1) 29%, rgba(40,119,155,1) 67%, rgba(56,2,224,1) 85%, rgba(0,212,255,1) 100%); 
+    }
+      .container4567{
+         background-color: #f8f7fa;
+      }
+      .cont1 {
+      width: 1000px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      }
+      .cont1 .card1 {
+      position: relative;
+      width: 300px;
+      height: 200px;
+      margin:16px;
+      }
+      .cont1 .card1 .face {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transition: 0.5s;
+      }
+      .cont1 .card1 .face.face1 {
+      background: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+      transform-origin: bottom;
+      }
+      .cont1 .card1 .face.face1 img {
+      max-width: 200px;
+      }
+      .cont1 .card1 .face.face1 h2 {
+      margin: 10px 0 0;
+      color: #fff;
+      text-align: center;
+      font-size: 1.5em;
+      }
+      .cont1 .card1:hover .face.face1 {
+      transform: translateY(-100%) rotateX(90deg);
+      background: #ff0057;
+      }
+      .face p{
+      color:#333;
+      }
+      .cont1 .card1 .face.face2 {
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding:20px;
+      transform-origin: top;
+      transform:translateY(100%) rotateX(90deg);
+      }
+      .cont1 .card1:hover .face.face2 {
+      transform:translateY(0%) rotateX(0deg);
+      }
+      .wrap{
+      display: flex;
+      flex-direction: column;
+      align-items: center;  
+      justify-content: center;
+      }
+   </style>
+   <body>
+      <div class="loader12345">
+         <img src="resources/logo/logo_light.png" class="latka" alt="">
+         <p>Checking...</p>
+      </div>
+      <!-- For index page -->
+      <div class="container11">
+         <div class="container4567">
+            <div class="container" id="container">
+               <div class="form-container sign-up-container">
+                  <form action="#" id="signup-form">
+                     <h1>Create Account</h1>
+                     <!-- <div class="social-container">
+                        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                        </div> -->
+                     <span>or use your email for registration</span>
+                     <input type="text" placeholder="Codeforces handle" id="signup-handle" required />
+                     <input type="email" placeholder="Email" id="signup-email" />
+                     <input type="password" placeholder="Password" id="signup-password" required />
+                     <button type="submit">Sign Up</button>
+                  </form>
+               </div>
+               <div class="form-container sign-in-container">
+                  <form action="#" id="login-form">
+                     <h1>Sign in</h1>
+                     <!-- <div class="social-container">
+                        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                        </div> -->
+                     <!-- <span>or use your account</span> -->
+                     <input type="email"  placeholder="Email" id="login-email" required />
+                     <input type="password" id="login-password" placeholder="Password" />
+                     <!-- <a href="#">Forgot your password?</a> -->
+                     <button type="submit">Sign In</button>
+                  </form>
+               </div>
+               <div class="overlay-container">
+                  <div class="overlay">
+                     <div class="overlay-panel overlay-left">
+                        <h1>Welcome Back!</h1>
+                        <p>To keep connected with us please login with your personal info</p>
+                        <button class="ghost" id="signIn">Sign In</button>
+                     </div>
+                     <div class="overlay-panel overlay-right">
+                        <h1>Hello, Friend!</h1>
+                        <p>Enter your personal details and start journey with us</p>
+                        <button class="ghost" id="signUp">Sign Up</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- For dashboard -->
+      <div class="container1 hidden">
+         <!-- <div class="load-kro">
+            <p>Scanning You, your work!! Don't worry, your data is still your data...</p>
+            <img src="resources/vid/41.gif" alt="">
+            </div> -->
+         <div class="container2">
+            <div class="tr-wr">
+               <div class="target-yaar">
+                  <div class="target-lo">
+                     <label for="target">
+                     This is if you want to set a daily target(Recommended):
+                     </label>
+                     <input type="number" value="16000" name="target"
+                        id="target-val" data-toggle="tooltip" data-placement="bottom" title="This is nothing just the difficult sum of questions you do, for eg if you did 2 questions of 1300 and 800 rating you will be given 2100 points. (Recommended:16000)">
+                     <button class="btn btn-primary set-target">Set Target</button>
+                  </div>
+                  <div class="cross">
+                     <a href="#">
+                     <i class="fas fa-forward skip-button fa-2x" data-toggle="tooltip" data-placement="bottom"  title="If you want to skip all this"></i></a>
+                  </div>
+                  <div class="progress hidden">
+                     <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
+                        aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">
+                        40% Complete (success)
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-transparent ">
+               <!-- <a class="navbar-brand logo" href="#">
+                  <h1 class="inner">GAME OF CODES</h1>
+                  
+                  <img src="resources/logo/logo_light.png" alt="" />
+                  </a> -->
+               <div class="hamburger">
+                  <div class="line33"></div>
+                  <div class="line33"></div>
+                  <div class="line33"></div>
+               </div>
+               <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                  </button> -->
+               <!-- <div class="collapse navbar-collapse" id="navbarText">  -->
+               <ul class="navbar-nav nav-links mr-auto mt-2 mt-lg-0">
+                  <li class="nav-item active">
+                     <a class="nav-link dashboard" href="#"
+                        >
+                        Dashboard
+                        <div class="line1"></div>
+                        <span class="sr-only">(current)</span>
+                     </a
+                        >
+                  </li>
+                  <li class="nav-item">
+                     <a href="#" class="logout2">Logout</a>
+                  </li>
+                  <li class="nav-item compare">
+                     <a class="nav-link" href="#" id="compare1" >Compare</a>
+                  </li>
+                  <li class="nav-item">
+                     <div class="dropdown1">
+                        <span class="nav-link">Visualisers <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                        </span>
+                        <div class="dropdown-content1 animated bounceIn">
+                           <a class="nav-link sorting_vis_pls" href="#" id="sorting_vis">Sorting Visualiser</a>
+                           <a class="nav-link grid_vis_pls" href="#" id="grid_vis">Grid Visualiser</a>
+                        </div>
+                     </div>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link profile" href="Profile.html" id="profile1">Profile</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link codeblast" href="#" id="codeblast1">Code Blast</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link community" href="community.html">Community</a>
+                  </li>
+                  <li class="nav-item">
+                     <div class="dropdown1">
+                        <span class="nav-link">Training Zone <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
+                        <div class="dropdown-content1  animated bounceIn">
+                           <p class="nav-link topic_wise" >Topic Wise</p>
+                           <a class="nav-link level_wise" href="training_zone_level_wise.html">Level Wise</a>
+                        </div>
+                     </div>
+                  </li>
+                  <li class="user_avatar nav-item"></li>
+               </ul>
+               <input
+                  class="form-control outer hidden search_kro"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                  />
+               <button type="button" class="btn outer btn-dark search">
+               <img class="outer search-img" src="resources/icons/search 1.svg" alt="" />
+               </button>
+               <!-- </div> -->
+               <!-- </form> -->
+               <!-- </div> -->
+            </nav>
+            <!-- Container -->
+            <div class="header-container">
+               <div class="time_chalo"></div>
+               <button class="btn-light hidden btn-sm daily-btn2">
+                  <p>Go back!</p>
+               </button>
+               <div class="wrapper">
+                  <div class="heading">
+                     <h1 class="head">HEY <span class="user"></span>, LET’S ROCK</h1>
+                     <p class="user-s">
+                        You have done <span class="no"></span> questions
+                     </p>
+                     <button class="btn-light hidden btn-sm daily-btn">
+                        <p>Go to Daily-Mix</p>
+                     </button>
+                     <button class="btn btn-elegant generateDailyMix">
+                     Generate Daily Mix
+                     </button>
+                  </div>
+                  <div class="daily-mix" id="futurecontest">
+                     <h1>Future Contests</h1>
+                     <!-- <div class="line1"></div> -->
+                     <table class="future-contests table">
+                     </table>
+                  </div>
+                  <div class="hidden weak_topics daily-mix">
+                     <h1>Weak Topics</h1>
+                     <div class="line"></div>
+                     <table class="table weak_topicss"></table>
+                  </div>
+                  <div class="hidden strong_topics daily-mix">
+                     <h1>Strong Topics</h1>
+                     <div class="line"></div>
+                     <table class="table strong_topicss"></table>
+                  </div>
+                  <div class="hidden upsolve daily-mix">
+                     <h1>UPSOLVE</h1>
+                     <div class="line"></div>
+                     <p>(Sorted by difficulty)</p>
+                     <div class="d-flex align-items-center spinner">
+                        <strong>Loading...</strong>
+                        <div
+                           class="spinner-border ml-auto"
+                           role="status"
+                           aria-hidden="true"
+                           ></div>
+                     </div>
+                     <table class="problems table">
+                        <tr>
+                           <th scope="col">Problem ID</th>
+                           <th scope="col">Difficulty</th>
+                           <th scope="col">Contest ID</th>
+                        </tr>
+                     </table>
+                  </div>
+                  <div class="hidden unsolved_mysteries daily-mix">
+                     <h1>Unsolved Mysteries</h1>
+                     <div class="line"></div>
+                     <p>(Sorted by difficulty)</p>
+                     <table class="unsolved_problems table">
+                        <tr>
+                           <th scope="col">Problem ID</th>
+                           <th scope="col">Difficulty</th>
+                           <th scope="col">Contest ID</th>
+                        </tr>
+                     </table>
+                  </div>
+                  <br>
+               </div>
+               <div class="ask_perm hidden">
+                  <p>
+                     Do You want to start a timer?
+                  </p>
+                  <div>
+                     <button class="btn btn-primary yes">YES</button>
+                     <button class="btn btn-secondary no">NO</button>
+                     <!-- <label for="time">Minutes: </label> -->
+                     <input type="number" class="time_val" width="20px" name="time">
+                  </div>
+               </div>
+               <br>
+               <div
+                  id="chartContainer"
+                  class="hidden"
+                  style="height: 370px; width: 1100px; padding:2rem;"
+                  ></div>
+               <div class="hidden problemsets">
+                  <div class="wrap">
+                     <div class="cont1 hidden">
+                        <div class="card1">
+                           <div class="face face1">
+                              <div class="content">
+                                 <img src="resources/iimages/abhi.svg" alt="" />
+                                 <h2>Set 1</h2>
+                              </div>
+                           </div>
+                           <div class="face face2">
+                              <div class="content">
+                                 <p>Today is the time</p>
+                                 <button class="btn btn-dark generate_daily2">Let's Rock</button>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="card1">
+                           <div class="face face1">
+                              <div class="content">
+                                 <img src="resources/iimages/abhi.svg" alt="" />
+                                 <h2>Set 2</h2>
+                              </div>
+                           </div>
+                           <div class="face face2">
+                              <div class="content">
+                                 <button class="btn btn-dark generate_daily2 g2 hidden">Crush It</button>
+                                 <p class="g_2">
+                                    Do previous all sets to unlock it<br>
+                                 </p>
+                                 <img class="g_2" src="https://img.icons8.com/bubbles/50/000000/lock-2.png"/>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="card1">
+                           <div class="face face1">
+                              <div class="content">
+                                 <img src="resources/iimages/abhi.svg" alt="" />
+                                 <h2>Set 3</h2>
+                              </div>
+                           </div>
+                           <div class="face face2">
+                              <div class="content">
+                                 <button class="btn btn-dark generate_daily2 g3 hidden">Crush It</button>
+                                 <p class="g_3">
+                                    Do previous all sets to unlock it<br>
+                                 </p>
+                                 <img class="g_3" src="https://img.icons8.com/bubbles/50/000000/lock-2.png"/>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="card1">
+                           <div class="face face1">
+                              <div class="content">
+                                 <img src="resources/iimages/abhi.svg" alt="" />
+                                 <h2>Set 4</h2>
+                              </div>
+                           </div>
+                           <div class="face face2">
+                              <div class="content">
+                                 <p class="g_4">
+                                    Do previous all sets to unlock it<br>
+                                 </p>
+                                 <img class="g_4" src="https://img.icons8.com/bubbles/50/000000/lock-2.png"/>  
+                                 <button class="btn btn-dark generate_daily2 hidden g4">Crush It</button>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="card1">
+                           <div class="face face1">
+                              <div class="content">
+                                 <img src="resources/iimages/abhi.svg" alt="" />
+                                 <h2>Set 5</h2>
+                              </div>
+                           </div>
+                           <div class="face face2">
+                              <div class="content">
+                                 <p class="g_4">
+                                    Do previous all sets to unlock it<br>
+                                 </p>
+                                 <img class="g_4" src="https://img.icons8.com/bubbles/50/000000/lock-2.png"/>  
+                                 <button class="btn btn-dark generate_daily2 hidden g4">Crush It</button>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="card1">
+                           <div class="face face1">
+                              <div class="content">
+                                 <img src="resources/iimages/abhi.svg" alt="" />
+                                 <h2>Set 6</h2>
+                              </div>
+                           </div>
+                           <div class="face face2">
+                              <div class="content">
+                                 <p class="g_4">
+                                    Do previous all sets to unlock it<br>
+                                 </p>
+                                 <img class="g_4" src="https://img.icons8.com/bubbles/50/000000/lock-2.png"/>  
+                                 <button class="btn btn-dark generate_daily2 hidden g4">Crush It</button>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="card1">
+                           <div class="face face1">
+                              <div class="content">
+                                 <img src="resources/iimages/abhi.svg" alt="" />
+                                 <h2>Set 7</h2>
+                              </div>
+                           </div>
+                           <div class="face face2">
+                              <div class="content">
+                                 <p class="g_4">
+                                    Do previous all sets to unlock it<br>
+                                 </p>
+                                 <img class="g_4" src="https://img.icons8.com/bubbles/50/000000/lock-2.png"/>  
+                                 <button class="btn btn-dark generate_daily2 hidden g4">Crush It</button>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="card1">
+                           <div class="face face1">
+                              <div class="content">
+                                 <img src="resources/iimages/abhi.svg" alt="" />
+                                 <h2>Set 8</h2>
+                              </div>
+                           </div>
+                           <div class="face face2">
+                              <div class="content">
+                                 <p class="g_4">
+                                    Do previous all sets to unlock it<br>
+                                 </p>
+                                 <img class="g_4" src="https://img.icons8.com/bubbles/50/000000/lock-2.png"/>  
+                                 <button class="btn btn-dark generate_daily2 hidden g4">Crush It</button>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="container768 hidden">
+                        <div class="box">
+                           <div class="content">
+                              <h2>A</h2>
+                              <h3><span class="problem-name-1"></span></h3>
+                              <p>
+                                 Difficulty: <span class="difficulty"></span><br>
+                              <div class="link1"></div>
+                              </p>
+                           </div>
+                        </div>
+                        <div class="box">
+                           <div class="content">
+                              <h2>B</h2>
+                              <h3><span class="problem-name-2"></span></h3>
+                              <p> 
+                                 Difficulty: <span class="difficulty"></span><br>
+                              <div class="link2"></div>
+                              </p>
+                           </div>
+                        </div>
+                        <div class="box">
+                           <div class="content">
+                              <h2>C</h2>
+                              <h3><span class="problem-name-3"></span></h3>
+                              <p>
+                                 Difficulty: <span class="difficulty"></span><br>
+                              <div class="link3"></div>
+                              </p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!-- Footer -->
+               <div class="user-stats">
+                  <div class="item1">
+                     <h1 class="inactive-item">WEAK TOPICS</h1>
+                  </div>
+                  <div class="item2">
+                     <h1 class="inactive-item">STRONG TOPICS</h1>
+                  </div>
+                  <div class="item3">
+                     <h1 class="inactive-item">UPSOLVE</h1>
+                  </div>
+                  <div class="item4">
+                     <h1 class="inactive-item">UNSOLVED MYSTERIES</h1>
+                  </div>
+               </div>
+               <button class="btn btn-dark update hidden">Update</button>
+               <button class="btn btn-dark update2 hidden">Update</button>
+               <div class="contest-time hidden">
+                  <h1>CONTEST IS RUNNING</h1>
+                  <div id="time"></div>
+               </div>
+               <div class="load-kro2 hidden">
+                  <p>Hold Tight! We are making something special for you!!!</p>
+                  <img src="resources/vid/497.gif" alt="">
+               </div>
+               <div class="wrap">
+                  <div class="cont1 hidden">
+                     <div class="card1">
+                        <div class="face face1">
+                           <div class="content">
+                              <img src="resources/iimages/abhi.svg" alt="" />
+                              <h2>Set 1</h2>
+                           </div>
+                        </div>
+                        <div class="face face2">
+                           <div class="content">
+                              <p>The day goes as you want it to go</p>
+                              <p>Today is the time</p>
+                              <button class="btn btn-dark generate_daily">Let's Rock</button>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="card1">
+                        <div class="face face1">
+                           <div class="content">
+                              <img src="resources/iimages/abhi.svg" alt="" />
+                              <h2>Set 2</h2>
+                           </div>
+                        </div>
+                        <div class="face face2">
+                           <div class="content">
+                              <button class="btn btn-dark generate_daily g2 hidden">Crush It</button>
+                              <p class="g_2">
+                                 Do previous all sets to unlock it<br>
+                              </p>
+                              <img class="g_2" src="https://img.icons8.com/bubbles/50/000000/lock-2.png"/>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="card1">
+                        <div class="face face1">
+                           <div class="content">
+                              <img src="resources/iimages/abhi.svg" alt="" />
+                              <h2>Set 3</h2>
+                           </div>
+                        </div>
+                        <div class="face face2">
+                           <div class="content">
+                              <button class="btn btn-dark generate_daily g3 hidden">Crush It</button>
+                              <p class="g_3">
+                                 Do previous all sets to unlock it<br>
+                              </p>
+                              <img class="g_3" src="https://img.icons8.com/bubbles/50/000000/lock-2.png"/>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="card1">
+                        <div class="face face1">
+                           <div class="content">
+                              <img src="resources/iimages/abhi.svg" alt="" />
+                              <h2>Set 4</h2>
+                           </div>
+                        </div>
+                        <div class="face face2">
+                           <div class="content">
+                              <p class="g_4">
+                                 Do previous all sets to unlock it<br>
+                              </p>
+                              <img class="g_4" src="https://img.icons8.com/bubbles/50/000000/lock-2.png"/>  
+                              <button class="btn btn-dark generate_daily hidden g4">Crush It</button>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="container problem_set_tera hidden">
+                     <div class="box">
+                        <div class="content">
+                           <h2>A</h2>
+                           <h3><span class="problem-name-A"></span></h3>
+                           <p>
+                              Difficulty: <span class="difficulty"></span><br>
+                           <div class="linkA"></div>
+                           </p>
+                        </div>
+                     </div>
+                     <div class="box">
+                        <div class="content">
+                           <h2>B</h2>
+                           <h3><span class="problem-name-B"></span></h3>
+                           <p> 
+                              Difficulty: <span class="difficulty"></span><br>
+                           <div class="linkB"></div>
+                           </p>
+                        </div>
+                     </div>
+                     <div class="box">
+                        <div class="content">
+                           <h2>C</h2>
+                           <h3><span class="problem-name-C"></span></h3>
+                           <p>
+                              Difficulty: <span class="difficulty"></span><br>
+                           <div class="linkC"></div>
+                           </p>
+                        </div>
+                     </div>
+                     <div class="box">
+                        <div class="content">
+                           <h2>D</h2>
+                           <h3><span class="problem-name-D"></span></h3>
+                           <p>
+                              Difficulty: <span class="difficulty"></span><br>
+                           <div class="linkD"></div>
+                           </p>
+                        </div>
+                     </div>
+                     <div class="box">
+                        <div class="content">
+                           <h2>E</h2>
+                           <h3><span class="problem-name-E"></span></h3>
+                           <p>
+                              Difficulty: <span class="difficulty"></span><br>
+                           <div class="linkE"></div>
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- For topic wise -->
+      <div class="container4 hidden">
+         <div class="container2">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-transparent ">
+               <!-- <a class="navbar-brand logo" href="#">
+                  <h1 class="inner">GAME OF CODES</h1>
+                  
+                  <img src="resources/logo/logo_light.png" alt="" />
+                  </a> -->
+               <div class="hamburger">
+                  <div class="line33"></div>
+                  <div class="line33"></div>
+                  <div class="line33"></div>
+               </div>
+               <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                  </button> -->
+               <!-- <div class="collapse navbar-collapse" id="navbarText">  -->
+               <ul class="navbar-nav nav-links mr-auto mt-2 mt-lg-0">
+                  <li class="nav-item active">
+                     <a class="nav-link dashboard" href="#"
+                        >
+                        Dashboard
+                        <div class="line1"></div>
+                        <span class="sr-only">(current)</span>
+                     </a
+                        >
+                  </li>
+                  <li class="nav-item">
+                     <a href="#" class="logout2">Logout</a>
+                  </li>
+                  <li class="nav-item compare">
+                     <a class="nav-link" href="#" id="compare1" >Compare</a>
+                  </li>
+                  <li class="nav-item">
+                     <div class="dropdown1">
+                        <span class="nav-link">Visualisers <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                        </span>
+                        <div class="dropdown-content1 animated bounceIn">
+                           <a class="nav-link sorting_vis_pls" href="sorting_vis.html" id="sorting_vis">Sorting Visualiser</a>
+                           <a class="nav-link grid_vis_pls" href="grid_vis.html" id="grid_vis">Grid Visualiser</a>
+                        </div>
+                     </div>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link profile" href="Profile.html" id="profile1">Profile</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link codeblast" href="public/index.html" id="codeblast1">Code Blast</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link community" href="community.html">Community</a>
+                  </li>
+                  <li class="nav-item">
+                     <div class="dropdown1">
+                        <span class="nav-link">Training Zone <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
+                        <div class="dropdown-content1  animated bounceIn">
+                           <p class="nav-link topic_wise" >Topic Wise</p>
+                           <a class="nav-link level_wise" href="training_zone_level_wise.html">Level Wise</a>
+                        </div>
+                     </div>
+                  </li>
+                  <li class="user_avatar nav-item"></li>
+               </ul>
+               <input
+                  class="form-control outer hidden search_kro"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                  />
+               <button type="button" class="btn outer btn-dark search">
+               <img class="outer search-img" src="resources/icons/search 1.svg" alt="" />
+               </button>
+               <!-- </div> -->
+               <!-- </form> -->
+               <!-- </div> -->
+            </nav>
+            <div class="topic-lists">
+               <div class="weak_topics daily-mix">
+                  <h1>Weak Topics</h1>
+                  <div class="line"></div>
+                  <table class="table weak_topicsss"></table>
+               </div>
+               <div class="strong_topics daily-mix">
+                  <h1>Strong Topics</h1>
+                  <div class="line"></div>
+                  <table class="table strong_topicsss"></table>
+               </div>
+            </div>
+            <br><br>
+            <div class="wrap">
+               <div
+                  id="chartContainer2"
+                  class="hidden"
+                  style="height: 370px; width: 1100px;"
+                  ></div>
+               <div class="set">
+                  <div class="right-arrow"></div>
+                  <div class="content"><button class="btn start_btn btn-secondary hidden btn-large start">START</button></div>
+                  <div class="left-arrow"></div>
+               </div>
+            </div>
+            <div class="container hidden">
+               <div class="box">
+                  <div class="content">
+                     <h2>A</h2>
+                     <h3><span class="problem-name-A"></span></h3>
+                     <p>
+                        Attempts : <span class="attempts"></span><br>
+                        Difficulty: <span class="difficulty"></span><br>
+                        Tags: <span class="tags"></span><br>
+                        Number of Submissions: <span class="submissions"></span><br>
+                        Editorial Link: 
+                     <div class="linkA"></div>
+                     </p>
+                  </div>
+               </div>
+               <div class="box">
+                  <div class="content">
+                     <h2>B</h2>
+                     <h3><span class="problem-name-B"></span></h3>
+                     <p> 
+                        Attempts : <span class="attempts"></span><br>
+                        Difficulty: <span class="difficulty"></span><br>
+                        Tags: <span class="tags"></span><br>
+                        Number of Submissions: <span class="submissions"></span><br>
+                        Editorial Link: 
+                     <div class="linkB"></div>
+                     </p>
+                  </div>
+               </div>
+               <div class="box">
+                  <div class="content">
+                     <h2>C</h2>
+                     <h3><span class="problem-name-C"></span></h3>
+                     <p>
+                        Attempts : <span class="attempts"></span><br>
+                        Difficulty: <span class="difficulty"></span><br>
+                        Tags: <span class="tags"></span><br>
+                        Number of Submissions: <span class="submissions"></span><br>
+                        Editorial Link:
+                     <div class="linkC"></div>
+                     </p>
+                  </div>
+               </div>
+               <div class="box">
+                  <div class="content">
+                     <h2>D</h2>
+                     <h3><span class="problem-name-D"></span></h3>
+                     <p>
+                        Attempts : <span class="attempts"></span><br>
+                        Difficulty: <span class="difficulty"></span><br>
+                        Tags: <span class="tags"></span><br>
+                        Number of Submissions: <span class="submissions"></span><br>
+                        Editorial Link:
+                     <div class="linkD"></div>
+                     </p>
+                  </div>
+               </div>
+               <div class="box">
+                  <div class="content">
+                     <h2>E</h2>
+                     <h3><span class="problem-name-E"></span></h3>
+                     <p>
+                        Attempts : <span class="attempts"></span><br>
+                        Difficulty: <span class="difficulty"></span><br>
+                        Tags: <span class="tags"></span><br>
+                        Number of Submissions: <span class="submissions"></span><br>
+                        Editorial Link:
+                     <div class="linkE"></div>
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="container824 hidden">
+         <nav class="navbar navbar-expand-lg navbar-dark bg-transparent ">
+            <!-- <a class="navbar-brand logo" href="#">
+               <h1 class="inner">GAME OF CODES</h1>
+               
+               <img src="resources/logo/logo_light.png" alt="" />
+               </a> -->
+            <div class="hamburger">
+               <div class="line33"></div>
+               <div class="line33"></div>
+               <div class="line33"></div>
+            </div>
+            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+               </button> -->
+            <!-- <div class="collapse navbar-collapse" id="navbarText">  -->
+            <ul class="navbar-nav nav-links mr-auto mt-2 mt-lg-0">
+               <li class="nav-item active">
+                  <a class="nav-link dashboard" href="#"
+                     >
+                     Dashboard
+                     <div class="line1"></div>
+                     <span class="sr-only">(current)</span>
+                  </a
+                     >
+               </li>
+               <li class="nav-item">
+                  <a href="#" class="logout2">Logout</a>
+               </li>
+               <li class="nav-item compare">
+                  <a class="nav-link" href="#" id="compare1" >Compare</a>
+               </li>
+               <li class="nav-item">
+                  <div class="dropdown1">
+                     <span class="nav-link">Visualisers <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                     </span>
+                     <div class="dropdown-content1 animated bounceIn">
+                        <a class="nav-link sorting_vis_pls" href="sorting_vis.html" id="sorting_vis">Sorting Visualiser</a>
+                        <a class="nav-link grid_vis_pls" href="grid_vis.html" id="grid_vis">Grid Visualiser</a>
+                     </div>
+                  </div>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link profile" href="Profile.html" id="profile1">Profile</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link codeblast" href="public/index.html" id="codeblast1">Code Blast</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link community" href="community.html">Community</a>
+               </li>
+               <li class="nav-item">
+                  <div class="dropdown1">
+                     <span class="nav-link">Training Zone <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
+                     <div class="dropdown-content1  animated bounceIn">
+                        <p class="nav-link topic_wise" >Topic Wise</p>
+                        <a class="nav-link level_wise" href="training_zone_level_wise.html">Level Wise</a>
+                     </div>
+                  </div>
+               </li>
+               <li class="user_avatar nav-item"></li>
+            </ul>
+            <input
+               class="form-control outer hidden search_kro"
+               type="search"
+               placeholder="Search"
+               aria-label="Search"
+               />
+            <button type="button" class="btn outer btn-dark search">
+            <img class="outer search-img" src="resources/icons/search 1.svg" alt="" />
+            </button>
+            <!-- </div> -->
+            <!-- </form> -->
+            <!-- </div> -->
+         </nav>
+         <div class="container825">
+            <div class="content1">
+               <h1 class="heading_topic"></h1>
+               <a href="" class="start-topic">Start Season</a>
+            </div>
+            <div class="cont1 hidden">
+               <div class="card1">
+                  <div class="face face1">
+                     <div class="content">
+                        <img src="resources/iimages/abhi.svg" alt="" />
+                        <h2>Set 1</h2>
+                     </div>
+                  </div>
+                  <div class="face face2">
+                     <div class="content">
+                        <p>Today is the time</p>
+                        <button class="btn btn-dark generate_daily2">Let's Rock</button>
+                     </div>
+                  </div>
+               </div>
+               <div class="card1">
+                  <div class="face face1">
+                     <div class="content">
+                        <img src="resources/iimages/abhi.svg" alt="" />
+                        <h2>Set 2</h2>
+                     </div>
+                  </div>
+                  <div class="face face2">
+                     <div class="content">
+                        <button class="btn btn-dark generate_daily2 g2 hidden">Crush It</button>
+                        <p class="g_2">
+                           Do previous all sets to unlock it<br>
+                        </p>
+                        <img class="g_2" src="https://img.icons8.com/bubbles/50/000000/lock-2.png"/>
+                     </div>
+                  </div>
+               </div>
+               <div class="card1">
+                  <div class="face face1">
+                     <div class="content">
+                        <img src="resources/iimages/abhi.svg" alt="" />
+                        <h2>Set 3</h2>
+                     </div>
+                  </div>
+                  <div class="face face2">
+                     <div class="content">
+                        <button class="btn btn-dark generate_daily2 g3 hidden">Crush It</button>
+                        <p class="g_3">
+                           Do previous all sets to unlock it<br>
+                        </p>
+                        <img class="g_3" src="https://img.icons8.com/bubbles/50/000000/lock-2.png"/>
+                     </div>
+                  </div>
+               </div>
+               <div class="card1">
+                  <div class="face face1">
+                     <div class="content">
+                        <img src="resources/iimages/abhi.svg" alt="" />
+                        <h2>Set 4</h2>
+                     </div>
+                  </div>
+                  <div class="face face2">
+                     <div class="content">
+                        <p class="g_4">
+                           Do previous all sets to unlock it<br>
+                        </p>
+                        <img class="g_4" src="https://img.icons8.com/bubbles/50/000000/lock-2.png"/>  
+                        <button class="btn btn-dark generate_daily2 hidden g4">Crush It</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- <div class="tagLine">Code Compete Conquer</div>
+            <div class="timer-line">Timer Is Running</div> -->
+         <div class="timer"></div>
+         <button class="btn btn-elegant update_kro hidden">UPDATE</button>
+         <div class="container768 hidden">
+            <div class="box">
+               <div class="content">
+                  <h2>A</h2>
+                  <h3><span class="problem-name-1 problems_hai_bhai"></span></h3>
+                  <p>
+                  </p>
+                  <div class="content1"></div>
+               </div>
+            </div>
+            <div class="box">
+               <div class="content">
+                  <h2>B</h2>
+                  <h3><span class="problem-name-2 problems_hai_bhai" ></span></h3>
+                  <!-- <p> 
+                     Attempts : <span class="attempts"></span><br>
+                     Difficulty: <span class="difficulty"></span><br>
+                     Tags: <span class="tags"></span><br>
+                     Number of Submissions: <span class="submissions"></span><br>
+                     Editorial Link: <div class="link2"></div>
+                      </p> -->
+                  <div class="content1"></div>
+               </div>
+            </div>
+            <div class="box">
+               <div class="content">
+                  <h2>C</h2>
+                  <h3><span class="problem-name-3 problems_hai_bhai"></span></h3>
+                  <!-- <p>
+                     Attempts : <span class="attempts"></span><br>
+                     Difficulty: <span class="difficulty"></span><br>
+                     Tags: <span class="tags"></span><br>
+                     Number of Submissions: <span class="submissions"></span><br>
+                     Editorial Link:<div class="link3"></div>
+                      </p> -->
+                  <div class="content1"></div>
+               </div>
+            </div>
+            <div class="box">
+               <div class="content">
+                  <h2>D</h2>
+                  <h3><span class="problem-name-4 problems_hai_bhai"></span></h3>
+                  <!-- <p>
+                     Attempts : <span class="attempts"></span><br>
+                     Difficulty: <span class="difficulty"></span><br>
+                     Tags: <span class="tags"></span><br>
+                     Number of Submissions: <span class="submissions"></span><br>
+                     Editorial Link:<div class="link3"></div>
+                      </p> -->
+                  <div class="content1"></div>
+               </div>
+            </div>
+            <div class="box">
+               <div class="content">
+                  <h2>E</h2>
+                  <h3><span class="problem-name-5 problems_hai_bhai"></span></h3>
+                  <!-- <p>
+                     Attempts : <span class="attempts"></span><br>
+                     Difficulty: <span class="difficulty"></span><br>
+                     Tags: <span class="tags"></span><br>
+                     Number of Submissions: <span class="submissions"></span><br>
+                     Editorial Link:<div class="link3"></div>
+                      </p> -->
+                  <div class="content1"></div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- for level wise -->
+      <div class="container4 hidden">
+         <div class="container2">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-transparent ">
+               <!-- <a class="navbar-brand logo" href="#">
+                  <h1 class="inner">GAME OF CODES</h1>
+                  
+                  <img src="resources/logo/logo_light.png" alt="" />
+                  </a> -->
+               <div class="hamburger">
+                  <div class="line33"></div>
+                  <div class="line33"></div>
+                  <div class="line33"></div>
+               </div>
+               <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                  </button> -->
+               <!-- <div class="collapse navbar-collapse" id="navbarText">  -->
+               <ul class="navbar-nav nav-links mr-auto mt-2 mt-lg-0">
+                  <li class="nav-item active">
+                     <a class="nav-link dashboard" href="#"
+                        >
+                        Dashboard
+                        <div class="line1"></div>
+                        <span class="sr-only">(current)</span>
+                     </a
+                        >
+                  </li>
+                  <li class="nav-item">
+                     <a href="#" class="logout2">Logout</a>
+                  </li>
+                  <li class="nav-item compare">
+                     <a class="nav-link" href="#" id="compare1" >Compare</a>
+                  </li>
+                  <li class="nav-item">
+                     <div class="dropdown1">
+                        <span class="nav-link">Visualisers <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                        </span>
+                        <div class="dropdown-content1 animated bounceIn">
+                           <a class="nav-link sorting_vis_pls" href="sorting_vis.html" id="sorting_vis">Sorting Visualiser</a>
+                           <a class="nav-link grid_vis_pls" href="grid_vis.html" id="grid_vis">Grid Visualiser</a>
+                        </div>
+                     </div>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link profile" href="Profile.html" id="profile1">Profile</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link codeblast" href="public/index.html" id="codeblast1">Code Blast</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link community" href="community.html">Community</a>
+                  </li>
+                  <li class="nav-item">
+                     <div class="dropdown1">
+                        <span class="nav-link">Training Zone <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
+                        <div class="dropdown-content1  animated bounceIn">
+                           <p class="nav-link topic_wise" >Topic Wise</p>
+                           <a class="nav-link level_wise" href="training_zone_level_wise.html">Level Wise</a>
+                        </div>
+                     </div>
+                  </li>
+                  <li class="user_avatar nav-item"></li>
+               </ul>
+               <input
+                  class="form-control outer hidden search_kro"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                  />
+               <button type="button" class="btn outer btn-dark search">
+               <img class="outer search-img" src="resources/icons/search 1.svg" alt="" />
+               </button>
+               <!-- </div> -->
+               <!-- </form> -->
+               <!-- </div> -->
+            </nav>
+            <div class="timer2"></div>
+            <div class="buttons">
+               <div class="btn1">
+                  <button class="btn-sundar l1">Level 1(800-1400)</button>
+               </div>
+               <div class="btn1">
+                  <button class="btn-sundar l2">Level 2(1200-1900)</button>
+               </div>
+               <div class="btn1">
+                  <button class="btn-sundar l3">Level 3(1700<)</button>
+               </div>
+            </div>
+            <div class="buttons">
+               <div class="btn1">
+                  <button class="btn-sundar update22 hidden bounceInRight animated">
+                  Update
+                  </button>
+               </div>
+               <div class="btn1">
+                  <button class="btn-sundar2 add hidden bounceInLeft animated">
+                  Add more man!!
+                  </button>
+               </div>
+            </div>
+            <div class="problemkilist animated bounceInDown hidden">
+               <div class="d-flex haha align-items-center spinner">
+                  <strong>Loading...</strong>
+                  <div
+                     class="spinner-border ml-auto"
+                     role="status"
+                     aria-hidden="true"
+                     ></div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- for sorting visualiser -->
+      <div class="container555 hidden">
+         <nav class="navbar navbar-expand-lg navbar-dark bg-transparent ">
+            <!-- <a class="navbar-brand logo" href="#">
+               <h1 class="inner">GAME OF CODES</h1>
+               
+               <img src="resources/logo/logo_light.png" alt="" />
+               </a> -->
+            <div class="hamburger">
+               <div class="line33"></div>
+               <div class="line33"></div>
+               <div class="line33"></div>
+            </div>
+            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+               </button> -->
+            <!-- <div class="collapse navbar-collapse" id="navbarText">  -->
+            <ul class="navbar-nav nav-links mr-auto mt-2 mt-lg-0">
+               <li class="nav-item active">
+                  <a class="nav-link dashboard" href="#"
+                     >
+                     Dashboard
+                     <div class="line1"></div>
+                     <span class="sr-only">(current)</span>
+                  </a
+                     >
+               </li>
+               <li class="nav-item">
+                  <a href="#" class="logout2">Logout</a>
+               </li>
+               <li class="nav-item compare">
+                  <a class="nav-link" href="#" id="compare1" >Compare</a>
+               </li>
+               <li class="nav-item">
+                  <div class="dropdown1">
+                     <span class="nav-link">Visualisers <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                     </span>
+                     <div class="dropdown-content1 animated bounceIn">
+                        <a class="nav-link sorting_vis_pls" href="sorting_vis.html" id="sorting_vis">Sorting Visualiser</a>
+                        <a class="nav-link grid_vis_pls" href="grid_vis.html" id="grid_vis">Grid Visualiser</a>
+                     </div>
+                  </div>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link profile" href="Profile.html" id="profile1">Profile</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link codeblast" href="public/index.html" id="codeblast1">Code Blast</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link community" href="community.html">Community</a>
+               </li>
+               <li class="nav-item">
+                  <div class="dropdown1">
+                     <span class="nav-link">Training Zone <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
+                     <div class="dropdown-content1  animated bounceIn">
+                        <p class="nav-link topic_wise" >Topic Wise</p>
+                        <a class="nav-link level_wise" href="training_zone_level_wise.html">Level Wise</a>
+                     </div>
+                  </div>
+               </li>
+               <li class="user_avatar nav-item"></li>
+            </ul>
+            <input
+               class="form-control outer hidden search_kro"
+               type="search"
+               placeholder="Search"
+               aria-label="Search"
+               />
+            <button type="button" class="btn outer btn-dark search">
+            <img class="outer search-img" src="resources/icons/search 1.svg" alt="" />
+            </button>
+            <!-- </div> -->
+            <!-- </form> -->
+            <!-- </div> -->
+         </nav>
+         <div class="array ">
+         </div>
+      </div>
+      <!-- for grid visualiser -->
+      <div class="container5666 hidden">
+         <nav class="navbar navbar-expand-lg navbar-dark bg-transparent ">
+            <!-- <a class="navbar-brand logo" href="#">
+               <h1 class="inner">GAME OF CODES</h1>
+               
+               <img src="resources/logo/logo_light.png" alt="" />
+               </a> -->
+            <div class="hamburger">
+               <div class="line33"></div>
+               <div class="line33"></div>
+               <div class="line33"></div>
+            </div>
+            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+               </button> -->
+            <!-- <div class="collapse navbar-collapse" id="navbarText">  -->
+            <ul class="navbar-nav nav-links mr-auto mt-2 mt-lg-0">
+               <li class="nav-item active">
+                  <a class="nav-link dashboard" href="#"
+                     >
+                     Dashboard
+                     <div class="line1"></div>
+                     <span class="sr-only">(current)</span>
+                  </a
+                     >
+               </li>
+               <li class="nav-item">
+                  <a href="#" class="logout2">Logout</a>
+               </li>
+               <li class="nav-item compare">
+                  <a class="nav-link" href="#" id="compare1" >Compare</a>
+               </li>
+               <li class="nav-item">
+                  <div class="dropdown1">
+                     <span class="nav-link">Visualisers <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                     </span>
+                     <div class="dropdown-content1 animated bounceIn">
+                        <a class="nav-link sorting_vis_pls" href="sorting_vis.html" id="sorting_vis">Sorting Visualiser</a>
+                        <a class="nav-link grid_vis_pls" href="grid_vis.html" id="grid_vis">Grid Visualiser</a>
+                     </div>
+                  </div>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link profile" href="Profile.html" id="profile1">Profile</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link codeblast" href="public/index.html" id="codeblast1">Code Blast</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link community" href="community.html">Community</a>
+               </li>
+               <li class="nav-item">
+                  <div class="dropdown1">
+                     <span class="nav-link">Training Zone <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
+                     <div class="dropdown-content1  animated bounceIn">
+                        <p class="nav-link topic_wise" >Topic Wise</p>
+                        <a class="nav-link level_wise" href="training_zone_level_wise.html">Level Wise</a>
+                     </div>
+                  </div>
+               </li>
+               <li class="user_avatar nav-item"></li>
+            </ul>
+            <input
+               class="form-control outer hidden search_kro"
+               type="search"
+               placeholder="Search"
+               aria-label="Search"
+               />
+            <button type="button" class="btn outer btn-dark search">
+            <img class="outer search-img" src="resources/icons/search 1.svg" alt="" />
+            </button>
+            <!-- </div> -->
+            <!-- </form> -->
+            <!-- </div> -->
+         </nav>
+         <!-- <div class="tutorial">
+            </div> -->
+         <table id="grid">
+         </table>
+      </div>
+      <!-- for compare -->
+      <div class="container7 hidden">
+         <div class="container8">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-transparent ">
+               <!-- <a class="navbar-brand logo" href="#">
+                  <h1 class="inner">GAME OF CODES</h1>
+                  
+                  <img src="resources/logo/logo_light.png" alt="" />
+                  </a> -->
+               <div class="hamburger">
+                  <div class="line33"></div>
+                  <div class="line33"></div>
+                  <div class="line33"></div>
+               </div>
+               <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                  </button> -->
+               <!-- <div class="collapse navbar-collapse" id="navbarText">  -->
+               <ul class="navbar-nav nav-links mr-auto mt-2 mt-lg-0">
+                  <li class="nav-item active">
+                     <a class="nav-link dashboard" href="#"
+                        >
+                        Dashboard
+                        <div class="line1"></div>
+                        <span class="sr-only">(current)</span>
+                     </a
+                        >
+                  </li>
+                  <li class="nav-item">
+                     <a href="#" class="logout2">Logout</a>
+                  </li>
+                  <li class="nav-item compare">
+                     <a class="nav-link" href="#" id="compare1" >Compare</a>
+                  </li>
+                  <li class="nav-item">
+                     <div class="dropdown1">
+                        <span class="nav-link">Visualisers <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                        </span>
+                        <div class="dropdown-content1 animated bounceIn">
+                           <a class="nav-link sorting_vis_pls" href="sorting_vis.html" id="sorting_vis">Sorting Visualiser</a>
+                           <a class="nav-link grid_vis_pls" href="grid_vis.html" id="grid_vis">Grid Visualiser</a>
+                        </div>
+                     </div>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link profile" href="Profile.html" id="profile1">Profile</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link codeblast" href="public/index.html" id="codeblast1">Code Blast</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link community" href="community.html">Community</a>
+                  </li>
+                  <li class="nav-item">
+                     <div class="dropdown1">
+                        <span class="nav-link">Training Zone <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
+                        <div class="dropdown-content1  animated bounceIn">
+                           <p class="nav-link topic_wise" >Topic Wise</p>
+                           <a class="nav-link level_wise" href="training_zone_level_wise.html">Level Wise</a>
+                        </div>
+                     </div>
+                  </li>
+                  <li class="user_avatar nav-item"></li>
+               </ul>
+               <input
+                  class="form-control outer hidden search_kro"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                  />
+               <button type="button" class="btn outer btn-dark search">
+               <img class="outer search-img" src="resources/icons/search 1.svg" alt="" />
+               </button>
+               <!-- </div> -->
+               <!-- </form> -->
+               <!-- </div> -->
+            </nav>
+            <div class="handle">
+               <div class="inp">
+                  <form action="" id="handleform">
+                     <input
+                        type="text"
+                        id="handle2"
+                        name="handle"
+                        placeholder="ENTER USER HANDLE"
+                        />
+                     <button
+                        class="btn btn-dark wavy"
+                        type="submit"
+                        id="handle_button2"
+                        >
+                     Submit
+                     </button>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="container111 hidden">
+         <div class="container112">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-transparent ">
+               <!-- <a class="navbar-brand logo" href="#">
+                  <h1 class="inner">GAME OF CODES</h1>
+                  
+                  <img src="resources/logo/logo_light.png" alt="" />
+                  </a> -->
+               <div class="hamburger">
+                  <div class="line33"></div>
+                  <div class="line33"></div>
+                  <div class="line33"></div>
+               </div>
+               <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                  </button> -->
+               <!-- <div class="collapse navbar-collapse" id="navbarText">  -->
+               <ul class="navbar-nav nav-links mr-auto mt-2 mt-lg-0">
+                  <li class="nav-item active">
+                     <a class="nav-link dashboard" href="#"
+                        >
+                        Dashboard
+                        <div class="line1"></div>
+                        <span class="sr-only">(current)</span>
+                     </a
+                        >
+                  </li>
+                  <li class="nav-item">
+                     <a href="#" class="logout2">Logout</a>
+                  </li>
+                  <li class="nav-item compare">
+                     <a class="nav-link" href="#" id="compare1" >Compare</a>
+                  </li>
+                  <li class="nav-item">
+                     <div class="dropdown1">
+                        <span class="nav-link">Visualisers <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                        </span>
+                        <div class="dropdown-content1 animated bounceIn">
+                           <a class="nav-link sorting_vis_pls" href="sorting_vis.html" id="sorting_vis">Sorting Visualiser</a>
+                           <a class="nav-link grid_vis_pls" href="grid_vis.html" id="grid_vis">Grid Visualiser</a>
+                        </div>
+                     </div>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link profile" href="Profile.html" id="profile1">Profile</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link codeblast" href="public/index.html" id="codeblast1">Code Blast</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link community" href="community.html">Community</a>
+                  </li>
+                  <li class="nav-item">
+                     <div class="dropdown1">
+                        <span class="nav-link">Training Zone <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
+                        <div class="dropdown-content1  animated bounceIn">
+                           <p class="nav-link topic_wise" >Topic Wise</p>
+                           <a class="nav-link level_wise" href="training_zone_level_wise.html">Level Wise</a>
+                        </div>
+                     </div>
+                  </li>
+                  <li class="user_avatar nav-item"></li>
+               </ul>
+               <input
+                  class="form-control outer hidden search_kro"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                  />
+               <button type="button" class="btn outer btn-dark search">
+               <img class="outer search-img" src="resources/icons/search 1.svg" alt="" />
+               </button>
+               <!-- </div> -->
+               <!-- </form> -->
+               <!-- </div> -->
+            </nav>
+            <!-- insert chart here -->
+            <div class="compareTable table-responsive container-fluid" style="padding-top: 20px; width: 60%; margin: 0 auto;">
+               <table class="table table-borderless table-hover table-sm animated fadeIn slower">
+                  <thead>
+                     <tr>
+                        <th scope="col" style="width: 40%;"></th>
+                        <th class="Handle1" scope="col" style="width: 30%;"></th>
+                        <th class="Handle2" scope="col" style="width: 30%;"></th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <th scope="row">Current Rank</th>
+                        <td class="curRank1"></td>
+                        <td class="curRank2"></td>
+                     </tr>
+                     <tr>
+                        <th scope="row">Max Rank</th>
+                        <td class="maxRank1"></td>
+                        <td class="maxRank2"></td>
+                     </tr>
+                     <tr>
+                        <th scope="row">Current Rating</th>
+                        <td class="curRating1"></td>
+                        <td class="curRating2"></td>
+                     </tr>
+                     <tr>
+                        <th scope="row">Max Rating</th>
+                        <td class="maxRating1"></td>
+                        <td class="maxRating2"></td>
+                     </tr>
+                     <tr>
+                        <th scope="row">Number of Contests</th>
+                        <td class="numOfContest1"></td>
+                        <td class="numOfContest2"></td>
+                     </tr>
+                     <tr>
+                        <th scope="row">Number of Accepted Solutions</th>
+                        <td class="ok1"></td>
+                        <td class="ok2"></td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div id="compareChart1" style="height: 500px; width: 80%; margin: 0 auto; padding-top: 60px;"></div>
+            <h5 style="padding-top: 70px; text-align: center;"><strong>NOTE: </strong> Drag your mouse over a part of the graph to zoom it.</h5>
+            <div id="compareChart2" style="height: 500px; width: 80%; margin: 0 auto; padding-top: 50px;"></div>
+            <div id="compareChart3" style="height: 500px; width: 80%; margin: 0 auto; padding-top: 130px;"></div>
+            <!-- Weak and strong topics -->
+            <div class="topic-lists" style="padding-top: 170px">
+               <div class="weak_topics daily-mix">
+                  <h1>Weak Topics</h1>
+                  <div class="line"></div>
+                  <div class="users">
+                     <div class="user1">
+                        <span class="handle1"></span>
+                        <table class="weak_topicss"></table>
+                     </div>
+                     <div class="user2">
+                        <span class="handle2"></span>
+                        <table class="weak_topicss2"></table>
+                     </div>
+                  </div>
+               </div>
+               <div class="strong_topics daily-mix">
+                  <h1>Strong Topics</h1>
+                  <div class="line"></div>
+                  <div class="users">
+                     <div class="user1">
+                        <span class="handle_1"></span>
+                        <table class="strong_topicss"></table>
+                     </div>
+                     <div class="user2">
+                        <span class="handle_2"></span>
+                        <table class="strong_topicss2"></table>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- for profile -->
+      <div class="container1forprofile hidden">
+         <div class="container2forprofile">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-transparent ">
+               <!-- <a class="navbar-brand logo" href="#">
+                  <h1 class="inner">GAME OF CODES</h1>
+                  
+                  <img src="resources/logo/logo_light.png" alt="" />
+                  </a> -->
+               <div class="hamburger">
+                  <div class="line33"></div>
+                  <div class="line33"></div>
+                  <div class="line33"></div>
+               </div>
+               <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                  </button> -->
+               <!-- <div class="collapse navbar-collapse" id="navbarText">  -->
+               <ul class="navbar-nav nav-links mr-auto mt-2 mt-lg-0">
+                  <li class="nav-item active">
+                     <a class="nav-link dashboard" href="#"
+                        >
+                        Dashboard
+                        <div class="line1"></div>
+                        <span class="sr-only">(current)</span>
+                     </a
+                        >
+                  </li>
+                  <li class="nav-item">
+                     <a href="#" class="logout2">Logout</a>
+                  </li>
+                  <li class="nav-item compare">
+                     <a class="nav-link" href="#" id="compare1" >Compare</a>
+                  </li>
+                  <li class="nav-item">
+                     <div class="dropdown1">
+                        <span class="nav-link">Visualisers <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                        </span>
+                        <div class="dropdown-content1 animated bounceIn">
+                           <a class="nav-link sorting_vis_pls" href="sorting_vis.html" id="sorting_vis">Sorting Visualiser</a>
+                           <a class="nav-link grid_vis_pls" href="grid_vis.html" id="grid_vis">Grid Visualiser</a>
+                        </div>
+                     </div>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link profile" href="Profile.html" id="profile1">Profile</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link codeblast" href="public/index.html" id="codeblast1">Code Blast</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link community" href="community.html">Community</a>
+                  </li>
+                  <li class="nav-item">
+                     <div class="dropdown1">
+                        <span class="nav-link">Training Zone <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
+                        <div class="dropdown-content1  animated bounceIn">
+                           <p class="nav-link topic_wise" >Topic Wise</p>
+                           <a class="nav-link level_wise" href="training_zone_level_wise.html">Level Wise</a>
+                        </div>
+                     </div>
+                  </li>
+                  <li class="user_avatar nav-item"></li>
+               </ul>
+               <input
+                  class="form-control outer hidden search_kro"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                  />
+               <button type="button" class="btn outer btn-dark search">
+               <img class="outer search-img" src="resources/icons/search 1.svg" alt="" />
+               </button>
+               <!-- </div> -->
+               <!-- </form> -->
+               <!-- </div> -->
+            </nav>
+            <!-- container -->
+            <div class="container problkem_set_tera" style="padding-top: 1.5rem;">
+               <div class="row">
+                  <div class="column-1 col-4">
+                     <img class="Profile-Photo" style=" border-radius:50%;" src="" alt="Profile Photo" width="300" height="380">
+                     <h3 style="padding: 2.5rem 3.75rem 0 0; text-align: center;" class="username">USERNAME</h3>
+                     <h4 style="padding: 2.5rem 3.75rem 0 0; text-align: center;" id="userstatistics"><a href="profile_user_stats.html">User Statistics</a></h4>
+                  </div>
+               </div>
+               <!-- <div class="column-2 col-4">
+                  <h3><strong>Check Your Progress!</strong></h3>
+                  <br> -->
+               <div style="padding-left:100px; float: right;" class="recent-contests">
+                  <h3 style="padding-top: 2rem;"><strong>Recent Contests</strong></h3>
+                  <ul id="recent-contests">
+                  </ul>
+               </div>
+               <!--<div class="hidden col-4" id="myChart4" style="height: 400px; width: 90%;"></div>-->
+            </div>
+            <div id="myChart1" style="height: 500px; width: 80%; margin: 0 auto; padding-top: 50px;"></div>
+            <div style="padding-top: 50px;" class="charttitle" align="center">Rating Change Over Time</div>
+            <br>
+            <br>
+            <div id="myChart3" style="height: 500px; width: 80%; margin: 0 auto; padding-top: 50px;"></div>
+            <div style="padding-top: 50px;" class="charttitle" align="center">Problem-Rating-Wise All Submissions</div>
+            <br>
+            <br>
+            <div id="myChart2" style="height: 500px; width: 80%; margin: 0 auto; padding-top: 50px;"></div>
+            <div style="padding-top: 50px;" align="center">All Submissions Final Verdict</div>
+            <br>
+            <br>
+            <div style="padding-left:100px; float: right;">
+               <h3 style="padding-top: 2rem;" class="recent-contests"><strong>Weak Topics</strong></h3>
+            </div>
+            <div style="padding-left:100px; float: left;">
+               <h3 style="padding-top: 2rem;" class="recent-contests"><strong>Strong Topics</strong></h3>
+            </div>
+            <!--<button type="button" id="mybtn4" class="btn btn-dark text-left btn-sm" >
+               >>>>>>> ba32d89dab76d9dce624054179b540806ac58492
+               			  4. Problem-Rating-Wise Accepted Submissions
+               			</button>
+               			<br>
+               			<br>-->
+            <!-- <button id="hide-graph" type="button" class="btn btn-dark hidden text-left btn-sm">Hide Graph</button> -->
+         </div>
+      </div>
+      <!-- for codeblast -->
+      <div class="container3">
+         <div class="container2">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-transparent ">
+               <!-- <a class="navbar-brand logo" href="#">
+                  <h1 class="inner">GAME OF CODES</h1>
+                  
+                  <img src="resources/logo/logo_light.png" alt="" />
+                  </a> -->
+               <div class="hamburger">
+                  <div class="line33"></div>
+                  <div class="line33"></div>
+                  <div class="line33"></div>
+               </div>
+               <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                  </button> -->
+               <!-- <div class="collapse navbar-collapse" id="navbarText">  -->
+               <ul class="navbar-nav nav-links mr-auto mt-2 mt-lg-0">
+                  <li class="nav-item active">
+                     <a class="nav-link dashboard" href="#"
+                        >
+                        Dashboard
+                        <div class="line1"></div>
+                        <span class="sr-only">(current)</span>
+                     </a
+                        >
+                  </li>
+                  <li class="nav-item">
+                     <a href="#" class="logout2">Logout</a>
+                  </li>
+                  <li class="nav-item compare">
+                     <a class="nav-link" href="#" id="compare1" >Compare</a>
+                  </li>
+                  <li class="nav-item">
+                     <div class="dropdown1">
+                        <span class="nav-link">Visualisers <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                        </span>
+                        <div class="dropdown-content1 animated bounceIn">
+                           <a class="nav-link sorting_vis_pls" href="sorting_vis.html" id="sorting_vis">Sorting Visualiser</a>
+                           <a class="nav-link grid_vis_pls" href="grid_vis.html" id="grid_vis">Grid Visualiser</a>
+                        </div>
+                     </div>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link profile" href="Profile.html" id="profile1">Profile</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link codeblast" href="public/index.html" id="codeblast1">Code Blast</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link community" href="community.html">Community</a>
+                  </li>
+                  <li class="nav-item">
+                     <div class="dropdown1">
+                        <span class="nav-link">Training Zone <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
+                        <div class="dropdown-content1  animated bounceIn">
+                           <p class="nav-link topic_wise" >Topic Wise</p>
+                           <a class="nav-link level_wise" href="training_zone_level_wise.html">Level Wise</a>
+                        </div>
+                     </div>
+                  </li>
+                  <li class="user_avatar nav-item"></li>
+               </ul>
+               <input
+                  class="form-control outer hidden search_kro"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                  />
+               <button type="button" class="btn outer btn-dark search">
+               <img class="outer search-img" src="resources/icons/search 1.svg" alt="" />
+               </button>
+               <!-- </div> -->
+               <!-- </form> -->
+               <!-- </div> -->
+            </nav>
+           <div class="container1234">
+   
+             <!-- <div class="login_page"> -->
+               <!-- <div class="buttons"> -->
+     
+                 <form action="code_blast_enter.html" class="login_page">
+                   <!-- <div class="form-control"> -->
+                     <!-- <label for="username">Username</label> -->
+                     <h1 style="margin: 1rem;">CODEBLAST</h1>
+                    
+                     <input 
+                     type="text" 
+                     style="margin:2rem"
+                     name="room"
+                     id="room_id"
+                     placeholder="Enter Room ID"
+                     required>
+                   <!-- </div> -->
+                   <br>
+                   <button type="submit" class="btn btn-primary join_romms">Join Room</button>
+                 </form>
+               <!-- </div> -->
+             </div>
+           <!-- </div> -->
+           
+         </div>
+       </div>
+      <div class="container2222 hidden">
+         <div class="timer"></div>
+         <div class="chat-container">
+            <!-- <h1><i class="fas fa-fire"></i> CODEBLAST</h1> -->
+            <header class="chat-header">
+               <div class="room">
+                  <h3 class="room-title"><i class="fas fa-comments"></i> Room ID:</h3>
+                  <h2 id="room-name"></h2>
+               </div>
+               <div class="buttons_s1">
+                  <a href="#" class="btn ready_btn">Ready!!</a>
+                  <a href="index.html" class="btn">Leave Room</a>
+               </div>
+            </header>
+            <div class="line2"></div>
+            <main class="chat-main">
+               <div class="chat-sidebar">
+                  <h3><i class="fas fa-users"></i> Users</h3>
+                  <ul id="users"></ul>
+               </div>
+               <div class="messages">
+                  <div class="chat-messages"></div>
+                  <div class="chat-form-container">
+                     <form id="chat-form">
+                        <input
+                           id="msg"
+                           type="text"
+                           placeholder="Enter Message"
+                           required
+                           autocomplete="off"
+                           />
+                        <button class="btn send-btn"><i class="fas fa-paper-plane fa-2x"></i></button>
+                        <div class="line31"></div>
+                     </form>
+                  </div>
+               </div>
+            </main>
+         </div>
+      </div>
+      <!-- JQuery -->
+      <script
+         type="text/javascript"
+         src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+         ></script>
+      <!-- Bootstrap tooltips -->
+      <script
+         type="text/javascript"
+         src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"
+         ></script>
+      <!-- Bootstrap core JavaScript -->
+      <script
+         type="text/javascript "
+         src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"
+         ></script>
+      <!-- MDB core JavaScript -->
+      <script
+         type="text/javascript"
+         src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"
+         ></script>
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+      <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
+      <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-database.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-firestore.js"></script>
+      <!-- for firebase -->
+      <script>
+         // Your web app's Firebase configuration
+         // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+         var firebaseConfig = {
+         apiKey: "AIzaSyBA_HGw5P2DoHT_hx1iVYIN-hw9fZyn56k",
+         authDomain: "haha-f77b6.firebaseapp.com",
+         databaseURL: "https://haha-f77b6.firebaseio.com",
+         projectId: "haha-f77b6",
+         appId: "1:178676120776:web:3f72a45ce1153282af39fd",
+         measurementId: "G-RQQ0DX2V89"
+         };
+         // Initialize Firebase
+         firebase.initializeApp(firebaseConfig);
+         
+         const auth=firebase.auth();
+         const db=firebase.firestore();
+         // db.settings({timestampsInSnapshots:true});
+      </script>
+      <!-- for login page transitions -->
+      <script>
+         const signUpButton = document.getElementById('signUp');
+         const signInButton = document.getElementById('signIn');
+         const container = document.getElementById('container');
+         
+         signUpButton.addEventListener('click', () => {
+         	container.classList.add("right-panel-active");
+         });
+         
+         signInButton.addEventListener('click', () => {
+         container.classList.remove("right-panel-active");
+         });
+      </script>
+      <script src="js/init.js"></script>
+      <script src="js/app.js"></script>
+      <script src="js/auth.js"></script>
+      <script src="js/utility_classes/generate_grid.js"></script>
+      <script src="js/utility_classes/generating_x_y.js"></script>
+      <script src="js/algorithms/a_star.js"></script>
+      <script src="js/algorithms/bfs.js"></script>
+      <script src="js/algorithms/dfs.js"></script>
+      <script src="js/algorithms/dijkstaras.js"></script>
+      <script src="js/animations/vis.js"></script>
+      <script src="js/main.js"></script>
+      <script src="js/bubble.js"></script>
+      <script src="js/selection.js"></script>
+      <script src="js/heap_sort.js"></script>
+      <script src="js/merge.js"></script>
+      <script src="js/insertion.js"></script>
+      <script src="js/quick.js"></script>
+      <script src="js/script.js"></script>
+      <script src="js/training_zone_topic_wise.js"></script>
+      <script src="js/compare.js"></script>
+      <script src="js/compare_calc.js"></script>
+      <script src="js/profile.js"></script>
+      <script src="js/training_zone_level_wise.js"></script>
+      <script src="js/training_zone_topic_wise.js"></script>
+      <script src="js/training_zone_topic_explained.js"></script>
+      <script src="/socket.io/socket.io.js"></script>
+      <script src="public/js/main.js"></script>
+      <script src="public/js/main2.js"></script>
+      <script src="js/events.js"></script>
+   </body>
+</html>
