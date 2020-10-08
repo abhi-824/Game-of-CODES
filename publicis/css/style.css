@@ -53,7 +53,7 @@ a {
   color: #fff;
 }
 .container1 {
-  background: url("../resources/backgrounds/hulk.jpg") no-repeat center/cover;
+  background: url("../resources/backgrounds/iron-man.jpg") no-repeat center/cover;
   background-attachment: fixed;
   height: 100vh;
 }
@@ -145,7 +145,7 @@ a {
   right: 0;
   bottom: 0;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.6);
 }
 .container901 {
   position: absolute;
