@@ -1820,14 +1820,19 @@ function dashboard(handle_name) {
 		}, 1000);
 	}
 	document.querySelector('.set-target').addEventListener('click', function (e) {
-		let target_val = document.getElementById('target-val').value;
-		async function getTargetBoys() {
-			let modified_url =
-				'https://codeforces.com/api/user.status?handle=' + handle_name;
-			const jsondata = await fetch(modified_url);
-			const jsdata = await jsondata.json();
-			user_submissions = jsdata.result;
-		}
+		console.log('hell');
+		let target_val = document.querySelector('#target-val').value;
+		db.collection('handles')
+			.get()
+			.then((snapshot) => {
+				snapshot.docs.forEach((doc) => {
+					const handle_list = doc.data();
+					if (handle_list.email === user.email) {
+						handle_list.target = target_val;
+						console.log(handle_list.target);
+					}
+				});
+			});
 		//console.log(target_val);
 		e.preventDefault();
 	});
