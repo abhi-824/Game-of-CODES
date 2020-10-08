@@ -1822,17 +1822,21 @@ function dashboard(handle_name) {
 	document.querySelector('.set-target').addEventListener('click', function (e) {
 		console.log('hell');
 		let target_val = document.querySelector('#target-val').value;
+		var user = firebase.auth().currentUser;
 		db.collection('handles')
 			.get()
 			.then((snapshot) => {
 				snapshot.docs.forEach((doc) => {
 					const handle_list = doc.data();
 					if (handle_list.email === user.email) {
-						handle_list.target = target_val;
-						console.log(handle_list.target);
+						db.collection('handles').doc(doc.id).update({
+							target: target_val,
+						});
+						document.querySelector('.tr-wr').classList.add('hidden');
 					}
 				});
 			});
+		
 		//console.log(target_val);
 		e.preventDefault();
 	});
