@@ -333,15 +333,11 @@ function dashboard(handle_name) {
 
 				async function get_questions() {
 					let modified_url = `https://codeforces.com/api/problemset.problems?tags=${tag_name}`;
-					//console.log(modified_url);
 					const jsondata = await fetch(modified_url);
 					const jsdata = await jsondata.json();
 					let E = generate_easy_question(jsdata.result, 5);
 					let M = generate_medium_question(jsdata.result, 10);
 					let H = generate_hard_question(jsdata.result, 9);
-					//console.log(E);
-					//console.log(M);
-					//console.log(H);
 					arr1.push(E[0]);
 					arr1.push(M[0]);
 					arr1.push(H[0]);
@@ -366,14 +362,6 @@ function dashboard(handle_name) {
 					arr8.push(M[9]);
 					arr8.push(H[7]);
 					arr8.push(H[8]);
-					//console.log(arr1);
-					//console.log(arr2);
-					//console.log(arr3);
-					//console.log(arr4);
-					//console.log(arr5);
-					//console.log(arr6);
-					//console.log(arr7);
-					//console.log(arr8);
 				}
 				get_questions();
 				let p = document.querySelectorAll('.generate_daily2');
@@ -489,79 +477,82 @@ function dashboard(handle_name) {
 										jsdata.result[i].problem.contestId +
 										'-' +
 										jsdata.result[i].problem.index;
-									solved.add(str);
+									solved2.add(str);
 									no_of_success = solved.size;
+								}
+							}
+							for (let i = 0; i < 8; i++) {
+								let curr_set = [];
+								if (i === 0) {
+									curr_set = arr1;
+								} else if (i === 1) {
+									curr_set = arr2;
+								} else if (i === 2) {
+									curr_set = arr3;
+								} else if (i === 3) {
+									curr_set = arr4;
+								} else if (i === 4) {
+									curr_set = arr5;
+								} else if (i === 5) {
+									curr_set = arr6;
+								} else if (i === 6) {
+									curr_set = arr7;
+								} else if (i === 7) {
+									curr_set = arr8;
+								}
+								let cnt = 0;
+								console.log(curr_set)
+								for (let j = 0; j < curr_set.length; j++) {
+									console.log(`${curr_set[j].contestId}-${curr_set[j].id}`,solved2.has(`${curr_set[j].contestId}-${curr_set[j].id}`))
+									if (solved2.has(`${curr_set[j].contestId}-${curr_set[j].index}`)) {
+										curr_set[j] = 0;
+										if (j === 0) {
+											console.log(curr_set)
+											document.querySelector(
+												'.problem-name-1'
+											).innerHTML = `Goto Next, You have done it.`;
+											document.querySelector('.link1').classList.add('hidden');
+										}
+	
+										if (j === 1) {
+											document.querySelector(
+												'.problem-name-2'
+											).innerHTML = `Goto Next, You have done it.`;
+											document.querySelector('.link2').classList.add('hidden');
+										}
+	
+										if (j === 2) {
+											document.querySelector(
+												'.problem-name-3'
+											).innerHTML = `Goto Next, You have done it.`;
+											document.querySelector('.link3').classList.add('hidden');
+										}
+	
+										cnt += 1;
+									}
+								}
+	
+								if (cnt == 3) {
+									if (i == 0) {
+										document.querySelector('.g_2').classList.add('hidden');
+										document.querySelector('.g2').classList.remove('hidden');
+									}
+									if (i == 1) {
+										document.querySelector('.g_3').classList.add('hidden');
+										document.querySelector('.g3').classList.remove('hidden');
+									}
+									if (i == 2) {
+										document.querySelector('.g_4').classList.add('hidden');
+										document.querySelector('.g4').classList.remove('hidden');
+									}
+									if (i == 3) {
+										document.querySelector('.g_5').classList.add('hidden');
+										document.querySelector('.g5').classList.remove('hidden');
+									}
 								}
 							}
 						}
 						get_result();
-						for (let i = 0; i < 8; i++) {
-							let curr_set = [];
-							if (i === 0) {
-								curr_set = arr1;
-							} else if (i === 1) {
-								curr_set = arr2;
-							} else if (i === 2) {
-								curr_set = arr3;
-							} else if (i === 3) {
-								curr_set = arr4;
-							} else if (i === 4) {
-								curr_set = arr5;
-							} else if (i === 5) {
-								curr_set = arr6;
-							} else if (i === 6) {
-								curr_set = arr7;
-							} else if (i === 7) {
-								curr_set = arr8;
-							}
-							let cnt = 0;
-							for (let j = 0; j < curr_set.length; j++) {
-								if (solved.has(`${curr_set[j].contestId}-${curr_set[j].id}`)) {
-									curr_set[j] = 0;
-									if (j === 0) {
-										document.querySelector(
-											'.problem-name-1'
-										).innerHTML = `Goto Next, You have done it.`;
-										document.querySelector('.link1').classList.add('hidden');
-									}
-
-									if (j === 1) {
-										document.querySelector(
-											'.problem-name-2'
-										).innerHTML = `Goto Next, You have done it.`;
-										document.querySelector('.link2').classList.add('hidden');
-									}
-
-									if (j === 2) {
-										document.querySelector(
-											'.problem-name-3'
-										).innerHTML = `Goto Next, You have done it.`;
-										document.querySelector('.link3').classList.add('hidden');
-									}
-
-									cnt += 1;
-								}
-							}
-
-							if (cnt == 3) {
-								if (i == 0) {
-									document.querySelector('.g_2').classList.add('hidden');
-									document.querySelector('.g2').classList.remove('hidden');
-								}
-								if (i == 1) {
-									document.querySelector('.g_3').classList.add('hidden');
-									document.querySelector('.g3').classList.remove('hidden');
-								}
-								if (i == 2) {
-									document.querySelector('.g_4').classList.add('hidden');
-									document.querySelector('.g4').classList.remove('hidden');
-								}
-								if (i == 3) {
-									document.querySelector('.g_5').classList.add('hidden');
-									document.querySelector('.g5').classList.remove('hidden');
-								}
-							}
-						}
 
 						e.preventDefault();
 					});
@@ -1361,8 +1352,8 @@ function dashboard(handle_name) {
 										jsdata.result[i].problem.contestId +
 										'-' +
 										jsdata.result[i].problem.index;
-									solved.add(str);
-									no_of_success = solved.size;
+									solved2.add(str);
+									no_of_success = solved2.size;
 								}
 							}
 						}
@@ -1380,7 +1371,7 @@ function dashboard(handle_name) {
 							}
 							let cnt = 0;
 							for (let j = 0; j < curr_set.length; j++) {
-								if (solved.has(curr_set[j][1])) {
+								if (solved2.has(curr_set[j][1])) {
 									curr_set[j][1] = 0;
 									if (j === 0) {
 										document.querySelector(
@@ -1888,18 +1879,16 @@ function dashboard(handle_name) {
 					let act_month = act_dat.getMonth();
 					let act_date = act_dat.getDate();
 					if (jsdata.result[i].verdict == 'OK') {
-						console.log(date1);
-						console.log(act_date);
-						console.log(act_month);
-						console.log(month1);
-						console.log(formattedTime);
+						// console.log(date1);
+						// console.log(act_date);
+						// console.log(act_month);
+						// console.log(month1);
+						// console.log(formattedTime);
 						if (date1 === act_date && act_month === month1) {
 							currrent += jsdata.result[i].problem.rating;
 						}
 					}
-					if (act_dat > date1) {
-						break;
-					}
+					
 				}
 				console.log(currrent);	
 				console.log(target_val)
