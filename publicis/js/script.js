@@ -1472,17 +1472,26 @@ function dashboard(handle_name) {
 		const jsondata = await fetch(modified_url);
 		const jsdata = await jsondata.json();
 
-		for (let i = jsdata.result.length - 1; i >= 0; i--) {
-			const user_contest_res = `https://codeforces.com/api/contest.standings?contestId=${jsdata.result[i].contestId}&from=1&count=5`;
-			const jsondata3 = await fetch(user_contest_res);
-			const jsdata2 = await jsondata3.json();
-			for (let j = 0; j < jsdata2.result.problems.length; j++) {
-				contests_problems.add([
-					`${jsdata2.result.problems[j].contestId}-${jsdata2.result.problems[j].index}`,
-					jsdata2.result.problems[j].rating,
-				]);
-			}
-		}
+		// for (; i >= 0; i--) {
+			let i = jsdata.result.length - 1;
+			let pppp=setInterval(async function(){
+				const user_contest_res = `https://codeforces.com/api/contest.standings?contestId=${jsdata.result[i].contestId}&from=1&count=5`;
+				const jsondata3 = await fetch(user_contest_res);
+				const jsdata2 = await jsondata3.json();
+				for (let j = 0; j < jsdata2.result.problems.length; j++) {
+					contests_problems.add([
+						`${jsdata2.result.problems[j].contestId}-${jsdata2.result.problems[j].index}`,
+						jsdata2.result.problems[j].rating,
+					]);
+				}
+				i--;
+				if(i<0)
+				{
+					clearInterval(pppp);
+				}
+
+			},1000)
+		// }
 
 		for (const it of contests_problems) {
 			if (solved.has(it[0]) === false) {
@@ -1819,11 +1828,27 @@ function dashboard(handle_name) {
 			}
 		}, 1000);
 	}
+	let target_val;
+	var user = firebase.auth().currentUser;
+		db.collection('handles')
+			.where('email', '==', user.email)
+			.get()
+			.then((snapshot) => {
+				snapshot.docs.forEach((doc) => {
+					const handle_list = doc.data();
+					if (handle_list.email === user.email) {
+						target_val=handle_list.target;	
+					}
+				});
+			});
+			setTimeout(()=>{
+				startTarget(target_val);
+			},9000)
 	document.querySelector('.set-target').addEventListener('click', function (e) {
 		console.log('hell');
-		let target_val = document.querySelector('#target-val').value;
 		var user = firebase.auth().currentUser;
 		db.collection('handles')
+			.where('email', '==', user.email)
 			.get()
 			.then((snapshot) => {
 				snapshot.docs.forEach((doc) => {
@@ -1836,8 +1861,57 @@ function dashboard(handle_name) {
 					}
 				});
 			});
-		
+			startTarget(target_val);
 		//console.log(target_val);
 		e.preventDefault();
 	});
+	function startTarget(target)
+	{
+		let target_bar=document.querySelector('.targetline');
+		setInterval(()=>{
+			let currrent;
+			async function getTargetandrock()
+			{
+				let modified_url = url2 + handle_name;
+				const jsondata = await fetch(modified_url);
+				const jsdata = await jsondata.json();
+				for(let i=0;i<jsdata.result.length;i++)
+				{
+					let unix_timestamp=jsdata.result[i].creationTimeSeconds;
+					var date = new Date(unix_timestamp * 1000);
+					// Hours part from the timestamp
+					var date1=date.getDate();
+					var month1=date.getMonth();
+					var hours = date.getHours();
+					// Minutes part from the timestamp
+					var minutes = "0" + date.getMinutes();
+					var seconds = "0" + date.getSeconds();
+					var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+					var act_dat=new Date();
+					let act_month=act_dat.getMonth();
+					let act_date=act_dat.getDate();
+					if(jsdata.result[i].verdict==="OK")
+					{
+						console.log(date1);
+						console.log(formattedTime);
+						if(date1==act_date&&act_month==month1)
+						{
+							currrent+=jsdata.result[i].problem.rating;
+						}
+					}
+					if(act_dat>date1)
+					{
+						break;
+					}
+					
+				}
+				
+				let wid_gr=40*currrent/target;
+				let target_line=document.querySelector('.targetline');
+				document.querySelector('.targetline').style=`background-image:-webkit-linear-gradient(top, green, green ${wid_gr}%, transparent ${wid_gr}%, transparent 100%)  `
+			}
+			
+			getTargetandrock();
+		},6000)
+	}
 }

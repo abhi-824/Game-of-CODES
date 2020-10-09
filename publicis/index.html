@@ -49,6 +49,16 @@
          ></script>
    </head>
    <style>
+      .targetline{
+         position: absolute;
+         right: 0;
+         top:30%;
+         width:20px;
+         height:40vh;
+         
+         background: red;
+
+      }
       .container3{
      background: rgb(36,9,0);
       background: linear-gradient(90deg, rgba(36,9,0,1) 0%, rgba(80,121,9,1) 29%, rgba(40,119,155,1) 67%, rgba(56,2,224,1) 85%, rgba(0,212,255,1) 100%); 
@@ -182,6 +192,9 @@
                      </div>
                   </div>
                </div>
+            </div>
+               <div class="targetline" data-toggle="tooltip" data-placement="bottom" title="This is the target bar, the more green it is, the closer you are to you daily target">
+
             </div>
             <nav class="navbar navbar-expand-lg navbar-dark bg-transparent ">
                <!-- <a class="navbar-brand logo" href="#">
@@ -1901,10 +1914,10 @@
 
          })
       </script>
+         <script src="js/script.js"></script>
       <script src="js/firebase.js"></script>
       <script src="js/init.js"></script>
       <script src="js/app.js"></script>
-      <script src="js/auth.js"></script>
       <script src="js/utility_classes/generate_grid.js"></script>
       <script src="js/utility_classes/generating_x_y.js"></script>
       <script src="js/algorithms/a_star.js"></script>
@@ -1919,7 +1932,6 @@
       <script src="js/merge.js"></script>
       <script src="js/insertion.js"></script>
       <script src="js/quick.js"></script>
-      <script src="js/script.js"></script>
       <script src="js/training_zone_topic_wise.js"></script>
       <script src="js/compare.js"></script>
       <script src="js/compare_calc.js"></script>
@@ -1931,5 +1943,6 @@
       <script src="public/js/main.js"></script>
       <script src="public/js/main2.js"></script>
       <script src="js/events.js"></script>
+      <script src="js/auth.js"></script>
    </body>
 </html>
