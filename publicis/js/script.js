@@ -1486,49 +1486,49 @@ function dashboard(handle_name) {
 			}
 			i--;
 			if (i < 0) {
+				for (const it of contests_problems) {
+					if (solved.has(it[0]) === false) {
+						let str = it;
+						upsolved.push([it[1], str]);
+					}
+				}
+					upsolved.sort();
+		
+				let table = document.querySelector('.problems');
+				for (let i = 0; i < upsolved.length; i++) {
+					let tr = document.createElement('tr');
+					let th1 = document.createElement('th');
+					let th2 = document.createElement('th');
+					let th3 = document.createElement('th');
+					th2.innerHTML = upsolved[i][0];
+					th1.innerHTML = upsolved[i][1][0];
+					th3.innerHTML = `<a class="question" href="${convert_to_link(
+						upsolved[i][1][0]
+					)}" target="_blank">Let's Do it</a>`;
+					tr.appendChild(th1);
+					tr.appendChild(th2);
+					tr.appendChild(th3);
+					table.appendChild(tr);
+				}
+				document.querySelector('.d-flex').classList.add('hidden');
+				document.querySelector('.yes').addEventListener('click', function (e) {
+					let val = document.querySelector('.time_val').value;
+					startTimer(val * 60, document.querySelector('.time_chalo'));
+					document.querySelector('.ask_perm').classList.add('animated');
+					document.querySelector('.ask_perm').classList.add('bounceOutLeft');
+					e.preventDefault();
+				});
+		
+				document.querySelector('.no').addEventListener('click', function (e) {
+					document.querySelector('.ask_perm').classList.add('hidden');
+					//console.log("h");
+					e.preventDefault();
+				});
 				clearInterval(pppp);
 			}
 		}, 1500);
 		// }
 
-		for (const it of contests_problems) {
-			if (solved.has(it[0]) === false) {
-				let str = it;
-				upsolved.push([it[1], str]);
-			}
-		}
-		upsolved.sort();
-
-		let table = document.querySelector('.problems');
-		for (let i = 0; i < upsolved.length; i++) {
-			let tr = document.createElement('tr');
-			let th1 = document.createElement('th');
-			let th2 = document.createElement('th');
-			let th3 = document.createElement('th');
-			th2.innerHTML = upsolved[i][0];
-			th1.innerHTML = upsolved[i][1][0];
-			th3.innerHTML = `<a class="question" href="${convert_to_link(
-				upsolved[i][1][0]
-			)}" target="_blank">Let's Do it</a>`;
-			tr.appendChild(th1);
-			tr.appendChild(th2);
-			tr.appendChild(th3);
-			table.appendChild(tr);
-		}
-		document.querySelector('.d-flex').classList.add('hidden');
-		document.querySelector('.yes').addEventListener('click', function (e) {
-			let val = document.querySelector('.time_val').value;
-			startTimer(val * 60, document.querySelector('.time_chalo'));
-			document.querySelector('.ask_perm').classList.add('animated');
-			document.querySelector('.ask_perm').classList.add('bounceOutLeft');
-			e.preventDefault();
-		});
-
-		document.querySelector('.no').addEventListener('click', function (e) {
-			document.querySelector('.ask_perm').classList.add('hidden');
-			//console.log("h");
-			e.preventDefault();
-		});
 	}
 
 	getUpsolved();
