@@ -1473,24 +1473,22 @@ function dashboard(handle_name) {
 		const jsdata = await jsondata.json();
 
 		// for (; i >= 0; i--) {
-			let i = jsdata.result.length - 1;
-			let pppp=setInterval(async function(){
-				const user_contest_res = `https://codeforces.com/api/contest.standings?contestId=${jsdata.result[i].contestId}&from=1&count=5`;
-				const jsondata3 = await fetch(user_contest_res);
-				const jsdata2 = await jsondata3.json();
-				for (let j = 0; j < jsdata2.result.problems.length; j++) {
-					contests_problems.add([
-						`${jsdata2.result.problems[j].contestId}-${jsdata2.result.problems[j].index}`,
-						jsdata2.result.problems[j].rating,
-					]);
-				}
-				i--;
-				if(i<0)
-				{
-					clearInterval(pppp);
-				}
-
-			},1000)
+		let i = jsdata.result.length - 1;
+		let pppp = setInterval(async function () {
+			const user_contest_res = `https://codeforces.com/api/contest.standings?contestId=${jsdata.result[i].contestId}&from=1&count=5`;
+			const jsondata3 = await fetch(user_contest_res);
+			const jsdata2 = await jsondata3.json();
+			for (let j = 0; j < jsdata2.result.problems.length; j++) {
+				contests_problems.add([
+					`${jsdata2.result.problems[j].contestId}-${jsdata2.result.problems[j].index}`,
+					jsdata2.result.problems[j].rating,
+				]);
+			}
+			i--;
+			if (i < 0) {
+				clearInterval(pppp);
+			}
+		}, 1500);
 		// }
 
 		for (const it of contests_problems) {
@@ -1830,23 +1828,23 @@ function dashboard(handle_name) {
 	}
 	let target_val;
 	var user = firebase.auth().currentUser;
-		db.collection('handles')
-			.where('email', '==', user.email)
-			.get()
-			.then((snapshot) => {
-				snapshot.docs.forEach((doc) => {
-					const handle_list = doc.data();
-					if (handle_list.email === user.email) {
-						target_val=handle_list.target;	
-					}
-				});
+	db.collection('handles')
+		.where('email', '==', user.email)
+		.get()
+		.then((snapshot) => {
+			snapshot.docs.forEach((doc) => {
+				const handle_list = doc.data();
+				if (handle_list.email === user.email) {
+					target_val = handle_list.target;
+				}
 			});
-			setTimeout(()=>{
-				startTarget(target_val);
-			},9000)
+		});
+	startTarget(target_val);
+
 	document.querySelector('.set-target').addEventListener('click', function (e) {
 		console.log('hell');
 		var user = firebase.auth().currentUser;
+		target_val = document.querySelector('#target-val').value;
 		db.collection('handles')
 			.where('email', '==', user.email)
 			.get()
@@ -1857,61 +1855,63 @@ function dashboard(handle_name) {
 						db.collection('handles').doc(doc.id).update({
 							target: target_val,
 						});
+
 						document.querySelector('.tr-wr').classList.add('hidden');
 					}
 				});
 			});
-			startTarget(target_val);
+		startTarget(target_val);
 		//console.log(target_val);
 		e.preventDefault();
 	});
-	function startTarget(target)
-	{
-		let target_bar=document.querySelector('.targetline');
-		setInterval(()=>{
-			let currrent;
-			async function getTargetandrock()
-			{
+	function startTarget(target) {
+		let target_bar = document.querySelector('.targetline');
+		setInterval(() => {
+			let currrent=0;
+			async function getTargetandrock() {
 				let modified_url = url2 + handle_name;
 				const jsondata = await fetch(modified_url);
 				const jsdata = await jsondata.json();
-				for(let i=0;i<jsdata.result.length;i++)
-				{
-					let unix_timestamp=jsdata.result[i].creationTimeSeconds;
+				for (let i = 0; i < jsdata.result.length; i++) {
+					let unix_timestamp = jsdata.result[i].creationTimeSeconds;
 					var date = new Date(unix_timestamp * 1000);
 					// Hours part from the timestamp
-					var date1=date.getDate();
-					var month1=date.getMonth();
+					var date1 = date.getDate();
+					var month1 = date.getMonth();
 					var hours = date.getHours();
 					// Minutes part from the timestamp
-					var minutes = "0" + date.getMinutes();
-					var seconds = "0" + date.getSeconds();
-					var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-					var act_dat=new Date();
-					let act_month=act_dat.getMonth();
-					let act_date=act_dat.getDate();
-					if(jsdata.result[i].verdict==="OK")
-					{
+					var minutes = '0' + date.getMinutes();
+					var seconds = '0' + date.getSeconds();
+					var formattedTime =
+						hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+					var act_dat = new Date();
+					let act_month = act_dat.getMonth();
+					let act_date = act_dat.getDate();
+					if (jsdata.result[i].verdict == 'OK') {
 						console.log(date1);
+						console.log(act_date);
+						console.log(act_month);
+						console.log(month1);
 						console.log(formattedTime);
-						if(date1==act_date&&act_month==month1)
-						{
-							currrent+=jsdata.result[i].problem.rating;
+						if (date1 === act_date && act_month === month1) {
+							currrent += jsdata.result[i].problem.rating;
 						}
 					}
-					if(act_dat>date1)
-					{
+					if (act_dat > date1) {
 						break;
 					}
-					
 				}
-				
-				let wid_gr=40*currrent/target;
-				let target_line=document.querySelector('.targetline');
-				document.querySelector('.targetline').style=`background-image:-webkit-linear-gradient(top, green, green ${wid_gr}%, transparent ${wid_gr}%, transparent 100%)  `
+				console.log(currrent);	
+				console.log(target_val)
+				let wid_gr = (100*currrent) / parseInt(target_val);
+				let target_line = document.querySelector('.targetline');
+				document.querySelector(
+					'.targetline'
+				).style = `background-image:-webkit-linear-gradient(top, green, green ${wid_gr}%, transparent ${wid_gr}%, transparent 100%)  `;
+				console.log(wid_gr);
 			}
-			
+
 			getTargetandrock();
-		},6000)
+		}, 30000);
 	}
 }
