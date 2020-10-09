@@ -3,7 +3,9 @@ function level_wise(handle_name) {
 	document.querySelector('.l1').addEventListener('click', retreivel1);
 	document.querySelector('.l2').addEventListener('click', retreivel2);
 	document.querySelector('.l3').addEventListener('click', retreivel3);
-	document.querySelector('.update22').addEventListener('click', update_problems);
+	document
+		.querySelector('.update22')
+		.addEventListener('click', update_problems);
 	document.querySelector('.add').addEventListener('click', add_problems);
 
 	const url2 = 'https://codeforces.com/api/user.status?handle=';
@@ -64,15 +66,21 @@ function level_wise(handle_name) {
 
 	console.log(handle_name);
 	let problems = [];
+	let checked = true;
+	let checked2 = true;
+	let checked3true;
 	async function retreivel1() {
 		animations();
 		document.querySelector('.problemkilist').classList.add('lev1');
 		document.querySelector('.problemkilist').classList.remove('hidden');
 
-		if (confirm('Do You want to start a timer?')) {
-			var two_hours = 2 * 60 * 60,
-				display = document.querySelector('.timer2');
-			startTimer(two_hours, display);
+		if (checked == true) {
+			if (confirm('Do You want to start a timer?')) {
+				var two_hours = 2 * 60 * 60,
+					display = document.querySelector('.timer2');
+				startTimer(two_hours, display);
+			}
+			checked = false;
 		}
 
 		let modified_url = 'https://codeforces.com/api/problemset.problems';
@@ -96,10 +104,13 @@ function level_wise(handle_name) {
 
 	async function retreivel2() {
 		animations();
-		if (confirm('Do You want to start a timer?')) {
-			var two_hours = 2 * 60 * 60,
-				display = document.querySelector('.timer2');
-			startTimer(two_hours, display);
+		if (checked2 == true) {
+			if (confirm('Do You want to start a timer?')) {
+				var two_hours = 2 * 60 * 60,
+					display = document.querySelector('.timer2');
+				startTimer(two_hours, display);
+			}
+			checked2 = false;
 		}
 		document.querySelector('.problemkilist').classList.add('lev2');
 		let modified_url = 'https://codeforces.com/api/problemset.problems';
@@ -120,15 +131,16 @@ function level_wise(handle_name) {
 			document.querySelector('.problemkilist').appendChild(div);
 		}
 	}
-
 	async function retreivel3() {
 		animations();
 		document.querySelector('.problemkilist').classList.add('lev3');
-
-		if (confirm('Do You want to start a timer?')) {
-			var two_hours = 2 * 60 * 60,
-				display = document.querySelector('.timer2');
-			startTimer(two_hours, display);
+		if (checked3 == true) {
+			if (confirm('Do You want to start a timer?')) {
+				var two_hours = 2 * 60 * 60,
+					display = document.querySelector('.timer2');
+				startTimer(two_hours, display);
+			}
+			checked3 = false;
 		}
 
 		let modified_url = 'https://codeforces.com/api/problemset.problems';
@@ -203,7 +215,7 @@ function level_wise(handle_name) {
 	function add_problems() {
 		let l1 = document.querySelector('.problemkilist');
 		document.querySelector('.container4').style.height = `${height + 100}vh`;
-		document.querySelector('.container2').style.height = `${height + 100}vh`;
+		document.querySelector('.container277').style.height = `${height + 100}vh`;
 		height += 50;
 		if (l1.classList.contains('lev3')) {
 			retreivel3();
@@ -215,12 +227,31 @@ function level_wise(handle_name) {
 			retreivel2();
 		}
 	}
-	function update_problems() {
-		getSolved();
+	async function update_problems() {
+		let modified_url = url2 + handle_name;
+		const jsondata = await fetch(modified_url);
+		const jsdata = await jsondata.json();
+
+		let unsolved = new Set();
+
+		unsolved.clear();
+		solved.clear();
+
+		// for retreiving solved set
+		for (let i = 0; i < jsdata.result.length; i++) {
+			if (jsdata.result[i].verdict == 'OK') {
+				let str =
+					jsdata.result[i].problem.contestId +
+					'-' +
+					jsdata.result[i].problem.index;
+				solved.add(str);
+			}
+		}
 		let jai_shree_ram = document.querySelectorAll('.problemhye');
 		let jai_hanuman = document.querySelectorAll('.problemkilist');
+		console.log(jai_hanuman);
 		for (let i = 0; i < jai_shree_ram.length; i++) {
-			let link = jai_shree_ram[i].childNodes[1].href;
+			let link = jai_shree_ram[i].children[1].href;
 			let contestId = '';
 			let index = '';
 			let j = 0;
@@ -252,7 +283,7 @@ function level_wise(handle_name) {
 			let str = contestId + '-' + index;
 			if (solved.has(str)) {
 				console.log(jai_hanuman);
-				jai_hanuman.removeChild(jai_hanuman.childNodes[i]);
+				jai_hanuman.removeChild(jai_hanuman.children[i]);
 			}
 		}
 	}
