@@ -1356,80 +1356,81 @@ function dashboard(handle_name) {
 									no_of_success = solved2.size;
 								}
 							}
+							for (let i = 0; i < 4; i++) {
+								let curr_set = [];
+								if (i === 0) {
+									curr_set = set1;
+								} else if (i === 1) {
+									curr_set = set2;
+								} else if (i === 2) {
+									curr_set = set3;
+								} else if (i === 3) {
+									curr_set = set4;
+								}
+								let cnt = 0;
+								for (let j = 0; j < curr_set.length; j++) {
+									console.log(curr_set[j][1])
+									if (solved2.has(curr_set[j][1])) {
+										curr_set[j][1] = 0;
+										if (j === 0) {
+											document.querySelector(
+												'.problem-name-A'
+											).innerHTML = `Goto Next, You have done it.`;
+											document.querySelector('.linkA').classList.add('hidden');
+										}
+	
+										if (j === 1) {
+											document.querySelector(
+												'.problem-name-B'
+											).innerHTML = `Goto Next, You have done it.`;
+											document.querySelector('.linkB').classList.add('hidden');
+										}
+	
+										if (j === 2) {
+											document.querySelector(
+												'.problem-name-C'
+											).innerHTML = `Goto Next, You have done it.`;
+											document.querySelector('.linkC').classList.add('hidden');
+										}
+	
+										if (j === 3) {
+											document.querySelector(
+												'.problem-name-D'
+											).innerHTML = `Goto Next, You have done it.`;
+											document.querySelector('.linkD').classList.add('hidden');
+										}
+	
+										if (j === 4) {
+											document.querySelector(
+												'.problem-name-E'
+											).innerHTML = `Goto Next, You have done it.`;
+											document.querySelector('.linkE').classList.add('hidden');
+										}
+										cnt += 1;
+									}
+								}
+	
+								if (cnt == 5) {
+									if (i == 0) {
+										document.querySelector('.g_2').classList.add('hidden');
+										document.querySelector('.g2').classList.remove('hidden');
+									}
+									if (i == 1) {
+										document.querySelector('.g_3').classList.add('hidden');
+										document.querySelector('.g3').classList.remove('hidden');
+									}
+									if (i == 2) {
+										document.querySelector('.g_4').classList.add('hidden');
+										document.querySelector('.g4').classList.remove('hidden');
+									}
+									if (i == 3) {
+										document.querySelector('.g_5').classList.add('hidden');
+										document.querySelector('.g5').classList.remove('hidden');
+									}
+								}
+							}
 						}
 						get_result();
-						for (let i = 0; i < 4; i++) {
-							let curr_set = [];
-							if (i === 0) {
-								curr_set = set1;
-							} else if (i === 1) {
-								curr_set = set2;
-							} else if (i === 2) {
-								curr_set = set3;
-							} else if (i === 3) {
-								curr_set = set4;
-							}
-							let cnt = 0;
-							for (let j = 0; j < curr_set.length; j++) {
-								if (solved2.has(curr_set[j][1])) {
-									curr_set[j][1] = 0;
-									if (j === 0) {
-										document.querySelector(
-											'.problem-name-A'
-										).innerHTML = `Goto Next, You have done it.`;
-										document.querySelector('.linkA').classList.add('hidden');
-									}
-
-									if (j === 1) {
-										document.querySelector(
-											'.problem-name-B'
-										).innerHTML = `Goto Next, You have done it.`;
-										document.querySelector('.linkB').classList.add('hidden');
-									}
-
-									if (j === 2) {
-										document.querySelector(
-											'.problem-name-C'
-										).innerHTML = `Goto Next, You have done it.`;
-										document.querySelector('.linkC').classList.add('hidden');
-									}
-
-									if (j === 3) {
-										document.querySelector(
-											'.problem-name-D'
-										).innerHTML = `Goto Next, You have done it.`;
-										document.querySelector('.linkD').classList.add('hidden');
-									}
-
-									if (j === 4) {
-										document.querySelector(
-											'.problem-name-E'
-										).innerHTML = `Goto Next, You have done it.`;
-										document.querySelector('.linkE').classList.add('hidden');
-									}
-									cnt += 1;
-								}
-							}
-
-							if (cnt == 5) {
-								if (i == 0) {
-									document.querySelector('.g_2').classList.add('hidden');
-									document.querySelector('.g2').classList.remove('hidden');
-								}
-								if (i == 1) {
-									document.querySelector('.g_3').classList.add('hidden');
-									document.querySelector('.g3').classList.remove('hidden');
-								}
-								if (i == 2) {
-									document.querySelector('.g_4').classList.add('hidden');
-									document.querySelector('.g4').classList.remove('hidden');
-								}
-								if (i == 3) {
-									document.querySelector('.g_5').classList.add('hidden');
-									document.querySelector('.g5').classList.remove('hidden');
-								}
-							}
-						}
 
 						e.preventDefault();
 					});
