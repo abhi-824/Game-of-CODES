@@ -47,7 +47,7 @@ signupform.addEventListener('submit', (e) => {
 		db.collection('handles').add({
 			email: email,
 			handle: handle_name,
-			target: 0,
+			target: 16000,
 		});
 		console.log(cred);
 		//closing signup modal
