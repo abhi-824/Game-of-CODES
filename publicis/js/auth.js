@@ -42,22 +42,30 @@ signupform.addEventListener('submit', (e) => {
 	//     handle: handle_name
 	// });
 
-	console.log(email, handle, pwd);
+	console.log(email, handle_name, pwd);
+	async function find_user() {
+	
+		let modified_url = "https://codeforces.com/api/user.info?handles=" + handle_name;
+		const jsondata = await fetch(modified_url);
+		const jsdata = await jsondata.json();
+		if (jsdata.status === "FAILED") {
+		  display_error();
+		} else {
 
-	auth.createUserWithEmailAndPassword(email, pwd).then((cred) => {
-		db.collection('handles').add({
-			email: email,
-			handle: handle_name,
-			target: 16000,
-		});
-		console.log(cred);
-		//closing signup modal
-		const modal = document.querySelector('#modal-signup');
-		M.Modal.getInstance(modal).close();
-		signupform.reset();
-	}).catch(function(error){
-		display_error();
-	});
+			auth.createUserWithEmailAndPassword(email, pwd).then((cred) => {
+				db.collection('handles').add({
+					email: email,
+					handle: handle_name,
+					target: 16000,
+				});
+				console.log(cred);
+				signupform.reset();
+			}).catch(function(error){
+				display_error();
+			});
+		}
+	  }
+	  find_user();
 	e.preventDefault();
 });
 
