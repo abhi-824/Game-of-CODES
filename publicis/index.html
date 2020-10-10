@@ -345,9 +345,18 @@
                     
                      <input type="email"  placeholder="Email" id="login-email" required />
                      <input type="password" id="login-password" placeholder="Password" />
+                     <a href="#" class="forgot_pass">Forgot Password? Relax, We got you cover</a>
                      <!-- <a href="#">Forgot your password?</a> -->
                      <button type="submit">Sign In</button>
                   </form>
+                  <form action="#" class="formdd hidden" id="forgot">
+                     <input type="email"  placeholder="Email" id="login-email-forgot" required />
+                     <button type="submit">Send Mail</button>
+                  </form>
+                  <div class="after-forgot hidden formdd">
+                     <p>A verification mail has been sent to your email. Check it buddy</p>
+                     <button class="back-login">Back to login</button>
+                  </div>
                </div>
             </div>
          </div>
@@ -2101,6 +2110,22 @@
             document.querySelector('#signup-form').classList.remove('hidden');
             document.querySelector('#login-form').classList.add('hidden');
 
+         })
+         document.querySelector('.forgot_pass').addEventListener('click',(e)=>{
+            e.preventDefault();
+            document.querySelector('#signup-form').classList.add('hidden');
+            document.querySelector('#login-form').classList.add('hidden');
+            document.querySelector('#forgot').classList.remove('hidden');
+            
+         })
+         
+         document.querySelector('.back-login').addEventListener('click',(e)=>{
+            e.preventDefault();
+            document.querySelector('#signup-form').classList.add('hidden');
+            document.querySelector('#login-form').classList.remove('hidden');
+            document.querySelector('#forgot').classList.add('hidden');
+            document.querySelector('.after-forgot').classList.add('hidden');
+            
          })
       </script>
          <script src="js/script.js"></script>

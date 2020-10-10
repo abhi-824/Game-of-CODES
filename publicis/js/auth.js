@@ -33,6 +33,7 @@ auth.onAuthStateChanged((user) => {
 
 // for signup
 const signupform = document.querySelector('#signup-form');
+const forgotform = document.querySelector('#forgot');
 signupform.addEventListener('submit', (e) => {
 	const email = signupform['signup-email'].value;
 	const handle_name = signupform['signup-handle'].value;
@@ -57,6 +58,8 @@ signupform.addEventListener('submit', (e) => {
 	});
 	e.preventDefault();
 });
+
+
 const logout2 = document.querySelectorAll('.logout2');
 for (let i = 0; i < logout2.length; i++) {
 	logout2[i].addEventListener('click', (e) => {
@@ -64,6 +67,18 @@ for (let i = 0; i < logout2.length; i++) {
 		auth.signOut();
 	});
 }
+
+forgotform.addEventListener("submit",(e)=>{
+	e.preventDefault();
+	let emailAddress=document.querySelector("#login-email-forgot").value;
+	auth.sendPasswordResetEmail(emailAddress).then(function() {
+		forgotform.classList.add("hidden");
+		document.querySelector('.after-forgot').classList.remove("hidden");
+	  }).catch(function(error) {
+		// An error happened.
+	  });
+	  
+})
 
 const loginForm = document.querySelector('#login-form');
 loginForm.addEventListener('submit', (e) => {
