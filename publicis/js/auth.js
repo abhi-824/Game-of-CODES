@@ -6,6 +6,7 @@ auth.onAuthStateChanged((user) => {
 	if (user) {
 		console.log('user logged in');
 		db.collection('handles')
+			.where('email', '==', user.email)
 			.get()
 			.then((snapshot) => {
 				snapshot.docs.forEach((doc) => {
@@ -69,7 +70,7 @@ loginForm.addEventListener('submit', (e) => {
 	e.preventDefault();
 	const email = loginForm['login-email'].value;
 	const pwd = loginForm['login-password'].value;
-    document.querySelector('.loader12345').classList.remove('disapper');
+	document.querySelector('.loader12345').classList.remove('disapper');
 
 	auth.signInWithEmailAndPassword(email, pwd).then((cred) => {
 		document.querySelector('.loader12345').classList.add('disapper');
