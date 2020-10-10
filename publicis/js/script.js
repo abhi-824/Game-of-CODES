@@ -7,13 +7,15 @@ function dashboard(handle_name) {
 	let user_submissions;
 	var load_kk = document.querySelector('.load-kro');
 	var load_kkk = document.querySelector('.load-kro2');
-	const hamburger = document.querySelector('.hamburger');
+	const hamburger = document.querySelectorAll('.hamburger');
 	const navlinks = document.querySelector('.nav-links');
 	const links = document.querySelector('.nav-links li');
-
-	hamburger.addEventListener('click', () => {
-		navlinks.classList.toggle('open');
-	});
+	for(let i=0;i<hamburger.length;i++)
+	{
+		hamburger[i].addEventListener('click', () => {
+			navlinks.classList.toggle('open');
+		});
+	}
 	let show_daily_mix = document.querySelector('.daily-btn');
 	let show_daily_mix2 = document.querySelector('.daily-btn2');
 	let daily_mix_contests = document.querySelector('.daily-mix');

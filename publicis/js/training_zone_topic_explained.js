@@ -1,10 +1,5 @@
 function topic_wise_explained(handle_name,tag_name){
   show_screen(topic_wise_screen2);
-  var load_kk=document.querySelector(".load-kro");
-  
-  window.addEventListener("load",function(){
-    load_kk.classList.add("disapper")
-  })
   function notifyMe(){
     
     if (!window.Notification) {
@@ -44,9 +39,10 @@ function topic_wise_explained(handle_name,tag_name){
       display = document.querySelector(".timer");
       startTimer(two_hours, display);
     }
-    document.querySelector(".cont1").classList.remove("hidden");
-    document.querySelector(".cont1").classList.add("animated");
-    document.querySelector(".cont1").classList.add("BounceInRight");
+    document.querySelectorAll(".cont1")[2].classList.remove("hidden");
+    document.querySelectorAll(".content1")[0].classList.add("hidden");
+    document.querySelectorAll(".cont1")[2].classList.add("animated");
+    document.querySelectorAll(".cont1")[2].classList.add("BounceInRight");
     document.querySelector(".footer-img").classList.add("animated");
     document.querySelector(".footer-img").classList.add("bounceOutRight");
     document.querySelector(".start-topic").classList.add("animated");
@@ -136,7 +132,7 @@ function topic_wise_explained(handle_name,tag_name){
     console.log(set4);
   }
   console.log(tag_name);
-  let buttons = document.querySelectorAll(".generate_daily2");
+  let buttons = document.querySelectorAll(".generate_daily22");
   for (let i = 0; i < buttons.length; i++) {
     document.querySelector(".update_kro").classList.remove("hidden");
     buttons[i].addEventListener("click", function (e) {
@@ -170,14 +166,14 @@ function topic_wise_explained(handle_name,tag_name){
     return link;
   }
   function display_problems(set) {
-    document.querySelector(".container768").classList.add("animated");
-    document.querySelector(".container768").classList.remove("hidden");
-    document.querySelector(".container768").classList.add("bounceInRight");
-    document.querySelector(".problem-name-1").innerHTML = set[0];
-    document.querySelector(".problem-name-2").innerHTML = set[1];
-    document.querySelector(".problem-name-3").innerHTML = set[2];
-    document.querySelector(".problem-name-4").innerHTML = set[3];
-    document.querySelector(".problem-name-5").innerHTML = set[4];
+    document.querySelectorAll(".container768")[1].classList.add("animated");
+    document.querySelectorAll(".container768")[1].classList.remove("hidden");
+    document.querySelectorAll(".container768")[1].classList.add("bounceInRight");
+    document.querySelectorAll(".problem-name-1")[1].innerHTML = set[0];
+    document.querySelectorAll(".problem-name-2")[1].innerHTML = set[1];
+    document.querySelectorAll(".problem-name-3")[1].innerHTML = set[2];
+    document.querySelectorAll(".problem-name-4")[0].innerHTML = set[3];
+    document.querySelectorAll(".problem-name-5")[0].innerHTML = set[4];
     let link1 = document.createElement("div");
     let link2 = document.createElement("div");
     let link3 = document.createElement("div");
@@ -198,7 +194,7 @@ function topic_wise_explained(handle_name,tag_name){
     document.querySelectorAll(".content1")[3].appendChild(link3);
     document.querySelectorAll(".content1")[4].appendChild(link4);
     document.querySelectorAll(".content1")[5].appendChild(link5);
-    // document.querySelector(".container768").classList.add("bounceInRight");
+    // document.querySelectorAll(".container768")[1].classList.add("bounceInRight");
   }
   
   // Timer for countdown
