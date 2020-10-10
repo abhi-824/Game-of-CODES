@@ -15,6 +15,11 @@ function codeblast_enter(username,room)
     e.preventDefault();
   });
   
+  document.querySelector('.leave_pls').addEventListener('click',(e)=>{
+    e.preventDefault();
+    dashboard(username);
+  })
+
   socket.emit('joinRoom', { username, room });
   
   socket.on('le_result',(results_jo)=>{
