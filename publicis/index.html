@@ -49,7 +49,22 @@
          ></script>
    </head>
    <style>
-      
+      .disp_err{
+        
+         background-color: rgb(160, 35, 35);
+         width:100%;
+         color:#fff;
+        
+      }
+.disapper2{
+  animation: vanish 10s forwards;
+}
+@keyframes vanish{
+  100%{
+    opacity: 0;
+    visibility: hidden;
+  }
+}
 .chat-header{
     display:flex;
     flex-direction: row;
@@ -327,8 +342,10 @@
       <div class="container11">
          <div class="container1112">
             
-            
             <div class="formms">
+               <div class="disp_err hidden">
+                  <p>Some error occured.(This was the most creative line we could think of)</p>
+               </div>
                <div class="welcome-msg">
                   <h1>Hey, Ready to Rock?</h1>
                   <h4> <a href="#" class="login_btnnn"> Log in</a> or <a href="#" class="signup_btnnn"> Sign up</a></h4>

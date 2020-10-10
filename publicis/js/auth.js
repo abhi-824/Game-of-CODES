@@ -55,6 +55,8 @@ signupform.addEventListener('submit', (e) => {
 		const modal = document.querySelector('#modal-signup');
 		M.Modal.getInstance(modal).close();
 		signupform.reset();
+	}).catch(function(error){
+		display_error();
 	});
 	e.preventDefault();
 });
@@ -75,6 +77,7 @@ forgotform.addEventListener("submit",(e)=>{
 		forgotform.classList.add("hidden");
 		document.querySelector('.after-forgot').classList.remove("hidden");
 	  }).catch(function(error) {
+		display_error();
 		// An error happened.
 	  });
 	  
@@ -90,5 +93,15 @@ loginForm.addEventListener('submit', (e) => {
 	auth.signInWithEmailAndPassword(email, pwd).then((cred) => {
 		document.querySelector('.loader12345').classList.add('disapper');
 		console.log(cred);
+	}).catch(function(error){
+		display_error();
 	});
 });
+
+function display_error()
+{
+	document.querySelector('.loader12345').classList.add('disapper');
+	show_screen(index_screen);
+	document.querySelector('.disp_err').classList.remove("hidden");
+	document.querySelector('.disp_err').classList.add("disapper2");
+}

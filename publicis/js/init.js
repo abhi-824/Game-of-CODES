@@ -1,4 +1,5 @@
 // screens
+let index_screen=document.querySelector('.container11');
 let dashboard_screen = document.querySelector('.container1');
 let topic_wise_screen = document.querySelector('.container411');
 let topic_wise_screen2 = document.querySelector('.container824');
@@ -13,6 +14,7 @@ let codeblast_screen2 = document.querySelector('.container2222');
 
 function show_screen(some_screen) {
 	dashboard_screen.classList.add('hidden');
+	index_screen.classList.add('hidden');
 		topic_wise_screen.classList.add('hidden');
 	topic_wise_screen2.classList.add('hidden');
 	level_wise_screen.classList.add('hidden');
