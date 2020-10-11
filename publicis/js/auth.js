@@ -44,31 +44,32 @@ signupform.addEventListener('submit', (e) => {
 
 	console.log(email, handle_name, pwd);
 	async function find_user() {
-	
-		let modified_url = "https://codeforces.com/api/user.info?handles=" + handle_name;
+		let modified_url =
+			'https://codeforces.com/api/user.info?handles=' + handle_name;
 		const jsondata = await fetch(modified_url);
 		const jsdata = await jsondata.json();
-		if (jsdata.status === "FAILED") {
-		  display_error();
+		if (jsdata.status === 'FAILED') {
+			display_error();
 		} else {
-
-			auth.createUserWithEmailAndPassword(email, pwd).then((cred) => {
-				db.collection('handles').add({
-					email: email,
-					handle: handle_name,
-					target: 16000,
+			auth
+				.createUserWithEmailAndPassword(email, pwd)
+				.then((cred) => {
+					db.collection('handles').add({
+						email: email,
+						handle: handle_name,
+						target: 16000,
+					});
+					console.log(cred);
+					signupform.reset();
+				})
+				.catch(function (error) {
+					display_error();
 				});
-				console.log(cred);
-				signupform.reset();
-			}).catch(function(error){
-				display_error();
-			});
 		}
-	  }
-	  find_user();
+	}
+	find_user();
 	e.preventDefault();
 });
-
 
 const logout2 = document.querySelectorAll('.logout2');
 for (let i = 0; i < logout2.length; i++) {
@@ -78,18 +79,20 @@ for (let i = 0; i < logout2.length; i++) {
 	});
 }
 
-forgotform.addEventListener("submit",(e)=>{
+forgotform.addEventListener('submit', (e) => {
 	e.preventDefault();
-	let emailAddress=document.querySelector("#login-email-forgot").value;
-	auth.sendPasswordResetEmail(emailAddress).then(function() {
-		forgotform.classList.add("hidden");
-		document.querySelector('.after-forgot').classList.remove("hidden");
-	  }).catch(function(error) {
-		display_error();
-		// An error happened.
-	  });
-	  
-})
+	let emailAddress = document.querySelector('#login-email-forgot').value;
+	auth
+		.sendPasswordResetEmail(emailAddress)
+		.then(function () {
+			forgotform.classList.add('hidden');
+			document.querySelector('.after-forgot').classList.remove('hidden');
+		})
+		.catch(function (error) {
+			display_error();
+			// An error happened.
+		});
+});
 
 const loginForm = document.querySelector('#login-form');
 loginForm.addEventListener('submit', (e) => {
@@ -98,18 +101,47 @@ loginForm.addEventListener('submit', (e) => {
 	const pwd = loginForm['login-password'].value;
 	document.querySelector('.loader12345').classList.remove('disapper');
 
-	auth.signInWithEmailAndPassword(email, pwd).then((cred) => {
-		document.querySelector('.loader12345').classList.add('disapper');
-		console.log(cred);
-	}).catch(function(error){
-		display_error();
-	});
+	auth
+		.signInWithEmailAndPassword(email, pwd)
+		.then((cred) => {
+			document.querySelector('.loader12345').classList.add('disapper');
+			console.log(cred);
+		})
+		.catch(function (error) {
+			display_error();
+		});
 });
 
-function display_error()
-{
+function display_error() {
 	document.querySelector('.loader12345').classList.add('disapper');
 	show_screen(index_screen);
-	document.querySelector('.disp_err').classList.remove("hidden");
-	document.querySelector('.disp_err').classList.add("disapper2");
+	document.querySelector('.disp_err').classList.remove('hidden');
+	document.querySelector('.disp_err').classList.add('disapper2');
 }
+
+document.querySelector('.google-sign-in').addEventListener('click', (e) => {
+	var provider = new firebase.auth.GoogleAuthProvider();
+	firebase
+	.auth()
+	.signInWithPopup(provider)
+	.then(function (result) {
+		// This gives you a Google Access Token. You can use it to access the Google API.
+		var token = result.credential.accessToken;
+		// The signed-in user info.
+		var user = result.user;
+		// ...
+		})
+		.catch(function (error) {
+		console.log("hell")
+			// Handle Errors here.
+			var errorCode = error.code;
+			var errorMessage = error.message;
+			alert(errorMessage)
+			// The email of the user's account used.
+			var email = error.email;
+			// The firebase.auth.AuthCredential type that was used.
+			var credential = error.credential;
+			// ...
+		});
+	e.preventDefault();
+});
