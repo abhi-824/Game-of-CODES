@@ -687,9 +687,9 @@ function  compare_final(handle_name,handle_name2){
   
   getUserRatingsCompare();
   getUserSubRatCompare();
-  setTimeout(startCompare,1000)
-  setTimeout(getsubmissions,1000)
-  setTimeout(getsubmissions2,1000)
+  setTimeout(startCompare,2000)
+  setTimeout(getsubmissions,3000)
+  setTimeout(getsubmissions2,4000)
   });
   
 }
