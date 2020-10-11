@@ -5,7 +5,7 @@ function codeblast_enter(username,room)
   const form = document.getElementById('chat-form');
   const chatMessages = document.querySelector('.chat-messages');
   const socket = io();
-  var load_kkk = document.querySelector('.load-kro2');
+  var load_kkk = document.querySelector('.loader12345');
   
   
   
@@ -18,7 +18,7 @@ function codeblast_enter(username,room)
   document.querySelector('.leave_pls').addEventListener('click',(e)=>{
     e.preventDefault();
     socket.emit('disconnect');
-    dashboard(username);
+    window.location="https://gameofcodes.herokuapp.com";
   })
 
   socket.emit('joinRoom', { username, room });
@@ -159,7 +159,7 @@ function codeblast_enter(username,room)
             </div>`;
       document.body.appendChild(div);
       var two_hours = 2*60*60,
-      display = document.querySelector(".timer");
+      display = document.querySelector(".timer22");
       startTimer(two_hours, display,problems);
   
   }

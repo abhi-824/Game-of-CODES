@@ -49,7 +49,7 @@ io.on('connection', (socket) => {
 		}
 	});
 
-	socket.on('ready', ({ username, room }) => {
+	socket.on('ready', ({ username, room }) => {	
 		const user = make_ready(socket.id, username, room, 1);
 		const users = getRoomUsers(room);
 		if (allready()) {
@@ -103,7 +103,7 @@ io.on('connection', (socket) => {
 						'-' +
 						jsdata2.result.problems[i].index;
 					if (
-						jsdata2.result.problems[i].rating > 1300 &&
+						jsdata2.result.problems[i].rating > 1400 &&
 						jsdata2.result.problems[i].rating <= 1700 &&
 						solved.has(str) === false
 					) {
@@ -119,7 +119,7 @@ io.on('connection', (socket) => {
 						'-' +
 						jsdata2.result.problems[i].index;
 					if (
-						jsdata2.result.problems[i].rating > 1600 &&
+						jsdata2.result.problems[i].rating > 1700 &&
 						jsdata2.result.problems[i].rating <= 2000 &&
 						solved.has(str) === false
 					) {

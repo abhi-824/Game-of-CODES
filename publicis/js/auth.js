@@ -63,7 +63,7 @@ signupform.addEventListener('submit', (e) => {
 					signupform.reset();
 				})
 				.catch(function (error) {
-					alert(error.errorMessage);
+					alert(error);
 					display_error();
 				});
 		}
@@ -91,7 +91,7 @@ forgotform.addEventListener('submit', (e) => {
 		})
 		.catch(function (error) {
 			display_error();
-			alert(error.errorMessage);
+			alert(error);
 			// An error happened.
 		});
 });
@@ -111,7 +111,7 @@ loginForm.addEventListener('submit', (e) => {
 		})
 		.catch(function (error) {
 			display_error();
-			alert(error.errorMessage);
+			alert(error);
 		});
 });
 

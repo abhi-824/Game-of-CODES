@@ -275,6 +275,16 @@ table tr {
   font-size:3rem;
   padding:0.3rem 1rem;
 }
+
+.timer22{
+  position: absolute;
+  bottom:0;
+  align-items: center;
+  justify-content: center;
+  background:rgb(23, 10, 56);
+  font-size:3rem;
+  padding:0.3rem 1rem;
+}
 .contest-time{
   display:grid;
   grid-template-columns: 1fr 0.2fr;
