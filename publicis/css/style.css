@@ -18,7 +18,7 @@ body {
 .table_row a{
   color:#333;
   background: #fff;
-  text-align: center;  
+  text-align: center;
   align-items: center;
   padding:0.4rem 0.5rem;
   border-radius: 20px;;
@@ -134,7 +134,7 @@ a {
 }
 
 .container411 {
-  
+
   background: url("../resources/backgrounds/jonathan-borba-zfPOelmDc-M-unsplash.jpg")
     no-repeat center center/cover;
   background-attachment: fixed;
@@ -144,7 +144,7 @@ a {
   background: url("../resources/backgrounds/car_black.jpg")
     no-repeat center center/cover;
   background-attachment: fixed;
-  height: 200vh;
+  height: 410vh;
 }
 .container2 {
   position: absolute;
@@ -179,7 +179,7 @@ a {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 200vh;
+  height: 410vh;
   background-color: rgba(0, 0, 0, 0.7);
 }
 .container8 {
@@ -318,12 +318,30 @@ table tr {
   grid-template-columns: 2fr 1fr;
   align-items: center;
 }
-.weak_topics,
-.strong_topics {
+.weak_topics_comp,
+.strong_topics_comp {
   overflow: scroll;
   overflow-x: hidden;
+  width: 100%;
   /* z-index:100; */
 }
+
+.user1 {
+  padding: 0 1rem;
+}
+
+.users {
+  display: flex;
+  padding: 0 0.4rem;
+}
+
+.handle1,
+.handle2,
+.handle_1,
+.handle_2 {
+  font-size: 1.5rem;
+}
+
 .line {
   /* display:inline-block; */
   width: 140px;
@@ -600,7 +618,7 @@ a:hover {
   left: 58px;
   top: 102px;
   /*background: url(../resources/icons/Rect10.png);*/
-  
+
 }
 
 .statistics {
@@ -703,7 +721,7 @@ a:hover {
   padding:0.2rem 0.5rem;
   border-radius: 20px;
   border:0px;
-  color:#fff; 
+  color:#fff;
 }
 .target-yaar{
   padding:0.5rem 1rem;
@@ -856,7 +874,7 @@ a:hover {
 	0%{
 		transform: translateX(-100%);
 	}
-	
+
 	100%{
 		transform: translateX(100%);
 	}
@@ -878,7 +896,7 @@ a:hover {
 	0%{
 		transform: translateY(-100%);
 	}
-	
+
 	100%{
 		transform: translateY(100%);
 	}
@@ -892,7 +910,7 @@ a span:nth-child(3)
 	height:2px;
 	background:linear-gradient(to left, #0c002b,#ffe817);
 	animation: animate3 2s linear infinite;
-	
+
 
 }
 
@@ -901,7 +919,7 @@ a span:nth-child(3)
 	0%{
 		transform: translateX(100%);
 	}
-	
+
 	100%{
 		transform: translateX(-100%);
 	}
@@ -915,7 +933,7 @@ a span:nth-child(4)
 	height:100%;
 	background:linear-gradient(to top, #0c002b,#ffe817);
 	animation: animate4 2s linear infinite;
-	
+
 	animation-delay: 1s;
 
 }
@@ -924,7 +942,7 @@ a span:nth-child(4)
 	0%{
 		transform: translateY(100%);
 	}
-	
+
 	100%{
 		transform: translateY(-100%);
 	}
