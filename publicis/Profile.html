@@ -46,7 +46,7 @@
     <script
       type="text/javascript"
       src="https://www.gstatic.com/charts/loader.js"
-    ></script>  
+    ></script>
     <!-- <link rel="stylesheet" href="css/style.css">> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -69,7 +69,7 @@
       <nav class="navbar navbar-expand-lg navbar-dark bg-transparent ">
         <!-- <a class="navbar-brand logo" href="#">
           <h1 class="inner">GAME OF CODES</h1>
-          
+
           <img src="resources/logo/logo_light.png" alt="" />
         </a> -->
         <div class="hamburger">
@@ -92,7 +92,7 @@
           <li class="nav-item">
             <a class="nav-link" href="compare.html" id="compare1">Compare</a>
           </li>
-          
+
           <li class="nav-item">
             <a href="">
               <div class="dropdown1">
@@ -102,7 +102,7 @@
               <a class="nav-link" href="sorting_vis.html" id="sorting_vis">Sorting Visualiser</a>
               <a class="nav-link" href="grid_vis.html" id="grid_vis">Grid Visualiser</a>
             </div>
-          </div> 
+          </div>
             </a>
 
           </li>
@@ -122,13 +122,13 @@
                   <a class="nav-link" href="training_zone_level_wise.html" id="level_wise">Level Wise</a>
 
                 </div>
-              </div> 
+              </div>
             </a>
           </li>
           <li class="user_avatar nav-item"></li>
-          
+
         </ul>
-      
+
         <input
           class="form-control outer hidden search_kro"
           type="search"
@@ -143,26 +143,24 @@
         <!-- </div> -->
       </nav>
       <!-- container -->
-      <div class="container" style="padding-top: 1.5rem;">
-        <div class="row">
-          <div class="column-1 col-4">
-            <img class="Profile-Photo" style=" border-radius:50%;" src="" alt="Profile Photo" width="300" height="380">
-            <h3 style="padding: 2.5rem 3.75rem 0 0; text-align: center;" class="username">USERNAME</h3>
-            <h4 style="padding: 2.5rem 3.75rem 0 0; text-align: center;" id="userstatistics"><a href="profile_user_stats.html">User Statistics</a></h4>
+      <div style="overflow: auto;" id="main-content">
+        <div class="container-fluid" id="1main-content" style="overflow: auto; margin-top: 50px;" align="center">
+          <div class="superheroimg"><img id="profile-photo" src="">
+          </div>
+          <div class="statistics">
+            <div class="stat" id="cur_rating">CURRENT RATING: </div>
+            <div class="stat" id="cur_rank">CURRENT RANK: </div>
+            <div class="stat" id="max_rating">BEST RATING: </div>
+            <div class="stat" id="max_rank">BEST RANK: </div>
+            <div class="stat" id="acc_rate">ACCURACY RATE: </div>
+            <div class="stat" id="submissions">SUBMISSIONS: </div>
+            <div class="stat" id="matches_won">MATCHES WON: </div>
           </div>
         </div>
 
-        <!-- <div class="column-2 col-4">
-            <h3><strong>Check Your Progress!</strong></h3>
-            <br> -->
-
-
-        <div style="padding-left:100px; float: right;" class="recent-contests">
-          <h3 style="padding-top: 2rem;"><strong>Recent Contests</strong></h3>
-          <ul id="recent-contests">
-          </ul>
+        <div class="container-fluid">
+          <div class="username" id="username"><a href="#">USERNAME</a></div>
         </div>
-        <!--<div class="hidden col-4" id="myChart4" style="height: 400px; width: 90%;"></div>-->
       </div>
 
       <div id="myChart1" style="height: 500px; width: 80%; margin: 0 auto; padding-top: 50px;"></div>
@@ -181,49 +179,39 @@
       <br>
       <br>
 
-      <div style="padding-left:100px; float: right;">
-        <h3 style="padding-top: 2rem;" class="recent-contests"><strong>Weak Topics</strong></h3>
+      <div id="myChart4" style="height: 500px; width: 80%; margin: 0 auto; padding-top: 50px;"></div>
+      <div style="padding-top: 50px;" align="center">Problem-Rating-Wise Correct Submissions</div>
+      <br>
+      <br>
+
+      <div class="topic_pro">
+        <div class="weak_pro daily-mix">
+          <h1>Weak Topics</h1>
+          <div class="linepro">
+            <table class="weak_top_pro">
+            </table>
+          </div>
+        </div>
+        <div class="strong_pro daily-mix">
+          <h1>Strong Topics</h1>
+          <div class="linepro">
+            <table class="strong_top_pro">
+            </table>
+          </div>
+        </div>
       </div>
-      <div style="padding-left:100px; float: left;">
-        <h3 style="padding-top: 2rem;" class="recent-contests"><strong>Strong Topics</strong></h3>
-      </div>
-
-      <!--<button type="button" id="mybtn4" class="btn btn-dark text-left btn-sm" >
->>>>>>> ba32d89dab76d9dce624054179b540806ac58492
-              4. Problem-Rating-Wise Accepted Submissions
-            </button>
-            <br>
-            <br>-->
-      <!-- <button id="hide-graph" type="button" class="btn btn-dark hidden text-left btn-sm">Hide Graph</button> -->
-
-
 
     </div>
   </div>
 
-    <!-- Footer
->>>>>>> ba32d89dab76d9dce624054179b540806ac58492
-      <div class="user-stats">
-        <div class="item1">
-          <h1 class="inactive-item">WEAK TOPICS</h1>
-        </div>
-        <div class="item2">
-          <h1 class="inactive-item">STRONG TOPICS</h1>
-        </div>
-        <div class="item3">
-          <h1 class="inactive-item">LADDERS</h1>
-        </div>
-        <div class="item4">
-          <h1 class="inactive-item">UNSOLVED MYSTERIES</h1>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
 
     <script src="js/profile.js"></script>
-    <!-- <script src="js/script.js"></script> -->
-    <!-- <script src="js/utils.js"></script>    -->
+
+</body>
+
+</html>
+
+    <script src="js/profile.js"></script>
 
 </body>
 
