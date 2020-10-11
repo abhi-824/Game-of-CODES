@@ -49,6 +49,10 @@
          ></script>
    </head>
    <style>
+      #youtube-icon{
+         width:30px;height:30px;
+         color:#fff;
+      }
       .google-sign-in img{
          width:40px;
          height:40px;
@@ -339,13 +343,15 @@
       }
    </style>
    <body>
-      <div class="loader12345">
+      
+           <div class="loader12345">
          <img loading="lazy" src="resources/logo/logo_light.png" class="latka" alt="">
       </div>
       <!-- For index page -->
       <div class="container11">
          <div class="container1112">
             
+         
             <div class="formms">
                <div class="disp_err hidden">
                   <p>Some error occured.(This was the most creative line we could think of)</p>
@@ -507,6 +513,11 @@
                      <button class="btn btn-elegant generateDailyMix">
                      Generate Daily Mix
                      </button>
+                     <div data-video="MCkTebktHVc"  
+                           data-autoplay="0"         
+                           data-loop="1"             
+                           id="youtube-audio"data-toggle="tooltip" data-placement="bottom" title="Play coding beats :)">
+                     </div>
                   </div>
                   <div class="daily-mix" id="futurecontest">
                      <h1>Future Contests</h1>
@@ -2179,5 +2190,8 @@
       <script src="public/js/main2.js"></script>
       <script src="js/events.js"></script>
       <script src="js/auth.js"></script>
+      <script src="https://www.youtube.com/iframe_api"></script>
+ <script src="https://cdn.rawgit.com/labnol/files/master/yt.js"></script>
+ 
    </body>
 </html>

@@ -63,6 +63,7 @@ signupform.addEventListener('submit', (e) => {
 					signupform.reset();
 				})
 				.catch(function (error) {
+					alert(error.errorMessage);
 					display_error();
 				});
 		}
@@ -90,6 +91,7 @@ forgotform.addEventListener('submit', (e) => {
 		})
 		.catch(function (error) {
 			display_error();
+			alert(error.errorMessage);
 			// An error happened.
 		});
 });
@@ -109,6 +111,7 @@ loginForm.addEventListener('submit', (e) => {
 		})
 		.catch(function (error) {
 			display_error();
+			alert(error.errorMessage);
 		});
 });
 
@@ -122,21 +125,21 @@ function display_error() {
 document.querySelector('.google-sign-in').addEventListener('click', (e) => {
 	var provider = new firebase.auth.GoogleAuthProvider();
 	firebase
-	.auth()
-	.signInWithPopup(provider)
-	.then(function (result) {
-		// This gives you a Google Access Token. You can use it to access the Google API.
-		var token = result.credential.accessToken;
-		// The signed-in user info.
-		var user = result.user;
-		// ...
+		.auth()
+		.signInWithPopup(provider)
+		.then(function (result) {
+			// This gives you a Google Access Token. You can use it to access the Google API.
+			var token = result.credential.accessToken;
+			// The signed-in user info.
+			var user = result.user;
+			// ...
 		})
 		.catch(function (error) {
-		console.log("hell")
+			console.log('hell');
 			// Handle Errors here.
 			var errorCode = error.code;
 			var errorMessage = error.message;
-			alert(errorMessage)
+			alert(errorMessage);
 			// The email of the user's account used.
 			var email = error.email;
 			// The firebase.auth.AuthCredential type that was used.

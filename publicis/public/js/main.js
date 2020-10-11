@@ -17,6 +17,7 @@ function codeblast_enter(username,room)
   
   document.querySelector('.leave_pls').addEventListener('click',(e)=>{
     e.preventDefault();
+    socket.emit('disconnect');
     dashboard(username);
   })
 
