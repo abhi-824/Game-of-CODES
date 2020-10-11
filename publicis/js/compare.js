@@ -1,6 +1,5 @@
 function  compare_final(handle_name,handle_name2){
 
-
   let user_submissions;
   let weak_topics = document.querySelector(".weak_topics_comp");
   let no_of_success;
