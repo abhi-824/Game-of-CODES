@@ -1916,51 +1916,61 @@
                <!-- </div> -->
             </nav>
             <!-- container -->
-            <div class="container problkem_set_tera" style="padding-top: 1.5rem;">
-               <div class="row">
-                  <div class="column-1 col-4">
-                     <img loading="lazy" class="Profile-Photo" style=" border-radius:50%;" src="" alt="Profile Photo" width="300" height="380">
-                     <h3 style="padding: 2.5rem 3.75rem 0 0; text-align: center;" class="username">USERNAME</h3>
-                     <h4 style="padding: 2.5rem 3.75rem 0 0; text-align: center;" id="userstatistics"><a href="profile_user_stats.html">User Statistics</a></h4>
-                  </div>
-               </div>
-               <!-- <div class="column-2 col-4">
-                  <h3><strong>Check Your Progress!</strong></h3>
-                  <br> -->
-               <div style="padding-left:100px; float: right;" class="recent-contests">
-                  <h3 style="padding-top: 2rem;"><strong>Recent Contests</strong></h3>
-                  <ul id="recent-contests">
-                  </ul>
-               </div>
-               <!--<div class="hidden col-4" id="myChart4" style="height: 400px; width: 90%;"></div>-->
-            </div>
-            <div id="myChart1" style="height: 500px; width: 80%; margin: 0 auto; padding-top: 50px;"></div>
-            <div style="padding-top: 50px;" class="charttitle" align="center">Rating Change Over Time</div>
-            <br>
-            <br>
-            <div id="myChart3" style="height: 500px; width: 80%; margin: 0 auto; padding-top: 50px;"></div>
-            <div style="padding-top: 50px;" class="charttitle" align="center">Problem-Rating-Wise All Submissions</div>
-            <br>
-            <br>
-            <div id="myChart2" style="height: 500px; width: 80%; margin: 0 auto; padding-top: 50px;"></div>
-            <div style="padding-top: 50px;" align="center">All Submissions Final Verdict</div>
-            <br>
-            <br>
-            <div style="padding-left:100px; float: right;">
-               <h3 style="padding-top: 2rem;" class="recent-contests"><strong>Weak Topics</strong></h3>
-            </div>
-            <div style="padding-left:100px; float: left;">
-               <h3 style="padding-top: 2rem;" class="recent-contests"><strong>Strong Topics</strong></h3>
-            </div>
-            <!--<button type="button" id="mybtn4" class="btn btn-dark text-left btn-sm" >
-               >>>>>>> ba32d89dab76d9dce624054179b540806ac58492
-               			  4. Problem-Rating-Wise Accepted Submissions
-               			</button>
-               			<br>
-               			<br>-->
-            <!-- <button id="hide-graph" type="button" class="btn btn-dark hidden text-left btn-sm">Hide Graph</button> -->
-         </div>
+            <div style="overflow: auto;" id="main-content">
+        <div class="container-fluid" id="1main-content" style="overflow: auto; margin-top: 50px;" align="center">
+          <div class="superheroimg"><img id="profile-photo" src="">
+          </div>
+          <div class="statistics">
+            <div class="stat" id="cur_rating">CURRENT RATING: </div>
+            <div class="stat" id="cur_rank">CURRENT RANK: </div>
+            <div class="stat" id="max_rating">BEST RATING: </div>
+            <div class="stat" id="max_rank">BEST RANK: </div>
+            <div class="stat" id="acc_rate">ACCURACY RATE: </div>
+            <div class="stat" id="submissions">SUBMISSIONS: </div>
+            <div class="stat" id="matches_won">MATCHES WON: </div>
+          </div>
+        </div>
+
+        <div class="container-fluid">
+          <div class="username" id="username"><a href="#">USERNAME</a></div>
+        </div>
       </div>
+
+      <div id="myChart1" style="height: 500px; width: 80%; margin: 0 auto; padding-top: 50px;"></div>
+      <div style="padding-top: 50px;" class="charttitle" align="center">Rating Change Over Time</div>
+      <br>
+      <br>
+      <div id="myChart3" style="height: 500px; width: 80%; margin: 0 auto; padding-top: 50px;"></div>
+      <div style="padding-top: 50px;" class="charttitle" align="center">Problem-Rating-Wise All Submissions</div>
+      <br>
+      <br>
+      <div id="myChart2" style="height: 500px; width: 80%; margin: 0 auto; padding-top: 50px;"></div>
+      <div style="padding-top: 50px;" align="center">All Submissions Final Verdict</div>
+      <br>
+      <br>
+      <div id="myChart4" style="height: 500px; width: 80%; margin: 0 auto; padding-top: 50px;"></div>
+      <div style="padding-top: 50px;" align="center">Problem-Rating-Wise Correct Submissions</div>
+      <br>
+      <br>
+
+      <div class="topic_pro">
+        <div class="weak_pro daily-mix">
+          <h1>Weak Topics</h1>
+          <div class="linepro">
+            <table class="weak_top_pro">
+            </table>
+          </div>
+        </div>
+        <div class="strong_pro daily-mix">
+          <h1>Strong Topics</h1>
+          <div class="linepro">
+            <table class="strong_top_pro">
+            </div>
+            </table>
+        </div>
+      </div>
+    </div>
+  </div>
       <!-- for codeblast -->
       <div class="container3 hidden">
          <div class="container2a">
