@@ -327,6 +327,21 @@ table tr {
   /* z-index:100; */
 }
 
+.weak_pro,
+.strong_pro {
+  overflow: scroll;
+  overflow-x: hidden;
+  width: 550px;
+  /* z-index:100; */
+}
+
+.topic_pro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
 .user1 {
   padding: 0 1rem;
 }
@@ -341,6 +356,13 @@ table tr {
 .handle_1,
 .handle_2 {
   font-size: 1.5rem;
+}
+
+.linepro {
+  /* display:inline-block; */
+  width: 140px;
+  height: 2px;
+  margin: 0;
 }
 
 .line {
@@ -402,27 +424,6 @@ table tr {
   height: auto;
   box-sizing: border-box;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-/* .item1:hover, .item2:hover, .item3:hover, .item4:hover {
-  /* transform: scale(1.5); */
-/* } */
-
-.Profile-Photo:hover {
-  transform: scale(1.2);
-}
-
-.recent-contests {
-  width: 430px;
-  height: 300px;
-  background: rgba(20, 20, 20, 0.47);
-  border-radius: 35px;
-  margin-right: 3rem;
-  margin-bottom: 70px;
-}
-
-.recent-contests ul{
-  font-size: 24px;
 }
 
 .modal-dialog {
@@ -623,7 +624,7 @@ a:hover {
 }
 
 .statistics {
-  background-color: rgba(109, 83, 83, 0.48);
+  background-color: #21252987;
   width: 60%;
   /*height: 500px;*/
   float: right;
@@ -632,13 +633,13 @@ a:hover {
 }
 
 .stat {
-  height: 47px;
+  height: 30px;
   background-color: #c4c4c4;
   margin-top: 20px;
   margin-bottom: 20px;
   color: black;
   padding: 5px;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .heatmap {
@@ -661,8 +662,8 @@ a:hover {
 
 #profile-photo {
   margin-top: 30px;
-  height: 350px;
-  width: 200px;
+  height: 400px;
+  width: 300px;
   border-radius: 150px;
   border: 1px solid white;
 }
