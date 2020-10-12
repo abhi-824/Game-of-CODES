@@ -23,11 +23,7 @@ auth.onAuthStateChanged((user) => {
 			});
 	} else {
 		console.log('user logged out');
-		document.querySelector('.loader12345').classList.add('disapper');
-
-		document.querySelector('.container11').classList.remove('hidden');
-		document.querySelector('.container4').classList.add('hidden');
-		document.querySelector('.container1').classList.add('hidden');
+		show_screen(index_screen);
 	}
 });
 
