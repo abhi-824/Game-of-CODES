@@ -26,5 +26,11 @@ function show_screen(some_screen) {
 	codeblast_screen.classList.add('hidden');
 	codeblast_screen2.classList.add('hidden');
 
-	some_screen.classList.remove('hidden');
+	document.querySelector('.loader12345').classList.remove("hidden")
+	document.querySelector('.loader12345').classList.remove("disapper");
+
+	setTimeout(()=>{
+		document.querySelector('.loader12345').classList.add("disapper");
+		some_screen.classList.remove('hidden');
+	},600);
 }
