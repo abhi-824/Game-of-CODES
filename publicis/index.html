@@ -49,6 +49,15 @@
          ></script>
    </head>
    <style>
+      /* .ask_handle{
+         position: absolute;
+         display: flex;
+         flex-direction: column;
+         grid-gap: 2rem;
+         justify-content: center;
+         align-items: center;
+         top:40%;
+      } */
       #youtube-icon{
       width:30px;height:30px;
       color:#fff;
@@ -346,7 +355,7 @@
                </div>
                <div class="welcome-msg">
                   <h1>Hey, Ready to Rock?</h1>
-                  <h4> <a href="#" class="login_btnnn"> Log in</a> or <a href="#" class="signup_btnnn"> Sign up</a></h4>
+                  <h4 class="wah"> <a href="#" class="login_btnnn"> Log in</a> or <a href="#" class="signup_btnnn"> Sign up</a></h4>
                </div>
                <div class="form_show">
                   <form action="#" id="signup-form" class="hidden formdd">
@@ -370,6 +379,13 @@
                   <div class="after-forgot hidden formdd">
                      <p>A verification mail has been sent to your email. Check it buddy</p>
                      <button class="back-login">Back to login</button>
+                  </div>
+                  <div class="ask_handle formdd hidden">
+                     <h2>Enter Codeforces handle</h2>
+                     <form action="">
+                        <input type="text" class="ask_handle_val" placeholder="Enter codeforces handle">
+                        <button class="ask-handle-submit" type="submit">Submit</button>
+                     </form>
                   </div>
                </div>
             </div>
@@ -892,6 +908,8 @@
             </div>
          </div>
       </div>
+      <!-- Ask handle -->
+      
       <!-- For topic wise -->
       <div class="container411 hidden">
          <div class="container2">

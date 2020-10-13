@@ -16,10 +16,15 @@ auth.onAuthStateChanged((user) => {
 						console.log(handle);
 					}
 				});
-				document.querySelector('.container11').classList.add('hidden');
-				document.querySelector('.container1').classList.remove('hidden');
-				document.querySelector('.loader12345').classList.add('disapper');
-				dashboard(handle);
+				if (!handle) {
+					document.querySelector('.loader12345').classList.add('disapper');
+					ask_fr_handle(user);
+				} else {
+					document.querySelector('.container11').classList.add('hidden');
+					document.querySelector('.container1').classList.remove('hidden');
+					document.querySelector('.loader12345').classList.add('disapper');
+					dashboard(handle);
+				}
 			});
 	} else {
 		console.log('user logged out');
@@ -144,3 +149,41 @@ document.querySelector('.google-sign-in').addEventListener('click', (e) => {
 		});
 	e.preventDefault();
 });
+
+function ask_fr_handle(user) {
+	document.querySelector('.ask_handle').classList.remove('hidden');
+	document.querySelector('#signup-form').classList.add('hidden');
+            document.querySelector('.wah').classList.add('hidden');
+            document.querySelector('#login-form').classList.add('hidden');
+            document.querySelector('#forgot').classList.add('hidden');
+            document.querySelector('.after-forgot').classList.add('hidden');
+	document
+		.querySelector('.ask-handle-submit')
+		.addEventListener('click', (e) => {
+			document.querySelector('.loader12345').classList.remove('disapper');
+			document.querySelector('.loader12345').classList.remove('hidden');
+			e.preventDefault();
+			let handle_val = document.querySelector('.ask_handle_val').value;
+			async function find_use2r() {
+				let modified_url =
+					'https://codeforces.com/api/user.info?handles=' + handle_val;
+				const jsondata = await fetch(modified_url);
+				const jsdata = await jsondata.json();
+				if (jsdata.status === 'FAILED') {
+					display_error();
+				} else {
+					db.collection('handles').add({
+						email: user.email,
+						handle: handle_val,
+						target: 16000,
+					});
+
+					document.querySelector('.loader12345').classList.add('disapper');
+					document.querySelector('.ask_handle').classList.add('hidden');
+
+					dashboard(handle_val);
+				}
+			}
+			find_use2r();
+		});
+}
