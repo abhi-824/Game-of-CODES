@@ -2,6 +2,7 @@ let dashboard_nav = document.querySelectorAll('.dashboard');
 let compare_nav = document.querySelectorAll('.compare');
 let profile_nav = document.querySelectorAll('.profile');
 let codeblast_nav = document.querySelectorAll('.codeblast');
+let community_nav = document.querySelectorAll('.community');
 let topic_Wise_nav = document.querySelectorAll('.topic_wise');
 let level_wise_nav = document.querySelectorAll('.level_wise');
 let sorting_vis_nav = document.querySelectorAll('.sorting_vis_pls');
@@ -51,6 +52,13 @@ for (let i = 0; i < sorting_vis_nav.length; i++) {
 for (let i = 0; i < grid_vis_nav.length; i++) {
 	grid_vis_nav[i].addEventListener('click', function (e) {
 		grid_vis();
+		e.preventDefault();
+	});
+}
+
+for (let i = 0; i < community_nav.length; i++) {
+	community_nav[i].addEventListener('click', function (e) {
+		community();
 		e.preventDefault();
 	});
 }

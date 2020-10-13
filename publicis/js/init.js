@@ -11,6 +11,7 @@ let compare_screen2 = document.querySelector('.container111');
 let profile_screen = document.querySelector('.container1forprofile');
 let codeblast_screen = document.querySelector('.container3');
 let codeblast_screen2 = document.querySelector('.container2222');
+let community_screen=document.querySelector('.container900');
 
 function show_screen(some_screen) {
 	dashboard_screen.classList.add('hidden');
@@ -25,6 +26,8 @@ function show_screen(some_screen) {
 	profile_screen.classList.add('hidden');
 	codeblast_screen.classList.add('hidden');
 	codeblast_screen2.classList.add('hidden');
+	community_screen.classList.add('hidden');
+
 
 	document.querySelector('.loader12345').classList.remove("hidden")
 	document.querySelector('.loader12345').classList.remove("disapper");
