@@ -1208,7 +1208,7 @@ function dashboard(handle_name) {
 								for (let i = 0; i < curr_set.length; i++) {
 									let link = document.createElement('div');
 									let p = convert_to_link(`${curr_set[i][1]}`);
-									link.innerHTML = `<a href="${p}">Let's Do It</a>`;
+									link.innerHTML = `<a href="${p}" target="_blank">Let's Do It</a>`;
 									if (i == 0) {
 										document.querySelector('.problem-name-A').innerHTML =
 											curr_set[i][0];
@@ -1559,7 +1559,7 @@ function dashboard(handle_name) {
 			th1.innerHTML = unsolved_problems_array[i][1];
 			th3.innerHTML = `<a class="question" href="${convert_to_link(
 				unsolved_problems_array[i][1]
-			)}">Let's Do it</a>`;
+			)} target="_blank">Let's Do it</a>`;
 			tr.appendChild(th1);
 			tr.appendChild(th2);
 			tr.appendChild(th3);
