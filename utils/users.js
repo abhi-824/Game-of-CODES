@@ -13,12 +13,29 @@ function make_ready(id, username, room, state) {
 	user_states.push(user);
 	return user;
 }
-function allready() {
+function allready(room) {
 	// for(let i=0;i<user_states.length;i++)
 	// {
 	// console.log(users);
-	// console.log(user_states);
-	if (user_states.length === users.length) {
+	// console.log(user_states
+	let cnt=0;
+	let cnt2=0;
+	for(let i=0;i<user_states.length;i++)
+	{
+		if(user_states[i].room===room)
+		{
+			cnt++;
+		}
+	}
+	for(let i=0;i<users.length;i++)
+	{
+		if(users[i].room==room)
+		{
+			cnt2++;
+		}
+	}
+	console.log(cnt,room);
+	if (cnt === cnt2) {
 		return true;
 	}
 	// }

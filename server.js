@@ -52,7 +52,7 @@ io.on('connection', (socket) => {
 	socket.on('ready', ({ username, room }) => {	
 		const user = make_ready(socket.id, username, room, 1);
 		const users = getRoomUsers(room);
-		if (allready()) {
+		if (allready(room)) {
 			// giveProblems();
 			io.to(user.room).emit('start_loader', problems);
 			async function getFinal() {
