@@ -19,29 +19,38 @@ function codeblast_enter(username, room) {
 
 	socket.emit('joinRoom', { username, room });
 
-	socket.on('le_result', (results_jo) => {
+	socket.on('le_result', (results_jo,user_list,index) => {
 		load_kkk.classList.add('disapper');
 		let table = document.createElement('table');
 		let tr = document.createElement('tr');
 		let td = document.createElement('td');
-		td.innerHTML = `${username}`;
-		tr.appendChild(td);
-		let ch = 'A';
-		for (let i = 0; i < results_jo.length; i++) {
-			// let th=document.createElement("th");
-			// th.innerHTML=ch;
-			ch++;
+		let i=0;
+		// for(let i=0;i<user_list.length;i++)
+		// {
 
-			let j;
-			if (results_jo[i]) {
-				j = 'Correct';
-			} else {
-				j = 'Incorrect';
-			}
-			td.innerHTML = j;
+			td.innerHTML = `${user_list[index].username}`;
 			tr.appendChild(td);
-		}
-		table.appendChild(tr);
+	
+			console.log(tr);
+			let ch = 'A';
+			for (let i = 0; i < results_jo.length; i++) {
+				// let th=document.createElement("th");
+				// th.innerHTML=ch;
+				ch++;
+				let td2 = document.createElement('td');
+	
+				let j;
+				if (results_jo[i]) {
+					j = 'Correct';
+				} else {
+					j = 'Incorrect';
+				}
+				td2.innerHTML = j;
+				tr.appendChild(td2);
+			}
+			table.appendChild(tr);
+		// }
+		table.classList="table";
 		document.body.appendChild(table);
 		load_kkk.classList.add('disapper');
 	});
@@ -159,7 +168,7 @@ function codeblast_enter(username, room) {
               </div>
             </div>`;
 		document.body.appendChild(div);
-		var two_hours = 2 * 60 * 60,
+		var two_hours = 10,
 			display = document.querySelector('.timer22');
 		startTimer(two_hours, display, problems);
 	}
