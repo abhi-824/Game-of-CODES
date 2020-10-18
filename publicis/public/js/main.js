@@ -168,7 +168,7 @@ function codeblast_enter(username, room) {
               </div>
             </div>`;
 		document.body.appendChild(div);
-		var two_hours = 10,
+		var two_hours = 90*60,
 			display = document.querySelector('.timer22');
 		startTimer(two_hours, display, problems);
 	}
