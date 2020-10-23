@@ -62,7 +62,7 @@ a {
 .containerForRoadmap {
   background: url("../resources/stones/backgrounds/307625.jpg") no-repeat center/cover;
   background-attachment: fixed;
-  height: 200vh;
+  height: 100vh;
 }
 
 
@@ -171,16 +171,6 @@ a {
   bottom: 0;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.6);
-}
-
-.containerOverlayForRoadmap {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 200vh;
-  background-color: rgba(0, 0, 0, 0.349);
 }
 .container901 {
   position: absolute;
@@ -940,8 +930,6 @@ a span:nth-child(3)
 	height:2px;
 	background:linear-gradient(to left, #0c002b,#ffe817);
 	animation: animate3 2s linear infinite;
-
-
 }
 
 @keyframes animate3
@@ -963,9 +951,7 @@ a span:nth-child(4)
 	height:100%;
 	background:linear-gradient(to top, #0c002b,#ffe817);
 	animation: animate4 2s linear infinite;
-
 	animation-delay: 1s;
-
 }
 @keyframes animate4
 {
@@ -1014,108 +1000,64 @@ color:#fff;
   left:0;
   bottom:0;
 }
-.logo_roadmap{
-  position: absolute;
-  right:0;
-  top:-2%;
-  height:150px;
+.content2 {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	padding: 2rem;
+}
+.content2 .card {
+	position: relative;
+	max-width: 300px;
+	height: 215px;
+	/* background: #d9c6c6; */
+	/* background: #ccd5cf; */
+	margin: 30px 10px;
+	padding: 20px 15px;
+	display: flex;
+	flex-direction: column;
+	border-radius: 10px;
+	box-shadow: 0 5px 202px rgba(0, 0, 0, 0.5);
+	transition: 0.4s ease-in-out;
+}
+.content2 .card:hover {
+	height: 460px;
+}
+.content2 .card .imgBx {
+	position: relative;
+	/* width: 260px; */
+	/* height: 260px; */
+	left: 20%;
+	z-index: 1;
+	/* box-shadow: 0 5px 202px rgba(0, 0, 0, 0.2); */
+}
+.content2 .card .imgBx img {
+	max-width: 100%;
+	border-radius: 5px;
+}
+
+.content2 .card .content {
+	position: relative;
+	margin-top: -140px;
+	padding: 10px 15px;
+	text-align: center;
+	color: #111;
+	visibility: hidden;
+	opacity: 0;
+	transition: 0.3s ease-in-out;
+}
+.content2 .card:hover .content {
+	visibility: visible;
+	opacity: 1;
+	margin-top: -40px;
+	transition-delay: 0.3s;
 }
 .headingRoadmap{
-  text-align: center;
-   padding:10px 200px;
+    display: flex;    
 }
-.stones{
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  grid-template-columns: repeat(auto-fit,minmax(350px,1fr));
-  grid-gap:15px;
-  margin: 0 auto;
-
-}
-.cardforstones{
-  position: relative;
-  width: 300px;
-  color:#333;
-  height: 400px;
-  margin: 0 auto;
-  background:#fff;
-  box-shadow: 0 15px 60px rgba(255, 255, 255, 0.5);
-}
-.cardforstones .facefs{
-  position: absolute;
-  bottom:0;
-  left:0;
-  width:100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.cardforstones .facefs.f1{
-  box-sizing: border-box;
-  padding:20px;
-}
-.cardforstones .facefs.f1 h2{
-  margin: 0;
-  padding: 0;
-
-}
-
-.cardforstones .facefs.f2{
-  background: #111; 
-  transition: 0.5s; 
-}
-
-.cardforstones:nth-child(1) .facefs.f2{
-  /* background: url('../resources/stones/mind.png') no-repeat cne; */
-  
-background: linear-gradient(90deg, rgba(181,24,187,1) 0%, rgba(92,19,91,1) 51%, rgba(191,75,195,1) 100%);
-}
-.cardforstones:nth-child(6) .facefs.f2{
-  /* background: url('../resources/stones/mind.png') no-repeat cne; */
-  background: linear-gradient(90deg, rgba(130,93,60,1) 0%, rgba(205,193,28,1) 51%, rgba(142,96,54,1) 100%);
-}
-
-
-.cardforstones:nth-child(2) .facefs.f2{
-  /* background: url('../resources/stones/mind.png') no-repeat cne; */
-  background: linear-gradient(90deg, rgba(127,60,130,1) 0%, rgba(28,33,205,1) 51%, rgba(139,54,142,1) 100%);
-}
-
-.cardforstones:nth-child(3) .facefs.f2{
-  /* background: url('../resources/stones/mind.png') no-repeat cne; */
-  
-background: linear-gradient(90deg, rgba(187,24,24,1) 0%, rgba(92,19,19,1) 51%, rgba(195,75,75,1) 100%);}
-
-.cardforstones:nth-child(4) .facefs.f2{
-  /* background: url('../resources/stones/mind.png') no-repeat cne; */
-  
-background: linear-gradient(90deg, rgba(48,187,24,1) 0%, rgba(25,92,19,1) 51%, rgba(75,195,86,1) 100%);}
-
-.cardforstones:nth-child(5) .facefs.f2{
-  /* background: url('../resources/stones/mind.png') no-repeat cne; */
-  
-background: linear-gradient(90deg, rgba(105,39,49,1) 0%, rgba(251,84,84,1) 51%, rgba(92,33,33,1) 100%);}
-.cardforstones .facefs.f2:before{
-  content: '';
-  position: absolute;
-  top:0;
-  left: 0;
-  width: 50%;
-  height:100%;
-  background: rgba(255,255,255,0.1);
-}
-.cardforstones:hover .facefs.f2{
-  height:60px;    
-  border-radius: 40px 40px 0 0;
-}
-.cardforstones .facefs.f2 h2{
-  margin: 0%;
-  padding: 0%;
-  color:#fff;
-  transition: 0.5s;
-}
-.cardforstones:hover .facefs.f2 h2{
-  font-size: 1.4em;;
+.logo_roadmap{
+    width:70px;
+    height:70px;
 }
