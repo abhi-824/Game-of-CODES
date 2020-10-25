@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Nova+Square&family=Philosopher&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 body {
   font-family: "Nova Square", sans-serif;
   font-size:1rem;
@@ -1040,7 +1041,7 @@ color:#fff;
   height: 400px;
   margin: 0 auto;
   background:#fff;
-  box-shadow: 0 15px 60px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 15px 60px rgba(60, 32, 221, 0.5);
 }
 .cardforstones .facefs{
   position: absolute;
@@ -1052,6 +1053,7 @@ color:#fff;
   justify-content: center;
   align-items: center;
 }
+
 .cardforstones .facefs.f1{
   box-sizing: border-box;
   padding:20px;
@@ -1118,4 +1120,98 @@ background: linear-gradient(90deg, rgba(105,39,49,1) 0%, rgba(251,84,84,1) 51%, 
 }
 .cardforstones:hover .facefs.f2 h2{
   font-size: 1.4em;;
+}
+
+.try2{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  grid-gap:1rem;
+}
+.rotate {
+  height:170px;
+  animation: rotation 30s infinite linear;
+  border-radius: 50%;
+}
+.power
+{
+  box-shadow: 0 4px 8px 0 rgba(250, 1, 237, 0.2), 0 6px 20px 0 rgba(255, 0, 221, 0.19);
+}
+.time{
+  box-shadow: 0 4px 8px 0 rgba(1, 250, 13, 0.2), 0 6px 20px 0 rgba(0, 255, 34, 0.19);
+
+}
+.space{
+  box-shadow: 0 4px 8px 0 rgba(1, 26, 250, 0.2), 0 6px 20px 0 rgba(25, 0, 255, 0.19);
+
+}
+.mind{
+  box-shadow: 0 4px 8px 0 rgba(204, 250, 1, 0.2), 0 6px 20px 0 rgba(166, 255, 0, 0.19);
+}
+.soul{
+  box-shadow: 0 4px 8px 0 rgba(250, 113, 1, 0.2), 0 6px 20px 0 rgba(255, 166, 0, 0.19);
+
+}
+.reality{
+  box-shadow: 0 4px 8px 0 rgba(250, 1, 1, 0.2), 0 6px 20px 0 rgba(255, 0, 0, 0.19);
+
+}
+.card_stones:nth-child(1){
+  background: rgba(175, 53, 179, 0.56);
+}
+
+.card_stones:nth-child(2){
+  background: rgba(61, 53, 179, 0.56);
+}
+
+.card_stones:nth-child(3){
+  background: rgba(179, 61, 53, 0.56);
+}
+
+.card_stones:nth-child(4){
+  background: rgba(179, 120, 53, 0.56);
+}
+
+.card_stones:nth-child(5){
+  background: rgba(53, 179, 59, 0.56);
+}
+
+.card_stones:nth-child(6){
+  background: rgba(179, 166, 53, 0.56);
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+.card_stones{
+  display: flex;
+  font-family:"Poppins";
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  width: 300px;
+  height: 476px;
+  background: rgba(179, 166, 53, 0.56);
+}
+.syl{
+  /* height:70px; */
+  text-align: center;
+  align-items: center;
+  background:rgba(0, 0, 0, 0.274);
+  padding:0.4rem 1rem;
+  margin:0.5rem;
+  display: flex;
+  justify-content: space-between;
+
+}
+.ekaurline{
+  height:32px;
+  background: rgba(0, 0, 0, 0.363);
+  width:10px;
 }
