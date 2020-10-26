@@ -63,7 +63,9 @@ a {
 .containerForRoadmap {
   background: url("../resources/stones/backgrounds/307625.jpg") no-repeat center/cover;
   background-attachment: fixed;
-  height: 200vh;
+  scroll-behavior: smooth;
+  overflow-y: hidden;
+  height: 100vh;
 }
 
 
@@ -180,7 +182,8 @@ a {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 200vh;
+  height: 100vh;
+  overflow: hidden;
   background-color: rgba(0, 0, 0, 0.349);
 }
 .container901 {
@@ -1000,7 +1003,7 @@ a span:nth-child(4)
 }
 .q1{
   position: relative;
-  width:100%;
+  width:100%; 
   height:100%;
   margin:1rem;
   padding:0.5rem;
@@ -1023,7 +1026,7 @@ color:#fff;
 }
 .headingRoadmap{
   text-align: center;
-   padding:10px 200px;
+   padding:40px 200px;
 }
 .stones{
   display: grid;
@@ -1214,4 +1217,31 @@ background: linear-gradient(90deg, rgba(105,39,49,1) 0%, rgba(251,84,84,1) 51%, 
   height:32px;
   background: rgba(0, 0, 0, 0.363);
   width:10px;
+}
+.intro_Card{
+  padding:40px;
+  position: absolute;
+  bottom:0vh;
+  /* width:400px; */
+  left:0;
+  right:0;
+  z-index: 10000;
+  display:flex;
+  justify-content: center;
+  align-items: flex-start;
+  background:#19212C;
+  border-radius: 10px;
+  /* background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(50,46,46,1) 52%, rgba(89,81,53,1) 100%);  */
+}
+.intro_Card img{
+  height:160px;
+}
+.intro_Card .content{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.intro_Card .btn{
+  width: 40%;
+  height: 100%;
 }
