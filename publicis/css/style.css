@@ -145,7 +145,7 @@ a {
   background: url("../resources/backgrounds/car_black.jpg")
     no-repeat center center/cover;
   background-attachment: fixed;
-  height: 410vh;
+  height: 540vh;
 }
 .container2 {
   position: absolute;
@@ -180,7 +180,7 @@ a {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 410vh;
+  height: 540vh;
   background-color: rgba(0, 0, 0, 0.7);
 }
 .container8 {
