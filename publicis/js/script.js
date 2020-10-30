@@ -7,7 +7,7 @@ function dashboard(handle_name) {
 	let user_submissions;
 	var load_kk = document.querySelector('.load-kro');
 	var load_kkk = document.querySelector('.load-kro2');
-	
+
 	let show_daily_mix = document.querySelector('.daily-btn');
 	let show_daily_mix2 = document.querySelector('.daily-btn2');
 	let daily_mix_contests = document.querySelector('.daily-mix');
@@ -405,7 +405,7 @@ function dashboard(handle_name) {
 							let p = convert_to_link(
 								`${curr_set[i].contestId}-${curr_set[i].index}`
 							);
-							link.innerHTML = `<a href="${p}">Let's Do It</a>`;
+							link.innerHTML = `<a href="${p}" target="_blank">Let's Do It</a>`;
 							if (i == 0) {
 								document.querySelector('.problem-name-1').innerHTML =
 									curr_set[i].name;
@@ -495,37 +495,42 @@ function dashboard(handle_name) {
 									curr_set = arr8;
 								}
 								let cnt = 0;
-								console.log(curr_set)
+								console.log(curr_set);
 								for (let j = 0; j < curr_set.length; j++) {
-									console.log(`${curr_set[j].contestId}-${curr_set[j].id}`,solved2.has(`${curr_set[j].contestId}-${curr_set[j].id}`))
-									if (solved2.has(`${curr_set[j].contestId}-${curr_set[j].index}`)) {
+									console.log(
+										`${curr_set[j].contestId}-${curr_set[j].id}`,
+										solved2.has(`${curr_set[j].contestId}-${curr_set[j].id}`)
+									);
+									if (
+										solved2.has(`${curr_set[j].contestId}-${curr_set[j].index}`)
+									) {
 										curr_set[j] = 0;
 										if (j === 0) {
-											console.log(curr_set)
+											console.log(curr_set);
 											document.querySelector(
 												'.problem-name-1'
 											).innerHTML = `Goto Next, You have done it.`;
 											document.querySelector('.link1').classList.add('hidden');
 										}
-	
+
 										if (j === 1) {
 											document.querySelector(
 												'.problem-name-2'
 											).innerHTML = `Goto Next, You have done it.`;
 											document.querySelector('.link2').classList.add('hidden');
 										}
-	
+
 										if (j === 2) {
 											document.querySelector(
 												'.problem-name-3'
 											).innerHTML = `Goto Next, You have done it.`;
 											document.querySelector('.link3').classList.add('hidden');
 										}
-	
+
 										cnt += 1;
 									}
 								}
-	
+
 								if (cnt == 3) {
 									if (i == 0) {
 										document.querySelector('.g_2').classList.add('hidden');
@@ -1363,7 +1368,7 @@ function dashboard(handle_name) {
 								}
 								let cnt = 0;
 								for (let j = 0; j < curr_set.length; j++) {
-									console.log(curr_set[j][1])
+									console.log(curr_set[j][1]);
 									if (solved2.has(curr_set[j][1])) {
 										curr_set[j][1] = 0;
 										if (j === 0) {
@@ -1372,28 +1377,28 @@ function dashboard(handle_name) {
 											).innerHTML = `Goto Next, You have done it.`;
 											document.querySelector('.linkA').classList.add('hidden');
 										}
-	
+
 										if (j === 1) {
 											document.querySelector(
 												'.problem-name-B'
 											).innerHTML = `Goto Next, You have done it.`;
 											document.querySelector('.linkB').classList.add('hidden');
 										}
-	
+
 										if (j === 2) {
 											document.querySelector(
 												'.problem-name-C'
 											).innerHTML = `Goto Next, You have done it.`;
 											document.querySelector('.linkC').classList.add('hidden');
 										}
-	
+
 										if (j === 3) {
 											document.querySelector(
 												'.problem-name-D'
 											).innerHTML = `Goto Next, You have done it.`;
 											document.querySelector('.linkD').classList.add('hidden');
 										}
-	
+
 										if (j === 4) {
 											document.querySelector(
 												'.problem-name-E'
@@ -1403,7 +1408,7 @@ function dashboard(handle_name) {
 										cnt += 1;
 									}
 								}
-	
+
 								if (cnt == 5) {
 									if (i == 0) {
 										document.querySelector('.g_2').classList.add('hidden');
@@ -1478,8 +1483,8 @@ function dashboard(handle_name) {
 						upsolved.push([it[1], str]);
 					}
 				}
-					upsolved.sort();
-		
+				upsolved.sort();
+
 				let table = document.querySelector('.problems');
 				for (let i = 0; i < upsolved.length; i++) {
 					let tr = document.createElement('tr');
@@ -1504,7 +1509,7 @@ function dashboard(handle_name) {
 					document.querySelector('.ask_perm').classList.add('bounceOutLeft');
 					e.preventDefault();
 				});
-		
+
 				document.querySelector('.no').addEventListener('click', function (e) {
 					document.querySelector('.ask_perm').classList.add('hidden');
 					//console.log("h");
@@ -1514,7 +1519,6 @@ function dashboard(handle_name) {
 			}
 		}, 1500);
 		// }
-
 	}
 
 	getUpsolved();
@@ -1754,6 +1758,7 @@ function dashboard(handle_name) {
 					const a = document.createElement('a');
 					a.textContent = 'Register';
 					a.href = link;
+					a.target="_blank";
 
 					let start_time = contest.startTimeSeconds * 1000;
 					let full_date = new Date(start_time);
@@ -1853,7 +1858,7 @@ function dashboard(handle_name) {
 	function startTarget(target) {
 		let target_bar = document.querySelector('.targetline');
 		setInterval(() => {
-			let currrent=0;
+			let currrent = 0;
 			async function getTargetandrock() {
 				let modified_url = url2 + handle_name;
 				const jsondata = await fetch(modified_url);
@@ -1883,11 +1888,10 @@ function dashboard(handle_name) {
 							currrent += jsdata.result[i].problem.rating;
 						}
 					}
-					
 				}
-				console.log(currrent);	
-				console.log(target_val)
-				let wid_gr = (100*currrent) / parseInt(target_val);
+				console.log(currrent);
+				console.log(target_val);
+				let wid_gr = (100 * currrent) / parseInt(target_val);
 				let target_line = document.querySelector('.targetline');
 				document.querySelector(
 					'.targetline'

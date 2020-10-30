@@ -72,7 +72,7 @@ a {
   background: url("../resources/stones/backgrounds/power.jpg") no-repeat center/cover;
   background-attachment: fixed;
   scroll-behavior: smooth;
-  overflow-y: hidden;
+  /* overflow-y: hidden; */
   height: 100vh;
 }
 
@@ -994,7 +994,8 @@ a span:nth-child(4)
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  position: absolute;
+  /* position: absolute; */
+  position: fixed;
   width: 60px;
   height: 300px;
   left: 0px;
@@ -1009,7 +1010,7 @@ a span:nth-child(4)
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  position: absolute;
+  position: fixed;
   width: 60px;
   height: 300px;
   right: 0px;
@@ -1361,8 +1362,8 @@ background: linear-gradient(90deg, rgba(105,39,49,1) 0%, rgba(251,84,84,1) 51%, 
   height: 100px;
 }
 .main-section{
-  display: grid;
-  grid-template-columns: 1fr 5fr;
+  /* display: grid;
+  grid-template-columns: 1fr 5fr; */
   height: 100%;;
 }
 .sideBar{
@@ -1372,7 +1373,7 @@ background: linear-gradient(90deg, rgba(105,39,49,1) 0%, rgba(251,84,84,1) 51%, 
   align-items: center;
   height:100%;
   background:rgba(175, 53, 179, 0.76);
-  /* position: fixed; */
+  position: fixed;
   padding:1rem;
 }
 .image_sm{
@@ -1388,10 +1389,12 @@ background: linear-gradient(90deg, rgba(105,39,49,1) 0%, rgba(251,84,84,1) 51%, 
   margin:1rem;
 }
 .content_face{
-  width:100%;
-  height:100%;
+  /* width:100%; */
+  /* height:100%; */
   padding:1rem;
-  background:rgb(231, 231, 231);
+  color:#000;
+  font-family:"Poppins";
+  background:rgb(255, 255, 255);
 }
 .syllabus{
   display: flex;
@@ -1401,4 +1404,14 @@ background: linear-gradient(90deg, rgba(105,39,49,1) 0%, rgba(251,84,84,1) 51%, 
 }
 .cke_button_arrow{
   display: none!important;
+}
+.add_body h2{
+  padding:1rem 0rem;
+}
+
+.add_body h3{
+  padding:1rem 0rem;
+}
+.hints_inp{
+  height:300px;
 }
