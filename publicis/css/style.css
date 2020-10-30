@@ -1265,18 +1265,19 @@ background: linear-gradient(90deg, rgba(105,39,49,1) 0%, rgba(251,84,84,1) 51%, 
 .syl{
   /* height:70px; */
   text-align: center;
+  padding-left: 30px;
   align-items: center;
   background:rgba(0, 0, 0, 0.274);
   padding:0.4rem 1rem;
   margin:0.5rem;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: center; */
 
 }
 .ekaurline{
   height:32px;
   background: rgba(0, 0, 0, 0.363);
-  width:10px;
+  width:8px;
 }
 .intro_Card{
   padding:40px;
