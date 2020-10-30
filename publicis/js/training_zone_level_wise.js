@@ -68,7 +68,7 @@ function level_wise(handle_name) {
 	let problems = [];
 	let checked = true;
 	let checked2 = true;
-	let checked3true;
+	let checked3=true;
 	async function retreivel1() {
 		animations();
 		document.querySelector('.problemkilist').classList.add('lev1');

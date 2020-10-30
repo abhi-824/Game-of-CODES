@@ -7,13 +7,7 @@ function dashboard(handle_name) {
 	let user_submissions;
 	var load_kk = document.querySelector('.load-kro');
 	var load_kkk = document.querySelector('.load-kro2');
-	const hamburger = document.querySelector('.hamburger');
-	const navlinks = document.querySelector('.nav-links');
-	const links = document.querySelector('.nav-links li');
-
-	hamburger.addEventListener('click', () => {
-		navlinks.classList.toggle('open');
-	});
+	
 	let show_daily_mix = document.querySelector('.daily-btn');
 	let show_daily_mix2 = document.querySelector('.daily-btn2');
 	let daily_mix_contests = document.querySelector('.daily-mix');
@@ -1214,7 +1208,7 @@ function dashboard(handle_name) {
 								for (let i = 0; i < curr_set.length; i++) {
 									let link = document.createElement('div');
 									let p = convert_to_link(`${curr_set[i][1]}`);
-									link.innerHTML = `<a href="${p}">Let's Do It</a>`;
+									link.innerHTML = `<a href="${p}" target="_blank">Let's Do It</a>`;
 									if (i == 0) {
 										document.querySelector('.problem-name-A').innerHTML =
 											curr_set[i][0];
@@ -1565,7 +1559,7 @@ function dashboard(handle_name) {
 			th1.innerHTML = unsolved_problems_array[i][1];
 			th3.innerHTML = `<a class="question" href="${convert_to_link(
 				unsolved_problems_array[i][1]
-			)}">Let's Do it</a>`;
+			)} target="_blank">Let's Do it</a>`;
 			tr.appendChild(th1);
 			tr.appendChild(th2);
 			tr.appendChild(th3);

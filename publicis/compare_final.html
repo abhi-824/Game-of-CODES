@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,10 +28,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
+  
 <style>
 .container111 {
   background-attachment: fixed;
-  height: 350vh;
+  height: 410vh;
 }
 
 .container112 {
@@ -41,7 +41,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  height: 350vh;
+  height: 410vh;
   background-color: rgba(0, 0, 0, 0.7);
 }
   .topic-lists {
@@ -49,8 +49,8 @@
     flex-direction: row;
   }
 
-  .weak_topics,
-  .strong_topics {
+  .weak_topics_comp,
+  .strong_topics_comp {
     /* overflow: hidden; */
     width: 100%;
     padding: 0 2rem;
@@ -79,7 +79,7 @@
       <nav class="navbar navbar-expand-lg navbar-dark bg-transparent ">
         <!-- <a class="navbar-brand logo" href="#">
           <h1 class="inner">GAME OF CODES</h1>
-          
+
           <img src="resources/logo/logo_light.png" alt="" />
         </a> -->
         <div class="hamburger">
@@ -102,7 +102,7 @@
           <li class="nav-item">
             <a class="nav-link" href="compare.html" id="compare1">Compare</a>
           </li>
-          
+
           <li class="nav-item">
             <a href="">
               <div class="dropdown1">
@@ -112,7 +112,7 @@
               <a class="nav-link" href="sorting_vis.html" id="sorting_vis">Sorting Visualiser</a>
               <a class="nav-link" href="grid_vis.html" id="grid_vis">Grid Visualiser</a>
             </div>
-          </div> 
+          </div>
             </a>
 
           </li>
@@ -132,13 +132,13 @@
                   <a class="nav-link" href="training_zone_level_wise.html" id="level_wise">Level Wise</a>
 
                 </div>
-              </div> 
+              </div>
             </a>
           </li>
           <li class="user_avatar nav-item"></li>
-          
+
         </ul>
-      
+
         <input
           class="form-control outer hidden search_kro"
           type="search"
@@ -202,34 +202,35 @@
       <h5 style="padding-top: 70px; text-align: center;"><strong>NOTE: </strong> Drag your mouse over a part of the graph to zoom it.</h5>
       <div id="compareChart2" style="height: 500px; width: 80%; margin: 0 auto; padding-top: 50px;"></div>
       <div id="compareChart3" style="height: 500px; width: 80%; margin: 0 auto; padding-top: 130px;"></div>
+      <div id="compareChart4" style="height: 500px; width: 80%; margin: 0 auto; padding-top: 170px;"></div>
 
       <!-- Weak and strong topics -->
-      <div class="topic-lists" style="padding-top: 170px">
-        <div class="weak_topics daily-mix">
+      <div class="topic-lists" style="padding-top: 220px">
+        <div class="weak_topics_comp daily-mix">
           <h1>Weak Topics</h1>
           <div class="line"></div>
           <div class="users">
             <div class="user1">
               <span class="handle1"></span>
-              <table class="weak_topicss"></table>
+              <table class="weak_topicss_comp"></table>
             </div>
             <div class="user2">
               <span class="handle2"></span>
-              <table class="weak_topicss2"></table>
+              <table class="weak_topicss2_comp"></table>
             </div>
           </div>
         </div>
-        <div class="strong_topics daily-mix">
+        <div class="strong_topics_comp daily-mix">
           <h1>Strong Topics</h1>
           <div class="line"></div>
           <div class="users">
             <div class="user1">
               <span class="handle_1"></span>
-              <table class="strong_topicss"></table>
+              <table class="strong_topicss_comp"></table>
             </div>
             <div class="user2">
               <span class="handle_2"></span>
-              <table class="strong_topicss2"></table>
+              <table class="strong_topicss2_comp"></table>
             </div>
           </div>
         </div>
@@ -240,7 +241,7 @@
   <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
   <script src="js/compare.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-  <script src="js/utils.js"></script>   
+  <script src="js/utils.js"></script>
 
 </body>
 

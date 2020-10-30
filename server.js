@@ -49,10 +49,10 @@ io.on('connection', (socket) => {
 		}
 	});
 
-	socket.on('ready', ({ username, room }) => {
+	socket.on('ready', ({ username, room }) => {	
 		const user = make_ready(socket.id, username, room, 1);
 		const users = getRoomUsers(room);
-		if (allready()) {
+		if (allready(room)) {
 			// giveProblems();
 			io.to(user.room).emit('start_loader', problems);
 			async function getFinal() {
@@ -103,7 +103,7 @@ io.on('connection', (socket) => {
 						'-' +
 						jsdata2.result.problems[i].index;
 					if (
-						jsdata2.result.problems[i].rating > 1300 &&
+						jsdata2.result.problems[i].rating > 1400 &&
 						jsdata2.result.problems[i].rating <= 1700 &&
 						solved.has(str) === false
 					) {
@@ -119,7 +119,7 @@ io.on('connection', (socket) => {
 						'-' +
 						jsdata2.result.problems[i].index;
 					if (
-						jsdata2.result.problems[i].rating > 1600 &&
+						jsdata2.result.problems[i].rating > 1700 &&
 						jsdata2.result.problems[i].rating <= 2000 &&
 						solved.has(str) === false
 					) {
@@ -160,33 +160,37 @@ io.on('connection', (socket) => {
 		});
 	});
 
-	socket.on('bringResults', ({ username, room, problems }) => {
+	socket.on('bringResults', ({ room, problems }) => {
 		async function getFinal() {
 			console.log('hello');
 			io.to(room).emit('start_loader', problems);
 			let solved = new Set();
-			let handle_name = username;
-			let modified_url = `https://codeforces.com/api/user.status?handle=${handle_name}`;
-			const jsondata = await fetch(modified_url);
-			const jsdata = await jsondata.json();
-			for (let i = 0; i < jsdata.result.length; i++) {
-				if (jsdata.result[i].verdict == 'OK') {
-					let str =
-						jsdata.result[i].problem.contestId +
-						'-' +
-						jsdata.result[i].problem.index;
-					solved.add(str);
+			let username=getRoomUsers(room);
+			for(let j=0;j<username.length;j++)
+			{
+				let handle_name = username[j].username;
+				let modified_url = `https://codeforces.com/api/user.status?handle=${handle_name}`;
+				const jsondata = await fetch(modified_url);
+				const jsdata = await jsondata.json();
+				for (let i = 0; i < jsdata.result.length; i++) {
+					if (jsdata.result[i].verdict == 'OK') {
+						let str =
+							jsdata.result[i].problem.contestId +
+							'-' +
+							jsdata.result[i].problem.index;
+						solved.add(str);
+					}
 				}
-			}
-			let result_jo = [];
-			for (let i = 0; i < problems.length; i++) {
-				if (solved.has(problems[i])) {
-					result_jo[i] = 1;
-				} else {
-					result_jo[i] = 0;
+				let result_jo = [];
+				for (let i = 0; i < problems.length; i++) {
+					if (solved.has(problems[i])) {
+						result_jo[i] = 1;
+					} else {
+						result_jo[i] = 0;
+					}
 				}
+				socket.emit('le_result', result_jo,username,j);
 			}
-			io.to(room).emit('le_result', result_jo);
 		}
 		getFinal();
 	});
