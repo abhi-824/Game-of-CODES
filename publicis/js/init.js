@@ -12,6 +12,8 @@ let profile_screen = document.querySelector('.container1forprofile');
 let codeblast_screen = document.querySelector('.container3');
 let codeblast_screen2 = document.querySelector('.container2222');
 let community_screen=document.querySelector('.container900');
+let roadmap_screen=document.querySelector('.containerForRoadmap');
+let roadmap_topic_screen=document.querySelector('.containerForPowerStone');
 
 function show_screen(some_screen) {
 	dashboard_screen.classList.add('hidden');
@@ -27,6 +29,8 @@ function show_screen(some_screen) {
 	codeblast_screen.classList.add('hidden');
 	codeblast_screen2.classList.add('hidden');
 	community_screen.classList.add('hidden');
+	roadmap_screen.classList.add('hidden');
+	roadmap_topic_screen.classList.add('hidden');
 
 
 	document.querySelector('.loader12345').classList.remove("hidden")
