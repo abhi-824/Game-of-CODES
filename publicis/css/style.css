@@ -1000,7 +1000,7 @@ a span:nth-child(4)
   height: 300px;
   left: 0px;
   top: 245px;
-
+  /* width:18vw; */
   background: #C4C4C4;
   border-radius: 0px 60px 60px 0px;
 }
@@ -1395,6 +1395,7 @@ background: linear-gradient(90deg, rgba(105,39,49,1) 0%, rgba(251,84,84,1) 51%, 
   align-items: center;
   height:100%;
   position: fixed;
+  width: 18vw;
   padding:1rem;
   transition: 0.5s;
 }
@@ -1454,6 +1455,7 @@ background: linear-gradient(90deg, rgba(105,39,49,1) 0%, rgba(251,84,84,1) 51%, 
   background:rgb(243, 243, 243);
   color:#333;
   padding:1rem;
+  min-height: 100vh;
   padding-right:4vw;
   margin-left:18vw;
   transition: 0.5s;

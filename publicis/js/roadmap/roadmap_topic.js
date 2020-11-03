@@ -29,16 +29,19 @@ function roadmap_topic(i) {
 		let posts = jsdata.items;
 
 		console.log(jsdata);
-		let map_topics=new Map();
-			for(let i=0;i<posts.length;i++)
-			{
-				map_topics.set(posts[i].title,posts[i].content)
-			}
+		let map_topics = new Map();
+		for (let i = 0; i < posts.length; i++) {
+			map_topics.set(posts[i].title, posts[i].content);
+		}
 		let curr_topic_list = document.querySelectorAll('.syl_list_li');
+		document.querySelector('.blog').innerHTML = map_topics.get(
+			curr_topic_list[0].innerHTML.toString()
+		);
 		for (let i = 0; i < curr_topic_list.length; i++) {
 			curr_topic_list[i].addEventListener('click', (e) => {
-				document.querySelector('.blog').innerHTML =
-					map_topics.get(curr_topic_list[i].innerHTML.toString());
+				document.querySelector('.blog').innerHTML = map_topics.get(
+					curr_topic_list[i].innerHTML.toString()
+				);
 				e.preventDefault();
 			});
 		}
@@ -86,7 +89,7 @@ function power() {
 	class="rotate image_sm"
 	alt=""
 	/>`;
-	document.querySelector(".syl_list").innerHTML=`
+	document.querySelector('.syl_list').innerHTML = `
 	<li class="syl_list_li">Intro to DS and Algo</li>
 	<li class="syl_list_li">Time Complexity</li>
 	<li class="syl_list_li">Arrays and Strings</li>`;
@@ -108,7 +111,7 @@ function space() {
 	class="rotate image_sm"
 	alt=""
 	/>`;
-	document.querySelector(".syl_list").innerHTML=`
+	document.querySelector('.syl_list').innerHTML = `
 	<li class="syl_list_li">Greedy Algorithm</li>
 	<li class="syl_list_li">Recursion</li>
 	<li class="syl_list_li">Number theory</li>`;
@@ -132,8 +135,8 @@ function mind() {
 	class="rotate image_sm"
 	alt=""
 	/>`;
-	
-	document.querySelector(".syl_list").innerHTML=`
+
+	document.querySelector('.syl_list').innerHTML = `
 	<li class="syl_list_li">Every Concept Afterwards</li>
 	<li class="syl_list_li">Revision</li>
 	<li class="syl_list_li">Final Fight</li>`;
@@ -156,8 +159,8 @@ function time() {
 	class="rotate image_sm"
 	alt=""
 	/>`;
-	
-	document.querySelector(".syl_list").innerHTML=`
+
+	document.querySelector('.syl_list').innerHTML = `
 	<li class="syl_list_li">DP</li>
 	<li class="syl_list_li">Segment Trees</li>
 	<li class="syl_list_li">Fenwick Trees</li>`;
@@ -180,8 +183,8 @@ function soul() {
 	class="rotate image_sm"
 	alt=""
 	/>`;
-	
-	document.querySelector(".syl_list").innerHTML=`
+
+	document.querySelector('.syl_list').innerHTML = `
 	<li class="syl_list_li">Bit manipulation</li>
 	<li class="syl_list_li">Graphs</li>
 	<li class="syl_list_li">Revision</li>`;
@@ -204,7 +207,7 @@ function reality() {
 	class="rotate image_sm"
 	alt=""
 	/>`;
-	document.querySelector(".syl_list").innerHTML=`
+	document.querySelector('.syl_list').innerHTML = `
 	<li class="syl_list_li">Tree</li>
 	<li class="syl_list_li">Stacks</li>
 	<li class="syl_list_li">Queues</li>`;
@@ -213,7 +216,7 @@ function reality() {
 function expand_bar() {
 	document.querySelector('.sideBar').classList.add('expand_bar');
 	document.querySelector('.sideBar').classList.remove('collapse_bar');
-	document.querySelector('.syllabus').classList.remove("hidden");
+	document.querySelector('.syllabus').classList.remove('hidden');
 	document.querySelector('.collapse_sidebar');
 	document.querySelector('.blog').style = 'margin-left:18vw;';
 	// init_kro();
@@ -221,7 +224,7 @@ function expand_bar() {
 function collapse_bar() {
 	document.querySelector('.sideBar').classList.remove('expand_bar');
 	document.querySelector('.sideBar').classList.add('collapse_bar');
-	document.querySelector('.syllabus').classList.add("hidden");
+	document.querySelector('.syllabus').classList.add('hidden');
 	document.querySelector('.collapse_sidebar');
 	document.querySelector('.blog').style = 'margin-left:100px;';
 }
