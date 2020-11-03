@@ -141,6 +141,15 @@ a {
   background-attachment: fixed;
   height: 100vh;
 }
+.container8242{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 150vh;
+  background-color: rgba(0, 0, 0, 0.6);
+}
 .container111 {
   background: url("../resources/backgrounds/car_black.jpg")
     no-repeat center center/cover;
@@ -680,7 +689,7 @@ a:hover {
 .container1forprofile {
   background: url("../resources/backgrounds/hulk.jpg") no-repeat center/cover;
   background-attachment: fixed;
-  height: 470vh;
+  height: 540vh;
 }
 .container2forprofile {
   position: absolute;
@@ -688,7 +697,7 @@ a:hover {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 470vh;
+  height: 540vh;
   background-color: rgba(0, 0, 0, 0.7);
 }
 .ask_perm{

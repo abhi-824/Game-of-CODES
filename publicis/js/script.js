@@ -405,7 +405,7 @@ function dashboard(handle_name) {
 							let p = convert_to_link(
 								`${curr_set[i].contestId}-${curr_set[i].index}`
 							);
-							link.innerHTML = `<a href="${p}">Let's Do It</a>`;
+							link.innerHTML = `<a href="${p}" target="_blank">Let's Do It</a>`;
 							if (i == 0) {
 								document.querySelector('.problem-name-1').innerHTML =
 									curr_set[i].name;
@@ -1457,7 +1457,19 @@ function dashboard(handle_name) {
 		let modified_url = user_contests + handle_name;
 		const jsondata = await fetch(modified_url);
 		const jsdata = await jsondata.json();
+		document.querySelector('.yes').addEventListener('click', function (e) {
+			let val = document.querySelector('.time_val').value;
+			startTimer(val * 60, document.querySelector('.time_chalo'));
+			document.querySelector('.ask_perm').classList.add('animated');
+			document.querySelector('.ask_perm').classList.add('bounceOutLeft');
+			e.preventDefault();
+		});
 
+		document.querySelector('.no').addEventListener('click', function (e) {
+			document.querySelector('.ask_perm').classList.add('hidden');
+			//console.log("h");
+			e.preventDefault();
+		});
 		// for (; i >= 0; i--) {
 		let i = jsdata.result.length - 1;
 		let pppp = setInterval(async function () {
@@ -1497,19 +1509,7 @@ function dashboard(handle_name) {
 					table.appendChild(tr);
 				}
 				document.querySelector('.d-flex').classList.add('hidden');
-				document.querySelector('.yes').addEventListener('click', function (e) {
-					let val = document.querySelector('.time_val').value;
-					startTimer(val * 60, document.querySelector('.time_chalo'));
-					document.querySelector('.ask_perm').classList.add('animated');
-					document.querySelector('.ask_perm').classList.add('bounceOutLeft');
-					e.preventDefault();
-				});
-		
-				document.querySelector('.no').addEventListener('click', function (e) {
-					document.querySelector('.ask_perm').classList.add('hidden');
-					//console.log("h");
-					e.preventDefault();
-				});
+				
 				clearInterval(pppp);
 			}
 		}, 1500);
@@ -1559,7 +1559,7 @@ function dashboard(handle_name) {
 			th1.innerHTML = unsolved_problems_array[i][1];
 			th3.innerHTML = `<a class="question" href="${convert_to_link(
 				unsolved_problems_array[i][1]
-			)} target="_blank">Let's Do it</a>`;
+			)}" target="_blank">Let's Do it</a>`;
 			tr.appendChild(th1);
 			tr.appendChild(th2);
 			tr.appendChild(th3);
@@ -1623,6 +1623,7 @@ function dashboard(handle_name) {
 		hide_please(item4);
 		daily_mix_contests.classList.add('hidden');
 
+		document.querySelector('.time_chalo').classList.remove('hidden');
 		document.querySelector('.ask_perm').classList.remove('hidden');
 		upsolve.classList.remove('hidden');
 		unsolved_mysteries.classList.add('hidden');
@@ -1677,6 +1678,8 @@ function dashboard(handle_name) {
 		hide_please(item4);
 		hide_please(item2);
 		hide_please(item3);
+		// document.querySelector('.ask_perm').classList.add('hidden');
+		document.querySelector('.time_chalo').classList.add('hidden');
 		hide_please(item);
 		document.querySelector('.container1').style.height = '100vh';
 		document.querySelector('.container2').style.height = '100vh';
@@ -1751,9 +1754,9 @@ function dashboard(handle_name) {
 
 				if (contest.phase === 'BEFORE') {
 					const b = document.createElement('th');
-					const a = document.createElement('a');
-					a.textContent = 'Register';
-					a.href = link;
+					const a = document.createElement('span');
+					a.innerHTML=`<a href=${link} target="blank">Register</a>`
+					
 
 					let start_time = contest.startTimeSeconds * 1000;
 					let full_date = new Date(start_time);
