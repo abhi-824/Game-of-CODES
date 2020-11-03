@@ -47,6 +47,7 @@
          type="text/javascript"
          src="https://www.gstatic.com/charts/loader.js"
          ></script>
+         <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
    </head>
    <style>
       .cenn{
@@ -2202,6 +2203,7 @@
                   <div class="list_stones">
                      <div class="syl"><div class="ekaurline"></div>
                         Intro to DS and Algo
+                        
                      </div>
                      <div class="syl"><div class="ekaurline"></div>
                         Time Complexity
@@ -2237,6 +2239,8 @@
                <div class="content">
                   <h1>Syllabus</h1>
                   <div class="list_stones">
+                     
+                     
                      <div class="syl"><div class="ekaurline"></div>
                         Tree
                      </div>
@@ -2255,6 +2259,7 @@
                <div class="content">
                   <h1>Syllabus</h1>
                   <div class="list_stones">
+                     
                      <div class="syl"><div class="ekaurline"></div>
                         Bit manipulation
                      </div>	
@@ -2291,6 +2296,7 @@
                <img src="resources/stones/mind.png" class="rotate stoneimg mind" alt="" />
                <div class="content">
                   <h1>Syllabus</h1>
+                  
                   <div class="list_stones">
                      <div class="syl"><div class="ekaurline"></div>
                         Every Concept Afterwards
@@ -2368,11 +2374,11 @@
                   <h1>Syllabus</h1>
                   <div class="syllabus_list">
                      <ul class="syl_list">
-                        <li>Segment Trees</li>
-                        <li>Segment Trees</li>
-                        <li>Segment Trees</li>
-                        <li>Segment Trees</li>
-                        <li>Segment Trees</li>
+                        <li class="syl_list_li">Stacks</li>
+                        <li class="syl_list_li">Segment Trees</li>
+                        <li class="syl_list_li">Segment Trees</li>
+                        <li class="syl_list_li">Segment Trees</li>
+                        <li class="syl_list_li">Segment Trees</li>
                      </ul>
                   </div>
                </div>
@@ -2386,6 +2392,7 @@
                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas consectetur beatae unde hic modi rem aliquam officia commodi sint reiciendis, illo optio incidunt sapiente accusantium ipsum laborum omnis quidem dicta perferendis nostrum minima nihil ullam eligendi ipsa. Voluptas libero facere maiores! Corporis repellendus repudiandae ducimus sed aliquid veritatis consequatur voluptatum provident et, animi adipisci assumenda? Ad vero natus ducimus vitae fugit? Magni, quas quasi, quia facilis expedita ipsam maxime itaque quisquam voluptatum autem possimus repudiandae culpa ullam asperiores soluta molestias. Minima labore esse officiis aspernatur, modi doloremque quasi ullam ex quam laborum perferendis, saepe nobis, nesciunt iure tempora voluptatem expedita.</p>
                <h2>Basic Questions</h2>
                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum harum quae autem, modi saepe fugiat rem ullam id iusto quaerat error qui praesentium facilis vel eum est, ipsam odio. Unde fugit aliquam, minus facilis, rerum alias provident aut tempora atque qui corporis libero non! Excepturi sequi animi, totam praesentium aut itaque nisi voluptate architecto asperiores provident deserunt quo dolore doloribus eum mollitia quos natus. Nisi aperiam cupiditate sequi hic quidem non tempora vitae, consequatur aut dignissimos rerum eius, quisquam tenetur excepturi itaque voluptatum quas suscipit error soluta saepe cumque. Voluptatem autem distinctio veniam sequi quod fuga impedit dignissimos corporis eveniet?</p>
+             
             </div>
             <!-- <div class="content_face">
                <h1>Add Post</h1>
@@ -2506,7 +2513,19 @@
          </div>
       </div>
    </div>
+   
+      <script>
+         tinymce.init({
+           selector: '#mytextarea'
+         });
+         document.querySelector(".submit_blog").addEventListener("click",(e)=>{
 
+            let inp=document.querySelector("#tinymce").children[0].value;
+            console.log(inp);
+            e.preventDefault();
+         })
+         // document.querySelector(".tox-notification").classList.add("hidden");
+       </script>
       <!-- JQuery -->
       <script
          type="text/javascript"

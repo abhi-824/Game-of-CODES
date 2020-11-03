@@ -1458,3 +1458,13 @@ background: linear-gradient(90deg, rgba(105,39,49,1) 0%, rgba(251,84,84,1) 51%, 
   margin-left:18vw;
   transition: 0.5s;
 }
+.tox-notification{
+  display: none!important;
+}
+.tox-statusbar__branding{
+  display: none!important;
+
+}
+.syl_list li{
+  cursor: pointer;
+}

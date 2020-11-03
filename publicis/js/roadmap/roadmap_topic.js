@@ -21,22 +21,29 @@ function roadmap_topic(i) {
 		intro.classList.add('hidden');
 		main_sec.classList.remove('hidden');
 	});
-	let editor;
+	async function getposts_Abhinandan_Sharma() {
+		const jsondata = await fetch(
+			'https://www.googleapis.com/blogger/v3/blogs/1623665726032043112/posts?key=AIzaSyDdE6xJ0Zq8nWVNZgxR3gpQtGL7t6GF3SI'
+		);
+		const jsdata = await jsondata.json();
+		let posts = jsdata.items;
 
-	ClassicEditor.create(document.querySelector('#editor_info'))
-		.then((newEditor) => {
-			editor = newEditor;
-		})
-		.catch((error) => {
-			console.error(error);
-		});
-	let submit = document
-		.querySelector('.submit')
-		.addEventListener('click', (e) => {
-			e.preventDefault();
-			const editorData = editor.getData();
-			console.log(editorData);
-		});
+		console.log(jsdata);
+		let map_topics=new Map();
+			for(let i=0;i<posts.length;i++)
+			{
+				map_topics.set(posts[i].title,posts[i].content)
+			}
+		let curr_topic_list = document.querySelectorAll('.syl_list_li');
+		for (let i = 0; i < curr_topic_list.length; i++) {
+			curr_topic_list[i].addEventListener('click', (e) => {
+				document.querySelector('.blog').innerHTML =
+					map_topics.get(curr_topic_list[i].innerHTML.toString());
+				e.preventDefault();
+			});
+		}
+	}
+	getposts_Abhinandan_Sharma();
 }
 function init_kro(i) {
 	if (i == 0) {
@@ -79,6 +86,10 @@ function power() {
 	class="rotate image_sm"
 	alt=""
 	/>`;
+	document.querySelector(".syl_list").innerHTML=`
+	<li class="syl_list_li">Intro to DS and Algo</li>
+	<li class="syl_list_li">Time Complexity</li>
+	<li class="syl_list_li">Arrays and Strings</li>`;
 	document.querySelector('.image_sm').classList.add('power');
 }
 function space() {
@@ -97,6 +108,10 @@ function space() {
 	class="rotate image_sm"
 	alt=""
 	/>`;
+	document.querySelector(".syl_list").innerHTML=`
+	<li class="syl_list_li">Greedy Algorithm</li>
+	<li class="syl_list_li">Recursion</li>
+	<li class="syl_list_li">Number theory</li>`;
 	document.querySelector('.image_sm').classList.add('space');
 	document.querySelector('.stone_title').innerHTML = 'Space Stone';
 }
@@ -117,6 +132,11 @@ function mind() {
 	class="rotate image_sm"
 	alt=""
 	/>`;
+	
+	document.querySelector(".syl_list").innerHTML=`
+	<li class="syl_list_li">Every Concept Afterwards</li>
+	<li class="syl_list_li">Revision</li>
+	<li class="syl_list_li">Final Fight</li>`;
 	document.querySelector('.image_sm').classList.add('mind');
 }
 function time() {
@@ -136,6 +156,11 @@ function time() {
 	class="rotate image_sm"
 	alt=""
 	/>`;
+	
+	document.querySelector(".syl_list").innerHTML=`
+	<li class="syl_list_li">DP</li>
+	<li class="syl_list_li">Segment Trees</li>
+	<li class="syl_list_li">Fenwick Trees</li>`;
 	document.querySelector('.image_sm').classList.add('time');
 }
 function soul() {
@@ -155,6 +180,11 @@ function soul() {
 	class="rotate image_sm"
 	alt=""
 	/>`;
+	
+	document.querySelector(".syl_list").innerHTML=`
+	<li class="syl_list_li">Bit manipulation</li>
+	<li class="syl_list_li">Graphs</li>
+	<li class="syl_list_li">Revision</li>`;
 	document.querySelector('.image_sm').classList.add('soul');
 }
 function reality() {
@@ -174,19 +204,24 @@ function reality() {
 	class="rotate image_sm"
 	alt=""
 	/>`;
+	document.querySelector(".syl_list").innerHTML=`
+	<li class="syl_list_li">Tree</li>
+	<li class="syl_list_li">Stacks</li>
+	<li class="syl_list_li">Queues</li>`;
 	document.querySelector('.image_sm').classList.add('reality');
 }
 function expand_bar() {
 	document.querySelector('.sideBar').classList.add('expand_bar');
 	document.querySelector('.sideBar').classList.remove('collapse_bar');
+	document.querySelector('.syllabus').classList.remove("hidden");
 	document.querySelector('.collapse_sidebar');
-	document.querySelector(".blog").style="margin-left:18vw;"
-	init_kro()
+	document.querySelector('.blog').style = 'margin-left:18vw;';
+	// init_kro();
 }
 function collapse_bar() {
 	document.querySelector('.sideBar').classList.remove('expand_bar');
 	document.querySelector('.sideBar').classList.add('collapse_bar');
-	document.querySelector('.syllabus').innerHTML = '';
+	document.querySelector('.syllabus').classList.add("hidden");
 	document.querySelector('.collapse_sidebar');
-	document.querySelector(".blog").style="margin-left:100px;"
+	document.querySelector('.blog').style = 'margin-left:100px;';
 }
