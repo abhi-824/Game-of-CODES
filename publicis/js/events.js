@@ -70,6 +70,7 @@ for (let i = 0; i < roadmap_nav.length; i++) {
 		e.preventDefault();
 	});
 }
+
 const hamburger = document.querySelectorAll('.hamburger');
 const navlinks = document.querySelectorAll('.nav-links');
 const links = document.querySelector('.nav-links li');

@@ -59,6 +59,14 @@ a {
   background-attachment: fixed;
   height: 100vh;
 }
+.containerForContest{
+    background: url("../resources/stones/backgrounds/mind.jpg") no-repeat center/cover;
+    background-attachment: fixed;
+    scroll-behavior: smooth;
+    overflow-y: hidden;
+    height: 100vh;
+  
+}
 
 .containerForRoadmap {
   background: url("../resources/stones/backgrounds/307625.jpg") no-repeat center/cover;
@@ -194,6 +202,17 @@ a {
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.349);
 }
+
+.containerOverlayForContest {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.534);
+}
 .container901 {
   position: absolute;
   top: 0;
@@ -314,6 +333,16 @@ table tr {
   background:rgb(23, 10, 56);
   font-size:3rem;
   padding:0.3rem 1rem;
+}
+.timer_for_contest{
+  position: absolute;
+  bottom:0;
+  align-items: center;
+  justify-content: center;
+  background:rgb(23, 10, 56);
+  font-size:3rem;
+  padding:0.3rem 1rem;
+  right:0;
 }
 .contest-time{
   display:grid;
@@ -1469,4 +1498,31 @@ background: linear-gradient(90deg, rgba(105,39,49,1) 0%, rgba(251,84,84,1) 51%, 
 }
 .syl_list li{
   cursor: pointer;
+}
+.msg{
+  position: absolute;
+  bottom: 0;
+  font-family: 'Poppins';
+  background: rgba(0, 0, 0, 0.774);
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.badhiya_btn  {
+  position: relative;
+  margin: 20px 0;
+  padding: 10px 20px;
+  text-decoration: none;
+  border: 1px solid #fff;
+  display: inline-block;
+  /* color: #fff; */
+  transition: 0.5s;
+}
+.badhiya_btn:hover {
+  color: #000!important;
+  background: #fff;
+}
+.msg_info{
+  padding:1rem;
 }

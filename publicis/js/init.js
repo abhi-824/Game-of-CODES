@@ -14,6 +14,7 @@ let codeblast_screen2 = document.querySelector('.container2222');
 let community_screen=document.querySelector('.container900');
 let roadmap_screen=document.querySelector('.containerForRoadmap');
 let roadmap_topic_screen=document.querySelector('.containerForPowerStone');
+let roadmap_contest_screen=document.querySelector('.containerForContest');
 
 function show_screen(some_screen) {
 	dashboard_screen.classList.add('hidden');
@@ -31,6 +32,7 @@ function show_screen(some_screen) {
 	community_screen.classList.add('hidden');
 	roadmap_screen.classList.add('hidden');
 	roadmap_topic_screen.classList.add('hidden');
+	roadmap_contest_screen.classList.add('hidden');
 
 
 	document.querySelector('.loader12345').classList.remove("hidden")

@@ -30,8 +30,13 @@ function roadmap_topic(i) {
 
 		console.log(jsdata);
 		let map_topics = new Map();
+		let map_comments = new Map();
 		for (let i = 0; i < posts.length; i++) {
 			map_topics.set(posts[i].title, posts[i].content);
+			map_comments.set(
+				posts[i].title,
+				`${posts[i].replies.selfLink}?key=AIzaSyDdE6xJ0Zq8nWVNZgxR3gpQtGL7t6GF3SI`
+			);
 		}
 		let curr_topic_list = document.querySelectorAll('.syl_list_li');
 		document.querySelector('.blog').innerHTML = map_topics.get(
@@ -43,6 +48,17 @@ function roadmap_topic(i) {
 					curr_topic_list[i].innerHTML.toString()
 				);
 				e.preventDefault();
+				document
+					.querySelector('.start_contest_roadmap')
+					.addEventListener('click', (e) => {
+						e.preventDefault();
+						let topic = curr_topic_list[i].innerHTML.toString();
+
+						let link = map_comments.get(
+							curr_topic_list[i].innerHTML.toString()
+						);
+						inContest(topic, link);
+					});
 			});
 		}
 	}
@@ -227,4 +243,51 @@ function collapse_bar() {
 	document.querySelector('.syllabus').classList.add('hidden');
 	document.querySelector('.collapse_sidebar');
 	document.querySelector('.blog').style = 'margin-left:100px;';
+}
+
+function inContest(topic, link) {
+	console.log(link);
+	console.log(topic);
+	show_screen(roadmap_contest_screen);
+	async function getQuestions_Abhinandan_Sharma() {
+		const jsondata = await fetch(link);
+		const jsdata = await jsondata.json();
+		let questions_links=[];
+		let comments=jsdata.items;
+		for(let i=0;i<5;i++)
+		{
+			questions_links.push(comments[i].content);
+		}
+		document.querySelector(".badhiya_btn").addEventListener("click",(e)=>{
+			e.preventDefault();
+			document.querySelector(".msg").remove();
+			document.querySelector(".container_questions").classList.remove("hidden");
+			let links=document.querySelectorAll(".contest_question_link");
+			for(let i=0;i<links.length;i++)
+			{
+				
+				links[i].innerHTML=`<a href="${questions_links[i]}" target="_blank">Let's Go</a>`;
+			}
+			startTimer(120*60,document.querySelector(".timer_for_contest"));
+		})
+	}
+	function startTimer(duration, display) {
+		var timer = duration,
+			minutes,
+			seconds;
+		setInterval(function () {
+			minutes = parseInt(timer / 60, 10);
+			seconds = parseInt(timer % 60, 10);
+
+			minutes = minutes < 10 ? '0' + minutes : minutes;
+			seconds = seconds < 10 ? '0' + seconds : seconds;
+
+			display.textContent = minutes + ':' + seconds;
+
+			if (--timer < 0) {
+				timer = duration;
+			}
+		}, 1000);
+	}
+	getQuestions_Abhinandan_Sharma();
 }
