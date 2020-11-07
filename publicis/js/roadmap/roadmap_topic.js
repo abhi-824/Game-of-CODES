@@ -106,9 +106,11 @@ function power() {
 	alt=""
 	/>`;
   document.querySelector(".syl_list").innerHTML = `
-	<li class="syl_list_li">Intro to DS and Algo</li>
 	<li class="syl_list_li">Time Complexity</li>
-	<li class="syl_list_li">Arrays and Strings</li>`;
+	<li class="syl_list_li">Arrays</li>
+  <li class="syl_list_li">STL</li>
+  <li class="syl_list_li">Number theory Pt I</li>
+  <li class="syl_list_li">Number theory Pt II</li>`;
   document.querySelector(".image_sm").classList.add("power");
 }
 function space() {
@@ -128,9 +130,12 @@ function space() {
 	alt=""
 	/>`;
   document.querySelector(".syl_list").innerHTML = `
-	<li class="syl_list_li">Greedy Algorithm</li>
+	<li class="syl_list_li">Strings</li>
 	<li class="syl_list_li">Recursion</li>
-	<li class="syl_list_li">Number theory</li>`;
+  <li class="syl_list_li">Sorting Algos</li>
+  <li class="syl_list_li">Binary Search</li>
+  <li class="syl_list_li">Bit Manipulation</li>
+  `;
   document.querySelector(".image_sm").classList.add("space");
   document.querySelector(".stone_title").innerHTML = "Space Stone";
 }
@@ -153,8 +158,10 @@ function mind() {
 	/>`;
 
   document.querySelector(".syl_list").innerHTML = `
-	<li class="syl_list_li">Every Concept Afterwards</li>
-	<li class="syl_list_li">Revision</li>
+	<li class="syl_list_li">Graphs Pt II</li>
+	<li class="syl_list_li">Centroid Decomposition</li>
+	<li class="syl_list_li">DSU</li>
+	<li class="syl_list_li">MO's Algorithm</li>
 	<li class="syl_list_li">Final Fight</li>`;
   document.querySelector(".image_sm").classList.add("mind");
 }
@@ -177,9 +184,11 @@ function time() {
 	/>`;
 
   document.querySelector(".syl_list").innerHTML = `
-	<li class="syl_list_li">DP</li>
-	<li class="syl_list_li">Segment Trees</li>
-	<li class="syl_list_li">Fenwick Trees</li>`;
+	<li class="syl_list_li">Heap</li>
+	<li class="syl_list_li"> Trees Pt II</li>
+	<li class="syl_list_li">Graphs Pt I</li>
+	<li class="syl_list_li"> DP Pt II</li>
+	<li class="syl_list_li"> Tries</li>`;
   document.querySelector(".image_sm").classList.add("time");
 }
 function soul() {
@@ -201,9 +210,12 @@ function soul() {
 	/>`;
 
   document.querySelector(".syl_list").innerHTML = `
-	<li class="syl_list_li">Bit manipulation</li>
-	<li class="syl_list_li">Graphs</li>
-	<li class="syl_list_li">Revision</li>`;
+	<li class="syl_list_li">Queues</li>
+	<li class="syl_list_li">Stacks</li>
+  <li class="syl_list_li">Combinatorics</li>
+  <li class="syl_list_li">Probability</li>
+  <li class="syl_list_li">Trees Pt I</li>
+  `;
   document.querySelector(".image_sm").classList.add("soul");
 }
 function reality() {
@@ -224,9 +236,12 @@ function reality() {
 	alt=""
 	/>`;
   document.querySelector(".syl_list").innerHTML = `
-	<li class="syl_list_li">Tree</li>
-	<li class="syl_list_li">Stacks</li>
-	<li class="syl_list_li">Queues</li>`;
+	<li class="syl_list_li">Greedy</li>
+	<li class="syl_list_li">Grid</li>
+  <li class="syl_list_li">DP Pt I </li>
+  <li class="syl_list_li">Amortized Analysis</li>
+  <li class="syl_list_li">Linked list</li>
+  `;
   document.querySelector(".image_sm").classList.add("reality");
 }
 function expand_bar() {
