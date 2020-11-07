@@ -267,10 +267,10 @@ function inContest(topic, link, user_handle) {
           i
         ].innerHTML = `<a href="${questions_links[i]}" target="_blank">Let's Go</a>`;
       }
-      startTimer(2, document.querySelector(".timer_for_contest"));
+      startTimer(2, document.querySelector(".timer_for_contest"),questions_links);
     });
   }
-  function startTimer(duration, display) {
+  function startTimer(duration, display,questions_links) {
     var timer = duration,
       minutes,
       seconds;
