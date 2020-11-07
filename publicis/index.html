@@ -2386,9 +2386,8 @@
             <div class="pura_blog">
                <div class="blog">
                  Not written Yet
-                
+                 <div class="btn btn-outline-success start_contest_roadmap">Start the Fight!</div>
                </div>
-               <div class="btn btn-primary start_contest_roadmap">Start the Fight!</div>
             </div>
 
             <!-- <div class="content_face">
@@ -2512,6 +2511,7 @@
    </div>
    <div class="containerForContest hidden">
       <div class="containerOverlayForContest">
+         <button class="after_contest btn btn-outline-success hidden">Next</button>
          <div class="msg">
             <div class="msg_info">
                <div class="msg_content">
@@ -2584,18 +2584,7 @@
          <div class="timer_for_contest"></div>
       </div>
    </div>
-      <script>
-         tinymce.init({
-           selector: '#mytextarea'
-         });
-         document.querySelector(".submit_blog").addEventListener("click",(e)=>{
-
-            let inp=document.querySelector("#tinymce").children[0].value;
-            console.log(inp);
-            e.preventDefault();
-         })
-         // document.querySelector(".tox-notification").classList.add("hidden");
-       </script>
+      
       <!-- JQuery -->
       <script
          type="text/javascript"

@@ -66,7 +66,7 @@ for (let i = 0; i < community_nav.length; i++) {
 
 for (let i = 0; i < roadmap_nav.length; i++) {
 	roadmap_nav[i].addEventListener('click', function (e) {
-		roadmap();
+		roadmap(handle);
 		e.preventDefault();
 	});
 }

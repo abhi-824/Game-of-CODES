@@ -1,4 +1,4 @@
-function roadmap()
+function roadmap(handle)
 {
 	show_screen(roadmap_screen)
 	let next_btn = document.querySelector('.next-temp');
@@ -42,7 +42,7 @@ function roadmap()
 		pow_btn[i].addEventListener("click",(e)=>{
 			e.preventDefault();
 			console.log("hello")
-			roadmap_topic(i);
+			roadmap_topic(i,handle);
 		})
 	}
 
