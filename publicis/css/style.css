@@ -8,6 +8,14 @@ body {
   overflow-x: hidden;
 }
 
+body::-webkit-scrollbar {
+  width: 0.3em;
+  background:rgba(0,0,0,0);
+}
+body::-webkit-scrollbar-thumb {
+	background-color:#666;
+	border-radius: 50px;
+}
 .table_row{
   display:grid;
   grid-template-columns: 3fr 2fr 1fr;
@@ -1006,13 +1014,6 @@ color:#fff;
   bottom:0;
 }
 
-body ::-webkit-scrollbar {
-	width: 0.3em;
-}
-body ::-webkit-scrollbar-thumb {
-	background-color:#333;
-	border-radius: 50px;
-}
 
 div ::-webkit-scrollbar {
 	width: 0.5em;
