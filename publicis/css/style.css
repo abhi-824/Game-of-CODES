@@ -622,7 +622,7 @@ table tr {
 }
 .content {
   position: relative;
-  padding: 20px;
+  /* padding: 20px; */
   transform: translateY(40px);
 }
 .box .content h2 {
@@ -1534,4 +1534,20 @@ background: linear-gradient(90deg, rgba(105,39,49,1) 0%, rgba(251,84,84,1) 51%, 
 }
 .stoneimg{
   height:100px;
+}
+
+body ::-webkit-scrollbar {
+	width: 0.3em;
+}
+body ::-webkit-scrollbar-thumb {
+	background-color:#333;
+	border-radius: 50px;
+}
+
+div ::-webkit-scrollbar {
+	width: 0.5em;
+}
+div ::-webkit-scrollbar-thumb {
+	background-color:#666;
+	border-radius: 50px;
 }

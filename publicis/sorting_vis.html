@@ -1,190 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game of Codes|Sorting Visualiser</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Game of Codes. Analyze and improve on your codeforces user profile. See how have you performed, what you need to do now, personalised contests made just for you, outstanding graphics giving you a gaming feel in competitive coding. Scale up your data structures and algorithms with this amazing tool"
-    />
-    <meta property="og:url" content="https://game-of-codes.netlify.com" />
-    <meta property="og:title" content="Game Of CODES" />
-    <meta
-      property="og:description"
-      content="Improve your rating and save time by doing Personalised Questions"
-    />
-    <meta
-      property="og:image"
-      content="https://game-of-codes.netlify.com/resources/logo/logo_dark.jpg"
-    />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <link rel="manifest" href="manifest.json" />
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-    <!-- Google Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-    <!-- Bootstrap core CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Material Design Bootstrap -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
-    <link rel="shortcut icon" href="resources/logo/logo_dark.png" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="css/style.css" />
-    <link
-      rel="stylesheet"
-      media="screen and (max-width: 768px)"
-      href="css/mobile.css"
-    />
-    <script src="https://ajax.googleapis.com/ajax/libs/ jquery/3.4.1/jquery.min.js"></script>
-    <script
-      type="text/javascript"
-      src="https://www.gstatic.com/charts/loader.js"
-    ></script>
-    <link rel="stylesheet" href="css/style.css">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-    <!-- Google Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-    <!-- Bootstrap core CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Material Design Bootstrap -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
-    <!-- JQuery -->
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
-</head>
-<style>
-    .array{
-        display:flex;
-        height:310px;
-    }
-    body{
-      color:#fff;
-    }
-</style>
-<body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-transparent ">
-    <!-- <a class="navbar-brand logo" href="#">
-      <h1 class="inner">GAME OF CODES</h1>
-      
-      <img src="resources/logo/logo_light.png" alt="" />
-    </a> -->
-    <div class="hamburger">
-      <div class="line33"></div>
-      <div class="line33"></div>
-      <div class="line33"></div>
-    </div>
-      <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-      </button> -->
-    <!-- <div class="collapse navbar-collapse" id="navbarText">  -->
-    <ul class="navbar-nav nav-links mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
-        <a class="nav-link" id="dashboard1" href="#"
-          >Dashboard
-          <div class="line1"></div>
-          <span class="sr-only">(current)</span></a
-        >
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="compare.html" id="compare1">Compare</a>
-      </li>
-      
-      <li class="nav-item">
-        <a href="">
-          <div class="dropdown1">
-            <span class="nav-link">Visualisers <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
-            </span>
-            <div class="dropdown-content1 animated bounceIn">
-          <a class="nav-link" href="sorting_vis.html" id="sorting_vis">Sorting Visualiser</a>
-          <a class="nav-link" href="grid_vis.html" id="grid_vis">Grid Visualiser</a>
-        </div>
-      </div> 
-        </a>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Sorting Visualiser</title>
 
-      </li>
-      <li class="nav-item">
-        <a class="nav-link profile" href="Profile.html" id="profile1">Profile</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="Codeblast.html" id="codeblast1">Code Blast</a>
-      </li>
-      <li class="nav-item">
-        <a href="">
+		<link
+			rel="shortcut icon"
+			href="res/DTU,_Delhi_official_logo.png"
+			type="image/x-icon"
+		/>
+		<title>Delhi TechNostaliga</title>
+		<link rel="stylesheet" href="style_grd.css" />
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+			integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+			integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+			crossorigin="anonymous"
+		/>
+		<link
+			href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css"
+			rel="stylesheet"
+		/>
+	</head>
+	<style>
+		.array {
+			display: flex;
+			height: 310px;
+		}
+		.containerForSorting .section2 .buttonsForSOrting {
+			display: grid;
+			grid-template-columns: repeat(5, auto);
 
-          <div class="dropdown1">
-            <span class="nav-link">Training Zone <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
-            <div class="dropdown-content1 animated bounceIn">
-              <a class="nav-link" href="training_zone_topic_wise.html" id="topic_wise">Topic Wise</a>
-              <a class="nav-link" href="training_zone_level_wise.html" id="level_wise">Level Wise</a>
+			justify-content: space-around;
+			align-items: center;
+		}
+		p {
+			color: #fff;
+		}
+	</style>
+	<body>
+		<div class="containerForSorting">
+			<div class="section1">
+				<h1 class="curr_title">DTU</h1>
+				<div class="curr_content">
+					Teaches many lessons. You can do whatever you want, what you need is
+					just a push.
+				</div>
+			</div>
+			<div class="section2">
+				<div class="buttonsForSOrting">
+					<div class="array-inputs">
+						<p>Size of the array:</p>
+						<input
+							id="a_size"
+							type="range"
+							min="20"
+							max="150"
+							step="1"
+							value="80"
+						/>
 
-            </div>
-          </div> 
-        </a>
-      </li>
-      <li class="user_avatar nav-item"></li>
-      
-    </ul>
-  
-    <input
-      class="form-control outer hidden search_kro"
-      type="search"
-      placeholder="Search"
-      aria-label="Search"
-    />
-    <button type="button" class="btn outer btn-dark search">
-      <img class="outer search-img" src="resources/icons/search 1.svg" alt="" />
-    </button>
-  <!-- </div> -->
-    <!-- </form> -->
-    <!-- </div> -->
-  </nav>
-    <nav>
-      
-        <div class="array-inputs">
-            <p>Size of the array:</p>
-            <input id="a_size" type="range" min=20 max=150 step=1 value=80>
-            
-            <p>Speed of the algorithm:</p>
-            <input id="a_speed" type="range" min=1 max=5 step=1 value=4 >
-        </div>
-        <button class="btn btn-primary">Generate New Array</button>
-        <button class="btn btn-secondary bubble">Bubble Sort</button>
-        <button class="btn btn-secondary selection">Selection Sort</button>
-        <button class="btn btn-secondary insertion">Insertion Sort</button>
-        <button class="btn btn-secondary merge">Merge Sort</button>
-        <button class="btn btn-secondary quick">Quick Sort</button>
-        <button class="btn btn-secondary heap">Heap Sort</button>
-    </nav>
-    <div class="array ">
-        
-    </div>
-    </div>
-  
-  </footer>
-  <script src="js/main.js"></script>
-  <script src="js/bubble.js"></script>
-  <script src="js/selection.js"></script>
-  <script src="js/heap_sort.js"></script>
-  <script src="js/merge.js"></script>
-  <script src="js/insertion.js"></script>
-  <script src="js/quick.js"></script>
-    <script src="js/utils.js"></script>   
-    <!-- Footer -->
-</body>
+						<p>Speed of the algorithm:</p>
+						<input
+							id="a_speed"
+							type="range"
+							min="1"
+							max="5"
+							step="1"
+							value="4"
+						/>
+					</div>
+					<button class="btn btn-primary">Generate New Array</button>
+					<button class="btn btn-secondary bubble">Bubble Sort</button>
+					<button class="btn btn-secondary selection">Selection Sort</button>
+					<button class="btn btn-secondary insertion">Insertion Sort</button>
+					<button class="btn btn-secondary merge">Merge Sort</button>
+					<button class="btn btn-secondary quick">Quick Sort</button>
+					<button class="btn btn-secondary heap">Heap Sort</button>
+				</div>
+				<div class="array"></div>
+			</div>
+		</div>
+
+		<script src="js/main.js"></script>
+		<script src="js/bubble.js"></script>
+		<script src="js/selection.js"></script>
+		<script src="js/heap_sort.js"></script>
+		<script src="js/merge.js"></script>
+		<script src="js/insertion.js"></script>
+		<script src="js/quick.js"></script>
+		<!-- Footer -->
+	</body>
 </html>
