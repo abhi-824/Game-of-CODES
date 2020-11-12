@@ -71,7 +71,10 @@ function grid_vis() {
 			vis.push(temp);
 		}
 		vis[x_o][y_o] = 0;
-		dfs_on_grid(x_o, y_o);
+        dfs_on_grid(x_o, y_o);
+        bffa=[];        
+        vis = [];
+        fl=0;
 	}
 	let fl = 0;
 	function dfs_on_grid(x, y) {
@@ -156,7 +159,7 @@ function grid_vis() {
         y_d = y_destination();
         let q = [];
         let dist = [];
-        //console.log(box_no,box_no2,"aaja")
+        console.log(box_no,box_no2,"aaja")
         for (let i = 0; i < box_no; i++) {
             let temp = [];
             for (let j = 0; j < box_no2; j++) {
@@ -206,14 +209,14 @@ function grid_vis() {
         }
         //console.log(x_d);
         //console.log(y_d);
-        //console.log(affa);
-        //console.log(x_d);
-        //console.log(y_d);
+        console.log(affa);
+        console.log(x_d);
+        console.log(y_d);
         let i = affa[x_d][y_d];
         for (i; i != 0; ) {
             //console.log(i);
             reconstruct(i);
-            i = affa[i[0]][i[1]];
+            i = affa[i[0]][i[1]];   
         }
         //console.log(dist);
         //console.log(affa);
