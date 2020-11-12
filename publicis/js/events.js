@@ -7,6 +7,13 @@ let topic_Wise_nav = document.querySelectorAll('.topic_wise');
 let level_wise_nav = document.querySelectorAll('.level_wise');
 let sorting_vis_nav = document.querySelectorAll('.sorting_vis_pls');
 let grid_vis_nav = document.querySelectorAll('.grid_vis_pls');
+let dotodashbtn=document.querySelectorAll('.gotodash')
+for(let i=0;i<dotodashbtn.length;i++)
+{
+	dotodashbtn[i].addEventListener("click",()=>{
+		show_screen(dashboard_screen)
+	})
+}
 for (let i = 0; i < dashboard_nav.length; i++) {
 	dashboard_nav[i].addEventListener('click', function (e) {
 		dashboard(handle);
