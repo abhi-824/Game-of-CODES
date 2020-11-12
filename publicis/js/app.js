@@ -209,14 +209,18 @@ function grid_vis() {
         }
         //console.log(x_d);
         //console.log(y_d);
-        console.log(affa);
-        console.log(x_d);
-        console.log(y_d);
-        let i = affa[x_d][y_d];
-        for (i; i != 0; ) {
-            //console.log(i);
-            reconstruct(i);
-            i = affa[i[0]][i[1]];   
+        if(fl)
+        {
+
+            console.log(affa);
+            console.log(x_d);
+            console.log(y_d);
+            let i = affa[x_d][y_d];
+            for (i; i != 0; ) {
+                //console.log(i);
+                reconstruct(i);
+                i = affa[i[0]][i[1]];   
+            }
         }
         //console.log(dist);
         //console.log(affa);
