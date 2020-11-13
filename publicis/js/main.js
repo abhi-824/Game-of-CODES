@@ -1,5 +1,5 @@
 function sorting_vis() {
-  show_screen(sorting_screen)
+	show_screen(sorting_screen);
 	const divs = [];
 	let div_heights = [];
 	let buttons = document.querySelectorAll('.btn-secondary');
@@ -19,6 +19,24 @@ function sorting_vis() {
 	speed2.addEventListener('input', function () {
 		speed = document.querySelector('#a_speed').value;
 	});
+
+	function disable_buttons() {
+		let btns1 = document.querySelector('.bubble');
+		let btns2 = document.querySelector('.selection');
+		let btns3 = document.querySelector('.insertion');
+		let btns4 = document.querySelector('.merge');
+		let btns5 = document.querySelector('.quick');
+		let btns6 = document.querySelector('.gen_array');
+		// for(let i=0;i<btns.length;i++)
+		// {
+		btns1.classList.toggle('hidden');
+		btns2.classList.toggle('hidden');
+		btns3.classList.toggle('hidden');
+		btns4.classList.toggle('hidden');
+		btns5.classList.toggle('hidden');
+		btns6.classList.toggle('hidden');
+		// }
+	}
 	function generate_array() {
 		array.innerHTML = '';
 		div_heights = [];
@@ -37,21 +55,37 @@ function sorting_vis() {
 	}
 	document.querySelector('.bubble').addEventListener('click', runBubble);
 	function runBubble() {
+		disable_buttons();
 		Bubble();
+		window.setTimeout(() => {
+			disable_buttons();
+		}, c_delay);
 	}
 	document.querySelector('.selection').addEventListener('click', runBubble2);
 	function runBubble2() {
+		disable_buttons();
 		Selection_sort();
+		window.setTimeout(() => {
+			disable_buttons();
+		}, c_delay);
 	}
 	document.querySelector('.insertion').addEventListener('click', runBubble3);
 	function runBubble3() {
 		console.log(div_heights);
+		disable_buttons();
 		Insertion_sort();
+		window.setTimeout(() => {
+			disable_buttons();
+		}, c_delay);
 	}
 	document.querySelector('.merge').addEventListener('click', runBubble4);
 	function runBubble4() {
+		disable_buttons();
 		Merge_sort(div_heights);
 		console.log(div_heights);
+		window.setTimeout(() => {
+			disable_buttons();
+		}, c_delay);
 	}
 	document.querySelector('.heap').addEventListener('click', runBubble5);
 	function runBubble5() {
@@ -60,7 +94,11 @@ function sorting_vis() {
 	document.querySelector('.quick').addEventListener('click', runBubble6);
 	function runBubble6() {
 		c_delay = 0;
+		disable_buttons();
 		Quick_sort(0, array_size.value - 1);
+		window.setTimeout(() => {
+			disable_buttons();
+		}, c_delay);
 	}
 	var c_delay = 0;
 
