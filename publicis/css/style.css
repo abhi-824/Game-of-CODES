@@ -1029,8 +1029,8 @@ div ::-webkit-scrollbar-thumb {
 }
 .containerForSorting .section1{
   display:flex;
-  height:100vh;
-  width: 100%;
+  min-height:100vh;
+  max-width: 30vw;
   flex-direction: column;
   padding:1rem;
   background:#333;

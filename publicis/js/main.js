@@ -80,6 +80,83 @@ function sorting_vis() {
 	}
 	document.querySelector('.merge').addEventListener('click', runBubble4);
 	function runBubble4() {
+		document.querySelector(
+			'.curr_content'
+		).innerHTML = `<h2 style="text-align: left;">Merge Sort</h2><div>It is a recursive sorting algorithm and its principle is based on DIVIDE AND CONQUER. Just divide the array into two parts and make both arrays sorted(by the same technique of dividing elements) and then merge them. w till dividing everything is fine but what happens on merging?&nbsp; Simple, we merge them comparing the corresponding elements one by one. Time complexity: dividing takes log n time and merging them takes n. So total=O(nlogn) in all three cases(best,worst,average)</div><div><br /></div><div><br /></div>
+		<!--HTML generated using hilite.me--><div style="background: rgb(255, 255, 255); border-color: gray; border-image: initial; border-style: solid; border-width: 0.1em 0.1em 0.1em 0.8em; border: solid gray; overflow: auto; padding: 0.2em 0.6em; width: auto;"><pre style="line-height: 125%; margin: 0px; text-align: left;"><span style="color: #333399; font-weight: bold;">void</span> <span style="color: #0066bb; font-weight: bold;">merge</span>(<span style="color: #333399; font-weight: bold;">int</span> arr[], <span style="color: #333399; font-weight: bold;">int</span> l, <span style="color: #333399; font-weight: bold;">int</span> m, <span style="color: #333399; font-weight: bold;">int</span> r)
+	  {
+		  <span style="color: #333399; font-weight: bold;">int</span> n1 <span style="color: #333333;">=</span> m <span style="color: #333333;">-</span> l <span style="color: #333333;">+</span> <span style="color: #0000dd; font-weight: bold;">1</span>;
+		  <span style="color: #333399; font-weight: bold;">int</span> n2 <span style="color: #333333;">=</span> r <span style="color: #333333;">-</span> m;
+	   
+		  <span style="color: #888888;">// Create temp arrays</span>
+		  <span style="color: #333399; font-weight: bold;">int</span> L[n1], R[n2];
+	   
+		  <span style="color: #888888;">// Copy data to temp arrays L[] and R[]</span>
+		  <span style="color: #008800; font-weight: bold;">for</span> (<span style="color: #333399; font-weight: bold;">int</span> i <span style="color: #333333;">=</span> <span style="color: #0000dd; font-weight: bold;">0</span>; i <span style="color: #333333;">&lt;</span> n1; i<span style="color: #333333;">++</span>)
+			  L[i] <span style="color: #333333;">=</span> arr[l <span style="color: #333333;">+</span> i];
+		  <span style="color: #008800; font-weight: bold;">for</span> (<span style="color: #333399; font-weight: bold;">int</span> j <span style="color: #333333;">=</span> <span style="color: #0000dd; font-weight: bold;">0</span>; j <span style="color: #333333;">&lt;</span> n2; j<span style="color: #333333;">++</span>)
+			  R[j] <span style="color: #333333;">=</span> arr[m <span style="color: #333333;">+</span> <span style="color: #0000dd; font-weight: bold;">1</span> <span style="color: #333333;">+</span> j];
+	   
+		  <span style="color: #888888;">// Merge the temp arrays back into arr[l..r]</span>
+	   
+		  <span style="color: #888888;">// Initial index of first subarray</span>
+		  <span style="color: #333399; font-weight: bold;">int</span> i <span style="color: #333333;">=</span> <span style="color: #0000dd; font-weight: bold;">0</span>;
+	   
+		  <span style="color: #888888;">// Initial index of second subarray</span>
+		  <span style="color: #333399; font-weight: bold;">int</span> j <span style="color: #333333;">=</span> <span style="color: #0000dd; font-weight: bold;">0</span>;
+	   
+		  <span style="color: #888888;">// Initial index of merged subarray</span>
+		  <span style="color: #333399; font-weight: bold;">int</span> k <span style="color: #333333;">=</span> l;
+	   
+		  <span style="color: #008800; font-weight: bold;">while</span> (i <span style="color: #333333;">&lt;</span> n1 <span style="color: #333333;">&amp;&amp;</span> j <span style="color: #333333;">&lt;</span> n2) {
+			  <span style="color: #008800; font-weight: bold;">if</span> (L[i] <span style="color: #333333;">&lt;=</span> R[j]) {
+				  arr[k] <span style="color: #333333;">=</span> L[i];
+				  i<span style="color: #333333;">++</span>;
+			  }
+			  <span style="color: #008800; font-weight: bold;">else</span> {
+				  arr[k] <span style="color: #333333;">=</span> R[j];
+				  j<span style="color: #333333;">++</span>;
+			  }
+			  k<span style="color: #333333;">++</span>;
+		  }
+	   
+		  <span style="color: #888888;">// Copy the remaining elements of</span>
+		  <span style="color: #888888;">// L[], if there are any</span>
+		  <span style="color: #008800; font-weight: bold;">while</span> (i <span style="color: #333333;">&lt;</span> n1) {
+			  arr[k] <span style="color: #333333;">=</span> L[i];
+			  i<span style="color: #333333;">++</span>;
+			  k<span style="color: #333333;">++</span>;
+		  }
+	   
+		  <span style="color: #888888;">// Copy the remaining elements of</span>
+		  <span style="color: #888888;">// R[], if there are any</span>
+		  <span style="color: #008800; font-weight: bold;">while</span> (j <span style="color: #333333;">&lt;</span> n2) {
+			  arr[k] <span style="color: #333333;">=</span> R[j];
+			  j<span style="color: #333333;">++</span>;
+			  k<span style="color: #333333;">++</span>;
+		  }
+	  }
+	   
+	  <span style="color: #888888;">// l is for left index and r is</span>
+	  <span style="color: #888888;">// right index of the sub-array</span>
+	  <span style="color: #888888;">// of arr to be sorted */</span>
+	  <span style="color: #333399; font-weight: bold;">void</span> <span style="color: #0066bb; font-weight: bold;">mergeSort</span>(<span style="color: #333399; font-weight: bold;">int</span> arr[], <span style="color: #333399; font-weight: bold;">int</span> l, <span style="color: #333399; font-weight: bold;">int</span> r)
+	  {
+		  <span style="color: #008800; font-weight: bold;">if</span> (l <span style="color: #333333;">&lt;</span> r) {
+	   
+			  <span style="color: #888888;">// Same as (l+r)/2, but avoids</span>
+			  <span style="color: #888888;">// overflow for large l and h</span>
+			  <span style="color: #333399; font-weight: bold;">int</span> m <span style="color: #333333;">=</span> (l <span style="color: #333333;">+</span> r <span style="color: #333333;">-</span> l) <span style="color: #333333;">/</span> <span style="color: #0000dd; font-weight: bold;">2</span>;
+	   
+			  <span style="color: #888888;">// Sort first and second halves</span>
+			  mergeSort(arr, l, m);
+			  mergeSort(arr, m <span style="color: #333333;">+</span> <span style="color: #0000dd; font-weight: bold;">1</span>, r);
+	   
+			  merge(arr, l, m, r);
+		  }
+	  }
+	  </pre></div>`
+		
 		disable_buttons();
 		Merge_sort(div_heights);
 		console.log(div_heights);
@@ -93,6 +170,46 @@ function sorting_vis() {
 	}
 	document.querySelector('.quick').addEventListener('click', runBubble6);
 	function runBubble6() {
+		document.querySelector(
+			'.curr_content'
+		).innerHTML = `
+		<h2>Quick Sort</h2><div>Another sorting algo based on DIVIDE AND CONQUEUER which is quite confusing at first. The crux is that fix a pivot, and swapping elements based on comparison with pivot. Now the algoritm actually is not that straight forward and you would simply get lost in visualization but if you see the code you may understand more easily.</div><div>The&nbsp;</div><!--HTML generated using hilite.me--><div style="background: rgb(255, 255, 255); border-color: gray; border-image: initial; border-style: solid; border-width: 0.1em 0.1em 0.1em 0.8em; border: solid gray; overflow: auto; padding: 0.2em 0.6em; width: auto;"><pre style="line-height: 125%; margin: 0px;"><span style="color: #333399; font-weight: bold;">int</span> <span style="color: #0066bb; font-weight: bold;">partition</span> (<span style="color: #333399; font-weight: bold;">int</span> arr[], <span style="color: #333399; font-weight: bold;">int</span> low, <span style="color: #333399; font-weight: bold;">int</span> high)  
+		{  
+			<span style="color: #333399; font-weight: bold;">int</span> pivot <span style="color: #333333;">=</span> arr[high]; <span style="color: #888888;">// pivot  </span>
+			<span style="color: #333399; font-weight: bold;">int</span> i <span style="color: #333333;">=</span> (low <span style="color: #333333;">-</span> <span style="color: #0000dd; font-weight: bold;">1</span>); <span style="color: #888888;">// Index of smaller element  </span>
+		  
+			<span style="color: #008800; font-weight: bold;">for</span> (<span style="color: #333399; font-weight: bold;">int</span> j <span style="color: #333333;">=</span> low; j <span style="color: #333333;">&lt;=</span> high <span style="color: #333333;">-</span> <span style="color: #0000dd; font-weight: bold;">1</span>; j<span style="color: #333333;">++</span>)  
+			{  
+				<span style="color: #888888;">// If current element is smaller than the pivot  </span>
+				<span style="color: #008800; font-weight: bold;">if</span> (arr[j] <span style="color: #333333;">&lt;</span> pivot)  
+				{  
+					i<span style="color: #333333;">++</span>; <span style="color: #888888;">// increment index of smaller element  </span>
+					swap(<span style="color: #333333;">&amp;</span>arr[i], <span style="color: #333333;">&amp;</span>arr[j]);  
+				}  
+			}  
+			swap(<span style="color: #333333;">&amp;</span>arr[i <span style="color: #333333;">+</span> <span style="color: #0000dd; font-weight: bold;">1</span>], <span style="color: #333333;">&amp;</span>arr[high]);  
+			<span style="color: #008800; font-weight: bold;">return</span> (i <span style="color: #333333;">+</span> <span style="color: #0000dd; font-weight: bold;">1</span>);  
+		}  
+		  
+		<span style="color: #888888;">/* The main function that implements QuickSort  </span>
+		<span style="color: #888888;">arr[] --&gt; Array to be sorted,  </span>
+		<span style="color: #888888;">low --&gt; Starting index,  </span>
+		<span style="color: #888888;">high --&gt; Ending index */</span>
+		<span style="color: #333399; font-weight: bold;">void</span> <span style="color: #0066bb; font-weight: bold;">quickSort</span>(<span style="color: #333399; font-weight: bold;">int</span> arr[], <span style="color: #333399; font-weight: bold;">int</span> low, <span style="color: #333399; font-weight: bold;">int</span> high)  
+		{  
+			<span style="color: #008800; font-weight: bold;">if</span> (low <span style="color: #333333;">&lt;</span> high)  
+			{  
+				<span style="color: #888888;">/* pi is partitioning index, arr[p] is now  </span>
+		<span style="color: #888888;">        at right place */</span>
+				<span style="color: #333399; font-weight: bold;">int</span> pi <span style="color: #333333;">=</span> partition(arr, low, high);  
+		  
+				<span style="color: #888888;">// Separately sort elements before  </span>
+				<span style="color: #888888;">// partition and after partition  </span>
+				quickSort(arr, low, pi <span style="color: #333333;">-</span> <span style="color: #0000dd; font-weight: bold;">1</span>);  
+				quickSort(arr, pi <span style="color: #333333;">+</span> <span style="color: #0000dd; font-weight: bold;">1</span>, high);  
+			}  
+		}  
+		</pre></div>`
 		c_delay = 0;
 		disable_buttons();
 		Quick_sort(0, array_size.value - 1);
@@ -112,6 +229,15 @@ function sorting_vis() {
 	}
 
 	function Bubble() {
+		document.querySelector(
+			'.curr_content'
+		).innerHTML = `<h2 style="text-align: left;">&nbsp;Bubble Sort</h2><p>This is the most simple sorting algorithm. Just swap adjacent elements until the array is sorted. Like we have to traverse whole array n-2 times and in each traversal we have just this condition: check if the the left node is greater than right. If yes, just swap them. Time Complexity(Average, worst, best)= O(n^2)</p><p>code(in C++):</p><div style="background: rgb(255, 255, 255); border-color: gray; border-image: initial; border-style: solid; border-width: 0.1em 0.1em 0.1em 0.8em; border: solid gray; overflow: auto; padding: 0.2em 0.6em; width: auto;"><pre style="line-height: 125%; margin: 0px;"><span style="color: #008800; font-weight: bold;">for</span> (i <span style="color: #333333;">=</span> <span style="color: #0000dd; font-weight: bold;">0</span>; i <span style="color: #333333;">&lt;</span> n<span style="color: #333333;">-</span><span style="color: #0000dd; font-weight: bold;">1</span>; i<span style="color: #333333;">++</span>)      
+      
+		<span style="color: #888888;">// Last i elements are already in place  </span>
+		<span style="color: #008800; font-weight: bold;">for</span> (j <span style="color: #333333;">=</span> <span style="color: #0000dd; font-weight: bold;">0</span>; j <span style="color: #333333;">&lt;</span> n<span style="color: #333333;">-</span>i<span style="color: #333333;">-</span><span style="color: #0000dd; font-weight: bold;">1</span>; j<span style="color: #333333;">++</span>)  
+			<span style="color: #008800; font-weight: bold;">if</span> (arr[j] <span style="color: #333333;">&gt;</span> arr[j<span style="color: #333333;">+</span><span style="color: #0000dd; font-weight: bold;">1</span>])  
+				swap(<span style="color: #333333;">&amp;</span>arr[j], <span style="color: #333333;">&amp;</span>arr[j<span style="color: #333333;">+</span><span style="color: #0000dd; font-weight: bold;">1</span>]);  </pre></div>
+	<h2 style="text-align: left;"><br /></h2><h2 style="text-align: left;"><br /></h2>`;
 		c_delay = 0;
 		console.log(array_size.value);
 		for (let j = 1; j < array_size.value; j++) {
@@ -136,7 +262,28 @@ function sorting_vis() {
 
 	function Insertion_sort() {
 		c_delay = 0;
-
+		document.querySelector(
+			'.curr_content'
+		).innerHTML = `<h2 style="text-align: left;">Insertion Sort</h2><div><br /></div><div>Another Simple and intuitive algorithm, yet an efficient one. Its just the way we normally sort as "normal" humans. Suppose we are at some position of array, i, what we do is to take the element at the i<span style="font-size: xx-small;">th </span>card and then swap it with the element it should be to make the array before i position ,sorted.&nbsp;</div><div>Time Complexity:&nbsp;</div><div>O(n^2)(Average and worst)&nbsp;</div><div>O(n)(Best case)(When array is already sorted)</div><div><br /><!--HTML generated using hilite.me--><div style="background: rgb(255, 255, 255); border-color: gray; border-image: initial; border-style: solid; border-width: 0.1em 0.1em 0.1em 0.8em; border: solid gray; overflow: auto; padding: 0.2em 0.6em; width: auto;"><pre style="line-height: 125%; margin: 0px;"><span style="color: #333399; font-weight: bold;">int</span> i, key, j;  
+		<span style="color: #008800; font-weight: bold;">for</span> (i <span style="color: #333333;">=</span> <span style="color: #0000dd; font-weight: bold;">1</span>; i <span style="color: #333333;">&lt;</span> n; i<span style="color: #333333;">++</span>) 
+		{  
+			key <span style="color: #333333;">=</span> arr[i];  
+			j <span style="color: #333333;">=</span> i <span style="color: #333333;">-</span> <span style="color: #0000dd; font-weight: bold;">1</span>;  
+	  
+			<span style="color: #888888;">/* Move elements of arr[0..i-1], that are  </span>
+	<span style="color: #888888;">        greater than key, to one position ahead  </span>
+	<span style="color: #888888;">        of their current position */</span>
+			<span style="color: #008800; font-weight: bold;">while</span> (j <span style="color: #333333;">&gt;=</span> <span style="color: #0000dd; font-weight: bold;">0</span> <span style="color: #333333;">&amp;&amp;</span> arr[j] <span style="color: #333333;">&gt;</span> key) 
+			{  
+				arr[j <span style="color: #333333;">+</span> <span style="color: #0000dd; font-weight: bold;">1</span>] <span style="color: #333333;">=</span> arr[j];  
+				j <span style="color: #333333;">=</span> j <span style="color: #333333;">-</span> <span style="color: #0000dd; font-weight: bold;">1</span>;  
+			}  
+			arr[j <span style="color: #333333;">+</span> <span style="color: #0000dd; font-weight: bold;">1</span>] <span style="color: #333333;">=</span> key;  
+		}  
+	</pre></div>
+	</div>
+	<p></p>
+	<p></p>`
 		for (let i = 0; i < array_size.value; i++) {
 			let val = div_heights[i];
 			let hole = i;
