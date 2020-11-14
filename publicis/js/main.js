@@ -63,6 +63,23 @@ function sorting_vis() {
 	}
 	document.querySelector('.selection').addEventListener('click', runBubble2);
 	function runBubble2() {
+		document.querySelector(
+			'.curr_content'
+		).innerHTML = ` <h2>Selection Sort</h2><div>Selection sort is simple: find minimum element in the array and swap it with the current pointer. Quite intuitive!&nbsp;</div><div>Time Complexity: O(n^2) (Best ,worst and average)</div><div><br /></div><div><!--HTML generated using hilite.me--><div style="background: rgb(255, 255, 255); border-color: gray; border-image: initial; border-style: solid; border-width: 0.1em 0.1em 0.1em 0.8em; border: solid gray; overflow: auto; padding: 0.2em 0.6em; width: auto;"><pre style="line-height: 125%; margin: 0px;"><span style="color: #333399; font-weight: bold;">int</span> i, j, min_idx;  
+  
+		<span style="color: #888888;">// One by one move boundary of unsorted subarray  </span>
+		<span style="color: #008800; font-weight: bold;">for</span> (i <span style="color: #333333;">=</span> <span style="color: #0000dd; font-weight: bold;">0</span>; i <span style="color: #333333;">&lt;</span> n<span style="color: #333333;">-</span><span style="color: #0000dd; font-weight: bold;">1</span>; i<span style="color: #333333;">++</span>)  
+		{  
+			<span style="color: #888888;">// Find the minimum element in unsorted array  </span>
+			min_idx <span style="color: #333333;">=</span> i;  
+			<span style="color: #008800; font-weight: bold;">for</span> (j <span style="color: #333333;">=</span> i<span style="color: #333333;">+</span><span style="color: #0000dd; font-weight: bold;">1</span>; j <span style="color: #333333;">&lt;</span> n; j<span style="color: #333333;">++</span>)  
+			<span style="color: #008800; font-weight: bold;">if</span> (arr[j] <span style="color: #333333;">&lt;</span> arr[min_idx])  
+				min_idx <span style="color: #333333;">=</span> j;  
+	  
+			<span style="color: #888888;">// Swap the found minimum element with the first element  </span>
+			swap(<span style="color: #333333;">&amp;</span>arr[min_idx], <span style="color: #333333;">&amp;</span>arr[i]);  
+		}  
+	</pre></div>`
 		disable_buttons();
 		Selection_sort();
 		window.setTimeout(() => {

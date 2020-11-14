@@ -21,7 +21,88 @@ function grid_vis() {
 	let dy = [1, -1, 0, 0];
 	document.querySelector('.bfs').addEventListener('click', function (e) {
 		// console.log(x_d);
+		document.querySelectorAll(".curr_title")[1].innerHTML=``;
 		// console.log(y_d);
+		document.querySelectorAll(".curr_content")[1].innerHTML=`<h2 style="text-align: left;">Breadth First Search(BFS)</h2><div>Breadth first search's principle is quite simple, traverse level by level until we find the destination. Now, in a grid system we can traverse by making a radial expansion having center as the source cell. So you may see such visualization which is quite self explanatory. But how do you implement that?</div><div>Algorithm:</div><div>1. Make a queue and push the source vertex in it.&nbsp;</div><div>2. while(q.length!=0)</div><div><ol><li><span>Pop the element from stack</span></li><li><span>check if any of points</span>&nbsp;(x+1,y), (x,y+1),(x-1,y) and (x,y-1) are destination vertex.</li><li>If yes: return</li><li>If no: push&nbsp;&nbsp;(x+1,y), (x,y+1),(x-1,y) and (x,y-1) into stack.</li></ol></div><div>Code:&nbsp;</div>
+		<!--HTML generated using hilite.me--><div style="background: rgb(255, 255, 255); border-color: gray; border-image: initial; border-style: solid; border-width: 0.1em 0.1em 0.1em 0.8em; border: solid gray; overflow: auto; padding: 0.2em 0.6em; width: auto;"><pre style="line-height: 125%; margin: 0px;"><span style="color: #008800; font-weight: bold;">class</span> QItem { 
+		<span style="color: #008800; font-weight: bold;">public</span><span style="color: #333333;">:</span> 
+			<span style="color: #008800; font-weight: bold;">int</span> row; 
+			<span style="color: #008800; font-weight: bold;">int</span> col; 
+			<span style="color: #008800; font-weight: bold;">int</span> dist; 
+			QItem(<span style="color: #008800; font-weight: bold;">int</span> x, <span style="color: #008800; font-weight: bold;">int</span> y, <span style="color: #008800; font-weight: bold;">int</span> w) 
+				<span style="color: #333333;">:</span> row(x), col(y), dist(w) 
+			{ 
+			} 
+		}; 
+		  
+		<span style="color: #008800; font-weight: bold;">int</span> minDistance(<span style="color: #008800; font-weight: bold;">char</span> grid[N][M]) 
+		{ 
+			QItem source(<span style="color: #0000dd; font-weight: bold;">0</span>, <span style="color: #0000dd; font-weight: bold;">0</span>, <span style="color: #0000dd; font-weight: bold;">0</span>); 
+		  
+			<span style="color: #888888;">// To keep track of visited QItems. Marking </span>
+			<span style="color: #888888;">// blocked cells as visited. </span>
+			bool visited[N][M]; 
+			<span style="color: #008800; font-weight: bold;">for</span> (<span style="color: #008800; font-weight: bold;">int</span> i <span style="color: #333333;">=</span> <span style="color: #0000dd; font-weight: bold;">0</span>; i <span style="color: #333333;">&lt;</span> N; i<span style="color: #333333;">++</span>) { 
+				<span style="color: #008800; font-weight: bold;">for</span> (<span style="color: #008800; font-weight: bold;">int</span> j <span style="color: #333333;">=</span> <span style="color: #0000dd; font-weight: bold;">0</span>; j <span style="color: #333333;">&lt;</span> M; j<span style="color: #333333;">++</span>) 
+				{ 
+					<span style="color: #008800; font-weight: bold;">if</span> (grid[i][j] <span style="color: #333333;">==</span> <span style="background-color: #fff0f0;">'0'</span>) 
+						visited[i][j] <span style="color: #333333;">=</span> <span style="color: #008800; font-weight: bold;">true</span>; 
+					<span style="color: #008800; font-weight: bold;">else</span>
+						visited[i][j] <span style="color: #333333;">=</span> <span style="color: #008800; font-weight: bold;">false</span>; 
+		  
+					<span style="color: #888888;">// Finding source </span>
+					<span style="color: #008800; font-weight: bold;">if</span> (grid[i][j] <span style="color: #333333;">==</span> <span style="background-color: #fff0f0;">'s'</span>) 
+					{ 
+					   source.row <span style="color: #333333;">=</span> i; 
+					   source.col <span style="color: #333333;">=</span> j; 
+					} 
+				} 
+			} 
+		  
+			<span style="color: #888888;">// applying BFS on matrix cells starting from source </span>
+			queue<span style="color: #333333;">&lt;</span>QItem<span style="color: #333333;">&gt;</span> q; 
+			q.push(source); 
+			visited[source.row][source.col] <span style="color: #333333;">=</span> <span style="color: #008800; font-weight: bold;">true</span>; 
+			<span style="color: #008800; font-weight: bold;">while</span> (<span style="color: #333333;">!</span>q.empty()) { 
+				QItem p <span style="color: #333333;">=</span> q.front(); 
+				q.pop(); 
+		  
+				<span style="color: #888888;">// Destination found; </span>
+				<span style="color: #008800; font-weight: bold;">if</span> (grid[p.row][p.col] <span style="color: #333333;">==</span> <span style="background-color: #fff0f0;">'d'</span>) 
+					<span style="color: #008800; font-weight: bold;">return</span> p.dist; 
+		  
+				<span style="color: #888888;">// moving up </span>
+				<span style="color: #008800; font-weight: bold;">if</span> (p.row <span style="color: #333333;">-</span> <span style="color: #0000dd; font-weight: bold;">1</span> <span style="color: #333333;">&gt;=</span> <span style="color: #0000dd; font-weight: bold;">0</span> <span style="color: #333333;">&amp;&amp;</span> 
+					visited[p.row <span style="color: #333333;">-</span> <span style="color: #0000dd; font-weight: bold;">1</span>][p.col] <span style="color: #333333;">==</span> <span style="color: #008800; font-weight: bold;">false</span>) { 
+					q.push(QItem(p.row <span style="color: #333333;">-</span> <span style="color: #0000dd; font-weight: bold;">1</span>, p.col, p.dist <span style="color: #333333;">+</span> <span style="color: #0000dd; font-weight: bold;">1</span>)); 
+					visited[p.row <span style="color: #333333;">-</span> <span style="color: #0000dd; font-weight: bold;">1</span>][p.col] <span style="color: #333333;">=</span> <span style="color: #008800; font-weight: bold;">true</span>; 
+				} 
+		  
+				<span style="color: #888888;">// moving down </span>
+				<span style="color: #008800; font-weight: bold;">if</span> (p.row <span style="color: #333333;">+</span> <span style="color: #0000dd; font-weight: bold;">1</span> <span style="color: #333333;">&lt;</span> N <span style="color: #333333;">&amp;&amp;</span> 
+					visited[p.row <span style="color: #333333;">+</span> <span style="color: #0000dd; font-weight: bold;">1</span>][p.col] <span style="color: #333333;">==</span> <span style="color: #008800; font-weight: bold;">false</span>) { 
+					q.push(QItem(p.row <span style="color: #333333;">+</span> <span style="color: #0000dd; font-weight: bold;">1</span>, p.col, p.dist <span style="color: #333333;">+</span> <span style="color: #0000dd; font-weight: bold;">1</span>)); 
+					visited[p.row <span style="color: #333333;">+</span> <span style="color: #0000dd; font-weight: bold;">1</span>][p.col] <span style="color: #333333;">=</span> <span style="color: #008800; font-weight: bold;">true</span>; 
+				} 
+		  
+				<span style="color: #888888;">// moving left </span>
+				<span style="color: #008800; font-weight: bold;">if</span> (p.col <span style="color: #333333;">-</span> <span style="color: #0000dd; font-weight: bold;">1</span> <span style="color: #333333;">&gt;=</span> <span style="color: #0000dd; font-weight: bold;">0</span> <span style="color: #333333;">&amp;&amp;</span> 
+					visited[p.row][p.col <span style="color: #333333;">-</span> <span style="color: #0000dd; font-weight: bold;">1</span>] <span style="color: #333333;">==</span> <span style="color: #008800; font-weight: bold;">false</span>) { 
+					q.push(QItem(p.row, p.col <span style="color: #333333;">-</span> <span style="color: #0000dd; font-weight: bold;">1</span>, p.dist <span style="color: #333333;">+</span> <span style="color: #0000dd; font-weight: bold;">1</span>)); 
+					visited[p.row][p.col <span style="color: #333333;">-</span> <span style="color: #0000dd; font-weight: bold;">1</span>] <span style="color: #333333;">=</span> <span style="color: #008800; font-weight: bold;">true</span>; 
+				} 
+		  
+				 <span style="color: #888888;">// moving right </span>
+				<span style="color: #008800; font-weight: bold;">if</span> (p.col <span style="color: #333333;">+</span> <span style="color: #0000dd; font-weight: bold;">1</span> <span style="color: #333333;">&lt;</span> M <span style="color: #333333;">&amp;&amp;</span> 
+					visited[p.row][p.col <span style="color: #333333;">+</span> <span style="color: #0000dd; font-weight: bold;">1</span>] <span style="color: #333333;">==</span> <span style="color: #008800; font-weight: bold;">false</span>) { 
+					q.push(QItem(p.row, p.col <span style="color: #333333;">+</span> <span style="color: #0000dd; font-weight: bold;">1</span>, p.dist <span style="color: #333333;">+</span> <span style="color: #0000dd; font-weight: bold;">1</span>)); 
+					visited[p.row][p.col <span style="color: #333333;">+</span> <span style="color: #0000dd; font-weight: bold;">1</span>] <span style="color: #333333;">=</span> <span style="color: #008800; font-weight: bold;">true</span>; 
+				} 
+			} 
+			<span style="color: #008800; font-weight: bold;">return</span> <span style="color: #333333;">-</span><span style="color: #0000dd; font-weight: bold;">1</span>; 
+		} 
+		</pre></div>
+		`;
 		disable_buttons();
 		BFS();
 		window.setTimeout(() => {
@@ -31,6 +112,21 @@ function grid_vis() {
 	});
 	document.querySelector('.dfs').addEventListener('click', function (e) {
 		x_o = x_origin();
+		document.querySelectorAll(".curr_title")[1].innerHTML=``;
+		document.querySelectorAll(".curr_content")[1].innerHTML=`<h2>Depth First Search(DFS)</h2><div>Its algo is just opposite of the breadth first search where we traverse level by leve. Here we just reach end by traversing through all levels in one go. We do not reach all nodes of all levels at one go but traverse them many times until all othem are reached.</div><div>Code:</div><div><br /></div><!--HTML generated using hilite.me--><div style="background: rgb(255, 255, 255); border-color: gray; border-image: initial; border-style: solid; border-width: 0.1em 0.1em 0.1em 0.8em; border: solid gray; overflow: auto; padding: 0.2em 0.6em; width: auto;"><pre style="line-height: 125%; margin: 0px;"><span style="color: #008800; font-weight: bold;">function</span> dfs_on_grid(x, y) {	</pre><pre style="line-height: 125%; margin: 0px;"><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; &nbsp;if(fl)</span><br /></pre><pre style="line-height: 125%; margin: 0px;"><span><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; &nbsp;return;</span><br /></span></pre><pre style="line-height: 125%; margin: 0px;"><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;if(x==endX&amp;&amp;y==endY){</span></span></pre><pre style="line-height: 125%; margin: 0px;"><span><span><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; &nbsp;cout&lt;&lt;"Reached end";</span><br /></span></span></pre><pre style="line-height: 125%; margin: 0px;"><span><span><span><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; &nbsp;</span>fl=1;</span></span></span></pre><pre style="line-height: 125%; margin: 0px;"><span><span><span><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; &nbsp;return;</span><br /></span></span></span></pre><pre style="line-height: 125%; margin: 0px;"><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; &nbsp;</span>}
+		<span style="color: #008800; font-weight: bold;">if</span> (isValid(x <span style="color: #333333;">-</span> <span style="color: #0000dd; font-weight: bold;">1</span>, y)) {
+		<span>&nbsp;&nbsp; &nbsp;</span>dfs_on_grid(x <span style="color: #333333;">-</span> <span style="color: #0000dd; font-weight: bold;">1</span>, y);
+	<span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; &nbsp;</span>}
+		<span style="color: #008800; font-weight: bold;">if</span> (isValid(x, y <span style="color: #333333;">-</span> <span style="color: #0000dd; font-weight: bold;">1</span>)) {	
+		<span>&nbsp;&nbsp; &nbsp;</span>dfs_on_grid(x, y <span style="color: #333333;">-</span> <span style="color: #0000dd; font-weight: bold;">1</span>);
+		}
+		<span style="color: #008800; font-weight: bold;">if</span> (isValid(x <span style="color: #333333;">+</span> <span style="color: #0000dd; font-weight: bold;">1</span>, y)) {
+	<span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span>dfs_on_grid(x <span style="color: #333333;">+</span> <span style="color: #0000dd; font-weight: bold;">1</span>, y)		
+		}
+		<span style="color: #008800; font-weight: bold;">if</span> (isValid(x, y <span style="color: #333333;">+</span> <span style="color: #0000dd; font-weight: bold;">1</span>)) {		</pre><pre style="line-height: 125%; margin: 0px;">	<span>&nbsp;&nbsp; &nbsp;</span>dfs_on_grid(x, y <span style="color: #333333;">+</span> <span style="color: #0000dd; font-weight: bold;">1</span>)		
+		}
+	}
+	</pre></div>`
 		console.log('hey');
 		disable_buttons();
 		y_o = y_origin();
@@ -195,7 +291,7 @@ function grid_vis() {
 		while (q.length !== 0) {
 			let curX = q[0][0];
 			let curY = q[0][1];
-			q.shift();
+			q.shift();	
 			for (let i = 0; i < 4; i++) {
 				let gg = (curX + dx[i]) * box_no + curY + dy[i] - 1;
 				if (gg < 0 || gg >= cell.length) {
