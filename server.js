@@ -30,7 +30,6 @@ const server = http.createServer(app);
 const io = socketio(server);
 
 //django unchained
-app.use(sslRedirect());
 app.use(express.static(path.join(__dirname, 'publicis')));
 io.on('connection', (socket) => {
 	console.log('new ws connection');
