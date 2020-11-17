@@ -1380,3 +1380,25 @@ justify-content: center;
   font-size:20px;
   color: red;
 }
+.bookmarked_ques{
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+
+}
+.bookmarked_ques a{
+  color:#fff!important;
+  /* padding:0.7rem; */
+  background:#333;
+  margin:1rem;
+}
+.buttonsforbhala{
+  display: flex;
+}
+.bookmarked{
+  font-size:0.8rem;
+  padding:0.3rem;
+  margin:0.1rem;
+}
