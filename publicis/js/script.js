@@ -1660,7 +1660,7 @@ function dashboard(handle_name) {
 		show_daily_mix.classList.remove('hidden');
 		strong_topics.classList.add('hidden');
 		show_daily_mix2.classList.remove('hidden');
-		hide_please(item3);document.querySelector('#bookmarkspakd').classList.add('hidden');
+		document.querySelector('#bookmarkspakd').classList.add('hidden');
 
 		document.querySelector('.heading').classList.add('hidden');
 		upsolve.classList.add('animated');

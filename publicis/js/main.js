@@ -419,3 +419,4 @@ function sorting_vis() {
 			update_div(minim, div_heights[minim], 'teal');
 		}
 	}
+}
