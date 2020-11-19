@@ -1,3 +1,4 @@
+
 function sorting_vis() {
 	show_screen(sorting_screen);
 	const divs = [];
@@ -418,4 +419,3 @@ function sorting_vis() {
 			update_div(minim, div_heights[minim], 'teal');
 		}
 	}
-}

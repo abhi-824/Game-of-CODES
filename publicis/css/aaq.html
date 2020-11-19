@@ -1,0 +1,203 @@
+<h1 style="text-align: left">&nbsp;STL: Standard Template Library(C++ Only)</h1>
+<div style="text-align: left">
+	As you may have seen vectors now in Arrays, you might be wondering about more
+	such amazing pre-defined data structures and methods. So here is a list of all
+	such "magical containers" STL have to offer and when and how to use them.
+</div>
+<div style="text-align: left"><br /></div>
+<div style="text-align: left">
+	<h3 style="text-align: left">Introduction to STL: (All misconceptions)</h3>
+	<div style="text-align: left">STL: Standard Template Library.</div>
+	<div style="text-align: left">
+		STL is a library which gives us many predefined functions and "containers"
+		to make our life much easier!&nbsp; <br />
+	</div>
+	<div style="text-align: left">
+		See, many of you now would be wondering: If there are such magical
+		containers, then why learn things like linked lists and all which are quite
+		difficult to understand and implement. Also, is using STL recommended or is
+		it just a "quick fix".&nbsp;
+	</div>
+	<div style="text-align: left">
+		First of all, STL is not at all "magic". Every container is made by the
+		creators of this library and we can and should use it to make code look a
+		lot cleaner and easy to both understand and write. Secondly, the theory of
+		linked lists, self balancing BSTs(which are maps in STL) is really
+		important, not only for interviews but to understand how this magic happens.
+	</div>
+	<div style="text-align: left">
+		<h3 style="text-align: left"><br /></h3>
+		<h3 style="text-align: left">Major Containers:</h3>
+		<div style="text-align: left">
+			STL has these containers to store data and they are all really easy to use
+			and understand. Here we just discuss the syntax and properties and when to
+			use them and who they are in actual.
+		</div>
+		<div style="text-align: left">
+			&nbsp;But before jumping to the containers, we have to learn about
+			<b>Iterators </b>and how to use them.
+		</div>
+		<div style="text-align: left">
+			<h4 style="text-align: left"><br /></h4>
+			<h4 style="text-align: left">Iterators</h4>
+			<div style="text-align: left">
+				Iterators are any object which can point to some container and can
+				<b>iterate</b> through them. The most obvious form of an iterator is a
+				pointer and we are gonna use a very similar thing for iterating on the
+				containers. Also please note that containers such as vectors can be
+				iterated with a simple for loop(same way to iterate an array) and
+				iterators as well but containers such as sets and maps can't. We have to
+				use iterators to iterate though them. Also, they reduce the complexity
+				and execution time of the program.&nbsp;&nbsp;
+			</div>
+			<div>Syntax of iterator is:</div>
+			<div>
+				<span>&nbsp;&nbsp; &nbsp;</span
+				><span>&nbsp; &nbsp;vector&lt;int&gt;::iterator it;&nbsp;</span>
+			</div>
+			<div>
+				<span
+					><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; </span>OR</span
+				>
+			</div>
+			<div>
+				<span
+					><span>&nbsp;&nbsp; &nbsp;</span
+					><span>&nbsp; &nbsp; auto it=my_vector_name.begin();</span><br
+				/></span>
+			</div>
+			<div>
+				<span
+					><span
+						>Now let's see the difference. First of all, the first syntax is not
+						pointing to anything but the second one is pointing to the vector's
+						beginning.And as the second syntax is far more better, I am gonna
+						use that only from here.</span
+					></span
+				>
+			</div>
+			<div>
+				<span
+					><span
+						>Okay, there are some things to be kept in mind while dealing with
+						them:</span
+					></span
+				>
+			</div>
+			<div>
+				<ul style="text-align: left">
+					<li>
+						<span
+							>Never do something like this: iterator_name=iterator_name+5 to
+							shift iterator 5 positions ahead. Instead use
+							<b
+								>advance() to advance the original iterator, but if you want to
+								make a copy of the advanced iterator to another iterator, use
+								next(). The syntax of both and differences are here:</b
+							></span
+						>
+						<!--HTML generated using hilite.me-->
+						<div
+							style="
+								background: rgb(255, 255, 255);
+								border-color: gray;
+								border-image: initial;
+								border-style: solid;
+								border-width: 0.1em 0.1em 0.1em 0.8em;
+								border: solid gray;
+								overflow: auto;
+								padding: 0.2em 0.6em;
+								width: auto;
+							"
+						>
+							<pre
+								style="line-height: 125%; margin: 0px"
+							><span style="color: #888888;">//For advance</span>
+vector<span style="color: #333333;">&lt;</span><span style="color: #333399; font-weight: bold;">int</span><span style="color: #333333;">&gt;</span> my_vec <span style="color: #333333;">=</span> {<span style="color: #0000dd; font-weight: bold;">1</span>, <span style="color: #0000dd; font-weight: bold;">2</span>, <span style="color: #0000dd; font-weight: bold;">3</span>, <span style="color: #0000dd; font-weight: bold;">4</span>, <span style="color: #0000dd; font-weight: bold;">5</span>};
+<span style="color: #008800; font-weight: bold;">auto</span> it <span style="color: #333333;">=</span> my_vec.begin();
+advance(it, <span style="color: #0000dd; font-weight: bold;">3</span>);
+cout <span style="color: #333333;">&lt;&lt;</span> <span style="background-color: #fff0f0;">"The changed position of it is: "</span> <span style="color: #333333;">&lt;&lt;</span> <span style="color: #333333;">*</span>it <span style="color: #333333;">&lt;&lt;</span> endl;
+</pre>
+						</div>
+						<!--HTML generated using hilite.me-->
+						<div
+							style="
+								background: rgb(255, 255, 255);
+								border-color: gray;
+								border-image: initial;
+								border-style: solid;
+								border-width: 0.1em 0.1em 0.1em 0.8em;
+								border: solid gray;
+								overflow: auto;
+								padding: 0.2em 0.6em;
+								width: auto;
+							"
+						>
+							<pre
+								style="line-height: 125%; margin: 0px"
+							><span style="color: #888888;">//For next</span>
+vector<span style="color: #333333;">&lt;</span><span style="color: #333399; font-weight: bold;">int</span><span style="color: #333333;">&gt;</span> my_vec <span style="color: #333333;">=</span> {<span style="color: #0000dd; font-weight: bold;">1</span>, <span style="color: #0000dd; font-weight: bold;">2</span>, <span style="color: #0000dd; font-weight: bold;">3</span>, <span style="color: #0000dd; font-weight: bold;">4</span>, <span style="color: #0000dd; font-weight: bold;">5</span>};
+<span style="color: #008800; font-weight: bold;">auto</span> it <span style="color: #333333;">=</span> my_vec.begin();
+<span style="color: #008800; font-weight: bold;">auto</span> it2 <span style="color: #333333;">=</span> next(it, <span style="color: #0000dd; font-weight: bold;">3</span>);
+cout <span style="color: #333333;">&lt;&lt;</span> <span style="background-color: #fff0f0;">"The position of it2 is: "</span> <span style="color: #333333;">&lt;&lt;</span> <span style="color: #333333;">*</span>it2 <span style="color: #333333;">&lt;&lt;</span> endl;
+</pre>
+						</div>
+					</li>
+				</ul>
+				<b><br /></b>
+			</div>
+			<div>
+				<span
+					><span><br /></span
+				></span>
+			</div>
+			<div>
+				<span
+					><span><br /></span
+				></span>
+			</div>
+			<div>++ and -- operators.</div>
+			<div><br /></div>
+			Now let's see the widely used utility library's <b>pair</b>.<br />
+			<h4 style="text-align: left"><br /></h4>
+			<h4 style="text-align: left">Pairs</h4>
+			<div style="text-align: left">
+				Finally, now let's explore the containers we would be using most
+				often.<br />
+			</div>
+		</div>
+		<div style="text-align: left">
+			<h4 style="text-align: left"><br /></h4>
+			<h4 style="text-align: left">Vectors</h4>
+			<div style="text-align: left">
+				Although they are already discussed in arrays section...............
+			</div>
+			<div style="text-align: left">&nbsp;</div>
+			<div style="text-align: left">
+				<h4 style="text-align: left"><br /></h4>
+				<h4 style="text-align: left">Sets</h4>
+				<h4 style="text-align: left">&nbsp;</h4>
+				<h4 style="text-align: left">Maps</h4>
+				<h4 style="text-align: left">&nbsp;</h4>
+				<h4 style="text-align: left">Queue</h4>
+				<h4 style="text-align: left">&nbsp;</h4>
+				<h4 style="text-align: left">Stacks</h4>
+				<h4 style="text-align: left">&nbsp;</h4>
+				<h4 style="text-align: left">MultiSet</h4>
+				<h4 style="text-align: left">&nbsp;</h4>
+				<h4 style="text-align: left">dequeue</h4>
+				<h4 style="text-align: left">&nbsp;</h4>
+				<h4 style="text-align: left">priority_queue</h4>
+				<h4 style="text-align: left">&nbsp;</h4>
+				<h4 style="text-align: left">unordered_set</h4>
+				<h4 style="text-align: left">&nbsp;</h4>
+				<h4 style="text-align: left">unordered_map</h4>
+				<h4 style="text-align: left">&nbsp;</h4>
+				<h4 style="text-align: left">unordered_multiset&nbsp;</h4>
+				<h4 style="text-align: left"><br /></h4>
+				<h4 style="text-align: left"><br /></h4>
+				<h4 style="text-align: left"><br /></h4>
+			</div>
+		</div>
+	</div>
+</div>

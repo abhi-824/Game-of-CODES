@@ -1,3 +1,4 @@
+
 function grid_vis() {
 	show_screen(grid_screen);
 	let box_no;

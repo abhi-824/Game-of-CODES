@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Lets Go Somewhere</title>
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+			integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="shortcut icon"
+			href="res/DTU,_Delhi_official_logo.png"
+			type="image/x-icon"
+		/>
+		<link rel="stylesheet" href="style_grd.css" />
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+			integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+			crossorigin="anonymous"
+		/>
+		<!-- Font Awesome -->
+		<link
+			rel="stylesheet"
+			href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+		/>
+		<!-- Google Fonts -->
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+		/>
+		<!-- Bootstrap core CSS -->
+		<link
+			href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
+			rel="stylesheet"
+		/>
+		<!-- Material Design Bootstrap -->
+		<link
+			href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<div class="containerForSorting">
+			<div class="section1">
+				<h1 class="curr_title">DTU</h1>
+				<div class="curr_content">
+					Teaches many lessons. You can do whatever you want, what you need is
+					just a push.
+				</div>
+			</div>
+			<div class="section2">
+				<div class="buttons">
+					<div class="avatar">
+						<img src="res/DTU,_Delhi_official_logo.png" alt="" />
+					</div>
+					<div class="algos">
+						<button
+							class="btn btn-primary dropdown-toggle mr-4"
+							type="button"
+							data-toggle="dropdown"
+							aria-haspopup="true"
+							aria-expanded="false"
+						>
+							Select Algorithm
+						</button>
+
+						<div class="dropdown-menu">
+							<a class="dropdown-item bfs" href="#">BFS</a>
+							<a class="dropdown-item dfs" href="#">DFS</a>
+							<a class="dropdown-item dij" href="#">DIJKSTRA'S ALGORITHM</a>
+							<a class="dropdown-item a_star" href="#">A STAR</a>
+						</div>
+					</div>
+					<div class="reset">
+						<button class="btn reset_btn btn-secondary">Reset Grid</button>
+					</div>
+					<div class="start">
+						<button class="btn btn-primary">Start</button>
+					</div>
+					<div class="generate_mazes">
+						<button class="btn generate_maze btn-secondary">
+							Generate Maze
+						</button>
+					</div>
+				</div>
+				<table id="grid"></table>
+			</div>
+		</div>
+		<script src="js/utility_classes/generate_grid.js"></script>
+		<script src="js/utility_classes/generating_x_y.js"></script>
+		<script src="js/algorithms/a_star.js"></script>
+		<script src="js/algorithms/bfs.js"></script>
+		<script src="js/algorithms/dfs.js"></script>
+		<script src="js/algorithms/dijkstaras.js"></script>
+		<script src="js/animations/vis.js"></script>
+		<script src="js/app.js"></script>
+		<script
+			src="https://kit.fontawesome.com/141974084f.js"
+			crossorigin="anonymous"
+		></script>
+		<!-- JQuery -->
+		<script
+			type="text/javascript"
+			src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+		></script>
+		<!-- Bootstrap tooltips -->
+		<script
+			type="text/javascript"
+			src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"
+		></script>
+		<!-- Bootstrap core JavaScript -->
+		<script
+			type="text/javascript"
+			src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"
+		></script>
+		<!-- MDB core JavaScript -->
+		<script
+			type="text/javascript"
+			src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"
+		></script>
+	</body>
+</html>

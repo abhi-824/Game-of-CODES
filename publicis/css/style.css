@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Nova+Square&family=Philosopher&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 body {
   font-family: "Nova Square", sans-serif;
   font-size:1rem;
@@ -66,6 +67,31 @@ a {
   background-attachment: fixed;
   height: 100vh;
 }
+.containerForContest{
+    background: url("../resources/stones/backgrounds/mind.jpg") no-repeat center/cover;
+    background-attachment: fixed;
+    scroll-behavior: smooth;
+    overflow-y: hidden;
+    height: 100vh;
+  
+}
+
+.containerForRoadmap {
+  background: url("../resources/stones/backgrounds/307625.jpg") no-repeat center/cover;
+  background-attachment: fixed;
+  scroll-behavior: smooth;
+  overflow-y: hidden;
+  height: 100vh;
+}
+
+.containerForPowerStone {
+  background: url("../resources/stones/backgrounds/power.jpg") no-repeat center/cover;
+  background-attachment: fixed;
+  scroll-behavior: smooth;
+  /* overflow-y: hidden; */
+  height: 100vh;
+}
+
 
 .container900 {
   background: url("../resources/backgrounds/avengers.jpg") no-repeat center/cover;
@@ -182,6 +208,28 @@ a {
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.6);
 }
+
+.containerOverlayForRoadmap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.349);
+}
+
+.containerOverlayForContest {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.534);
+}
 .container901 {
   position: absolute;
   top: 0;
@@ -191,6 +239,7 @@ a {
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.7);
 }
+
 .container112 {
   position: absolute;
   top: 0;
@@ -301,6 +350,16 @@ table tr {
   background:rgb(23, 10, 56);
   font-size:3rem;
   padding:0.3rem 1rem;
+}
+.timer_for_contest{
+  position: absolute;
+  bottom:0;
+  align-items: center;
+  justify-content: center;
+  background:rgb(23, 10, 56);
+  font-size:3rem;
+  padding:0.3rem 1rem;
+  right:0;
 }
 .contest-time{
   display:grid;
@@ -580,7 +639,7 @@ table tr {
 }
 .content {
   position: relative;
-  padding: 20px;
+  /* padding: 20px; */
   transform: translateY(40px);
 }
 .box .content h2 {
@@ -981,14 +1040,30 @@ a span:nth-child(4)
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  position: absolute;
+  /* position: absolute; */
+  position: fixed;
   width: 60px;
   height: 300px;
   left: 0px;
   top: 245px;
-
+  /* width:18vw; */
   background: #C4C4C4;
   border-radius: 0px 60px 60px 0px;
+}
+
+.side_menu2{
+  display:flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  position: fixed;
+  width: 60px;
+  height: 300px;
+  right: 0px;
+  top: 240px;
+
+  background: #C4C4C4;
+  border-radius: 60px 0px 0px 60px;
 }
 .section47{
   padding:12px 65px;
@@ -998,7 +1073,7 @@ a span:nth-child(4)
 }
 .q1{
   position: relative;
-  width:100%;
+  width:100%; 
   height:100%;
   margin:1rem;
   padding:0.5rem;
@@ -1013,6 +1088,7 @@ color:#fff;
   left:0;
   bottom:0;
 }
+
 
 
 div ::-webkit-scrollbar {
@@ -1402,3 +1478,485 @@ justify-content: center;
   padding:0.3rem;
   margin:0.1rem;
 }
+
+.logo_roadmap{
+  position: absolute;
+  right:0;
+  top:-2%;
+  height:150px;
+}
+.headingRoadmap{
+  text-align: center;
+   padding:40px 200px;
+}
+.stones{
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit,minmax(350px,1fr));
+  grid-gap:15px;
+  margin: 0 auto;
+
+}
+.back_btn{
+  position: absolute;
+  top:0;
+  left:0;
+}
+.cardforstones{
+  position: relative;
+  width: 300px;
+  color:#333;
+  height: 400px;
+  margin: 0 auto;
+  background:#fff;
+  box-shadow: 0 15px 60px rgba(60, 32, 221, 0.5);
+}
+.cardforstones .facefs{
+  position: absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardforstones .facefs.f1{
+  box-sizing: border-box;
+  padding:20px;
+}
+.cardforstones .facefs.f1 h2{
+  margin: 0;
+  padding: 0;
+
+}
+
+.cardforstones .facefs.f2{
+  background: #111; 
+  transition: 0.5s; 
+}
+
+.cardforstones:nth-child(1) .facefs.f2{
+  /* background: url('../resources/stones/mind.png') no-repeat cne; */
+  
+background: linear-gradient(90deg, rgba(181,24,187,1) 0%, rgba(92,19,91,1) 51%, rgba(191,75,195,1) 100%);
+}
+.cardforstones:nth-child(6) .facefs.f2{
+  /* background: url('../resources/stones/mind.png') no-repeat cne; */
+  background: linear-gradient(90deg, rgba(130,93,60,1) 0%, rgba(205,193,28,1) 51%, rgba(142,96,54,1) 100%);
+}
+
+
+.cardforstones:nth-child(2) .facefs.f2{
+  /* background: url('../resources/stones/mind.png') no-repeat cne; */
+  background: linear-gradient(90deg, rgba(127,60,130,1) 0%, rgba(28,33,205,1) 51%, rgba(139,54,142,1) 100%);
+}
+
+.cardforstones:nth-child(3) .facefs.f2{
+  /* background: url('../resources/stones/mind.png') no-repeat cne; */
+  
+background: linear-gradient(90deg, rgba(187,24,24,1) 0%, rgba(92,19,19,1) 51%, rgba(195,75,75,1) 100%);}
+
+.cardforstones:nth-child(4) .facefs.f2{
+  /* background: url('../resources/stones/mind.png') no-repeat cne; */
+  
+background: linear-gradient(90deg, rgba(48,187,24,1) 0%, rgba(25,92,19,1) 51%, rgba(75,195,86,1) 100%);}
+
+.cardforstones:nth-child(5) .facefs.f2{
+  /* background: url('../resources/stones/mind.png') no-repeat cne; */
+  
+background: linear-gradient(90deg, rgba(105,39,49,1) 0%, rgba(251,84,84,1) 51%, rgba(92,33,33,1) 100%);}
+.cardforstones .facefs.f2:before{
+  content: '';
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 50%;
+  height:100%;
+  background: rgba(255,255,255,0.1);
+}
+.cardforstones:hover .facefs.f2{
+  height:60px;    
+  border-radius: 40px 40px 0 0;
+}
+.cardforstones .facefs.f2 h2{
+  margin: 0%;
+  padding: 0%;
+  color:#fff;
+  transition: 0.5s;
+}
+.cardforstones:hover .facefs.f2 h2{
+  font-size: 1.4em;;
+}
+
+.try2{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  grid-gap:1rem;
+}
+.rotate {
+  height:170px;
+  animation: rotation 30s infinite linear;
+  border-radius: 50%;
+}
+.power
+{
+  box-shadow: 0 4px 8px 0 rgba(250, 1, 237, 0.445), 0 6px 20px 0 rgba(255, 0, 221, 0.473);
+}
+.time{
+  box-shadow: 0 4px 8px 0 rgba(1, 250, 13, 0.445), 0 6px 20px 0 rgba(0, 255, 34, 0.473);
+
+}
+.space{
+  box-shadow: 0 4px 8px 0 rgba(1, 26, 250, 0.445), 0 6px 20px 0 rgba(25, 0, 255, 0.473);
+
+}
+.mind{
+  box-shadow: 0 4px 8px 0 rgba(204, 250, 1, 0.445), 0 6px 20px 0 rgba(166, 255, 0, 0.473);
+}
+.soul{
+  box-shadow: 0 4px 8px 0 rgba(250, 113, 1, 0.445), 0 6px 20px 0 rgba(255, 166, 0, 0.473);
+
+}
+.reality{
+  box-shadow: 0 4px 8px 0 rgba(250, 1, 1, 0.445), 0 6px 20px 0 rgba(255, 0, 0, 0.473);
+
+}
+.card_stones:nth-child(6):hover{
+  background: rgba(179, 166, 53, 0.9);
+  transition: 1s;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+.card_stones{
+  display: flex;
+  font-family:"Poppins";
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  margin-bottom: 4rem;
+  width: 300px;
+  height: 476px;
+  background: rgba(179, 166, 53, 0.56);
+}
+.syl{
+  /* height:70px; */
+  text-align: center;
+  padding-left: 30px;
+  align-items: center;
+  background:rgba(0, 0, 0, 0.274);
+  padding:0.4rem 1rem;
+  margin:0.5rem;
+  display: flex;
+  /* justify-content: center; */
+
+}
+.ekaurline{
+  height:32px;
+  background: rgba(0, 0, 0, 0.363);
+  width:8px;
+}
+.intro_Card{
+  padding:40px;
+  position: absolute;
+  bottom:0vh;
+  /* width:400px; */
+  left:0;
+  right:0;
+  z-index: 10000;
+  display:flex;
+  justify-content: center;
+  align-items: flex-start;
+  background:#19212C;
+  border-radius: 10px;
+  /* background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(50,46,46,1) 52%, rgba(89,81,53,1) 100%);  */
+}
+.intro_Card img{
+  height:160px;
+}
+.intro_Card .content{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.intro_Card .btn{
+  width: 40%;
+  height: 100%;
+}
+.cardForStone{
+  display: flex;
+  /* position: absolute; */
+  width:500px;
+  justify-content: center;
+  border-radius: 30px;;
+  align-items: center;
+}
+
+.card_stones:nth-child(1){
+  background: rgba(175, 53, 179, 0.56);
+  transition: 1s;
+}
+
+.card_stones:nth-child(1):hover{
+  background: rgba(175, 53, 179, 0.9);
+  transition: 1s;
+}
+.card_stones:nth-child(2){
+  background: rgba(61, 53, 179, 0.56);
+  transition: 1s;
+}
+
+.card_stones:nth-child(2):hover{
+  background: rgba(61, 53, 179, 0.9);
+  transition: 1s;
+}
+.card_stones:nth-child(3){
+  background: rgba(179, 61, 53, 0.56);
+  transition: 1s;
+}
+
+.card_stones:nth-child(3):hover{
+  background: rgba(179, 61, 53, 0.9);
+  transition: 1s;
+}
+.card_stones:nth-child(4){
+  background: rgba(179, 120, 53, 0.56);
+  transition: 1s;
+}
+
+.card_stones:nth-child(4):hover{
+  background: rgba(179, 120, 53, 0.9);
+  transition: 1s;
+}
+.card_stones:nth-child(5){
+  background: rgba(53, 179, 59, 0.56);
+  transition: 1s;
+}
+
+.card_stones:nth-child(5):hover{
+  background: rgba(53, 179, 59, 0.9);
+  transition: 1s;
+}
+.card_stones:nth-child(6){
+  z-index: 100;
+  background: rgba(179, 166, 53, 0.56);
+  transition: 1s;
+}
+.power_shadow{
+  background: rgba(175, 53, 179, 0.815);
+}
+
+.space_shadow{
+  background: rgba(61, 53, 179, 0.815);
+}
+
+.time_shadow{
+  background: rgba(53, 179, 59, 0.815);
+}
+
+.mind_shadow{
+  background: rgba(179, 166, 53, 0.56);
+}
+
+.reality_shadow{
+  background: rgba(179, 61, 53, 0.815);
+}
+.soul_shadow{
+  background: rgba(179, 120, 53, 0.815);
+}
+.cardForStone img{
+  height:100px;
+  margin:1rem;
+}
+.centerWidgets{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: absoulute;
+  top:50%;
+  align-items: center;
+}
+.contentForStone{
+  padding:1rem;
+  font-family: "Poppins";
+}
+
+.contentForStone a {
+  position: relative;
+  margin: 20px 0;
+  padding: 10px 20px;
+  text-decoration: none;
+  border: 1px solid #fff;
+  display: inline-block;
+  color: #fff;
+  transition: 0.5s;
+  transform: translateY(-40px);
+  opacity: 0;
+  visibility: hidden;
+}
+.contentForStone:hover a {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+.contentForStone a:hover {
+  color: #000;
+  background: #fff;
+}
+.logo_light{
+  position: absolute;
+  top:0;
+  right:2%;
+  height: 100px;
+}
+.main-section{
+  /* display: grid;
+  grid-template-columns: 1fr 5fr; */
+  height: 100%;;
+}
+.sideBar{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height:100%;
+  position: fixed;
+  width: 18vw;
+  padding:1rem;
+  transition: 0.5s;
+}
+.image_sm{
+  height:100px;
+}
+.syl_list{
+  list-style:none;
+
+}
+.syl_list li{
+  padding:1rem;
+  background:rgba(255, 82, 255, 0.589);
+  margin:1rem;
+}
+.content_face{
+  /* width:100%; */
+  /* height:100%; */
+  padding:1rem;
+  color:#000;
+  font-family:"Poppins";
+  background:rgb(255, 255, 255);
+}
+.syllabus{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.cke_button_arrow{
+  display: none!important;
+}
+.add_body h2{
+  padding:1rem 0rem;
+}
+
+.add_body h3{
+  padding:1rem 0rem;
+}
+.hints_inp{
+  height:300px;
+}
+.collapse_sidebar{
+  cursor: pointer;
+
+}
+.collapse_bar{
+  transition: 0.5s;
+  width: 100px!important;
+}
+.expand_bar{
+  transition:0.5s;
+  width:18vw!important;
+}
+.blog{
+  font-family: 'Poppins';
+  background:rgb(243, 243, 243);
+  color:#333;
+  padding:1rem;
+  min-height: 100vh;
+  padding-right:4vw;
+  margin-left:18vw;
+  transition: 0.5s;
+}
+.tox-notification{
+  display: none!important;
+}
+.tox-statusbar__branding{
+  display: none!important;
+
+}
+.syl_list li{
+  cursor: pointer;
+}
+.msg{
+  position: absolute;
+  bottom: 0;
+  font-family: 'Poppins';
+  background: rgba(0, 0, 0, 0.774);
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.badhiya_btn  {
+  position: relative;
+  margin: 20px 0;
+  padding: 10px 20px;
+  text-decoration: none;
+  border: 1px solid #fff;
+  display: inline-block;
+  /* color: #fff; */
+  transition: 0.5s;
+}
+.badhiya_btn:hover {
+  color: #000!important;
+  background: #fff;
+}
+.msg_info{
+  padding:1rem;
+}
+.after_contest{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.stoneimg{
+  height:100px;
+}
+
+body ::-webkit-scrollbar {
+	width: 0.3em;
+}
+body ::-webkit-scrollbar-thumb {
+	background-color:#333;
+	border-radius: 50px;
+}
+
+div ::-webkit-scrollbar {
+	width: 0.5em;
+}
+div ::-webkit-scrollbar-thumb {
+	background-color:#666;
+	border-radius: 50px;
+}
+

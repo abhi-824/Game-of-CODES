@@ -405,7 +405,9 @@ function dashboard(handle_name) {
 							let p = convert_to_link(
 								`${curr_set[i].contestId}-${curr_set[i].index}`
 							);
+
 							link.innerHTML = `<a href="${p}" target="_blank">Let's Do It</a>  <i class="fa fa-heart ptani_kahan_hu" aria-hidden="true"></i>`;
+
 							if (i == 0) {
 								document.querySelector('.problem-name-1').innerHTML =
 									curr_set[i].name;
@@ -1521,6 +1523,19 @@ function dashboard(handle_name) {
 				}
 				document.querySelector('.d-flex').classList.add('hidden');
 
+				document.querySelector('.yes').addEventListener('click', function (e) {
+					let val = document.querySelector('.time_val').value;
+					startTimer(val * 60, document.querySelector('.time_chalo'));
+					document.querySelector('.ask_perm').classList.add('animated');
+					document.querySelector('.ask_perm').classList.add('bounceOutLeft');
+					e.preventDefault();
+				});
+
+				document.querySelector('.no').addEventListener('click', function (e) {
+					document.querySelector('.ask_perm').classList.add('hidden');
+					//console.log("h");
+					e.preventDefault();
+				});
 				clearInterval(pppp);
 			}
 		}, 1500);
@@ -1771,8 +1786,12 @@ function dashboard(handle_name) {
 
 				if (contest.phase === 'BEFORE') {
 					const b = document.createElement('th');
-					const a = document.createElement('span');
-					a.innerHTML = `<a href=${link} target="blank">Register</a>`;
+
+					const a = document.createElement('a');
+					a.textContent = 'Register';
+					a.href = link;
+					a.target="_blank";
+
 
 					let start_time = contest.startTimeSeconds * 1000;
 					let full_date = new Date(start_time);
@@ -1918,6 +1937,7 @@ function dashboard(handle_name) {
 			getTargetandrock();
 		}, 30000);
 	}
+
 	window.setTimeout(() => {}, 10000);
 
 	let cl = 0;
@@ -2173,4 +2193,5 @@ function dashboard(handle_name) {
 			div_book.appendChild(a);
 		}
 	}
+
 }
