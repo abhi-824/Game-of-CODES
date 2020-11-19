@@ -19,7 +19,7 @@ let roadmap_contest_screen=document.querySelector('.containerForContest');
 function show_screen(some_screen) {
 	dashboard_screen.classList.add('hidden');
 	index_screen.classList.add('hidden');
-		topic_wise_screen.classList.add('hidden');
+	topic_wise_screen.classList.add('hidden');
 	topic_wise_screen2.classList.add('hidden');
 	level_wise_screen.classList.add('hidden');
 	sorting_screen.classList.add('hidden');

@@ -8,12 +8,11 @@ let level_wise_nav = document.querySelectorAll('.level_wise');
 let sorting_vis_nav = document.querySelectorAll('.sorting_vis_pls');
 let grid_vis_nav = document.querySelectorAll('.grid_vis_pls');
 
-let dotodashbtn=document.querySelectorAll('.gotodash')
-for(let i=0;i<dotodashbtn.length;i++)
-{
-	dotodashbtn[i].addEventListener("click",()=>{
-		show_screen(dashboard_screen)
-	})
+let dotodashbtn = document.querySelectorAll('.gotodash');
+for (let i = 0; i < dotodashbtn.length; i++) {
+	dotodashbtn[i].addEventListener('click', () => {
+		show_screen(dashboard_screen);
+	});
 }
 
 let roadmap_nav = document.querySelectorAll('.roadmap_nav');
@@ -37,10 +36,19 @@ for (let i = 0; i < profile_nav.length; i++) {
 	});
 }
 for (let i = 0; i < codeblast_nav.length; i++) {
+	// if(protection_mode==false)
+	// {
 	codeblast_nav[i].addEventListener('click', function (e) {
-		codeblast(handle);
+		if (protection_mode) {
+			show_screen(index_screen);
+			alert("You can't Access it as a guest. Register, Its Free!")
+		} else {
+			codeblast(handle);
+		}
 		e.preventDefault();
 	});
+
+	// }
 }
 for (let i = 0; i < topic_Wise_nav.length; i++) {
 	topic_Wise_nav[i].addEventListener('click', function (e) {
@@ -76,7 +84,12 @@ for (let i = 0; i < community_nav.length; i++) {
 
 for (let i = 0; i < roadmap_nav.length; i++) {
 	roadmap_nav[i].addEventListener('click', function (e) {
-		roadmap(handle);
+		if (protection_mode) {
+			show_screen(index_screen);
+			alert("You can't Access it as a guest. Come in, just register, It would take a sec.")
+		} else {
+			roadmap(handle);
+		}
 		e.preventDefault();
 	});
 }

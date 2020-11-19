@@ -1,5 +1,5 @@
 let handle;
-
+let protection_mode=false;
 //listen for auth status changes
 auth.onAuthStateChanged((user) => {
 	// var handle_name=document.getElementById('')
@@ -77,7 +77,13 @@ const logout2 = document.querySelectorAll('.logout2');
 for (let i = 0; i < logout2.length; i++) {
 	logout2[i].addEventListener('click', (e) => {
 		e.preventDefault();
-		auth.signOut();
+		if(protection_mode)
+		{
+			show_screen(index_screen);
+		}
+		else{
+			auth.signOut();
+		}
 	});
 }
 
@@ -115,6 +121,14 @@ loginForm.addEventListener('submit', (e) => {
 			alert(error);
 		});
 });
+
+const loginAsGuestForm = document.querySelector('#login-as-guest-form');
+loginAsGuestForm.addEventListener('submit',(e)=>{
+	let handle=document.querySelector("#handle-login-as-guest").value;
+	protection_mode=true;
+	dashboard(handle);
+	e.preventDefault();
+})
 
 function display_error() {
 	document.querySelector('.loader12345').classList.add('disapper');

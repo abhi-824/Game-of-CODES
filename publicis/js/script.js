@@ -1619,7 +1619,8 @@ function dashboard(handle_name) {
 		strong_topics.classList.add('hidden');
 		show_daily_mix2.classList.remove('hidden');
 
-		hide_please(item3);document.querySelector('#bookmarkspakd').classList.add('hidden');
+		hide_please(item3);
+		document.querySelector('#bookmarkspakd').classList.add('hidden');
 		document.querySelector('.heading').classList.add('hidden');
 
 		show_daily_mix.classList.remove('hidden');
@@ -1638,7 +1639,8 @@ function dashboard(handle_name) {
 		weak_topics.classList.add('hidden');
 		show_daily_mix2.classList.remove('hidden');
 
-		hide_please(item3);document.querySelector('#bookmarkspakd').classList.add('hidden');
+		hide_please(item3);
+		document.querySelector('#bookmarkspakd').classList.add('hidden');
 		document.querySelector('.heading').classList.add('hidden');
 
 		strong_topics.classList.add('animated');
@@ -1672,7 +1674,8 @@ function dashboard(handle_name) {
 		hide_please(item2);
 		hide_please(item3);
 		hide_please(item);
-		hide_please(item3);document.querySelector('#bookmarkspakd').classList.add('hidden');
+		hide_please(item3);
+		document.querySelector('#bookmarkspakd').classList.add('hidden');
 		daily_mix_contests.classList.add('hidden');
 		unsolved_mysteries.classList.remove('hidden');
 		weak_topics.classList.add('hidden');
@@ -1689,7 +1692,8 @@ function dashboard(handle_name) {
 	document.querySelector('.daily-btn').addEventListener('click', function (e) {
 		hide_please(item4);
 		document.querySelector('.ask_perm').classList.add('hidden');
-		hide_please(item3);document.querySelector('#bookmarkspakd').classList.add('hidden');
+		hide_please(item3);
+		document.querySelector('#bookmarkspakd').classList.add('hidden');
 		hide_please(item2);
 		hide_please(item3);
 		hide_please(item);
@@ -1709,7 +1713,8 @@ function dashboard(handle_name) {
 	document.querySelector('.daily-btn2').addEventListener('click', function (e) {
 		hide_please(item4);
 		hide_please(item2);
-		hide_please(item3);document.querySelector('#bookmarkspakd').classList.add('hidden');
+		hide_please(item3);
+		document.querySelector('#bookmarkspakd').classList.add('hidden');
 		// document.querySelector('.ask_perm').classList.add('hidden');
 		document.querySelector('.time_chalo').classList.add('hidden');
 		hide_please(item);
@@ -1790,8 +1795,7 @@ function dashboard(handle_name) {
 					const a = document.createElement('a');
 					a.textContent = 'Register';
 					a.href = link;
-					a.target="_blank";
-
+					a.target = '_blank';
 
 					let start_time = contest.startTimeSeconds * 1000;
 					let full_date = new Date(start_time);
@@ -1847,30 +1851,14 @@ function dashboard(handle_name) {
 
 			if (--timer < 0) {
 				alert("Time's Up!!!");
+				e.stopImmediatePropagation();
 				clearInterval(c);
 			}
 		}, 1000);
 	}
-
-	let target_val;
-	var user = firebase.auth().currentUser;
-	db.collection('handles')
-		.where('email', '==', user.email)
-		.get()
-		.then((snapshot) => {
-			snapshot.docs.forEach((doc) => {
-				const handle_list = doc.data();
-				if (handle_list.email === user.email) {
-					target_val = handle_list.target;
-				}
-			});
-		});
-	startTarget(target_val);
-
-	document.querySelector('.set-target').addEventListener('click', function (e) {
-		console.log('hell');
+	if (!protection_mode) {
+		let target_val;
 		var user = firebase.auth().currentUser;
-		target_val = document.querySelector('#target-val').value;
 		db.collection('handles')
 			.where('email', '==', user.email)
 			.get()
@@ -1878,16 +1866,40 @@ function dashboard(handle_name) {
 				snapshot.docs.forEach((doc) => {
 					const handle_list = doc.data();
 					if (handle_list.email === user.email) {
-						db.collection('handles').doc(doc.id).update({
-							target: target_val,
-						});
-
-						document.querySelector('.tr-wr').classList.add('hidden');
+						target_val = handle_list.target;
 					}
 				});
 			});
 		startTarget(target_val);
-		//console.log(target_val);
+	}
+
+	document.querySelector('.set-target').addEventListener('click', function (e) {
+		if (protection_mode) {
+			show_screen(index_screen);
+			alert("You can't Access it as a guest. Register, Its Free!");
+			e.stopImmediatePropagation();
+		} else {
+			console.log('hell');
+			var user = firebase.auth().currentUser;
+			target_val = document.querySelector('#target-val').value;
+			db.collection('handles')
+				.where('email', '==', user.email)
+				.get()
+				.then((snapshot) => {
+					snapshot.docs.forEach((doc) => {
+						const handle_list = doc.data();
+						if (handle_list.email === user.email) {
+							db.collection('handles').doc(doc.id).update({
+								target: target_val,
+							});
+
+							document.querySelector('.tr-wr').classList.add('hidden');
+						}
+					});
+				});
+			startTarget(target_val);
+			//console.log(target_val);
+		}
 		e.preventDefault();
 	});
 	function startTarget(target) {
@@ -1941,6 +1953,8 @@ function dashboard(handle_name) {
 	window.setTimeout(() => {}, 10000);
 
 	let cl = 0;
+	var user = firebase.auth().currentUser;
+
 	function bookmark_question(questionId) {
 		var user = firebase.auth().currentUser;
 		let array_bookmarks = [];
@@ -2004,50 +2018,61 @@ function dashboard(handle_name) {
 
 							fav[i].addEventListener('click', (e) => {
 								e.preventDefault();
-								let question =
-									fav[i].parentElement.parentElement.firstChild.innerHTML;
-								if (fav[i].style.color == 'red') {
-									console.log('hey');
-									var user = firebase.auth().currentUser;
-									db.collection('handles')
-										.where('email', '==', user.email)
-										.get()
-										.then((snapshot) => {
-											snapshot.docs.forEach((doc) => {
-												const handle_list = doc.data();
-												if (handle_list.email === user.email) {
-													if (handle_list.bookmarks != undefined) {
-														let array_bookmarks = handle_list.bookmarks;
-														if (array_bookmarks.includes(question)) {
-															for (let i = 0; i < array_bookmarks.length; i++) {
-																if (array_bookmarks[i] == question) {
-																	array_bookmarks.splice(i, 1);
-																	break;
-																}
-															}
-															db.collection('handles').doc(doc.id).update({
-																email: handle_list.email,
-																handle: handle_list.handle,
-																target: handle_list.target,
-																bookmarks: array_bookmarks,
-															});
-															fav[i].style.color = 'white';
-														}
-													} else {
-														alert('some error occured removing bookmark');
-													}
-												}
-											});
-										});
+								if (protection_mode) {
+									show_screen(index_screen);
+									alert("You can't Access it as a guest. Register, Its Free!");
+									e.stopImmediatePropagation();
 								} else {
-									fav[i].style.color = 'red';
+									let question =
+										fav[i].parentElement.parentElement.firstChild.innerHTML;
+									if (fav[i].style.color == 'red') {
+										console.log('hey');
+										var user = firebase.auth().currentUser;
+										db.collection('handles')
+											.where('email', '==', user.email)
+											.get()
+											.then((snapshot) => {
+												snapshot.docs.forEach((doc) => {
+													const handle_list = doc.data();
+													if (handle_list.email === user.email) {
+														if (handle_list.bookmarks != undefined) {
+															let array_bookmarks = handle_list.bookmarks;
+															if (array_bookmarks.includes(question)) {
+																for (
+																	let i = 0;
+																	i < array_bookmarks.length;
+																	i++
+																) {
+																	if (array_bookmarks[i] == question) {
+																		array_bookmarks.splice(i, 1);
+																		break;
+																	}
+																}
+																db.collection('handles').doc(doc.id).update({
+																	email: handle_list.email,
+																	handle: handle_list.handle,
+																	target: handle_list.target,
+																	bookmarks: array_bookmarks,
+																});
+																fav[i].style.color = 'white';
+															}
+														} else {
+															alert('some error occured removing bookmark');
+															e.stopImmediatePropagation();
+														}
+													}
+												});
+											});
+									} else {
+										fav[i].style.color = 'red';
 
-									console.log(question);
+										console.log(question);
 
-									cl++;
-									bookmark_question(question);
+										cl++;
+										bookmark_question(question);
+									}
+									// if (cl == 1) {
 								}
-								// if (cl == 1) {
 
 								//   };
 							});
@@ -2138,6 +2163,7 @@ function dashboard(handle_name) {
 														}
 													} else {
 														alert('some error occured removing bookmark');
+														e.stopImmediatePropagation();
 													}
 												}
 											});
@@ -2160,23 +2186,29 @@ function dashboard(handle_name) {
 			});
 	}
 	document.querySelector('.bookmarked').addEventListener('click', (e) => {
-		db.collection('handles')
-			.where('email', '==', user.email)
-			.get()
-			.then((snapshot) => {
-				snapshot.docs.forEach((doc) => {
-					let array_bookmarks = [];
-					const handle_list = doc.data();
-					if (handle_list.email === user.email) {
-						array_bookmarks = handle_list.bookmarks;
-						console.log(handle_list);
+		if (protection_mode) {
+			show_screen(index_screen);
+			alert("You can't Access it as a guest. Register, Its Free!");
+			e.stopImmediatePropagation();
+		} else {
+			db.collection('handles')
+				.where('email', '==', user.email)
+				.get()
+				.then((snapshot) => {
+					snapshot.docs.forEach((doc) => {
+						let array_bookmarks = [];
+						const handle_list = doc.data();
+						if (handle_list.email === user.email) {
+							array_bookmarks = handle_list.bookmarks;
+							console.log(handle_list);
 
-						if (array_bookmarks != undefined) {
-							display_bookmarks(array_bookmarks);
+							if (array_bookmarks != undefined) {
+								display_bookmarks(array_bookmarks);
+							}
 						}
-					}
+					});
 				});
-			});
+		}
 	});
 	function display_bookmarks(array_bookmarks) {
 		document.querySelector('#futurecontest').classList.add('hidden');
@@ -2193,5 +2225,4 @@ function dashboard(handle_name) {
 			div_book.appendChild(a);
 		}
 	}
-
 }

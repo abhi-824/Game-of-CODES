@@ -71,7 +71,7 @@
                </div>
                <div class="welcome-msg">
                   <h1>Hey, Ready to Rock?</h1>
-                  <h4 class="wah"> <a href="#" class="login_btnnn"> Log in</a> or <a href="#" class="signup_btnnn"> Sign up</a> or <a href="" class="google-sign-in"><img src="resources/icons/google-logo.png" alt=""></a></h4>
+                  <h4 class="wah"> <a href="#" class="login_btnnn"> Log in</a> or <a href="#" class="signup_btnnn"> Sign up</a> or <a href="" class="google-sign-in"><img src="resources/icons/google-logo.png" alt=""></a> or <a href="#" class="login_as_guest"> Login as Guest</a></h4>
                </div>
                <div class="form_show">
                   <form action="#" id="signup-form" class="hidden formdd">
@@ -87,6 +87,14 @@
                      <a href="#" class="forgot_pass">Forgot Password? Relax, We got you cover</a>
                      <!-- <a href="#">Forgot your password?</a> -->
                      <button type="submit">Sign In</button>
+                  </form>
+                  <form action="#" id="login-as-guest-form" class="hidden formdd">
+                     
+                  
+                     <input id="handle-login-as-guest" placeholder="Codeforces handle" required/>
+                    
+                     <!-- <a href="#">Forgot your password?</a> -->
+                     <button type="submit">Sign In as a Guest</button>
                   </form>
                   <form action="#" class="formdd hidden" id="forgot">
                      <input type="email"  placeholder="Email" id="login-email-forgot" required />
@@ -194,7 +202,7 @@
                         </div>
                      </div>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item hidden">
                      <a href="#" class="nav-link roadmap_nav">Roadmap</a>
                   </li>
                   <li class="nav-item">
@@ -691,7 +699,7 @@
                         </div>
                      </div>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item hidden">
                      <a href="#" class="nav-link roadmap_nav">Roadmap</a>
                   </li>
                   <li class="nav-item">
@@ -1086,7 +1094,7 @@
                         </div>
                      </div>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item hidden">
                      <a href="#" class="nav-link roadmap_nav">Roadmap</a>
                   </li>
                   <li class="nav-item">
@@ -1286,7 +1294,7 @@
                         </div>
                      </div>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item hidden">
                      <a href="#" class="nav-link roadmap_nav">Roadmap</a>
                   </li>
                   <li class="nav-item">
@@ -1378,7 +1386,7 @@
                         </div>
                      </div>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item hidden">
                      <a href="#" class="nav-link roadmap_nav">Roadmap</a>
                   </li>
                   <li class="nav-item">
@@ -1671,7 +1679,7 @@
                         </div>
                      </div>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item hidden">
                      <a href="#" class="nav-link roadmap_nav">Roadmap</a>
                   </li>
                   <li class="nav-item">
@@ -1806,7 +1814,7 @@
                         </div>
                      </div>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item hidden">
                      <a href="#" class="nav-link roadmap_nav">Roadmap</a>
                   </li>
                   <li class="nav-item">
@@ -2300,13 +2308,23 @@
          document.querySelector('.login_btnnn').addEventListener('click',(e)=>{
             document.querySelector('#signup-form').classList.add('hidden');
             e.preventDefault();
+            document.querySelector('#login-as-guest-form').classList.add('hidden');
             document.querySelector('#login-form').classList.remove('hidden');
          })
          
          document.querySelector('.signup_btnnn').addEventListener('click',(e)=>{
             e.preventDefault();
             document.querySelector('#signup-form').classList.remove('hidden');
+            document.querySelector('#login-as-guest-form').classList.add('hidden');
             document.querySelector('#login-form').classList.add('hidden');
+         
+         })
+         
+         document.querySelector('.login_as_guest').addEventListener('click',(e)=>{
+            e.preventDefault();
+            document.querySelector('#login-as-guest-form').classList.remove('hidden');
+            document.querySelector('#login-form').classList.add('hidden');
+            document.querySelector('#signup-form').classList.add('hidden');
          
          })
          document.querySelector('.forgot_pass').addEventListener('click',(e)=>{
@@ -2325,6 +2343,7 @@
             document.querySelector('.after-forgot').classList.add('hidden');
             
          })
+         
       </script>
       <script src="js/init.js"></script>
       <script src="js/events.js"></script>
@@ -2334,20 +2353,8 @@
       <script src="js/communty.js"></script>
       <script src="js/firebase.js"></script>
       <script src="js/app.js"></script>
-      <!-- <script src="js/utility_classes/generate_grid.js"></script> -->
-      <!-- <script src="js/utility_classes/generating_x_y.js"></script> -->
-      <!-- <script src="js/algorithms/a_star.js"></script> -->
-      <!-- <script src="js/algorithms/bfs.js"></script> -->
-      <!-- <script src="js/algorithms/dfs.js"></script> -->
-      <!-- <script src="js/algorithms/dijkstaras.js"></script> -->
       <script src="js/animations/vis.js"></script>
       <script src="js/main.js"></script>
-      <!-- <script src="js/bubble.js"></script> -->
-      <!-- <script src="js/selection.js"></script> -->
-      <!-- <script src="js/heap_sort.js"></script> -->
-      <!-- <script src="js/merge.js"></script> -->
-      <!-- <script src="js/insertion.js"></script> -->
-      <!-- <script src="js/quick.js"></script> -->
       <script src="js/training_zone_topic_wise.js"></script>
       <script src="js/compare.js"></script>
       <script src="js/compare_calc.js"></script>
