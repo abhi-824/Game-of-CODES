@@ -47,308 +47,17 @@
          type="text/javascript"
          src="https://www.gstatic.com/charts/loader.js"
          ></script>
-         <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+         <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G0E1HP5HRQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G0E1HP5HRQ');
+</script>
    </head>
-   <style>
-      .cenn{
-         display: flex;
-         flex-direction: column;
-         justify-content: center;
-         align-items: center;
-      }
-      /* .ask_handle{
-         position: absolute;
-         display: flex;
-         flex-direction: column;
-         grid-gap: 2rem;
-         justify-content: center;
-         align-items: center;
-         top:40%;
-      } */
-      #youtube-icon{
-      width:30px;height:30px;
-      color:#fff;
-      }
-      .google-sign-in img{
-      width:40px;
-      height:40px;
-      }
-      .disp_err{
-      background-color: rgb(160, 35, 35);
-      width:100%;
-      color:#fff;
-      }
-      .disapper2{
-      animation: vanish 10s forwards;
-      }
-      @keyframes vanish{
-      100%{
-      opacity: 0;
-      visibility: hidden;
-      }
-      }
-      .chat-header{
-      display:flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      }
-      .chat-header a{
-      padding:0.5rem 1rem;
-      /* background: #fff; */
-      background: #FFCFCF;
-      color:black;
-      border-radius: 62px;
-      /* margin-right:1.5rem; */
-      /* transform: matrix(1,   0, 0, -1, 0, 0); */
-      }
-      .chat-header .ready_btn{
-      padding:0.5rem 1rem;
-      border-radius: 62px;
-      border:none;
-      font-size:1rem;
-      margin-right:1.5rem;
-      background:rgb(52, 156, 10);
-      color:#fff;
-      }
-      .chat-header .ready_btn:hover{
-      background: rgb(196, 216, 19);
-      color:#333;
-      transition:  0.5s;
-      }
-      .chat-header .disabled{
-      background:red;
-      }
-      .chat-main{
-      display: grid;
-      grid-template-columns: 1fr 5fr;
-      }
-      .chat-sidebar{
-      display:flex;
-      flex-direction: column;
-      }
-      .chat-sidebar ul{
-      list-style: none;
-      }
-      .chat-sidebar ul li{
-      padding:1rem 0rem;
-      font-size:1rem;
-      }
-      .messages{
-      display: flex;
-      flex-direction: column;
-      height:80vh;
-      justify-content: space-between;
-      overflow:auto; 
-      /* overflow-x: hidden; */
-      }
-      .chat-form-container .chat-form{
-      width:100%;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      } 
-      #msg{
-      width:80%;
-      border:none;
-      background: none;
-      padding:1rem 0.5rem;
-      color:#fff;
-      font-size:1rem;
-      }
-      .send-btn{
-      background: none;
-      border: none;
-      color:#fff;
-      }
-      .chat-messages{
-      display: flex;
-      flex-direction: column;
-      width:40%;
-      }
-      .message{
-      margin:1rem 0rem;
-      background:#333;
-      /* background: #C4C4C4; */
-      border-radius: 79px;
-      }
-      .chat-messages .meta{
-      width:90%;
-      padding:0.3rem 1rem; 
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      } 
-      .chat-messages .text{
-      padding:0.3rem 1rem; 
-      width:100%;
-      word-wrap: break-word
-      }
-      .container2222 .disabled {
-      background: red;
-      transition: 0.5s;
-      }
-      body {
-      background: rgb(36, 9, 0);
-      background: linear-gradient(
-      90deg,
-      rgba(36, 9, 0, 1) 0%,
-      rgba(80, 121, 9, 1) 29%,
-      rgba(40, 119, 155, 1) 67%,
-      rgba(56, 2, 224, 1) 85%,
-      rgba(0, 212, 255, 1) 100%
-      );
-      }
-      .q1{
-      position: relative;
-      width:100%;
-      height:100%;
-      margin:1rem;
-      padding:0.5rem;
-      background: #2D2D2D;
-      color:#fff;
-      }
-      .line77{
-      width:5px;
-      height:100%;
-      background: #000;
-      position:absolute;
-      left:0;
-      bottom:0;
-      }
-      .container824{
-      background: linear-gradient(90deg, #F7941E 0%, #004E8F 100%);
-      height:150vh;
-      /* padding:2rem; */
-      position: relative;
-      }
-      .container768{
-      padding:2rem;
-      }
-      .container825{
-      padding:2rem;
-      }
-      .footer-img{
-      position: absolute;
-      /* width: 1440px; */
-      /* height: 300px; */
-      width:100%;
-      /* left: 0px; */
-      bottom:0;
-      /* top: 542px; */
-      }
-      .topic-lists{
-      display:flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-      }
-      #chartcont1{
-      padding:2rem;
-      }
-      .topic-lists{
-      display:flex;
-      justify-content: center;
-      align-items: center ;
-      }
-      .wrap{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      }
-      .heading-topic{
-      font-family: NovaMono;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 36px;
-      line-height: 67px;
-      }
-      .topic_select{
-      font-family: NovaMono;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 1rem;
-      line-height: 28px;
-      }
-      .targetline{
-      position: absolute;
-      right: 0;
-      top:30%;
-      width:20px;
-      height:40vh;
-      background: red;
-      }
-      .container3{
-      background: rgb(36,9,0);
-      background: linear-gradient(90deg, rgba(36,9,0,1) 0%, rgba(80,121,9,1) 29%, rgba(40,119,155,1) 67%, rgba(56,2,224,1) 85%, rgba(0,212,255,1) 100%); 
-      }
-      .container4567{
-      background-color: #f8f7fa;
-      }
-      .cont1 {
-      width: 1000px;
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      }
-      .cont1 .card1 {
-      position: relative;
-      width: 300px;
-      height: 200px;
-      margin:16px;
-      }
-      .cont1 .card1 .face {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      transition: 0.5s;
-      }
-      .cont1 .card1 .face.face1 {
-      background: #333;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 1;
-      transform-origin: bottom;
-      }
-      .cont1 .card1 .face.face1 img {
-      max-width: 200px;
-      }
-      .cont1 .card1 .face.face1 h2 {
-      margin: 10px 0 0;
-      color: #fff;
-      text-align: center;
-      font-size: 1.5em;
-      }
-      .cont1 .card1:hover .face.face1 {
-      transform: translateY(-100%) rotateX(90deg);
-      background: #ff0057;
-      }
-      .face p{
-      color:#333;
-      }
-      .cont1 .card1 .face.face2 {
-      background: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding:20px;
-      transform-origin: top;
-      transform:translateY(100%) rotateX(90deg);
-      }
-      .cont1 .card1:hover .face.face2 {
-      transform:translateY(0%) rotateX(0deg);
-      }
-      .wrap{
-      display: flex;
-      flex-direction: column;
-      align-items: center;  
-      justify-content: center;
-      }
-   </style>
    <body>
       <div class="loader12345">
          <img loading="lazy" src="resources/logo/logo_light.png" class="latka" alt="">
@@ -493,8 +202,7 @@
                   </li>
                   <li class="user_avatar nav-item"></li>
                </ul>
-               
-               
+
                <!-- </div> -->
                <!-- </form> -->
                <!-- </div> -->
@@ -514,19 +222,30 @@
                      <button class="btn-light hidden btn-sm daily-btn">
                         <p>Go to Daily-Mix</p>
                      </button>
-                     <button class="btn btn-elegant generateDailyMix">
-                     Generate Daily Mix
-                     </button>
-                     <div data-video="zA5sr0qXsaU"  
-                        data-autoplay="0"         
-                        data-loop="1"             
-                        id="youtube-audio"data-toggle="tooltip" data-placement="bottom" title="Play coding beats :)">
+                     <div class="buttonsforbhala">
+                        <button class="btn btn-elegant generateDailyMix">
+                        Generate Daily Mix
+                        </button>
+                        
+                        <button class="btn btn-elegant bookmarked">
+                           Bookmarked Questions
+                           
+                        </button>
+
                      </div>
+                     
                   </div>
                   <div class="daily-mix" id="futurecontest">
                      <h1>Future Contests</h1>
                      <!-- <div class="line1"></div> -->
                      <table class="future-contests table">
+                     </table>
+                  </div>
+                  <div class="daily-mix hidden bookmared_ques_fir" id="bookmarkspakd">
+                     <h1>Bookmarked Questions</h1>
+                     <div class="line"></div>
+                     <!-- <div class="line1"></div> -->
+                     <table class="bookmarked_ques table">
                      </table>
                   </div>
                   <div class="hidden weak_topics daily-mix">
@@ -733,7 +452,7 @@
                               <h2>A</h2>
                               <h3><span class="problem-name-1"></span></h3>
                               <p>
-                                 Difficulty: <span class="difficulty"></span><br>
+                                 
                               <div class="link1"></div>
                               </p>
                            </div>
@@ -743,7 +462,7 @@
                               <h2>B</h2>
                               <h3><span class="problem-name-2"></span></h3>
                               <p> 
-                                 Difficulty: <span class="difficulty"></span><br>
+                                 
                               <div class="link2"></div>
                               </p>
                            </div>
@@ -753,7 +472,7 @@
                               <h2>C</h2>
                               <h3><span class="problem-name-3"></span></h3>
                               <p>
-                                 Difficulty: <span class="difficulty"></span><br>
+                                 
                               <div class="link3"></div>
                               </p>
                            </div>
@@ -861,7 +580,7 @@
                            <h2>A</h2>
                            <h3><span class="problem-name-A"></span></h3>
                            <p>
-                              Difficulty: <span class="difficulty"></span><br>
+                              
                            <div class="linkA"></div>
                            </p>
                         </div>
@@ -871,7 +590,7 @@
                            <h2>B</h2>
                            <h3><span class="problem-name-B"></span></h3>
                            <p> 
-                              Difficulty: <span class="difficulty"></span><br>
+                              
                            <div class="linkB"></div>
                            </p>
                         </div>
@@ -881,7 +600,7 @@
                            <h2>C</h2>
                            <h3><span class="problem-name-C"></span></h3>
                            <p>
-                              Difficulty: <span class="difficulty"></span><br>
+                              
                            <div class="linkC"></div>
                            </p>
                         </div>
@@ -891,7 +610,7 @@
                            <h2>D</h2>
                            <h3><span class="problem-name-D"></span></h3>
                            <p>
-                              Difficulty: <span class="difficulty"></span><br>
+                              
                            <div class="linkD"></div>
                            </p>
                         </div>
@@ -901,7 +620,7 @@
                            <h2>E</h2>
                            <h3><span class="problem-name-E"></span></h3>
                            <p>
-                              Difficulty: <span class="difficulty"></span><br>
+                              
                            <div class="linkE"></div>
                            </p>
                         </div>
@@ -980,8 +699,7 @@
                   </li>
                   <li class="user_avatar nav-item"></li>
                </ul>
-               
-               
+
                <!-- </div> -->
                <!-- </form> -->
                <!-- </div> -->
@@ -1018,7 +736,7 @@
                      <h3><span class="problem-name-A"></span></h3>
                      <p>
                         Attempts : <span class="attempts"></span><br>
-                        Difficulty: <span class="difficulty"></span><br>
+                        
                         Tags: <span class="tags"></span><br>
                         Number of Submissions: <span class="submissions"></span><br>
                         Editorial Link: 
@@ -1032,7 +750,7 @@
                      <h3><span class="problem-name-B"></span></h3>
                      <p> 
                         Attempts : <span class="attempts"></span><br>
-                        Difficulty: <span class="difficulty"></span><br>
+                        
                         Tags: <span class="tags"></span><br>
                         Number of Submissions: <span class="submissions"></span><br>
                         Editorial Link: 
@@ -1046,7 +764,7 @@
                      <h3><span class="problem-name-C"></span></h3>
                      <p>
                         Attempts : <span class="attempts"></span><br>
-                        Difficulty: <span class="difficulty"></span><br>
+                        
                         Tags: <span class="tags"></span><br>
                         Number of Submissions: <span class="submissions"></span><br>
                         Editorial Link:
@@ -1060,7 +778,7 @@
                      <h3><span class="problem-name-D"></span></h3>
                      <p>
                         Attempts : <span class="attempts"></span><br>
-                        Difficulty: <span class="difficulty"></span><br>
+                        
                         Tags: <span class="tags"></span><br>
                         Number of Submissions: <span class="submissions"></span><br>
                         Editorial Link:
@@ -1074,7 +792,7 @@
                      <h3><span class="problem-name-E"></span></h3>
                      <p>
                         Attempts : <span class="attempts"></span><br>
-                        Difficulty: <span class="difficulty"></span><br>
+                        
                         Tags: <span class="tags"></span><br>
                         Number of Submissions: <span class="submissions"></span><br>
                         Editorial Link:
@@ -1086,225 +804,228 @@
          </div>
       </div>
       <div class="container824 hidden">
-         <nav class="navbar navbar-expand-lg navbar-dark bg-transparent ">
-            <!-- <a class="navbar-brand logo" href="#">
-               <h1 class="inner">GAME OF CODES</h1>
-               
-               <img loading="lazy" src="resources/logo/logo_light.png" alt="" />
-               </a> -->
-            <div class="hamburger">
-               <div class="line33"></div>
-               <div class="line33"></div>
-               <div class="line33"></div>
+         <div class="container8242">
+            
+            <nav class="navbar navbar-expand-lg navbar-dark bg-transparent ">
+               <!-- <a class="navbar-brand logo" href="#">
+                  <h1 class="inner">GAME OF CODES</h1>
+                  
+                  <img loading="lazy" src="resources/logo/logo_light.png" alt="" />
+                  </a> -->
+               <div class="hamburger">
+                  <div class="line33"></div>
+                  <div class="line33"></div>
+                  <div class="line33"></div>
+               </div>
+               <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                  </button> -->
+               <!-- <div class="collapse navbar-collapse" id="navbarText">  -->
+               <ul class="navbar-nav nav-links mr-auto mt-2 mt-lg-0">
+                  <li class="nav-item active">
+                     <a class="nav-link dashboard" href="#"
+                        >
+                        Dashboard
+                        <div class="line1"></div>
+                        <span class="sr-only">(current)</span>
+                     </a
+                        >
+                  </li>
+                  <li class="nav-item compare">
+                     <a class="nav-link" href="#" id="compare1" >Compare</a>
+                  </li>
+                  <li class="nav-item">
+                     <div class="dropdown1">
+                        <span class="nav-link">Visualisers <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                        </span>
+                        <div class="dropdown-content1 animated bounceIn">
+                           <a class="nav-link sorting_vis_pls" href="#" id="sorting_vis">Sorting Visualiser</a>
+                           <a class="nav-link grid_vis_pls" href="#" id="grid_vis">Grid Visualiser</a>
+                        </div>
+                     </div>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link profile" href="Profile.html" id="profile1">Profile</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link codeblast" href="#" id="codeblast1">Code Blast</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link community" href="community.html">Community</a>
+                  </li>
+                  <li class="nav-item">
+                     <div class="dropdown1">
+                        <span class="nav-link">Training Zone <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
+                        <div class="dropdown-content1  animated bounceIn">
+                           <p class="nav-link topic_wise" >Topic Wise</p>
+                           <a class="nav-link level_wise" href="training_zone_level_wise.html">Level Wise</a>
+                        </div>
+                     </div>
+                  </li>
+                  <li class="nav-item">
+                     <a href="#" class="nav-link logout2">Logout</a>
+                  </li>
+                  <li class="user_avatar nav-item"></li>
+               </ul>
+               <input
+                  class="form-control outer hidden search_kro"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                  />
+               <button type="button" class="btn outer btn-dark search">
+               <img loading="lazy" class="outer search-img" src="resources/icons/search 1.svg" alt="" />
+               </button>
+               <!-- </div> -->
+               <!-- </form> -->
+               <!-- </div> -->
+            </nav>
+            <div class="container825">
+               <div class="content1">
+                  <h1 class="heading_topic"></h1>
+                  <a href="" class="start-topic">Start Season</a>
+               </div>
+               <div class="cont1 hidden">
+                  <div class="card1">
+                     <div class="face face1">
+                        <div class="content">
+                           <img loading="lazy" src="resources/iimages/abhi.svg" alt="" />
+                           <h2>Set 1</h2>
+                        </div>
+                     </div>
+                     <div class="face face2">
+                        <div class="content">
+                           <p>Today is the time</p>
+                           <button class="btn btn-dark generate_daily22">Let's Rock</button>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="card1">
+                     <div class="face face1">
+                        <div class="content">
+                           <img loading="lazy" src="resources/iimages/abhi.svg" alt="" />
+                           <h2>Set 2</h2>
+                        </div>
+                     </div>
+                     <div class="face face2">
+                        <div class="content">
+                           <button class="btn btn-dark generate_daily22 g2 hidden">Crush It</button>
+                           <p class="g_2">
+                              Do previous all sets to unlock it<br>
+                           </p>
+                           <img loading="lazy" class="g_2" src="https://img.icons8.com/bubbles/50/000000/lock-2.png"/>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="card1">
+                     <div class="face face1">
+                        <div class="content">
+                           <img loading="lazy" src="resources/iimages/abhi.svg" alt="" />
+                           <h2>Set 3</h2>
+                        </div>
+                     </div>
+                     <div class="face face2">
+                        <div class="content">
+                           <button class="btn btn-dark generate_daily22 g3 hidden">Crush It</button>
+                           <p class="g_3">
+                              Do previous all sets to unlock it<br>
+                           </p>
+                           <img loading="lazy" class="g_3" src="https://img.icons8.com/bubbles/50/000000/lock-2.png"/>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="card1">
+                     <div class="face face1">
+                        <div class="content">
+                           <img loading="lazy" src="resources/iimages/abhi.svg" alt="" />
+                           <h2>Set 4</h2>
+                        </div>
+                     </div>
+                     <div class="face face2">
+                        <div class="content">
+                           <p class="g_4">
+                              Do previous all sets to unlock it<br>
+                           </p>
+                           <img loading="lazy" class="g_4" src="https://img.icons8.com/bubbles/50/000000/lock-2.png"/>  
+                           <button class="btn btn-dark generate_daily22 hidden g4">Crush It</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
             </div>
-            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-               <span class="navbar-toggler-icon"></span>
-               </button> -->
-            <!-- <div class="collapse navbar-collapse" id="navbarText">  -->
-            <ul class="navbar-nav nav-links mr-auto mt-2 mt-lg-0">
-               <li class="nav-item active">
-                  <a class="nav-link dashboard" href="#"
-                     >
-                     Dashboard
-                     <div class="line1"></div>
-                     <span class="sr-only">(current)</span>
-                  </a
-                     >
-               </li>
-               <li class="nav-item compare">
-                  <a class="nav-link" href="#" id="compare1" >Compare</a>
-               </li>
-               <li class="nav-item">
-                  <div class="dropdown1">
-                     <span class="nav-link">Visualisers <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
-                     </span>
-                     <div class="dropdown-content1 animated bounceIn">
-                        <a class="nav-link sorting_vis_pls" href="#" id="sorting_vis">Sorting Visualiser</a>
-                        <a class="nav-link grid_vis_pls" href="#" id="grid_vis">Grid Visualiser</a>
-                     </div>
-                  </div>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link profile" href="Profile.html" id="profile1">Profile</a>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link codeblast" href="#" id="codeblast1">Code Blast</a>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link community" href="community.html">Community</a>
-               </li>
-               <li class="nav-item">
-                  <div class="dropdown1">
-                     <span class="nav-link">Training Zone <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
-                     <div class="dropdown-content1  animated bounceIn">
-                        <p class="nav-link topic_wise" >Topic Wise</p>
-                        <a class="nav-link level_wise" href="training_zone_level_wise.html">Level Wise</a>
-                     </div>
-                  </div>
-               </li>
-               <li class="nav-item">
-                  <a href="#" class="nav-link logout2">Logout</a>
-               </li>
-               <li class="user_avatar nav-item"></li>
-            </ul>
-            <input
-               class="form-control outer hidden search_kro"
-               type="search"
-               placeholder="Search"
-               aria-label="Search"
-               />
-            <button type="button" class="btn outer btn-dark search">
-            <img loading="lazy" class="outer search-img" src="resources/icons/search 1.svg" alt="" />
-            </button>
-            <!-- </div> -->
-            <!-- </form> -->
-            <!-- </div> -->
-         </nav>
-         <div class="container825">
-            <div class="content1">
-               <h1 class="heading_topic"></h1>
-               <a href="" class="start-topic">Start Season</a>
-            </div>
-            <div class="cont1 hidden">
-               <div class="card1">
-                  <div class="face face1">
-                     <div class="content">
-                        <img loading="lazy" src="resources/iimages/abhi.svg" alt="" />
-                        <h2>Set 1</h2>
-                     </div>
-                  </div>
-                  <div class="face face2">
-                     <div class="content">
-                        <p>Today is the time</p>
-                        <button class="btn btn-dark generate_daily22">Let's Rock</button>
-                     </div>
+            <!-- <div class="tagLine">Code Compete Conquer</div>
+               <div class="timer-line">Timer Is Running</div> -->
+            <div class="timer"></div>
+            <button class="btn btn-elegant update_kro hidden">UPDATE</button>
+            <div class="container768 hidden">
+               <div class="box">
+                  <div class="content">
+                     <h2>A</h2>
+                     <h3><span class="problem-name-1 problems_hai_bhai"></span></h3>
+                     <p>
+                     </p>
+                     <div class="content1"></div>
                   </div>
                </div>
-               <div class="card1">
-                  <div class="face face1">
-                     <div class="content">
-                        <img loading="lazy" src="resources/iimages/abhi.svg" alt="" />
-                        <h2>Set 2</h2>
-                     </div>
-                  </div>
-                  <div class="face face2">
-                     <div class="content">
-                        <button class="btn btn-dark generate_daily22 g2 hidden">Crush It</button>
-                        <p class="g_2">
-                           Do previous all sets to unlock it<br>
-                        </p>
-                        <img loading="lazy" class="g_2" src="https://img.icons8.com/bubbles/50/000000/lock-2.png"/>
-                     </div>
+               <div class="box">
+                  <div class="content">
+                     <h2>B</h2>
+                     <h3><span class="problem-name-2 problems_hai_bhai" ></span></h3>
+                     <!-- <p> 
+                        Attempts : <span class="attempts"></span><br>
+                        
+                        Tags: <span class="tags"></span><br>
+                        Number of Submissions: <span class="submissions"></span><br>
+                        Editorial Link: <div class="link2"></div>
+                         </p> -->
+                     <div class="content1"></div>
                   </div>
                </div>
-               <div class="card1">
-                  <div class="face face1">
-                     <div class="content">
-                        <img loading="lazy" src="resources/iimages/abhi.svg" alt="" />
-                        <h2>Set 3</h2>
-                     </div>
-                  </div>
-                  <div class="face face2">
-                     <div class="content">
-                        <button class="btn btn-dark generate_daily22 g3 hidden">Crush It</button>
-                        <p class="g_3">
-                           Do previous all sets to unlock it<br>
-                        </p>
-                        <img loading="lazy" class="g_3" src="https://img.icons8.com/bubbles/50/000000/lock-2.png"/>
-                     </div>
+               <div class="box">
+                  <div class="content">
+                     <h2>C</h2>
+                     <h3><span class="problem-name-3 problems_hai_bhai"></span></h3>
+                     <!-- <p>
+                        Attempts : <span class="attempts"></span><br>
+                        
+                        Tags: <span class="tags"></span><br>
+                        Number of Submissions: <span class="submissions"></span><br>
+                        Editorial Link:<div class="link3"></div>
+                         </p> -->
+                     <div class="content1"></div>
                   </div>
                </div>
-               <div class="card1">
-                  <div class="face face1">
-                     <div class="content">
-                        <img loading="lazy" src="resources/iimages/abhi.svg" alt="" />
-                        <h2>Set 4</h2>
-                     </div>
+               <div class="box">
+                  <div class="content">
+                     <h2>D</h2>
+                     <h3><span class="problem-name-4 problems_hai_bhai"></span></h3>
+                     <!-- <p>
+                        Attempts : <span class="attempts"></span><br>
+                        
+                        Tags: <span class="tags"></span><br>
+                        Number of Submissions: <span class="submissions"></span><br>
+                        Editorial Link:<div class="link3"></div>
+                         </p> -->
+                     <div class="content1"></div>
                   </div>
-                  <div class="face face2">
-                     <div class="content">
-                        <p class="g_4">
-                           Do previous all sets to unlock it<br>
-                        </p>
-                        <img loading="lazy" class="g_4" src="https://img.icons8.com/bubbles/50/000000/lock-2.png"/>  
-                        <button class="btn btn-dark generate_daily22 hidden g4">Crush It</button>
-                     </div>
+               </div>
+               <div class="box">
+                  <div class="content">
+                     <h2>E</h2>
+                     <h3><span class="problem-name-5 problems_hai_bhai"></span></h3>
+                     <!-- <p>
+                        Attempts : <span class="attempts"></span><br>
+                        
+                        Tags: <span class="tags"></span><br>
+                        Number of Submissions: <span class="submissions"></span><br>
+                        Editorial Link:<div class="link3"></div>
+                         </p> -->
+                     <div class="content1"></div>
                   </div>
                </div>
             </div>
+            <img src="resources/backgrounds/Group 35.svg" class="footer-img" alt="">
          </div>
-         <!-- <div class="tagLine">Code Compete Conquer</div>
-            <div class="timer-line">Timer Is Running</div> -->
-         <div class="timer"></div>
-         <button class="btn btn-elegant update_kro hidden">UPDATE</button>
-         <div class="container768 hidden">
-            <div class="box">
-               <div class="content">
-                  <h2>A</h2>
-                  <h3><span class="problem-name-1 problems_hai_bhai"></span></h3>
-                  <p>
-                  </p>
-                  <div class="content1"></div>
-               </div>
-            </div>
-            <div class="box">
-               <div class="content">
-                  <h2>B</h2>
-                  <h3><span class="problem-name-2 problems_hai_bhai" ></span></h3>
-                  <!-- <p> 
-                     Attempts : <span class="attempts"></span><br>
-                     Difficulty: <span class="difficulty"></span><br>
-                     Tags: <span class="tags"></span><br>
-                     Number of Submissions: <span class="submissions"></span><br>
-                     Editorial Link: <div class="link2"></div>
-                      </p> -->
-                  <div class="content1"></div>
-               </div>
-            </div>
-            <div class="box">
-               <div class="content">
-                  <h2>C</h2>
-                  <h3><span class="problem-name-3 problems_hai_bhai"></span></h3>
-                  <!-- <p>
-                     Attempts : <span class="attempts"></span><br>
-                     Difficulty: <span class="difficulty"></span><br>
-                     Tags: <span class="tags"></span><br>
-                     Number of Submissions: <span class="submissions"></span><br>
-                     Editorial Link:<div class="link3"></div>
-                      </p> -->
-                  <div class="content1"></div>
-               </div>
-            </div>
-            <div class="box">
-               <div class="content">
-                  <h2>D</h2>
-                  <h3><span class="problem-name-4 problems_hai_bhai"></span></h3>
-                  <!-- <p>
-                     Attempts : <span class="attempts"></span><br>
-                     Difficulty: <span class="difficulty"></span><br>
-                     Tags: <span class="tags"></span><br>
-                     Number of Submissions: <span class="submissions"></span><br>
-                     Editorial Link:<div class="link3"></div>
-                      </p> -->
-                  <div class="content1"></div>
-               </div>
-            </div>
-            <div class="box">
-               <div class="content">
-                  <h2>E</h2>
-                  <h3><span class="problem-name-5 problems_hai_bhai"></span></h3>
-                  <!-- <p>
-                     Attempts : <span class="attempts"></span><br>
-                     Difficulty: <span class="difficulty"></span><br>
-                     Tags: <span class="tags"></span><br>
-                     Number of Submissions: <span class="submissions"></span><br>
-                     Editorial Link:<div class="link3"></div>
-                      </p> -->
-                  <div class="content1"></div>
-               </div>
-            </div>
-         </div>
-         <img src="resources/backgrounds/Group 35.svg" class="footer-img" alt="">
       </div>
       <!-- for level wise -->
       <div class="container4 hidden">
@@ -1373,8 +1094,7 @@
                   </li>
                   <li class="user_avatar nav-item"></li>
                </ul>
-               
-               
+
                <!-- </div> -->
                <!-- </form> -->
                <!-- </div> -->
@@ -1412,176 +1132,100 @@
                      aria-hidden="true"
                      ></div>
                </div>
-            </div>
+            </div>   
          </div>
       </div>
       <!-- for sorting visualiser -->
-      <div class="container555 hidden">
-         <nav class="navbar navbar-expand-lg navbar-dark bg-transparent ">
-            <!-- <a class="navbar-brand logo" href="#">
-               <h1 class="inner">GAME OF CODES</h1>
-               
-               <img loading="lazy" src="resources/logo/logo_light.png" alt="" />
-               </a> -->
-            <div class="hamburger">
-               <div class="line33"></div>
-               <div class="line33"></div>
-               <div class="line33"></div>
+      <div class="containerForSorting">
+			<div class="section1">
+				<h1 class="curr_title">Path Finding Visualiser</h1>
+				<div class="curr_content">
+               This visualiser not ony gives you visualisations of path finding algorithms but also gives you the theory of those algos to understand them more clearly;
             </div>
-            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-               <span class="navbar-toggler-icon"></span>
-               </button> -->
-            <!-- <div class="collapse navbar-collapse" id="navbarText">  -->
-            <ul class="navbar-nav nav-links mr-auto mt-2 mt-lg-0">
-               <li class="nav-item active">
-                  <a class="nav-link dashboard" href="#"
-                     >
-                     Dashboard
-                     <div class="line1"></div>
-                     <span class="sr-only">(current)</span>
-                  </a
-                     >
-               </li>
-               <li class="nav-item compare">
-                  <a class="nav-link" href="#" id="compare1" >Compare</a>
-               </li>
-               <li class="nav-item">
-                  <div class="dropdown1">
-                     <span class="nav-link">Visualisers <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
-                     </span>
-                     <div class="dropdown-content1 animated bounceIn">
-                        <a class="nav-link sorting_vis_pls" href="#" id="sorting_vis">Sorting Visualiser</a>
-                        <a class="nav-link grid_vis_pls" href="#" id="grid_vis">Grid Visualiser</a>
-                     </div>
-                  </div>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link profile" href="Profile.html" id="profile1">Profile</a>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link codeblast" href="#" id="codeblast1">Code Blast</a>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link community" href="community.html">Community</a>
-               </li>
-               <li class="nav-item">
-                  <div class="dropdown1">
-                     <span class="nav-link">Training Zone <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
-                     <div class="dropdown-content1  animated bounceIn">
-                        <p class="nav-link topic_wise" >Topic Wise</p>
-                        <a class="nav-link level_wise" href="training_zone_level_wise.html">Level Wise</a>
-                     </div>
-                  </div>
-               </li>
-               <li class="nav-item">
-                  <a href="#" class="nav-link logout2">Logout</a>
-               </li>
-               <li class="user_avatar nav-item"></li>
-            </ul>
-            <input
-               class="form-control outer hidden search_kro"
-               type="search"
-               placeholder="Search"
-               aria-label="Search"
-               />
-            <button type="button" class="btn outer btn-dark search">
-            <img loading="lazy" class="outer search-img" src="resources/icons/search 1.svg" alt="" />
-            </button>
-            <!-- </div> -->
-            <!-- </form> -->
-            <!-- </div> -->
-         </nav>
-         <div class="array cenn">
-            <h1>Coming Soon</h1>
-            <img src="resources/vid/739.gif" alt="">
-         </div>
-      </div>
-      <!-- for grid visualiser -->
-      <div class="container5666 hidden">
-         <nav class="navbar navbar-expand-lg navbar-dark bg-transparent ">
-            <!-- <a class="navbar-brand logo" href="#">
-               <h1 class="inner">GAME OF CODES</h1>
-               
-               <img loading="lazy" src="resources/logo/logo_light.png" alt="" />
-               </a> -->
-            <div class="hamburger">
-               <div class="line33"></div>
-               <div class="line33"></div>
-               <div class="line33"></div>
-            </div>
-            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-               <span class="navbar-toggler-icon"></span>
-               </button> -->
-            <!-- <div class="collapse navbar-collapse" id="navbarText">  -->
-            <ul class="navbar-nav nav-links mr-auto mt-2 mt-lg-0">
-               <li class="nav-item active">
-                  <a class="nav-link dashboard" href="#"
-                     >
-                     Dashboard
-                     <div class="line1"></div>
-                     <span class="sr-only">(current)</span>
-                  </a
-                     >
-               </li>
-               <li class="nav-item compare">
-                  <a class="nav-link" href="#" id="compare1" >Compare</a>
-               </li>
-               <li class="nav-item">
-                  <div class="dropdown1">
-                     <span class="nav-link">Visualisers <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
-                     </span>
-                     <div class="dropdown-content1 animated bounceIn">
-                        <a class="nav-link sorting_vis_pls" href="#" id="sorting_vis">Sorting Visualiser</a>
-                        <a class="nav-link grid_vis_pls" href="#" id="grid_vis">Grid Visualiser</a>
-                     </div>
-                  </div>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link profile" href="Profile.html" id="profile1">Profile</a>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link codeblast" href="#" id="codeblast1">Code Blast</a>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link community" href="community.html">Community</a>
-               </li>
-               <li class="nav-item">
-                  <div class="dropdown1">
-                     <span class="nav-link">Training Zone <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
-                     <div class="dropdown-content1  animated bounceIn">
-                        <p class="nav-link topic_wise" >Topic Wise</p>
-                        <a class="nav-link level_wise" href="training_zone_level_wise.html">Level Wise</a>
-                     </div>
-                  </div>
-               </li>
-               <li class="nav-item">
-                  <a href="#" class="nav-link logout2">Logout</a>
-               </li>
-               <li class="user_avatar nav-item"></li>
-            </ul>
-            <input
-               class="form-control outer hidden search_kro"
-               type="search"
-               placeholder="Search"
-               aria-label="Search"
-               />
-            <button type="button" class="btn outer btn-dark search">
-            <img loading="lazy" class="outer search-img" src="resources/icons/search 1.svg" alt="" />
-            </button>
-            <!-- </div> -->
-            <!-- </form> -->
-            <!-- </div> -->
-         </nav>
-         <!-- <div class="tutorial">
-            </div> -->
-            <div class="cenn">
-               <h1>Coming Soon</h1>
-               <img src="resources/vid/739.gif" alt="">
+            <button class="btn-primary gotodash">Go Back</button>
+			</div>
+			<div class="section2">
+				<div class="buttonsForSOrting">
+					<div class="array-inputs">
+						<p>Size of the array:</p>
+						<input
+							id="a_size"
+							type="range"
+							min="20"
+							max="150"
+							step="1"
+							value="80"
+						/>
 
+						<p>Speed of the algorithm:</p>
+						<input
+							id="a_speed"
+							type="range"
+							min="1"
+							max="5"
+							step="1"
+							value="4"
+						/>
+					</div>
+					<button class="btn btn-primary gen_array">Generate New Array</button>
+					<button class="btn btn-secondary bubble">Bubble Sort</button>
+					<button class="btn btn-secondary selection">Selection Sort</button>
+					<button class="btn btn-secondary insertion">Insertion Sort</button>
+					<button class="btn btn-secondary merge">Merge Sort</button>
+					<button class="btn btn-secondary quick">Quick Sort</button>
+					<button class="btn btn-secondary heap hidden ">Heap Sort</button>
+				</div>
+				<div class="array"></div>
+			</div>
+		</div>
+      <!-- for grid visualiser -->
+      <div class="containerForSorting">
+			<div class="section1">
+				<h1 class="curr_title">Sorting Visualiser</h1>
+				<div class="curr_content">
+               This visualiser not ony gives you visualisations of sorting algorithms but also gives you the theory of sorting algos to understand them more clearly;
             </div>
-         <table id="grid">
-         </table>
-      </div>
+            <button class="btn-primary gotodash">Go Back</button>
+            
+			</div>
+			<div class="section2">
+				<div class="buttons">
+					<div class="avatar">
+						<img src="res/DTU,_Delhi_official_logo.png" alt="" />
+					</div>
+					<div class="algos">
+						<button
+							class="btn btn-primary dropdown-toggle mr-4"
+							type="button"
+							data-toggle="dropdown"
+							aria-haspopup="true"
+							aria-expanded="false"
+						>
+							Select Algorithm
+						</button>
+
+						<div class="dropdown-menu dropdown_sort">
+							<a class="dropdown-item bfs" href="#">BFS</a>
+							<a class="dropdown-item dfs" href="#">DFS</a>
+							<a class="dropdown-item dij hidden" href="#">DIJKSTRA'S ALGORITHM</a>
+							<a class="dropdown-item a_star hidden" href="#">A STAR</a>
+						</div>
+					</div>
+					<div class="reset">
+						<button class="btn reset_btn btn-secondary">Reset Grid</button>
+					</div>
+					<div class="start">
+						<button class="btn btn-primary hidden">Start</button>
+					</div>
+					<div class="generate_mazes hidden">
+						<button class="btn generate_maze btn-secondary">
+							Generate Maze
+						</button>
+					</div>
+				</div>
+				<table id="grid"></table>
+			</div>
+		</div>
       <!-- for compare -->
       <div class="container7 hidden">
          <div class="container8">
@@ -1649,8 +1293,7 @@
                   </li>
                   <li class="user_avatar nav-item"></li>
                </ul>
-               
-               
+
                <!-- </div> -->
                <!-- </form> -->
                <!-- </div> -->
@@ -1742,8 +1385,7 @@
                   </li>
                   <li class="user_avatar nav-item"></li>
                </ul>
-               
-               
+
                <!-- </div> -->
                <!-- </form> -->
                <!-- </div> -->
@@ -2036,8 +1678,7 @@
                   </li>
                   <li class="user_avatar nav-item"></li>
                </ul>
-               
-               
+
                <!-- </div> -->
                <!-- </form> -->
                <!-- </div> -->
@@ -2172,8 +1813,7 @@
                   </li>
                   <li class="user_avatar nav-item"></li>
                </ul>
-               
-               
+
                <!-- </div> -->
                <!-- </form> -->
                <!-- </div> -->
@@ -2651,6 +2291,8 @@
       <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
       <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
       <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-analytics.js"></script>
+
       <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-database.js"></script>
       <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-firestore.js"></script>
       <script>
@@ -2691,20 +2333,20 @@
       <script src="js/communty.js"></script>
       <script src="js/firebase.js"></script>
       <script src="js/app.js"></script>
-      <script src="js/utility_classes/generate_grid.js"></script>
-      <script src="js/utility_classes/generating_x_y.js"></script>
-      <script src="js/algorithms/a_star.js"></script>
-      <script src="js/algorithms/bfs.js"></script>
-      <script src="js/algorithms/dfs.js"></script>
-      <script src="js/algorithms/dijkstaras.js"></script>
+      <!-- <script src="js/utility_classes/generate_grid.js"></script> -->
+      <!-- <script src="js/utility_classes/generating_x_y.js"></script> -->
+      <!-- <script src="js/algorithms/a_star.js"></script> -->
+      <!-- <script src="js/algorithms/bfs.js"></script> -->
+      <!-- <script src="js/algorithms/dfs.js"></script> -->
+      <!-- <script src="js/algorithms/dijkstaras.js"></script> -->
       <script src="js/animations/vis.js"></script>
       <script src="js/main.js"></script>
-      <script src="js/bubble.js"></script>
-      <script src="js/selection.js"></script>
-      <script src="js/heap_sort.js"></script>
-      <script src="js/merge.js"></script>
-      <script src="js/insertion.js"></script>
-      <script src="js/quick.js"></script>
+      <!-- <script src="js/bubble.js"></script> -->
+      <!-- <script src="js/selection.js"></script> -->
+      <!-- <script src="js/heap_sort.js"></script> -->
+      <!-- <script src="js/merge.js"></script> -->
+      <!-- <script src="js/insertion.js"></script> -->
+      <!-- <script src="js/quick.js"></script> -->
       <script src="js/training_zone_topic_wise.js"></script>
       <script src="js/compare.js"></script>
       <script src="js/compare_calc.js"></script>
@@ -2720,4 +2362,3 @@
       <script src="https://cdn.rawgit.com/labnol/files/master/yt.js"></script>
    </body>
 </html>
-

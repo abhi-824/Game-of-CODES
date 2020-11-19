@@ -405,7 +405,9 @@ function dashboard(handle_name) {
 							let p = convert_to_link(
 								`${curr_set[i].contestId}-${curr_set[i].index}`
 							);
-							link.innerHTML = `<a href="${p}" target="_blank">Let's Do It</a>`;
+
+							link.innerHTML = `<a href="${p}" target="_blank">Let's Do It</a>  <i class="fa fa-heart ptani_kahan_hu" aria-hidden="true"></i>`;
+
 							if (i == 0) {
 								document.querySelector('.problem-name-1').innerHTML =
 									curr_set[i].name;
@@ -442,6 +444,9 @@ function dashboard(handle_name) {
 								document.querySelector('.link3').appendChild(link);
 							}
 						}
+						add_listeners_for_favs_wek_str(
+							document.querySelectorAll('.ptani_kahan_hu')
+						);
 						document.querySelector('.container768').classList.remove('hidden');
 						document.querySelector('.container768').classList.add('animated');
 						document
@@ -1213,7 +1218,7 @@ function dashboard(handle_name) {
 								for (let i = 0; i < curr_set.length; i++) {
 									let link = document.createElement('div');
 									let p = convert_to_link(`${curr_set[i][1]}`);
-									link.innerHTML = `<a href="${p}" target="_blank">Let's Do It</a>`;
+									link.innerHTML = `<a href="${p}" target="_blank">Let's Do It</a>  <i class="fa fa-heart again_nahi_pta" aria-hidden="true"></i>`;
 									if (i == 0) {
 										document.querySelector('.problem-name-A').innerHTML =
 											curr_set[i][0];
@@ -1274,6 +1279,9 @@ function dashboard(handle_name) {
 										document.querySelector('.linkE').appendChild(link);
 									}
 								}
+								add_listeners_for_favs_wek_str(
+									document.querySelectorAll('.again_nahi_pta')
+								);
 								document
 									.querySelector('.problem_set_tera')
 									.classList.remove('hidden');
@@ -1462,7 +1470,19 @@ function dashboard(handle_name) {
 		let modified_url = user_contests + handle_name;
 		const jsondata = await fetch(modified_url);
 		const jsdata = await jsondata.json();
+		document.querySelector('.yes').addEventListener('click', function (e) {
+			let val = document.querySelector('.time_val').value;
+			startTimer(val * 60, document.querySelector('.time_chalo'));
+			document.querySelector('.ask_perm').classList.add('animated');
+			document.querySelector('.ask_perm').classList.add('bounceOutLeft');
+			e.preventDefault();
+		});
 
+		document.querySelector('.no').addEventListener('click', function (e) {
+			document.querySelector('.ask_perm').classList.add('hidden');
+			//console.log("h");
+			e.preventDefault();
+		});
 		// for (; i >= 0; i--) {
 		let i = jsdata.result.length - 1;
 		let pppp = setInterval(async function () {
@@ -1495,13 +1515,14 @@ function dashboard(handle_name) {
 					th1.innerHTML = upsolved[i][1][0];
 					th3.innerHTML = `<a class="question" href="${convert_to_link(
 						upsolved[i][1][0]
-					)}" target="_blank">Let's Do it</a>`;
+					)}" target="_blank">Let's Do It</a>`;
 					tr.appendChild(th1);
 					tr.appendChild(th2);
 					tr.appendChild(th3);
 					table.appendChild(tr);
 				}
 				document.querySelector('.d-flex').classList.add('hidden');
+
 				document.querySelector('.yes').addEventListener('click', function (e) {
 					let val = document.querySelector('.time_val').value;
 					startTimer(val * 60, document.querySelector('.time_chalo'));
@@ -1518,6 +1539,7 @@ function dashboard(handle_name) {
 				clearInterval(pppp);
 			}
 		}, 1500);
+
 		// }
 	}
 
@@ -1563,12 +1585,13 @@ function dashboard(handle_name) {
 			th1.innerHTML = unsolved_problems_array[i][1];
 			th3.innerHTML = `<a class="question" href="${convert_to_link(
 				unsolved_problems_array[i][1]
-			)} target="_blank">Let's Do it</a>`;
+			)}" target="_blank">Let's Do It</a>  <i class="fa fa-heart unsolve_bookmarks" aria-hidden="true"></i>`;
 			tr.appendChild(th1);
 			tr.appendChild(th2);
 			tr.appendChild(th3);
 			table.appendChild(tr);
 		}
+		add_listeners_for_favs(document.querySelectorAll('.unsolve_bookmarks'));
 	}
 	getUnsolved();
 
@@ -1596,6 +1619,7 @@ function dashboard(handle_name) {
 		strong_topics.classList.add('hidden');
 		show_daily_mix2.classList.remove('hidden');
 
+		hide_please(item3);document.querySelector('#bookmarkspakd').classList.add('hidden');
 		document.querySelector('.heading').classList.add('hidden');
 
 		show_daily_mix.classList.remove('hidden');
@@ -1614,6 +1638,7 @@ function dashboard(handle_name) {
 		weak_topics.classList.add('hidden');
 		show_daily_mix2.classList.remove('hidden');
 
+		hide_please(item3);document.querySelector('#bookmarkspakd').classList.add('hidden');
 		document.querySelector('.heading').classList.add('hidden');
 
 		strong_topics.classList.add('animated');
@@ -1627,6 +1652,7 @@ function dashboard(handle_name) {
 		hide_please(item4);
 		daily_mix_contests.classList.add('hidden');
 
+		document.querySelector('.time_chalo').classList.remove('hidden');
 		document.querySelector('.ask_perm').classList.remove('hidden');
 		upsolve.classList.remove('hidden');
 		unsolved_mysteries.classList.add('hidden');
@@ -1634,6 +1660,7 @@ function dashboard(handle_name) {
 		show_daily_mix.classList.remove('hidden');
 		strong_topics.classList.add('hidden');
 		show_daily_mix2.classList.remove('hidden');
+		hide_please(item3);document.querySelector('#bookmarkspakd').classList.add('hidden');
 
 		document.querySelector('.heading').classList.add('hidden');
 		upsolve.classList.add('animated');
@@ -1645,6 +1672,7 @@ function dashboard(handle_name) {
 		hide_please(item2);
 		hide_please(item3);
 		hide_please(item);
+		hide_please(item3);document.querySelector('#bookmarkspakd').classList.add('hidden');
 		daily_mix_contests.classList.add('hidden');
 		unsolved_mysteries.classList.remove('hidden');
 		weak_topics.classList.add('hidden');
@@ -1661,6 +1689,7 @@ function dashboard(handle_name) {
 	document.querySelector('.daily-btn').addEventListener('click', function (e) {
 		hide_please(item4);
 		document.querySelector('.ask_perm').classList.add('hidden');
+		hide_please(item3);document.querySelector('#bookmarkspakd').classList.add('hidden');
 		hide_please(item2);
 		hide_please(item3);
 		hide_please(item);
@@ -1680,7 +1709,9 @@ function dashboard(handle_name) {
 	document.querySelector('.daily-btn2').addEventListener('click', function (e) {
 		hide_please(item4);
 		hide_please(item2);
-		hide_please(item3);
+		hide_please(item3);document.querySelector('#bookmarkspakd').classList.add('hidden');
+		// document.querySelector('.ask_perm').classList.add('hidden');
+		document.querySelector('.time_chalo').classList.add('hidden');
 		hide_please(item);
 		document.querySelector('.container1').style.height = '100vh';
 		document.querySelector('.container2').style.height = '100vh';
@@ -1755,10 +1786,12 @@ function dashboard(handle_name) {
 
 				if (contest.phase === 'BEFORE') {
 					const b = document.createElement('th');
+
 					const a = document.createElement('a');
 					a.textContent = 'Register';
 					a.href = link;
 					a.target="_blank";
+
 
 					let start_time = contest.startTimeSeconds * 1000;
 					let full_date = new Date(start_time);
@@ -1803,7 +1836,7 @@ function dashboard(handle_name) {
 		var timer = duration,
 			minutes,
 			seconds;
-		setInterval(function () {
+		let c = setInterval(function () {
 			minutes = parseInt(timer / 60, 10);
 			seconds = parseInt(timer % 60, 10);
 
@@ -1813,10 +1846,12 @@ function dashboard(handle_name) {
 			display.textContent = minutes + ':' + seconds;
 
 			if (--timer < 0) {
-				timer = duration;
+				alert("Time's Up!!!");
+				clearInterval(c);
 			}
 		}, 1000);
 	}
+
 	let target_val;
 	var user = firebase.auth().currentUser;
 	db.collection('handles')
@@ -1902,4 +1937,261 @@ function dashboard(handle_name) {
 			getTargetandrock();
 		}, 30000);
 	}
+
+	window.setTimeout(() => {}, 10000);
+
+	let cl = 0;
+	function bookmark_question(questionId) {
+		var user = firebase.auth().currentUser;
+		let array_bookmarks = [];
+		db.collection('handles')
+			.where('email', '==', user.email)
+			.get()
+			.then((snapshot) => {
+				snapshot.docs.forEach((doc) => {
+					const handle_list = doc.data();
+					if (handle_list.email === user.email) {
+						if (handle_list.bookmarks != undefined) {
+							array_bookmarks = handle_list.bookmarks;
+
+							array_bookmarks.push(questionId);
+							db.collection('handles').doc(doc.id).update({
+								email: handle_list.email,
+								handle: handle_list.handle,
+								target: handle_list.target,
+								bookmarks: array_bookmarks,
+							});
+							// db.collection('handles').doc(doc.id).delete();
+						} else {
+							array_bookmarks.push(questionId);
+							db.collection('handles').add({
+								email: handle_list.email,
+								handle: handle_list.handle,
+								target: handle_list.target,
+								bookmarks: array_bookmarks,
+							});
+							db.collection('handles').doc(doc.id).delete();
+						}
+					}
+				});
+			});
+	}
+	function add_listeners_for_favs(fav) {
+		db.collection('handles')
+			.where('email', '==', user.email)
+			.get()
+			.then((snapshot) => {
+				snapshot.docs.forEach((doc) => {
+					let array_bookmarks = [];
+					const handle_list = doc.data();
+					if (handle_list.email === user.email) {
+						array_bookmarks = handle_list.bookmarks;
+						console.log(handle_list);
+						for (let i = 0; i < fav.length; i++) {
+							let questionId =
+								fav[i].parentElement.parentElement.firstChild.innerHTML;
+
+							for (let j = 0; j < array_bookmarks.length; j++) {
+								if (array_bookmarks[j] == questionId) {
+									console.log('pppppppppppp');
+									fav[i].style.color = 'red';
+								}
+							}
+						}
+
+						for (let i = 0; i < fav.length; i++) {
+							console.log('hey');
+
+							fav[i].addEventListener('click', (e) => {
+								e.preventDefault();
+								let question =
+									fav[i].parentElement.parentElement.firstChild.innerHTML;
+								if (fav[i].style.color == 'red') {
+									console.log('hey');
+									var user = firebase.auth().currentUser;
+									db.collection('handles')
+										.where('email', '==', user.email)
+										.get()
+										.then((snapshot) => {
+											snapshot.docs.forEach((doc) => {
+												const handle_list = doc.data();
+												if (handle_list.email === user.email) {
+													if (handle_list.bookmarks != undefined) {
+														let array_bookmarks = handle_list.bookmarks;
+														if (array_bookmarks.includes(question)) {
+															for (let i = 0; i < array_bookmarks.length; i++) {
+																if (array_bookmarks[i] == question) {
+																	array_bookmarks.splice(i, 1);
+																	break;
+																}
+															}
+															db.collection('handles').doc(doc.id).update({
+																email: handle_list.email,
+																handle: handle_list.handle,
+																target: handle_list.target,
+																bookmarks: array_bookmarks,
+															});
+															fav[i].style.color = 'white';
+														}
+													} else {
+														alert('some error occured removing bookmark');
+													}
+												}
+											});
+										});
+								} else {
+									fav[i].style.color = 'red';
+
+									console.log(question);
+
+									cl++;
+									bookmark_question(question);
+								}
+								// if (cl == 1) {
+
+								//   };
+							});
+						}
+					}
+				});
+			});
+	}
+	function string_to_link(str) {
+		str = str.split('');
+		let ac;
+		for (let i = 0; i < str.length; i++) {
+			if (str[i] >= '0' && str[i] <= '9') {
+				ac = str.splice(i, str.length - i);
+				break;
+			}
+		}
+		for (let i = 0; i < ac.length; i++) {
+			if (ac[i] == '/') {
+				ac[i] = '-';
+			}
+		}
+		let bc = '';
+		console.log(ac);
+		for (let i = 0; i < ac.length; i++) {
+			bc += ac[i];
+		}
+		return bc;
+	}
+	function add_listeners_for_favs_wek_str(fav) {
+		db.collection('handles')
+			.where('email', '==', user.email)
+			.get()
+			.then((snapshot) => {
+				snapshot.docs.forEach((doc) => {
+					let array_bookmarks = [];
+					const handle_list = doc.data();
+					if (handle_list.email === user.email) {
+						array_bookmarks = handle_list.bookmarks;
+						console.log(handle_list);
+						for (let i = 0; i < fav.length; i++) {
+							let questionId = string_to_link(
+								fav[i].parentElement.parentElement.firstChild.firstChild.href
+							);
+
+							for (let j = 0; j < array_bookmarks.length; j++) {
+								if (array_bookmarks[j] == questionId) {
+									console.log('pppppppppppp');
+									fav[i].style.color = 'red';
+								}
+							}
+						}
+
+						for (let i = 0; i < fav.length; i++) {
+							console.log('hey');
+
+							fav[i].addEventListener('click', (e) => {
+								e.preventDefault();
+								let question = string_to_link(
+									fav[i].parentElement.parentElement.firstChild.firstChild.href
+								);
+								if (fav[i].style.color == 'red') {
+									console.log('hey');
+									var user = firebase.auth().currentUser;
+									db.collection('handles')
+										.where('email', '==', user.email)
+										.get()
+										.then((snapshot) => {
+											snapshot.docs.forEach((doc) => {
+												const handle_list = doc.data();
+												if (handle_list.email === user.email) {
+													if (handle_list.bookmarks != undefined) {
+														let array_bookmarks = handle_list.bookmarks;
+														if (array_bookmarks.includes(question)) {
+															for (let i = 0; i < array_bookmarks.length; i++) {
+																if (array_bookmarks[i] == question) {
+																	array_bookmarks.splice(i, 1);
+																	break;
+																}
+															}
+															db.collection('handles').doc(doc.id).update({
+																email: handle_list.email,
+																handle: handle_list.handle,
+																target: handle_list.target,
+																bookmarks: array_bookmarks,
+															});
+															fav[i].style.color = 'white';
+														}
+													} else {
+														alert('some error occured removing bookmark');
+													}
+												}
+											});
+										});
+								} else {
+									fav[i].style.color = 'red';
+
+									console.log(question);
+
+									cl++;
+									bookmark_question(question);
+								}
+								// if (cl == 1) {
+
+								//   };
+							});
+						}
+					}
+				});
+			});
+	}
+	document.querySelector('.bookmarked').addEventListener('click', (e) => {
+		db.collection('handles')
+			.where('email', '==', user.email)
+			.get()
+			.then((snapshot) => {
+				snapshot.docs.forEach((doc) => {
+					let array_bookmarks = [];
+					const handle_list = doc.data();
+					if (handle_list.email === user.email) {
+						array_bookmarks = handle_list.bookmarks;
+						console.log(handle_list);
+
+						if (array_bookmarks != undefined) {
+							display_bookmarks(array_bookmarks);
+						}
+					}
+				});
+			});
+	});
+	function display_bookmarks(array_bookmarks) {
+		document.querySelector('#futurecontest').classList.add('hidden');
+		document.querySelector('#bookmarkspakd').classList.remove('hidden');
+		document.querySelector('#bookmarkspakd').classList.add('animated');
+		document.querySelector('#bookmarkspakd').classList.add('bounceInLeft');
+		let div_book = document.querySelector('.bookmarked_ques');
+		for (let i = 0; i < array_bookmarks.length; i++) {
+			let str = convert_to_link(array_bookmarks[i]);
+			let a = document.createElement('tr');
+			let th = document.createElement('th');
+			th.innerHTML = `<a href="${str}" target="_blank">${array_bookmarks[i]}</a>`;
+			a.appendChild(th);
+			div_book.appendChild(a);
+		}
+	}
+
 }
