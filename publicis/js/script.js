@@ -1856,8 +1856,8 @@ function dashboard(handle_name) {
 			}
 		}, 1000);
 	}
+	let target_val;
 	if (!protection_mode) {
-		let target_val;
 		var user = firebase.auth().currentUser;
 		db.collection('handles')
 			.where('email', '==', user.email)
@@ -1999,17 +1999,24 @@ function dashboard(handle_name) {
 					let array_bookmarks = [];
 					const handle_list = doc.data();
 					if (handle_list.email === user.email) {
+						if(handle_list.bookmarks!=undefined)
+						{
+							
+						}
 						array_bookmarks = handle_list.bookmarks;
 						console.log(handle_list);
 						for (let i = 0; i < fav.length; i++) {
 							let questionId =
 								fav[i].parentElement.parentElement.firstChild.innerHTML;
-
-							for (let j = 0; j < array_bookmarks.length; j++) {
-								if (array_bookmarks[j] == questionId) {
-									console.log('pppppppppppp');
-									fav[i].style.color = 'red';
+							if(array_bookmarks!=undefined)
+							{
+								for (let j = 0; j < array_bookmarks.length; j++) {
+									if (array_bookmarks[j] == questionId) {
+										console.log('pppppppppppp');
+										fav[i].style.color = 'red';
+									}
 								}
+
 							}
 						}
 
@@ -2203,6 +2210,7 @@ function dashboard(handle_name) {
 							console.log(handle_list);
 
 							if (array_bookmarks != undefined) {
+								console.log(array_bookmarks)
 								display_bookmarks(array_bookmarks);
 							}
 						}
@@ -2216,6 +2224,10 @@ function dashboard(handle_name) {
 		document.querySelector('#bookmarkspakd').classList.add('animated');
 		document.querySelector('#bookmarkspakd').classList.add('bounceInLeft');
 		let div_book = document.querySelector('.bookmarked_ques');
+		while(div_book.children[0])
+		{
+			div_book.removeChild(div_book.childNodes[0]);
+		}
 		for (let i = 0; i < array_bookmarks.length; i++) {
 			let str = convert_to_link(array_bookmarks[i]);
 			let a = document.createElement('tr');
