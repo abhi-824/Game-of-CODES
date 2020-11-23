@@ -1,18 +1,48 @@
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 var firebaseConfig = {
-    apiKey: "AIzaSyDdE6xJ0Zq8nWVNZgxR3gpQtGL7t6GF3SI",
-    authDomain: "game-of-codes-824.firebaseapp.com",
-    databaseURL: "https://game-of-codes-824.firebaseio.com",
-    projectId: "game-of-codes-824",
-    storageBucket: "game-of-codes-824.appspot.com",
-    messagingSenderId: "424841167122",
-    appId: "1:424841167122:web:be7f203203efb36b3d73cb",
-    measurementId: "G-96QDV08GG2"
-  };
+	apiKey: 'AIzaSyDdE6xJ0Zq8nWVNZgxR3gpQtGL7t6GF3SI',
+	authDomain: 'game-of-codes-824.firebaseapp.com',
+	databaseURL: 'https://game-of-codes-824.firebaseio.com',
+	projectId: 'game-of-codes-824',
+	storageBucket: 'game-of-codes-824.appspot.com',
+	messagingSenderId: '424841167122',
+	appId: '1:424841167122:web:be7f203203efb36b3d73cb',
+	measurementId: 'G-96QDV08GG2',
+};
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
 const auth = firebase.auth();
 const db = firebase.firestore();
+
+let array_bookmarks = [];
+db.collection('handles')
+	.get()
+	.then((snapshot) => {
+		snapshot.docs.forEach((doc) => {
+			const handle_list = doc.data();
+
+			if (handle_list.bookmarks != undefined) {
+				array_bookmarks = handle_list.bookmarks;
+
+				db.collection('handles').doc(doc.id).update({
+					email: handle_list.email,
+					handle: handle_list.handle,
+					target: handle_list.target,
+					bookmarks: array_bookmarks,
+				});
+				// db.collection('handles').doc(doc.id).delete();
+			} else {
+				db.collection('handles').add({
+					email: handle_list.email,
+					handle: handle_list.handle,
+					target: handle_list.target,
+					bookmarks: array_bookmarks,
+				});
+				db.collection('handles').doc(doc.id).delete();
+			}
+		});
+	});
+alert("If You are unable to see your dashboard, Please LOG OUT and LOG IN again. IF YOU ARE SEEING SORTING VISUALIZER, JUST CLICK ON 'GO BACK' BUTTON AND THEN LOGOUT. We are sorry for the inconvinence caused.")
