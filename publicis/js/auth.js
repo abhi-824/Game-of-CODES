@@ -18,6 +18,7 @@ auth.onAuthStateChanged((user) => {
 				});
 				if (!handle) {
 					document.querySelector('.loader12345').classList.add('disapper');
+					show_screen(index_screen);
 					ask_fr_handle(user);
 				} else {
 					document.querySelector('.container11').classList.add('hidden');

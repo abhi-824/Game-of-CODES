@@ -17,32 +17,4 @@ firebase.analytics();
 const auth = firebase.auth();
 const db = firebase.firestore();
 
-let array_bookmarks = [];
-db.collection('handles')
-	.get()
-	.then((snapshot) => {
-		snapshot.docs.forEach((doc) => {
-			const handle_list = doc.data();
-
-			if (handle_list.bookmarks != undefined) {
-				array_bookmarks = handle_list.bookmarks;
-
-				db.collection('handles').doc(doc.id).update({
-					email: handle_list.email,
-					handle: handle_list.handle,
-					target: handle_list.target,
-					bookmarks: array_bookmarks,
-				});
-				// db.collection('handles').doc(doc.id).delete();
-			} else {
-				db.collection('handles').add({
-					email: handle_list.email,
-					handle: handle_list.handle,
-					target: handle_list.target,
-					bookmarks: array_bookmarks,
-				});
-				db.collection('handles').doc(doc.id).delete();
-			}
-		});
-	});
 alert("If You are unable to see your dashboard, Please LOG OUT and LOG IN again. IF YOU ARE SEEING SORTING VISUALIZER, JUST CLICK ON 'GO BACK' BUTTON AND THEN LOGOUT. We are sorry for the inconvinence caused.")
