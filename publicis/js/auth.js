@@ -62,6 +62,7 @@ signupform.addEventListener('submit	', (e) => {
 						email: email,
 						handle: handle_name,
 						target: 16000,
+						bookmarks:[],
 					});
 					console.log(cred);
 					signupform.reset();
@@ -193,6 +194,7 @@ function ask_fr_handle(user) {
 						email: user.email,
 						handle: handle_val,
 						target: 16000,
+						bookmarks:[]
 					});
 
 					document.querySelector('.loader12345').classList.add('disapper');
