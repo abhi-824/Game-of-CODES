@@ -1,3 +1,4 @@
+var load_kkk = document.querySelector('.load-kro2');
 function dashboard(handle_name) {
 	show_screen(dashboard_screen);
 	let item = document.querySelector('.item1');
@@ -6,7 +7,6 @@ function dashboard(handle_name) {
 	let item4 = document.querySelector('.item4');
 	let user_submissions;
 	var load_kk = document.querySelector('.load-kro');
-	var load_kkk = document.querySelector('.load-kro2');
 
 	let show_daily_mix = document.querySelector('.daily-btn');
 	let show_daily_mix2 = document.querySelector('.daily-btn2');

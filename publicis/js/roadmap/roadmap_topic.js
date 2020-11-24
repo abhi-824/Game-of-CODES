@@ -1,3 +1,4 @@
+let cur=0;
 function roadmap_topic(i, user_handle) {
   init_kro(i);
   show_screen(roadmap_topic_screen);
@@ -274,18 +275,25 @@ function inContest(topic, link, user_handle) {
     }
     document.querySelector(".badhiya_btn").addEventListener("click", (e) => {
       e.preventDefault();
-      document.querySelector(".msg").classList.add("hidden");
-      document.querySelector(".container_questions").classList.remove("hidden");
-      let links = document.querySelectorAll(".contest_question_link");
-      for (let i = 0; i < links.length; i++) {
-        links[
-          i
-        ].innerHTML = `<a href="${questions_links[i]}" target="_blank">Let's Go</a>`;
+      if(cur==0)
+      {
+        document.querySelector(".msg").classList.add("hidden");
+        document.querySelector(".container_questions").classList.remove("hidden");
+        let links = document.querySelectorAll(".contest_question_link");
+        for (let i = 0; i < links.length; i++) {
+          links[
+            i
+          ].innerHTML = `<a href="${questions_links[i]}" target="_blank">Let's Go</a>`;
+        }
+        startTimer(
+          2,
+          document.querySelector(".timer_for_contest"),
+          questions_links
+        );
       }
-      startTimer(2, document.querySelector(".timer_for_contest"),questions_links);
     });
   }
-  function startTimer(duration, display,questions_links) {
+  function startTimer(duration, display, questions_links) {
     var timer = duration,
       minutes,
       seconds;
@@ -302,14 +310,14 @@ function inContest(topic, link, user_handle) {
         alert(
           "End of Time, But If something have left you can still do it. When you are done, just goto next"
         );
-        after_contest(user_handle,questions_links);
+        after_contest(user_handle, questions_links);
         clearInterval(c);
       }
     }, 1000);
   }
   getQuestions_Abhinandan_Sharma();
 }
-function after_contest(user_handle,questions_links) {
+function after_contest(user_handle, questions_links) {
   let next_btn = document.querySelector(".after_contest");
   next_btn.classList.remove("hidden");
   next_btn.addEventListener("click", (e) => {
@@ -330,25 +338,84 @@ function after_contest(user_handle,questions_links) {
       // for retreiving solved set
       for (let i = 0; i < jsdata.result.length; i++) {
         if (jsdata.result[i].verdict == "OK") {
-          let str =`https://codeforces.com/problemset/problem/${jsdata.result[i].problem.contestId}-${jsdata.result[i].problem.index};`
+          let str = `https://codeforces.com/problemset/problem/${jsdata.result[i].problem.contestId}-${jsdata.result[i].problem.index};`;
           solved.add(str);
         }
-	  }
-	  generate_result(questions_links,solved);
-	}
-	getSolved();
-
-
+      }
+      generate_result(questions_links, solved);
+    }
+    getSolved();
   });
 }
-function generate_result(questions_links,solved)
+function generate_result(questions_links, solved) {
+  let res = [];
+  for (let i = 0; i < questions_links.length; i++) {
+    if (solved.has(questions_links[i])) {
+      res.push(1);
+    } else {
+      res.push(0);
+    }
+  }
+  display_score(res,questions_links);
+}
+function display_score(res) {
+  console.log(res);
+ startLoader();
+  let links = document.querySelectorAll(".contest_question_link");
+  for (let i = 0; i < links.length; i++) {
+    links[
+      i
+    ].innerHTML = ``;
+  }
+  document.querySelector(".container_questions").classList.add("hidden");
+  document.querySelector(".timer_for_contest").classList.add("hidden");
+  let msg=document.querySelector(".msg")
+  msg.classList.remove("hidden");
+  document.querySelector(".msg_content").innerHTML=`Umm.. Let's See what you did. Glad you are actually practicing and have gone this much far. Let's see.`
+  let lets_see=document.querySelector(".badhiya_btn")
+  lets_see.innerHTML=`Let's See`;
+  cur=1;
+  lets_see.addEventListener('click',(e)=>{
+     if(cur)
+     {
+      startLoader();
+      msg.classList.add("hidden");
+      let div=createTable(res,questions_links);
+      document.querySelector(".containerOverlayForContest").appendChild(div);
+    } 
+  })
+  cur++;
+}
+function createTable(res,questions_links)
 {
-  let res=[];
-	for(let i=0;i<questions_links.length;i++)
-	{
-		if(solved.has(questions_links[i]))
-		{
-      
-		}
-	}
+  let table=document.createElement('table');
+  table.className='table';
+  table.classList.add("table_for_results_roadmap");
+  let tr=document.createElement('tr');
+  for(let i=0;i<questions_links.length;i++)
+  {
+    let p=document.createElement('th');
+    p.innerHTML=`<a href="${questions_links[i]}" target="_blank">See Here</a>`;
+    tr.appendChild(p);
+  }
+  let tr2=document.createElement('tr');
+  for(let i=0;i<res.length;i++)
+  {
+    let p=document.createElement('td');
+    p.innerHTML=`${res?'Correct':'Incorrect'}`;
+    tr2.appendChild(p);
+  }
+  table.appendChild(tr);
+  table.appendChild(tr2);
+  return table;
+}
+function startLoader()
+{
+  let loader = document.querySelector(".loader12345");
+  loader.classList.remove("hidden");
+  loader.classList.remove("disapper");
+  window.setTimeout(() => {
+
+    loader.classList.add("disapper");
+  }, 1300);
 }
