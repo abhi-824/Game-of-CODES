@@ -1,4 +1,3 @@
-
 function sorting_vis() {
 	show_screen(sorting_screen);
 	const divs = [];

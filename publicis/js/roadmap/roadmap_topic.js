@@ -343,11 +343,12 @@ function after_contest(user_handle,questions_links) {
 }
 function generate_result(questions_links,solved)
 {
+  let res=[];
 	for(let i=0;i<questions_links.length;i++)
 	{
 		if(solved.has(questions_links[i]))
 		{
-			
+      
 		}
 	}
 }

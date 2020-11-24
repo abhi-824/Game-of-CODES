@@ -1,5 +1,5 @@
 let handle;
-
+let protection_mode = false;
 //listen for auth status changes
 auth.onAuthStateChanged((user) => {
 	// var handle_name=document.getElementById('')
@@ -18,6 +18,7 @@ auth.onAuthStateChanged((user) => {
 				});
 				if (!handle) {
 					document.querySelector('.loader12345').classList.add('disapper');
+					show_screen(index_screen);
 					ask_fr_handle(user);
 				} else {
 					document.querySelector('.container11').classList.add('hidden');
@@ -34,8 +35,10 @@ auth.onAuthStateChanged((user) => {
 
 // for signup
 const signupform = document.querySelector('#signup-form');
+
 const forgotform = document.querySelector('#forgot');
-signupform.addEventListener('submit', (e) => {
+
+signupform.addEventListener('submit	', (e) => {
 	const email = signupform['signup-email'].value;
 	const handle_name = signupform['signup-handle'].value;
 	const pwd = signupform['signup-password'].value;
@@ -59,6 +62,7 @@ signupform.addEventListener('submit', (e) => {
 						email: email,
 						handle: handle_name,
 						target: 16000,
+						bookmarks:[],
 					});
 					console.log(cred);
 					signupform.reset();
@@ -74,10 +78,15 @@ signupform.addEventListener('submit', (e) => {
 });
 
 const logout2 = document.querySelectorAll('.logout2');
+
 for (let i = 0; i < logout2.length; i++) {
 	logout2[i].addEventListener('click', (e) => {
 		e.preventDefault();
-		auth.signOut();
+		if (protection_mode) {
+			show_screen(index_screen);
+		} else {
+			auth.signOut();
+		}
 	});
 }
 
@@ -98,6 +107,7 @@ forgotform.addEventListener('submit', (e) => {
 });
 
 const loginForm = document.querySelector('#login-form');
+
 loginForm.addEventListener('submit', (e) => {
 	e.preventDefault();
 	const email = loginForm['login-email'].value;
@@ -114,6 +124,14 @@ loginForm.addEventListener('submit', (e) => {
 			display_error();
 			alert(error);
 		});
+});
+
+const loginAsGuestForm = document.querySelector('#login-as-guest-form');
+loginAsGuestForm.addEventListener('submit', (e) => {
+	let handle = document.querySelector('#handle-login-as-guest').value;
+	protection_mode = true;
+	dashboard(handle);
+	e.preventDefault();
 });
 
 function display_error() {
@@ -153,10 +171,10 @@ document.querySelector('.google-sign-in').addEventListener('click', (e) => {
 function ask_fr_handle(user) {
 	document.querySelector('.ask_handle').classList.remove('hidden');
 	document.querySelector('#signup-form').classList.add('hidden');
-            document.querySelector('.wah').classList.add('hidden');
-            document.querySelector('#login-form').classList.add('hidden');
-            document.querySelector('#forgot').classList.add('hidden');
-            document.querySelector('.after-forgot').classList.add('hidden');
+	document.querySelector('.wah').classList.add('hidden');
+	document.querySelector('#login-form').classList.add('hidden');
+	document.querySelector('#forgot').classList.add('hidden');
+	document.querySelector('.after-forgot').classList.add('hidden');
 	document
 		.querySelector('.ask-handle-submit')
 		.addEventListener('click', (e) => {
@@ -176,6 +194,7 @@ function ask_fr_handle(user) {
 						email: user.email,
 						handle: handle_val,
 						target: 16000,
+						bookmarks:[]
 					});
 
 					document.querySelector('.loader12345').classList.add('disapper');
