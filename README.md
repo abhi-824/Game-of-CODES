@@ -68,6 +68,7 @@ This would install all dependencies used.
 <br>
 Now run this command to run the website on port 3000. Open localhost:3000 in your browser to view the site.
 <br>
+<br>
 
 ```
 npm run start
@@ -75,3 +76,6 @@ npm run start
 
 <br>
 
+# Thanks!
+
+*If you want to contribute, or have some ideas relating to the theme, feel free to open up a issue, or contact me through Email: abhi.moudgil15@gmail.com or connect through <a href="https://www.linkedin.com/in/abhinandan-sharma-0a2633175/" target="_blank">LinkedIn</a>*
