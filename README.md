@@ -8,7 +8,7 @@ A tool of programmers, by programmers and for programmers.
 <br>
 <br>
 
-**Game of Codes** is a tool for codeforces lovers who want to practice optimally and in a gaming mood. what you have to do is to make an account either by registering via email or by google andd give your handle.
+**Game of Codes** is a tool for codeforces lovers who want to practice optimally in a gaming mood. What you have to do is to make an account either by registering via email or by google and give your codeforces handle.
 
 <br>
 
