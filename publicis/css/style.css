@@ -1960,3 +1960,14 @@ div ::-webkit-scrollbar-thumb {
 	border-radius: 50px;
 }
 
+.table_for_results_roadmap{
+  max-width:600px;
+  
+}
+.table_for_results_roadmap a{
+  color:#fff;
+
+}
+.table_for_results_roadmap a:hover{
+  color:rgb(43, 255, 0);
+}

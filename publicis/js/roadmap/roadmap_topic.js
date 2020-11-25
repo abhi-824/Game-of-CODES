@@ -358,7 +358,7 @@ function generate_result(questions_links, solved) {
   }
   display_score(res,questions_links);
 }
-function display_score(res) {
+function display_score(res,questions_links) {
   console.log(res);
  startLoader();
   let links = document.querySelectorAll(".contest_question_link");
@@ -376,13 +376,18 @@ function display_score(res) {
   lets_see.innerHTML=`Let's See`;
   cur=1;
   lets_see.addEventListener('click',(e)=>{
-     if(cur)
+     if(cur==1)
      {
       startLoader();
       msg.classList.add("hidden");
       let div=createTable(res,questions_links);
       document.querySelector(".containerOverlayForContest").appendChild(div);
+      cur=2;
     } 
+    if(cur==2)
+    {
+      display_editorials();
+    }
   })
   cur++;
 }
@@ -418,4 +423,8 @@ function startLoader()
 
     loader.classList.add("disapper");
   }, 1300);
+}
+function display_editorials()
+{
+  
 }
