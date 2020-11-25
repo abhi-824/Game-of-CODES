@@ -55,6 +55,23 @@ A tool of programmers, by programmers and for programmers.
 </p>
 
 <br>
+
 ## Installation In Local
 
-> npm install
+Clone the repo and in the terminal run this command:
+
+```
+npm install
+```
+<br>
+This would install all dependencies used. 
+<br>
+Now run this command to run the website on port 3000. Open localhost:3000 in your browser to view the site.
+<br>
+
+```
+npm run start
+```
+
+<br>
+
