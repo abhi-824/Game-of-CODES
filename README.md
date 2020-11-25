@@ -1,4 +1,4 @@
-# Game-of-CODES
+# Game of CODES
 
 <img src="https://gameofcodes.herokuapp.com/resources/logo/logo_dark.png" align="right"
      alt="GOC LOGO" width="140" height="140">
