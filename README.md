@@ -27,32 +27,33 @@ A tool of programmers, by programmers and for programmers.
 * **Vizualisers**
   * **Sorting Visualizers**: These help users to understand various sorting visualisers which are built to learn and have fun simultaneously.
   * **Path Finding Visualizers**: These visualisers give users a deep insight to the various path finding algorithms in a very fun way.
-## SOME SCREENSHOTS:
-<p style="width:100%;">
-<img src="https://gameofcodes.herokuapp.com/resources/screenshots/dashboard.png" align="left"
-     alt="GOC LOGO" width="400" height="400">
+## SOME SCREENSHOTS
 
-<img src="https://gameofcodes.herokuapp.com/resources/screenshots/weak_topics.png" align="left"
-     alt="GOC LOGO" width="400" height="400">
-     
-<img src="https://github.com/abhi-824/Game-of-CODES//new/master/publicis/resources/screenshots/compare.png?raw=true" align="left"
-     alt="GOC LOGO" width="400" height="400">
-     
-<img src="https://ibb.co/qx0D8Sk" align="left"
-     alt="GOC LOGO" width="400" height="400">
-     
-<img src="https://gameofcodes.herokuapp.com/resources/screenshots/profile.png" align="left"
-     alt="GOC LOGO" width="400" height="400">
-     
-<img src="https://gameofcodes.herokuapp.com/resources/screenshots/sorting_vis.png" align="left"
-     alt="GOC LOGO" width="400" height="400">
-     
-<img src="https://gameofcodes.herokuapp.com/resources/screenshots/bfs.png" align="left"
-     alt="GOC LOGO" width="400" height="400">
-     
-<img src="https://gameofcodes.herokuapp.com/resources/screenshots/codeblast.png" align="left"
-     alt="GOC LOGO" width="400" height="400">
+<p align="center">
+<img src="https://abhi-824.github.io/Game-of-CODES/publicis/resources/screenshots/dashboard.PNG"
+     alt="GOC LOGO" width="800" height="400">
 </p>
+<p align="center">
+<img src="https://abhi-824.github.io/Game-of-CODES/publicis/resources/screenshots/compare.PNG"
+     alt="GOC LOGO" width="800" height="400">
+</p>
+<p align="center">
+<img src="https://abhi-824.github.io/Game-of-CODES/publicis/resources/screenshots/weak_topics.PNG"
+     alt="GOC LOGO" width="800" height="400">
+</p>
+<p align="center">
+<img src="https://abhi-824.github.io/Game-of-CODES/publicis/resources/screenshots/sorting_vis.PNG"
+     alt="GOC LOGO" width="800" height="400">
+</p>
+<p align="center">
+<img src="https://abhi-824.github.io/Game-of-CODES/publicis/resources/screenshots/profile.PNG"
+     alt="GOC LOGO" width="800" height="400">
+</p>
+<p align="center">
+<img src="https://abhi-824.github.io/Game-of-CODES/publicis/resources/screenshots/bfs.PNG"
+     alt="GOC LOGO" width="800" height="400">
+</p>
+
 <br>
 ## Installation In Local
 
