@@ -16,5 +16,3 @@ firebase.analytics();
 
 const auth = firebase.auth();
 const db = firebase.firestore();
-
-alert("If You are unable to see your dashboard, Please LOG OUT and LOG IN again. IF YOU ARE SEEING SORTING VISUALIZER, JUST CLICK ON 'GO BACK' BUTTON AND THEN LOGOUT AND RELOAD THE PAGE AFTER LOGGING OUT. We are sorry for the inconvinence caused.")
