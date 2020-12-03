@@ -1,0 +1,96 @@
+.loader12345 {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100000;
+	background: black;
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.latka {
+	animation: pulse 2s infinite;
+	width: 15%;
+}
+@keyframes pulse {
+	0% {
+		-moz-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0.4);
+		box-shadow: 0 0 0 0 rgba(204, 169, 44, 0.4);
+	}
+	70% {
+		-moz-box-shadow: 0 0 0 30px rgba(0, 0, 0, 0);
+		box-shadow: 0 0 0 30px rgba(204, 169, 44, 0);
+	}
+	100% {
+		-moz-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+		box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+	}
+}
+.container11 {
+	background: url('resources/backgrounds/iron-man.jpg') center center/cover;
+	height: 100vh;
+}
+.container1112 {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.7);
+}
+.formdd {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+  align-items: center;
+  grid-gap:1rem;
+  margin:3rem;
+}
+.formdd input{
+  padding:0.2rem;
+  background:rgb(245, 245, 245);
+  border-radius:0.5rem;
+}
+.formdd button{
+  border:none;
+  background:rgb(90, 47, 190);
+  color:#fff;
+  padding:0.4rem 1rem;
+  border-radius:1rem;
+}
+
+.formdd button:hover{
+  border: solid 1px rgb(90, 47, 190);
+  background-color: white;
+  color:rgb(90, 47, 190);
+  transition: 0.5s; 
+}
+.formms {
+	background: rgba(51, 51, 51, 0.308);
+	padding: 3rem;
+}
+.welcome-msg{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-gap:2rem;
+}
+.welcome-msg a{
+  background:rgb(90, 47, 190);
+  padding:0.6rem 1.2rem;
+  border-radius:1rem;
+}
+.welcome-msg a:hover{
+  border: solid 1px rgb(90, 47, 190);
+  background-color: white;
+  color:rgb(90, 47, 190);
+  transition: 0.5s; 
+}

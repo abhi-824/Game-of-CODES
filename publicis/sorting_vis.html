@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Sorting Visualiser</title>
+
+		<link
+			rel="shortcut icon"
+			href="res/DTU,_Delhi_official_logo.png"
+			type="image/x-icon"
+		/>
+		<title>Delhi TechNostaliga</title>
+		<link rel="stylesheet" href="style_grd.css" />
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+			integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+			integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+			crossorigin="anonymous"
+		/>
+		<link
+			href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css"
+			rel="stylesheet"
+		/>
+	</head>
+	<style>
+		.array {
+			display: flex;
+			height: 310px;
+		}
+		.containerForSorting .section2 .buttonsForSOrting {
+			display: grid;
+			grid-template-columns: repeat(5, auto);
+
+			justify-content: space-around;
+			align-items: center;
+		}
+		p {
+			color: #fff;
+		}
+	</style>
+	<body>
+		<div class="containerForSorting">
+			<div class="section1">
+				<h1 class="curr_title">DTU</h1>
+				<div class="curr_content">
+					Teaches many lessons. You can do whatever you want, what you need is
+					just a push.
+				</div>
+			</div>
+			<div class="section2">
+				<div class="buttonsForSOrting">
+					<div class="array-inputs">
+						<p>Size of the array:</p>
+						<input
+							id="a_size"
+							type="range"
+							min="20"
+							max="150"
+							step="1"
+							value="80"
+						/>
+
+						<p>Speed of the algorithm:</p>
+						<input
+							id="a_speed"
+							type="range"
+							min="1"
+							max="5"
+							step="1"
+							value="4"
+						/>
+					</div>
+					<button class="btn btn-primary">Generate New Array</button>
+					<button class="btn btn-secondary bubble">Bubble Sort</button>
+					<button class="btn btn-secondary selection">Selection Sort</button>
+					<button class="btn btn-secondary insertion">Insertion Sort</button>
+					<button class="btn btn-secondary merge">Merge Sort</button>
+					<button class="btn btn-secondary quick">Quick Sort</button>
+					<button class="btn btn-secondary heap">Heap Sort</button>
+				</div>
+				<div class="array"></div>
+			</div>
+		</div>
+
+		<script src="js/main.js"></script>
+		<script src="js/bubble.js"></script>
+		<script src="js/selection.js"></script>
+		<script src="js/heap_sort.js"></script>
+		<script src="js/merge.js"></script>
+		<script src="js/insertion.js"></script>
+		<script src="js/quick.js"></script>
+		<!-- Footer -->
+	</body>
+</html>

@@ -1,0 +1,56 @@
+body{
+    /* background: black; */
+}
+
+nav{
+    height:10vh;
+    background:transparent;
+
+}
+.nav-links{
+    display: flex;
+    height:100%;
+    width:100%;
+    background: tomato;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+}
+@media screen and (max-width: 768px){
+    .line{
+        width: 30px;
+        height:3px;
+        background: black;
+        margin:5px;
+    }
+    nav{
+        position: relative;
+
+    }
+    .hamburger{
+        position: absolute;
+        cursor: pointer;
+        right:5%;
+        top:20%;
+        z-index: 2;
+    }
+
+    .nav-links{
+        position: fixed;
+        height:100vh;
+        width:100%;
+        flex-direction: column;
+        clip-path: circle(100px at 90% -20%);
+        -webkit-clip-path:circle(100px at 90% -20%);
+        transition: all 0.7s ease-out;
+        pointer-events: none;
+    }
+    .nav-links.open{
+        clip-path: circle(1000px at 90% -20%);
+        -webkit-clip-path:circle(1000px at 90% -20%);
+        pointer-events: all;
+    }
+    .landing{
+        flex-direction: column;
+    }
+}
