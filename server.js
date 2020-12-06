@@ -1,6 +1,8 @@
 const path = require('path');
 
 const problems = [];
+const dotenv = require("dotenv");
+dotenv.config({ path: "./.env" });
 
 const fetch = require('node-fetch');
 
@@ -202,7 +204,7 @@ io.on('connection', (socket) => {
 
 
 });
-
+console.log(process.env.FIREBASE_API_KEY);
 server.listen(PORT, host, function () {
 	console.log('Server started.......');
 });
