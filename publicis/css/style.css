@@ -557,6 +557,7 @@ table tr {
 .item2,
 .item3,
 .item4 {
+  cursor: pointer;
   background: #4a4a4a;
   border: 1px solid #000000;
   width: 24vw;
