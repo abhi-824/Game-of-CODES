@@ -1706,20 +1706,27 @@
             <div class="container1234">
                <!-- <div class="login_page"> -->
                <!-- <div class="buttons"> -->
-               <form action="code_blast_enter.html" class="login_page">
+               <form class="login_page">
                   <!-- <div class="form-control"> -->
                   <!-- <label for="username">Username</label> -->
                   <h1 style="margin: 1rem;">CODEBLAST</h1>
-                  <input 
-                     type="text" 
-                     style="margin:2rem"
-                     name="room"
-                     id="room_id"
-                     placeholder="Enter Room ID"
-                     required>
-                  <!-- </div> -->
+                  
                   <br>
-                  <button type="submit" class="btn btn-primary join_romms">Join Room</button>
+                  <div class="codeBlastBtns">
+                     <button type="submit" class="createRoom">Create A Blast</button>
+                     -- OR --
+                     <div class="joinRoomPla">
+                        <input 
+                        type="text" 
+                        style="margin:2rem"
+                        name="room"
+                        id="room_id"
+                        placeholder="Join a Blast"
+                        required>
+                        <button type="submit" class="join_romms">Join The Blast</button>
+                     </div>
+                  <!-- </div> -->
+                  </div>
                </form>
                <!-- </div> -->
             </div>
@@ -1727,42 +1734,45 @@
          </div>
       </div>
       <div class="container2222 hidden">
-         <div class="timer22"></div>
-         <div class="chat-container">
-            <!-- <h1><i class="fas fa-fire"></i> CODEBLAST</h1> -->
-            <header class="chat-header">
-               <div class="room">
-                  <h3 class="room-title"><i class="fas fa-comments"></i> Room ID:</h3>
-                  <h2 id="room-name"></h2>
-               </div>
-               <div class="buttons_s1">
-                  <a href="#" class="btn ready_btn">Ready!!</a>
-                  <a href="index.html" class="btn leave_pls">Leave Room</a>
-               </div>
-            </header>
-            <div class="line2"></div>
-            <main class="chat-main">
-               <div class="chat-sidebar">
-                  <h3><i class="fas fa-users"></i> Users</h3>
-                  <ul id="users"></ul>
-               </div>
-               <div class="messages">
-                  <div class="chat-messages"></div>
-                  <div class="chat-form-container">
-                     <form id="chat-form">
-                        <input
-                           id="msg"
-                           type="text"
-                           placeholder="Enter Message"
-                           required
-                           autocomplete="off"
-                           />
-                        <button class="btn send-btn"><i class="fas fa-paper-plane fa-2x"></i></button>
-                        <div class="line31"></div>
-                     </form>
+         <div class="containerOverlayCodeBlast">
+            <div class="timer22"></div>
+            <div class="chat-container">
+               <!-- <h1><i class="fas fa-fire"></i> CODEBLAST</h1> -->
+               <header class="chat-header">
+                  <div class="room">
+                     <h3 class="room-title"><i class="fas fa-comments"></i> Room ID:</h3>
+                     <h2 id="room-name"></h2>
                   </div>
-               </div>
-            </main>
+                  <div class="buttons_s1">
+                     <button class="ready_btn">Ready!!</button>
+                     <button class="leave_pls">Leave Room</button>
+                  </div>
+               </header>
+               <div class="line2"></div>
+               <main class="chat-main">
+                  <div class="chat-sidebar">
+                     <h3><i class="fas fa-users"></i> Users</h3>
+                     <ul id="users"></ul>
+                  </div>
+                  <div class="messages">
+                     <div class="chat-messages"></div>
+                     <div class="chat-form-container">
+                        <form id="chat-form">
+                           <input
+                              id="msg"
+                              type="text"
+                              placeholder="Enter Message"
+                              required
+                              autocomplete="off"
+                              />
+                           <button class="btn send-btn"><i class="fas fa-paper-plane fa-2x"></i></button>
+                           <div class="line31"></div>
+                        </form>
+                     </div>
+                  </div>
+               </main>
+            </div>
+
          </div>
       </div>
       <!-- community -->

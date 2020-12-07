@@ -104,11 +104,6 @@ a {
   background-attachment: fixed;
   height: 100vh;
 }
-.container3 {
-  background: url("../resources/backgrounds/thor.png") no-repeat center
-    center/cover;
-  height: 100vh;
-}
 .start-topic{
   padding:0.6rem;
 }
@@ -118,8 +113,66 @@ a {
   position: absolute;
   justify-content: center;
   align-items: center;
-  left:40%;
   top:20%;
+  font-family: 'Audiowide';
+}
+.container2222{
+  background: url('../resources/backgrounds/codeblast.jpg') center center/cover;
+  min-height: 100vh;
+}
+.containerOverlayCodeBlast{
+  background: rgba(0, 0, 0, 0.452);
+  min-height: 100vh;
+}
+.createRoom{
+  font-weight: 900;
+  padding: 1rem 1rem;
+  border: none;
+  background: none;
+  margin:1rem!important;
+  --webkit-box-reflect: below;
+  border:1px solid rgb(214, 30, 30);
+  background: rgb(151, 10, 10);
+  color: #fff;
+  transition: 0.3s;
+}
+.join_romms{
+  font-weight: 900;
+  padding: 1rem 1rem;
+  border: none;
+  background: none;
+  margin:1rem!important;
+  --webkit-box-reflect: below;
+  border:1px solid rgb(30, 42, 214);
+  background: rgb(10, 12, 151);
+  color: #fff;
+  transition: 0.3s;
+}
+.createRoom:hover{
+  background: rgb(151, 10, 10);
+  color: #fff;
+  box-shadow: 0 0 5px rgb(151, 10, 10), 0 0 25px rgb(151, 10, 10), 0 0 50px rgb(151, 10, 10),
+    0 0 200px rgb(151, 10, 10) !important;
+}
+
+.join_romms:hover{
+  background:rgb(10, 12, 151);
+  color: #fff;
+  box-shadow: 0 0 5px rgb(10, 12, 151), 0 0 25px rgb(10, 12, 151), 0 0 50px rgb(10, 12, 151),
+    0 0 200px rgb(10, 12, 151) !important;
+}
+.codeBlastBtns{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 1rem;
+}
+.joinRoomPla{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
 }
 .room_id{
   padding:0.5rem 1rem;
@@ -1201,18 +1254,41 @@ border-radius: 62px;
 /* transform: matrix(1,   0, 0, -1, 0, 0); */
 }
 .chat-header .ready_btn{
-padding:0.5rem 1rem;
-border-radius: 62px;
-border:none;
-font-size:1rem;
-margin-right:1.5rem;
-background:rgb(52, 156, 10);
-color:#fff;
+  font-weight: 900;
+  padding: 0.3rem 1rem;
+  border: none;
+  background: none;
+  margin:1rem!important;
+  --webkit-box-reflect: below;
+  border:1px solid rgb(134, 214, 30);
+  background: rgb(48, 163, 38);
+  color: #fff;
+  transition: 0.3s;
 }
 .chat-header .ready_btn:hover{
-background: rgb(196, 216, 19);
-color:#333;
-transition:  0.5s;
+  background: rgb(48, 163, 38);
+  color: #fff;
+  box-shadow: 0 0 5px rgb(48, 163, 38), 0 0 25px rgb(48, 163, 38), 0 0 50px rgb(48, 163, 38),
+    0 0 200px rgb(48, 163, 38) !important;
+}
+
+.chat-header .leave_pls{
+  font-weight: 900;
+  padding: 0.3rem 1rem;
+  border: none;
+  background: none;
+  margin:1rem!important;
+  --webkit-box-reflect: below;
+  border:1px solid rgb(172, 24, 24);
+  background: rgb(116, 33, 33);
+  color: #fff;
+  transition: 0.3s;
+}
+.chat-header .leave_pls:hover{
+  background: rgb(116, 33, 33);
+  color: #fff;
+  box-shadow: 0 0 5px rgb(116, 33, 33), 0 0 25px rgb(116, 33, 33), 0 0 50px rgb(116, 33, 33),
+    0 0 200px rgb(116, 33, 33) !important;
 }
 .chat-header .disabled{
 background:red;
@@ -1379,7 +1455,8 @@ background: red;
 }
 .container3{
 background: rgb(36,9,0);
-background: linear-gradient(90deg, rgba(36,9,0,1) 0%, rgba(80,121,9,1) 29%, rgba(40,119,155,1) 67%, rgba(56,2,224,1) 85%, rgba(0,212,255,1) 100%); 
+background:url('../resources/backgrounds/codeblast.jpg') center center/cover;
+min-height: 100vh;
 }
 .container4567{
 background-color: #f8f7fa;
