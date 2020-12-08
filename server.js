@@ -1,6 +1,5 @@
 const path = require('path');
 
-const problems = [];
 const dotenv = require('dotenv');
 dotenv.config({ path: './.env' });
 
@@ -56,7 +55,8 @@ io.on('connection', (socket) => {
 		const user = make_ready(socket.id, username, room, 1);
 		const users = getRoomUsers(room);
 		if (allready(room)) {
-			// giveProblems();
+const problems = [];
+// giveProblems();
 			io.to(user.room).emit('start_loader', problems);
 			async function getFinal() {
 				let solved = new Set();
@@ -207,7 +207,7 @@ io.on('connection', (socket) => {
 	socket.on('bringResults', ({ room, problems }) => {
 		async function getFinal() {
 			console.log('hello');
-			io.to(room).emit('start_loader', problems);
+			io.to(room).emit('start_loader');
 			let solved = new Set();
 			let username = getRoomUsers(room);
 			for (let j = 0; j < username.length; j++) {
