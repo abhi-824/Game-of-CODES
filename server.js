@@ -1,11 +1,12 @@
 const path = require('path');
 
 const problems = [];
-const dotenv = require("dotenv");
-dotenv.config({ path: "./.env" });
+const dotenv = require('dotenv');
+dotenv.config({ path: './.env' });
 
 const fetch = require('node-fetch');
 
+var { nanoid } = require("nanoid");
 const http = require('http');
 const host = '0.0.0.0';
 const PORT = process.env.PORT || 3000;
@@ -51,7 +52,7 @@ io.on('connection', (socket) => {
 		}
 	});
 
-	socket.on('ready', ({ username, room }) => {	
+	socket.on('ready', ({ username, room }) => {
 		const user = make_ready(socket.id, username, room, 1);
 		const users = getRoomUsers(room);
 		if (allready(room)) {
@@ -140,9 +141,23 @@ io.on('connection', (socket) => {
 		}
 	});
 
+	socket.on('checkId', (room) => {
+		let users = getRoomUsers(room);
+		console.log(users);
+		if (users.length == 0) {
+			io.to(socket.id).emit('roomIdChecked', 0);
+		} else if (users != undefined) {
+			io.to(socket.id).emit('roomIdChecked', 1);
+		}
+	});
+	socket.on("give_id", () => {
+		let ID = nanoid(4);
+		console.log(ID);
+		io.to(socket.id).emit("rec_id", ID);
+	  });
 	socket.on('joinRoom', ({ username, room }) => {
 		const user = userJoin(socket.id, username, room);
-		socket.join(user.room);	
+		socket.join(user.room);
 
 		socket.emit(
 			'message',
@@ -167,9 +182,8 @@ io.on('connection', (socket) => {
 			console.log('hello');
 			io.to(room).emit('start_loader', problems);
 			let solved = new Set();
-			let username=getRoomUsers(room);
-			for(let j=0;j<username.length;j++)
-			{
+			let username = getRoomUsers(room);
+			for (let j = 0; j < username.length; j++) {
 				let handle_name = username[j].username;
 				let modified_url = `https://codeforces.com/api/user.status?handle=${handle_name}`;
 				const jsondata = await fetch(modified_url);
@@ -191,7 +205,7 @@ io.on('connection', (socket) => {
 						result_jo[i] = 0;
 					}
 				}
-				socket.emit('le_result', result_jo,username,j);
+				socket.emit('le_result', result_jo, username, j);
 			}
 		}
 		getFinal();
@@ -201,8 +215,6 @@ io.on('connection', (socket) => {
 		const user = getCurrentUser(socket.id);
 		io.to(user.room).emit('message', formatMessage(user.username, msg));
 	});
-
-
 });
 console.log(process.env.FIREBASE_API_KEY);
 server.listen(PORT, host, function () {

@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Nova+Square&family=Philosopher&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 body {
   background-color: black;
-  font-family: "Nova Square", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size:1rem;
   color: white;
   background: linear-gradient(
@@ -116,7 +116,7 @@ a {
   padding:2rem;
 }
 .heading_topic{
-  font-family: NovaMono;
+  font-family: 'Poppins';
   font-style: normal;
   font-weight: normal;
   font-size: 48px;
