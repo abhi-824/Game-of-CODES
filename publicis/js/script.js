@@ -2238,7 +2238,3 @@ function dashboard(handle_name) {
 		}
 	}
 }
-if(window.location.href[7]=='g')
-{
-	window.location.href='https://gameofcodes.herokuapp.com';
-}
