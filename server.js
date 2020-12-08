@@ -6,7 +6,7 @@ dotenv.config({ path: './.env' });
 
 const fetch = require('node-fetch');
 
-var { nanoid } = require("nanoid");
+var { nanoid } = require('nanoid');
 const http = require('http');
 const host = '0.0.0.0';
 const PORT = process.env.PORT || 3000;
@@ -60,38 +60,65 @@ io.on('connection', (socket) => {
 			io.to(user.room).emit('start_loader', problems);
 			async function getFinal() {
 				let solved = new Set();
-				for (let i = 0; i < users.length; i++) {
-					let handle_name = users[i].username;
-					// async function getSetGo() {
-					let modified_url = `https://codeforces.com/api/user.status?handle=${handle_name}`;
-					const jsondata = await fetch(modified_url);
-					const jsdata = await jsondata.json();
-					for (let i = 0; i < jsdata.result.length; i++) {
-						if (jsdata.result[i].verdict == 'OK') {
-							let str =
-								jsdata.result[i].problem.contestId +
-								'-' +
-								jsdata.result[i].problem.index;
-							solved.add(str);
-						}
+				console.log(users);
+				let handle_name1 = users[0].username;
+				// async function getSetGo() {
+				let modified_url = `https://codeforces.com/api/user.status?handle=${handle_name1}`;
+				const jsondata = await fetch(modified_url);
+				const jsdata = await jsondata.json();
+				for (let i = 0; i < jsdata.result.length; i++) {
+					if (jsdata.result[i].verdict == 'OK') {
+						let str =
+							jsdata.result[i].problem.contestId +
+							'-' +
+							jsdata.result[i].problem.index;
+						solved.add(str);
 					}
-					// }
-					// getSetGo();
 				}
+				let handle_name2 = users[0].username;
+				// async function getSetGo() {
+				modified_url = `https://codeforces.com/api/user.status?handle=${handle_name2}`;
+				const jsondata2 = await fetch(modified_url);
+				const jsdata2 = await jsondata2.json();
+				for (let i = 0; i < jsdata2.result.length; i++) {
+					if (jsdata2.result[i].verdict == 'OK') {
+						let str =
+							jsdata2.result[i].problem.contestId +
+							'-' +
+							jsdata2.result[i].problem.index;
+						solved.add(str);
+					}
+				}
+				let handle_name3 = users[0].username;
+				// async function getSetGo() {
+			modified_url = `https://codeforces.com/api/user.status?handle=${handle_name3}`;
+				const jsondata3 = await fetch(modified_url);
+				const jsdata3 = await jsondata3.json();
+				for (let i = 0; i < jsdata3.result.length; i++) {
+					if (jsdata3.result[i].verdict == 'OK') {
+						let str =
+							jsdata3.result[i].problem.contestId +
+							'-' +
+							jsdata3.result[i].problem.index;
+						solved.add(str);
+					} 
+				}
+				// }
+				// getSetGo();
 				// console.log(solved);
 
 				let modified_url2 = `https://codeforces.com/api/problemset.problems`;
-				const jsondata2 = await fetch(modified_url2);
-				const jsdata2 = await jsondata2.json();
+				const jsondata4 = await fetch(modified_url2);
+				jsdata4 = await jsondata4.json();
 
-				for (let i = 0; i < jsdata2.result.problems.length; i++) {
+				for (let i = 0; i < jsdata4.result.problems.length; i++) {
 					let str =
-						jsdata2.result.problems[i].contestId +
+						jsdata4.result.problems[i].contestId +
 						'-' +
-						jsdata2.result.problems[i].index;
+						jsdata4.result.problems[i].index;
 					if (
-						jsdata2.result.problems[i].rating > 900 &&
-						jsdata2.result.problems[i].rating <= 1400 &&
+						jsdata4.result.problems[i].rating > 900 &&
+						jsdata4.result.problems[i].rating <= 1200 &&
 						solved.has(str) === false
 					) {
 						//to be continued
@@ -100,14 +127,14 @@ io.on('connection', (socket) => {
 						break;
 					}
 				}
-				for (let i = 0; i < jsdata2.result.problems.length; i++) {
+				for (let i = 0; i < jsdata4.result.problems.length; i++) {
 					let str =
-						jsdata2.result.problems[i].contestId +
+						jsdata4.result.problems[i].contestId +
 						'-' +
-						jsdata2.result.problems[i].index;
+						jsdata4.result.problems[i].index;
 					if (
-						jsdata2.result.problems[i].rating > 1400 &&
-						jsdata2.result.problems[i].rating <= 1700 &&
+						jsdata4.result.problems[i].rating > 1200 &&
+						jsdata4.result.problems[i].rating <= 1700 &&
 						solved.has(str) === false
 					) {
 						//to be continued
@@ -116,14 +143,14 @@ io.on('connection', (socket) => {
 					}
 				}
 
-				for (let i = 0; i < jsdata2.result.problems.length; i++) {
+				for (let i = 0; i < jsdata4.result.problems.length; i++) {
 					let str =
-						jsdata2.result.problems[i].contestId +
+						jsdata4.result.problems[i].contestId +
 						'-' +
-						jsdata2.result.problems[i].index;
+						jsdata4.result.problems[i].index;
 					if (
-						jsdata2.result.problems[i].rating > 1700 &&
-						jsdata2.result.problems[i].rating <= 2000 &&
+						jsdata4.result.problems[i].rating > 1700 &&
+						jsdata4.result.problems[i].rating <= 2000 &&
 						solved.has(str) === false
 					) {
 						//to be continued
@@ -138,7 +165,7 @@ io.on('connection', (socket) => {
 			getFinal();
 			// console.log(problems);
 			// start_contest();
-		}
+		}	
 	});
 
 	socket.on('checkId', (room) => {
@@ -150,11 +177,11 @@ io.on('connection', (socket) => {
 			io.to(socket.id).emit('roomIdChecked', 1);
 		}
 	});
-	socket.on("give_id", () => {
+	socket.on('give_id', () => {
 		let ID = nanoid(4);
 		console.log(ID);
-		io.to(socket.id).emit("rec_id", ID);
-	  });
+		io.to(socket.id).emit('rec_id', ID);
+	});
 	socket.on('joinRoom', ({ username, room }) => {
 		const user = userJoin(socket.id, username, room);
 		socket.join(user.room);
@@ -185,6 +212,7 @@ io.on('connection', (socket) => {
 			let username = getRoomUsers(room);
 			for (let j = 0; j < username.length; j++) {
 				let handle_name = username[j].username;
+				console.log(username);
 				let modified_url = `https://codeforces.com/api/user.status?handle=${handle_name}`;
 				const jsondata = await fetch(modified_url);
 				const jsdata = await jsondata.json();
