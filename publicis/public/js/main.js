@@ -68,7 +68,7 @@ function codeblast_enter(username, room) {
 		display_problems(problems);
 		console.log(problems);
 		document
-		.querySelector('.updateCodeblast').classList.add('hidden');
+		.querySelector('.updateCodeblast').classList.remove('hidden');
 		document
 			.querySelector('.updateCodeblast')
 			.addEventListener('click', (e) => {
