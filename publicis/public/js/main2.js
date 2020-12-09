@@ -1,6 +1,6 @@
 function codeblast(handle) {
 	show_screen(codeblast_screen);
-  const socket = io();
+	const socket = io();
 	document.querySelector('.join_romms').addEventListener('click', (e) => {
 		e.preventDefault();
 		let username = handle;
@@ -21,8 +21,8 @@ function codeblast(handle) {
 		socket.emit('give_id');
 		socket.on('rec_id', (id) => {
 			console.log(id);
-      
-      codeblast_enter(handle,id)
+
+			codeblast_enter(handle, id);
 		});
 	});
 }

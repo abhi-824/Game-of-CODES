@@ -54,6 +54,10 @@ io.on('connection', (socket) => {
 
 	socket.on('ready', ({ username, room }) => {
 		const user = make_ready(socket.id, username, room, 1);
+		io.to(user.room).emit(
+			'message',
+			formatMessage('BOSS', `${user.username} is ready now`)
+		);
 		const users = getRoomUsers(room);
 		if (allready(room)) {
 			const problems = [];
