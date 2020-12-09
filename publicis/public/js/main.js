@@ -17,39 +17,38 @@ function codeblast_enter(username, room) {
 		window.location = 'https://gameofcodes.herokuapp.com';
 	});
 
-
-	socket.on('le_result', (results_jo,user_list,index) => {
+	socket.on('le_result', (results_jo, user_list, index) => {
 		load_kkk.classList.add('disapper');
 		let table = document.createElement('table');
 		let tr = document.createElement('tr');
 		let td = document.createElement('td');
-		let i=0;
+		let i = 0;
 		// for(let i=0;i<user_list.length;i++)
 		// {
 
-			td.innerHTML = `${user_list[index].username}`;
-			tr.appendChild(td);
-	
-			console.log(tr);
-			let ch = 'A';
-			for (let i = 0; i < results_jo.length; i++) {
-				// let th=document.createElement("th");
-				// th.innerHTML=ch;
-				ch++;
-				let td2 = document.createElement('td');
-	
-				let j;
-				if (results_jo[i]) {
-					j = 'Correct';
-				} else {
-					j = 'Incorrect';
-				}
-				td2.innerHTML = j;
-				tr.appendChild(td2);
+		td.innerHTML = `${user_list[index].username}`;
+		tr.appendChild(td);
+
+		console.log(tr);
+		let ch = 'A';
+		for (let i = 0; i < results_jo.length; i++) {
+			// let th=document.createElement("th");
+			// th.innerHTML=ch;
+			ch++;
+			let td2 = document.createElement('td');
+
+			let j;
+			if (results_jo[i]) {
+				j = 'Correct';
+			} else {
+				j = 'Incorrect';
 			}
-			table.appendChild(tr);
+			td2.innerHTML = j;
+			tr.appendChild(td2);
+		}
+		table.appendChild(tr);
 		// }
-		table.classList="table";
+		table.classList = 'table';
 		document.body.appendChild(table);
 		load_kkk.classList.add('disapper');
 	});
@@ -68,6 +67,13 @@ function codeblast_enter(username, room) {
 		// }, 2000);
 		display_problems(problems);
 		console.log(problems);
+
+		document
+			.querySelector('.updateCodeblast')
+			.addEventListener('click', (e) => {
+				e.preventDefault();
+				socket.emit('results', room,problems);
+			});
 	});
 
 	socket.on('roomUsers', ({ room, users }) => {
@@ -84,7 +90,6 @@ function codeblast_enter(username, room) {
 			'.messages'
 		).scrollHeight;
 	});
-
 	form.addEventListener('submit', (e) => {
 		e.preventDefault();
 		const msg = e.target.elements.msg.value;
@@ -94,7 +99,31 @@ function codeblast_enter(username, room) {
 		e.target.elements.msg.value = '';
 		e.target.elements.msg.focus();
 	});
-
+	socket.on('go_results', (re_map) => {
+		re_map=JSON.parse(re_map)
+		let res_map=new Map(Object.entries(re_map));
+		console.log(res_map)
+		if(document.querySelector('.res_table')!=undefined)
+		{
+			document.querySelector('.res_table').remove();
+		}
+		let table = document.createElement('table');
+		table.className = 'table';
+		table.classList.add('res_table');
+		res_map.forEach((element, key) => {
+			let tr = document.createElement('tr');
+			let td = document.createElement('td');
+			td.innerHTML = key;
+			tr.appendChild(td);
+			for (let i = 0; i < element.length; i++) {
+				let td = document.createElement('td');
+				td.innerHTML = element[i];
+				tr.appendChild(td);
+			}
+			table.appendChild(tr);
+		});
+		document.querySelector('.container2222').appendChild(table);
+	});
 	function output_mess(message) {
 		const div = document.createElement('div');
 		div.classList.add('message');
@@ -167,7 +196,7 @@ function codeblast_enter(username, room) {
               </div>
             </div>`;
 		document.querySelector('.container2222').appendChild(div);
-		var two_hours = 90*60,
+		var two_hours = 90 * 60,
 			display = document.querySelector('.timer22');
 		startTimer(two_hours, display, problems);
 	}

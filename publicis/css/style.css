@@ -627,9 +627,16 @@ table tr {
 	background: rgba(255, 255, 255, 0.05);
 	pointer-events: none;
 }
+.updateCodeblast{
+	z-index:100;
+}
 .container2222 .container768{
   position: absolute!important;
   top:0!important;
+}
+.res_table{
+	position: absolute;
+	top:50%;
 }
 .container768 {
 	position: relative;
