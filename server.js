@@ -113,6 +113,22 @@ io.on('connection', (socket) => {
 						}
 					}
 				}
+				if (users[3]) {
+					let handle_name3 = users[3].username;
+					// async function getSetGo() {
+					modified_url = `https://codeforces.com/api/user.status?handle=${handle_name3}`;
+					const jsondata3 = await fetch(modified_url);
+					const jsdata3 = await jsondata3.json();
+					for (let i = 0; i < jsdata3.result.length; i++) {
+						if (jsdata3.result[i].verdict == 'OK') {
+							let str =
+								jsdata3.result[i].problem.contestId +
+								'-' +
+								jsdata3.result[i].problem.index;
+							solved.add(str);
+						}
+					}
+				}
 				// }
 				// getSetGo();
 				// console.log(solved);
@@ -238,6 +254,7 @@ io.on('connection', (socket) => {
 			let solved1 = new Set();
 			let solved2 = new Set();
 			let solved3 = new Set();
+			let solved4 = new Set();
 			console.log(users);
 			let handle_name1 = users[0].username;
 			// async function getSetGo() {
@@ -286,6 +303,23 @@ io.on('connection', (socket) => {
 					}
 				}
 			}
+			
+			if (users[3]) {
+				let handle_name3 = users[3].username;
+				// async function getSetGo() {
+				modified_url = `https://codeforces.com/api/user.status?handle=${handle_name3}`;
+				const jsondata3 = await fetch(modified_url);
+				const jsdata3 = await jsondata3.json();
+				for (let i = 0; i < jsdata3.result.length; i++) {
+					if (jsdata3.result[i].verdict == 'OK') {
+						let str =
+							jsdata3.result[i].problem.contestId +
+							'-' +
+							jsdata3.result[i].problem.index;
+						solved4.add(str);
+					}
+				}
+			}
 			let re_map = new Map();
 			for (let i = 0; i < users.length; i++) {
 				let arr = [0, 0, 0];
@@ -308,6 +342,15 @@ io.on('connection', (socket) => {
 					}
 					if (i == 2) {
 						if (solved3.has(problems[j])) {
+							arr[j] = 1;
+							re_map.set(users[i].username, arr);
+						} else {
+							re_map.set(users[i].username, arr);
+						}
+					}
+					
+					if (i == 3) {
+						if (solved4.has(problems[j])) {
 							arr[j] = 1;
 							re_map.set(users[i].username, arr);
 						} else {
