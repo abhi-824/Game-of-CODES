@@ -179,7 +179,7 @@ io.on('connection', (socket) => {
 						jsdata4.result.problems[i].index;
 					if (
 						jsdata4.result.problems[i].rating > 1200 &&
-						jsdata4.result.problems[i].rating <= 1700 &&
+						jsdata4.result.problems[i].rating <= 1500 &&
 						solved.has(str) === false
 					) {
 						//to be continued
@@ -188,6 +188,21 @@ io.on('connection', (socket) => {
 					}
 				}
 
+				for (let i = 0; i < jsdata4.result.problems.length; i++) {
+					let str =
+						jsdata4.result.problems[i].contestId +
+						'-' +
+						jsdata4.result.problems[i].index;
+					if (
+						jsdata4.result.problems[i].rating > 1500 &&
+						jsdata4.result.problems[i].rating <= 1700 &&
+						solved.has(str) === false
+					) {
+						//to be continued
+						problems.push(str);
+						break;
+					}
+				}
 				for (let i = 0; i < jsdata4.result.problems.length; i++) {
 					let str =
 						jsdata4.result.problems[i].contestId +
