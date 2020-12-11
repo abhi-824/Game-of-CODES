@@ -4,7 +4,9 @@ function codeblast_enter(username, room) {
   const chatMessages = document.querySelector(".chat-messages");
   const socket = io();
   var load_kkk = document.querySelector(".loader12345");
+ 
   socket.emit("joinRoom", { username, room });
+
   document.querySelector(".ready_btn").addEventListener("click", function (e) {
     socket.emit("ready", { username, room });
     document.querySelector(".ready_btn").classList.add("disabled");
@@ -68,13 +70,24 @@ function codeblast_enter(username, room) {
     display_problems(problems);
     console.log(problems);
     document.querySelector(".updateCodeblast").classList.remove("hidden");
-    document
-      .querySelector(".updateCodeblast")
-      .addEventListener("click", (e) => {
-        e.preventDefault();
-        socket.emit("results", room, problems);
-      });
+    problem=problems;
+   
   });
+  let problem;
+  document
+  .querySelector(".updateCodeblast")
+  .addEventListener("click", (e) => {
+    e.preventDefault();
+    socket.emit("results", room, problem);
+  });
+
+  socket.on('takeHimIn',problems=>{
+    problem=problems;
+    document.querySelector(".chat-container").remove();
+    load_kkk.classList.add("disapper");
+    document.querySelector(".updateCodeblast").classList.remove("hidden");
+    display_problems(problems);
+  })
 
   socket.on("roomUsers", ({ room, users }) => {
     outputRoomName(room);
@@ -90,6 +103,7 @@ function codeblast_enter(username, room) {
       ".messages"
     ).scrollHeight;
   });
+ 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const msg = e.target.elements.msg.value;
@@ -99,6 +113,7 @@ function codeblast_enter(username, room) {
     e.target.elements.msg.value = "";
     e.target.elements.msg.focus();
   });
+ 
   socket.on("go_results", (re_map) => {
     re_map = JSON.parse(re_map);
     let res_map = new Map(Object.entries(re_map));
@@ -123,6 +138,7 @@ function codeblast_enter(username, room) {
     });
     document.querySelector(".container2222").appendChild(table);
   });
+ 
   function output_mess(message) {
     const div = document.createElement("div");
     div.classList.add("message");
