@@ -129,7 +129,23 @@ io.on("connection", (socket) => {
               solved.add(str);
             }
           }
-        }
+		}
+		if (users[4]) {
+			let handle_name3 = users[4].username;
+			// async function getSetGo() {
+			modified_url = `https://codeforces.com/api/user.status?handle=${handle_name3}`;
+			const jsondata3 = await fetch(modified_url);
+			const jsdata3 = await jsondata3.json();
+			for (let i = 0; i < jsdata3.result.length; i++) {
+			  if (jsdata3.result[i].verdict == "OK") {
+				let str =
+				  jsdata3.result[i].problem.contestId +
+				  "-" +
+				  jsdata3.result[i].problem.index;
+				solved.add(str);
+			  }
+			}
+		  }
         // }
         // getSetGo();
         // console.log(solved);
@@ -155,7 +171,8 @@ io.on("connection", (socket) => {
           }
 
           return array;
-        }
+		}
+		
         shuffle(jsdata4.result.problems);
         for (let i = 0; i < jsdata4.result.problems.length; i++) {
           let str =
@@ -218,7 +235,8 @@ io.on("connection", (socket) => {
             problems.push(str);
             break;
           }
-        }
+		}
+		
         console.log(problems);
         // problem_set=problems;
         room_problems.set(room, problems);
@@ -379,6 +397,14 @@ io.on("connection", (socket) => {
           }
 
           if (i == 3) {
+            if (solved4.has(problems[j])) {
+              arr[j] = 1;
+              re_map.set(users[i].username, arr);
+            } else {
+              re_map.set(users[i].username, arr);
+            }
+		  }
+		  if (i == 4) {
             if (solved4.has(problems[j])) {
               arr[j] = 1;
               re_map.set(users[i].username, arr);
