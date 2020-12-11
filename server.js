@@ -369,7 +369,7 @@ io.on("connection", (socket) => {
       }
       let re_map = new Map();
       for (let i = 0; i < users.length; i++) {
-        let arr = [0, 0, 0];
+        let arr = [0, 0, 0,0];
         for (let j = 0; j < problems.length; j++) {
           if (i == 0) {
             if (solved1.has(problems[j])) {
