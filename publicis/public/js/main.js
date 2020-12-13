@@ -131,7 +131,7 @@ function codeblast_enter(username, room) {
       tr.appendChild(td);
       for (let i = 0; i < element.length; i++) {
         let td = document.createElement("td");
-        td.innerHTML = element[i];
+        td.innerHTML = `${element[i].result} | ${element[i].penalty} | ${element[i].time} `;
         tr.appendChild(td);
       }
       table.appendChild(tr);
@@ -268,15 +268,9 @@ function codeblast_enter(username, room) {
       }
       if (display.textContent === "00:00") {
         alert("Timer is Over!!!");
-        bring_results(problems);
-        //   notifyMe();
         clearInterval(x);
       }
     }, 1000);
   }
 
-  function bring_results(problems) {
-    console.log("hello");
-    socket.emit("bringResults", { username, room, problems });
-  }
 }
