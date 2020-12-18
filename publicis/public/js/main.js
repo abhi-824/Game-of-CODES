@@ -213,7 +213,7 @@ function codeblast_enter(username, room) {
 			</div>
 			<div class="box">
               <div class="content">
-                <h2>C</h2>
+                <h2>D</h2>
                 <h3><span class="problem-name-3 problems_hai_bhai">${
                   problems[3]
                 }</span></h3>
