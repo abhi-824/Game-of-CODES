@@ -1,4 +1,5 @@
 function codeblast_enter(username, room) {
+  
   show_screen(codeblast_screen2);
   const form = document.getElementById("chat-form");
   const chatMessages = document.querySelector(".chat-messages");
