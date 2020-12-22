@@ -1466,6 +1466,7 @@ function dashboard(handle_name) {
   }
   getname();
   // for retreiving all upsolved problems
+  document.querySelector('.upsolve_refresh').addEventListener('click',getUpsolved);
   async function getUpsolved() {
     let modified_url = user_contests + handle_name;
     const jsondata = await fetch(modified_url);
@@ -1525,7 +1526,8 @@ function dashboard(handle_name) {
     }
     upsolved.sort();
 
-    let table = document.querySelector(".problems");
+	let table = document.querySelector(".problems");
+	table.innerHTML='';
     for (let i = 0; i < upsolved.length; i++) {
       let tr = document.createElement("tr");
       let th1 = document.createElement("th");
