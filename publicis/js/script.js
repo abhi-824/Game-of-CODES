@@ -1537,12 +1537,14 @@ function dashboard(handle_name) {
       th1.innerHTML = upsolved[i][1];
       th3.innerHTML = `<a class="question" href="${convert_to_link(
         upsolved[i][1]
-      )}" target="_blank">Let's Do It</a>`;
+      )}" target="_blank">Let's Do It</a><i class="fa fa-heart upsolve_bookmarks" aria-hidden="true"></i>`;
       tr.appendChild(th1);
       tr.appendChild(th2);
       tr.appendChild(th3);
       table.appendChild(tr);
     }
+    add_listeners_for_favs(document.querySelectorAll(".upsolve_bookmarks"));
+
     document.querySelector(".d-flex").classList.add("hidden");
 
     document.querySelector(".yes").addEventListener("click", function (e) {
