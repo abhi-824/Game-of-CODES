@@ -116,7 +116,8 @@ io.on("connection", (socket) => {
           if (
             jsdata4.result.problems[i].rating > 900 &&
             jsdata4.result.problems[i].rating <= 1200 &&
-            solved.has(str) === false
+            solved.has(str) === false &&
+            jsdata4.result.problemStatistics[i].solvedCount>=900
           ) {
             //to be continued
 
@@ -132,7 +133,8 @@ io.on("connection", (socket) => {
           if (
             jsdata4.result.problems[i].rating > 1200 &&
             jsdata4.result.problems[i].rating <= 1500 &&
-            solved.has(str) === false
+            solved.has(str) === false &&
+            jsdata4.result.problemStatistics[i].solvedCount>=900
           ) {
             //to be continued
             problems.push(str);
@@ -148,7 +150,8 @@ io.on("connection", (socket) => {
           if (
             jsdata4.result.problems[i].rating > 1500 &&
             jsdata4.result.problems[i].rating <= 1700 &&
-            solved.has(str) === false
+            solved.has(str) === false &&
+            jsdata4.result.problemStatistics[i].solvedCount>=200
           ) {
             //to be continued
             problems.push(str);
@@ -162,7 +165,6 @@ io.on("connection", (socket) => {
             jsdata4.result.problems[i].index;
           if (
             jsdata4.result.problems[i].rating > 1700 &&
-            jsdata4.result.problems[i].rating <= 2000 &&
             solved.has(str) === false
           ) {
             //to be continued
