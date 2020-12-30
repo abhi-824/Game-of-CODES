@@ -38,13 +38,13 @@ const signupform = document.querySelector('#signup-form');
 
 const forgotform = document.querySelector('#forgot');
 
-signupform.addEventListener('submit	', (e) => {
+signupform.addEventListener('submit', (e) => {
+	e.preventDefault();
+	console.log('hey');
 	const email = signupform['signup-email'].value;
 	const handle_name = signupform['signup-handle'].value;
 	const pwd = signupform['signup-password'].value;
-	// firebase.database().ref('users/' + userId).set({
-	//     handle: handle_name
-	// });
+	
 
 	console.log(email, handle_name, pwd);
 	async function find_user() {

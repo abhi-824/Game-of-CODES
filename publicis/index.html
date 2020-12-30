@@ -1,13 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
-      <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-   })(window,document,'script','dataLayer','GTM-N3KW9FZ');</script>
-   <!-- End Google Tag Manager -->
+     
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta
@@ -279,8 +273,9 @@
                   </div>
                   <div class="hidden upsolve daily-mix">
                      <h1>UPSOLVE</h1>
+                     
                      <div class="line"></div>
-                     <p>(Sorted by difficulty)</p>
+                     <p>(Sorted by difficulty)<button class="btn btn-light upsolve_refresh">Refresh</button></p>
                      <div class="d-flex align-items-center spinner">
                         <strong>Loading...</strong>
                         <div
@@ -1211,7 +1206,6 @@
 			<div class="section2">
 				<div class="buttons">
 					<div class="avatar">
-						<img src="res/DTU,_Delhi_official_logo.png" alt="" />
 					</div>
 					<div class="algos">
 						<button
@@ -1706,63 +1700,74 @@
             <div class="container1234">
                <!-- <div class="login_page"> -->
                <!-- <div class="buttons"> -->
-               <form action="code_blast_enter.html" class="login_page">
+               <div class="login_page">
                   <!-- <div class="form-control"> -->
                   <!-- <label for="username">Username</label> -->
                   <h1 style="margin: 1rem;">CODEBLAST</h1>
-                  <input 
-                     type="text" 
-                     style="margin:2rem"
-                     name="room"
-                     id="room_id"
-                     placeholder="Enter Room ID"
-                     required>
-                  <!-- </div> -->
+                  
                   <br>
-                  <button type="submit" class="btn btn-primary join_romms">Join Room</button>
-               </form>
+                  <div class="codeBlastBtns">
+                     <button class="createRoom">Create A Blast</button>
+                     -- OR --
+                     <div class="joinRoomPla">
+                        <input 
+                        type="text" 
+                        style="margin:2rem"
+                        name="room"
+                        id="room_id"
+                        placeholder="Join a Blast"
+                        required>
+                        <button type="submit" class="join_romms">Join The Blast</button>
+                     </div>
+                  <!-- </div> -->
+                  </div>
+               </div>
                <!-- </div> -->
             </div>
             <!-- </div> -->
          </div>
       </div>
       <div class="container2222 hidden">
-         <div class="timer22"></div>
-         <div class="chat-container">
-            <!-- <h1><i class="fas fa-fire"></i> CODEBLAST</h1> -->
-            <header class="chat-header">
-               <div class="room">
-                  <h3 class="room-title"><i class="fas fa-comments"></i> Room ID:</h3>
-                  <h2 id="room-name"></h2>
-               </div>
-               <div class="buttons_s1">
-                  <a href="#" class="btn ready_btn">Ready!!</a>
-                  <a href="index.html" class="btn leave_pls">Leave Room</a>
-               </div>
-            </header>
-            <div class="line2"></div>
-            <main class="chat-main">
-               <div class="chat-sidebar">
-                  <h3><i class="fas fa-users"></i> Users</h3>
-                  <ul id="users"></ul>
-               </div>
-               <div class="messages">
-                  <div class="chat-messages"></div>
-                  <div class="chat-form-container">
-                     <form id="chat-form">
-                        <input
-                           id="msg"
-                           type="text"
-                           placeholder="Enter Message"
-                           required
-                           autocomplete="off"
-                           />
-                        <button class="btn send-btn"><i class="fas fa-paper-plane fa-2x"></i></button>
-                        <div class="line31"></div>
-                     </form>
+         <div class="containerOverlayCodeBlast">
+            <button class="btn btn-dark updateCodeblast hidden">Update</button>
+            <div class="timer22"></div>
+            <div class="chat-container">
+               <!-- <h1><i class="fas fa-fire"></i> CODEBLAST</h1> -->
+               <header class="chat-header">
+                  <div class="room">
+                     <h3 class="room-title"><i class="fas fa-comments"></i> Room ID:</h3>
+                     <h2 id="room-name"></h2>
                   </div>
-               </div>
-            </main>
+                  <div class="buttons_s1">
+                     <button class="ready_btn">Ready!!</button>
+                     <button class="leave_pls">Leave Room</button>
+                  </div>
+               </header>
+               <div class="line2"></div>
+               <main class="chat-main">
+                  <div class="chat-sidebar">
+                     <h3><i class="fas fa-users"></i> Users</h3>
+                     <ul id="users"></ul>
+                  </div>
+                  <div class="messages">
+                     <div class="chat-messages"></div>
+                     <div class="chat-form-container">
+                        <form id="chat-form">
+                           <input
+                              id="msg"
+                              type="text"
+                              placeholder="Enter Message"
+                              required
+                              autocomplete="off"
+                              />
+                           <button class="btn send-btn"><i class="fas fa-paper-plane fa-2x"></i></button>
+                           <div class="line31"></div>
+                        </form>
+                     </div>
+                  </div>
+               </main>
+            </div>
+
          </div>
       </div>
       <!-- community -->
@@ -1851,8 +1856,77 @@
 
      <div class="containerForRoadmap hidden">
       <div class="containerOverlayForRoadmap">
+         <nav class="navbar navbar-expand-lg navbar-dark bg-transparent ">
+            <!-- <a class="navbar-brand logo" href="#">
+               <h1 class="inner">GAME OF CODES</h1>
+               
+               <img loading="lazy" src="resources/logo/logo_light.png" alt="" />
+               </a> -->
+            <div class="hamburger">
+               <div class="line33"></div>
+               <div class="line33"></div>
+               <div class="line33"></div>
+            </div>
+            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+               </button> -->
+            <!-- <div class="collapse navbar-collapse" id="navbarText">  -->
+            <ul class="navbar-nav nav-links mr-auto mt-2 mt-lg-0">
+               <li class="nav-item active">
+                  <a class="nav-link dashboard" href="#"
+                     >
+                     Dashboard
+                     <div class="line1"></div>
+                     <span class="sr-only">(current)</span>
+                  </a
+                     >
+               </li>
+               <li class="nav-item compare">
+                  <a class="nav-link" href="#" id="compare1" >Compare</a>
+               </li>
+               <li class="nav-item">
+                  <div class="dropdown1">
+                     <span class="nav-link">Visualisers <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                     </span>
+                     <div class="dropdown-content1 animated bounceIn">
+                        <a class="nav-link sorting_vis_pls" href="#" id="sorting_vis">Sorting Visualiser</a>
+                        <a class="nav-link grid_vis_pls" href="#" id="grid_vis">Grid Visualiser</a>
+                     </div>
+                  </div>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link profile" href="Profile.html" id="profile1">Profile</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link codeblast" href="#" id="codeblast1">Code Blast</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link community" href="community.html">Community</a>
+               </li>
+               <li class="nav-item">
+                  <div class="dropdown1">
+                     <span class="nav-link">Training Zone <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
+                     <div class="dropdown-content1  animated bounceIn">
+                        <p class="nav-link topic_wise" >Topic Wise</p>
+                        <a class="nav-link level_wise" href="training_zone_level_wise.html">Level Wise</a>
+                     </div>
+                  </div>
+               </li>
+               <li class="nav-item">
+                  <a href="#" class="nav-link roadmap_nav">Roadmap</a>
+               </li>
+               <li class="nav-item">
+                  <a href="#" class="nav-link logout2">Logout</a>
+               </li>
+               <li class="user_avatar nav-item"></li>
+            </ul>
+
+            <!-- </div> -->
+            <!-- </form> -->
+            <!-- </div> -->
+         </nav>
          <div class="headingRoadmap">
-            <h1>Welcome to the EXCITING JOURNEY OF COMPETITIVE CODING</h1>
+            <h1>Welcome to the Exciting Journey of Competitive Programming</h1>
          </div>
          <img src="resources/logo/logo_light.png" class="logo_roadmap" alt="" />
          <div class="try2">
@@ -1920,10 +1994,10 @@
                      Grid
                      </div>
                      <div class="syl"><div class="ekaurline"></div>
-                     DP Pt I 
-                     </div>
+                     Queues
+                     </div>	
                      <div class="syl"><div class="ekaurline"></div>
-                     Amortized Analysis
+                     Stacks
                      </div>
                      <div class="syl"><div class="ekaurline"></div>
                      Linked list
@@ -1937,16 +2011,10 @@
                <div class="content">
                   <h1>Syllabus</h1>
                   <div class="list_stones">
+                     <div class="syl"><div class="ekaurline"></div>
+                     DP Pt I 
+                     </div>
                      
-                     <div class="syl"><div class="ekaurline"></div>
-                     Queues
-                     </div>	
-                     <div class="syl"><div class="ekaurline"></div>
-                     Stacks
-                     </div>
-                     <div class="syl"><div class="ekaurline"></div>
-                     Combinatorics
-                     </div>
                      <div class="syl"><div class="ekaurline"></div>
                      Probability
                      </div>
@@ -2203,7 +2271,12 @@
          
       </div>
    </div>
-      
+      <script>
+         if(window.location.href[7]=='g')
+{
+	window.location.href='https://gameofcodes.herokuapp.com';
+}
+      </script>
       <!-- JQuery -->
       <script
          type="text/javascript"
@@ -2229,7 +2302,7 @@
       <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
       <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-analytics.js"></script>
-
+<script data-ad-client="ca-pub-6542370455984345" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
       <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-database.js"></script>
       <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-firestore.js"></script>
       <script>
@@ -2294,7 +2367,5 @@
       <script src="public/js/main.js"></script>
       <script src="public/js/main2.js"></script>
       <script src="js/auth.js"></script>
-      <script src="https://www.youtube.com/iframe_api"></script>
-      <script src="https://cdn.rawgit.com/labnol/files/master/yt.js"></script>
    </body>
 </html>
