@@ -182,14 +182,14 @@ function topic_wise(handle_name)
           }
           let tag_name =
             practice_each_topic[i].parentElement.firstChild.innerHTML;
-          // //console.log(tag_name);
+          // ////console.log(tag_name);
   
           function get_topic_graph() {
             // let modified_url2 = url2 + handle_name;
             // const jsondata2 = await fetch(modified_url2);
             // const jsdata = await jsondata2.json();
             let already = new Set();
-            //console.log(user_submissions);
+            ////console.log(user_submissions);
             let str =
               user_submissions[i].problem.contestId +
               "-" +
@@ -198,7 +198,7 @@ function topic_wise(handle_name)
               let tags = user_submissions[i].problem.tags;
               for (let j = 0; j < tags.length; j++) {
                 if (tags[j] === tag_name) {
-                  // //console.log(user_submissions[i].verdict)
+                  // ////console.log(user_submissions[i].verdict)
                   if (user_submissions[i].verdict === "OK") {
                     if (user_submissions[i].problem.rating != undefined) {
                       let val = new_tag_map.get(
@@ -222,11 +222,11 @@ function topic_wise(handle_name)
                 }
               }
             }
-            // //console.log(new_tag_map);
+            // ////console.log(new_tag_map);
             document.querySelector("#chartContainer2").classList.remove("hidden");
             let datapoints = [];
             for (key of new_tag_map) {
-              //console.log(key);
+              ////console.log(key);
               datapoints.push({ x: key[0], y: key[1] });
             }
             var chart = new CanvasJS.Chart("chartContainer2", {
@@ -250,7 +250,7 @@ function topic_wise(handle_name)
               ],
             });
             chart.render();
-            //console.log(new_tag_map);
+            ////console.log(new_tag_map);
           }
           get_topic_graph();
           // get_problems();

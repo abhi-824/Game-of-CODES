@@ -125,8 +125,8 @@ function  compare_final(handle_name,handle_name2){
   let weak_topicss2 = [];
   let strong_topicss2 = [];
 
-  console.log(handle_name)
-  console.log(handle_name2)
+  //console.log(handle_name)
+  //console.log(handle_name2)
   document.querySelector('.handle1').innerHTML = handle_name;
   document.querySelector('.handle2').innerHTML = handle_name2;
   document.querySelector('.handle_1').innerHTML = handle_name;
@@ -211,7 +211,7 @@ function  compare_final(handle_name,handle_name2){
     }
 
     let tb = document.querySelector(".weak_topicss_comp");
-    console.log(weak_topicss);
+    //console.log(weak_topicss);
     for (let i = 0; i < weak_topicss.length; i++) {
       let tr = document.createElement("tr");
       let th1 = document.createElement("th");
@@ -311,7 +311,7 @@ function  compare_final(handle_name,handle_name2){
     }
 
     let tb = document.querySelector(".weak_topicss2_comp");
-    console.log(weak_topicss2);
+    //console.log(weak_topicss2);
     for (let i = 0; i < weak_topicss2.length; i++) {
       let tr = document.createElement("tr");
       let th1 = document.createElement("th");
@@ -349,7 +349,7 @@ function  compare_final(handle_name,handle_name2){
     }
 
     numOfContest1 = jsDataRatings1.result.length;
-    console.log(numOfContest1);
+    //console.log(numOfContest1);
 
     let userRatings2 = user_contests + handle_name2;
 
@@ -364,7 +364,7 @@ function  compare_final(handle_name,handle_name2){
     }
 
     numOfContest2 = jsDataRatings2.result.length;
-    console.log(numOfContest2);
+    //console.log(numOfContest2);
 
     var chart = new CanvasJS.Chart("compareChart1", {
       zoomEnabled: true,
@@ -396,8 +396,8 @@ function  compare_final(handle_name,handle_name2){
     });
 
     chart.render();
-    console.log(dataPointsRatings1);
-    console.log(dataPointsRatings2);
+    //console.log(dataPointsRatings1);
+    //console.log(dataPointsRatings2);
   }
 
   async function getUserSubRatCompare() {
@@ -629,8 +629,8 @@ function  compare_final(handle_name,handle_name2){
     ]
     });
     chart.render();
-    console.log(dataPointsSubRat1);
-    console.log(dataPointsSubRat2);
+    //console.log(dataPointsSubRat1);
+    //console.log(dataPointsSubRat2);
 
     var chart = new CanvasJS.Chart("compareChart3", {
       theme: "dark2",
@@ -655,8 +655,8 @@ function  compare_final(handle_name,handle_name2){
   ]
     });
     chart.render();
-    console.log(dataPointsSubmissions1);
-    console.log(dataPointsSubmissions2);
+    //console.log(dataPointsSubmissions1);
+    //console.log(dataPointsSubmissions2);
     $(".ok1").text(ok1);
     $(".ok2").text(ok2);
 
@@ -830,8 +830,8 @@ function  compare_final(handle_name,handle_name2){
               ]
                 });
                 chart.render();
-                console.log(dataPointsSubRatOK1);
-                console.log(dataPointsSubRatOK2);
+                //console.log(dataPointsSubRatOK1);
+                //console.log(dataPointsSubRatOK2);
   }
 
   getUserRatingsCompare();

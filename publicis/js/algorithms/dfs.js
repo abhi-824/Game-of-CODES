@@ -2,8 +2,8 @@ let bffa=[];
 function DFsS()
 {
     c_delay=0;  
-    console.log(x_d);
-    console.log(y_d);
+    //console.log(x_d);
+    //console.log(y_d);
     vis=[];
     x_o--;y_d--;
     for (let i = 0; i < box_no; i++) {
@@ -17,13 +17,13 @@ function DFsS()
     vis.push(temp);
     }
     vis[x_o][y_o]=0;
-    // console.log(cell[770])
+    // //console.log(cell[770])
     dfs_on_grid(x_o,y_o);
-//     console.log(bffa)
+//     //console.log(bffa)
 //     let i = bffa[x_d][y_d];
-//   console.log(i);
+//   //console.log(i);
 //   for (i; i != 0; ) {
-//     // console.log(i); 
+//     // //console.log(i); 
 //     reconstruct(i);
 //     i = bffa[i[0]][i[1]];
 //   }
@@ -47,7 +47,7 @@ function dfs_on_grid(x,y)
         let gg=(x-1)*box_no+y-1;
         if(cell[gg].classList.contains("obst"))
         {
-            console.log("You are sexy");
+            //console.log("You are sexy");
         }
         else{
             vis[x][y]=1;
@@ -62,7 +62,7 @@ function dfs_on_grid(x,y)
         
         if(cell[gg].classList.contains("obst"))
         {
-            console.log("You are sexy");
+            //console.log("You are sexy");
         }
         else{
             vis[x][y]=1;
@@ -77,7 +77,7 @@ function dfs_on_grid(x,y)
         
         if(cell[gg].classList.contains("obst"))
         {
-            console.log("You are sexy");
+            //console.log("You are sexy");
         }
         else{
             vis[x][y]=1;
@@ -92,7 +92,7 @@ function dfs_on_grid(x,y)
         
         if(cell[gg].classList.contains("obst"))
         {
-            console.log("You are sexy");
+            //console.log("You are sexy");
         }
         else{
             vis[x][y]=1;

@@ -17,8 +17,8 @@ function BFS() {
   q.push([x_o, y_o]);
   dist[x_o][y_o] = 0;
   vis[x_o][y_o] = 1;
-  // console.log(x_d);
-  // console.log(y_d);
+  // //console.log(x_d);
+  // //console.log(y_d);
   let fl = 0;
   while (q.length !== 0) {
     let curX = q[0][0];
@@ -51,16 +51,16 @@ function BFS() {
       break;
     }
   }
-  // console.log(x_d);
-  // console.log(y_d);
-  // console.log(affa);
+  // //console.log(x_d);
+  // //console.log(y_d);
+  // //console.log(affa);
   let i = affa[x_d][y_d];
-  console.log(i);
+  //console.log(i);
   for (i; i != 0; ) {
-    // console.log(i); 
+    // //console.log(i); 
     reconstruct(i);
     i = affa[i[0]][i[1]];
   }
-  // console.log(dist);
-  // console.log(affa);
+  // //console.log(dist);
+  // //console.log(affa);
 }

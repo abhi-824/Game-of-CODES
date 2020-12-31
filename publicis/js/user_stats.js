@@ -47,7 +47,7 @@ $(document).ready(function() {
 	    }
 
 	    //calculations for user stats page
-	    console.log(ok, total_attempts);
+	    //console.log(ok, total_attempts);
 	    accuracy_rate = ((ok/total_attempts)*100).toFixed(2);
 	    document.querySelector("#submissions").textContent = "SUBMISSIONS: " + ok;
     	document.querySelector("#acc_rate").textContent = "ACCURACY RATE: " + accuracy_rate + "%";
@@ -63,7 +63,7 @@ $(document).ready(function() {
 	    //user rating 
 	    user_rating = jsDataAvatar.result[0].rating;
 	    max_rating = jsDataAvatar.result[0].maxRating;
-	    console.log("Current-Rating: "+ user_rating + ", Max-Rating: " + max_rating);
+	    //console.log("Current-Rating: "+ user_rating + ", Max-Rating: " + max_rating);
 
 	    document.querySelector("#cur_rating").textContent = "CURRENT RATING: " + user_rating;
 	    document.querySelector("#max_rating").textContent = "BEST RATING: " + max_rating;
@@ -81,7 +81,7 @@ $(document).ready(function() {
 
 
 document.querySelector("#dashboard").addEventListener("click", function (e) {
-    console.log("Going to dashboard!");
+    //console.log("Going to dashboard!");
 
     let dash_url = "dashboard.html?handle=";
     dash_url += user_handle;
@@ -91,7 +91,7 @@ document.querySelector("#dashboard").addEventListener("click", function (e) {
 });
 
 document.querySelector("#profile").addEventListener("click", function (e) {
-    console.log("Going back to profile page!");
+    //console.log("Going back to profile page!");
 
     let prof_url = "profile.html?handle=";
     prof_url += user_handle;
@@ -101,7 +101,7 @@ document.querySelector("#profile").addEventListener("click", function (e) {
 });
 
 document.querySelector("#compare").addEventListener("click", function (e) {
-    console.log("Going to the compare page . . .");
+    //console.log("Going to the compare page . . .");
 
     let comp_url = "compare.html?handle=";
     comp_url += user_handle;
@@ -111,7 +111,7 @@ document.querySelector("#compare").addEventListener("click", function (e) {
 });
 
 document.querySelector("#codeblast").addEventListener("click", function (e) {
-    console.log("Going to codeblast!");
+    //console.log("Going to codeblast!");
 
     let cblast_url = "codeblast.html?handle=";
     cblast_url += user_handle;
@@ -121,7 +121,7 @@ document.querySelector("#codeblast").addEventListener("click", function (e) {
 });
 
 document.querySelector("#topic-wise").addEventListener("click", function (e) {
-    console.log("Going to topic-wise training zone!");
+    //console.log("Going to topic-wise training zone!");
 
     let tz_url = "training_zone_topic_wise.html?handle=";
     tz_url += user_handle;
@@ -131,7 +131,7 @@ document.querySelector("#topic-wise").addEventListener("click", function (e) {
 });
 
 document.querySelector("#level-wise").addEventListener("click", function (e) {
-    console.log("Going to level-wise training zone!");
+    //console.log("Going to level-wise training zone!");
 
     let tz_url = "training_zone_level_wise.html?handle=";
     tz_url += user_handle;

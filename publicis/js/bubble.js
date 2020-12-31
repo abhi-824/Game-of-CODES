@@ -1,7 +1,7 @@
 
 function Bubble(){
     c_delay=0;
-    console.log(array_size.value)
+    //console.log(array_size.value)
     for(let j=1;j<array_size.value;j++)
     {   
         for(let i=0;i<array_size.value-j;i++)

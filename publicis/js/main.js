@@ -42,7 +42,7 @@ function sorting_vis() {
 		div_heights = [];
 		for (let i = 0; i < array_size.value; i++) {
 			div_heights[i] = Math.floor(Math.random() * (300 - 10));
-			// console.log(div_heights[i])
+			// //console.log(div_heights[i])
 			divs[i] = document.createElement('div');
 			divs[i].style.height = `${div_heights[i]}px`;
 			let width = 700 / array_size.value;
@@ -88,7 +88,7 @@ function sorting_vis() {
 	}
 	document.querySelector('.insertion').addEventListener('click', runBubble3);
 	function runBubble3() {
-		console.log(div_heights);
+		//console.log(div_heights);
 		disable_buttons();
 		Insertion_sort();
 		window.setTimeout(() => {
@@ -176,7 +176,7 @@ function sorting_vis() {
 		
 		disable_buttons();
 		Merge_sort(div_heights);
-		console.log(div_heights);
+		//console.log(div_heights);
 		window.setTimeout(() => {
 			disable_buttons();
 		}, c_delay);
@@ -256,7 +256,7 @@ function sorting_vis() {
 				swap(<span style="color: #333333;">&amp;</span>arr[j], <span style="color: #333333;">&amp;</span>arr[j<span style="color: #333333;">+</span><span style="color: #0000dd; font-weight: bold;">1</span>]);  </pre></div>
 	<h2 style="text-align: left;"><br /></h2><h2 style="text-align: left;"><br /></h2>`;
 		c_delay = 0;
-		console.log(array_size.value);
+		//console.log(array_size.value);
 		for (let j = 1; j < array_size.value; j++) {
 			for (let i = 0; i < array_size.value - j; i++) {
 				update_div(i, div_heights[i], 'yellow');
@@ -322,9 +322,9 @@ function sorting_vis() {
 		}
 	}
 	function Merge_sort() {
-		// console.log(a);
+		// //console.log(a);
 		c_delay = 0;
-		console.log(div_heights);
+		//console.log(div_heights);
 		merge_bhai(0, div_heights.length - 1);
 	}
 
@@ -348,7 +348,7 @@ function sorting_vis() {
 				update_div(q - 1, div_heights[q - 1], 'red');
 			}
 		}
-		console.log(a);
+		//console.log(a);
 		for (let i = 0; i < k; i++) {
 			div_heights[start++] = a[i];
 			update_div(start - 1, div_heights[start - 1], 'teal');

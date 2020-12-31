@@ -1,7 +1,7 @@
 function Merge_sort() {
-  // console.log(a);
+  // //console.log(a);
   c_delay=0;
-  console.log(div_heights)
+  //console.log(div_heights)
   merge_bhai(0,div_heights.length-1);
 }
 
@@ -29,7 +29,7 @@ function merge_sort(start,mid,end){
             update_div(q-1,div_heights[q-1],"red");
         }
     }
-    console.log(a);
+    //console.log(a);
     for(let i=0;i<k;i++)
     {
         div_heights[start++]=a[i];

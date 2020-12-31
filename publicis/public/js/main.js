@@ -32,7 +32,7 @@ function codeblast_enter(username, room) {
     td.innerHTML = `${user_list[index].username}`;
     tr.appendChild(td);
 
-    console.log(tr);
+    //console.log(tr);
     let ch = "A";
     for (let i = 0; i < results_jo.length; i++) {
       // let th=document.createElement("th");
@@ -62,14 +62,14 @@ function codeblast_enter(username, room) {
   });
 
   socket.on("start_contest", (problems) => {
-    // console.log("hey");
+    // //console.log("hey");
     // load_kkk.classList.add('disapper');
     document.querySelector(".chat-container").remove();
     // setTimeout(() => {
     load_kkk.classList.add("disapper");
     // }, 2000);
     display_problems(problems);
-    console.log(problems);
+    //console.log(problems);
     document.querySelector(".updateCodeblast").classList.remove("hidden");
     problem=problems;
    
@@ -96,7 +96,7 @@ function codeblast_enter(username, room) {
   });
 
   socket.on("message", (message) => {
-    console.log(message);
+    //console.log(message);
     output_mess(message);
 
     chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -118,7 +118,7 @@ function codeblast_enter(username, room) {
   socket.on("go_results", (re_map) => {
     re_map = JSON.parse(re_map);
     let res_map = new Map(Object.entries(re_map));
-    console.log(res_map);
+    //console.log(res_map);
     if (document.querySelector(".res_table") != undefined) {
       document.querySelector(".res_table").remove();
     }
