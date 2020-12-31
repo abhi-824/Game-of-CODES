@@ -41,7 +41,7 @@ for (let i = 0; i < codeblast_nav.length; i++) {
 	codeblast_nav[i].addEventListener('click', function (e) {
 		if (protection_mode) {
 			show_screen(index_screen);
-			alert("You can't Access it as a guest. Register, Its Free!")
+			display_alert("You can't Access it as a guest. Register, Its Free!")
 		} else {
 			codeblast(handle);
 		}
@@ -86,7 +86,7 @@ for (let i = 0; i < roadmap_nav.length; i++) {
 	roadmap_nav[i].addEventListener('click', function (e) {
 		if (protection_mode) {
 			show_screen(index_screen);
-			alert("You can't Access it as a guest. Come in, just register, It would take a sec.")
+			display_alert("You can't Access it as a guest. Come in, just register, It would take a sec.")
 		} else {
 			roadmap(handle);
 		}

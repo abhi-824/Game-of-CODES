@@ -1876,8 +1876,7 @@ function dashboard(handle_name) {
       display.textContent = minutes + ":" + seconds;
 
       if (--timer < 0) {
-        alert("Time's Up!!!");
-        e.stopImmediatePropagation();
+        display_alert("Time's Up!!!");
         clearInterval(c);
       }
     }, 1000);
@@ -1902,7 +1901,7 @@ function dashboard(handle_name) {
   document.querySelector(".set-target").addEventListener("click", function (e) {
     if (protection_mode) {
       show_screen(index_screen);
-      alert("You can't Access it as a guest. Register, Its Free!");
+      display_alert("You can't Access it as a guest. Register, Its Free!");
       e.stopImmediatePropagation();
     } else {
       //console.log("hell");
@@ -2049,7 +2048,7 @@ function dashboard(handle_name) {
                 e.preventDefault();
                 if (protection_mode) {
                   show_screen(index_screen);
-                  alert("You can't Access it as a guest. Register, Its Free!");
+                  display_alert("You can't Access it as a guest. Register, Its Free!");
                   e.stopImmediatePropagation();
                 } else {
                   let question =
@@ -2086,7 +2085,7 @@ function dashboard(handle_name) {
                                 fav[i].style.color = "white";
                               }
                             } else {
-                              alert("some error occured removing bookmark");
+                              display_alert("some error occured removing bookmark");
                               e.stopImmediatePropagation();
                             }
                           }
@@ -2191,7 +2190,7 @@ function dashboard(handle_name) {
                               fav[i].style.color = "white";
                             }
                           } else {
-                            alert("some error occured removing bookmark");
+                            display_alert("some error occured removing bookmark");
                             e.stopImmediatePropagation();
                           }
                         }
@@ -2217,7 +2216,7 @@ function dashboard(handle_name) {
   document.querySelector(".bookmarked").addEventListener("click", (e) => {
     if (protection_mode) {
       show_screen(index_screen);
-      alert("You can't Access it as a guest. Register, Its Free!");
+      display_alert("You can't Access it as a guest. Register, Its Free!");
       e.stopImmediatePropagation();
     } else {
       db.collection("handles")

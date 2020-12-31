@@ -307,7 +307,7 @@ function inContest(topic, link, user_handle) {
       display.textContent = minutes + ":" + seconds;
 
       if (--timer < 0) {
-        alert(
+        display_alert(
           "End of Time, But If something have left you can still do it. When you are done, just goto next"
         );
         after_contest(user_handle, questions_links);

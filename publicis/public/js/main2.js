@@ -11,7 +11,7 @@ function codeblast(handle) {
 			if (check) {
 				codeblast_enter(username, room);
 			} else {
-				alert('There is no such room available!');
+				display_alert('There is no such room available!');
 			}
 		});
 	});
