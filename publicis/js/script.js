@@ -359,7 +359,7 @@ function dashboard(handle_name) {
         }
         get_questions();
         let p = document.querySelectorAll(".generate_daily2");
-        //console.log(p);
+        ////console.log(p);
         for (let i = 0; i < 8; i++) {
           p[i].addEventListener("click", function (e) {
             let curr_set = [];
@@ -383,21 +383,21 @@ function dashboard(handle_name) {
             document.querySelector(".container1").style.height = "300vh";
             document.querySelector(".container2").style.height = "300vh";
             div = document.querySelector(".problem-name-3");
-            // ////console.log(div);
+            // //////console.log(div);
             while (div.firstChild) {
-              // ////console.log(div.firstChild);
+              // //////console.log(div.firstChild);
               div.removeChild(div.firstChild);
             }
             div = document.querySelector(".problem-name-2");
-            // ////console.log(div);
+            // //////console.log(div);
             while (div.firstChild) {
-              // ////console.log(div.firstChild);
+              // //////console.log(div.firstChild);
               div.removeChild(div.firstChild);
             }
             div = document.querySelector(".problem-name-1");
-            // ////console.log(div);
+            // //////console.log(div);
             while (div.firstChild) {
-              // ////console.log(div.firstChild);
+              // //////console.log(div.firstChild);
               div.removeChild(div.firstChild);
             }
             for (let i = 0; i < curr_set.length; i++) {
@@ -412,9 +412,9 @@ function dashboard(handle_name) {
                 document.querySelector(".problem-name-1").innerHTML =
                   curr_set[i].name;
                 let div = document.querySelector(".link1");
-                // ////console.log(div);
+                // //////console.log(div);
                 while (div.firstChild) {
-                  // ////console.log(div.firstChild);
+                  // //////console.log(div.firstChild);
                   div.removeChild(div.firstChild);
                 }
                 document.querySelector(".link1").appendChild(link);
@@ -424,9 +424,9 @@ function dashboard(handle_name) {
                   curr_set[i].name;
 
                 let div = document.querySelector(".link2");
-                ////console.log(div);
+                //////console.log(div);
                 while (div.firstChild) {
-                  ////console.log(div.firstChild);
+                  //////console.log(div.firstChild);
                   div.removeChild(div.firstChild);
                 }
                 document.querySelector(".link2").appendChild(link);
@@ -436,9 +436,9 @@ function dashboard(handle_name) {
                   curr_set[i].name;
 
                 let div = document.querySelector(".link3");
-                ////console.log(div);
+                //////console.log(div);
                 while (div.firstChild) {
-                  ////console.log(div.firstChild);
+                  //////console.log(div.firstChild);
                   div.removeChild(div.firstChild);
                 }
                 document.querySelector(".link3").appendChild(link);
@@ -500,18 +500,18 @@ function dashboard(handle_name) {
                   curr_set = arr8;
                 }
                 let cnt = 0;
-                console.log(curr_set);
+                //console.log(curr_set);
                 for (let j = 0; j < curr_set.length; j++) {
-                  console.log(
-                    `${curr_set[j].contestId}-${curr_set[j].id}`,
-                    solved2.has(`${curr_set[j].contestId}-${curr_set[j].id}`)
-                  );
+                  //console.log(
+                  //   `${curr_set[j].contestId}-${curr_set[j].id}`,
+                  //   solved2.has(`${curr_set[j].contestId}-${curr_set[j].id}`)
+                  // );
                   if (
                     solved2.has(`${curr_set[j].contestId}-${curr_set[j].index}`)
                   ) {
                     curr_set[j] = 0;
                     if (j === 0) {
-                      console.log(curr_set);
+                      //console.log(curr_set);
                       document.querySelector(
                         ".problem-name-1"
                       ).innerHTML = `Goto Next, You have done it.`;
@@ -561,14 +561,14 @@ function dashboard(handle_name) {
             e.preventDefault();
           });
         e.preventDefault();
-        // //////console.log(tag_name);
+        // ////////console.log(tag_name);
 
         function get_topic_graph() {
           // let modified_url2 = url2 + handle_name;
           // const jsondata2 = await fetch(modified_url2);
           // const jsdata = await jsondata2.json();
           let already = new Set();
-          //////console.log(user_submissions);
+          ////////console.log(user_submissions);
           let str =
             user_submissions[i].problem.contestId +
             "-" +
@@ -577,7 +577,7 @@ function dashboard(handle_name) {
             let tags = user_submissions[i].problem.tags;
             for (let j = 0; j < tags.length; j++) {
               if (tags[j] === tag_name) {
-                // //////console.log(user_submissions[i].verdict)
+                // ////////console.log(user_submissions[i].verdict)
                 if (user_submissions[i].verdict === "OK") {
                   if (user_submissions[i].problem.rating != undefined) {
                     let val = new_tag_map.get(
@@ -601,11 +601,11 @@ function dashboard(handle_name) {
               }
             }
           }
-          // //////console.log(new_tag_map);
+          // ////////console.log(new_tag_map);
           document.querySelector("#chartContainer").classList.remove("hidden");
           let datapoints = [];
           for (key of new_tag_map) {
-            //////console.log(key);
+            ////////console.log(key);
             datapoints.push({ x: key[0], y: key[1] });
           }
           var chart = new CanvasJS.Chart("chartContainer", {
@@ -629,7 +629,7 @@ function dashboard(handle_name) {
             ],
           });
           chart.render();
-          //////console.log(new_tag_map);
+          ////////console.log(new_tag_map);
         }
         get_topic_graph();
         // item.classList.add("hidden");
@@ -701,12 +701,12 @@ function dashboard(handle_name) {
         request.onload = function () {
           var data = JSON.parse(this.response);
           proper_result = data.result;
-          //console.log(proper_result);
+          ////console.log(proper_result);
           function get_daily_mix_A(set_no) {
             let result = [];
             let no = 1;
             for (let i = 0; i < proper_result.problems.length; i++) {
-              //console.log(proper_result.problems[i].tags)
+              ////console.log(proper_result.problems[i].tags)
               if (
                 proper_result.problems[i].tags.includes(weak_topic1) == false
               ) {
@@ -720,13 +720,13 @@ function dashboard(handle_name) {
                 continue;
               }
               let fl = 0;
-              ////console.log(set1.length);
-              ////console.log(set2.length);
-              ////console.log(set3.length);
-              ////console.log(set4.length);
+              //////console.log(set1.length);
+              //////console.log(set2.length);
+              //////console.log(set3.length);
+              //////console.log(set4.length);
               for (let j = 0; j < set1.length; j++) {
                 if (set1[j][0] === proper_result.problems[i].name) {
-                  ////console.log(proper_result.problems[i].name);
+                  //////console.log(proper_result.problems[i].name);
                   fl = 1;
                   break;
                 }
@@ -734,21 +734,21 @@ function dashboard(handle_name) {
               for (let j = 0; j < set2.length; j++) {
                 if (set2[j][0] === proper_result.problems[i].name) {
                   fl = 1;
-                  ////console.log(proper_result.problems[i].name);
+                  //////console.log(proper_result.problems[i].name);
                   break;
                 }
               }
               for (let j = 0; j < set3.length; j++) {
                 if (set3[j][0] === proper_result.problems[i].name) {
                   fl = 1;
-                  ////console.log(proper_result.problems[i].name);
+                  //////console.log(proper_result.problems[i].name);
                   break;
                 }
               }
               for (let j = 0; j < set4.length; j++) {
                 if (set4[j][0] === proper_result.problems[i].name) {
                   fl = 1;
-                  ////console.log(proper_result.problems[i].name);
+                  //////console.log(proper_result.problems[i].name);
                   break;
                 }
               }
@@ -772,7 +772,7 @@ function dashboard(handle_name) {
             }
             let A = result;
             for (let i = 0; i < A.length; i++) {
-              ////console.log(A);
+              //////console.log(A);
               if (set_no === 1) {
                 set1.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
               } else if (set_no === 2) {
@@ -784,7 +784,7 @@ function dashboard(handle_name) {
               }
             }
             // get_daily_mix_B(set_no);
-            //////console.log(proper_result);
+            ////////console.log(proper_result);
           }
 
           function get_daily_mix_B(set_no) {
@@ -808,28 +808,28 @@ function dashboard(handle_name) {
               for (let j = 0; j < set1.length; j++) {
                 if (set1[j][0] === proper_result.problems[i].name) {
                   fl = 1;
-                  ////console.log(proper_result.problems[i].name);
+                  //////console.log(proper_result.problems[i].name);
                   break;
                 }
               }
               for (let j = 0; j < set2.length; j++) {
                 if (set2[j][0] === proper_result.problems[i].name) {
                   fl = 1;
-                  ////console.log(proper_result.problems[i].name);
+                  //////console.log(proper_result.problems[i].name);
                   break;
                 }
               }
               for (let j = 0; j < set3.length; j++) {
                 if (set3[j][0] === proper_result.problems[i].name) {
                   fl = 1;
-                  ////console.log(proper_result.problems[i].name);
+                  //////console.log(proper_result.problems[i].name);
                   break;
                 }
               }
               for (let j = 0; j < set4.length; j++) {
                 if (set4[j][0] === proper_result.problems[i].name) {
                   fl = 1;
-                  ////console.log(proper_result.problems[i].name);
+                  //////console.log(proper_result.problems[i].name);
                   break;
                 }
               }
@@ -873,7 +873,7 @@ function dashboard(handle_name) {
             }
 
             // get_daily_mix_C(set_no);
-            //////console.log(proper_result);
+            ////////console.log(proper_result);
           }
 
           function get_daily_mix_C(set_no) {
@@ -897,14 +897,14 @@ function dashboard(handle_name) {
               for (let j = 0; j < set1.length; j++) {
                 if (set1[j][0] === proper_result.problems[i].name) {
                   fl = 1;
-                  ////console.log(proper_result.problems[i].name);
+                  //////console.log(proper_result.problems[i].name);
                   break;
                 }
               }
               for (let j = 0; j < set2.length; j++) {
                 if (set2[j][0] === proper_result.problems[i].name) {
                   fl = 1;
-                  ////console.log(proper_result.problems[i].name);
+                  //////console.log(proper_result.problems[i].name);
                   break;
                 }
               }
@@ -917,7 +917,7 @@ function dashboard(handle_name) {
               for (let j = 0; j < set4.length; j++) {
                 if (set4[j][0] === proper_result.problems[i].name) {
                   fl = 1;
-                  ////console.log(proper_result.problems[i].name);
+                  //////console.log(proper_result.problems[i].name);
                   break;
                 }
               }
@@ -957,7 +957,7 @@ function dashboard(handle_name) {
                 set4.push([A[0].name, `${A[0].contestId}-${A[0].index}`]);
               }
             }
-            //////console.log(proper_result);
+            ////////console.log(proper_result);
             // get_daily_mix_D(set_no);
           }
 
@@ -981,30 +981,30 @@ function dashboard(handle_name) {
               let fl = 0;
               for (let j = 0; j < set1.length; j++) {
                 if (set1[j][0] === proper_result.problems[i].name) {
-                  ////console.log(set2[j][0]);
+                  //////console.log(set2[j][0]);
                   fl = 1;
-                  ////console.log(proper_result.problems[i].name);
+                  //////console.log(proper_result.problems[i].name);
                   break;
                 }
               }
               for (let j = 0; j < set2.length; j++) {
                 if (set2[j][0] === proper_result.problems[i].name) {
                   fl = 1;
-                  ////console.log(proper_result.problems[i].name);
+                  //////console.log(proper_result.problems[i].name);
                   break;
                 }
               }
               for (let j = 0; j < set3.length; j++) {
                 if (set3[j][0] === proper_result.problems[i].name) {
                   fl = 1;
-                  ////console.log(proper_result.problems[i].name);
+                  //////console.log(proper_result.problems[i].name);
                   break;
                 }
               }
               for (let j = 0; j < set4.length; j++) {
                 if (set4[j][0] === proper_result.problems[i].name) {
                   fl = 1;
-                  ////console.log(proper_result.problems[i].name);
+                  //////console.log(proper_result.problems[i].name);
                   break;
                 }
               }
@@ -1068,28 +1068,28 @@ function dashboard(handle_name) {
               for (let j = 0; j < set1.length; j++) {
                 if (set1[j][0] === proper_result.problems[i].name) {
                   fl = 1;
-                  ////console.log(proper_result.problems[i].name);
+                  //////console.log(proper_result.problems[i].name);
                   break;
                 }
               }
               for (let j = 0; j < set2.length; j++) {
                 if (set2[j][0] === proper_result.problems[i].name) {
                   fl = 1;
-                  ////console.log(proper_result.problems[i].name);
+                  //////console.log(proper_result.problems[i].name);
                   break;
                 }
               }
               for (let j = 0; j < set3.length; j++) {
                 if (set3[j][0] === proper_result.problems[i].name) {
                   fl = 1;
-                  ////console.log(proper_result.problems[i].name);
+                  //////console.log(proper_result.problems[i].name);
                   break;
                 }
               }
               for (let j = 0; j < set4.length; j++) {
                 if (set4[j][0] === proper_result.problems[i].name) {
                   fl = 1;
-                  ////console.log(proper_result.problems[i].name);
+                  //////console.log(proper_result.problems[i].name);
                   break;
                 }
               }
@@ -1131,7 +1131,7 @@ function dashboard(handle_name) {
             }
           }
           let p = document.querySelectorAll(".generate_daily");
-          //console.log(p);
+          ////console.log(p);
           for (let i = 0; i < 4; i++) {
             p[i].addEventListener("click", function (e) {
               weak_index1 = Math.floor(Math.random() * weak_topicss.length);
@@ -1153,7 +1153,7 @@ function dashboard(handle_name) {
               get_daily_mix_E(i + 1);
 
               // p[i].addEventListener("click", function (e) {
-              //console.log("kya bhai")
+              ////console.log("kya bhai")
               var r = confirm("This would start a timer!!");
               if (r == true) {
                 document.querySelector("#time").classList.remove("hidden");
@@ -1186,33 +1186,33 @@ function dashboard(handle_name) {
                 //   }
                 // }
                 let div = document.querySelector(".problem-name-E");
-                // ////console.log(div);
+                // //////console.log(div);
                 while (div.firstChild) {
-                  // ////console.log(div.firstChild);
+                  // //////console.log(div.firstChild);
                   div.removeChild(div.firstChild);
                 }
                 div = document.querySelector(".problem-name-D");
-                // ////console.log(div);
+                // //////console.log(div);
                 while (div.firstChild) {
-                  // ////console.log(div.firstChild);
+                  // //////console.log(div.firstChild);
                   div.removeChild(div.firstChild);
                 }
                 div = document.querySelector(".problem-name-C");
-                // ////console.log(div);
+                // //////console.log(div);
                 while (div.firstChild) {
-                  // ////console.log(div.firstChild);
+                  // //////console.log(div.firstChild);
                   div.removeChild(div.firstChild);
                 }
                 div = document.querySelector(".problem-name-B");
-                // ////console.log(div);
+                // //////console.log(div);
                 while (div.firstChild) {
-                  // ////console.log(div.firstChild);
+                  // //////console.log(div.firstChild);
                   div.removeChild(div.firstChild);
                 }
                 div = document.querySelector(".problem-name-A");
-                // ////console.log(div);
+                // //////console.log(div);
                 while (div.firstChild) {
-                  // ////console.log(div.firstChild);
+                  // //////console.log(div.firstChild);
                   div.removeChild(div.firstChild);
                 }
                 for (let i = 0; i < curr_set.length; i++) {
@@ -1223,9 +1223,9 @@ function dashboard(handle_name) {
                     document.querySelector(".problem-name-A").innerHTML =
                       curr_set[i][0];
                     let div = document.querySelector(".linkA");
-                    // ////console.log(div);
+                    // //////console.log(div);
                     while (div.firstChild) {
-                      // ////console.log(div.firstChild);
+                      // //////console.log(div.firstChild);
                       div.removeChild(div.firstChild);
                     }
                     document.querySelector(".linkA").appendChild(link);
@@ -1235,9 +1235,9 @@ function dashboard(handle_name) {
                       curr_set[i][0];
 
                     let div = document.querySelector(".linkB");
-                    ////console.log(div);
+                    //////console.log(div);
                     while (div.firstChild) {
-                      ////console.log(div.firstChild);
+                      //////console.log(div.firstChild);
                       div.removeChild(div.firstChild);
                     }
                     document.querySelector(".linkB").appendChild(link);
@@ -1247,9 +1247,9 @@ function dashboard(handle_name) {
                       curr_set[i][0];
 
                     let div = document.querySelector(".linkC");
-                    ////console.log(div);
+                    //////console.log(div);
                     while (div.firstChild) {
-                      ////console.log(div.firstChild);
+                      //////console.log(div.firstChild);
                       div.removeChild(div.firstChild);
                     }
                     document.querySelector(".linkC").appendChild(link);
@@ -1259,9 +1259,9 @@ function dashboard(handle_name) {
                       curr_set[i][0];
 
                     let div = document.querySelector(".linkD");
-                    ////console.log(div);
+                    //////console.log(div);
                     while (div.firstChild) {
-                      ////console.log(div.firstChild);
+                      //////console.log(div.firstChild);
                       div.removeChild(div.firstChild);
                     }
                     document.querySelector(".linkD").appendChild(link);
@@ -1271,9 +1271,9 @@ function dashboard(handle_name) {
                       curr_set[i][0];
 
                     let div = document.querySelector(".linkE");
-                    ////console.log(div);
+                    //////console.log(div);
                     while (div.firstChild) {
-                      ////console.log(div.firstChild);
+                      //////console.log(div.firstChild);
                       div.removeChild(div.firstChild);
                     }
                     document.querySelector(".linkE").appendChild(link);
@@ -1329,10 +1329,10 @@ function dashboard(handle_name) {
 
               // },2000);
             });
-            ////console.log(set1);
-            ////console.log(set2);
-            ////console.log(set3);
-            ////console.log(set4);
+            //////console.log(set1);
+            //////console.log(set2);
+            //////console.log(set3);
+            //////console.log(set4);
             load_kkk.classList.add("disapper");
             document.querySelector(".container1").style.height = "200vh";
             document.querySelector(".container2").style.height = "200vh";
@@ -1340,58 +1340,58 @@ function dashboard(handle_name) {
         };
         request.send();
         document
-          .querySelector(".update")
-          .addEventListener("click", function (e) {
-            let solved2 = new Set();
-            async function get_result() {
+        .querySelector(".update")
+        .addEventListener("click", function (e) {
+          let solved2 = new Set();
+          async function get_result() {
               let modified_url = url2 + handle_name;
               const jsondata = await fetch(modified_url);
               const jsdata = await jsondata.json();
               user_submissions = jsdata.result;
-
+              
               solved2.clear();
-
+              
               let jj = 0;
               // for retreiving solved set
               for (let i = 0; i < jsdata.result.length; i++) {
                 if (jsdata.result[i].verdict == "OK") {
                   let str =
-                    jsdata.result[i].problem.contestId +
+                  jsdata.result[i].problem.contestId +
                     "-" +
                     jsdata.result[i].problem.index;
-                  solved2.add(str);
-                  no_of_success = solved2.size;
+                    solved2.add(str);
+                    no_of_success = solved2.size;
+                  }
                 }
-              }
-              for (let i = 0; i < 4; i++) {
-                let curr_set = [];
-                if (i === 0) {
-                  curr_set = set1;
-                } else if (i === 1) {
-                  curr_set = set2;
-                } else if (i === 2) {
-                  curr_set = set3;
-                } else if (i === 3) {
-                  curr_set = set4;
-                }
-                let cnt = 0;
-                for (let j = 0; j < curr_set.length; j++) {
-                  console.log(curr_set[j][1]);
+                for (let i = 0; i < 4; i++) {
+                  let curr_set = [];
+                  if (i === 0) {
+                    curr_set = set1;
+                  } else if (i === 1) {
+                    curr_set = set2;
+                  } else if (i === 2) {
+                    curr_set = set3;
+                  } else if (i === 3) {
+                    curr_set = set4;
+                  }
+                  let cnt2 = 0;
+                  for (let j = 0; j < curr_set.length; j++) {
+                    //console.log(curr_set[j][1]);
                   if (solved2.has(curr_set[j][1])) {
-                    curr_set[j][1] = 0;
+                    // curr_set[j][1] = 0;
                     if (j === 0) {
                       document.querySelector(
                         ".problem-name-A"
-                      ).innerHTML = `Goto Next, You have done it.`;
+                        ).innerHTML = `Goto Next, You have done it.`;
                       document.querySelector(".linkA").classList.add("hidden");
                     }
-
+                    
                     if (j === 1) {
                       document.querySelector(
                         ".problem-name-B"
-                      ).innerHTML = `Goto Next, You have done it.`;
-                      document.querySelector(".linkB").classList.add("hidden");
-                    }
+                        ).innerHTML = `Goto Next, You have done it.`;
+                        document.querySelector(".linkB").classList.add("hidden");
+                      }
 
                     if (j === 2) {
                       document.querySelector(
@@ -1413,26 +1413,30 @@ function dashboard(handle_name) {
                       ).innerHTML = `Goto Next, You have done it.`;
                       document.querySelector(".linkE").classList.add("hidden");
                     }
-                    cnt += 1;
+                    cnt2 += 1;
                   }
                 }
-
-                if (cnt == 5) {
+                console.log(cnt2)
+                if (cnt2 == 5) {
                   if (i == 0) {
-                    document.querySelector(".g_2").classList.add("hidden");
-                    document.querySelector(".g2").classList.remove("hidden");
+                    document.querySelectorAll(".g_2_daily")[0].classList.add("hidden");
+                    document.querySelectorAll(".g_2_daily")[1].classList.add("hidden");
+                    document.querySelector(".g2_daily").classList.remove("hidden");
                   }
                   if (i == 1) {
-                    document.querySelector(".g_3").classList.add("hidden");
-                    document.querySelector(".g3").classList.remove("hidden");
+                    document.querySelectorAll(".g_3_daily")[0].classList.add("hidden");
+                    document.querySelectorAll(".g_3_daily")[1].classList.add("hidden");
+                    document.querySelector(".g3_daily").classList.remove("hidden");
                   }
                   if (i == 2) {
-                    document.querySelector(".g_4").classList.add("hidden");
-                    document.querySelector(".g4").classList.remove("hidden");
+                    document.querySelectorAll(".g_4_daily")[0].classList.add("hidden");
+                    document.querySelectorAll(".g_4_daily")[1].classList.add("hidden");
+                    document.querySelector(".g4_daily").classList.remove("hidden");
                   }
                   if (i == 3) {
-                    document.querySelector(".g_5").classList.add("hidden");
-                    document.querySelector(".g5").classList.remove("hidden");
+                    document.querySelectorAll(".g_5_daily")[0].classList.add("hidden");
+                    document.querySelectorAll(".g_5_daily")[1].classList.add("hidden");
+                    document.querySelector(".g5_daily").classList.remove("hidden");
                   }
                 }
               }
@@ -1557,10 +1561,10 @@ function dashboard(handle_name) {
 
     document.querySelector(".no").addEventListener("click", function (e) {
       document.querySelector(".ask_perm").classList.add("hidden");
-      //console.log("h");
+      ////console.log("h");
       e.preventDefault();
     });
-    clearInterval(pppp);
+    // clearInterval(pppp);
 
     // }
   }
@@ -1830,7 +1834,7 @@ function dashboard(handle_name) {
             minutes = "0" + minutes.toString();
           }
 
-          //console.log(full_date, date, month, hour, minutes);
+          ////console.log(full_date, date, month, hour, minutes);
 
           const li = document.createElement("li");
           li.textContent = cname;
@@ -1901,7 +1905,7 @@ function dashboard(handle_name) {
       alert("You can't Access it as a guest. Register, Its Free!");
       e.stopImmediatePropagation();
     } else {
-      console.log("hell");
+      //console.log("hell");
       var user = firebase.auth().currentUser;
       target_val = document.querySelector("#target-val").value;
       db.collection("handles")
@@ -1920,7 +1924,7 @@ function dashboard(handle_name) {
           });
         });
       startTarget(target_val);
-      //console.log(target_val);
+      ////console.log(target_val);
     }
     e.preventDefault();
   });
@@ -1948,24 +1952,24 @@ function dashboard(handle_name) {
           let act_month = act_dat.getMonth();
           let act_date = act_dat.getDate();
           if (jsdata.result[i].verdict == "OK") {
-            // console.log(date1);
-            // console.log(act_date);
-            // console.log(act_month);
-            // console.log(month1);
-            // console.log(formattedTime);
+            // //console.log(date1);
+            // //console.log(act_date);
+            // //console.log(act_month);
+            // //console.log(month1);
+            // //console.log(formattedTime);
             if (date1 === act_date && act_month === month1) {
               currrent += jsdata.result[i].problem.rating;
             }
           }
         }
-        console.log(currrent);
-        console.log(target_val);
+        //console.log(currrent);
+        //console.log(target_val);
         let wid_gr = (100 * currrent) / parseInt(target_val);
         let target_line = document.querySelector(".targetline");
         document.querySelector(
           ".targetline"
         ).style = `background-image:-webkit-linear-gradient(top, green, green ${wid_gr}%, transparent ${wid_gr}%, transparent 100%)  `;
-        console.log(wid_gr);
+        //console.log(wid_gr);
       }
 
       getTargetandrock();
@@ -2024,14 +2028,14 @@ function dashboard(handle_name) {
             if (handle_list.bookmarks != undefined) {
             }
             array_bookmarks = handle_list.bookmarks;
-            console.log(handle_list);
+            //console.log(handle_list);
             for (let i = 0; i < fav.length; i++) {
               let questionId =
                 fav[i].parentElement.parentElement.firstChild.innerHTML;
               if (array_bookmarks != undefined) {
                 for (let j = 0; j < array_bookmarks.length; j++) {
                   if (array_bookmarks[j] == questionId) {
-                    console.log("pppppppppppp");
+                    //console.log("pppppppppppp");
                     fav[i].style.color = "red";
                   }
                 }
@@ -2039,7 +2043,7 @@ function dashboard(handle_name) {
             }
 
             for (let i = 0; i < fav.length; i++) {
-              console.log("hey");
+              //console.log("hey");
 
               fav[i].addEventListener("click", (e) => {
                 e.preventDefault();
@@ -2051,7 +2055,7 @@ function dashboard(handle_name) {
                   let question =
                     fav[i].parentElement.parentElement.firstChild.innerHTML;
                   if (fav[i].style.color == "red") {
-                    console.log("hey");
+                    //console.log("hey");
                     var user = firebase.auth().currentUser;
                     db.collection("handles")
                       .where("email", "==", user.email)
@@ -2091,7 +2095,7 @@ function dashboard(handle_name) {
                   } else {
                     fav[i].style.color = "red";
 
-                    console.log(question);
+                    //console.log(question);
 
                     cl++;
                     bookmark_question(question);
@@ -2121,7 +2125,7 @@ function dashboard(handle_name) {
       }
     }
     let bc = "";
-    console.log(ac);
+    //console.log(ac);
     for (let i = 0; i < ac.length; i++) {
       bc += ac[i];
     }
@@ -2137,7 +2141,7 @@ function dashboard(handle_name) {
           const handle_list = doc.data();
           if (handle_list.email === user.email) {
             array_bookmarks = handle_list.bookmarks;
-            console.log(handle_list);
+            //console.log(handle_list);
             for (let i = 0; i < fav.length; i++) {
               let questionId = string_to_link(
                 fav[i].parentElement.parentElement.firstChild.firstChild.href
@@ -2145,14 +2149,14 @@ function dashboard(handle_name) {
 
               for (let j = 0; j < array_bookmarks.length; j++) {
                 if (array_bookmarks[j] == questionId) {
-                  console.log("pppppppppppp");
+                  //console.log("pppppppppppp");
                   fav[i].style.color = "red";
                 }
               }
             }
 
             for (let i = 0; i < fav.length; i++) {
-              console.log("hey");
+              //console.log("hey");
 
               fav[i].addEventListener("click", (e) => {
                 e.preventDefault();
@@ -2160,7 +2164,7 @@ function dashboard(handle_name) {
                   fav[i].parentElement.parentElement.firstChild.firstChild.href
                 );
                 if (fav[i].style.color == "red") {
-                  console.log("hey");
+                  //console.log("hey");
                   var user = firebase.auth().currentUser;
                   db.collection("handles")
                     .where("email", "==", user.email)
@@ -2196,7 +2200,7 @@ function dashboard(handle_name) {
                 } else {
                   fav[i].style.color = "red";
 
-                  console.log(question);
+                  //console.log(question);
 
                   cl++;
                   bookmark_question(question);
@@ -2225,10 +2229,10 @@ function dashboard(handle_name) {
             const handle_list = doc.data();
             if (handle_list.email === user.email) {
               array_bookmarks = handle_list.bookmarks;
-              console.log(handle_list);
+              //console.log(handle_list);
 
               if (array_bookmarks != undefined) {
-                console.log(array_bookmarks);
+                //console.log(array_bookmarks);
                 display_bookmarks(array_bookmarks);
               }
             }

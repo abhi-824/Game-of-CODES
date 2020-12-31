@@ -37,7 +37,7 @@ const io = socketio(server);
 
 app.use(express.static(path.join(__dirname, "publicis")));
 io.on("connection", (socket) => {
-  console.log("new ws connection");
+  //console.log("new ws connection");
 
   socket.on("disconnect", () => {
     const user = userLeave(socket.id);
@@ -351,7 +351,7 @@ io.on("connection", (socket) => {
     io.to(user.room).emit("message", formatMessage(user.username, msg));
   });
 });
-console.log(process.env.FIREBASE_API_KEY);
+//console.log(process.env.FIREBASE_API_KEY);
 server.listen(PORT, host, function () {
-  console.log("Server started.......");
+  //console.log("Server started.......");
 });

@@ -103,7 +103,7 @@ function profile(user_handle) {
 			});
 
 			chart.render();
-			console.log(dataPointsRatings);
+			//console.log(dataPointsRatings);
 		}
 
 		async function getUserSubmissions() {
@@ -136,7 +136,7 @@ function profile(user_handle) {
 				}
 			}
 
-			console.log(ok, total_attempts);
+			//console.log(ok, total_attempts);
   	  accuracy_rate = ((ok/total_attempts)*100).toFixed(2);
   	  document.querySelector("#submissions").textContent = "SUBMISSIONS: " + ok;
       document.querySelector("#acc_rate").textContent = "ACCURACY RATE: " + accuracy_rate + "%";
@@ -190,7 +190,7 @@ function profile(user_handle) {
 				],
 			});
 			chart.render();
-			console.log(dataPointsSubmissions);
+			//console.log(dataPointsSubmissions);
 		}
 
 		async function getUserSubRat() {
@@ -273,7 +273,7 @@ function profile(user_handle) {
 				],
 			});
 			chart.render();
-			console.log(dataPointsSubRat);
+			//console.log(dataPointsSubRat);
 		}
 
 		async function getUserSubRatOK() {
@@ -343,7 +343,7 @@ function profile(user_handle) {
             }]
           });
           chart.render();
-          console.log(dataPointsSubRatOK);
+          //console.log(dataPointsSubRatOK);
         }
 
 				async function getUserAvatar() {
@@ -360,7 +360,7 @@ function profile(user_handle) {
 		    	    max_rating = jsDataAvatar.result[0].maxRating;
 							user_rank = jsDataAvatar.result[0].rank;
 							max_rank = jsDataAvatar.result[0].maxRank;
-		    	    console.log("Current-Rating: "+ user_rating + ", Max-Rating: " + max_rating);
+		    	    //console.log("Current-Rating: "+ user_rating + ", Max-Rating: " + max_rating);
 		          document.querySelector("#cur_rating").textContent = "CURRENT RATING: " + user_rating;
 		    	    document.querySelector("#max_rating").textContent = "BEST RATING: " + max_rating;
 							document.querySelector("#cur_rank").textContent = "CURRENT RANK: " + user_rank;
@@ -443,7 +443,7 @@ function profile(user_handle) {
 				      }
 
 				      let tbw = document.querySelector(".weak_top_pro");
-				      console.log(weak_top);
+				      //console.log(weak_top);
 				      for (let i = 0; i < weak_top.length; i++) {
 				        let trw = document.createElement("tr");
 				        let thw = document.createElement("th");
@@ -472,5 +472,5 @@ function profile(user_handle) {
 						setTimeout(getTopics, 2000);
 	});
 
-	window.onload = console.log('hello');
+	// window.onload = /	/console.log('hello');
 }

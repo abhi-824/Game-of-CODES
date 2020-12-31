@@ -7,7 +7,7 @@ function codeblast(handle) {
 		let room = document.querySelector('#room_id').value;
 		socket.emit('checkId', room);
 		socket.on('roomIdChecked', (check) => {
-			console.log(check);
+			//console.log(check);
 			if (check) {
 				codeblast_enter(username, room);
 			} else {
@@ -20,7 +20,7 @@ function codeblast(handle) {
 		e.preventDefault();
 		socket.emit('give_id');
 		socket.on('rec_id', (id) => {
-			console.log(id);
+			//console.log(id);
 
 			codeblast_enter(handle, id);
 		});

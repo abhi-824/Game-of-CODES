@@ -3,7 +3,7 @@ function topic_wise_explained(handle_name,tag_name){
   function notifyMe(){
     
     if (!window.Notification) {
-      console.log('Browser does not support notifications.');
+      //console.log('Browser does not support notifications.');
     } else {
       // check if permission is already granted
       if (Notification.permission === 'granted') {
@@ -18,10 +18,10 @@ function topic_wise_explained(handle_name,tag_name){
           if(p === 'granted') {
             // show notification here
              } else {
-               console.log('User blocked notifications.');
+               //console.log('User blocked notifications.');
               }
             }).catch(function(err) {
-              console.error(err);
+              //console.error(err);
             });
           }
         }
@@ -89,7 +89,7 @@ function topic_wise_explained(handle_name,tag_name){
         str !== undefined &&
         problems[i].tags.includes("*special") === false
         ) {
-          // console.log(problems[i]);
+          // //console.log(problems[i]);
         return str;
       }
     }
@@ -100,8 +100,8 @@ function topic_wise_explained(handle_name,tag_name){
     const jsondata = await fetch(modified_url);
     const jsdata = await jsondata.json();
     problems = jsdata.result.problems;
-    console.log(problems);
-    console.log(problems);
+    //console.log(problems);
+    //console.log(problems);
     set1.push(question(set1, problems, 800, 1100));
     set1.push(question(set1, problems, 1100, 1300));
     set1.push(question(set1, problems, 1300, 1400));
@@ -126,12 +126,12 @@ function topic_wise_explained(handle_name,tag_name){
     set4.push(question(set4, problems, 1800, 1900));
     set4.push(question(set4, problems, 1900, 2200));
     
-    console.log(set1);
-    console.log(set2);
-    console.log(set3);
-    console.log(set4);
+    //console.log(set1);
+    //console.log(set2);
+    //console.log(set3);
+    //console.log(set4);
   }
-  console.log(tag_name);
+  //console.log(tag_name);
   let buttons = document.querySelectorAll(".generate_daily22");
   for (let i = 0; i < buttons.length; i++) {
     document.querySelector(".update_kro").classList.remove("hidden");
@@ -229,7 +229,7 @@ function topic_wise_explained(handle_name,tag_name){
     let yummy=document.querySelectorAll(".problems_hai_bhai");
     for(let i=0;i<yummy.length;i++)
     {
-      console.log(yummy[i].innerHTML);
+      //console.log(yummy[i].innerHTML);
       if(solved.has(yummy[i].innerHTML))
       {
         yummy[i].innerHTML="You Did It, You ..."

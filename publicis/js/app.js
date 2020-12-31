@@ -21,9 +21,9 @@ function grid_vis() {
 	let affa = [];
 	let dy = [1, -1, 0, 0];
 	document.querySelector('.bfs').addEventListener('click', function (e) {
-		// console.log(x_d);
+		// //console.log(x_d);
 		document.querySelectorAll(".curr_title")[1].innerHTML=``;
-		// console.log(y_d);
+		// //console.log(y_d);
 		document.querySelectorAll(".curr_content")[1].innerHTML=`<h2 style="text-align: left;">Breadth First Search(BFS)</h2><div>Breadth first search's principle is quite simple, traverse level by level until we find the destination. Now, in a grid system we can traverse by making a radial expansion having center as the source cell. So you may see such visualization which is quite self explanatory. But how do you implement that?</div><div>Algorithm:</div><div>1. Make a queue and push the source vertex in it.&nbsp;</div><div>2. while(q.length!=0)</div><div><ol><li><span>Pop the element from stack</span></li><li><span>check if any of points</span>&nbsp;(x+1,y), (x,y+1),(x-1,y) and (x,y-1) are destination vertex.</li><li>If yes: return</li><li>If no: push&nbsp;&nbsp;(x+1,y), (x,y+1),(x-1,y) and (x,y-1) into stack.</li></ol></div><div>Code:&nbsp;</div>
 		<!--HTML generated using hilite.me--><div style="background: rgb(255, 255, 255); border-color: gray; border-image: initial; border-style: solid; border-width: 0.1em 0.1em 0.1em 0.8em; border: solid gray; overflow: auto; padding: 0.2em 0.6em; width: auto;"><pre style="line-height: 125%; margin: 0px;"><span style="color: #008800; font-weight: bold;">class</span> QItem { 
 		<span style="color: #008800; font-weight: bold;">public</span><span style="color: #333333;">:</span> 
@@ -128,7 +128,7 @@ function grid_vis() {
 		}
 	}
 	</pre></div>`
-		console.log('hey');
+		//console.log('hey');
 		disable_buttons();
 		y_o = y_origin();
 		x_d = x_destination();
@@ -166,10 +166,10 @@ function grid_vis() {
 	}
 	let bffa = [];
 	function DFS() {
-		console.log('ibfibf');
+		//console.log('ibfibf');
 		c_delay = 0;
-		console.log(x_d);
-		console.log(y_d);
+		//console.log(x_d);
+		//console.log(y_d);
 		vis = [];
 		x_o--;
 		y_d--;
@@ -191,7 +191,7 @@ function grid_vis() {
 	}
 	let fl = 0;
 	function dfs_on_grid(x, y) {
-		console.log('hey');
+		//console.log('hey');
 		if (cell[x * box_no + y - 1].classList.contains('end')) {
 			update_final(x + 1, y);
 			fl = 1;
@@ -206,9 +206,9 @@ function grid_vis() {
 		if (isValid(x - 1, y)) {
 			let gg = (x - 1) * box_no + y - 1;
 			if (gg < 0) {
-				console.log('yaar');
+				//console.log('yaar');
 			} else if (cell[gg].classList.contains('obst')) {
-				console.log('You are sexy');
+				//console.log('You are sexy');
 			} else {
 				vis[x][y] = 1;
 				bffa[x][y] = [x - 1, y];
@@ -217,15 +217,15 @@ function grid_vis() {
 			}
 		}
 		if (isValid(x, y - 1)) {
-			console.log(x);
-			console.log(y);
+			//console.log(x);
+			//console.log(y);
 			let gg = x * box_no + y - 2;
 
-			console.log(gg);
+			//console.log(gg);
 			if (gg < 0) {
-				console.log('yaar');
+				//console.log('yaar');
 			} else if (cell[gg].classList.contains('obst')) {
-				console.log('You are sexy');
+				//console.log('You are sexy');
 			} else {
 				vis[x][y] = 1;
 				bffa[x][y] = [x - 1, y];
@@ -236,9 +236,9 @@ function grid_vis() {
 		if (isValid(x + 1, y)) {
 			let gg = (x + 1) * box_no + y - 1;
 			if (gg < 0) {
-				console.log('yaar');
+				//console.log('yaar');
 			} else if (cell[gg].classList.contains('obst')) {
-				console.log('You are sexy');
+				//console.log('You are sexy');
 			} else {
 				vis[x][y] = 1;
 				bffa[x][y] = [x + 1, y];
@@ -248,12 +248,12 @@ function grid_vis() {
 		}
 		if (isValid(x, y + 1)) {
 			let gg = x * box_no + y;
-			console.log(x, y);
-			console.log(gg);
+			//console.log(x, y);
+			//console.log(gg);
 			if (gg < 0) {
-				console.log('yaar');
+				//console.log('yaar');
 			} else if (cell[gg].classList.contains('obst')) {
-				console.log('You are sexy');
+				//console.log('You are sexy');
 			} else {
 				vis[x][y] = 1;
 				bffa[x][y] = [x, y + 1];
@@ -265,14 +265,14 @@ function grid_vis() {
 	function BFS() {
 		c_delay = 0;
 		x_o = x_origin();
-		console.log(x_o);
+		//console.log(x_o);
 		y_o = y_origin();
-		console.log(y_o);
+		//console.log(y_o);
 		x_d = x_destination();
 		y_d = y_destination();
 		let q = [];
 		let dist = [];
-		console.log(box_no, box_no2, 'aaja');
+		//console.log(box_no, box_no2, 'aaja');
 		for (let i = 0; i < box_no; i++) {
 			let temp = [];
 			for (let j = 0; j < box_no2; j++) {
@@ -286,8 +286,8 @@ function grid_vis() {
 		q.push([x_o, y_o]);
 		dist[x_o][y_o] = 0;
 		vis[x_o][y_o] = 1;
-		//console.log(x_d);
-		//console.log(y_d);
+		////console.log(x_d);
+		////console.log(y_d);
 		let fl = 0;
 		while (q.length !== 0) {
 			let curX = q[0][0];
@@ -320,21 +320,21 @@ function grid_vis() {
 				break;
 			}
 		}
-		//console.log(x_d);
-		//console.log(y_d);
+		////console.log(x_d);
+		////console.log(y_d);
 		if (fl) {
-			console.log(affa);
-			console.log(x_d);
-			console.log(y_d);
+			//console.log(affa);
+			//console.log(x_d);
+			//console.log(y_d);
 			let i = affa[x_d][y_d];
 			for (i; i != 0; ) {
-				//console.log(i);
+				////console.log(i);
 				reconstruct(i);
 				i = affa[i[0]][i[1]];
 			}
 		}
-		//console.log(dist);
-		//console.log(affa);
+		////console.log(dist);
+		////console.log(affa);
 		affa = [];
 		vis = [];
 	}
@@ -364,8 +364,8 @@ function grid_vis() {
 		column_height = getHeight();
 		box_no = Math.floor(column_width / 30);
 		box_no2 = Math.floor(column_height / 30);
-		// console.log(box_no);
-		// console.log(box_no2);
+		// //console.log(box_no);
+		// //console.log(box_no2);
 		box_no -= 7;
 		box_no2 -= 5;
 		for (let i = 0; i < grid.children.length; i++) {
@@ -393,7 +393,7 @@ function grid_vis() {
 			"<i class='fas fa-hand-lizard fa-2x' style='color:white'>";
 		cell[box_no2].classList.add('end');
 
-		// console.log(cell);
+		// //console.log(cell);
 		let p = box_no;
 		let isdrawing = false;
 		for (let i = 0; i < cell.length; i++) {
@@ -435,7 +435,7 @@ function grid_vis() {
 	function x_origin() {
 		for (let i = 0; i < cell.length; i++) {
 			if (cell[i].classList.contains('src')) {
-				console.log(i);
+				//console.log(i);
 				return Math.ceil((i + 1) / box_no);
 			}
 		}
@@ -471,8 +471,8 @@ function grid_vis() {
 		}
 	}
 	function update_cell(x, y) {
-		// console.log(x);
-		// console.log(y);
+		// //console.log(x);
+		// //console.log(y);
 		window.setTimeout(function () {
 			let no = x * box_no + y;
 			cell[no - 1].style.background = 'purple';
@@ -487,8 +487,8 @@ function grid_vis() {
 		window.setTimeout(function () {
 			if (i != 0) {
 				let no = i[0] * box_no + i[1];
-				console.log(typeof i);
-				console.log(no);
+				//console.log(typeof i);
+				//console.log(no);
 				cell[no - 1].style.background = 'yellow';
 			}
 		}, (c_delay += delay_time));

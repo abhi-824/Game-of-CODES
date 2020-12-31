@@ -16,8 +16,8 @@ function make_ready(id, username, room, state) {
 function allready(room) {
 	// for(let i=0;i<user_states.length;i++)
 	// {
-	// console.log(users);
-	// console.log(user_states
+	// //console.log(users);
+	// //console.log(user_states
 	let cnt=0;
 	let cnt2=0;
 	for(let i=0;i<user_states.length;i++)
@@ -34,7 +34,7 @@ function allready(room) {
 			cnt2++;
 		}
 	}
-	console.log(cnt,room);
+	//console.log(cnt,room);
 	if (cnt === cnt2) {
 		return true;
 	}

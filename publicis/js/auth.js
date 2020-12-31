@@ -4,7 +4,7 @@ let protection_mode = false;
 auth.onAuthStateChanged((user) => {
 	// var handle_name=document.getElementById('')
 	if (user) {
-		console.log('user logged in');
+		//console.log('user logged in');
 		db.collection('handles')
 			.where('email', '==', user.email)
 			.get()
@@ -13,7 +13,7 @@ auth.onAuthStateChanged((user) => {
 					const handle_list = doc.data();
 					if (handle_list.email === user.email) {
 						handle = handle_list.handle;
-						console.log(handle);
+						//console.log(handle);
 					}
 				});
 				if (!handle) {
@@ -28,7 +28,7 @@ auth.onAuthStateChanged((user) => {
 				}
 			});
 	} else {
-		console.log('user logged out');
+		//console.log('user logged out');
 		show_screen(index_screen);
 	}
 });
@@ -40,13 +40,13 @@ const forgotform = document.querySelector('#forgot');
 
 signupform.addEventListener('submit', (e) => {
 	e.preventDefault();
-	console.log('hey');
+	//console.log('hey');
 	const email = signupform['signup-email'].value;
 	const handle_name = signupform['signup-handle'].value;
 	const pwd = signupform['signup-password'].value;
 	
 
-	console.log(email, handle_name, pwd);
+	//console.log(email, handle_name, pwd);
 	async function find_user() {
 		let modified_url =
 			'https://codeforces.com/api/user.info?handles=' + handle_name;
@@ -64,7 +64,7 @@ signupform.addEventListener('submit', (e) => {
 						target: 16000,
 						bookmarks:[],
 					});
-					console.log(cred);
+					//console.log(cred);
 					signupform.reset();
 				})
 				.catch(function (error) {
@@ -118,7 +118,7 @@ loginForm.addEventListener('submit', (e) => {
 		.signInWithEmailAndPassword(email, pwd)
 		.then((cred) => {
 			document.querySelector('.loader12345').classList.add('disapper');
-			console.log(cred);
+			//console.log(cred);
 		})
 		.catch(function (error) {
 			display_error();
@@ -154,7 +154,7 @@ document.querySelector('.google-sign-in').addEventListener('click', (e) => {
 			// ...
 		})
 		.catch(function (error) {
-			console.log('hell');
+			//console.log('hell');
 			// Handle Errors here.
 			var errorCode = error.code;
 			var errorMessage = error.message;

@@ -64,7 +64,7 @@ function level_wise(handle_name) {
 		return problem_list;
 	}
 
-	console.log(handle_name);
+	//console.log(handle_name);
 	let problems = [];
 	let checked = true;
 	let checked2 = true;
@@ -249,7 +249,7 @@ function level_wise(handle_name) {
 		}
 		let jai_shree_ram = document.querySelectorAll('.problemhye');
 		let jai_hanuman = document.querySelectorAll('.problemkilist');
-		console.log(jai_hanuman);
+		//console.log(jai_hanuman);
 		for (let i = 0; i < jai_shree_ram.length; i++) {
 			let link = jai_shree_ram[i].children[1].href;
 			let contestId = '';
@@ -282,7 +282,7 @@ function level_wise(handle_name) {
 			}
 			let str = contestId + '-' + index;
 			if (solved.has(str)) {
-				console.log(jai_hanuman);
+				//console.log(jai_hanuman);
 				jai_hanuman.removeChild(jai_hanuman.children[i]);
 			}
 		}

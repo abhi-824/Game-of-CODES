@@ -24,8 +24,8 @@ function generate_grid() {
   column_height = getHeight();
   box_no = Math.floor(column_width / 30);
   box_no2 = Math.floor(column_height / 30);
-  // console.log(box_no);
-  // console.log(box_no2);
+  // //console.log(box_no);
+  // //console.log(box_no2);
   for (let i = 0; i < box_no2; i++) {
     let tr = document.createElement("tr");
     for (let j = 0; j < box_no; j++) {
@@ -46,7 +46,7 @@ function generate_grid() {
         cell[310].innerHTML="<i class='fas fa-hand-lizard fa-2x'>";
         cell[310].classList.add("end");
         
-  // console.log(cell);
+  // //console.log(cell);
   let p=0;
   for (let i = 0; i < cell.length; i++) {
     cell[i].addEventListener("mouseover", function (e) {

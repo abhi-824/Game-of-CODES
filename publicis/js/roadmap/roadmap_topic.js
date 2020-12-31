@@ -29,7 +29,7 @@ function roadmap_topic(i, user_handle) {
     const jsdata = await jsondata.json();
     let posts = jsdata.items;
 
-    console.log(jsdata);
+    //console.log(jsdata);
     let map_topics = new Map();
     let map_comments = new Map();
     for (let i = 0; i < posts.length; i++) {
@@ -262,8 +262,8 @@ function collapse_bar() {
 }
 
 function inContest(topic, link, user_handle) {
-  console.log(link);
-  console.log(topic);
+  //console.log(link);
+  //console.log(topic);
   show_screen(roadmap_contest_screen);
   async function getQuestions_Abhinandan_Sharma() {
     const jsondata = await fetch(link);
@@ -359,7 +359,7 @@ function generate_result(questions_links, solved) {
   display_score(res,questions_links);
 }
 function display_score(res,questions_links) {
-  console.log(res);
+  //console.log(res);
  startLoader();
   let links = document.querySelectorAll(".contest_question_link");
   for (let i = 0; i < links.length; i++) {

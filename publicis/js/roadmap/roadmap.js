@@ -57,14 +57,14 @@ function roadmap(handle) {
 								).style.height = '240vh';
 							}
 							j++;
-							console.log(j);
+							//console.log(j);
 						});
 					}
 					let pow_btn = document.querySelectorAll('.pow_btn');
 					for (let i = 0; i < pow_btn.length; i++) {
 						pow_btn[i].addEventListener('click', (e) => {
 							e.preventDefault();
-							console.log('hello');
+							//console.log('hello');
 							roadmap_topic(i, handle);
 						});
 					}
