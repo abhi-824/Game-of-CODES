@@ -10,7 +10,7 @@ function compare(handle) {
 			const jsondata = await fetch(modified_url);
 			const jsdata = await jsondata.json();
 			if (jsdata.status === 'FAILED' || handle2 == handle) {
-				alert('Invalid Codeforces handle');
+				display_alert('Invalid Codeforces handle');
 			} else {
 				show_screen(compare_screen2);
 				compare_final(handle, handle2);

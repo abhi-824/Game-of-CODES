@@ -2075,3 +2075,8 @@ div ::-webkit-scrollbar-thumb {
 	width:200px;
 	height:170px;
 }
+.alert_display{
+	position: absolute;
+	top:0;
+	z-index: 1000000;
+}

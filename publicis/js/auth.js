@@ -68,7 +68,7 @@ signupform.addEventListener('submit', (e) => {
 					signupform.reset();
 				})
 				.catch(function (error) {
-					alert(error);
+					display_alert(error);
 					display_error();
 				});
 		}
@@ -101,7 +101,7 @@ forgotform.addEventListener('submit', (e) => {
 		})
 		.catch(function (error) {
 			display_error();
-			alert(error);
+			display_alert(error);
 			// An error happened.
 		});
 });
@@ -122,7 +122,7 @@ loginForm.addEventListener('submit', (e) => {
 		})
 		.catch(function (error) {
 			display_error();
-			alert(error);
+			display_alert(error);
 		});
 });
 
@@ -158,7 +158,7 @@ document.querySelector('.google-sign-in').addEventListener('click', (e) => {
 			// Handle Errors here.
 			var errorCode = error.code;
 			var errorMessage = error.message;
-			alert(errorMessage);
+			display_alert(errorMessage);
 			// The email of the user's account used.
 			var email = error.email;
 			// The firebase.auth.AuthCredential type that was used.
@@ -205,4 +205,17 @@ function ask_fr_handle(user) {
 			}
 			find_use2r();
 		});
+}
+
+function display_alert(str)
+{
+	let div=document.createElement('div');
+	div.innerHTML=`<div class="alert alert-warning alert-dismissible fade show" role="alert">
+	Hey Coder, ${str}
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	  <span aria-hidden="true">&times;</span>
+	</button>
+  </div>`
+  div.className="alert_display";
+  document.body.appendChild(div);
 }

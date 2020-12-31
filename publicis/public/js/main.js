@@ -268,7 +268,7 @@ function codeblast_enter(username, room) {
         timer = duration;
       }
       if (display.textContent === "00:00") {
-        alert("Timer is Over!!!");
+        display_alert("Timer is Over!!!");
         clearInterval(x);
       }
     }, 1000);
