@@ -1,6 +1,6 @@
 var load_kkk = document.querySelector(".load-kro2");
 function dashboard(handle_name) {
-  show_screen(dashboard_screen);
+  show_screen(document.querySelector('.container1'));
   let item = document.querySelector(".item1");
   let item2 = document.querySelector(".item2");
   let item3 = document.querySelector(".item3");
