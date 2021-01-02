@@ -1522,7 +1522,7 @@ function dashboard(handle_name) {
           `${jsdataP.result.problems[i].contestId}-${jsdataP.result.problems[i].index}`
         ) == false
       ) {
-		  let rating=jsdataP.result.problems[i].rating!=undefined?jsdataP.result.problems[i].rating:jsdataP.result.problems[i].points;
+		  let rating=jsdataP.result.problems[i].rating!=undefined?jsdataP.result.problems[i].rating:"Not Revealed!";
         upsolved.push([rating,
           `${jsdataP.result.problems[i].contestId}-${jsdataP.result.problems[i].index}`]
         );
