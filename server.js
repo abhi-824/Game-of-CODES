@@ -351,6 +351,15 @@ io.on("connection", (socket) => {
     io.to(user.room).emit("message", formatMessage(user.username, msg));
   });
 });
+app.get('/screen/:id',(req,res)=>{
+  //meet screen
+  let screen_name=req.params.id;
+  console.log(screen_name)
+  if(screen_name=='1')
+  {
+      res.sendFile(__dirname + '/publicis/after_login.html');
+  }
+})
 //console.log(process.env.FIREBASE_API_KEY);
 server.listen(PORT, host, function () {
   //console.log("Server started.......");

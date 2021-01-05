@@ -1,6 +1,6 @@
 var load_kkk = document.querySelector(".load-kro2");
 function dashboard(handle_name) {
-  show_screen(dashboard_screen);
+  show_screen(document.querySelector('.container1'));
   let item = document.querySelector(".item1");
   let item2 = document.querySelector(".item2");
   let item3 = document.querySelector(".item3");
@@ -1522,7 +1522,7 @@ function dashboard(handle_name) {
           `${jsdataP.result.problems[i].contestId}-${jsdataP.result.problems[i].index}`
         ) == false
       ) {
-		  let rating=jsdataP.result.problems[i].rating!=undefined?jsdataP.result.problems[i].rating:jsdataP.result.problems[i].points;
+		  let rating=jsdataP.result.problems[i].rating!=undefined?jsdataP.result.problems[i].rating:"Not Revealed!";
         upsolved.push([rating,
           `${jsdataP.result.problems[i].contestId}-${jsdataP.result.problems[i].index}`]
         );
