@@ -1,3 +1,5 @@
+const { projectManagement } = require("firebase-admin");
+
 function level_wise(handle_name) {
 	show_screen(level_wise_screen);
 	document.querySelector('.l1').addEventListener('click', retreivel1);
@@ -34,7 +36,8 @@ function level_wise(handle_name) {
 	}
 	getSolved();
 	let problemskilist = new Set();
-	function fetch_problems(problems, low, high) {
+
+	function fetch_problems(problems, problems_stats, low, high, minSolveCount) {
 		document.querySelector('.update22').classList.remove('hidden');
 		document.querySelector('.add').classList.remove('hidden');
 		let problem_list = [];
@@ -42,7 +45,7 @@ function level_wise(handle_name) {
 		for (let i = 0; i < problems.length; i++) {
 			if (
 				problems[i].rating >= low &&
-				problems[i].rating <= high &&
+				problems[i].rating <= high && problems_stats[i].solvedCount>=minSolveCount &&
 				solved.has(`${problems[i].contestId + '-' + problems[i].index}`) ==
 					false &&
 				problemskilist.has(
@@ -53,6 +56,9 @@ function level_wise(handle_name) {
 				problemskilist.add(
 					`${problems[i].contestId + '-' + problems[i].index}`
 				);
+				
+				///print
+				console.log(problems[i].contestId, problems_stats[i].solvedCount);
 				j--;
 				if (j == -1) {
 					break;
@@ -69,6 +75,8 @@ function level_wise(handle_name) {
 	let checked = true;
 	let checked2 = true;
 	let checked3=true;
+
+	//here
 	async function retreivel1() {
 		animations();
 		document.querySelector('.problemkilist').classList.add('lev1');
@@ -87,8 +95,11 @@ function level_wise(handle_name) {
 		const jsondata = await fetch(modified_url);
 		const jsdata = await jsondata.json();
 		problems = jsdata.result.problems;
+		problems_stats = jsdata.result.problemStatistics;
 
-		problems = fetch_problems(problems, 800, 1400);
+		problems = fetch_problems(problems, problems_stats, 800, 1400, 5000);
+		///print
+		console.log(problems);
 		for (let i = 0; i < problems.length; i++) {
 			let div = document.createElement('div');
 			div.classList.add('problemhye');
@@ -117,8 +128,11 @@ function level_wise(handle_name) {
 		const jsondata = await fetch(modified_url);
 		const jsdata = await jsondata.json();
 		problems = jsdata.result.problems;
+		problems_stats = jsdata.result.problemStatistics;
 
-		problems = fetch_problems(problems, 1200, 1900);
+		problems = fetch_problems(problems, problems_stats, 1200, 1900, 3000);
+
+		console.log(problems);
 		for (let i = 0; i < problems.length; i++) {
 			let div = document.createElement('div');
 			div.classList.add('problemhye');
@@ -131,6 +145,7 @@ function level_wise(handle_name) {
 			document.querySelector('.problemkilist').appendChild(div);
 		}
 	}
+
 	async function retreivel3() {
 		animations();
 		document.querySelector('.problemkilist').classList.add('lev3');
@@ -147,8 +162,11 @@ function level_wise(handle_name) {
 		const jsondata = await fetch(modified_url);
 		const jsdata = await jsondata.json();
 		problems = jsdata.result.problems;
+		problems_stats = jsdata.result.problemStatistics;
 
-		problems = fetch_problems(problems, 1700, 3000);
+		problems = fetch_problems(problems, problems_stats, 1700, 3000, 1000);
+		console.log(problems);
+
 		for (let i = 0; i < problems.length; i++) {
 			let div = document.createElement('div');
 			div.classList.add('problemhye');
