@@ -27,17 +27,20 @@ function dashboard(handle_name) {
   let user_contest = [];
   let contests_problems = new Set();
   let upsolved = [];
+
   google.charts.load("current", { packages: ["corechart"] });
   document.querySelector(".search-img").addEventListener("click", function (e) {
     document.querySelector(".search_kro").classList.remove("hidden");
     document.querySelector(".search_kro").classList.add("bounceInRight");
   });
+
   document
     .querySelector(".skip-button")
     .addEventListener("click", function (e) {
       document.querySelector(".tr-wr").classList.add("hidden");
       e.preventDefault();
     });
+
   let website_url = "Profile.html?handle=";
   let all_topics_name = [
     "implementation",
@@ -75,6 +78,7 @@ function dashboard(handle_name) {
     "chinese remainder theorem",
     "schedules",
   ];
+
   let tag_map = new Map();
   let weak_topicss = [];
   let strong_topicss = [];
@@ -234,13 +238,16 @@ function dashboard(handle_name) {
               break;
             }
             if (arr.problems[i].rating !== undefined) {
-              if (arr.problems[i].rating <= 1200) {
+              if (arr.problems[i].rating <= 1200 && arr.problemStatistics[i].solvedCount>=5000) {
                 no--;
+                ///print 
+                console.log(arr.problems[i].contestId, arr.problemStatistics[i].solvedCount);
                 result.push(arr.problems[i]);
               }
             } else {
-              if (arr.problems[i].points <= 1200) {
+              if (arr.problems[i].points <= 1200 && arr.problemStatistics[i].solvedCount>=5000) {
                 no--;
+                console.log(arr.problems[i].contestId, arr.problemStatistics[i].solvedCount);
                 result.push(arr.problems[i]);
               }
             }
@@ -261,17 +268,19 @@ function dashboard(handle_name) {
             if (arr.problems[i].rating !== undefined) {
               if (
                 arr.problems[i].rating <= 1700 &&
-                arr.problems[i].rating > 1200
+                arr.problems[i].rating > 1200 && arr.problemStatistics[i].solvedCount>=3000
               ) {
                 no--;
+                console.log(arr.problems[i].contestId, arr.problemStatistics[i].solvedCount);
                 result.push(arr.problems[i]);
               }
             } else {
               if (
                 arr.problems[i].points <= 1700 &&
-                arr.problems[i].points >= 1200
+                arr.problems[i].points >= 1200 && arr.problemStatistics[i].solvedCount>=3000
               ) {
                 no--;
+                console.log(arr.problems[i].contestId, arr.problemStatistics[i].solvedCount);
                 result.push(arr.problems[i]);
               }
             }
@@ -292,23 +301,26 @@ function dashboard(handle_name) {
             if (arr.problems[i].rating !== undefined) {
               if (
                 arr.problems[i].rating <= 2400 &&
-                arr.problems[i].rating > 1900
+                arr.problems[i].rating > 1900 && arr.problemStatistics[i].solvedCount>=1000
               ) {
                 no--;
+                console.log(arr.problems[i].contestId, arr.problemStatistics[i].solvedCount);
                 result.push(arr.problems[i]);
               }
             } else {
               if (
                 arr.problems[i].points >= 1500 &&
-                arr.problems[i].points <= 1900
+                arr.problems[i].points <= 1900 && arr.problemStatistics[i].solvedCount>=1000
               ) {
                 no--;
+                console.log(arr.problems[i].contestId, arr.problemStatistics[i].solvedCount);
                 result.push(arr.problems[i]);
               }
             }
           }
           return result;
         }
+
         function make_list(A) {
           let str = A.contestId + "-" + A.index;
           let p = convert_to_link(str);
@@ -759,13 +771,15 @@ function dashboard(handle_name) {
                 break;
               }
               if (proper_result.problems[i].rating !== undefined) {
-                if (proper_result.problems[i].rating <= 1200) {
+                if (proper_result.problems[i].rating <= 1200 && proper_result.problemStatistics[i].solvedCount>=5000) {
                   no = no - 1;
+                  console.log("HERE", proper_result.problems[i].contestId, proper_result.problemStatistics[i].solvedCount);
                   result.push(proper_result.problems[i]);
                 }
               } else {
-                if (proper_result.problems[i].points <= 1200) {
+                if (proper_result.problems[i].points <= 1200 && proper_result.problemStatistics[i].solvedCount>=5000) {
                   no = no - 1;
+                  console.log("HERE", proper_result.problems[i].contestId, proper_result.problemStatistics[i].solvedCount);
                   result.push(proper_result.problems[i]);
                 }
               }
@@ -843,17 +857,19 @@ function dashboard(handle_name) {
               if (proper_result.problems[i].rating !== undefined) {
                 if (
                   proper_result.problems[i].rating <= 1700 &&
-                  proper_result.problems[i].rating > 1200
+                  proper_result.problems[i].rating > 1200 && proper_result.problemStatistics[i].solvedCount>=3000
                 ) {
                   no--;
+                  console.log("HERE");
                   result.push(proper_result.problems[i]);
                 }
               } else {
                 if (
                   proper_result.problems[i].points <= 1700 &&
-                  proper_result.problems[i].points >= 1200
+                  proper_result.problems[i].points >= 1200 && proper_result.problemStatistics[i].solvedCount>=3000
                 ) {
                   no--;
+                  console.log("HERE");
                   result.push(proper_result.problems[i]);
                 }
               }
@@ -930,17 +946,19 @@ function dashboard(handle_name) {
               if (proper_result.problems[i].rating !== undefined) {
                 if (
                   proper_result.problems[i].rating <= 1700 &&
-                  proper_result.problems[i].rating > 1200
+                  proper_result.problems[i].rating > 1200 && proper_result.problemStatistics[i].solvedCount>=3000
                 ) {
                   no--;
+                  console.log("HERE");
                   result.push(proper_result.problems[i]);
                 }
               } else {
                 if (
                   proper_result.problems[i].points <= 1700 &&
-                  proper_result.problems[i].points >= 1200
+                  proper_result.problems[i].points >= 1200 && proper_result.problemStatistics[i].solvedCount>=3000
                 ) {
                   no--;
+                  console.log("HERE");
                   result.push(proper_result.problems[i]);
                 }
               }
@@ -1018,17 +1036,19 @@ function dashboard(handle_name) {
               if (proper_result.problems[i].rating !== undefined) {
                 if (
                   proper_result.problems[i].rating <= 2400 &&
-                  proper_result.problems[i].rating > 1900
+                  proper_result.problems[i].rating > 1900 && proper_result.problemStatistics[i].solvedCount>=1000 
                 ) {
                   no--;
+                  console.log("hi there");
                   result.push(proper_result.problems[i]);
                 }
               } else {
                 if (
                   proper_result.problems[i].points >= 1500 &&
-                  proper_result.problems[i].points <= 1900
+                  proper_result.problems[i].points <= 1900 && proper_result.problemStatistics[i].solvedCount>=1000
                 ) {
                   no--;
+                  console.log("hi there");
                   result.push(proper_result.problems[i]);
                 }
               }
@@ -1102,17 +1122,19 @@ function dashboard(handle_name) {
               if (proper_result.problems[i].rating !== undefined) {
                 if (
                   proper_result.problems[i].rating <= 2400 &&
-                  proper_result.problems[i].rating > 1900
+                  proper_result.problems[i].rating > 1900 && proper_result.problemStatistics[i].solvedCount>=1000
                 ) {
                   no--;
+                  console.log("hey");
                   result.push(proper_result.problems[i]);
                 }
               } else {
                 if (
                   proper_result.problems[i].points >= 1500 &&
-                  proper_result.problems[i].points <= 1900
+                  proper_result.problems[i].points <= 1900 && proper_result.problemStatistics[i].solvedCount>=1000
                 ) {
                   no--;
+                  console.log("hey");
                   result.push(proper_result.problems[i]);
                 }
               }
