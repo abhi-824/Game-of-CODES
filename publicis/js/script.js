@@ -104,6 +104,7 @@ function dashboard(handle_name) {
   async function getsubmissions() {
     let modified_url = url2 + handle_name;
     const jsondata = await fetch(modified_url);
+    
     const jsdata = await jsondata.json();
     user_submissions = jsdata.result;
 

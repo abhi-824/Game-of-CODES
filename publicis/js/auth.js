@@ -24,6 +24,7 @@ auth.onAuthStateChanged((user) => {
         } else {
           // document.querySelector(".container11").classList.add("hidden");
           // document.querySelector(".container1").classList.remove("hidden");
+
           var request = new XMLHttpRequest();
           once_entered = 1;
           request.open("GET", "/screen/1", true);
@@ -173,7 +174,7 @@ loginAsGuestForm.addEventListener("submit", (e) => {
 
 function display_error() {
   document.querySelector(".loader12345").classList.add("disapper");
-  show_screen(index_screen);
+  // show_screen(index_screen);
   document.querySelector(".disp_err").classList.remove("hidden");
   document.querySelector(".disp_err").classList.add("disapper2");
 }
