@@ -104,8 +104,15 @@ function dashboard(handle_name) {
   async function getsubmissions() {
     let modified_url = url2 + handle_name;
     const jsondata = await fetch(modified_url);
-    
+
     const jsdata = await jsondata.json();
+    if(jsdata.status=="FAILED")
+    {
+      if(jsdata.comment==`handle: User with handle ${handle_name} not found`)
+      {
+        updateHandle();
+      }
+    }
     user_submissions = jsdata.result;
 
     let unsolved = new Set();
@@ -2279,5 +2286,40 @@ function dashboard(handle_name) {
       a.appendChild(th);
       div_book.appendChild(a);
     }
+  }
+ function updateHandle()
+  {
+    $('#exampleModal').modal('show');
+    $('.save_new').on('click', ()=>{
+      async function achaa(){
+
+        let new_handle=document.getElementById('new_handle').value;
+        let modified_url =
+          "https://codeforces.com/api/user.info?handles=" + new_handle;
+        const jsondata = await fetch(modified_url);
+        const jsdata = await jsondata.json();
+        if (jsdata.status === "FAILED") {
+          display_alert("check your handle again, We can't find it in codeforces database. And also, if codeforces is down!");
+        }    
+        else{
+          db.collection("handles")
+            .where("email", "==", user.email)
+            .get()
+            .then((snapshot) => {
+              snapshot.docs.forEach((doc) => {
+                const handle_list = doc.data();
+                if (handle_list.email === user.email) {
+                  db.collection("handles").doc(doc.id).update({
+                    handle: new_handle,
+                  });
+    
+                  document.querySelector(".tr-wr").classList.add("hidden");
+                }
+              });
+            });
+        }
+      }
+      achaa()
+    })
   }
 }
