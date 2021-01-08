@@ -864,7 +864,7 @@ function dashboard(handle_name) {
 
               if (proper_result.problems[i].rating !== undefined) {
                 if (
-                  proper_result.problems[i].rating <= 1700 &&
+                  proper_result.problems[i].rating <= 1300 &&
                   proper_result.problems[i].rating > 1200 && proper_result.problemStatistics[i].solvedCount>=3000
                 ) {
                   no--;
@@ -873,7 +873,7 @@ function dashboard(handle_name) {
                 }
               } else {
                 if (
-                  proper_result.problems[i].points <= 1700 &&
+                  proper_result.problems[i].points <= 1300 &&
                   proper_result.problems[i].points >= 1200 && proper_result.problemStatistics[i].solvedCount>=3000
                 ) {
                   no--;
@@ -953,8 +953,8 @@ function dashboard(handle_name) {
               }
               if (proper_result.problems[i].rating !== undefined) {
                 if (
-                  proper_result.problems[i].rating <= 1700 &&
-                  proper_result.problems[i].rating > 1200 && proper_result.problemStatistics[i].solvedCount>=3000
+                  proper_result.problems[i].rating <= 1500 &&
+                  proper_result.problems[i].rating > 1300 && proper_result.problemStatistics[i].solvedCount>=3000
                 ) {
                   no--;
                   console.log("HERE");
@@ -962,7 +962,7 @@ function dashboard(handle_name) {
                 }
               } else {
                 if (
-                  proper_result.problems[i].points <= 1700 &&
+                  proper_result.problems[i].points <= 1500 &&
                   proper_result.problems[i].points >= 1200 && proper_result.problemStatistics[i].solvedCount>=3000
                 ) {
                   no--;
@@ -1043,8 +1043,8 @@ function dashboard(handle_name) {
 
               if (proper_result.problems[i].rating !== undefined) {
                 if (
-                  proper_result.problems[i].rating <= 2400 &&
-                  proper_result.problems[i].rating > 1900 && proper_result.problemStatistics[i].solvedCount>=1000 
+                  proper_result.problems[i].rating <= 1700 &&
+                  proper_result.problems[i].rating > 1500 && proper_result.problemStatistics[i].solvedCount>=1000 
                 ) {
                   no--;
                   console.log("hi there");
@@ -1053,7 +1053,7 @@ function dashboard(handle_name) {
               } else {
                 if (
                   proper_result.problems[i].points >= 1500 &&
-                  proper_result.problems[i].points <= 1900 && proper_result.problemStatistics[i].solvedCount>=1000
+                  proper_result.problems[i].points <= 1700 && proper_result.problemStatistics[i].solvedCount>=1000
                 ) {
                   no--;
                   console.log("hi there");
@@ -1129,8 +1129,8 @@ function dashboard(handle_name) {
               }
               if (proper_result.problems[i].rating !== undefined) {
                 if (
-                  proper_result.problems[i].rating <= 2400 &&
-                  proper_result.problems[i].rating > 1900 && proper_result.problemStatistics[i].solvedCount>=1000
+                  proper_result.problems[i].rating <= 3000 &&
+                  proper_result.problems[i].rating > 1700 && proper_result.problemStatistics[i].solvedCount>=1000
                 ) {
                   no--;
                   console.log("hey");
@@ -1138,8 +1138,8 @@ function dashboard(handle_name) {
                 }
               } else {
                 if (
-                  proper_result.problems[i].points >= 1500 &&
-                  proper_result.problems[i].points <= 1900 && proper_result.problemStatistics[i].solvedCount>=1000
+                  proper_result.problems[i].points >= 1700 &&
+                  proper_result.problems[i].points <= 3000 && proper_result.problemStatistics[i].solvedCount>=1000
                 ) {
                   no--;
                   console.log("hey");
