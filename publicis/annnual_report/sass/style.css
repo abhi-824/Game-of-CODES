@@ -93,7 +93,9 @@ body {
   height: 100vh;
 }
 
-.number_of_questions, .rating_stats {
+.number_of_questions,
+.rating_stats,
+.heatmap_user {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -110,12 +112,16 @@ body {
   min-height: 100vh;
 }
 
-.number_of_questions h1, .rating_stats h1 {
+.number_of_questions h1,
+.rating_stats h1,
+.heatmap_user h1 {
   text-align: center;
   padding: 1rem 1rem;
 }
 
-.number_of_questions .card, .rating_stats .card {
+.number_of_questions .card,
+.rating_stats .card,
+.heatmap_user .card {
   padding-top: 30px;
   background-color: #fff;
   display: -webkit-box;
@@ -136,8 +142,22 @@ body {
           box-shadow: 0px 0px 8px 0px rgba(50, 50, 50, 0.5);
 }
 
-.number_of_questions .card img, .rating_stats .card img {
+.number_of_questions .card img,
+.rating_stats .card img,
+.heatmap_user .card img {
   max-width: 349px;
+}
+
+.heatmap_user {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.heatmap_user .card {
+  min-height: 400px;
+  min-width: 600px;
 }
 
 .rating_stats {
@@ -148,7 +168,9 @@ body {
   max-width: 400px !important;
 }
 
-.day_month_stats {
+.day_stats,
+.month_stats,
+.longest_streak {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -163,11 +185,15 @@ body {
   min-height: 100vh;
 }
 
-.day_month_stats img {
+.day_stats img,
+.month_stats img,
+.longest_streak img {
   max-width: 349px;
 }
 
-.day_month_stats div {
+.day_stats div,
+.month_stats div,
+.longest_streak div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -180,8 +206,32 @@ body {
           justify-content: flex-start;
 }
 
-.day_month_stats div h1, .day_month_stats div h2 {
+.day_stats div h1,
+.day_stats div h2,
+.month_stats div h1,
+.month_stats div h2,
+.longest_streak div h1,
+.longest_streak div h2 {
   text-align: left;
+  padding: 1rem 1rem;
+}
+
+.month_stats div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.month_stats div h1,
+.month_stats div h2 {
+  text-align: right;
   padding: 1rem 1rem;
 }
 

@@ -60,22 +60,24 @@ body {
 .greet {
   height: 100vh;
 }
-.number_of_questions , .rating_stats {
+.number_of_questions,
+.rating_stats,
+.heatmap_user {
   display: flex;
   // flex-direction:column;
   justify-content: center;
   align-items: center;
-  padding:1rem 3rem;
+  padding: 1rem 3rem;
   grid-gap: 2rem;
   flex-wrap: wrap;
   min-height: 100vh;
   h1 {
     text-align: center;
-    padding:1rem 1rem;
+    padding: 1rem 1rem;
   }
   .card {
     padding-top: $padding-top;
-    background-color: #fff; 
+    background-color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -87,31 +89,55 @@ body {
     }
   }
 }
-.rating_stats{
-  margin-top:3rem;
-  // padding:1rem 3rem;/
-  img{
-    max-width:400px!important;
+.heatmap_user {
+  flex-direction: column;
+  .card{
+    min-height:400px;
+    min-width: 600px;
   }
 }
-.day_month_stats{
+.rating_stats {
+  margin-top: 3rem;
+  // padding:1rem 3rem;/
+  img {
+    max-width: 400px !important;
+  }
+}
+.day_stats,
+.month_stats,
+.longest_streak {
   display: flex;
   justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    min-height:100vh;
-    img{
-      max-width: 349px;
-    }
-  div{
+  align-items: center;
+  flex-wrap: wrap;
+  min-height: 100vh;
+  img {
+    max-width: 349px;
+  }
+  div {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     // text-align: center;
     // align-items: center;
-    h1,h2 {
+    h1,
+    h2 {
       text-align: left;
-      padding:1rem 1rem;
+      padding: 1rem 1rem;
+    }
+  }
+}
+.month_stats {
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    // text-align: center;
+    // align-items: center;
+    h1,
+    h2 {
+      text-align: right;
+      padding: 1rem 1rem;
     }
   }
 }
