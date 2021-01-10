@@ -91,7 +91,28 @@ body {
   margin-top:3rem;
   // padding:1rem 3rem;/
   img{
-    max-width:600px!important;
+    max-width:400px!important;
+  }
+}
+.day_month_stats{
+  display: flex;
+  justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    min-height:100vh;
+    img{
+      max-width: 349px;
+    }
+  div{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    // text-align: center;
+    // align-items: center;
+    h1,h2 {
+      text-align: left;
+      padding:1rem 1rem;
+    }
   }
 }
 .flipper-input {
