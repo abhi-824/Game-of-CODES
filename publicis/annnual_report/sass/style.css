@@ -235,6 +235,65 @@ body {
   padding: 1rem 1rem;
 }
 
+.share_everywhere {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1rem 3rem;
+  grid-gap: 2rem;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  min-height: 100vh;
+}
+
+.share_everywhere .card {
+  padding-top: 30px;
+  background-color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 400px;
+  grid-gap: 2rem;
+  -webkit-box-shadow: 0px 0px 8px 0px rgba(50, 50, 50, 0.5);
+          box-shadow: 0px 0px 8px 0px rgba(50, 50, 50, 0.5);
+}
+
+.share_everywhere .card img {
+  max-width: 349px;
+  padding: 1rem 2rem;
+}
+
+.share_everywhere .card div {
+  padding: 1rem 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 400px;
+  grid-gap: 2rem;
+}
+
 .flipper-input {
   position: relative;
   -webkit-perspective: 500px;
@@ -399,5 +458,166 @@ body {
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg);
   }
+}
+
+.blobby-button img {
+  padding: 0rem 0.5rem !important;
+}
+
+.twitter_btn {
+  color: #1da1f2 !important;
+}
+
+.twitter_btn .blob {
+  background: #1da1f2 !important;
+}
+
+.twitter_btn:hover {
+  color: #fff !important;
+}
+
+.facebook_btn {
+  color: #1da1f2 !important;
+}
+
+.facebook_btn .blob {
+  background: #1da1f2 !important;
+}
+
+.facebook_btn:hover {
+  color: #fff !important;
+}
+
+.insta_btn {
+  color: #e145a5 !important;
+}
+
+.insta_btn .blob {
+  background: #e145a5 !important;
+}
+
+.insta_btn:hover {
+  color: #fff !important;
+}
+
+.linkedin_btn {
+  color: #0a66c2 !important;
+}
+
+.linkedin_btn .blob {
+  background: #0a66c2 !important;
+}
+
+.linkedin_btn:hover {
+  color: #fff !important;
+}
+
+.blobby-button {
+  overflow: hidden;
+  outline: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #9a02ff;
+  background-color: transparent;
+  text-align: center;
+  position: relative;
+  border: solid;
+  padding: 1em 2em;
+  border-radius: 4px;
+  -webkit-transition: color calc(0.5s * .75);
+  transition: color calc(0.5s * .75);
+  font-weight: 900;
+  cursor: pointer;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  letter-spacing: 2px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  z-index: 1;
+  font-size: 16px;
+}
+
+.blobby-button .blobs {
+  position: relative;
+  display: block;
+  height: 100%;
+  -webkit-filter: url("#goo");
+          filter: url("#goo");
+}
+
+.blobby-button .blob:nth-child(1) {
+  left: 0;
+  -webkit-transition-delay: 0;
+          transition-delay: 0;
+}
+
+.blobby-button .blob:nth-child(2) {
+  left: calc(120% / 4);
+  -webkit-transition-delay: calc((0.5s * .12) * 1);
+          transition-delay: calc((0.5s * .12) * 1);
+}
+
+.blobby-button .blob:nth-child(3) {
+  left: calc(2 * (120% / 4));
+  -webkit-transition-delay: calc((0.5s * .12) * 2);
+          transition-delay: calc((0.5s * .12) * 2);
+}
+
+.blobby-button:hover .blob {
+  -webkit-transform: translateZ(0) scale(1.7);
+          transform: translateZ(0) scale(1.7);
+}
+
+.blobby-button .blob:nth-child(4) {
+  left: calc(3 * (120% / 4));
+  -webkit-transition-delay: calc((0.5s * .12) * 3);
+          transition-delay: calc((0.5s * .12) * 3);
+}
+
+.blobby-button:before {
+  width: 100%;
+  left: 0;
+  height: 100%;
+  position: absolute;
+  border-radius: 4px;
+  top: 0;
+  content: "";
+  z-index: 1;
+}
+
+.blobby-button .blob {
+  position: absolute;
+  top: 3px;
+  width: calc(100% / 4);
+  height: 100%;
+  background: #9a02ff;
+  border-radius: 100%;
+  -webkit-transform: translate3d(0, 150%, 0) scale(1.7);
+          transform: translate3d(0, 150%, 0) scale(1.7);
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
+}
+
+.blobby-button:hover {
+  color: #fff;
+}
+
+.blobby-button > svg {
+  display: none;
+}
+
+.blobby-button .inner {
+  z-index: -1;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
 }
 /*# sourceMappingURL=style.css.map */
