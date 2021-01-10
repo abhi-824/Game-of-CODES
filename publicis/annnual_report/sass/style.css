@@ -11,7 +11,8 @@ html {
 }
 
 body {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
+  background-color: #fff9f3;
 }
 
 .hidden {
@@ -59,11 +60,92 @@ body {
 }
 
 .header input {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
 }
 
 .header button {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
+}
+
+.greet {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  grid-gap: 1rem;
+}
+
+.greet h1 {
+  line-height: 2.7rem;
+}
+
+.greet {
+  height: 100vh;
+}
+
+.number_of_questions, .rating_stats {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1rem 3rem;
+  grid-gap: 2rem;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  min-height: 100vh;
+}
+
+.number_of_questions h1, .rating_stats h1 {
+  text-align: center;
+  padding: 1rem 1rem;
+}
+
+.number_of_questions .card, .rating_stats .card {
+  padding-top: 30px;
+  background-color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 400px;
+  -webkit-box-shadow: 0px 0px 8px 0px rgba(50, 50, 50, 0.5);
+          box-shadow: 0px 0px 8px 0px rgba(50, 50, 50, 0.5);
+}
+
+.number_of_questions .card img, .rating_stats .card img {
+  max-width: 349px;
+}
+
+.rating_stats {
+  margin-top: 3rem;
+}
+
+.rating_stats img {
+  max-width: 600px !important;
 }
 
 .flipper-input {
@@ -131,8 +213,8 @@ body {
   font-size: 15px;
   font-weight: 500;
   color: #3363ff;
-  -webkit-transition: .1s ease;
-  transition: .1s ease;
+  -webkit-transition: 0.1s ease;
+  transition: 0.1s ease;
   -webkit-transform-origin: bottom center;
           transform-origin: bottom center;
   cursor: text;
@@ -175,8 +257,8 @@ body {
   text-transform: uppercase;
   padding: 8px 16px;
   border-radius: 3px;
-  -webkit-transition: all .2s ease-out;
-  transition: all .2s ease-out;
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
   font-weight: 900;
   cursor: pointer;
   letter-spacing: 2px;

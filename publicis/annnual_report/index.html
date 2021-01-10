@@ -1,35 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>GOC | Annual Report</title>
-		<link rel="stylesheet" href="sass/style.css" />
-        <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-  />
-        
-	</head>
-	<body>
-        <form class="header" id="handle_submit">
-            <div class="animated go_up animate__animated ">
-                <h3>Hey Geek, Wanna See how you did in</h3>
-                <h1>2020</h1>
-                <h3>Input your handle and see the bends!</h3>
-                
-            </div>
-            <div class="animated go_down animate__animated ">
-                <div class="flipper-input">
-                    <input class="flipper-input__input" id="handle" placeholder="Codeforces handle">
-                    <label class="flipper-input__label" for="handle">Codeforces handle</label>
-                </div>
-                <button class="angled-gradient-button" id="submit">Let's See</button>
-            </div>
-        </form>
-        <div class="container">
-            <h1>Hello</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GOC | Annual Report</title>
+    <link rel="stylesheet" href="sass/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="../resources/logo/logo_dark.png" />
+  </head>
+  <body>
+    <form class="header" id="handle_submit">
+      <div class="animated go_up animate__animated">
+        <h3>Hey Geek, Wanna See how you did in</h3>
+        <h1>2020</h1>
+        <h3>Input your handle and see the bends!</h3>
+      </div>
+      <div class="animated go_down animate__animated">
+        <div class="flipper-input">
+          <input
+            class="flipper-input__input"
+            id="handle"
+            placeholder="Codeforces handle"
+          />
+          <label class="flipper-input__label" for="handle"
+            >Codeforces handle</label
+          >
         </div>
-        <script src="app.js"></script>
-    </body>
+        <button class="angled-gradient-button" id="submit">Let's See</button>
+      </div>
+    </form>
+    <div class="container after_enter hidden">
+      <div class="greet">
+        <h1 class="greeting"></h1>  
+      </div>
+      <div class="statistics">
+        <div class="number_of_questions">
+          <h1 class="greet_number"></h1>
+          <div class="card card_avg" data-aos="fade-right">
+            <h1 class="avg_per_day">10 questions</h1>
+            <p>per day</p>
+            <img src="images/one_task.webp" alt="">
+          </div>
+          <div class="card card_avg" data-aos="fade-up">
+            <h1 class="avg_per_week">10 questions</h1>
+            <p>per week</p>
+            <img src="images/week_task.webp" alt="">
+
+          </div>
+          
+          <div class="card card_avg" data-aos="fade-left"> 
+            <h1 class="avg_per_month">10 questions</h1>
+            <p>per month</p>
+            <img src="images/month_task.webp" alt="">
+
+          </div>
+        </div>
+        <div class="rating_stats">
+          <div>
+            <h1>Hmm.. You had <span class="probability_of_positive">50%</span> chances of having <br> a positive rating at the end of contest</h1>
+          </div>
+          <div class="card card_avg" data-aos="fade-right">
+            <h1 class="avg_per_day">| +100 highest increase | -100 maximum decrease | <br>| Peak: 2000 | Low: 1000 |</h1>
+            <img src="images/one_task.webp" alt="">
+          </div>
+          
+
+        </div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 1000,
+      });
+    </script>
+  </body>
 </html>

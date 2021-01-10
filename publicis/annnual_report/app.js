@@ -5,7 +5,11 @@ document.querySelector('#handle_submit').addEventListener("submit",(e)=>{
     document.querySelector('.go_down').addEventListener('animationend',()=>{
         
         document.querySelector('.header').style.height ='0vh';
+        document.querySelector('.after_enter').classList.remove('hidden')
     })
     let handle=document.querySelector('#handle').value;
+    let name="Abhinandan"
+    document.querySelector('.greeting').innerHTML=`Hey ${name}! <br> Pleased to see you fresh and ready for this Year!`
+    document.querySelector('.greet_number').innerHTML=`You completed 385 questions in 2020. That’s an average of…`
 
 })
