@@ -117,7 +117,7 @@ io.on("connection", (socket) => {
             jsdata4.result.problems[i].rating > 900 &&
             jsdata4.result.problems[i].rating <= 1200 &&
             solved.has(str) === false &&
-            jsdata4.result.problemStatistics[i].solvedCount>=900
+            jsdata4.result.problemStatistics[i].solvedCount >= 900
           ) {
             //to be continued
 
@@ -134,7 +134,7 @@ io.on("connection", (socket) => {
             jsdata4.result.problems[i].rating > 1200 &&
             jsdata4.result.problems[i].rating <= 1500 &&
             solved.has(str) === false &&
-            jsdata4.result.problemStatistics[i].solvedCount>=900
+            jsdata4.result.problemStatistics[i].solvedCount >= 900
           ) {
             //to be continued
             problems.push(str);
@@ -151,7 +151,7 @@ io.on("connection", (socket) => {
             jsdata4.result.problems[i].rating > 1500 &&
             jsdata4.result.problems[i].rating <= 1700 &&
             solved.has(str) === false &&
-            jsdata4.result.problemStatistics[i].solvedCount>=200
+            jsdata4.result.problemStatistics[i].solvedCount >= 200
           ) {
             //to be continued
             problems.push(str);
@@ -233,17 +233,17 @@ io.on("connection", (socket) => {
       for (let j = 0; j < users.length; j++) {
         let handle_name1 = users[j].username;
         // async function getSetGo() {
-        let modified_url = `https://codeforces.com/api/user.status?handle=${handle_name1}`; 
+        let modified_url = `https://codeforces.com/api/user.status?handle=${handle_name1}`;
         let arr = [];
-        for(let i=0;i<problems.length;i++)
-        [
-          arr.push({
-            result: false,
+        for (let i = 0; i < problems.length; i++)
+          [
+            arr.push({
+              result: false,
               penalty: 0,
               time: "Not solved",
               qno: i,
-          })
-        ]
+            }),
+          ];
         const jsondata = await fetch(modified_url);
         const jsdata = await jsondata.json();
         for (let i = 0; i < jsdata.result.length; i++) {
@@ -253,7 +253,6 @@ io.on("connection", (socket) => {
             jsdata.result[i].problem.index;
 
           if (problems.includes(str)) {
-
             let unix_timestamp = jsdata.result[i].creationTimeSeconds;
             var date = new Date(unix_timestamp * 1000);
             // Hours part from the timestamp
@@ -268,7 +267,7 @@ io.on("connection", (socket) => {
             var act_date = new Date();
             let act_month = act_date.getMonth();
             let act_dat = act_date.getDate();
-            
+
             let res = {
               result: false,
               penalty: 0,
@@ -285,7 +284,6 @@ io.on("connection", (socket) => {
               res.time = formattedTime;
               res.result = true;
             } else {
-              
               if (act_dat == date1 && act_month == month1) {
                 res.penalty++;
               }
@@ -351,15 +349,14 @@ io.on("connection", (socket) => {
     io.to(user.room).emit("message", formatMessage(user.username, msg));
   });
 });
-app.get('/screen/:id',(req,res)=>{
+app.get("/screen/:id", (req, res) => {
   //meet screen
-  let screen_name=req.params.id;
-  console.log(screen_name)
-  if(screen_name=='1')
-  {
-      res.sendFile(__dirname + '/publicis/after_login.html');
+  let screen_name = req.params.id;
+  console.log(screen_name);
+  if (screen_name == "1") {
+    res.sendFile(__dirname + "/publicis/after_login.html");
   }
-})
+});
 //console.log(process.env.FIREBASE_API_KEY);
 server.listen(PORT, host, function () {
   //console.log("Server started.......");

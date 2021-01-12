@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GOC | Annual Report</title>
+
+    <meta name="twitter:site" content="@gameofcodes" />
+    <meta name="twitter:creator" content="@gameofcodes" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image:alt" content="Try Todoist" />
+    <meta property="og:site_name" content="GameOfCodes" />
+    <meta name="robots" content="index,follow" />
+    <meta name="googlebot" content="index,follow" />
+    <meta
+      name="description"
+      content="GameOfCodes tracked my progress and helped me improve my codeforces ratings over the past year!"
+    />
+    <meta property="og:title" content="My Codeforces Year in Review 2020" />
+    <meta
+      property="og:description"
+      content="GameOfCodes tracked my progress and helped me improve my codeforces ratings over the past year!"
+    />
+    <meta
+      property="og:image"
+      content="https://social.todoist.net/yir2020/def/ls?tc=385&amp;mpd=Fridays&amp;mptd=10+AM&amp;l=en"
+    />
+    <meta property="og:image:height" content="628" />
+    <meta property="og:image:height" content="628" />
+
+    <link rel="stylesheet" href="sass/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+      crossorigin="anonymous"
+    />
+
+    <link rel="shortcut icon" href="../resources/logo/logo_dark.png" />
+  </head>
+
+  <body>
+    <div class="container after_enter">
+      <div class="greet">
+        <h1 class="greeting"></h1>
+      </div>
+      <div class="statistics">
+        <div class="number_of_questions">
+          <h1 class="greet_number"></h1>
+          <div class="card card_avg" data-aos="fade-right">
+            <h1 class="avg_per_day"></h1>
+            <p>per day</p>
+            <img src="images/one_task.webp" alt="" />
+          </div>
+          <div class="card card_avg" data-aos="fade-up">
+            <h1 class="avg_per_week"></h1>
+            <p>per week</p>
+            <img src="images/week_task.webp" alt="" />
+          </div>
+
+          <div class="card card_avg" data-aos="fade-left">
+            <h1 class="avg_per_month"></h1>
+            <p>per month</p>
+            <img src="images/month_task.webp" alt="" />
+          </div>
+        </div>
+        <div class="rating_stats">
+          <div>
+            <h1>
+              Hmm.. You had
+              <span class="probability_of_positive">50%</span> chances of having
+              <br />
+              a positive rating at the end of contest
+            </h1>
+          </div>
+          <div class="card card_avg" data-aos="fade-right">
+            <h1 class="avg_per_day">
+              | +100 highest increase | -100 maximum decrease | <br />| Peak:
+              2000 | Low: 1000 |
+            </h1>
+            <img src="images/one_task.webp" alt="" />
+          </div>
+        </div>
+        <div class="day_stats">
+          <div>
+            <h1>
+              You were at your max rage on <br />
+              <span class="date">10 January,2020</span>
+            </h1>
+            <h2>
+              You completed
+              <span class="questions_on_best_day">10000</span> questions that
+              day alone!
+            </h2>
+          </div>
+          <img src="images/undraw_schedule_meeting_52nu.svg" alt="" />
+        </div>
+        <div class="month_stats">
+          <img src="images/undraw_Astronaut_re_8c33.svg" alt="" />
+          <div>
+            <h1>
+              You did really well in the month of <br />
+              <span class="month">June</span>
+            </h1>
+            <h2>
+              You completed
+              <span class="questions_on_best_day">10000</span> questions and
+              <br />
+              your net Rating Increase was
+              <span class="increase_month">100</span>
+            </h2>
+          </div>
+        </div>
+        <div class="longest_streak">
+          <div>
+            <h1>
+              You longest daily streak was
+              <span class="days_streak"></span> <br />
+            </h1>
+            <h2>
+              You completed
+              <span class="questions_on_best_day">10000</span> questions in this
+              streak
+            </h2>
+          </div>
+          <img src="images/undraw_education_f8ru.svg" alt="" />
+        </div>
+
+        <div class="month_stats">
+          <img src="images/undraw_injured_9757.svg" alt="" />
+          <div>
+            <h1>
+              Your worst month was<br />
+              <span class="worst_month">June</span>
+            </h1>
+            <h2>
+              You were inactive for almost
+              <span class="questions_on_best_day">10000</span> days.
+              <br />
+            </h2>
+          </div>
+        </div>
+        <div class="heatmap_user">
+          <h1>You did questions on 43 days of the year…</h1>
+          <p>Your efforts have added up…</p>
+          <div class="card">
+            <h1>Heatmap</h1>
+            <div class="heatmap"></div>
+          </div>
+        </div>
+      </div>
+      <div class="share_everywhere">
+        <h1></h1>
+        <div class="card card_share">
+          <img src="images/undraw_Share_re_9kfx.svg" alt="" />
+          <div class="content">
+            <h1>Share to World</h1>
+            <a class="blobby-button facebook_btn">
+              <img src="images/faceboook.png" alt="" />Share on FaceBook
+              <span class="inner">
+                <span class="blobs">
+                  <span class="blob"></span>
+                  <span class="blob"></span>
+                  <span class="blob"></span>
+
+                  <span class="blob"></span>
+                </span>
+              </span>
+              <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                <defs>
+                  <filter id="goo">
+                    <feGaussianBlur
+                      in="SourceGraphic"
+                      result="blur"
+                      stdDeviation="10"
+                    ></feGaussianBlur>
+                    <feColorMatrix
+                      in="blur"
+                      mode="matrix"
+                      values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7"
+                      result="goo"
+                    ></feColorMatrix>
+                    <feBlend
+                      in2="goo"
+                      in="SourceGraphic"
+                      result="mix"
+                    ></feBlend>
+                  </filter>
+                </defs>
+              </svg>
+            </a>
+            <a class="blobby-button linkedin_btn">
+              <img src="images/linkedin.png" alt="" />Share on LinkedIn
+              <span class="inner">
+                <span class="blobs">
+                  <span class="blob"></span>
+                  <span class="blob"></span>
+                  <span class="blob"></span>
+
+                  <span class="blob"></span>
+                </span>
+              </span>
+              <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                <defs>
+                  <filter id="goo">
+                    <feGaussianBlur
+                      in="SourceGraphic"
+                      result="blur"
+                      stdDeviation="10"
+                    ></feGaussianBlur>
+                    <feColorMatrix
+                      in="blur"
+                      mode="matrix"
+                      values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7"
+                      result="goo"
+                    ></feColorMatrix>
+                    <feBlend
+                      in2="goo"
+                      in="SourceGraphic"
+                      result="mix"
+                    ></feBlend>
+                  </filter>
+                </defs>
+              </svg>
+            </a>
+            <a class="blobby-button twitter_btn">
+              <img src="images/twitter.png" alt="" />Share on Twitter
+              <span class="inner">
+                <span class="blobs">
+                  <span class="blob"></span>
+                  <span class="blob"></span>
+                  <span class="blob"></span>
+
+                  <span class="blob"></span>
+                </span>
+              </span>
+              <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                <defs>
+                  <filter id="goo">
+                    <feGaussianBlur
+                      in="SourceGraphic"
+                      result="blur"
+                      stdDeviation="10"
+                    ></feGaussianBlur>
+                    <feColorMatrix
+                      in="blur"
+                      mode="matrix"
+                      values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7"
+                      result="goo"
+                    ></feColorMatrix>
+                    <feBlend
+                      in2="goo"
+                      in="SourceGraphic"
+                      result="mix"
+                    ></feBlend>
+                  </filter>
+                </defs>
+              </svg>
+            </a>
+            <a class="blobby-button insta_btn">
+              <img src="images/insta.png" alt="" />Share on Instagram
+              <span class="inner">
+                <span class="blobs">
+                  <span class="blob"></span>
+                  <span class="blob"></span>
+                  <span class="blob"></span>
+
+                  <span class="blob"></span>
+                </span>
+              </span>
+              <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                <defs>
+                  <filter id="goo">
+                    <feGaussianBlur
+                      in="SourceGraphic"
+                      result="blur"
+                      stdDeviation="10"
+                    ></feGaussianBlur>
+                    <feColorMatrix
+                      in="blur"
+                      mode="matrix"
+                      values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7"
+                      result="goo"
+                    ></feColorMatrix>
+                    <feBlend
+                      in2="goo"
+                      in="SourceGraphic"
+                      result="mix"
+                    ></feBlend>
+                  </filter>
+                </defs>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <h4>
+        Wanna make 2021 even more special? See:
+        <h1>
+          <a href="https://gameofcodes.herokuapp.com" target="_blank">
+            Game Of CODES
+          </a>
+        </h1>
+      </h4>
+      <p>ਅਸੀਂ ਕੋਸ਼ਿਸ਼ ਕੀਤੇ ਬਗੈਰ ਨਹੀਂ ਜਾਂਦੇ</p>
+    </footer>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    ></script>
+    <script src="report.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 1000,
+      });
+    </script>
+  </body>
+</html>

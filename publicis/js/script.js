@@ -2312,7 +2312,6 @@ function dashboard(handle_name) {
                   db.collection("handles").doc(doc.id).update({
                     handle: new_handle,
                   });
-    
                   document.querySelector(".tr-wr").classList.add("hidden");
                 }
               });
