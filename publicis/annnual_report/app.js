@@ -13,7 +13,7 @@ document.querySelector('#handle_submit').addEventListener("submit",(e)=>{
 
     document.querySelector('.go_down').addEventListener('animationend',()=>{
         
-        window.location.href =`file:///D:/abhinandan/GameOfCodes/Game-of-CODES/publicis/annnual_report/report.html?handle=${handle}`  
+        window.location.href =window.location.href.split("index.html")[0]+`report.html?handle=${handle}`  
     })
  
     
