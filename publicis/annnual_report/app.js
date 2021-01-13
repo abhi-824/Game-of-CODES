@@ -10,12 +10,20 @@ document.querySelector('#handle_submit').addEventListener("submit",(e)=>{
     document.querySelector('.go_up').classList.add('animate__backOutUp')
     document.querySelector('.go_down').classList.add('animate__backOutDown') 
     handle=document.querySelector('#handle').value;
+    setTimeout(()=>{
+        window.location.href =window.location.href.split("index.html")[0]+`report.html?handle=${handle}`      
+        document.querySelector('body').style.overflowY ="scroll";
+        // document.querySelector('.go_down').addEventListener('animationend',()=>{
+        //     console.log('I AM HERE');
+        //     window.location.href =window.location.href.split("index.html")[0]+`report.html?handle=${handle}`      
+        // })
+    },2000)
+    setTimeout(()=>{
+        document.querySelector('.load').style.display = "none";
+    },2100)
+    document.querySelector('.load').style.display = "flex";
+    document.querySelector('body').style.overflowY ="hidden";
 
-    document.querySelector('.go_down').addEventListener('animationend',()=>{
-        
-        window.location.href =window.location.href.split("index.html")[0]+`report.html?handle=${handle}`  
-    })
- 
-    
+
 
 })
