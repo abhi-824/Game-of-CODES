@@ -107,12 +107,14 @@ function getSetGo() {
       let quesMonth = (quesCount / 12).toFixed(2);
       let cmaxDate = 0;
       let bigDate;
+      let day_count=0;
       for (const elem of map_date) {
         map_month.set(
           parseInt(elem[0].split("/")[1]),
           map_month.get(parseInt(elem[0].split("/")[1])) + elem[1]
         );
-
+        if(elem[1])
+        day_count++;
         if (cmaxDate < elem[1]) {
           cmaxDate = elem[1];
           bigDate = elem;
@@ -165,6 +167,7 @@ function getSetGo() {
       $(".questions_on_month").text(map_month.get(best_month));
       $(".inactive_days").text(map_month.get(worst_month));
       $(".questions_on_streak").text(final_ques_streak);
+      $(".day_count").text(day_count);
       console.log(newUrl);
       console.log(handle);
       console.log(quesCount);

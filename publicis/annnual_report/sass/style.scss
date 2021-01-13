@@ -7,6 +7,7 @@ $padding-top: 30px;
 }
 html {
   scroll-behavior: smooth;
+  width: fit-content;
 }
 
 @mixin flexCenter {
@@ -93,7 +94,7 @@ body {
   flex-direction: column;
   .card{
     min-height:400px;
-    min-width: 600px;
+    width: 600px;
   }
 }
 .rating_stats {
@@ -356,6 +357,8 @@ body {
   overflow: hidden;
   outline: none;
   display: flex;
+  height: 76px;
+  width: 285px;
   color: #9a02ff;
   background-color: transparent;
   text-align: center;
@@ -456,6 +459,47 @@ footer{
     transition:1s ;
     &:hover{
       letter-spacing: 0.5rem;
+    }
+  }
+}
+
+//loader
+.load{
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: white;
+  display: none;
+}
+
+//Media Queries
+@media (max-width:900px){
+  html{
+    overflow-x: hidden;
+    br{
+      display: none;
+    }
+  }
+  h1,
+  h2{
+    text-align: center !important;
+  }
+  .month_stats{
+    flex-direction: column-reverse;
+  }
+  .share_everywhere{
+    .card{
+      width: 400px !important;
+    }
+  }
+  .card_share{
+    flex-direction: column;
+
+  }
+  .heatmap_user {
+    margin: 0 -20px;
+    .card{
+      width: 400px !important;
     }
   }
 }

@@ -8,6 +8,9 @@
 
 html {
   scroll-behavior: smooth;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 body {
@@ -157,7 +160,7 @@ body {
 
 .heatmap_user .card {
   min-height: 400px;
-  min-width: 600px;
+  width: 600px;
 }
 
 .rating_stats {
@@ -519,6 +522,8 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  height: 76px;
+  width: 285px;
   color: #9a02ff;
   background-color: transparent;
   text-align: center;
@@ -649,5 +654,51 @@ footer a {
 
 footer a:hover {
   letter-spacing: 0.5rem;
+}
+
+.load {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
+  background-color: white;
+  display: none;
+}
+
+@media (max-width: 900px) {
+  html {
+    overflow-x: hidden;
+  }
+  html br {
+    display: none;
+  }
+  h1,
+  h2 {
+    text-align: center !important;
+  }
+  .month_stats {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+  }
+  .share_everywhere .card {
+    width: 400px !important;
+  }
+  .card_share {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .heatmap_user {
+    margin: 0 -20px;
+  }
+  .heatmap_user .card {
+    width: 400px !important;
+  }
 }
 /*# sourceMappingURL=style.css.map */
