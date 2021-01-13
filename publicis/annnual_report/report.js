@@ -5,6 +5,7 @@ document.querySelector(
   ".greeting"
 ).innerHTML = `Hey ${handle}! <br> Pleased to see you fresh and ready for this Year!`;
 var quesCount = 0;
+let array_names=["January", "February", "March", "April", "May", "June", "July","August","September", "October", "November","December"]
 //document.querySelector('.greet_number').innerHTML=`You completed 385 questions in 2020. That’s an average of…`
 getSetGo();
 console.log(handle);
@@ -151,8 +152,8 @@ function getSetGo() {
       console.log(bigDate);
       document.querySelector(
         ".days_streak"
-      ).innerHTML = `${max_streak} days from ${end} to ${start}`;
-      document.querySelector(".date").innerHTML = `${bigDate[0]}`;
+      ).innerHTML = `${max_streak} days from ${end.split("/")[0]} ${array_names[parseInt(end.split("/")[1])]} to  ${start.split("/")[0]} ${array_names[parseInt(start.split("/")[1])]} `;
+      document.querySelector(".date").innerHTML = `${bigDate[0].split("/")[0]} ${array_names[parseInt(bigDate[0].split("/")[1])]}`;
       document.querySelector(
         ".questions_on_best_day"
       ).innerHTML = `${bigDate[1]}`;
@@ -162,8 +163,8 @@ function getSetGo() {
       $(".avg_per_day").text(`${quesDay} questions`);
       $(".avg_per_week").text(`${quesWeek} questions`);
       $(".avg_per_month").text(`${quesMonth} questions`);
-      $(".month").text(best_month);
-      $(".worst_month").text(worst_month);
+      $(".month").text(array_names[best_month]);
+      $(".worst_month").text(array_names[worst_month]);
       $(".questions_on_month").text(map_month.get(best_month));
       $(".inactive_days").text(map_month.get(worst_month));
       $(".questions_on_streak").text(final_ques_streak);
