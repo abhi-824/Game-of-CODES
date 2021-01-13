@@ -33,6 +33,8 @@ function getSetGo() {
       let first_date;
       let curr_date;
       let curr_month;
+      let ques_on_streak = 0;
+      let final_ques_streak = 0;
       let ppp = 0;
 
       for (let i = 0; i < jsDataQues.result.length; i++) {
@@ -42,12 +44,13 @@ function getSetGo() {
         ) {
           let unix_timestamp = jsDataQues.result[i].creationTimeSeconds;
           var date = new Date(unix_timestamp * 1000);
-          
+
           if (jsDataQues.result[i].verdict == "OK") {
-              first_date=date;
+            first_date = date;
             quesCount++;
             let cnt = map_date.get(date.getDate() + "/" + date.getMonth());
             map_date.set(date.getDate() + "/" + date.getMonth(), cnt + 1);
+            ques_on_streak++;
           }
 
           if (!ppp) {
@@ -55,17 +58,16 @@ function getSetGo() {
             curr_month = date.getMonth();
             ppp = 1;
             continue;
-        }
+          }
           // Hours part from the timestamp
           console.log(curr_date, date.getDate());
           if (
             curr_date == date.getDate() + 1 &&
             curr_month == date.getMonth()
           ) {
-            if (curr_streak == 0)
-            {
-                tmp_start = date.getDate() + "/" + date.getMonth();
-                console.log(tmp_start)
+            if (curr_streak == 0) {
+              tmp_start = date.getDate() + "/" + date.getMonth();
+              console.log(tmp_start);
             }
             curr_streak++;
           } else if (curr_month == date.getMonth() + 1) {
@@ -80,9 +82,20 @@ function getSetGo() {
                 max_streak = curr_streak;
                 start = tmp_start;
                 end = curr_date + "/" + curr_month;
+                final_ques_streak = ques_on_streak;
+                ques_on_streak = 0;
               }
               curr_streak = 0;
             }
+          } else if(curr_date!=date.getDate()) {
+            if (max_streak <= curr_streak) {
+              max_streak = curr_streak;
+              start = tmp_start;
+              end = curr_date + "/" + curr_month;
+              final_ques_streak = ques_on_streak;
+            }
+            ques_on_streak = 0;
+            curr_streak = 0;
           }
           curr_date = date.getDate();
           curr_month = date.getMonth();
@@ -95,7 +108,6 @@ function getSetGo() {
       let cmaxDate = 0;
       let bigDate;
       for (const elem of map_date) {
-        console.log(elem, elem[0].split("/")[1]);
         map_month.set(
           parseInt(elem[0].split("/")[1]),
           map_month.get(parseInt(elem[0].split("/")[1])) + elem[1]
@@ -106,35 +118,31 @@ function getSetGo() {
           bigDate = elem;
         }
       }
-      let first_month=first_date.getMonth();
-      let max_month=0;
-      let min_month=10000;
+      let first_month = first_date.getMonth();
+      let max_month = 0;
+      let min_month = 10000;
       let best_month;
       let worst_month;
-      console.log(map_month)
-      console.log(first_month)
-      for(const elem of map_month) {
-          if(elem[0]>=first_month)
-          {
-              if(max_month<elem[1])
-              {
-                  max_month=elem[1];
-                  best_month=elem[0];
-              }
+      console.log(map_month);
+      console.log(first_month);
+      for (const elem of map_month) {
+        if (elem[0] >= first_month) {
+          if (max_month < elem[1]) {
+            max_month = elem[1];
+            best_month = elem[0];
           }
-      }
-      for(const elem of map_month) {
-        if(elem[0]>=first_month)
-        {
-            console.log(min_month,elem)
-            if(min_month>elem[1])
-            {
-                min_month=elem[1];
-                worst_month=elem[0];
-            }
         }
-    }
-      console.log(best_month,worst_month);
+      }
+      for (const elem of map_month) {
+        if (elem[0] >= first_month) {
+          console.log(min_month, elem);
+          if (min_month > elem[1]) {
+            min_month = elem[1];
+            worst_month = elem[0];
+          }
+        }
+      }
+      console.log(best_month, worst_month);
 
       let array_date;
 
@@ -152,9 +160,11 @@ function getSetGo() {
       $(".avg_per_day").text(`${quesDay} questions`);
       $(".avg_per_week").text(`${quesWeek} questions`);
       $(".avg_per_month").text(`${quesMonth} questions`);
-    $(".month").text(best_month);
-    $(".worst_month").text(worst_month);
-    $(".questions_on_best_day").text(map_month.get(best_month));
+      $(".month").text(best_month);
+      $(".worst_month").text(worst_month);
+      $(".questions_on_month").text(map_month.get(best_month));
+      $(".inactive_days").text(map_month.get(worst_month));
+      $(".questions_on_streak").text(final_ques_streak);
       console.log(newUrl);
       console.log(handle);
       console.log(quesCount);
