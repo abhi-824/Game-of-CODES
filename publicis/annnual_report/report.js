@@ -1,5 +1,7 @@
 let handle = window.location.href.split("=")[1];
 const userStatus = "https://codeforces.com/api/user.status?handle=";
+const userRating = "https://codeforces.com/api/user.rating?handle=";
+var dataPointsRatings = [];
 let name = "Abhinandan";
 document.querySelector(
   ".greeting"
@@ -177,6 +179,65 @@ function getSetGo() {
       console.log(quesMonth);
     }
 
+    async function getUserRat() {
+      let newUrl = userRating + handle;
+      const jsonDataRat = await fetch(newUrl);
+      const jsDataRat = await jsonDataRat.json();
+
+      let maxInc = 0;
+      let minInc = 100000;
+      let maxRat = 0;
+      let minRat = 100000;
+      let countCont = 0;
+      let posCount = 0;
+      for (let i = 0; i < jsDataRat.result.length; i++) {
+        if (jsDataRat.result[i].ratingUpdateTimeSeconds >= 1577836800 && jsDataRat.result[i].ratingUpdateTimeSeconds <= 1609459199) {
+          dataPointsRatings.push({
+            x: parseInt(jsDataRat.result[i].ratingUpdateTimeSeconds) * 1000,
+					  y: parseInt(jsDataRat.result[i].newRating),
+          })
+          countCont++;
+          if (jsDataRat.result[i].newRating >= jsDataRat.result[i].oldRating) {
+            posCount++;
+          }
+          if (jsDataRat.result[i].newRating - jsDataRat.result[i].oldRating > maxInc) {
+            maxInc = jsDataRat.result[i].newRating - jsDataRat.result[i].oldRating;
+          }
+          if (jsDataRat.result[i].newRating - jsDataRat.result[i].oldRating < minInc) {
+            minInc = jsDataRat.result[i].newRating - jsDataRat.result[i].oldRating;
+          }
+          if (jsDataRat.result[i].newRating > maxRat) {
+            maxRat = jsDataRat.result[i].newRating;
+          }
+          if (jsDataRat.result[i].newRating < minRat) {
+            minRat = jsDataRat.result[i].newRating;
+          }
+        }
+      }
+
+      var chart = new CanvasJS.Chart('myChart1', {
+				backgroundColor: null,
+				animationEnabled: true,
+				animationDuration: 2000,
+				theme: 'light1',
+				title: {
+					text: 'Your Ratings',
+				},
+				data: [
+					{
+						type: 'splineArea',
+						xValueType: 'dateTime',
+						dataPoints: dataPointsRatings,
+					},
+				],
+      });
+      let posPred = ((posCount * 100) / countCont).toFixed(2);
+      $(".rating_pred").html(`| ${maxInc} highest increase | ${minInc} maximum decrease | <br />| Peak: ${maxRat} | Low: ${minRat} |`);
+      $(".probability_of_positive").text(`${posPred} %`);
+			chart.render();
+    }
+
     getQuesCount();
+    getUserRat();
   });
 }
