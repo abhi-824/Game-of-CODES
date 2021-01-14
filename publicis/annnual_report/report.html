@@ -78,12 +78,12 @@
               a positive rating at the end of contest
             </h1>
           </div>
-          <div class="card card_avg" data-aos="fade-right">
-            <h1 class="avg_per_day">
+          <div class="card card_rat" data-aos="fade-right">
+            <h1 class="rating_pred">
               | +100 highest increase | -100 maximum decrease | <br />| Peak:
               2000 | Low: 1000 |
             </h1>
-            <img src="images/one_task.webp" alt="" />
+            <div id="myChart1" style="height: 400px; width: 95%; margin: 0 auto; padding-top: 30px;"></div>
           </div>
         </div>
         <div class="day_stats">
@@ -546,6 +546,7 @@
       type="text/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
     ></script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <script src="report.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
