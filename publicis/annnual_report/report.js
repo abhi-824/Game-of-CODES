@@ -8,12 +8,6 @@ var quesCount = 0;
 let array_names=["January", "February", "March", "April", "May", "June", "July","August","September", "October", "November","December"]
 //document.querySelector('.greet_number').innerHTML=`You completed 385 questions in 2020. That’s an average of…`
 getSetGo();
-var svg_root = document.querySelector('#Group3');
-var svg_source = svg_root.outerHTML;
-var svg_data_uri = 'data:image/svg+xml;base64,' + btoa(svg_source);
-var link = document.querySelector('.insta_btn');
-link.setAttribute('href', svg_data_uri);
-
 console.log(handle);
 function getSetGo() {
   $(document).ready(function () {
