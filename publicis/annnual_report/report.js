@@ -7,7 +7,20 @@ document.querySelector(
   ".greeting"
 ).innerHTML = `Hey ${handle}! <br> Pleased to see you fresh and ready for this Year!`;
 var quesCount = 0;
-let array_names=["January", "February", "March", "April", "May", "June", "July","August","September", "October", "November","December"]
+let array_names = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
 //document.querySelector('.greet_number').innerHTML=`You completed 385 questions in 2020. That’s an average of…`
 getSetGo();
 console.log(handle);
@@ -24,6 +37,7 @@ function getSetGo() {
       map_month.set(i, 0);
     }
     console.log(map_month);
+    let tot_rating_points = 0;
     async function getQuesCount() {
       let newUrl = userStatus + handle;
       const jsonDataQues = await fetch(newUrl);
@@ -39,7 +53,11 @@ function getSetGo() {
       let ques_on_streak = 0;
       let final_ques_streak = 0;
       let ppp = 0;
-
+      let curr_rating_points_per_date = 0;
+      let curr_date_badge;
+      let curr_date_month;
+      let firstTime = 1;
+      let max_rating_points_per_date = 0;
       for (let i = 0; i < jsDataQues.result.length; i++) {
         if (
           jsDataQues.result[i].creationTimeSeconds >= 1577836800 &&
@@ -49,9 +67,34 @@ function getSetGo() {
           var date = new Date(unix_timestamp * 1000);
 
           if (jsDataQues.result[i].verdict == "OK") {
+            console.log(jsDataQues.result[i]);
+            if (jsDataQues.result[i].problem.rating != undefined) {
+              tot_rating_points += jsDataQues.result[i].problem.rating;
+            }
             first_date = date;
             quesCount++;
             let cnt = map_date.get(date.getDate() + "/" + date.getMonth());
+            if (firstTime) {
+              curr_date_badge = date.getDate();
+              curr_date_month = date.getMonth();
+              firstTime = 0;
+            }
+            if (
+              curr_date_badge == date.getDate() &&
+              curr_date_month == date.getMonth()
+            ) {
+              curr_rating_points_per_date +=
+                jsDataQues.result[i].problem.rating != undefined
+                  ? jsDataQues.result[i].problem.rating
+                  : 0;
+            } else {
+              max_rating_points_per_date = Math.max(
+                max_rating_points_per_date,
+                curr_rating_points_per_date
+              );
+              curr_rating_points_per_date = 0;
+              firstTime = 1;
+            }
             map_date.set(date.getDate() + "/" + date.getMonth(), cnt + 1);
             ques_on_streak++;
           }
@@ -90,7 +133,7 @@ function getSetGo() {
               }
               curr_streak = 0;
             }
-          } else if(curr_date!=date.getDate()) {
+          } else if (curr_date != date.getDate()) {
             if (max_streak <= curr_streak) {
               max_streak = curr_streak;
               start = tmp_start;
@@ -110,14 +153,13 @@ function getSetGo() {
       let quesMonth = (quesCount / 12).toFixed(2);
       let cmaxDate = 0;
       let bigDate;
-      let day_count=0;
+      let day_count = 0;
       for (const elem of map_date) {
         map_month.set(
           parseInt(elem[0].split("/")[1]),
           map_month.get(parseInt(elem[0].split("/")[1])) + elem[1]
         );
-        if(elem[1])
-        day_count++;
+        if (elem[1]) day_count++;
         if (cmaxDate < elem[1]) {
           cmaxDate = elem[1];
           bigDate = elem;
@@ -154,8 +196,14 @@ function getSetGo() {
       console.log(bigDate);
       document.querySelector(
         ".days_streak"
-      ).innerHTML = `${max_streak} days from ${end.split("/")[0]} ${array_names[parseInt(end.split("/")[1])]} to  ${start.split("/")[0]} ${array_names[parseInt(start.split("/")[1])]} `;
-      document.querySelector(".date").innerHTML = `${bigDate[0].split("/")[0]} ${array_names[parseInt(bigDate[0].split("/")[1])]}`;
+      ).innerHTML = `${max_streak+1} days from ${end.split("/")[0]} ${
+        array_names[parseInt(end.split("/")[1])]
+      } to  ${start.split("/")[0]} ${
+        array_names[parseInt(start.split("/")[1])]
+      } `;
+      document.querySelector(".date").innerHTML = `${
+        bigDate[0].split("/")[0]
+      } ${array_names[parseInt(bigDate[0].split("/")[1])]}`;
       document.querySelector(
         ".questions_on_best_day"
       ).innerHTML = `${bigDate[1]}`;
@@ -177,9 +225,19 @@ function getSetGo() {
       console.log(quesDay);
       console.log(quesWeek);
       console.log(quesMonth);
-      document.querySelector('#tspan5834').textContent=quesCount;
-      document.querySelector('#month_best_svg').textContent=array_names[best_month];
-      console.clear()
+      document.querySelector("#tspan5834").textContent = quesCount;
+      document.querySelector("#month_best_svg").textContent =
+      array_names[best_month];
+      console.log(tot_rating_points);
+      console.log(max_rating_points_per_date);
+      if (tot_rating_points >= 547500) {
+        giveBadge("thor");
+      }
+      if (max_rating_points_per_date > 17000) {
+        giveBadge("hulk");
+      }
+
+      // console.clear()
     }
 
     async function getUserRat() {
@@ -194,20 +252,31 @@ function getSetGo() {
       let countCont = 0;
       let posCount = 0;
       for (let i = 0; i < jsDataRat.result.length; i++) {
-        if (jsDataRat.result[i].ratingUpdateTimeSeconds >= 1577836800 && jsDataRat.result[i].ratingUpdateTimeSeconds <= 1609459199) {
+        if (
+          jsDataRat.result[i].ratingUpdateTimeSeconds >= 1577836800 &&
+          jsDataRat.result[i].ratingUpdateTimeSeconds <= 1609459199
+        ) {
           dataPointsRatings.push({
             x: parseInt(jsDataRat.result[i].ratingUpdateTimeSeconds) * 1000,
-					  y: parseInt(jsDataRat.result[i].newRating),
-          })
+            y: parseInt(jsDataRat.result[i].newRating),
+          });
           countCont++;
           if (jsDataRat.result[i].newRating >= jsDataRat.result[i].oldRating) {
             posCount++;
           }
-          if (jsDataRat.result[i].newRating - jsDataRat.result[i].oldRating > maxInc) {
-            maxInc = jsDataRat.result[i].newRating - jsDataRat.result[i].oldRating;
+          if (
+            jsDataRat.result[i].newRating - jsDataRat.result[i].oldRating >
+            maxInc
+          ) {
+            maxInc =
+              jsDataRat.result[i].newRating - jsDataRat.result[i].oldRating;
           }
-          if (jsDataRat.result[i].newRating - jsDataRat.result[i].oldRating < minInc) {
-            minInc = jsDataRat.result[i].newRating - jsDataRat.result[i].oldRating;
+          if (
+            jsDataRat.result[i].newRating - jsDataRat.result[i].oldRating <
+            minInc
+          ) {
+            minInc =
+              jsDataRat.result[i].newRating - jsDataRat.result[i].oldRating;
           }
           if (jsDataRat.result[i].newRating > maxRat) {
             maxRat = jsDataRat.result[i].newRating;
@@ -218,29 +287,32 @@ function getSetGo() {
         }
       }
 
-      var chart = new CanvasJS.Chart('myChart1', {
-				backgroundColor: null,
-				animationEnabled: true,
-				animationDuration: 2000,
-				theme: 'light1',
-				title: {
-					text: 'Your Ratings',
-				},
-				data: [
-					{
-						type: 'splineArea',
-						xValueType: 'dateTime',
-						dataPoints: dataPointsRatings,
-					},
-				],
+      var chart = new CanvasJS.Chart("myChart1", {
+        backgroundColor: null,
+        animationEnabled: true,
+        animationDuration: 2000,
+        theme: "light1",
+        title: {
+          text: "Your Ratings",
+        },
+        data: [
+          {
+            type: "splineArea",
+            xValueType: "dateTime",
+            dataPoints: dataPointsRatings,
+          },
+        ],
       });
       let posPred = ((posCount * 100) / countCont).toFixed(2);
-      $(".rating_pred").html(`| ${maxInc} highest increase | ${minInc} maximum decrease | <br />| Peak: ${maxRat} | Low: ${minRat} |`);
+      $(".rating_pred").html(
+        `| ${maxInc} highest increase | ${minInc} maximum decrease | <br />| Peak: ${maxRat} | Low: ${minRat} |`
+      );
       $(".probability_of_positive").text(`${posPred} %`);
-			chart.render();
+      chart.render();
     }
 
     getQuesCount();
     getUserRat();
   });
+  function giveBadge(str) {}
 }

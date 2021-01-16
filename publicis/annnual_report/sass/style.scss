@@ -17,6 +17,7 @@ html {
 body {
   font-family: "Montserrat";
   background-color: #fff9f3;
+  overflow-x: hidden;
 }
 .hidden {
   display: none !important;
@@ -95,8 +96,13 @@ body {
     width: 600px;
   }
 }
-.rating_stats {
+.rating_stats{
   margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
   // padding:1rem 3rem;/
   img {
     max-width: 400px !important;
@@ -105,9 +111,10 @@ body {
     padding-top: $padding-top;
     background-color: #fff;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 800px;
+    height: 600px;
     grid-gap:2rem;
     box-shadow: 0px 0px 8px 0px rgba(50, 50, 50, 0.5);
   } 
