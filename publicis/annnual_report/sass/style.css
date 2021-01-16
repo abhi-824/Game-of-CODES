@@ -20,6 +20,72 @@ body {
   display: none !important;
 }
 
+.badges {
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0rem 5rem;
+  margin-bottom: 2rem;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  grid-gap: 2rem;
+}
+
+.badges .badges_given {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  grid-gap: 2rem;
+}
+
+.badges .badge {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  grid-gap: 2rem;
+}
+
+.badges .badge img {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+
+.badges .badge .content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
 .header {
   height: 80vh;
   overflow: hidden;
@@ -561,8 +627,8 @@ body {
   border: solid;
   padding: 1em 2em;
   border-radius: 4px;
-  -webkit-transition: color calc(0.5s * .75);
-  transition: color calc(0.5s * .75);
+  -webkit-transition: color calc(0.5s * 0.75);
+  transition: color calc(0.5s * 0.75);
   font-weight: 900;
   cursor: pointer;
   -webkit-box-align: center;
@@ -592,14 +658,14 @@ body {
 
 .blobby-button .blob:nth-child(2) {
   left: calc(120% / 4);
-  -webkit-transition-delay: calc((0.5s * .12) * 1);
-          transition-delay: calc((0.5s * .12) * 1);
+  -webkit-transition-delay: calc((0.5s * 0.12) * 1);
+          transition-delay: calc((0.5s * 0.12) * 1);
 }
 
 .blobby-button .blob:nth-child(3) {
   left: calc(2 * (120% / 4));
-  -webkit-transition-delay: calc((0.5s * .12) * 2);
-          transition-delay: calc((0.5s * .12) * 2);
+  -webkit-transition-delay: calc((0.5s * 0.12) * 2);
+          transition-delay: calc((0.5s * 0.12) * 2);
 }
 
 .blobby-button:hover .blob {
@@ -609,8 +675,8 @@ body {
 
 .blobby-button .blob:nth-child(4) {
   left: calc(3 * (120% / 4));
-  -webkit-transition-delay: calc((0.5s * .12) * 3);
-          transition-delay: calc((0.5s * .12) * 3);
+  -webkit-transition-delay: calc((0.5s * 0.12) * 3);
+          transition-delay: calc((0.5s * 0.12) * 3);
 }
 
 .blobby-button:before {
