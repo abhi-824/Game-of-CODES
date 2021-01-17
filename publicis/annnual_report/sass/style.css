@@ -80,6 +80,26 @@ body {
   text-align: center;
 }
 
+.badges .badge .level {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  grid-gap: 1rem;
+}
+
+.badges .badge .level img {
+  width: 30px;
+  height: 30px;
+  -webkit-filter: drop-shadow(0px 0px 20px rgba(164, 206, 11, 0.5));
+          filter: drop-shadow(0px 0px 20px rgba(164, 206, 11, 0.5));
+}
+
 .badges .badge img {
   border-radius: 50%;
   width: 100px;

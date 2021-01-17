@@ -251,25 +251,67 @@ function getSetGo() {
       badges_missed.add('iron_man')
       badges_missed.add('hawkeye')
       console.log(tot_rating_points)
-      if (tot_rating_points >= 547500) {
-        giveBadge("thor");
+      if (tot_rating_points >= 547500) {  
+        giveBadge("thor",3);
         badges_missed.delete('thor')
       }
+      else if(tot_rating_points>=400000)
+      {
+        giveBadge("thor",2);
+        badges_missed.delete('thor')
+      }
+      else if(tot_rating_points>=200000)
+      {
+        giveBadge("thor",1);
+        badges_missed.delete('thor')
+
+      }
       if (max_rating_points_per_date >= 17000) {
-        giveBadge("hulk");
+        giveBadge("hulk",3);
+      
+        badges_missed.delete('hulk')
+      }
+      else if (max_rating_points_per_date >= 12000) {
+        giveBadge("hulk",2);
+      
+        badges_missed.delete('hulk')
+      }
+      else if (max_rating_points_per_date >= 7000) {
+        giveBadge("hulk",1);
       
         badges_missed.delete('hulk')
       }
       if(max_streak + 1>25)
       {
-        giveBadge("cap_gold");
+        giveBadge("cap_gold",3);
+        badges_missed.delete('cap_gold')
+      }
+      else if(max_streak + 1>20)
+      {
+        giveBadge("cap_gold",2);
+        badges_missed.delete('cap_gold')
+      }
+      else if(max_streak + 1>15)
+      {
+        giveBadge("cap_gold",1);
         badges_missed.delete('cap_gold')
       }
       if(day_count>240)
       {
-        giveBadge("cap_thor");
+        giveBadge("cap_thor",3);
         badges_missed.delete('cap_thor')
       }
+      else if(day_count>=200)
+      {
+        giveBadge("cap_thor",2);
+        badges_missed.delete('cap_thor')
+      }
+      else if(day_count>=150)
+      {
+        giveBadge("cap_thor",1);
+        badges_missed.delete('cap_thor')
+      }
+      
       for(let elem of badges_missed)
       {
         console.log(elem)
@@ -483,8 +525,13 @@ function getSetGo() {
     getUserRat();
     heatmapdata();
   });
-  function giveBadge(str) {
+  function giveBadge(str,lev) {
     console.log(str)
     document.querySelector(`.${str}`).classList.remove('hidden');
+    for(let i=0;i<lev;i++){
+      let img=document.createElement('img');
+      img.setAttribute('src','images/star.png');
+      document.querySelector(`.level_${str}`).appendChild(img);
+    }
   }
 }
