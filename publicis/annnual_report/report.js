@@ -21,6 +21,18 @@ let array_names = [
   "November",
   "December",
 ];
+document
+  .querySelector(".facebook_btn")
+  .setAttribute(
+    "href",
+    `https://www.facebook.com/sharer/sharer.php?t=&u=${window.location.href}`
+  );
+document
+  .querySelector(".twitter_btn")
+  .setAttribute(
+    "href",
+    `https://twitter.com/intent/tweet?text=Here’s my %40codeforces Year in Review 2020! Get a glimpse into my competitive journey over the last twelve months. ${window.location.href}`
+  );
 //document.querySelector('.greet_number').innerHTML=`You completed 385 questions in 2020. That’s an average of…`
 getSetGo();
 console.log(handle);
@@ -194,9 +206,9 @@ function getSetGo() {
       let array_date;
 
       console.log(bigDate);
-      document.querySelector(
-        ".days_streak"
-      ).innerHTML = `${max_streak+1} days from ${end.split("/")[0]} ${
+      document.querySelector(".days_streak").innerHTML = `${
+        max_streak + 1
+      } days from ${end.split("/")[0]} ${
         array_names[parseInt(end.split("/")[1])]
       } to  ${start.split("/")[0]} ${
         array_names[parseInt(start.split("/")[1])]
@@ -227,7 +239,7 @@ function getSetGo() {
       console.log(quesMonth);
       document.querySelector("#tspan5834").textContent = quesCount;
       document.querySelector("#month_best_svg").textContent =
-      array_names[best_month];
+        array_names[best_month];
       console.log(tot_rating_points);
       console.log(max_rating_points_per_date);
       if (tot_rating_points >= 547500) {
