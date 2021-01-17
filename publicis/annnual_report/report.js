@@ -2,6 +2,7 @@ let handle = window.location.href.split("=")[1];
 const userStatus = "https://codeforces.com/api/user.status?handle=";
 const userRating = "https://codeforces.com/api/user.rating?handle=";
 var dataPointsRatings = [];
+var heatmap = new Map();
 let name = "Abhinandan";
 document.querySelector(
   ".greeting"
@@ -323,8 +324,65 @@ function getSetGo() {
       chart.render();
     }
 
+    async function heatmapdata() {
+      /*for (let i = 1; i < 367; i++) {
+        heatmap.set(`${i}`, 0);
+      }*/
+
+      let newUrl = userStatus + handle;
+      const jsonDataHeat = await fetch(newUrl);
+      const jsDataHeat = await jsonDataHeat.json();
+
+      for (let i = 0; i < jsDataHeat.result.length; i++) {
+        if (jsDataHeat.result[i].creationTimeSeconds >= 1577836800 && jsDataHeat.result[i].creationTimeSeconds <= 1609459199) {
+          //let date = new Date(jsDataHeat.result[i].creationTimeSeconds);
+          //let date = jsDataHeat.result[i].creationTimeSeconds * 1000;
+          //let day = date.getUTCDate();
+          //let day = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) - Date.UTC(date.getFullYear(), 0, 0);
+          //let x = day.toString();
+          var now = new Date(jsDataHeat.result[i].creationTimeSeconds * 1000);
+          var startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+          var timestamp = startOfDay / 1000;
+          let x = timestamp;
+          if (heatmap[x] === undefined) {
+            heatmap[x] = 1;
+          } else {
+            heatmap[x]++;
+          }
+        }
+      }
+
+      //let d = Object.fromEntries(heatmap);
+
+      //let d = {1577989800: 13};
+
+      var cal = new CalHeatMap();
+      cal.init({
+        //itemSelector: "#cal",
+        data: heatmap,
+        itemName: ["visit", "visits"],
+        considerMissingDataAsZero: true,
+        legend: [1, 2, 3, 4],
+        cellSize: 12,
+        cellPadding: 2,
+        domain: "month",
+        domainGutter: 10,
+        domainDynamicDimension: false,
+        domainLabelFormat: function (date) {
+          return moment(date).format("MMM, YYYY").toUpperCase();
+        },
+        subDomain: "x_day",
+        subDomainTextFormat: "%d",
+        range: 12,
+        start: new Date(2020, 0, 1)
+      });
+
+      console.log(heatmap);
+    }
+
     getQuesCount();
     getUserRat();
+    heatmapdata();
   });
   function giveBadge(str) {}
 }

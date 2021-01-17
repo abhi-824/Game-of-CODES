@@ -42,6 +42,7 @@
     />
 
     <link rel="shortcut icon" href="../resources/logo/logo_dark.png" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css" />
   </head>
 
   <body>
@@ -157,8 +158,7 @@
           </h1>
           <p>Your efforts have added up…</p>
           <div class="card">
-            <h1>Heatmap</h1>
-            <div class="heatmap"></div>
+            <div id="cal-heatmap"></div>
           </div>
         </div>
       </div>
@@ -614,6 +614,9 @@
       type="text/javascript"
       src="https://canvasjs.com/assets/script/canvasjs.min.js"
     ></script>
+    <script type="text/javascript" src="https://d3js.org/d3.v3.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
     <script src="report.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
