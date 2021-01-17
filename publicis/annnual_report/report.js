@@ -444,6 +444,8 @@ function getSetGo() {
         itemName: ["visit", "visits"],
         considerMissingDataAsZero: true,
         legend: [1, 2, 3, 4],
+        minDate: new Date(2020, 0),
+	      maxDate: new Date(2020, 11),
         cellSize: 20,
         cellPadding: 2,
         domain: "month",
@@ -458,6 +460,20 @@ function getSetGo() {
         subDomainTextFormat: "%d",
         range: 3,
         start: new Date(2020, 0, 1)
+      });
+
+      $("#heat_but_left").on("click", function(e) {
+        e.preventDefault();
+        if (!cal.previous()) {
+          alert("kitna peeche jaayega lawde");
+        }
+      });
+      
+      $("#heat_but_right").on("click", function(e) {
+        e.preventDefault();
+        if (!cal.next()) {
+          alert("aage mujra chal rha? RUK YAHI PAR");
+        }
       });
 
       console.log(heatmap);
