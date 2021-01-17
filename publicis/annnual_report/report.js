@@ -243,12 +243,39 @@ function getSetGo() {
         array_names[best_month];
       console.log(tot_rating_points);
       console.log(max_rating_points_per_date);
+      let badges_missed=new Set();
+      badges_missed.add('thor')
+      badges_missed.add('hulk')
+      badges_missed.add('cap_gold')
+      badges_missed.add('cap_thor')
+      badges_missed.add('iron_man')
+      badges_missed.add('hawkeye')
+      console.log(tot_rating_points)
       if (tot_rating_points >= 547500) {
         giveBadge("thor");
+        badges_missed.delete('thor')
       }
-      if (max_rating_points_per_date > 17000) {
+      if (max_rating_points_per_date >= 17000) {
         giveBadge("hulk");
+      
+        badges_missed.delete('hulk')
       }
+      if(max_streak + 1>25)
+      {
+        giveBadge("cap_gold");
+        badges_missed.delete('cap_gold')
+      }
+      if(day_count>240)
+      {
+        giveBadge("cap_thor");
+        badges_missed.delete('cap_thor')
+      }
+      for(let elem of badges_missed)
+      {
+        console.log(elem)
+        document.querySelector(`._${elem}`).classList.remove('hidden')
+      }
+
       // var img = Pablo(document.getElementById('showtime').outerHTML).toImage();
       // let div=document.createElement("div");
       // img.appendTo(div);
@@ -263,7 +290,7 @@ function getSetGo() {
       // // Start SVG rendering with animations and mouse handling.
       // v.render().then(()=>{
       //   document.body.appendChild(canvas);
-      //   var img    = canvas.toDataURL("image/png");
+      //   var img    = canvas.toDataURL("image/png");`
       //   let meta_img=document.createElement('img');
       //   meta_img.setAttribute("src",img);
       //   document.body.appendChild(meta_img);
@@ -417,18 +444,20 @@ function getSetGo() {
         itemName: ["visit", "visits"],
         considerMissingDataAsZero: true,
         legend: [1, 2, 3, 4],
-        cellSize: 12,
+        cellSize: 20,
         cellPadding: 2,
         domain: "month",
         domainGutter: 10,
         domainDynamicDimension: false,
+        previousSelector: "#heat_but_left",
+	      nextSelector: "#heat_but_right",
         domainLabelFormat: function (date) {
           return moment(date).format("MMM, YYYY").toUpperCase();
         },
         subDomain: "x_day",
         subDomainTextFormat: "%d",
-        range: 12,
-        start: new Date(2020, 0, 1),
+        range: 3,
+        start: new Date(2020, 0, 1)
       });
 
       console.log(heatmap);
@@ -438,5 +467,8 @@ function getSetGo() {
     getUserRat();
     heatmapdata();
   });
-  function giveBadge(str) {}
+  function giveBadge(str) {
+    console.log(str)
+    document.querySelector(`.${str}`).classList.remove('hidden');
+  }
 }
