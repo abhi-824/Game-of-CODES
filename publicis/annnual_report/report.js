@@ -249,7 +249,54 @@ function getSetGo() {
       if (max_rating_points_per_date > 17000) {
         giveBadge("hulk");
       }
+      // var img = Pablo(document.getElementById('showtime').outerHTML).toImage();
+      // let div=document.createElement("div");
+      // img.appendTo(div);
+      // alert(div.innerHTML);
+      // const canvas = document.createElement("canvas");
+      // canvas.width = 631;
+      // canvas.height = 631;
+      // const ctx = canvas.getContext("2d");
+      // console.log(document.querySelector('.svg_sho').innerHTML)
+      // canvg('canvas', $("#showtime").html());
 
+      // // Start SVG rendering with animations and mouse handling.
+      // v.render().then(()=>{
+      //   document.body.appendChild(canvas);
+      //   var img    = canvas.toDataURL("image/png");
+      //   let meta_img=document.createElement('img');
+      //   meta_img.setAttribute("src",img);
+      //   document.body.appendChild(meta_img);
+      //   $('meta[property="og:image"]').remove();
+      //   $("head").append(`<meta property="og:image" content="${img}">`);
+      //   console.log(meta_img);
+      // });
+      // var svgElement = document.getElementById("showtime");
+      // let { width, height } = svgElement.getBBox();
+      // console.log(width, height);
+      // let clonedSvgElement = svgElement.cloneNode(true);
+
+      // let outerHTML = clonedSvgElement.outerHTML,
+      // blob = new Blob([outerHTML], { type: "image/svg+xml;charset=utf-8" });
+      // let URL = window.URL || window.webkitURL || window;
+      // let blobURL = URL.createObjectURL(blob);
+      // let image = new Image();
+      // let canvas = document.createElement("canvas");
+      // canvas.widht = width;
+
+      // canvas.height = height;
+      // let context = canvas.getContext("2d");
+      // image.onload = () => {
+
+      //   // draw image in canvas starting left-0 , top - 0
+      //   context.drawImage(image, 0, 0);
+      //   //  downloadImage(canvas); need to implement
+      // };
+      // image.src = blobURL;
+      
+      
+      // let jpeg = canvas.toDataURL('image/jpg');// default png
+      
       // console.clear()
     }
 
@@ -334,14 +381,21 @@ function getSetGo() {
       const jsDataHeat = await jsonDataHeat.json();
 
       for (let i = 0; i < jsDataHeat.result.length; i++) {
-        if (jsDataHeat.result[i].creationTimeSeconds >= 1577836800 && jsDataHeat.result[i].creationTimeSeconds <= 1609459199) {
+        if (
+          jsDataHeat.result[i].creationTimeSeconds >= 1577836800 &&
+          jsDataHeat.result[i].creationTimeSeconds <= 1609459199
+        ) {
           //let date = new Date(jsDataHeat.result[i].creationTimeSeconds);
           //let date = jsDataHeat.result[i].creationTimeSeconds * 1000;
           //let day = date.getUTCDate();
           //let day = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) - Date.UTC(date.getFullYear(), 0, 0);
           //let x = day.toString();
           var now = new Date(jsDataHeat.result[i].creationTimeSeconds * 1000);
-          var startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+          var startOfDay = new Date(
+            now.getFullYear(),
+            now.getMonth(),
+            now.getDate()
+          );
           var timestamp = startOfDay / 1000;
           let x = timestamp;
           if (heatmap[x] === undefined) {
@@ -374,7 +428,7 @@ function getSetGo() {
         subDomain: "x_day",
         subDomainTextFormat: "%d",
         range: 12,
-        start: new Date(2020, 0, 1)
+        start: new Date(2020, 0, 1),
       });
 
       console.log(heatmap);
