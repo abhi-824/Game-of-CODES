@@ -828,4 +828,72 @@ footer a:hover {
     width: 400px !important;
   }
 }
+
+.borderman {
+  display: inline-block;
+  position: relative;
+  opacity: .999;
+  margin: .3em;
+  padding: .5em 1.5em;
+  border-radius: 3px;
+  transition: all 0.3s;
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+.borderman.btn-border:before,
+.borderman.btn-border:after {
+  content: '';
+  border-style: solid;
+  position: absolute;
+  z-index: 5;
+  border-radius: 3px;
+  box-sizing: content-box;
+  transition: all 0.3s;
+}
+
+.borderman.btn-border:hover:after {
+  height: calc(100% + (2px * 2));
+  border-color: #9b59b6;
+}
+
+.borderman.btn-border:before {
+  width: 0;
+  height: 100%;
+  border-width: 2px 0 2px 0;
+  top: -2px;
+  left: -2px;
+  transition-delay: 0.05s;
+}
+
+.borderman.btn-border:hover:before {
+  width: calc(100% + (2px * 2));
+  border-color: #9b59b6;
+}
+
+.borderman.btn-border:hover {
+  color: #9b59b6;
+}
+
+.borderman.btn-border:after {
+  width: 100%;
+  height: 0;
+  border-width: 0 2px 0 2px;
+  top: -2px;
+  left: -2px;
+}
+
+.borderman.btn-border {
+  background-color: transparent;
+  border: 2px solid rgba(0,0,0,.2);
+  color: #999;
+  font-weight: 400;
+}
+
+.heatmap_button {
+  width: 500px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 /*# sourceMappingURL=style.css.map */

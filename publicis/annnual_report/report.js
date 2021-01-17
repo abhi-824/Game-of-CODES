@@ -363,17 +363,19 @@ function getSetGo() {
         itemName: ["visit", "visits"],
         considerMissingDataAsZero: true,
         legend: [1, 2, 3, 4],
-        cellSize: 12,
+        cellSize: 20,
         cellPadding: 2,
         domain: "month",
         domainGutter: 10,
         domainDynamicDimension: false,
+        previousSelector: "#heat_but_left",
+	      nextSelector: "#heat_but_right",
         domainLabelFormat: function (date) {
           return moment(date).format("MMM, YYYY").toUpperCase();
         },
         subDomain: "x_day",
         subDomainTextFormat: "%d",
-        range: 12,
+        range: 3,
         start: new Date(2020, 0, 1)
       });
 
