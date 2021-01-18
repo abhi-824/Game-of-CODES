@@ -508,10 +508,10 @@ function getSetGo() {
       if (badges_missed.size == 0) {
         document.querySelector(`._empty`).classList.remove("hidden");
       }
-      // else if(badges_missed.size==6)
-      // {
-      //   document.querySelector(`.empty`).classList.remove("hidden");
-      // }
+      else if(badges_missed.size==6)
+      {
+        document.querySelector(`.empty`).classList.remove("hidden");
+      }
       //console.log(badges_missed)
       for (let elem of badges_missed) {
         //console.log(elem);
