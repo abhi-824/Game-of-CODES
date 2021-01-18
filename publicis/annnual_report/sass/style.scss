@@ -359,12 +359,14 @@ body {
   .card {
     padding-top: $padding-top;
     background-color: #fff;
+    
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 400px;
     grid-gap: 2rem;
     box-shadow: 0px 0px 8px 0px rgba(50, 50, 50, 0.5);
+    
     img {
       max-width: 349px;
       padding: 1rem 2rem;

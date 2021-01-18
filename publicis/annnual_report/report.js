@@ -4,6 +4,8 @@ const userRating = "https://codeforces.com/api/user.rating?handle=";
 let papp = 0;
 var dataPointsRatings = [];
 var heatmap = new Map();
+let badges_missed = new Set();
+
 let name = "Abhinandan";
 document.querySelector(
   ".greeting"
@@ -255,7 +257,6 @@ function getSetGo() {
       // array_names[best_month];/
       console.log(tot_rating_points);
       console.log(max_rating_points_per_date);
-      let badges_missed = new Set();
       badges_missed.add("thor");
       badges_missed.add("hulk");
       badges_missed.add("cap_gold");
@@ -320,10 +321,10 @@ function getSetGo() {
         badges_missed.delete("hawkeye"); 
       }
 
-      for (let elem of badges_missed) {
-        console.log(elem);
-        document.querySelector(`._${elem}`).classList.remove("hidden");
-      }
+      // for (let elem of badges_missed) {
+      //   console.log(elem);
+      //   document.querySelector(`._${elem}`).classList.remove("hidden");
+      // }
       papp = 1;
       // html2canvas($("#html-content-holder")[0]).then(function(canvas) {
       //   $("#previewImage").append(canvas);
@@ -437,7 +438,9 @@ function getSetGo() {
 
       // console.clear()
     }
-
+    let first_rating=0;
+    let newnew=1;
+    let last_rating=0;
     async function getUserRat() {
       let newUrl = userRating + handle;
       const jsonDataRat = await fetch(newUrl);
@@ -458,6 +461,11 @@ function getSetGo() {
             x: parseInt(jsDataRat.result[i].ratingUpdateTimeSeconds) * 1000,
             y: parseInt(jsDataRat.result[i].newRating),
           });
+          if(newnew&&jsDataRat.result[i].oldRating!=0){
+            first_rating=jsDataRat.result[i].oldRating;
+            newnew=0;
+          }
+          last_rating=jsDataRat.result[i].newRating;
           countCont++;
           if (jsDataRat.result[i].newRating >= jsDataRat.result[i].oldRating) {
             posCount++;
@@ -484,7 +492,33 @@ function getSetGo() {
           }
         }
       }
+      console.log(first_rating, last_rating)
+      if(last_rating-first_rating>=700)
+      {
+        giveBadge("iron_man", 3);
+        badges_missed.delete("iron_man");
+      }
+      else if(last_rating-first_rating>=400){
+        giveBadge("iron_man", 2);
+        badges_missed.delete("iron_man"); 
+      }
+      else if(last_rating-first_rating>=200){
+        giveBadge("iron_man", 1);
+        badges_missed.delete("iron_man"); 
+      }
+      console.clear()
+      if(badges_missed.size==0){
+        document.querySelector(`._empty`).classList.remove("hidden");
+      }
+      else if(badges_missed.size==6)
+      {
+        document.querySelector(`.empty`).classList.remove("hidden");
 
+      }
+      for (let elem of badges_missed) {
+        console.log(elem);
+        document.querySelector(`._${elem}`).classList.remove("hidden");
+      }
       var chart = new CanvasJS.Chart("myChart1", {
         backgroundColor: null,
         animationEnabled: true,
