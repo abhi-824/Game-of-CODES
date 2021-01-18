@@ -1,6 +1,7 @@
 let handle = window.location.href.split("=")[1];
 const userStatus = "https://codeforces.com/api/user.status?handle=";
 const userRating = "https://codeforces.com/api/user.rating?handle=";
+let papp=0;
 var dataPointsRatings = [];
 var heatmap = new Map();
 let name = "Abhinandan";
@@ -238,86 +239,71 @@ function getSetGo() {
       console.log(quesDay);
       console.log(quesWeek);
       console.log(quesMonth);
-      document.querySelector("#tspan5834").textContent = quesCount;
-      document.querySelector("#month_best_svg").textContent =
+      document.querySelector(".questions1234").innerHTML = quesCount;
+      document.querySelector(".productive_month").innerHTML =
         array_names[best_month];
       console.log(tot_rating_points);
       console.log(max_rating_points_per_date);
-      let badges_missed=new Set();
-      badges_missed.add('thor')
-      badges_missed.add('hulk')
-      badges_missed.add('cap_gold')
-      badges_missed.add('cap_thor')
-      badges_missed.add('iron_man')
-      badges_missed.add('hawkeye')
-      console.log(tot_rating_points)
-      if (tot_rating_points >= 547500) {  
-        giveBadge("thor",3);
-        badges_missed.delete('thor')
-      }
-      else if(tot_rating_points>=400000)
-      {
-        giveBadge("thor",2);
-        badges_missed.delete('thor')
-      }
-      else if(tot_rating_points>=200000)
-      {
-        giveBadge("thor",1);
-        badges_missed.delete('thor')
-
+      let badges_missed = new Set();
+      badges_missed.add("thor");
+      badges_missed.add("hulk");
+      badges_missed.add("cap_gold");
+      badges_missed.add("cap_thor");
+      badges_missed.add("iron_man");
+      badges_missed.add("hawkeye");
+      console.log(tot_rating_points);
+      if (tot_rating_points >= 547500) {
+        giveBadge("thor", 3);
+        badges_missed.delete("thor");
+      } else if (tot_rating_points >= 400000) {
+        giveBadge("thor", 2);
+        badges_missed.delete("thor");
+      } else if (tot_rating_points >= 200000) {
+        giveBadge("thor", 1);
+        badges_missed.delete("thor");
       }
       if (max_rating_points_per_date >= 17000) {
-        giveBadge("hulk",3);
-      
-        badges_missed.delete('hulk')
+        giveBadge("hulk", 3);
+
+        badges_missed.delete("hulk");
+      } else if (max_rating_points_per_date >= 12000) {
+        giveBadge("hulk", 2);
+
+        badges_missed.delete("hulk");
+      } else if (max_rating_points_per_date >= 7000) {
+        giveBadge("hulk", 1);
+
+        badges_missed.delete("hulk");
       }
-      else if (max_rating_points_per_date >= 12000) {
-        giveBadge("hulk",2);
-      
-        badges_missed.delete('hulk')
+      if (max_streak + 1 > 25) {
+        giveBadge("cap_gold", 3);
+        badges_missed.delete("cap_gold");
+      } else if (max_streak + 1 > 20) {
+        giveBadge("cap_gold", 2);
+        badges_missed.delete("cap_gold");
+      } else if (max_streak + 1 > 15) {
+        giveBadge("cap_gold", 1);
+        badges_missed.delete("cap_gold");
       }
-      else if (max_rating_points_per_date >= 7000) {
-        giveBadge("hulk",1);
-      
-        badges_missed.delete('hulk')
-      }
-      if(max_streak + 1>25)
-      {
-        giveBadge("cap_gold",3);
-        badges_missed.delete('cap_gold')
-      }
-      else if(max_streak + 1>20)
-      {
-        giveBadge("cap_gold",2);
-        badges_missed.delete('cap_gold')
-      }
-      else if(max_streak + 1>15)
-      {
-        giveBadge("cap_gold",1);
-        badges_missed.delete('cap_gold')
-      }
-      if(day_count>240)
-      {
-        giveBadge("cap_thor",3);
-        badges_missed.delete('cap_thor')
-      }
-      else if(day_count>=200)
-      {
-        giveBadge("cap_thor",2);
-        badges_missed.delete('cap_thor')
-      }
-      else if(day_count>=150)
-      {
-        giveBadge("cap_thor",1);
-        badges_missed.delete('cap_thor')
-      }
-      
-      for(let elem of badges_missed)
-      {
-        console.log(elem)
-        document.querySelector(`._${elem}`).classList.remove('hidden')
+      if (day_count > 240) {
+        giveBadge("cap_thor", 3);
+        badges_missed.delete("cap_thor");
+      } else if (day_count >= 200) {
+        giveBadge("cap_thor", 2);
+        badges_missed.delete("cap_thor");
+      } else if (day_count >= 150) {
+        giveBadge("cap_thor", 1);
+        badges_missed.delete("cap_thor");
       }
 
+      for (let elem of badges_missed) {
+        console.log(elem);
+        document.querySelector(`._${elem}`).classList.remove("hidden");
+      }
+      papp=1;
+      // html2canvas($("#html-content-holder")[0]).then(function(canvas) {
+      //   $("#previewImage").append(canvas);
+      //   });
       // var img = Pablo(document.getElementById('showtime').outerHTML).toImage();
       // let div=document.createElement("div");
       // img.appendTo(div);
@@ -326,13 +312,31 @@ function getSetGo() {
       // canvas.width = 631;
       // canvas.height = 631;
       // const ctx = canvas.getContext("2d");
+      // var svgString = new XMLSerializer().serializeToString(
+      //   document.querySelector("#showtime")
+      // );
+
+      // var DOMURL = self.URL || self.webkitURL || self;
+      // var img = new Image();
+      // var svg = new Blob([svgString], { type: "image/svg+xml;charset=utf-8" });
+      // var url = DOMURL.createObjectURL(svg);
+      // img.onload = function () {
+      //   ctx.drawImage(img, 0, 0);
+      //   var png = canvas.toDataURL("image/png");
+      //   document.querySelector("#png-container").innerHTML =
+      //     '<img src="' + png + '"/>';
+      //   DOMURL.revokeObjectURL(png);
+      // };
+      // img.src = url;
+      // document.body.appendChild(img)
+
       // console.log(document.querySelector('.svg_sho').innerHTML)
-      // canvg('canvas', $("#showtime").html());
+      // v = canvg.Canvg.fromString(ctx, document.querySelector('.svg_sho').innerHTML);
 
       // // Start SVG rendering with animations and mouse handling.
       // v.render().then(()=>{
       //   document.body.appendChild(canvas);
-      //   var img    = canvas.toDataURL("image/png");`
+      //   var img    = canvas.toDataURL("image/png");
       //   let meta_img=document.createElement('img');
       //   meta_img.setAttribute("src",img);
       //   document.body.appendChild(meta_img);
@@ -340,6 +344,48 @@ function getSetGo() {
       //   $("head").append(`<meta property="og:image" content="${img}">`);
       //   console.log(meta_img);
       // });
+      // var img = new Image();
+      // img.onload = function() {
+      //     ctx.drawImage(img, 0, 0);
+      // }
+      // img.src = document.querySelector('.svg_sho').innerHTML;
+      // document.body.appendChild(img);
+
+      // Create an export button
+      // d3.select("body")
+      //   .append("button")
+      //   .html("Export")
+      //   .on("click", svgToCanvas);
+
+      // var w = 631, // or whatever your svg width is
+      //   h = 631;
+
+      // Create the export function - this will just export
+      // the first svg element it finds
+      // function svgToCanvas() {
+      //   // Select the first svg element
+      //   console.clear();
+      //   console.log(d3.select("#showtime"));
+      //   var svg = d3.select("#showtime")[0][0],
+      //     img = new Image(),
+      //     serializer = new XMLSerializer(),
+      //     svgStr = serializer.serializeToString(svg);
+
+      //   img.src = "data:image/svg+xml;base64," + window.btoa(svgStr);
+
+      //   // You could also use the actual string without base64 encoding it:
+      //   //img.src = "data:image/svg+xml;utf8," + svgStr;
+
+      //   var canvas = document.createElement("canvas");
+      //   document.body.appendChild(canvas);
+
+      //   canvas.width = w;
+      //   canvas.height = h;
+      //   canvas.getContext("2d").drawImage(img, 0, 0, w, h);
+      //   // Now save as png or whatever
+      // }
+      //   $('meta[property="og:image"]').remove();
+      //   $("head").append(`<meta property="og:image" content="${img}">`);
       // var svgElement = document.getElementById("showtime");
       // let { width, height } = svgElement.getBBox();
       // console.log(width, height);
@@ -362,10 +408,9 @@ function getSetGo() {
       //   //  downloadImage(canvas); need to implement
       // };
       // image.src = blobURL;
-      
-      
+
       // let jpeg = canvas.toDataURL('image/jpg');// default png
-      
+
       // console.clear()
     }
 
@@ -487,31 +532,31 @@ function getSetGo() {
         considerMissingDataAsZero: true,
         legend: [1, 2, 3, 4],
         minDate: new Date(2020, 0),
-	      maxDate: new Date(2020, 11),
+        maxDate: new Date(2020, 11),
         cellSize: 20,
         cellPadding: 2,
         domain: "month",
         domainGutter: 10,
         domainDynamicDimension: false,
         previousSelector: "#heat_but_left",
-	      nextSelector: "#heat_but_right",
+        nextSelector: "#heat_but_right",
         domainLabelFormat: function (date) {
           return moment(date).format("MMM, YYYY").toUpperCase();
         },
         subDomain: "x_day",
         subDomainTextFormat: "%d",
         range: 3,
-        start: new Date(2020, 0, 1)
+        start: new Date(2020, 0, 1),
       });
 
-      $("#heat_but_left").on("click", function(e) {
+      $("#heat_but_left").on("click", function (e) {
         e.preventDefault();
         if (!cal.previous()) {
           alert("kitna peeche jaayega lawde");
         }
       });
-      
-      $("#heat_but_right").on("click", function(e) {
+
+      $("#heat_but_right").on("click", function (e) {
         e.preventDefault();
         if (!cal.next()) {
           alert("aage mujra chal rha? RUK YAHI PAR");
@@ -525,12 +570,12 @@ function getSetGo() {
     getUserRat();
     heatmapdata();
   });
-  function giveBadge(str,lev) {
-    console.log(str)
-    document.querySelector(`.${str}`).classList.remove('hidden');
-    for(let i=0;i<lev;i++){
-      let img=document.createElement('img');
-      img.setAttribute('src','images/star.png');
+  function giveBadge(str, lev) {
+    console.log(str);
+    document.querySelector(`.${str}`).classList.remove("hidden");
+    for (let i = 0; i < lev; i++) {
+      let img = document.createElement("img");
+      img.setAttribute("src", "images/star.png");
       document.querySelector(`.level_${str}`).appendChild(img);
     }
   }

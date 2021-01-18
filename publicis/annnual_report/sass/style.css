@@ -60,7 +60,7 @@ body {
   padding: 2rem 2rem;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  border: 1px solid #D6D6D6;
+  border: 1px solid #d6d6d6;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -209,6 +209,135 @@ body {
 
 .greet {
   height: 100vh;
+}
+
+#ht {
+  position: absolute;
+  top: 0;
+  background: #fff9f3;
+  padding: 2rem;
+}
+
+#ht .logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  grid-gap: 1rem;
+}
+
+#ht .logo .logoso img {
+  width: 150px;
+}
+
+#ht .logo .bar {
+  height: 100px;
+  width: 4px;
+  background: #333;
+}
+
+#ht .content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  grid-gap: 2rem;
+}
+
+#ht .content .header2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  grid-gap: 1rem;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#ht .content .stats {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  grid-gap: 2rem;
+}
+
+#ht .content .stats .stat {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+#ht .content .badges_ear {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  grid-gap: 1rem;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#ht .content .badges_ear .badgesGiven {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  grid-gap: 1rem;
+}
+
+#ht .content .badges_ear .badgesGiven img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
 }
 
 .number_of_questions,
@@ -866,9 +995,9 @@ footer a:hover {
 .borderman {
   display: inline-block;
   position: relative;
-  opacity: .999;
-  margin: .3em;
-  padding: .5em 1.5em;
+  opacity: 0.999;
+  margin: 0.3em;
+  padding: 0.5em 1.5em;
   border-radius: 3px;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
@@ -917,7 +1046,7 @@ footer a:hover {
 
 .borderman.btn-border:before,
 .borderman.btn-border:after {
-  content: '';
+  content: "";
   border-style: solid;
   position: absolute;
   z-index: 5;
