@@ -38,7 +38,8 @@ document
 //document.querySelector('.greet_number').innerHTML=`You completed 385 questions in 2020. That’s an average of…`
 getSetGo();
 console.log(handle);
-
+document.querySelector('.loader').classList.remove("hidden");
+document.body.style="overflow-y:hidden;";
 function getSetGo() {
   $(document).ready(function () {
     let map_date = new Map();
@@ -592,6 +593,8 @@ function getSetGo() {
 
       const jsonDataSubRatOK = await fetch(finalUserSubRatOK);
       const jsDataSubRatOK = await jsonDataSubRatOK.json();
+      document.querySelector('.loader').classList.add("hidden");
+      document.body.style="overflow-y:scroll;";
 
       let dataPointsSubRatOK = [];
       let okProbRat1199 = 0;
