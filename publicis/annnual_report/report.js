@@ -464,7 +464,7 @@ function getSetGo() {
           }
           if (
             jsDataRat.result[i].newRating - jsDataRat.result[i].oldRating >
-            maxInc
+            maxInc &&jsDataRat.result[i].oldRating!=0
           ) {
             maxInc =
               jsDataRat.result[i].newRating - jsDataRat.result[i].oldRating;
