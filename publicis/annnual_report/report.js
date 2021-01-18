@@ -61,6 +61,9 @@ function getSetGo() {
       let tmp_start;
       let end;
       let max_streak = 0;
+      let accuracy=0;
+      let correct_answer = 0;
+      let wrong_answer = 0;
       let curr_streak = 0;
       let first_date;
       let curr_date;
@@ -82,6 +85,7 @@ function getSetGo() {
           var date = new Date(unix_timestamp * 1000);
 
           if (jsDataQues.result[i].verdict == "OK") {
+            correct_answer++;
             console.log(jsDataQues.result[i]);
             if (jsDataQues.result[i].problem.rating != undefined) {
               tot_rating_points += jsDataQues.result[i].problem.rating;
@@ -112,6 +116,9 @@ function getSetGo() {
             }
             map_date.set(date.getDate() + "/" + date.getMonth(), cnt + 1);
             ques_on_streak++;
+          }
+          else{
+            wrong_answer++;
           }
 
           if (!ppp) {
@@ -219,8 +226,12 @@ function getSetGo() {
         ".questions_on_best_day"
       ).innerHTML = `${bigDate[1]}`;
       document.querySelector(
+        ".hulk_questions"
+      ).innerHTML = `${bigDate[1]}`;
+      accuracy=(correct_answer/(correct_answer+wrong_answer))*100;
+      document.querySelector(
         ".greet_number"
-      ).innerHTML = `You completed ${quesCount} questions in 2020. That’s an average of…`;
+      ).innerHTML = `You completed ${quesCount} questions in 2020 with an accuracy of ${Math.ceil(accuracy)}%. That’s an average of…`;
       $(".avg_per_day").text(`${quesDay} questions`);
       $(".avg_per_week").text(`${quesWeek} questions`);
       $(".avg_per_month").text(`${quesMonth} questions`);
@@ -230,6 +241,8 @@ function getSetGo() {
       $(".inactive_days").text(map_month.get(worst_month));
       $(".questions_on_streak").text(final_ques_streak);
       $(".day_count").text(day_count);
+      $(".no_of_days_worked").text(day_count);
+
       console.log(newUrl);
       console.log(handle);
       console.log(quesCount);
@@ -291,6 +304,19 @@ function getSetGo() {
       } else if (day_count >= 150) {
         giveBadge("cap_thor", 1);
         badges_missed.delete("cap_thor");
+      }
+      if(Math.ceil(accuracy)>=60)
+      {
+        giveBadge("hawkeye", 3);
+        badges_missed.delete("hawkeye");
+      }
+      else if(Math.ceil(accuracy)>=50){
+        giveBadge("hawkeye", 2);
+        badges_missed.delete("hawkeye"); 
+      }
+      else if(Math.ceil(accuracy)>=40){
+        giveBadge("hawkeye", 1);
+        badges_missed.delete("hawkeye"); 
       }
 
       for (let elem of badges_missed) {
