@@ -21,9 +21,10 @@
       property="og:description"
       content="GameOfCodes tracked my progress and helped me improve my codeforces ratings over the past year!"
     />
-    
-    <meta property="og:image:height" content="628" />
-    <meta property="og:image:height" content="628" />
+    <meta
+         property="og:image"
+         content="https://i.ibb.co/PmFxXDX/logo-dark.png"
+         />
     <script src="assets/html2canvas.js"></script>
 
     <link rel="stylesheet" href="sass/style.css" />
@@ -429,7 +430,7 @@
       </h4>
       <p>ਅਸੀਂ ਕੋਸ਼ਿਸ਼ ਕੀਤੇ ਬਗੈਰ ਨਹੀਂ ਜਾਂਦੇ</p>
     </footer>
-    <div class="showtime" id="ht">
+    <!-- <div class="showtime" id="ht">
       <div class="logo">
         <div class="logoso">
           <img src="images/logo_dark.png" alt="">
@@ -468,9 +469,9 @@
         </div>
 
       </div>
-    </div>
-    <div id="previewImage">
-    </div>
+    </div> -->
+    <!-- <div id="previewImage">
+    </div> -->
     <!-- <script src="http://pablojs.com/downloads/pablo.min.js"></script> -->
 
     <script type="text/javascript" src="https://unpkg.com/canvg@3.0.4/lib/umd.js"></script>
@@ -487,27 +488,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
     <script src="report.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-      let c=window.setInterval(()=>{
-        if(papp)
-        {
-          html2canvas(document.getElementById("ht")).then((canvas) => {
-            console.clear();
     
-            $('meta[property="og:image"]').remove();
-            $("head").append(
-              `<meta property="og:image" content="${canvas.toDataURL(
-                "image/jpeg",
-                0.9
-              )}">`
-            );
-          });
-          clearInterval(c);
-
-          
-        }
-      },1000)
-    </script>
     <script>
       AOS.init({
         duration: 1000,

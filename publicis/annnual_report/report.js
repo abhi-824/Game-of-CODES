@@ -239,9 +239,9 @@ function getSetGo() {
       console.log(quesDay);
       console.log(quesWeek);
       console.log(quesMonth);
-      document.querySelector(".questions1234").innerHTML = quesCount;
-      document.querySelector(".productive_month").innerHTML =
-        array_names[best_month];
+      // document.querySelector(".questions1234").innerHTML = quesCount;
+      // document.querySelector(".productive_month").innerHTML =
+        // array_names[best_month];/
       console.log(tot_rating_points);
       console.log(max_rating_points_per_date);
       let badges_missed = new Set();
