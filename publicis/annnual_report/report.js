@@ -31,6 +31,26 @@ document
     "href",
     `https://www.facebook.com/sharer/sharer.php?t=&u=${window.location.href}`
   );
+document.querySelector(".linkedin_btn").addEventListener("click",(e) => {
+  var copyText = window.location.href;
+  let div=document.createElement("textarea");
+  div.value=copyText;
+  // div.style.display="none";
+  div.id="ajajaj";
+  document.body.appendChild(div);
+  console.log(copyText);
+  /* Select the text field */
+  document.getElementById("ajajaj").select();
+
+
+  /* Copy the text inside the text field */
+  document.execCommand("copy");
+
+  /* Alert the copied text */
+  alert("Copied the url");
+  div.style.display="none";
+
+});
 document
   .querySelector(".twitter_btn")
   .setAttribute(
@@ -507,9 +527,7 @@ function getSetGo() {
       console.log(badges_missed);
       if (badges_missed.size == 0) {
         document.querySelector(`._empty`).classList.remove("hidden");
-      }
-      else if(badges_missed.size==6)
-      {
+      } else if (badges_missed.size == 6) {
         document.querySelector(`.empty`).classList.remove("hidden");
       }
       //console.log(badges_missed)
