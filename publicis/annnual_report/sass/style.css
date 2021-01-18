@@ -482,6 +482,47 @@ body {
           box-shadow: 0px 0px 8px 0px rgba(50, 50, 50, 0.5);
 }
 
+.sub_rat_ok {
+  margin-top: 3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+}
+
+.sub_rat_ok .card {
+  padding-top: 30px;
+  background-color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 600px;
+  grid-gap: 2rem;
+  width: 800px;
+  -webkit-box-shadow: 0px 0px 8px 0px rgba(50, 50, 50, 0.5);
+          box-shadow: 0px 0px 8px 0px rgba(50, 50, 50, 0.5);
+}
+
 .day_stats,
 .month_stats,
 .longest_streak {

@@ -1,7 +1,7 @@
 let handle = window.location.href.split("=")[1];
 const userStatus = "https://codeforces.com/api/user.status?handle=";
 const userRating = "https://codeforces.com/api/user.rating?handle=";
-let papp=0;
+let papp = 0;
 var dataPointsRatings = [];
 var heatmap = new Map();
 let name = "Abhinandan";
@@ -38,6 +38,7 @@ document
 //document.querySelector('.greet_number').innerHTML=`You completed 385 questions in 2020. That’s an average of…`
 getSetGo();
 console.log(handle);
+
 function getSetGo() {
   $(document).ready(function () {
     let map_date = new Map();
@@ -98,9 +99,9 @@ function getSetGo() {
               curr_date_month == date.getMonth()
             ) {
               curr_rating_points_per_date +=
-                jsDataQues.result[i].problem.rating != undefined
-                  ? jsDataQues.result[i].problem.rating
-                  : 0;
+                jsDataQues.result[i].problem.rating != undefined ?
+                jsDataQues.result[i].problem.rating :
+                0;
             } else {
               max_rating_points_per_date = Math.max(
                 max_rating_points_per_date,
@@ -208,16 +209,12 @@ function getSetGo() {
       let array_date;
 
       console.log(bigDate);
-      document.querySelector(".days_streak").innerHTML = `${
-        max_streak + 1
-      } days from ${end.split("/")[0]} ${
-        array_names[parseInt(end.split("/")[1])]
-      } to  ${start.split("/")[0]} ${
-        array_names[parseInt(start.split("/")[1])]
-      } `;
-      document.querySelector(".date").innerHTML = `${
-        bigDate[0].split("/")[0]
-      } ${array_names[parseInt(bigDate[0].split("/")[1])]}`;
+      document.querySelector(".days_streak").innerHTML = `${max_streak + 1
+        } days from ${end.split("/")[0]} ${array_names[parseInt(end.split("/")[1])]
+        } to  ${start.split("/")[0]} ${array_names[parseInt(start.split("/")[1])]
+        } `;
+      document.querySelector(".date").innerHTML = `${bigDate[0].split("/")[0]
+        } ${array_names[parseInt(bigDate[0].split("/")[1])]}`;
       document.querySelector(
         ".questions_on_best_day"
       ).innerHTML = `${bigDate[1]}`;
@@ -241,7 +238,7 @@ function getSetGo() {
       console.log(quesMonth);
       // document.querySelector(".questions1234").innerHTML = quesCount;
       // document.querySelector(".productive_month").innerHTML =
-        // array_names[best_month];/
+      // array_names[best_month];/
       console.log(tot_rating_points);
       console.log(max_rating_points_per_date);
       let badges_missed = new Set();
@@ -300,7 +297,7 @@ function getSetGo() {
         console.log(elem);
         document.querySelector(`._${elem}`).classList.remove("hidden");
       }
-      papp=1;
+      papp = 1;
       // html2canvas($("#html-content-holder")[0]).then(function(canvas) {
       //   $("#previewImage").append(canvas);
       //   });
@@ -469,13 +466,11 @@ function getSetGo() {
         title: {
           text: "Your Ratings",
         },
-        data: [
-          {
-            type: "splineArea",
-            xValueType: "dateTime",
-            dataPoints: dataPointsRatings,
-          },
-        ],
+        data: [{
+          type: "splineArea",
+          xValueType: "dateTime",
+          dataPoints: dataPointsRatings,
+        }, ],
       });
       let posPred = ((posCount * 100) / countCont).toFixed(2);
       $(".rating_pred").html(
@@ -528,9 +523,9 @@ function getSetGo() {
       cal.init({
         //itemSelector: "#cal",
         data: heatmap,
-        itemName: ["visit", "visits"],
+        itemName: ["Questions", "Accepted Submissions"],
         considerMissingDataAsZero: true,
-        legend: [1, 2, 3, 4],
+        legend: [3, 7, 12, 20],
         minDate: new Date(2020, 0),
         maxDate: new Date(2020, 11),
         cellSize: 20,
@@ -566,10 +561,92 @@ function getSetGo() {
       console.log(heatmap);
     }
 
+    async function getUserSubRatOK() {
+      let finalUserSubRatOK = userStatus + handle;
+
+      const jsonDataSubRatOK = await fetch(finalUserSubRatOK);
+      const jsDataSubRatOK = await jsonDataSubRatOK.json();
+
+      let dataPointsSubRatOK = [];
+      let okProbRat1199 = 0;
+      let okProbRat1200_1599 = 0;
+      let okProbRat1600_1999 = 0;
+      let okProbRat2000_2399 = 0;
+      let okProbRat2400_2799 = 0;
+      let okProbRat2800 = 0;
+
+      for (let k = 0; k < jsDataSubRatOK.result.length; k++) {
+        if (jsDataSubRatOK.result[k].verdict == "OK" && jsDataSubRatOK.result[k].creationTimeSeconds >= 1577836800 &&
+        jsDataSubRatOK.result[k].creationTimeSeconds <= 1609459199) {
+          if (jsDataSubRatOK.result[k].problem.rating < 1200) {
+            okProbRat1199++;
+          } else if (jsDataSubRatOK.result[k].problem.rating > 1199 && jsDataSubRatOK.result[k].problem.rating < 1600) {
+            okProbRat1200_1599++;
+          } else if (jsDataSubRatOK.result[k].problem.rating > 1599 && jsDataSubRatOK.result[k].problem.rating < 2000) {
+            okProbRat1600_1999++;
+          } else if (jsDataSubRatOK.result[k].problem.rating > 1999 && jsDataSubRatOK.result[k].problem.rating < 2400) {
+            okProbRat2000_2399++;
+          } else if (jsDataSubRatOK.result[k].problem.rating > 2399 && jsDataSubRatOK.result[k].problem.rating < 2800) {
+            okProbRat2400_2799++;
+          } else if (jsDataSubRatOK.result[k].problem.rating > 2799) {
+            okProbRat2800++;
+          }
+        }
+      }
+
+      dataPointsSubRatOK.push({
+        x: 1,
+        y: okProbRat1199,
+        label: "<1200",
+      });
+      dataPointsSubRatOK.push({
+        x: 2,
+        y: okProbRat1200_1599,
+        label: "1200-1599",
+      });
+      dataPointsSubRatOK.push({
+        x: 3,
+        y: okProbRat1600_1999,
+        label: "1600-1999",
+      });
+      dataPointsSubRatOK.push({
+        x: 4,
+        y: okProbRat2000_2399,
+        label: "2000-2399",
+      });
+      dataPointsSubRatOK.push({
+        x: 5,
+        y: okProbRat2400_2799,
+        label: "2400-2799",
+      });
+      dataPointsSubRatOK.push({
+        x: 6,
+        y: okProbRat2800,
+        label: ">2800",
+      })
+      var chart = new CanvasJS.Chart("myChart2", {
+        backgroundColor: null,
+        animationEnabled: true,
+        animationDuration: 2000,
+        theme: "light1",
+        title: {
+          text: "Your Accepted Submissions",
+        },
+        data: [{
+          type: "splineArea",
+          dataPoints: dataPointsSubRatOK,
+        }, ],
+      });
+      chart.render();
+      //console.log(dataPointsSubRatOK);
+    }
+
     getQuesCount();
     getUserRat();
     heatmapdata();
+    getUserSubRatOK();
   });
+
   function giveBadge(str, lev) {
     console.log(str);
     document.querySelector(`.${str}`).classList.remove("hidden");
