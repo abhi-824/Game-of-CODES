@@ -466,9 +466,9 @@ function getSetGo() {
       const jsonDataRat = await fetch(newUrl2);
       const jsDataRat = await jsonDataRat.json();
 
-      let maxInc = 0;
+      let maxInc = -100000;
       let minInc = 100000;
-      let maxRat = 0;
+      let maxRat = -10000;
       let minRat = 100000;
       let countCont = 0;
       let posCount = 0;
