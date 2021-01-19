@@ -47,7 +47,7 @@ document.querySelector(".linkedin_btn").addEventListener("click",(e) => {
   document.execCommand("copy");
 
   /* Alert the copied text */
-  alert("Copied the url");
+  alert("Copied the url. You can now manually go to linkedin and paste the link there. We tried a lot but couldn't find a way to redirect you to linkedin post.😫");
   div.style.display="none";
 
 });
@@ -80,6 +80,7 @@ function getSetGo() {
       let newUrl = userStatus + handle;
       const jsonDataQues = await fetch(newUrl);
       const jsDataQues = await jsonDataQues.json();
+      
       let start;
       let tmp_start;
       let end;
@@ -626,14 +627,14 @@ function getSetGo() {
       $("#heat_but_left").on("click", function (e) {
         e.preventDefault();
         if (!cal.previous()) {
-          alert("kitna peeche jaayega lawde");
+          alert("2020 begins here, you might wanna push the other button!");
         }
       });
 
       $("#heat_but_right").on("click", function (e) {
         e.preventDefault();
         if (!cal.next()) {
-          alert("aage mujra chal rha? RUK YAHI PAR");
+          alert("2021 is still to come, till then see what's here!");
         }
       });
 
