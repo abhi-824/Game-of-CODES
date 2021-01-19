@@ -44,7 +44,7 @@ document
 //   // div.style.display="none";
 //   div.id="ajajaj";
 //   document.body.appendChild(div);
-//   console.log(copyText);
+//   //console.log(copyText);
 //   /* Select the text field */
 //   document.getElementById("ajajaj").select();
 
@@ -65,7 +65,7 @@ document
   );
 //document.querySelector('.greet_number').innerHTML=`You completed 385 questions in 2020. That’s an average of…`
 getSetGo();
-//console.log(handle);
+////console.log(handle);
 document.querySelector(".loader").classList.remove("hidden");
 document.body.style = "overflow-y:hidden;";
 function getSetGo() {
@@ -80,7 +80,7 @@ function getSetGo() {
     for (let i = 0; i < 12; i++) {
       map_month.set(i, 0);
     }
-    //console.log(map_month);
+    ////console.log(map_month);
     let tot_rating_points = 0;
     async function getQuesCount() {
       let newUrl = userStatus + handle;
@@ -113,10 +113,11 @@ function getSetGo() {
         ) {
           let unix_timestamp = jsDataQues.result[i].creationTimeSeconds;
           var date = new Date(unix_timestamp * 1000);
-
+          
           if (jsDataQues.result[i].verdict == "OK") {
+            //console.log("hi")
             correct_answer++;
-            //console.log(jsDataQues.result[i]);
+            ////console.log(jsDataQues.result[i]);
             if (jsDataQues.result[i].problem.rating != undefined) {
               tot_rating_points += jsDataQues.result[i].problem.rating;
             }
@@ -157,7 +158,6 @@ function getSetGo() {
             continue;
           }
           // Hours part from the timestamp
-          //console.log(curr_date, date.getDate());
           if (
             curr_date == date.getDate() + 1 &&
             curr_month == date.getMonth()
@@ -173,10 +173,12 @@ function getSetGo() {
             if (date.getDate() == last_date && curr_date == 1) {
               if (curr_streak == 0)
                 tmp_start = date.getDate() + "/" + date.getMonth();
+                //console.log(temp_start);
               curr_streak++;
             } else {
               if (max_streak < curr_streak) {
                 max_streak = curr_streak;
+                //console.log(tmp_start)
                 start = tmp_start;
                 end = curr_date + "/" + curr_month;
                 final_ques_streak = ques_on_streak;
@@ -198,7 +200,8 @@ function getSetGo() {
           curr_month = date.getMonth();
         }
       }
-
+      //console.log(tmp_start)
+      //console.log(start)
       let quesDay = (quesCount / 366).toFixed(2);
       let quesWeek = (quesCount / 52).toFixed(2);
       let quesMonth = (quesCount / 12).toFixed(2);
@@ -221,8 +224,8 @@ function getSetGo() {
       let min_month = 10000;
       let best_month;
       let worst_month;
-      //console.log(map_month);
-      //console.log(first_month);
+      ////console.log(map_month);
+      ////console.log(first_month);
       for (const elem of map_month) {
         if (elem[0] >= first_month) {
           if (max_month < elem[1]) {
@@ -233,25 +236,31 @@ function getSetGo() {
       }
       for (const elem of map_month) {
         if (elem[0] >= first_month) {
-          //console.log(min_month, elem);
+          ////console.log(min_month, elem);
           if (min_month > elem[1]) {
             min_month = elem[1];
             worst_month = elem[0];
           }
         }
       }
-      //console.log(best_month, worst_month);
+      ////console.log(best_month, worst_month);
 
       let array_date;
 
-      //console.log(bigDate);
-      document.querySelector(".days_streak").innerHTML = `${
-        max_streak + 1
-      } days from ${end.split("/")[0]} ${
-        array_names[parseInt(end.split("/")[1])]
-      } to  ${start.split("/")[0]} ${
-        array_names[parseInt(start.split("/")[1])]
-      } `;
+      ////console.log(bigDate);
+      if(start!=undefined) {
+        
+        document.querySelector(".days_streak").innerHTML = `${
+          max_streak + 1
+        } days from ${end.split("/")[0]} ${
+          array_names[parseInt(end.split("/")[1])]
+        } to  ${start.split("/")[0]} ${
+          array_names[parseInt(start.split("/")[1])]
+        } `;
+      }
+      else{
+        document.querySelector(".days_streak").innerHTML = `Nothing! `;
+      }
       document.querySelector(".date").innerHTML = `${
         bigDate[0].split("/")[0]
       } ${array_names[parseInt(bigDate[0].split("/")[1])]}`;
@@ -276,17 +285,17 @@ function getSetGo() {
       $(".day_count").text(day_count);
       $(".no_of_days_worked").text(day_count);
 
-      //console.log(newUrl);
-      //console.log(handle);
-      //console.log(quesCount);
-      //console.log(quesDay);
-      //console.log(quesWeek);
-      //console.log(quesMonth);
+      ////console.log(newUrl);
+      ////console.log(handle);
+      ////console.log(quesCount);
+      ////console.log(quesDay);
+      ////console.log(quesWeek);
+      ////console.log(quesMonth);
       // document.querySelector(".questions1234").innerHTML = quesCount;
       // document.querySelector(".productive_month").innerHTML =
       // array_names[best_month];/
-      //console.log(tot_rating_points);
-      //console.log(max_rating_points_per_date);
+      ////console.log(tot_rating_points);
+      ////console.log(max_rating_points_per_date);
       badges_missed.add("thor");
       badges_missed.add("hulk");
       badges_missed.add("cap_gold");
@@ -294,7 +303,7 @@ function getSetGo() {
       badges_missed.add("iron_man");
       badges_missed.add("hawkeye");
 
-      //console.log(tot_rating_points);
+      ////console.log(tot_rating_points);
       if (tot_rating_points >= 547500) {
         giveBadge("thor", 3);
         badges_missed.delete("thor");
@@ -350,7 +359,7 @@ function getSetGo() {
       }
 
       // for (let elem of badges_missed) {
-      //   //console.log(elem);
+      //   ////console.log(elem);
       //   document.querySelector(`._${elem}`).classList.remove("hidden");
       // }
       papp = 1;
@@ -383,7 +392,7 @@ function getSetGo() {
       // img.src = url;
       // document.body.appendChild(img)
 
-      // //console.log(document.querySelector('.svg_sho').innerHTML)
+      // ////console.log(document.querySelector('.svg_sho').innerHTML)
       // v = canvg.Canvg.fromString(ctx, document.querySelector('.svg_sho').innerHTML);
 
       // // Start SVG rendering with animations and mouse handling.
@@ -395,7 +404,7 @@ function getSetGo() {
       //   document.body.appendChild(meta_img);
       //   $('meta[property="og:image"]').remove();
       //   $("head").append(`<meta property="og:image" content="${img}">`);
-      //   //console.log(meta_img);
+      //   ////console.log(meta_img);
       // });
       // var img = new Image();
       // img.onload = function() {
@@ -417,8 +426,8 @@ function getSetGo() {
       // the first svg element it finds
       // function svgToCanvas() {
       //   // Select the first svg element
-      //   //console.clear();
-      //   //console.log(d3.select("#showtime"));
+      //   ////console.clear();
+      //   ////console.log(d3.select("#showtime"));
       //   var svg = d3.select("#showtime")[0][0],
       //     img = new Image(),
       //     serializer = new XMLSerializer(),
@@ -441,7 +450,7 @@ function getSetGo() {
       //   $("head").append(`<meta property="og:image" content="${img}">`);
       // var svgElement = document.getElementById("showtime");
       // let { width, height } = svgElement.getBBox();
-      // //console.log(width, height);
+      // ////console.log(width, height);
       // let clonedSvgElement = svgElement.cloneNode(true);
 
       // let outerHTML = clonedSvgElement.outerHTML,
@@ -464,7 +473,7 @@ function getSetGo() {
 
       // let jpeg = canvas.toDataURL('image/jpg');// default png
 
-      // //console.clear()
+      // ////console.clear()
       let first_rating = 0;
       let newnew = 1;
       let last_rating = 0;
@@ -519,7 +528,7 @@ function getSetGo() {
           }
         }
       }
-      //console.log(first_rating, last_rating)
+      ////console.log(first_rating, last_rating)
       if (last_rating - first_rating >= 700) {
         giveBadge("iron_man", 3);
         badges_missed.delete("iron_man");
@@ -530,16 +539,16 @@ function getSetGo() {
         giveBadge("iron_man", 1);
         badges_missed.delete("iron_man");
       }
-      // //console.cl/ear()
-      console.log(badges_missed);
+      // ////console.cl/ear()
+      //console.log(badges_missed);
       if (badges_missed.size == 0) {
         document.querySelector(`._empty`).classList.remove("hidden");
       } else if (badges_missed.size == 6) {
         document.querySelector(`.empty`).classList.remove("hidden");
       }
-      //console.log(badges_missed)
+      ////console.log(badges_missed)
       for (let elem of badges_missed) {
-        //console.log(elem);
+        ////console.log(elem);
         document.querySelector(`._${elem}`).classList.remove("hidden");
       }
       var chart = new CanvasJS.Chart("myChart1", {
@@ -644,7 +653,7 @@ function getSetGo() {
         }
       });
 
-      //console.log(heatmap);
+      ////console.log(heatmap);
     }
 
     async function getUserSubRatOK() {
@@ -743,7 +752,7 @@ function getSetGo() {
         ],
       });
       chart.render();
-      ////console.log(dataPointsSubRatOK);
+      //////console.log(dataPointsSubRatOK);
     }
 
     getQuesCount();
@@ -753,7 +762,7 @@ function getSetGo() {
   });
 
   function giveBadge(str, lev) {
-    //console.log(str);
+    ////console.log(str);
     document.querySelector(`.${str}`).classList.remove("hidden");
     for (let i = 0; i < lev; i++) {
       let img = document.createElement("img");
