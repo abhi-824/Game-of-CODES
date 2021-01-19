@@ -262,12 +262,12 @@ function getSetGo() {
       accuracy = (correct_answer / (correct_answer + wrong_answer)) * 100;
       document.querySelector(
         ".greet_number"
-      ).innerHTML = `You completed ${quesCount} questions in 2020 with an accuracy of ${Math.ceil(
+      ).innerHTML = `You completed ${quesCount} problems in 2020 with an accuracy of ${Math.ceil(
         accuracy
       )}%. That’s an average of…`;
-      $(".avg_per_day").text(`${quesDay} questions`);
-      $(".avg_per_week").text(`${quesWeek} questions`);
-      $(".avg_per_month").text(`${quesMonth} questions`);
+      $(".avg_per_day").text(`${quesDay} problems`);
+      $(".avg_per_week").text(`${quesWeek} problems`);
+      $(".avg_per_month").text(`${quesMonth} problems`);
       $(".month").text(array_names[best_month]);
       $(".worst_month").text(array_names[worst_month]);
       $(".questions_on_month").text(map_month.get(best_month));
