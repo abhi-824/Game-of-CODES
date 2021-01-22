@@ -628,7 +628,10 @@ table tr {
 	pointer-events: none;
 }
 .updateCodeblast{
+	position: absolute;
 	z-index:100;
+	bottom:0;
+	right:0;
 }
 .container2222 .container768{
   position: absolute!important;
