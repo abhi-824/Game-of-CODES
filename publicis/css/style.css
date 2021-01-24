@@ -96,14 +96,14 @@ a {
 }
 
 .container900 {
-	background: url('../resources/backgrounds/avengers.jpg') no-repeat
+	background: url('../resources/backgrounds/iron-man.jpg') no-repeat
 		center/cover;
 	background-attachment: fixed;
 	height: 100vh;
 }
 
 .container7 {
-	background: url('../resources/backgrounds/image1.jpg') no-repeat center/cover;
+	background: url('../resources/backgrounds/iron-man.jpg') no-repeat center/cover;
 	background-attachment: fixed;
 	height: 100vh;
 }
@@ -218,14 +218,14 @@ a {
 	color: rgb(0, 0, 0);
 }
 .container4 {
-	background: url('../resources/backgrounds/jonathan-borba-zfPOelmDc-M-unsplash.jpg')
+	background: url('../resources/backgrounds/iron-man.jpg')
 		no-repeat center center/cover;
 	background-attachment: fixed;
 	height: 100vh;
 }
 
 .container411 {
-	background: url('../resources/backgrounds/jonathan-borba-zfPOelmDc-M-unsplash.jpg')
+	background: url('../resources/backgrounds/iron-man.jpg')
 		no-repeat center center/cover;
 	background-attachment: fixed;
 	height: 100vh;
@@ -240,7 +240,7 @@ a {
 	background-color: rgba(0, 0, 0, 0.6);
 }
 .container111 {
-	background: url('../resources/backgrounds/car_black.jpg') no-repeat center
+	background: url('../resources/backgrounds/iron-man.jpg') no-repeat center
 		center/cover;
 	background-attachment: fixed;
 	height: 540vh;
@@ -638,8 +638,10 @@ table tr {
   top:0!important;
 }
 .res_table{
-	position: absolute;
-	top:50%;
+	max-width: 600px;
+    position: absolute;
+    right: 0;
+    top: 300px;
 }
 .container768 {
 	position: relative;
@@ -823,7 +825,7 @@ a:hover {
 	border: 1px solid white;
 }
 .container1forprofile {
-	background: url('../resources/backgrounds/hulk.jpg') no-repeat center/cover;
+	background: url('../resources/backgrounds/iron-man.jpg') no-repeat center/cover;
 	background-attachment: fixed;
 	height: 540vh;
 }
@@ -1391,7 +1393,7 @@ body {
 	bottom: 0;
 }
 .container824 {
-	background: url('resources/backgrounds/ironman-art.jpg') no-repeat center
+	background: url('resources/') no-repeat center
 		center/cover;
 	background-attachment: fixed;
 	height: 150vh;

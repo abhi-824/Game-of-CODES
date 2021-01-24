@@ -6,24 +6,23 @@
     <title>Document</title>
     <link rel="stylesheet" href="test.css">
   </head>
+  <style>
+    div{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction:column;
+    }
+    img{
+      height:200px;
+    }
+  </style>
   <body>
-    <nav>
-      <div class="hamburger">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-      </div>
-      <ul class="nav-links">
-          <li><a href="">About</a></li>
-          <li><a href="">About</a></li>
-          <li><a href="">About</a></li>
-          <li><a href="">About</a></li>
-          <li><a href="">About</a></li>
-      </ul>
-    </nav>
-    <section class="landing">
-
-    </section>
+    <div>
+      <img src="resources/stones/backgrounds/thanos.png" alt="">
+      <h1>Current Winner</h1>
+      <h1 class="username"></h1>
+    </div>
   </body>
   <script>
       const hamburger=document.querySelector(".hamburger");

@@ -51,7 +51,7 @@ function codeblast_enter(username, room) {
     table.appendChild(tr);
     // }
     table.classList = "table";
-    document.body.appendChild(table);
+    document.querySelector(".containerOverlayCodeBlast").appendChild(table);
     load_kkk.classList.add("disapper");
   });
 
@@ -193,6 +193,7 @@ function codeblast_enter(username, room) {
   function display_problems(problems) {
     let div = document.createElement("div");
     div.classList.add("container768");
+    div.style="max-width:800px;"
     div.innerHTML = `   <div class="box">
               <div class="content">
                 <h2>A</h2>
@@ -274,6 +275,22 @@ function codeblast_enter(username, room) {
     // lastTime: lastTime,
     // penalty: totalPenalty, 
     console.log(user)
+    let div=document.createElement("div");
+    div.style=`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    max-width: max-content;
+    top: 0;
+    right: 180px;`
+    div.innerHTML=`
+    <img src="resources/stones/backgrounds/thanos.png" alt="" style="height:200px;">
+    <h1 style="color:white">Current Winner</h1>
+    <h1 style="color:white" class="username">${user.user}</h1>
+    ` 
+    document.querySelector(".containerOverlayCodeBlast").appendChild(div)
   }
   function convert_to_link(str) {
     let p = "";
