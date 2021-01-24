@@ -1,11 +1,10 @@
 function codeblast_enter(username, room) {
-  
   show_screen(codeblast_screen2);
   const form = document.getElementById("chat-form");
   const chatMessages = document.querySelector(".chat-messages");
   const socket = io();
   var load_kkk = document.querySelector(".loader12345");
- 
+
   socket.emit("joinRoom", { username, room });
 
   document.querySelector(".ready_btn").addEventListener("click", function (e) {
@@ -71,24 +70,21 @@ function codeblast_enter(username, room) {
     display_problems(problems);
     //console.log(problems);
     document.querySelector(".updateCodeblast").classList.remove("hidden");
-    problem=problems;
-   
+    problem = problems;
   });
   let problem;
-  document
-  .querySelector(".updateCodeblast")
-  .addEventListener("click", (e) => {
+  document.querySelector(".updateCodeblast").addEventListener("click", (e) => {
     e.preventDefault();
     socket.emit("results", room, problem);
   });
 
-  socket.on('takeHimIn',problems=>{
-    problem=problems;
+  socket.on("takeHimIn", (problems) => {
+    problem = problems;
     document.querySelector(".chat-container").remove();
     load_kkk.classList.add("disapper");
     document.querySelector(".updateCodeblast").classList.remove("hidden");
     display_problems(problems);
-  })
+  });
 
   socket.on("roomUsers", ({ room, users }) => {
     outputRoomName(room);
@@ -104,7 +100,7 @@ function codeblast_enter(username, room) {
       ".messages"
     ).scrollHeight;
   });
- 
+
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const msg = e.target.elements.msg.value;
@@ -114,7 +110,7 @@ function codeblast_enter(username, room) {
     e.target.elements.msg.value = "";
     e.target.elements.msg.focus();
   });
- 
+
   socket.on("go_results", (re_map) => {
     re_map = JSON.parse(re_map);
     let res_map = new Map(Object.entries(re_map));
@@ -125,21 +121,58 @@ function codeblast_enter(username, room) {
     let table = document.createElement("table");
     table.className = "table";
     table.classList.add("res_table");
+    let scores = [];
+    let currWinner={
+      user: "boss",
+      score: -1,
+      lastTime:"23:59:59",
+      penalty:10000
+    };
+
     res_map.forEach((element, key) => {
       let tr = document.createElement("tr");
       let td = document.createElement("td");
       td.innerHTML = key;
+      let scoreElem = 0;
+      let lastTime="23:59:59";
       tr.appendChild(td);
+      let totalPenalty = 0;
       for (let i = 0; i < element.length; i++) {
         let td = document.createElement("td");
+        scoreElem += element[i].result;
+        if(element[i].time!="Not solved")
+        {
+          lastTime = lastTime > element[i].time ? lastTime : element[i].time;
+        }
+        totalPenalty += element[i].penalty;
         td.innerHTML = `${element[i].result} | ${element[i].penalty} | ${element[i].time} `;
         tr.appendChild(td);
       }
+      if (scoreElem > currWinner.score && lastTime <= currWinner.lastTime) {
+        if (lastTime == currWinner.lastTime) {
+          if (totalPenalty < currWinner.penalty) {
+            currWinner = {
+              user: key,
+              score: scoreElem,
+              lastTime: lastTime,
+              penalty: totalPenalty,
+            };
+          }
+        }
+      }
+      scores.push({
+        user: key,
+        score: scoreElem,
+        lastTime: lastTime,
+        penalty: totalPenalty,
+      });
+      console.log(scores);
       table.appendChild(tr);
     });
+    displayWinner(currWinner);
     document.querySelector(".container2222").appendChild(table);
   });
- 
+
   function output_mess(message) {
     const div = document.createElement("div");
     div.classList.add("message");
@@ -234,7 +267,14 @@ function codeblast_enter(username, room) {
       display = document.querySelector(".timer22");
     startTimer(two_hours, display, problems);
   }
-
+  function displayWinner(user)
+  {
+    // user: key,
+    // score: scoreElem,
+    // lastTime: lastTime,
+    // penalty: totalPenalty, 
+    console.log(user)
+  }
   function convert_to_link(str) {
     let p = "";
     let q = "";
@@ -273,5 +313,4 @@ function codeblast_enter(username, room) {
       }
     }, 1000);
   }
-
 }
