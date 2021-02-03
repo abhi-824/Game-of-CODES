@@ -273,10 +273,6 @@ function codeblast_enter(username, room) {
   }
   function displayWinner(user)
   {
-    // user: key,
-    // score: scoreElem,
-    // lastTime: lastTime,
-    // penalty: totalPenalty, 
     console.log(user)
     let div=document.createElement("div");
     div.className="wiinerAya";
