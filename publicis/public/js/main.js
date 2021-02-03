@@ -137,6 +137,7 @@ function codeblast_enter(username, room) {
       let lastTime="23:59:59";
       tr.appendChild(td);
       let totalPenalty = 0;
+      console.log(res_map)
       for (let i = 0; i < element.length; i++) {
         let td = document.createElement("td");
         scoreElem += element[i].result;
@@ -148,17 +149,19 @@ function codeblast_enter(username, room) {
         td.innerHTML = `${element[i].result} | ${element[i].penalty} | ${element[i].time} `;
         tr.appendChild(td);
       }
-      if (scoreElem > currWinner.score && lastTime <= currWinner.lastTime) {
-        if (lastTime == currWinner.lastTime) {
-          if (totalPenalty < currWinner.penalty) {
+      console.log(scoreElem);
+      console.log(scoreElem);
+      if (scoreElem > currWinner.score) {
+        // if (lastTime == currWinner.lastTime) {
+          // if (totalPenalty < currWinner.penalty) {
             currWinner = {
               user: key,
               score: scoreElem,
               lastTime: lastTime,
               penalty: totalPenalty,
             };
-          }
-        }
+          // }
+        // }
       }
       scores.push({
         user: key,
@@ -276,6 +279,7 @@ function codeblast_enter(username, room) {
     // penalty: totalPenalty, 
     console.log(user)
     let div=document.createElement("div");
+    div.className="wiinerAya";
     div.style=`
     display: flex;
     justify-content: center;
@@ -290,6 +294,9 @@ function codeblast_enter(username, room) {
     <h1 style="color:white">Current Winner</h1>
     <h1 style="color:white" class="username">${user.user}</h1>
     ` 
+    if(document.querySelector(".wiinerAya")!=undefined) {
+      document.querySelector(".wiinerAya").remove();
+    }
     document.querySelector(".containerOverlayCodeBlast").appendChild(div)
   }
   function convert_to_link(str) {
