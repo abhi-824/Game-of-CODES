@@ -1,7 +1,6 @@
 const path = require("path");
 
 const dotenv = require("dotenv");
-dotenv.config({ path: "./.env" });
 
 const fetch = require("node-fetch");
 
@@ -11,6 +10,8 @@ const host = "0.0.0.0";
 const PORT = process.env.PORT || 3000;
 const express = require("express");
 const room_problems = new Map();
+
+
 
 const socketio = require("socket.io");
 

@@ -13,7 +13,7 @@
 }
 .latka {
 	animation: pulse 2s infinite;
-	width: 15%;
+	width: 25%;
 }
 @keyframes pulse {
 	0% {
