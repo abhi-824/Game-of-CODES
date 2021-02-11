@@ -252,13 +252,7 @@ function dashboard(handle_name) {
                 console.log(arr.problems[i].contestId, arr.problemStatistics[i].solvedCount);
                 result.push(arr.problems[i]);
               }
-            } else {
-              if (arr.problems[i].points <= 1200 && arr.problemStatistics[i].solvedCount>=5000) {
-                no--;
-                console.log(arr.problems[i].contestId, arr.problemStatistics[i].solvedCount);
-                result.push(arr.problems[i]);
-              }
-            }
+            } 
           }
           return result;
         }
@@ -275,23 +269,14 @@ function dashboard(handle_name) {
             }
             if (arr.problems[i].rating !== undefined) {
               if (
-                arr.problems[i].rating <= 1700 &&
+                arr.problems[i].rating <= 1500 &&
                 arr.problems[i].rating > 1200 && arr.problemStatistics[i].solvedCount>=3000
               ) {
                 no--;
                 console.log(arr.problems[i].contestId, arr.problemStatistics[i].solvedCount);
                 result.push(arr.problems[i]);
               }
-            } else {
-              if (
-                arr.problems[i].points <= 1700 &&
-                arr.problems[i].points >= 1200 && arr.problemStatistics[i].solvedCount>=3000
-              ) {
-                no--;
-                console.log(arr.problems[i].contestId, arr.problemStatistics[i].solvedCount);
-                result.push(arr.problems[i]);
-              }
-            }
+            } 
           }
           return result;
         }
@@ -308,23 +293,14 @@ function dashboard(handle_name) {
             }
             if (arr.problems[i].rating !== undefined) {
               if (
-                arr.problems[i].rating <= 2400 &&
-                arr.problems[i].rating > 1900 && arr.problemStatistics[i].solvedCount>=1000
+                arr.problems[i].rating <= 1900 &&
+                arr.problems[i].rating > 1500 && arr.problemStatistics[i].solvedCount>=1000
               ) {
                 no--;
                 console.log(arr.problems[i].contestId, arr.problemStatistics[i].solvedCount);
                 result.push(arr.problems[i]);
               }
-            } else {
-              if (
-                arr.problems[i].points >= 1500 &&
-                arr.problems[i].points <= 1900 && arr.problemStatistics[i].solvedCount>=1000
-              ) {
-                no--;
-                console.log(arr.problems[i].contestId, arr.problemStatistics[i].solvedCount);
-                result.push(arr.problems[i]);
-              }
-            }
+            } 
           }
           return result;
         }
