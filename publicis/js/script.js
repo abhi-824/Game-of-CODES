@@ -1630,7 +1630,7 @@ function dashboard(handle_name) {
   function show_please(item) {
     item.style.width = "30vw";
     item.style.transition = "1s";
-    item.style.height = "25vh";
+    item.style.height = "20vh";
   }
   function hide_please(item) {
     item.style.width = "24vw";

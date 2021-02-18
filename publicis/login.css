@@ -11,6 +11,10 @@
 	justify-content: center;
 	align-items: center;
 }
+.loader12345 img{
+	height:250px;
+	width:auto;
+}
 .latka {
 	animation: pulse 2s infinite;
 	width: 25%;
