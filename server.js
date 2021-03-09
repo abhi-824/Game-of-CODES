@@ -11,8 +11,6 @@ const PORT = process.env.PORT || 3000;
 const express = require("express");
 const room_problems = new Map();
 
-
-
 const socketio = require("socket.io");
 
 const formatMessage = require("./utils/messages");
@@ -66,7 +64,10 @@ io.on("connection", (socket) => {
       // giveProblems();
       io.to(user.room).emit("start_loader", problems);
       async function getFinal() {
+        let contests_given = new Set();
         let solved = new Set();
+        let user_contests = "https://codeforces.com/api/user.rating?handle=";
+        const url_info = " https://codeforces.com/api/user.info?handles=";
         for (let i = 0; i < users.length; i++) {
           let handle_name1 = users[i].username;
           // async function getSetGo() {
@@ -82,12 +83,20 @@ io.on("connection", (socket) => {
               solved.add(str);
             }
           }
+          let modified_url2 = user_contests + handle_name1;
+          const jsondata1 = await fetch(modified_url2);
+          const jsdata2 = await jsondata1.json();
+          for (let i = 0; i < jsdata2.result.length; i++) {
+            contests_given.add(jsdata2.result[i].contestId);
+          }
+
         }
 
         let modified_url2 = `https://codeforces.com/api/problemset.problems`;
         const jsondata4 = await fetch(modified_url2);
         jsdata4 = await jsondata4.json();
-
+        let jsdataP=jsdata4;
+        let upsolved=[]
         function shuffle(array) {
           var currentIndex = array.length,
             temporaryValue,
@@ -107,19 +116,39 @@ io.on("connection", (socket) => {
 
           return array;
         }
-
+        for (let i = 0; i < jsdataP.result.problems.length; i++) {
+          if (
+            contests_given.has(jsdataP.result.problems[i].contestId) &&
+            solved.has(
+              `${jsdataP.result.problems[i].contestId}-${jsdataP.result.problems[i].index}`
+            ) == false
+          ) {
+          let rating=jsdataP.result.problems[i].rating!=undefined?jsdataP.result.problems[i].rating:9999999999;
+            upsolved.push([rating,
+              `${jsdataP.result.problems[i].contestId}-${jsdataP.result.problems[i].index}`]
+            );
+          }
+        }
+        upsolved.sort();
+        let j=0;
         shuffle(jsdata4.result.problems);
         for (let i = 0; i < jsdata4.result.problems.length; i++) {
           let str =
             jsdata4.result.problems[i].contestId +
             "-" +
             jsdata4.result.problems[i].index;
+            if(upsolved[j][0]<=1200)
+            {
+              problems.push(upsolved[j][1]);
+              j++;
+              break;
+            }
           if (
             jsdata4.result.problems[i].rating > 900 &&
             jsdata4.result.problems[i].rating <= 1200 &&
             solved.has(str) === false &&
-            jsdata4.result.problemStatistics[i].solvedCount >= 900
-            && jsdata4.result.problems[i].tags.includes("*special")===false
+            jsdata4.result.problemStatistics[i].solvedCount >= 900 &&
+            jsdata4.result.problems[i].tags.includes("*special") === false
           ) {
             //to be continued
 
@@ -132,12 +161,18 @@ io.on("connection", (socket) => {
             jsdata4.result.problems[i].contestId +
             "-" +
             jsdata4.result.problems[i].index;
+            if(upsolved[j][0]<=1500)
+            {
+              problems.push(upsolved[j][1]);
+              j++;
+              break;
+            }
           if (
             jsdata4.result.problems[i].rating > 1200 &&
             jsdata4.result.problems[i].rating <= 1500 &&
             solved.has(str) === false &&
-            jsdata4.result.problemStatistics[i].solvedCount >= 900
-            && jsdata4.result.problems[i].tags.includes("*special")===false
+            jsdata4.result.problemStatistics[i].solvedCount >= 900 &&
+            jsdata4.result.problems[i].tags.includes("*special") === false
           ) {
             //to be continued
             problems.push(str);
@@ -150,13 +185,19 @@ io.on("connection", (socket) => {
             jsdata4.result.problems[i].contestId +
             "-" +
             jsdata4.result.problems[i].index;
+            if(upsolved[j][0]<=1700)
+            {
+              problems.push(upsolved[j][1]);
+              j++;
+              break;
+            }
           if (
             jsdata4.result.problems[i].rating > 1500 &&
             jsdata4.result.problems[i].rating <= 1700 &&
             solved.has(str) === false &&
-            jsdata4.result.problemStatistics[i].solvedCount >= 200
-            && jsdata4.result.problems[i].tags.includes("*special")===false
-            ) {
+            jsdata4.result.problemStatistics[i].solvedCount >= 200 &&
+            jsdata4.result.problems[i].tags.includes("*special") === false
+          ) {
             //to be continued
             problems.push(str);
             break;
@@ -167,12 +208,18 @@ io.on("connection", (socket) => {
             jsdata4.result.problems[i].contestId +
             "-" +
             jsdata4.result.problems[i].index;
+            if(upsolved[j][0]<=2100)
+            {
+              problems.push(upsolved[j][1]);
+              j++;
+              break;
+            }
           if (
             jsdata4.result.problems[i].rating > 1700 &&
             jsdata4.result.problems[i].rating < 2100 &&
-            solved.has(str) === false
-            && jsdata4.result.problems[i].tags.includes("*special")===false
-            ) {
+            solved.has(str) === false &&
+            jsdata4.result.problems[i].tags.includes("*special") === false
+          ) {
             //to be continued
             problems.push(str);
             break;
