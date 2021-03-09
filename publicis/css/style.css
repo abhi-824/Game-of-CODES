@@ -558,7 +558,9 @@ table tr {
 
 .user-stats {
 	position: absolute;
-	bottom: 0;
+	bottom: 10px;
+	left:5px;
+	right:5px;
 	width: 100%;
 	opacity: 0.6;
 	display: grid;

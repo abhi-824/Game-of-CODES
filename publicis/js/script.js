@@ -1574,8 +1574,9 @@ function dashboard(handle_name) {
 
     // }
   }
-
-  getUpsolved();
+  window.setTimeout(()=>{
+    getUpsolved();
+  },3000)
   // for retreiving the unsolved questions
   async function getUnsolved() {
     let modified_url = url2 + handle_name;
