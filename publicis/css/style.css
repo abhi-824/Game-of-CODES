@@ -852,6 +852,13 @@ a:hover {
 	background-attachment: fixed;
 	height: 600vh;
 }
+.feedback_screen{
+	background: rgb(61, 61, 61);
+	background-attachment: fixed;
+}
+.feedback_screen iframe{
+	overflow-y: hidden;
+}
 .container2forprofile {
 	position: absolute;
 	top: 0;

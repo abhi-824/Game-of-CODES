@@ -8,6 +8,7 @@ function events_init() {
   let level_wise_nav = document.querySelectorAll(".level_wise");
   let sorting_vis_nav = document.querySelectorAll(".sorting_vis_pls");
   let grid_vis_nav = document.querySelectorAll(".grid_vis_pls");
+  let feedback_nav = document.querySelectorAll(".feedback");
 
   let dotodashbtn = document.querySelectorAll(".gotodash");
   for (let i = 0; i < dotodashbtn.length; i++) {
@@ -33,6 +34,13 @@ function events_init() {
   for (let i = 0; i < profile_nav.length; i++) {
     profile_nav[i].addEventListener("click", function (e) {
       profile(handle);
+      e.preventDefault();
+    });
+  }
+  
+  for (let i = 0; i < feedback_nav.length; i++) {
+    feedback_nav[i].addEventListener("click", function (e) {
+      show_screen(feedback)
       e.preventDefault();
     });
   }

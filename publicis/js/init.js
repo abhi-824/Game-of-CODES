@@ -15,6 +15,7 @@ let community_screen=document.querySelector('.container900');
 let roadmap_screen=document.querySelector('.containerForRoadmap');
 let roadmap_topic_screen=document.querySelector('.containerForPowerStone');
 let roadmap_contest_screen=document.querySelector('.containerForContest');
+let feedback=document.querySelector('.feedback_screen');
 
 function show_screen(some_screen) {
 	
@@ -34,6 +35,7 @@ function show_screen(some_screen) {
 	roadmap_screen=document.querySelector('.containerForRoadmap');
 	roadmap_topic_screen=document.querySelector('.containerForPowerStone');
 	roadmap_contest_screen=document.querySelector('.containerForContest');
+	feedback=document.querySelector('.feedback_screen');
 	dashboard_screen.classList.add('hidden');
 	index_screen.classList.add('hidden');
 	topic_wise_screen.classList.add('hidden');
@@ -50,6 +52,7 @@ function show_screen(some_screen) {
 	roadmap_screen.classList.add('hidden');
 	roadmap_topic_screen.classList.add('hidden');
 	roadmap_contest_screen.classList.add('hidden');
+	feedback.classList.add('hidden');
 
 
 	document.querySelector('.loader12345').classList.remove("hidden")
