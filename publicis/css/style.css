@@ -854,6 +854,10 @@ a:hover {
 }
 .feedback_screen{
 	background: rgb(61, 61, 61);
+	display: flex;
+	justify-content: center;
+	flex-direction:column;
+	align-items: center;
 	background-attachment: fixed;
 }
 .feedback_screen iframe{
