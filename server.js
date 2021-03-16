@@ -156,6 +156,12 @@ io.on("connection", (socket) => {
             break;
           }
         }
+        for(j;j<upsolved.length;j++){
+          if(upsolved[j][0]>1200)
+            {
+              break;
+            }
+        }
         for (let i = 0; i < jsdata4.result.problems.length; i++) {
           let str =
             jsdata4.result.problems[i].contestId +
@@ -180,6 +186,12 @@ io.on("connection", (socket) => {
           }
         }
 
+        for(j;j<upsolved.length;j++){
+          if(upsolved[j][0]>1500)
+            {
+              break;
+            }
+        }
         for (let i = 0; i < jsdata4.result.problems.length; i++) {
           let str =
             jsdata4.result.problems[i].contestId +
@@ -203,6 +215,12 @@ io.on("connection", (socket) => {
             break;
           }
         }
+        for(j;j<upsolved.length;j++){
+          if(upsolved[j][0]>1700)
+            {
+              break;
+            }
+        }
         for (let i = 0; i < jsdata4.result.problems.length; i++) {
           let str =
             jsdata4.result.problems[i].contestId +
@@ -216,7 +234,7 @@ io.on("connection", (socket) => {
             }
           if (
             jsdata4.result.problems[i].rating > 1700 &&
-            jsdata4.result.problems[i].rating < 2100 &&
+            jsdata4.result.problems[i].rating <= 2100 &&
             solved.has(str) === false &&
             jsdata4.result.problems[i].tags.includes("*special") === false
           ) {
