@@ -23,6 +23,7 @@ const {
   make_ready,
   allready,
   giveProblems,
+  getTeamUsers
 } = require("./utils/users");
 const { schedulingPolicy } = require("cluster");
 
@@ -260,9 +261,22 @@ io.on("connection", (socket) => {
       io.to(socket.id).emit("roomIdChecked", 1);
     }
   });
+  socket.on("checkTeamId", (team) => {
+    let teams = getTeamUsers(team);
+    if (teams.length == 0) {
+      io.to(socket.id).emit("teamIdChecked", 0);
+    } else if (teams != undefined) {
+      io.to(socket.id).emit("teamIdChecked", 1);
+    }
+  });
   socket.on("give_id", () => {
     let ID = nanoid(4);
     io.to(socket.id).emit("rec_id", ID);
+  });
+  
+  socket.on("give_team_id", () => {
+    let ID = nanoid(5);
+    io.to(socket.id).emit("rec_team_id", ID);
   });
   socket.on("joinRoom", ({ username, room }) => {
     const user = userJoin(socket.id, username, room);

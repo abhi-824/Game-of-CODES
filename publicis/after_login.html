@@ -1696,7 +1696,12 @@
                     
                     <br>
                     <div class="codeBlastBtns">
-                       <button class="createRoom">Create A Blast</button>
+                       <div style="display: flex; flex-direction: column;justify-content:center;align-items:center;">
+                          <button class="createRoom">Create A Blast</button>
+                          <div>
+                             <input type="checkbox" name="" id="check">  Is a Team Contest?
+                          </div>
+                       </div>
                        -- OR --
                        <div class="joinRoomPla">
                           <input 
@@ -1708,8 +1713,36 @@
                           required>
                           <button type="submit" class="join_romms">Join The Blast</button>
                        </div>
+
                     <!-- </div> -->
                     </div>
+                    <div class="formForNewTeam hidden">
+                     <div style="display: flex; flex-direction: column;justify-content:center;align-items:center;">
+                        <button class="createTeam">Create A Team</button>
+                     </div>
+                     -- OR --
+                     <form class="joinTeam">
+                        <input 
+                        type="text" 
+                        style="margin:2rem"
+                        name="room"
+                        id="team_id"
+                        placeholder="Join a Team"
+                        required>
+                        <button type="submit" class="join_team">Join A Team</button>
+                     </form>
+
+                    </div>
+                    <div class="formForTeam hidden">
+                     <h1>Create a One Time Team</h1>
+                     <p>As we are too lazy, you have to make a new team on each codeblast</p>
+                     <form action="" id="newTeam">
+                        <label for="teamName">Team Name: </label>
+                        <input type="text" name="teamName" class="teamName">
+                         <button type="submit" class="">Submit</button>
+                     </form>
+                    </div>
+
                  </div>
                  <!-- </div> -->
               </div>

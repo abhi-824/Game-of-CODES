@@ -55,12 +55,17 @@ function userLeave(id) {
 function getRoomUsers(room) {
 	return users.filter((user) => user.room === room);
 }
+
+function getTeamUsers(id) {
+	return teams.filter((team) => team.id === id);
+}
 module.exports = {
 	userJoin,
 	getCurrentUser,
 	userLeave,
 	getRoomUsers,
 	make_ready,
-	allready
+	allready,
+	getTeamUsers
   // giveProblems
 };

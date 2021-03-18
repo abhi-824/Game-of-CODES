@@ -181,11 +181,65 @@ a {
 	box-shadow: 0 0 5px rgb(10, 12, 151), 0 0 25px rgb(10, 12, 151),
 		0 0 50px rgb(10, 12, 151), 0 0 200px rgb(10, 12, 151) !important;
 }
+
+
+.createTeam {
+	font-weight: 900;
+	padding: 1rem 1rem;
+	border: none;
+	background: none;
+	margin: 1rem !important;
+	--webkit-box-reflect: below;
+	border: 1px solid rgb(64, 30, 214);
+	background: rgb(64, 30, 214);
+	color: #fff;
+	transition: 0.3s;
+}
+.join_team {
+	font-weight: 900;
+	padding: 1rem 1rem;
+	border: none;
+	background: none;
+	margin: 1rem !important;
+	--webkit-box-reflect: below;
+	border: 1px solid rgb(36, 214, 30);
+	background: rgb(36, 214, 30);
+	color: #fff;
+	transition: 0.3s;
+}
+.createTeam:hover {
+	background: rgb(64, 30, 214);
+	color: #fff;
+	box-shadow: 0 0 5px rgb(64, 30, 214) 0 0 25px rgb(64, 30, 214),
+		0 0 50px rgb(64, 30, 214), 0 0 200px rgb(64, 30, 214) !important;
+}
+
+.join_team:hover {
+	background: rgb(36, 214, 30);
+	color: #fff;
+	box-shadow: 0 0 5px rgb(36, 214, 30), 0 0 25px rgb(36, 214, 30),
+		0 0 50px rgb(36, 214, 30), 0 0 200px rgb(36, 214, 30) !important;
+}
+
 .codeBlastBtns {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	grid-gap: 1rem;
+}
+
+.formForNewTeam {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	grid-gap: 1rem;
+}
+
+.joinTeam {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 .joinRoomPla {
 	display: flex;
@@ -194,6 +248,13 @@ a {
 	align-items: center;
 }
 .room_id {
+	padding: 0.5rem 1rem;
+	border: none;
+	margin: 2rem;
+	/* background:rgba(51, 51, 51, 0.301); */
+}
+
+.team_id {
 	padding: 0.5rem 1rem;
 	border: none;
 	margin: 2rem;

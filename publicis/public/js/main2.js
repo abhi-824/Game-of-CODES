@@ -1,28 +1,66 @@
 function codeblast(handle) {
-	show_screen(codeblast_screen);
-	const socket = io();
-	document.querySelector('.join_romms').addEventListener('click', (e) => {
-		e.preventDefault();
-		let username = handle;
-		let room = document.querySelector('#room_id').value;
-		socket.emit('checkId', room);
-		socket.on('roomIdChecked', (check) => {
-			//console.log(check);
-			if (check) {
-				codeblast_enter(username, room);
-			} else {
-				display_alert('There is no such room available!');
-			}
-		});
-	});
+  show_screen(codeblast_screen);
+  const socket = io();
+  document.querySelector(".join_romms").addEventListener("click", (e) => {
+    e.preventDefault();
+    let username = handle;
+    let room = document.querySelector("#room_id").value;
+    socket.emit("checkId", room);
+    socket.on("roomIdChecked", (check) => {
+      //console.log(check);
+      if (check) {
+        codeblast_enter(username, room);
+      } else {
+        display_alert("There is no such room available!");
+      }
+    });
+  });
 
-	document.querySelector('.createRoom').addEventListener('click', (e) => {
-		e.preventDefault();
-		socket.emit('give_id');
-		socket.on('rec_id', (id) => {
-			//console.log(id);
+  document.querySelector(".createRoom").addEventListener("click", (e) => {
+    e.preventDefault();
+    let check = document.querySelector("#check").checked;
+    if (check) {
+      document.querySelector(".codeBlastBtns").classList.add("hidden");
+      document.querySelector(".formForNewTeam").classList.remove("hidden");
+      document.querySelector(".joinTeam").addEventListener("submit", (e) => {
+        e.preventDefault();
+        socket.emit("checkTeamId", document.querySelector("#team_id").value);
+        socket.on("teamIdChecked", (check) => {
+          if (check) {
+            codeblast_enter(username, room);
+          } else {
+            display_alert("There is no such team available!");
+          }
+        });
+      });
+      document.querySelector(".createTeam").addEventListener("click", (e) => {
+        e.preventDefault();
+        document.querySelector(".formForNewTeam").classList.add("hidden");
+        document.querySelector(".formForTeam").classList.remove("hidden");
+        
+      })
+      document.querySelector("#newTeam").addEventListener("submit", (e) => {
+        e.preventDefault();
 
-			codeblast_enter(handle, id);
-		});
-	});
+        if (document.querySelector(".teamName").value != "") {
+          socket.emit(
+            "give_team_id",
+            document.querySelector(".teamName").value
+          );
+          socket.on("rec_team_id", (id) => {
+            codeblast_enter(handle, id);
+          });
+        } else {
+          display_alert("Team Name can't be empty")
+        }
+      });
+    } else {
+      socket.emit("give_id");
+      socket.on("rec_id", (id) => {
+        //console.log(id);
+
+        codeblast_enter(handle, id);
+      });
+    }
+  });
 }
