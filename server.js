@@ -23,7 +23,8 @@ const {
   make_ready,
   allready,
   giveProblems,
-  getTeamUsers
+  getTeamUsers,
+  userTeamJoin
 } = require("./utils/users");
 const { schedulingPolicy } = require("cluster");
 
@@ -258,15 +259,29 @@ io.on("connection", (socket) => {
     if (users.length == 0) {
       io.to(socket.id).emit("roomIdChecked", 0);
     } else if (users != undefined) {
-      io.to(socket.id).emit("roomIdChecked", 1);
+      if(users[0].teamName!=undefined){
+        io.to(socket.id).emit("roomIdChecked", 2);
+
+      }
+      else{
+        io.to(socket.id).emit("roomIdChecked", 1);
+
+      }
     }
   });
-  socket.on("checkTeamId", (team) => {
-    let teams = getTeamUsers(team);
-    if (teams.length == 0) {
-      io.to(socket.id).emit("teamIdChecked", 0);
-    } else if (teams != undefined) {
-      io.to(socket.id).emit("teamIdChecked", 1);
+  socket.on("checkTeamId", (team,room) => {
+    let users = getRoomUsers(room);
+    let fl=1;
+    for(let i=0;i<users.length;i++){
+      if(users[i].teamID==team){
+        fl=0;
+        io.to(socket.id).emit("teamIdChecked", 1,users[i].teamName);
+        break;
+      }
+    }
+    if(fl)
+    {
+      io.to(socket.id).emit("roomIdChecked", 0,null);
     }
   });
   socket.on("give_id", () => {
@@ -274,12 +289,43 @@ io.on("connection", (socket) => {
     io.to(socket.id).emit("rec_id", ID);
   });
   
+  socket.on("give_team_and_room_id", () => {
+    let teamID = nanoid(5);
+    let roomID = nanoid(6);
+    io.to(socket.id).emit("rec_team_id", teamID,roomID);
+  });
+  
   socket.on("give_team_id", () => {
-    let ID = nanoid(5);
-    io.to(socket.id).emit("rec_team_id", ID);
+    let teamID = nanoid(5);
+    io.to(socket.id).emit("rec_team_id_without_room", teamID);
   });
   socket.on("joinRoom", ({ username, room }) => {
     const user = userJoin(socket.id, username, room);
+    socket.join(user.room);
+
+    socket.emit(
+      "message",
+      formatMessage("BOSS", "Welcome to CodeBlast, ready to blast your code?")
+    );
+
+    socket.broadcast
+      .to(user.room)
+      .emit(
+        "message",
+        formatMessage("BOSS", `${user.username} has joined the room`)
+      );
+
+    io.to(user.room).emit("roomUsers", {
+      room: user.room,
+      users: getRoomUsers(user.room),
+    });
+
+    if (contestStarted(room)) {
+      socket.emit("takeHimIn", room_problems.get(room));
+    }
+  });
+  socket.on("joinRoomTeam", ({ username, room,teamID,teamName }) => {
+    const user = userTeamJoin(socket.id, username, room,teamID,teamName);
     socket.join(user.room);
 
     socket.emit(
@@ -445,4 +491,4 @@ app.get("/screen/:id", (req, res) => {
 //console.log(process.env.FIREBASE_API_KEY);
 server.listen(PORT, host, function () {
   //console.log("Server started.......");
-});
+}); 

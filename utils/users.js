@@ -8,6 +8,11 @@ function userJoin(id, username, room) {
 	users.push(user);
 	return user;
 }
+function userTeamJoin(id, username, room,teamID,teamName) {
+	const user = { id, username, room,teamID,teamName };
+	users.push(user);
+	return user;
+}
 function make_ready(id, username, room, state) {
 	const user = { id, username, room, state };
 	user_states.push(user);
@@ -61,6 +66,7 @@ function getTeamUsers(id) {
 }
 module.exports = {
 	userJoin,
+	userTeamJoin,
 	getCurrentUser,
 	userLeave,
 	getRoomUsers,
