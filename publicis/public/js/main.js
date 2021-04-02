@@ -412,7 +412,7 @@ function codeblast_team_enter(username,teamID,room,teamName){
     table.classList.add("res_table");
     let scores = [];
     let currWinner={
-      user: "boss",
+      teamName: "boss",
       score: -1,
       lastTime:"23:59:59",
       penalty:10000
@@ -436,6 +436,12 @@ function codeblast_team_enter(username,teamID,room,teamName){
         teamName:teamNames[i],
         element:dummyArray
       })
+      scores.push({
+        teamName:teamNames[i],
+        score: 0,
+        lastTime: "Not solved",
+        penalty: 0,
+      })
     }
     res_map.forEach((element, key) => {
       
@@ -446,19 +452,9 @@ function codeblast_team_enter(username,teamID,room,teamName){
           teamName=arr[i].teamName;
         }
       }
-      // td.innerHTML = teamName;
-      console.log(key,element);
-      let scoreElem = 0;
-      let lastTime="23:59:59";
-      let totalPenalty = 0;
-      console.log(res_map)
       for (let i = 0; i < element.length; i++) {
-        scoreElem += element[i].result;
-        if(element[i].time!="Not solved")
-        {
-          lastTime = lastTime > element[i].time ? lastTime : element[i].time;
-        }
-        totalPenalty += element[i].penalty;
+        
+        
         for(let i1=0;i1<teamStats.length; i1++)
         {
           if(teamStats[i1].teamName==teamName){
@@ -471,46 +467,40 @@ function codeblast_team_enter(username,teamID,room,teamName){
           }
         }
         // td.innerHTML = `${element[i].result} | ${element[i].penalty} | ${element[i].time} `;
-        // tr.appendChild(td);
+        // tr.appendChild(td);  
       }
-      console.log(scoreElem);
-      console.log(scoreElem);
-      if (scoreElem > currWinner.score) {
-        // if (lastTime == currWinner.lastTime) {
-          // if (totalPenalty < currWinner.penalty) {
-            currWinner = {
-              user: key,
-              score: scoreElem,
-              lastTime: lastTime,
-              penalty: totalPenalty,
-            };
-          // }
-        // }
-      }
-      scores.push({
-        user: key,
-        score: scoreElem,
-        lastTime: lastTime,
-        penalty: totalPenalty,
-      });
-      console.log(scores);
     });
+    let mxScore=0;
     for(let i=0;i<teamStats.length; i++)
     {
       let tr = document.createElement("tr");
       let td = document.createElement("td");
       td.innerHTML=teamStats[i].teamName;
       tr.appendChild(td)
-
+      let score=0;
       for(let j=0;j<teamStats[i].element.length;j++){
         let td = document.createElement("td");
+        score+=teamStats[i].element[j].result;
+        console.log(score);
         td.innerHTML = `${teamStats[i].element[j].result} | ${teamStats[i].element[j].penalty} | ${teamStats[i].element[j].time} `;
         tr.appendChild(td)
+      }
+
+      for(let j=0;j<scores.length; j++){
+        if(scores[j].teamName==teamStats[i].teamName){
+          scores[j].score=score;
+          if(mxScore<score)
+          {
+            currWinner=scores[j];
+            mxScore=score;
+          }
+        }
       }
       table.appendChild(tr);
 
 
     }
+
     console.log(teamStats)
     displayWinner(currWinner);
     document.querySelector(".container2222").appendChild(table);
@@ -552,7 +542,7 @@ function codeblast_team_enter(username,teamID,room,teamName){
     div.innerHTML=`
     <img src="resources/stones/backgrounds/thanos.png" alt="" style="height:200px;">
     <h1 style="color:white">Current Winner</h1>
-    <h1 style="color:white" class="username">${user.user}</h1>
+    <h1 style="color:white" class="username">${user.teamName}</h1>
     ` 
     if(document.querySelector(".wiinerAya")!=undefined) {
       document.querySelector(".wiinerAya").remove();
