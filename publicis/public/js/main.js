@@ -364,8 +364,33 @@ function codeblast_team_enter(username,teamID,room,teamName){
     load_kkk.classList.remove("disapper");
     load_kkk.classList.remove("hidden");
   });
+  let arr=[];
+  let teamNames=[];
   socket.on("start_contest", (problems) => {
+    let ch=document.querySelectorAll(".userrs");
     
+    for(let i=0;i<ch.length;i++) {
+      let str=ch[i].innerHTML;
+      let teamName=str.split(':')[0];
+      let username=str.split(':')[1];
+      let obj={
+        teamName:teamName,
+        handle:username
+      }
+      let fl=0;
+      for(let i=0;i<teamNames.length; i++)
+      {
+        if(teamNames[i]==teamName)
+        {
+          fl=1;
+        }
+      }
+      if(!fl)
+      {
+        teamNames.push(teamName);
+      }
+      arr.push(obj);
+    }
     document.querySelector(".chat-container").remove();
     // setTimeout(() => {
     load_kkk.classList.add("disapper");
@@ -392,27 +417,61 @@ function codeblast_team_enter(username,teamID,room,teamName){
       lastTime:"23:59:59",
       penalty:10000
     };
-
+    let teamStats=[];
+    let questionNumber;
     res_map.forEach((element, key) => {
-      let tr = document.createElement("tr");
-      let td = document.createElement("td");
-      td.innerHTML = key;
+      questionNumber=element.length;
+    })
+    let dummyArray=[];
+    for(let i=0; i<questionNumber; i++) {
+      dummyArray.push({
+        qno:i,
+        result:false,
+        penalty:0,
+        time:"Not Solved",
+      })
+    }
+    for(let i=0; i<teamNames.length; i++){
+      teamStats.push({
+        teamName:teamNames[i],
+        element:dummyArray
+      })
+    }
+    res_map.forEach((element, key) => {
+      
+      let teamName="";
+      for(let i=0;i<arr.length;i++){
+        if(arr[i].handle==key)
+        {
+          teamName=arr[i].teamName;
+        }
+      }
+      // td.innerHTML = teamName;
       console.log(key,element);
       let scoreElem = 0;
       let lastTime="23:59:59";
-      tr.appendChild(td);
       let totalPenalty = 0;
       console.log(res_map)
       for (let i = 0; i < element.length; i++) {
-        let td = document.createElement("td");
         scoreElem += element[i].result;
         if(element[i].time!="Not solved")
         {
           lastTime = lastTime > element[i].time ? lastTime : element[i].time;
         }
         totalPenalty += element[i].penalty;
-        td.innerHTML = `${element[i].result} | ${element[i].penalty} | ${element[i].time} `;
-        tr.appendChild(td);
+        for(let i1=0;i1<teamStats.length; i1++)
+        {
+          if(teamStats[i1].teamName==teamName){
+                teamStats[i1].element[i].result=element[i].result||teamStats[i1].element[i].result;
+                teamStats[i1].element[i].penalty+=element[i].penalty;
+                if(element[i].time!="Not solved"){
+                  teamStats[i1].element[i].time=element[i].time;
+                }
+                
+          }
+        }
+        // td.innerHTML = `${element[i].result} | ${element[i].penalty} | ${element[i].time} `;
+        // tr.appendChild(td);
       }
       console.log(scoreElem);
       console.log(scoreElem);
@@ -435,8 +494,24 @@ function codeblast_team_enter(username,teamID,room,teamName){
         penalty: totalPenalty,
       });
       console.log(scores);
-      table.appendChild(tr);
     });
+    for(let i=0;i<teamStats.length; i++)
+    {
+      let tr = document.createElement("tr");
+      let td = document.createElement("td");
+      td.innerHTML=teamStats[i].teamName;
+      tr.appendChild(td)
+
+      for(let j=0;j<teamStats[i].element.length;j++){
+        let td = document.createElement("td");
+        td.innerHTML = `${teamStats[i].element[j].result} | ${teamStats[i].element[j].penalty} | ${teamStats[i].element[j].time} `;
+        tr.appendChild(td)
+      }
+      table.appendChild(tr);
+
+
+    }
+    console.log(teamStats)
     displayWinner(currWinner);
     document.querySelector(".container2222").appendChild(table);
   });
@@ -500,7 +575,7 @@ function codeblast_team_enter(username,teamID,room,teamName){
 
   function outputUsersName(user) {
     document.getElementById("users").innerHTML = `${user
-      .map((user) => `<li>${user.teamName}: ${user.username}</li>`)
+      .map((user) => `<li class="userrs">${user.teamName}:${user.username}</li>`)
       .join("")}`;
   }
 
