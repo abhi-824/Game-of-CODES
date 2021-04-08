@@ -4,33 +4,51 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="test.css">
+    <link rel="stylesheet" href="test.css" />
   </head>
+ 
+  
   <style>
-    div{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction:column;
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      background:#62374e;
     }
-    img{
-      height:200px;
+    body{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+    
+    }
+    .upar{
+      display:flex;
+      flex-direction:column;
+      justify-content:center!important;	
+      align-items:center!important;
+    }
+    .neeche {
+      width: 50px;
+      height: 50px;
+      background: #fdc57b;
+      margin:2rem;
+      
     }
   </style>
   <body>
-    <div>
-      <img src="resources/stones/backgrounds/thanos.png" alt="">
-      <h1>Current Winner</h1>
-      <h1 class="username"></h1>
+    <div class="upar">
+      <div class="neeche"></div>  
+      <div class="neeche"></div> 
+    </div>
+    <div class="upar">
+      <div class="neeche"></div>  
+      <div class="neeche"></div> 
     </div>
   </body>
-  <script>
-      const hamburger=document.querySelector(".hamburger");
-      const navlinks=document.querySelector(".nav-links");
-      const links =document.querySelector(".nav-links li")
-
-      hamburger.addEventListener("click",()=>{
-          navlinks.classList.toggle("open");
-      })
-  </script>
+  <!-- OBJECTIVE -->
+  <!-- Write HTML/CSS in this editor and replicate the given target image in the least code possible. What you write here, renders as it is -->
+  
+  <!-- SCORING -->
+  <!-- The score is calculated based on the number of characters you use (this comment included :P) and how close you replicate the image. Read the FAQS (https://cssbattle.dev/faqs) for more info. -->
+  
+  <!-- IMPORTANT: remove the comments before submitting -->
 </html>

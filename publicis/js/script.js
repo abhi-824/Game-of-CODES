@@ -1467,7 +1467,7 @@ function dashboard(handle_name) {
     let user = document.querySelector(".user");
     let user_avatar = document.querySelector(".user_avatar");
     let str = jsdata2.result[0].titlePhoto;
-    let p = "http://";
+    let p = "ht";
     str = str.substr(2);
     let arr = [p, str];
     let stt = arr.join("");
