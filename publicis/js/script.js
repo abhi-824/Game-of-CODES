@@ -1,4 +1,40 @@
 var load_kkk = document.querySelector(".load-kro2");
+
+function Sound(source, volume, loop)
+{
+    this.source = source;
+    this.volume = volume;
+    this.loop = loop;
+    var son;
+    this.son = son;
+    this.finish = false;
+    this.stop = function()
+    {
+        document.body.removeChild(this.son);
+    }
+    this.start = function()
+    {
+        if (this.finish) return false;
+        this.son = document.createElement("embed");
+        this.son.setAttribute("src", this.source);
+        this.son.setAttribute("hidden", "true");
+        this.son.setAttribute("volume", this.volume);
+        this.son.setAttribute("autostart", "true");
+        this.son.setAttribute("loop", this.loop);
+        document.body.appendChild(this.son);
+    }
+    this.remove = function()
+    {
+        document.body.removeChild(this.son);
+        this.finish = true;
+    }
+    this.init = function(volume, loop)
+    {
+        this.finish = false;
+        this.volume = volume;
+        this.loop = loop;
+    }
+}
 function dashboard(handle_name) {
   show_screen(document.querySelector('.container1'));
   let item = document.querySelector(".item1");
@@ -1972,23 +2008,38 @@ function dashboard(handle_name) {
         //console.log(target_val);
         let wid_gr = (100 * currrent) / parseInt(target_val);
         let target_line = document.querySelector(".targetline");
+        if(wid_gr>=100)
+        {
+          if(localStorage.getItem("targetCompleted")==undefined)
+          {
+            localStorage.setItem("targetCompleted", "1");
+            console.log("hsfsjhsjhajsjid")
+            document.getElementById("targetCompleted").click();
+            document.querySelector(".songTarget").play()
+            $('#exampleModal2').on('hidden.bs.modal', function (e) {
+              // do something...
+            document.querySelector(".songTarget").pause()
+          })
+          }
+          
+        }
         document.querySelector(
           ".targetline"
-        ).style = `background-image:-webkit-linear-gradient(top, green, green ${wid_gr}%, transparent ${wid_gr}%, transparent 100%)  `;
-        //console.log(wid_gr);
-      }
-
-      getTargetandrock();
-    }, 30000);
-  }
-
-  window.setTimeout(() => {}, 10000);
-
-  let cl = 0;
-  var user = firebase.auth().currentUser;
-
-  function bookmark_question(questionId) {
+          ).style = `background-image:-webkit-linear-gradient(top, green, green ${wid_gr}%, transparent ${wid_gr}%, transparent 100%)  `;
+          //console.log(wid_gr);
+        }
+        
+        getTargetandrock();
+      }, 30000);
+    }
+    
+    window.setTimeout(() => {}, 10000);
+    
+    let cl = 0;
     var user = firebase.auth().currentUser;
+    
+    function bookmark_question(questionId) {
+      var user = firebase.auth().currentUser;
     let array_bookmarks = [];
     db.collection("handles")
       .where("email", "==", user.email)
