@@ -273,20 +273,20 @@ function dashboard(handle_name) {
         function generate_easy_question(arr, no) {
           let result = [];
 
-          for (let i = 0; i < arr.problems.length; i++) {
-            let str = arr.problems[i].contestId + "-" + arr.problems[i].index;
+          for (let i = 0; i < arr.length; i++) {
+            let str = arr[i].contestId + "-" + arr[i].index;
             if (solved.has(str)) {
               continue;
             }
             if (no == 0) {
               break;
             }
-            if (arr.problems[i].rating !== undefined) {
-              if (arr.problems[i].rating <= 1200 && arr.problemStatistics[i].solvedCount>=5000) {
+            if (arr[i].rating !== undefined) {
+              if (arr[i].rating <= 1200) {
                 no--;
                 ///print 
-                console.log(arr.problems[i].contestId, arr.problemStatistics[i].solvedCount);
-                result.push(arr.problems[i]);
+                console.log(arr[i].contestId);
+                result.push(arr[i]);
               }
             } 
           }
@@ -295,22 +295,22 @@ function dashboard(handle_name) {
         function generate_medium_question(arr, no) {
           let result = [];
 
-          for (let i = 0; i < arr.problems.length; i++) {
-            let str = arr.problems[i].contestId + "-" + arr.problems[i].index;
+          for (let i = 0; i < arr.length; i++) {
+            let str = arr[i].contestId + "-" + arr[i].index;
             if (solved.has(str)) {
               continue;
             }
             if (no == 0) {
               break;
             }
-            if (arr.problems[i].rating !== undefined) {
+            if (arr[i].rating !== undefined) {
               if (
-                arr.problems[i].rating <= 1500 &&
-                arr.problems[i].rating > 1200 && arr.problemStatistics[i].solvedCount>=3000
+                arr[i].rating <= 1500 &&
+                arr[i].rating > 1200
               ) {
                 no--;
-                console.log(arr.problems[i].contestId, arr.problemStatistics[i].solvedCount);
-                result.push(arr.problems[i]);
+                console.log(arr[i].contestId);
+                result.push(arr[i]);
               }
             } 
           }
@@ -319,22 +319,22 @@ function dashboard(handle_name) {
         function generate_hard_question(arr, no) {
           let result = [];
 
-          for (let i = 0; i < arr.problems.length; i++) {
-            let str = arr.problems[i].contestId + "-" + arr.problems[i].index;
+          for (let i = 0; i < arr.length; i++) {
+            let str = arr[i].contestId + "-" + arr[i].index;
             if (solved.has(str)) {
               continue;
             }
             if (no == 0) {
               break;
             }
-            if (arr.problems[i].rating !== undefined) {
+            if (arr[i].rating !== undefined) {
               if (
-                arr.problems[i].rating <= 1900 &&
-                arr.problems[i].rating > 1500 && arr.problemStatistics[i].solvedCount>=1000
+                arr[i].rating <= 1900 &&
+                arr[i].rating > 1500 
               ) {
                 no--;
-                console.log(arr.problems[i].contestId, arr.problemStatistics[i].solvedCount);
-                result.push(arr.problems[i]);
+                console.log(arr[i].contestId);
+                result.push(arr[i]);
               }
             } 
           }
@@ -358,12 +358,38 @@ function dashboard(handle_name) {
         let arr8 = [];
 
         async function get_questions() {
+          let modified_url2 = user_contests + handle_name;
+          const jsondata2 = await fetch(modified_url2);
+          const jsdata2 = await jsondata2.json();
+          
+          let contests_given = new Set();
+          console.log(jsdata2)
+          for (let i = 0; i < jsdata2.result.length; i++) {
+            contests_given.add(jsdata2.result[i].contestId);
+          }
           let modified_url = `https://codeforces.com/api/problemset.problems?tags=${tag_name}`;
           const jsondata = await fetch(modified_url);
           const jsdata = await jsondata.json();
-          let E = generate_easy_question(jsdata.result, 5);
-          let M = generate_medium_question(jsdata.result, 10);
-          let H = generate_hard_question(jsdata.result, 9);
+          let upsolved = [];
+          for (let i = 0; i < jsdata.result.problems.length; i++) {
+            if (
+              contests_given.has(jsdata.result.problems[i].contestId) &&
+              solved.has(
+                `${jsdata.result.problems[i].contestId}-${jsdata.result.problems[i].index}`
+              ) == false
+            ) {
+              upsolved.push(jsdata.result.problems[i]);
+            }
+          }
+          upsolved.sort();
+          let arr=jsdata.result;
+          for(let i=0; i<jsdata.result.problems.length; i++) {
+            upsolved.push(jsdata.result.problems[i]);
+          } 
+          let E = generate_easy_question(upsolved, 5);
+          let M = generate_medium_question(upsolved, 10);
+          let H = generate_hard_question(upsolved, 9);
+          console.log(upsolved)
           arr1.push(E[0]);
           arr1.push(M[0]);
           arr1.push(H[0]);
@@ -388,6 +414,11 @@ function dashboard(handle_name) {
           arr8.push(M[9]);
           arr8.push(H[7]);
           arr8.push(H[8]);
+          console.log(arr1);
+          console.log(arr2);
+          console.log(arr3);
+          console.log(arr4);
+          console.log(arr5);
         }
         get_questions();
         let p = document.querySelectorAll(".generate_daily2");
@@ -1514,9 +1545,6 @@ function dashboard(handle_name) {
   // for retreiving all upsolved problems
   document.querySelector('.upsolve_refresh').addEventListener('click',getUpsolved);
   async function getUpsolved() {
-    let modified_url = user_contests + handle_name;
-    const jsondata = await fetch(modified_url);
-    const jsdata = await jsondata.json();
     document.querySelector(".yes").addEventListener("click", function (e) {
       let val = document.querySelector(".time_val").value;
       startTimer(val * 60, document.querySelector(".time_chalo"));
@@ -1529,7 +1557,14 @@ function dashboard(handle_name) {
       document.querySelector(".ask_perm").classList.add("hidden");
       e.preventDefault();
     });
-
+    let modified_url = user_contests + handle_name;
+    const jsondata = await fetch(modified_url);
+    const jsdata = await jsondata.json();
+    
+    let contests_given = new Set();
+    for (let i = 0; i < jsdata.result.length; i++) {
+      contests_given.add(jsdata.result[i].contestId);
+    }
     let solved = new Set();
 
     let modified_url_sol = url2 + handle_name;
@@ -1547,15 +1582,11 @@ function dashboard(handle_name) {
       }
     }
     let problems = [];
-    let contests_given = new Set();
     let prob_url = "https://codeforces.com/api/problemset.problems";
 
     const jsondataP = await fetch(prob_url);
     const jsdataP = await jsondataP.json();
 
-    for (let i = 0; i < jsdata.result.length; i++) {
-      contests_given.add(jsdata.result[i].contestId);
-    }
     let upsolved = [];
     for (let i = 0; i < jsdataP.result.problems.length; i++) {
       if (
