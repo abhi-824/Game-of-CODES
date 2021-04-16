@@ -414,21 +414,24 @@ io.on("connection", (socket) => {
                   break;
                 }
               }
-              res.points = jsdata.result[i].problem.rating;
-              res.points = Math.max(
-                res.points -
-                  res.penalty * 50 -
-                  Math.abs((actualDate - start_time) / 1000) *
-                    0.004 *
-                    res.points,
-                res.points * 0.3
-              );
-              if (jsdata.result[i].verdict === "OK") {
+              
+              if (jsdata.result[i].verdict === "OK"&&res.result==false) {
                 res.time = formattedTime;
                 res.result = true;
+                res.points = jsdata.result[i].problem.rating;
+                res.points = Math.floor(Math.max(
+                  res.points -
+                    (res.penalty * 50) -
+                    Math.abs((date - start_time) / 60000) *
+                      0.004 *
+                      res.points,
+                  res.points * 0.3
+                ));
                 for (let l = 0; l < arr.length; l++) {
                   if (arr[l].qno == ll&&arr[l].result==false) {
                     arr[l] = res;
+                    console.log(arr);
+                    console.log(res);
                     break;
                   }
                 }
@@ -444,7 +447,7 @@ io.on("connection", (socket) => {
               //     break;
               //   }
               // }
-              console.log(arr);
+              // console.log(arr);
             }
           }
         }
