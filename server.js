@@ -374,16 +374,15 @@ io.on("connection", (socket) => {
         // async function getSetGo() {
         let modified_url = `https://codeforces.com/api/user.status?handle=${handle_name1}`;
         let arr = [];
-        for (let i = 0; i < problems.length; i++)
-          [
-            arr.push({
-              result: false,
-              penalty: 0,
-              time: "Not solved",
-              qno: i,
-              points:problems[i][0]
-            }),
-          ];
+        for (let i = 0; i < problems.length; i++){
+          arr.push({
+            result: false,
+            penalty: 0,
+            time: "Not solved",
+            qno: i,
+            points:problems[i][0]
+          });
+        }
         const jsondata = await fetch(modified_url);
         const jsdata = await jsondata.json();
         for (let i = 0; i < jsdata.result.length; i++) {
@@ -436,6 +435,7 @@ io.on("connection", (socket) => {
                   break;
                 }
               }
+              console.log(arr);
             }
           
           }

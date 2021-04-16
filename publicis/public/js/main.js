@@ -60,16 +60,15 @@ function codeblast_enter(username, room) {
     load_kkk.classList.remove("hidden");
   });
   let start_time;
-  socket.on("start_contest", (problems,time) => {
+  socket.on("start_contest", (problems, time) => {
     // //console.log("hey");
-    start_time=time;
+    start_time = time;
     // load_kkk.classList.add('disapper');
     document.querySelector(".chat-container").remove();
     // setTimeout(() => {
     // problem = problems;
-    for(let i=0; i<problems.length; i++)
-    {
-      problem.push(problems[i])
+    for (let i = 0; i < problems.length; i++) {
+      problem.push(problems[i]);
     }
     load_kkk.classList.add("disapper");
     // }, 2000);
@@ -78,18 +77,17 @@ function codeblast_enter(username, room) {
     //console.log(problems);
     document.querySelector(".updateCodeblast").classList.remove("hidden");
   });
-  let problem=[];
+  let problem = [];
   document.querySelector(".updateCodeblast").addEventListener("click", (e) => {
     e.preventDefault();
-    console.log(problem[0])
+    console.log(problem[0]);
     socket.emit("results", room, problem);
   });
 
-  socket.on("takeHimIn", (problems,time) => {
-    start_time=time;
-    for(let i=0; i<problems.length; i++)
-    {
-      problem.push(problems[i])
+  socket.on("takeHimIn", (problems, time) => {
+    start_time = time;
+    for (let i = 0; i < problems.length; i++) {
+      problem.push(problems[i]);
     }
     document.querySelector(".chat-container").remove();
     load_kkk.classList.add("disapper");
@@ -133,46 +131,63 @@ function codeblast_enter(username, room) {
     table.className = "table";
     table.classList.add("res_table");
     let scores = [];
-    let currWinner={
+    let currWinner = {
       user: "boss",
       score: -1,
-      lastTime:"23:59:59",
-      penalty:10000
+      lastTime: "23:59:59",
+      penalty: 10000,
     };
-    let min_percent=30;
-    let loss_per_min_percent=0.004;
+    let min_percent = 30;
+    let loss_per_min_percent = 0.004;
 
     res_map.forEach((element, key) => {
       let tr = document.createElement("tr");
       let td = document.createElement("td");
       td.innerHTML = key;
       let scoreElem = 0;
-      let lastTime="23:59:59";
+      let lastTime = "23:59:59";
       tr.appendChild(td);
       let totalPenalty = 0;
-      console.log(res_map)
+      console.log(res_map);
       var date = new Date(start_time);
       var act_date = new Date();
       for (let i = 0; i < element.length; i++) {
         let td = document.createElement("td");
-        
+
         totalPenalty += element[i].penalty;
-        let points=Math.max(element[i].points-element[i].penalty*50,0.3*element[i].points);
-        console.log(act_date)
-        console.log(date)
-        let diff_time=Math.abs(date-act_date);
-        console.log(diff_time)  
-        diff_time/=1000;
-        diff_time/=60;
-        let point2=points;
-        points=Math.floor(Math.max(points-(diff_time*loss_per_min_percent*points),0.3*element[i].points))
-        if(element[i].time!="Not solved")
-        {
+        let points = 0;
+        console.log(act_date);
+        console.log(date);
+        let diff_time = Math.abs(date - act_date);
+        console.log(diff_time);
+        diff_time /= 1000;
+        diff_time /= 60;
+        let point2 = points;
+        // if (points == 0) {
+        //   points = Math.floor(
+        //     Math.max(
+        //       points - diff_time * loss_per_min_percent * points,
+        //       0.3 * element[i].points
+        //     )
+        //   );
+        // }
+        if (element[i].time != "Not solved") {
           lastTime = lastTime > element[i].time ? lastTime : element[i].time;
-          point2=points;
-        }
-        else{
-          points=0;
+          if (points == 0) {
+            points = Math.max(
+              element[i].points - element[i].penalty * 50,
+              0.3 * element[i].points
+            );
+            points = Math.floor(
+              Math.max(
+                points - diff_time * loss_per_min_percent * points,
+                0.3 * element[i].points
+              )
+            );
+          }
+          point2 = points;
+        } else {
+          points = 0;
         }
         scoreElem += points;
 
@@ -183,14 +198,14 @@ function codeblast_enter(username, room) {
       console.log(scoreElem);
       if (scoreElem > currWinner.score) {
         // if (lastTime == currWinner.lastTime) {
-          // if (totalPenalty < currWinner.penalty) {
-            currWinner = {
-              user: key,
-              score: scoreElem,
-              lastTime: lastTime,
-              penalty: totalPenalty,
-            };
-          // }
+        // if (totalPenalty < currWinner.penalty) {
+        currWinner = {
+          user: key,
+          score: scoreElem,
+          lastTime: lastTime,
+          penalty: totalPenalty,
+        };
+        // }
         // }
       }
       scores.push({
@@ -224,12 +239,12 @@ function codeblast_enter(username, room) {
   }
 
   function display_problems(problems) {
-    for(let i=0;i<problems.length;i++) {
-      problems[i]=problems[i][1];
+    for (let i = 0; i < problems.length; i++) {
+      problems[i] = problems[i][1];
     }
     let div = document.createElement("div");
     div.classList.add("container768");
-    div.style="max-width:800px;"
+    div.style = "max-width:800px;";
     div.innerHTML = `   <div class="box">
               <div class="content">
                 <h2>A</h2>
@@ -304,12 +319,11 @@ function codeblast_enter(username, room) {
       display = document.querySelector(".timer22");
     startTimer(two_hours, display, problems);
   }
-  function displayWinner(user)
-  {
-    console.log(user)
-    let div=document.createElement("div");
-    div.className="wiinerAya";
-    div.style=`
+  function displayWinner(user) {
+    console.log(user);
+    let div = document.createElement("div");
+    div.className = "wiinerAya";
+    div.style = `
     display: flex;
     justify-content: center;
     align-items: center;
@@ -317,16 +331,16 @@ function codeblast_enter(username, room) {
     position: absolute;
     max-width: max-content;
     top: 0;
-    right: 180px;`
-    div.innerHTML=`
+    right: 180px;`;
+    div.innerHTML = `
     <img src="resources/stones/backgrounds/thanos.png" alt="" style="height:200px;">
     <h1 style="color:white">Current Winner</h1>
     <h1 style="color:white" class="username">${user.user}</h1>
-    ` 
-    if(document.querySelector(".wiinerAya")!=undefined) {
+    `;
+    if (document.querySelector(".wiinerAya") != undefined) {
       document.querySelector(".wiinerAya").remove();
     }
-    document.querySelector(".containerOverlayCodeBlast").appendChild(div)
+    document.querySelector(".containerOverlayCodeBlast").appendChild(div);
   }
   function convert_to_link(str) {
     let p = "";
@@ -368,16 +382,16 @@ function codeblast_enter(username, room) {
   }
 }
 
-function codeblast_team_enter(username,teamID,room,teamName){
+function codeblast_team_enter(username, teamID, room, teamName) {
   show_screen(codeblast_screen2);
 
   const form = document.getElementById("chat-form");
-  
+
   const chatMessages = document.querySelector(".chat-messages");
   const socket = io();
   var load_kkk = document.querySelector(".loader12345");
-  socket.emit("joinRoomTeam", { username, room,teamID,teamName });
-  
+  socket.emit("joinRoomTeam", { username, room, teamID, teamName });
+
   socket.on("roomUsers", ({ room, users }) => {
     outputRoomName(room);
     outputTeamName(teamID);
@@ -397,29 +411,26 @@ function codeblast_team_enter(username,teamID,room,teamName){
     load_kkk.classList.remove("disapper");
     load_kkk.classList.remove("hidden");
   });
-  let arr=[];
-  let teamNames=[];
+  let arr = [];
+  let teamNames = [];
   socket.on("start_contest", (problems) => {
-    let ch=document.querySelectorAll(".userrs");
-    
-    for(let i=0;i<ch.length;i++) {
-      let str=ch[i].innerHTML;
-      let teamName=str.split(':')[0];
-      let username=str.split(':')[1];
-      let obj={
-        teamName:teamName,
-        handle:username
-      }
-      let fl=0;
-      for(let i=0;i<teamNames.length; i++)
-      {
-        if(teamNames[i]==teamName)
-        {
-          fl=1;
+    let ch = document.querySelectorAll(".userrs");
+
+    for (let i = 0; i < ch.length; i++) {
+      let str = ch[i].innerHTML;
+      let teamName = str.split(":")[0];
+      let username = str.split(":")[1];
+      let obj = {
+        teamName: teamName,
+        handle: username,
+      };
+      let fl = 0;
+      for (let i = 0; i < teamNames.length; i++) {
+        if (teamNames[i] == teamName) {
+          fl = 1;
         }
       }
-      if(!fl)
-      {
+      if (!fl) {
         teamNames.push(teamName);
       }
       arr.push(obj);
@@ -444,97 +455,88 @@ function codeblast_team_enter(username,teamID,room,teamName){
     table.className = "table";
     table.classList.add("res_table");
     let scores = [];
-    let currWinner={
+    let currWinner = {
       teamName: "boss",
       score: -1,
-      lastTime:"23:59:59",
-      penalty:10000
+      lastTime: "23:59:59",
+      penalty: 10000,
     };
-    let teamStats=[];
+    let teamStats = [];
     let questionNumber;
     res_map.forEach((element, key) => {
-      questionNumber=element.length;
-    })
-    let dummyArray=[];
-    for(let i=0; i<questionNumber; i++) {
+      questionNumber = element.length;
+    });
+    let dummyArray = [];
+    for (let i = 0; i < questionNumber; i++) {
       dummyArray.push({
-        qno:i,
-        result:false,
-        penalty:0,
-        time:"Not Solved",
-      })
+        qno: i,
+        result: false,
+        penalty: 0,
+        time: "Not Solved",
+      });
     }
-    for(let i=0; i<teamNames.length; i++){
+    for (let i = 0; i < teamNames.length; i++) {
       teamStats.push({
-        teamName:teamNames[i],
-        element:dummyArray
-      })
+        teamName: teamNames[i],
+        element: dummyArray,
+      });
       scores.push({
-        teamName:teamNames[i],
+        teamName: teamNames[i],
         score: 0,
         lastTime: "Not solved",
         penalty: 0,
-      })
+      });
     }
     res_map.forEach((element, key) => {
-      
-      let teamName="";
-      for(let i=0;i<arr.length;i++){
-        if(arr[i].handle==key)
-        {
-          teamName=arr[i].teamName;
+      let teamName = "";
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i].handle == key) {
+          teamName = arr[i].teamName;
         }
       }
       for (let i = 0; i < element.length; i++) {
-        
-        
-        for(let i1=0;i1<teamStats.length; i1++)
-        {
-          if(teamStats[i1].teamName==teamName){
-                teamStats[i1].element[i].result=element[i].result||teamStats[i1].element[i].result;
-                teamStats[i1].element[i].penalty+=element[i].penalty;
-                if(element[i].time!="Not solved"){
-                  teamStats[i1].element[i].time=element[i].time;
-                }
-                
+        for (let i1 = 0; i1 < teamStats.length; i1++) {
+          if (teamStats[i1].teamName == teamName) {
+            teamStats[i1].element[i].result =
+              element[i].result || teamStats[i1].element[i].result;
+            teamStats[i1].element[i].penalty += element[i].penalty;
+            if (element[i].time != "Not solved") {
+              teamStats[i1].element[i].time = element[i].time;
+            }
           }
         }
         // td.innerHTML = `${element[i].result} | ${element[i].penalty} | ${element[i].time} `;
-        // tr.appendChild(td);  
+        // tr.appendChild(td);
       }
     });
-    let mxScore=0;
-    for(let i=0;i<teamStats.length; i++)
-    {
+    let mxScore = 0;
+    for (let i = 0; i < teamStats.length; i++) {
       let tr = document.createElement("tr");
       let td = document.createElement("td");
-      td.innerHTML=teamStats[i].teamName;
-      tr.appendChild(td)
-      let score=0;
-      for(let j=0;j<teamStats[i].element.length;j++){
+      td.innerHTML = teamStats[i].teamName;
+      tr.appendChild(td);
+      let score = 0;
+      for (let j = 0; j < teamStats[i].element.length; j++) {
         let td = document.createElement("td");
-        score+=teamStats[i].element[j].result;
+        score += teamStats[i].element[j].result;
         console.log(score);
         td.innerHTML = `${teamStats[i].element[j].result} | ${teamStats[i].element[j].penalty} | ${teamStats[i].element[j].time} `;
-        tr.appendChild(td)
+        tr.appendChild(td);
       }
 
-      for(let j=0;j<scores.length; j++){
-        if(scores[j].teamName==teamStats[i].teamName){
-          scores[j].score=score;
-          if(mxScore<score)
-          {
-            currWinner=scores[j];
-            mxScore=score;
+      for (let j = 0; j < scores.length; j++) {
+        if (scores[j].teamName == teamStats[i].teamName) {
+          scores[j].score = score;
+          if (mxScore < score) {
+            currWinner = scores[j];
+            mxScore = score;
           }
         }
       }
       table.appendChild(tr);
-
-
     }
 
-    console.log(teamStats)
+    console.log(teamStats);
     displayWinner(currWinner);
     document.querySelector(".container2222").appendChild(table);
   });
@@ -558,12 +560,11 @@ function codeblast_team_enter(username,teamID,room,teamName){
     e.target.elements.msg.focus();
   });
 
-  function displayWinner(user)
-  {
-    console.log(user)
-    let div=document.createElement("div");
-    div.className="wiinerAya";
-    div.style=`
+  function displayWinner(user) {
+    console.log(user);
+    let div = document.createElement("div");
+    div.className = "wiinerAya";
+    div.style = `
     display: flex;
     justify-content: center;
     align-items: center;
@@ -571,16 +572,16 @@ function codeblast_team_enter(username,teamID,room,teamName){
     position: absolute;
     max-width: max-content;
     top: 0;
-    right: 180px;`
-    div.innerHTML=`
+    right: 180px;`;
+    div.innerHTML = `
     <img src="resources/stones/backgrounds/thanos.png" alt="" style="height:200px;">
     <h1 style="color:white">Current Winner</h1>
     <h1 style="color:white" class="username">${user.teamName}</h1>
-    ` 
-    if(document.querySelector(".wiinerAya")!=undefined) {
+    `;
+    if (document.querySelector(".wiinerAya") != undefined) {
       document.querySelector(".wiinerAya").remove();
     }
-    document.querySelector(".containerOverlayCodeBlast").appendChild(div)
+    document.querySelector(".containerOverlayCodeBlast").appendChild(div);
   }
   function output_mess(message) {
     const div = document.createElement("div");
@@ -592,13 +593,15 @@ function codeblast_team_enter(username,teamID,room,teamName){
   function outputRoomName(room) {
     document.getElementById("room-name").innerHTML = room;
   }
-  function outputTeamName(teamID){
+  function outputTeamName(teamID) {
     document.getElementById("team-name").innerHTML = `Your Team ID: ${teamID}`;
   }
 
   function outputUsersName(user) {
     document.getElementById("users").innerHTML = `${user
-      .map((user) => `<li class="userrs">${user.teamName}:${user.username}</li>`)
+      .map(
+        (user) => `<li class="userrs">${user.teamName}:${user.username}</li>`
+      )
       .join("")}`;
   }
 
@@ -617,11 +620,11 @@ function codeblast_team_enter(username,teamID,room,teamName){
     let link = `https://codeforces.com/problemset/problem/${p}/${q}`;
     return link;
   }
-  
+
   function display_problems(problems) {
     let div = document.createElement("div");
     div.classList.add("container768");
-    div.style="max-width:800px;"
+    div.style = "max-width:800px;";
     div.innerHTML = `   <div class="box">
               <div class="content">
                 <h2>A</h2>
