@@ -141,7 +141,7 @@ io.on("connection", (socket) => {
             jsdata4.result.problems[i].index;
             if(upsolved[j][0]<=1200)
             {
-              problems.push(upsolved[j][1]);
+              problems.push(upsolved[j]);
               j++;
               break;
             }
@@ -154,7 +154,7 @@ io.on("connection", (socket) => {
           ) {
             //to be continued
 
-            problems.push(str);
+            problems.push([jsdata4.result.problems[i].rating,str]);
             break;
           }
         }
@@ -171,7 +171,7 @@ io.on("connection", (socket) => {
             jsdata4.result.problems[i].index;
             if(upsolved[j][0]<=1500)
             {
-              problems.push(upsolved[j][1]);
+              problems.push(upsolved[j]);
               j++;
               break;
             }
@@ -183,7 +183,7 @@ io.on("connection", (socket) => {
             jsdata4.result.problems[i].tags.includes("*special") === false
           ) {
             //to be continued
-            problems.push(str);
+            problems.push([jsdata4.result.problems[i].rating,str]);
             break;
           }
         }
@@ -201,7 +201,7 @@ io.on("connection", (socket) => {
             jsdata4.result.problems[i].index;
             if(upsolved[j][0]<=1700)
             {
-              problems.push(upsolved[j][1]);
+              problems.push(upsolved[j]);
               j++;
               break;
             }
@@ -213,7 +213,8 @@ io.on("connection", (socket) => {
             jsdata4.result.problems[i].tags.includes("*special") === false
           ) {
             //to be continued
-            problems.push(str);
+            problems.push([jsdata4.result.problems[i].rating,str]);
+            // problems.push(str);
             break;
           }
         }
@@ -230,7 +231,7 @@ io.on("connection", (socket) => {
             jsdata4.result.problems[i].index;
             if(upsolved[j][0]<=2100)
             {
-              problems.push(upsolved[j][1]);
+              problems.push(upsolved[j]);
               j++;
               break;
             }
@@ -240,15 +241,19 @@ io.on("connection", (socket) => {
             solved.has(str) === false &&
             jsdata4.result.problems[i].tags.includes("*special") === false
           ) {
+            problems.push([jsdata4.result.problems[i].rating,str]);
             //to be continued
-            problems.push(str);
+            // problems.push(str);
             break;
           }
         }
 
         // problem_set=problems;
         room_problems.set(room, problems);
-        io.to(user.room).emit("start_contest", problems);
+        console.log(problems)
+        let time=new Date().getTime();
+        console.log(time)
+        io.to(user.room).emit("start_contest", problems,time);
       }
       getFinal();
     }
@@ -346,7 +351,8 @@ io.on("connection", (socket) => {
     });
 
     if (contestStarted(room)) {
-      socket.emit("takeHimIn", room_problems.get(room));
+      let time=new Date().getTime();
+      socket.emit("takeHimIn", room_problems.get(room),time);
     }
   });
   function contestStarted(room) {
@@ -373,6 +379,7 @@ io.on("connection", (socket) => {
               penalty: 0,
               time: "Not solved",
               qno: i,
+              points:problems[i][0]
             }),
           ];
         const jsondata = await fetch(modified_url);
@@ -404,6 +411,7 @@ io.on("connection", (socket) => {
               penalty: 0,
               time: "Not solved",
               qno: problems.indexOf(str),
+              points:jsdata.result[i].problem.rating
             };
             for (let l = 0; l < arr.length; l++) {
               if (arr[l].qno == problems.indexOf(str)) {
@@ -411,6 +419,7 @@ io.on("connection", (socket) => {
                 break;
               }
             }
+            res.points=jsdata.result[i].problem.points;
             if (jsdata.result[i].verdict === "OK") {
               res.time = formattedTime;
               res.result = true;

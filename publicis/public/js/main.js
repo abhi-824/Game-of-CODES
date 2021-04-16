@@ -59,26 +59,34 @@ function codeblast_enter(username, room) {
     load_kkk.classList.remove("disapper");
     load_kkk.classList.remove("hidden");
   });
-
-  socket.on("start_contest", (problems) => {
+  let start_time;
+  socket.on("start_contest", (problems,time) => {
     // //console.log("hey");
+    start_time=time;
     // load_kkk.classList.add('disapper');
     document.querySelector(".chat-container").remove();
     // setTimeout(() => {
+    // problem = problems;
+    for(let i=0; i<problems.length; i++)
+    {
+      problem.push(problems[i])
+    }
     load_kkk.classList.add("disapper");
     // }, 2000);
+    console.log(problems[0]);
     display_problems(problems);
     //console.log(problems);
     document.querySelector(".updateCodeblast").classList.remove("hidden");
-    problem = problems;
   });
-  let problem;
+  let problem=[];
   document.querySelector(".updateCodeblast").addEventListener("click", (e) => {
     e.preventDefault();
+    console.log(problem[0])
     socket.emit("results", room, problem);
   });
 
-  socket.on("takeHimIn", (problems) => {
+  socket.on("takeHimIn", (problems,time) => {
+    start_time=time;
     problem = problems;
     document.querySelector(".chat-container").remove();
     load_kkk.classList.add("disapper");
@@ -114,7 +122,7 @@ function codeblast_enter(username, room) {
   socket.on("go_results", (re_map) => {
     re_map = JSON.parse(re_map);
     let res_map = new Map(Object.entries(re_map));
-    //console.log(res_map);
+    console.log(res_map);
     if (document.querySelector(".res_table") != undefined) {
       document.querySelector(".res_table").remove();
     }
@@ -128,6 +136,8 @@ function codeblast_enter(username, room) {
       lastTime:"23:59:59",
       penalty:10000
     };
+    let min_percent=30;
+    let loss_per_min_percent=0.004;
 
     res_map.forEach((element, key) => {
       let tr = document.createElement("tr");
@@ -138,15 +148,25 @@ function codeblast_enter(username, room) {
       tr.appendChild(td);
       let totalPenalty = 0;
       console.log(res_map)
+      var date = new Date(start_time);
+      var act_date = new Date();
       for (let i = 0; i < element.length; i++) {
         let td = document.createElement("td");
-        scoreElem += element[i].result;
         if(element[i].time!="Not solved")
         {
           lastTime = lastTime > element[i].time ? lastTime : element[i].time;
         }
         totalPenalty += element[i].penalty;
-        td.innerHTML = `${element[i].result} | ${element[i].penalty} | ${element[i].time} `;
+        let points=Math.max(element[i].points-element[i].penalty*50,0.3*element[i].points);
+        scoreElem += points;
+        console.log(act_date)
+        console.log(date)
+        let diff_time=Math.abs(date-act_date);
+        console.log(diff_time)  
+        diff_time/=1000;
+        diff_time/=60;
+        points=Math.floor(Math.max(points-(diff_time*loss_per_min_percent*points),0.3*element[i].points))
+        td.innerHTML = `${points} | ${element[i].penalty} | ${element[i].time} `;
         tr.appendChild(td);
       }
       console.log(scoreElem);
@@ -194,6 +214,9 @@ function codeblast_enter(username, room) {
   }
 
   function display_problems(problems) {
+    for(let i=0;i<problems.length;i++) {
+      problems[i]=problems[i][1];
+    }
     let div = document.createElement("div");
     div.classList.add("container768");
     div.style="max-width:800px;"
