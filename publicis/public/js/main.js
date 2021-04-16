@@ -87,7 +87,10 @@ function codeblast_enter(username, room) {
 
   socket.on("takeHimIn", (problems,time) => {
     start_time=time;
-    problem = problems;
+    for(let i=0; i<problems.length; i++)
+    {
+      problem.push(problems[i])
+    }
     document.querySelector(".chat-container").remove();
     load_kkk.classList.add("disapper");
     document.querySelector(".updateCodeblast").classList.remove("hidden");
@@ -152,20 +155,27 @@ function codeblast_enter(username, room) {
       var act_date = new Date();
       for (let i = 0; i < element.length; i++) {
         let td = document.createElement("td");
-        if(element[i].time!="Not solved")
-        {
-          lastTime = lastTime > element[i].time ? lastTime : element[i].time;
-        }
+        
         totalPenalty += element[i].penalty;
         let points=Math.max(element[i].points-element[i].penalty*50,0.3*element[i].points);
-        scoreElem += points;
         console.log(act_date)
         console.log(date)
         let diff_time=Math.abs(date-act_date);
         console.log(diff_time)  
         diff_time/=1000;
         diff_time/=60;
+        let point2=points;
         points=Math.floor(Math.max(points-(diff_time*loss_per_min_percent*points),0.3*element[i].points))
+        if(element[i].time!="Not solved")
+        {
+          lastTime = lastTime > element[i].time ? lastTime : element[i].time;
+          point2=points;
+        }
+        else{
+          points=0;
+        }
+        scoreElem += points;
+
         td.innerHTML = `${points} | ${element[i].penalty} | ${element[i].time} `;
         tr.appendChild(td);
       }
@@ -426,7 +436,7 @@ function codeblast_team_enter(username,teamID,room,teamName){
   socket.on("go_results", (re_map) => {
     re_map = JSON.parse(re_map);
     let res_map = new Map(Object.entries(re_map));
-    //console.log(res_map);
+    console.log(res_map);
     if (document.querySelector(".res_table") != undefined) {
       document.querySelector(".res_table").remove();
     }

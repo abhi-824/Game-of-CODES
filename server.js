@@ -10,6 +10,7 @@ const host = "0.0.0.0";
 const PORT = process.env.PORT || 3000;
 const express = require("express");
 const room_problems = new Map();
+const res_time = new Map();
 
 const socketio = require("socket.io");
 
@@ -252,6 +253,7 @@ io.on("connection", (socket) => {
         room_problems.set(room, problems);
         console.log(problems)
         let time=new Date().getTime();
+        res_time.set(room, time);
         console.log(time)
         io.to(user.room).emit("start_contest", problems,time);
       }
@@ -326,7 +328,7 @@ io.on("connection", (socket) => {
     });
 
     if (contestStarted(room)) {
-      socket.emit("takeHimIn", room_problems.get(room));
+      socket.emit("takeHimIn", room_problems.get(room),res_time.get(room));
     }
   });
   socket.on("joinRoomTeam", ({ username, room,teamID,teamName }) => {
@@ -389,51 +391,53 @@ io.on("connection", (socket) => {
             jsdata.result[i].problem.contestId +
             "-" +
             jsdata.result[i].problem.index;
-
-          if (problems.includes(str)) {
-            let unix_timestamp = jsdata.result[i].creationTimeSeconds;
-            var date = new Date(unix_timestamp * 1000);
-            // Hours part from the timestamp
-            var date1 = date.getDate();
-            var month1 = date.getMonth();
-            var hours = date.getHours();
-            // Minutes part from the timestamp
-            var minutes = "0" + date.getMinutes();
-            var seconds = "0" + date.getSeconds();
-            var formattedTime =
-              hours + ":" + minutes.substr(-2) + ":" + seconds.substr(-2);
-            var act_date = new Date();
-            let act_month = act_date.getMonth();
-            let act_dat = act_date.getDate();
-
-            let res = {
-              result: false,
-              penalty: 0,
-              time: "Not solved",
-              qno: problems.indexOf(str),
-              points:jsdata.result[i].problem.rating
-            };
-            for (let l = 0; l < arr.length; l++) {
-              if (arr[l].qno == problems.indexOf(str)) {
-                res = arr[l];
-                break;
+          for(let ll=0;ll<problems.length;ll++){
+            if (problems[ll][1]==str) {
+              let unix_timestamp = jsdata.result[i].creationTimeSeconds;
+              var date = new Date(unix_timestamp * 1000);
+              // Hours part from the timestamp
+              var date1 = date.getDate();
+              var month1 = date.getMonth();
+              var hours = date.getHours();
+              // Minutes part from the timestamp
+              var minutes = "0" + date.getMinutes();
+              var seconds = "0" + date.getSeconds();
+              var formattedTime =
+                hours + ":" + minutes.substr(-2) + ":" + seconds.substr(-2);
+              var act_date = new Date();
+              let act_month = act_date.getMonth();
+              let act_dat = act_date.getDate();
+  
+              let res = {
+                result: false,
+                penalty: 0,
+                time: "Not solved",
+                qno: ll,
+                points:jsdata.result[i].problem.rating
+              };
+              for (let l = 0; l < arr.length; l++) {
+                if (arr[l].qno == ll) {
+                  res = arr[l];
+                  break;
+                }
+              }
+              res.points=jsdata.result[i].problem.points;
+              if (jsdata.result[i].verdict === "OK") {
+                res.time = formattedTime;
+                res.result = true;
+              } else {
+                if (act_dat == date1 && act_month == month1) {
+                  res.penalty++;
+                }
+              }
+              for (let l = 0; l < arr.length; l++) {
+                if (arr[l].qno == ll) {
+                  arr[l] = res;
+                  break;
+                }
               }
             }
-            res.points=jsdata.result[i].problem.points;
-            if (jsdata.result[i].verdict === "OK") {
-              res.time = formattedTime;
-              res.result = true;
-            } else {
-              if (act_dat == date1 && act_month == month1) {
-                res.penalty++;
-              }
-            }
-            for (let l = 0; l < arr.length; l++) {
-              if (arr[l].qno == problems.indexOf(str)) {
-                arr[l] = res;
-                break;
-              }
-            }
+          
           }
         }
         function compare(a, b) {
@@ -446,25 +450,25 @@ io.on("connection", (socket) => {
           return 0;
         }
 
-        if (arr.length < problems.length) {
-          for (let i = 0; i < problems.length; i++) {
-            let fl = 0;
-            for (let k = 0; k < arr.length; k++) {
-              if (arr[k].qno == problems[i]) {
-                fl = 1;
-                break;
-              }
-            }
-            if (!fl) {
-              arr.push({
-                result: false,
-                penalty: 0,
-                time: "Not solved",
-                qno: i,
-              });
-            }
-          }
-        }
+        // if (arr.length < problems.length) {
+        //   for (let i = 0; i < problems.length; i++) {
+        //     let fl = 0;
+        //     for (let k = 0; k < arr.length; k++) {
+        //       if (arr[k].qno == problems[i][1]) {
+        //         fl = 1;
+        //         break;
+        //       }
+        //     }
+        //     if (!fl) {
+        //       arr.push({
+        //         result: false,
+        //         penalty: 0,
+        //         time: "Not solved",
+        //         qno: i,
+        //       });
+        //     }
+        //   }
+        // }
         arr.sort(compare);
         re_map.set(users[j].username, arr);
       }
