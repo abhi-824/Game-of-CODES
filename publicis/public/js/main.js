@@ -162,34 +162,12 @@ function codeblast_enter(username, room) {
         console.log(diff_time);
         diff_time /= 1000;
         diff_time /= 60;
-        let point2 = points;
-        // if (points == 0) {
-        //   points = Math.floor(
-        //     Math.max(
-        //       points - diff_time * loss_per_min_percent * points,
-        //       0.3 * element[i].points
-        //     )
-        //   );
-        // }
         if (element[i].time != "Not solved") {
           lastTime = lastTime > element[i].time ? lastTime : element[i].time;
-          if (points == 0) {
-            points = Math.max(
-              element[i].points - element[i].penalty * 50,
-              0.3 * element[i].points
-            );
-            points = Math.floor(
-              Math.max(
-                points - diff_time * loss_per_min_percent * points,
-                0.3 * element[i].points
-              )
-            );
-          }
-          point2 = points;
-        } else {
-          points = 0;
-        }
-        scoreElem += points;
+          
+        } 
+        points= element[i].result?element[i].points:0;
+        scoreElem +=points  ;
 
         td.innerHTML = `${points} | ${element[i].penalty} | ${element[i].time} `;
         tr.appendChild(td);

@@ -25,7 +25,7 @@ const {
   allready,
   giveProblems,
   getTeamUsers,
-  userTeamJoin
+  userTeamJoin,
 } = require("./utils/users");
 const { schedulingPolicy } = require("cluster");
 
@@ -92,14 +92,13 @@ io.on("connection", (socket) => {
           for (let i = 0; i < jsdata2.result.length; i++) {
             contests_given.add(jsdata2.result[i].contestId);
           }
-
         }
 
         let modified_url2 = `https://codeforces.com/api/problemset.problems`;
         const jsondata4 = await fetch(modified_url2);
         jsdata4 = await jsondata4.json();
-        let jsdataP=jsdata4;
-        let upsolved=[]
+        let jsdataP = jsdata4;
+        let upsolved = [];
         function shuffle(array) {
           var currentIndex = array.length,
             temporaryValue,
@@ -126,26 +125,29 @@ io.on("connection", (socket) => {
               `${jsdataP.result.problems[i].contestId}-${jsdataP.result.problems[i].index}`
             ) == false
           ) {
-          let rating=jsdataP.result.problems[i].rating!=undefined?jsdataP.result.problems[i].rating:9999999999;
-            upsolved.push([rating,
-              `${jsdataP.result.problems[i].contestId}-${jsdataP.result.problems[i].index}`]
-            );
+            let rating =
+              jsdataP.result.problems[i].rating != undefined
+                ? jsdataP.result.problems[i].rating
+                : 9999999999;
+            upsolved.push([
+              rating,
+              `${jsdataP.result.problems[i].contestId}-${jsdataP.result.problems[i].index}`,
+            ]);
           }
         }
         upsolved.sort();
-        let j=0;
+        let j = 0;
         shuffle(jsdata4.result.problems);
         for (let i = 0; i < jsdata4.result.problems.length; i++) {
           let str =
             jsdata4.result.problems[i].contestId +
             "-" +
             jsdata4.result.problems[i].index;
-            if(upsolved[j][0]<=1200)
-            {
-              problems.push(upsolved[j]);
-              j++;
-              break;
-            }
+          if (upsolved[j][0] <= 1200) {
+            problems.push(upsolved[j]);
+            j++;
+            break;
+          }
           if (
             jsdata4.result.problems[i].rating > 900 &&
             jsdata4.result.problems[i].rating <= 1200 &&
@@ -155,27 +157,25 @@ io.on("connection", (socket) => {
           ) {
             //to be continued
 
-            problems.push([jsdata4.result.problems[i].rating,str]);
+            problems.push([jsdata4.result.problems[i].rating, str]);
             break;
           }
         }
-        for(j;j<upsolved.length;j++){
-          if(upsolved[j][0]>1200)
-            {
-              break;
-            }
+        for (j; j < upsolved.length; j++) {
+          if (upsolved[j][0] > 1200) {
+            break;
+          }
         }
         for (let i = 0; i < jsdata4.result.problems.length; i++) {
           let str =
             jsdata4.result.problems[i].contestId +
             "-" +
             jsdata4.result.problems[i].index;
-            if(upsolved[j][0]<=1500)
-            {
-              problems.push(upsolved[j]);
-              j++;
-              break;
-            }
+          if (upsolved[j][0] <= 1500) {
+            problems.push(upsolved[j]);
+            j++;
+            break;
+          }
           if (
             jsdata4.result.problems[i].rating > 1200 &&
             jsdata4.result.problems[i].rating <= 1500 &&
@@ -184,28 +184,26 @@ io.on("connection", (socket) => {
             jsdata4.result.problems[i].tags.includes("*special") === false
           ) {
             //to be continued
-            problems.push([jsdata4.result.problems[i].rating,str]);
+            problems.push([jsdata4.result.problems[i].rating, str]);
             break;
           }
         }
 
-        for(j;j<upsolved.length;j++){
-          if(upsolved[j][0]>1500)
-            {
-              break;
-            }
+        for (j; j < upsolved.length; j++) {
+          if (upsolved[j][0] > 1500) {
+            break;
+          }
         }
         for (let i = 0; i < jsdata4.result.problems.length; i++) {
           let str =
             jsdata4.result.problems[i].contestId +
             "-" +
             jsdata4.result.problems[i].index;
-            if(upsolved[j][0]<=1700)
-            {
-              problems.push(upsolved[j]);
-              j++;
-              break;
-            }
+          if (upsolved[j][0] <= 1700) {
+            problems.push(upsolved[j]);
+            j++;
+            break;
+          }
           if (
             jsdata4.result.problems[i].rating > 1500 &&
             jsdata4.result.problems[i].rating <= 1700 &&
@@ -214,35 +212,33 @@ io.on("connection", (socket) => {
             jsdata4.result.problems[i].tags.includes("*special") === false
           ) {
             //to be continued
-            problems.push([jsdata4.result.problems[i].rating,str]);
+            problems.push([jsdata4.result.problems[i].rating, str]);
             // problems.push(str);
             break;
           }
         }
-        for(j;j<upsolved.length;j++){
-          if(upsolved[j][0]>1700)
-            {
-              break;
-            }
+        for (j; j < upsolved.length; j++) {
+          if (upsolved[j][0] > 1700) {
+            break;
+          }
         }
         for (let i = 0; i < jsdata4.result.problems.length; i++) {
           let str =
             jsdata4.result.problems[i].contestId +
             "-" +
             jsdata4.result.problems[i].index;
-            if(upsolved[j][0]<=2100)
-            {
-              problems.push(upsolved[j]);
-              j++;
-              break;
-            }
+          if (upsolved[j][0] <= 2100) {
+            problems.push(upsolved[j]);
+            j++;
+            break;
+          }
           if (
             jsdata4.result.problems[i].rating > 1700 &&
             jsdata4.result.problems[i].rating <= 2100 &&
             solved.has(str) === false &&
             jsdata4.result.problems[i].tags.includes("*special") === false
           ) {
-            problems.push([jsdata4.result.problems[i].rating,str]);
+            problems.push([jsdata4.result.problems[i].rating, str]);
             //to be continued
             // problems.push(str);
             break;
@@ -251,11 +247,11 @@ io.on("connection", (socket) => {
 
         // problem_set=problems;
         room_problems.set(room, problems);
-        console.log(problems)
-        let time=new Date().getTime();
+        console.log(problems);
+        let time = new Date().getTime();
         res_time.set(room, time);
-        console.log(time)
-        io.to(user.room).emit("start_contest", problems,time);
+        console.log(time);
+        io.to(user.room).emit("start_contest", problems, time);
       }
       getFinal();
     }
@@ -266,42 +262,38 @@ io.on("connection", (socket) => {
     if (users.length == 0) {
       io.to(socket.id).emit("roomIdChecked", 0);
     } else if (users != undefined) {
-      if(users[0].teamName!=undefined){
+      if (users[0].teamName != undefined) {
         io.to(socket.id).emit("roomIdChecked", 2);
-
-      }
-      else{
+      } else {
         io.to(socket.id).emit("roomIdChecked", 1);
-
       }
     }
   });
-  socket.on("checkTeamId", (team,room) => {
+  socket.on("checkTeamId", (team, room) => {
     let users = getRoomUsers(room);
-    let fl=1;
-    for(let i=0;i<users.length;i++){
-      if(users[i].teamID==team){
-        fl=0;
-        io.to(socket.id).emit("teamIdChecked", 1,users[i].teamName);
+    let fl = 1;
+    for (let i = 0; i < users.length; i++) {
+      if (users[i].teamID == team) {
+        fl = 0;
+        io.to(socket.id).emit("teamIdChecked", 1, users[i].teamName);
         break;
       }
     }
-    if(fl)
-    {
-      io.to(socket.id).emit("roomIdChecked", 0,null);
+    if (fl) {
+      io.to(socket.id).emit("roomIdChecked", 0, null);
     }
   });
   socket.on("give_id", () => {
     let ID = nanoid(4);
     io.to(socket.id).emit("rec_id", ID);
   });
-  
+
   socket.on("give_team_and_room_id", () => {
     let teamID = nanoid(5);
     let roomID = nanoid(6);
-    io.to(socket.id).emit("rec_team_id", teamID,roomID);
+    io.to(socket.id).emit("rec_team_id", teamID, roomID);
   });
-  
+
   socket.on("give_team_id", () => {
     let teamID = nanoid(5);
     io.to(socket.id).emit("rec_team_id_without_room", teamID);
@@ -328,11 +320,11 @@ io.on("connection", (socket) => {
     });
 
     if (contestStarted(room)) {
-      socket.emit("takeHimIn", room_problems.get(room),res_time.get(room));
+      socket.emit("takeHimIn", room_problems.get(room), res_time.get(room));
     }
   });
-  socket.on("joinRoomTeam", ({ username, room,teamID,teamName }) => {
-    const user = userTeamJoin(socket.id, username, room,teamID,teamName);
+  socket.on("joinRoomTeam", ({ username, room, teamID, teamName }) => {
+    const user = userTeamJoin(socket.id, username, room, teamID, teamName);
     socket.join(user.room);
 
     socket.emit(
@@ -353,8 +345,8 @@ io.on("connection", (socket) => {
     });
 
     if (contestStarted(room)) {
-      let time=new Date().getTime();
-      socket.emit("takeHimIn", room_problems.get(room),time);
+      let time = new Date().getTime();
+      socket.emit("takeHimIn", room_problems.get(room), time);
     }
   });
   function contestStarted(room) {
@@ -366,6 +358,7 @@ io.on("connection", (socket) => {
   }
   socket.on("results", (room, problems) => {
     let users = getRoomUsers(room);
+    let start_time = res_time.get(room);
     async function getFinal() {
       let re_map = new Map();
 
@@ -374,13 +367,13 @@ io.on("connection", (socket) => {
         // async function getSetGo() {
         let modified_url = `https://codeforces.com/api/user.status?handle=${handle_name1}`;
         let arr = [];
-        for (let i = 0; i < problems.length; i++){
+        for (let i = 0; i < problems.length; i++) {
           arr.push({
             result: false,
             penalty: 0,
             time: "Not solved",
             qno: i,
-            points:problems[i][0]
+            points: problems[i][0],
           });
         }
         const jsondata = await fetch(modified_url);
@@ -390,8 +383,8 @@ io.on("connection", (socket) => {
             jsdata.result[i].problem.contestId +
             "-" +
             jsdata.result[i].problem.index;
-          for(let ll=0;ll<problems.length;ll++){
-            if (problems[ll][1]==str) {
+          for (let ll = 0; ll < problems.length; ll++) {
+            if (problems[ll][1] == str) {
               let unix_timestamp = jsdata.result[i].creationTimeSeconds;
               var date = new Date(unix_timestamp * 1000);
               // Hours part from the timestamp
@@ -399,6 +392,7 @@ io.on("connection", (socket) => {
               var month1 = date.getMonth();
               var hours = date.getHours();
               // Minutes part from the timestamp
+              let actualDate = new Date();
               var minutes = "0" + date.getMinutes();
               var seconds = "0" + date.getSeconds();
               var formattedTime =
@@ -406,13 +400,13 @@ io.on("connection", (socket) => {
               var act_date = new Date();
               let act_month = act_date.getMonth();
               let act_dat = act_date.getDate();
-  
+
               let res = {
                 result: false,
                 penalty: 0,
                 time: "Not solved",
                 qno: ll,
-                points:jsdata.result[i].problem.rating
+                points: jsdata.result[i].problem.rating,
               };
               for (let l = 0; l < arr.length; l++) {
                 if (arr[l].qno == ll) {
@@ -420,24 +414,38 @@ io.on("connection", (socket) => {
                   break;
                 }
               }
-              res.points=jsdata.result[i].problem.points;
+              res.points = jsdata.result[i].problem.rating;
+              res.points = Math.max(
+                res.points -
+                  res.penalty * 50 -
+                  Math.abs((actualDate - start_time) / 1000) *
+                    0.004 *
+                    res.points,
+                res.points * 0.3
+              );
               if (jsdata.result[i].verdict === "OK") {
                 res.time = formattedTime;
                 res.result = true;
+                for (let l = 0; l < arr.length; l++) {
+                  if (arr[l].qno == ll&&arr[l].result==false) {
+                    arr[l] = res;
+                    break;
+                  }
+                }
+                
               } else {
                 if (act_dat == date1 && act_month == month1) {
                   res.penalty++;
                 }
               }
-              for (let l = 0; l < arr.length; l++) {
-                if (arr[l].qno == ll) {
-                  arr[l] = res;
-                  break;
-                }
-              }
+              // for (let l = 0; l < arr.length; l++) {
+              //   if (arr[l].qno == ll) {
+              //     arr[l] = res;
+              //     break;
+              //   }
+              // }
               console.log(arr);
             }
-          
           }
         }
         function compare(a, b) {
@@ -504,4 +512,4 @@ app.get("/screen/:id", (req, res) => {
 //console.log(process.env.FIREBASE_API_KEY);
 server.listen(PORT, host, function () {
   //console.log("Server started.......");
-}); 
+});
