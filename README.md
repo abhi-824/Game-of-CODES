@@ -76,6 +76,9 @@ npm run start
 
 <br>
 
+## Demo Video
+[![Game of Codes](https://img.youtube.com/vi/nJ8E7GKfRuE/0.jpg)](https://www.youtube.com/watch?v=nJ8E7GKfRuE)
+
 # Thanks!
 
 *If you want to contribute, or have some ideas relating to the theme, feel free to open up a issue, or contact me through Email: abhi.moudgil15@gmail.com or connect through <a href="https://www.linkedin.com/in/abhinandan-sharma-0a2633175/" target="_blank">LinkedIn</a>*
