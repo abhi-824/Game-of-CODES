@@ -156,6 +156,19 @@ a {
 	color: #fff;
 	transition: 0.3s;
 }
+
+.generateQuestions {
+	font-weight: 900;
+	padding: 1rem 1rem;
+	border: none;
+	background: none;
+	margin: 1rem !important;
+	--webkit-box-reflect: below;
+	border: 1px solid rgb(92, 107, 24);
+	background: rgb(98, 116, 21);
+	color: #fff;
+	transition: 0.3s;
+}
 .join_romms {
 	font-weight: 900;
 	padding: 1rem 1rem;
@@ -173,6 +186,13 @@ a {
 	color: #fff;
 	box-shadow: 0 0 5px rgb(151, 10, 10), 0 0 25px rgb(151, 10, 10),
 		0 0 50px rgb(151, 10, 10), 0 0 200px rgb(151, 10, 10) !important;
+}
+
+.generateQuestions:hover {
+	background: rgb(63, 71, 25);
+	color: #fff;
+	box-shadow: 0 0 5px rgb(137, 158, 30), 0 0 25px rgb(137, 158, 3),
+		0 0 50px rgb(137, 158, 3), 0 0 200px rgb(137, 158, 3) !important;
 }
 
 .join_romms:hover {

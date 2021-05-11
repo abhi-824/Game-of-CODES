@@ -26,6 +26,7 @@ const {
   giveProblems,
   getTeamUsers,
   userTeamJoin,
+  getUserState
 } = require("./utils/users");
 const { schedulingPolicy } = require("cluster");
 
@@ -42,17 +43,37 @@ io.on("connection", (socket) => {
   //console.log("new ws connection");
 
   socket.on("disconnect", () => {
-    const user = userLeave(socket.id);
-    if (user) {
-      io.to(user.room).emit(
-        "message",
-        formatMessage("BOSS", `${user.username} has left the chat`)
-      );
-      io.to(user.room).emit("roomUsers", {
-        room: user.room,
-        users: getRoomUsers(user.room),
-      });
+    const userr=getUserState(socket.id);
+    if(userr!=undefined) {
+      if(userr.state!=1)
+      {
+        const user = userLeave(socket.id);
+        if (user) {
+          io.to(user.room).emit(
+            "message",
+            formatMessage("BOSS", `${user.username} has left the chat`)
+          );
+          io.to(user.room).emit("roomUsers", {
+            room: user.room,
+            users: getRoomUsers(user.room),
+          });
+        }
+      }
     }
+    else{
+      const user = userLeave(socket.id);
+        if (user) {
+          io.to(user.room).emit(
+            "message",
+            formatMessage("BOSS", `${user.username} has left the chat`)
+          );
+          io.to(user.room).emit("roomUsers", {
+            room: user.room,
+            users: getRoomUsers(user.room),
+          });
+        }
+    }
+    // socket.socket.connect();
   });
 
   socket.on("ready", ({ username, room }) => {

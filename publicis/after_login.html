@@ -1713,7 +1713,10 @@
                           required>
                           <button type="submit" class="join_romms">Join The Blast</button>
                        </div>
-
+                     <!-- -- OR --
+                     <div style="display: flex; flex-direction: column;justify-content:center;align-items:center;">
+                        <button class="generateQuestions">Generate Questions</button>
+                     </div> -->
                     <!-- </div> -->
                     </div>
                     <div class="formForNewTeam hidden">
@@ -1734,6 +1737,15 @@
 
                     </div>
                     <div class="formForTeam hidden">
+                     <h1>Create a One Time Team</h1>
+                     <p>As we are too lazy, you have to make a new team on each codeblast</p>
+                     <form action="" id="newTeam">
+                        <label for="teamName">Team Name: </label>
+                        <input type="text" name="teamName" class="teamName">
+                         <button type="submit" class="">Submit</button>
+                     </form>
+                    </div>
+                    <div class="formForBatch hidden">
                      <h1>Create a One Time Team</h1>
                      <p>As we are too lazy, you have to make a new team on each codeblast</p>
                      <form action="" id="newTeam">
