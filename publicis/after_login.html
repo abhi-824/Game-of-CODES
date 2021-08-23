@@ -1713,10 +1713,10 @@
                           required>
                           <button type="submit" class="join_romms">Join The Blast</button>
                        </div>
-                     <!-- -- OR --
+                     -- OR --
                      <div style="display: flex; flex-direction: column;justify-content:center;align-items:center;">
                         <button class="generateQuestions">Generate Questions</button>
-                     </div> -->
+                     </div>
                     <!-- </div> -->
                     </div>
                     <div class="formForNewTeam hidden">
@@ -1753,6 +1753,25 @@
                         <input type="text" name="teamName" class="teamName">
                          <button type="submit" class="">Submit</button>
                      </form>
+                    </div>
+                    
+                    <div class="formForSlot hidden">
+                       <form action="" id="formSlot">
+                          <input type="text" class="handleslot" placeholder="Add handle">
+                           <button type="submit"> Add </button>
+                       </form>
+                       <ul class="handlesForSlot">
+                          <!-- <li>Abdude</li> -->
+                        </ul>
+                        <form action="" id="generateQuestionsSlot">
+                           <input type="number" name="" id="numberOfQuestionsSlot" placeholder="Number of questions">
+                           <br>
+                           Difficulty: <input type="number" id="downRangeSlot" placeholder="" style="width:100px">----
+                           <input type="number" id="upperrangeSlot"style="width:100px">
+                           <button class="generate_slot_questions">Generate Questions</button>
+ 
+                        </form>
+                        <ul class="problemsForSlot"></ul>
                     </div>
 
                  </div>

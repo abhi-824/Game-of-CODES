@@ -117,4 +117,95 @@ function codeblast(handle) {
       });
     }
   });
+
+  document.querySelector('.generateQuestions').addEventListener("click", (e) => {
+    e.preventDefault();
+    var user = firebase.auth().currentUser;
+    db.collection("handles")
+      .where("email", "==", user.email)
+      .get()
+      .then((snapshot) => {
+        snapshot.docs.forEach((doc) => {
+          const handle_list = doc.data();
+          if(handle_list.batches!=undefined){
+            let ul=document.querySelector(".handlesForSlot");
+            for(let i=0;i<handle_list.batches.length;i++){
+              let li=document.createElement('li');
+              li.innerHTML=handle_list.batches[i];
+              ul.appendChild(li);
+            }
+            
+          }
+          document.querySelector('#formSlot').addEventListener("submit",(e)=>{
+            e.preventDefault();
+            let inp=document.querySelector(".handleslot").value;
+            async function find_user() {
+              let modified_url ="https://codeforces.com/api/user.info?handles=" + inp;
+              const jsondata = await fetch(modified_url);
+              const jsdata = await jsondata.json();
+              if (jsdata.status === "FAILED") {
+                display_error();
+              } else {
+                let batches_array=handle_list.batches;
+                if(batches_array==undefined){
+                  batches_array=[];
+                  batches_array.push(inp)
+                  db.collection("handles").add({
+                    email: handle_list.email,
+                    handle: handle_list.handle,
+                    target: handle_list.target,
+                    bookmarks: handle_list.bookmarks,
+                    road_map_progress: handle_list.road_map_progress,
+                    batches:batches_array
+                  }).then(()=>{
+                    let ul=document.querySelector(".handlesForSlot");
+                    let li=document.createElement('li');
+                    li.innerHTML=inp;
+                    ul.appendChild(li);
+                  });
+                  db.collection("handles").doc(doc.id).delete();
+                }
+                else{
+                  batches_array.push(inp);
+                  db.collection("handles").doc(doc.id).update({
+                    batches: batches_array,
+                  }).then(()=>{
+                    let ul=document.querySelector(".handlesForSlot");
+                    let li=document.createElement('li');
+                    li.innerHTML=inp;
+                    ul.appendChild(li);
+                  });
+                }
+              }
+            }
+            find_user();
+          })
+          document.querySelector("#generateQuestionsSlot").addEventListener("submit",(e)=>{
+            e.preventDefault();
+            let numberOfQuestions=document.querySelector("#numberOfQuestionsSlot").value;
+            let downRange=document.querySelector("#downRangeSlot").value;
+            let upperRange=document.querySelector("#upperrangeSlot").value;
+            let ul=document.querySelector(".handlesForSlot");
+            let handle_array=[];
+            for(let i=0; i<ul.children.length;i++){
+              handle_array.push(ul.children[i].innerHTML);
+            }
+            let problems=aajaProblemsBhai(handle_array,upperRange,downRange,numberOfQuestions);
+            //["ID",Link]
+            let ule=document.querySelector(".problemsForSlot");
+            for(let i=0;i<problem.length;i++){
+              let problem=document.createElement("li");
+              problem.innerHTML=`<a href="${problems[i][1]}" target="_blank">${problems[i][0]}</a>`
+
+              ule.appendChild(problem);
+            }
+          })
+          document.querySelector('.formForSlot').classList.remove("hidden");
+          document.querySelector('.codeBlastBtns').classList.add("hidden");
+        });
+      });
+  })
+}
+function aajaProblemsBhai(handles,uR,dR,n){
+  
 }

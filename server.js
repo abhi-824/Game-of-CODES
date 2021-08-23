@@ -462,13 +462,6 @@ io.on("connection", (socket) => {
                   res.penalty++;
                 }
               }
-              // for (let l = 0; l < arr.length; l++) {
-              //   if (arr[l].qno == ll) {
-              //     arr[l] = res;
-              //     break;
-              //   }
-              // }
-              // console.log(arr);
             }
           }
         }
@@ -481,26 +474,6 @@ io.on("connection", (socket) => {
           }
           return 0;
         }
-
-        // if (arr.length < problems.length) {
-        //   for (let i = 0; i < problems.length; i++) {
-        //     let fl = 0;
-        //     for (let k = 0; k < arr.length; k++) {
-        //       if (arr[k].qno == problems[i][1]) {
-        //         fl = 1;
-        //         break;
-        //       }
-        //     }
-        //     if (!fl) {
-        //       arr.push({
-        //         result: false,
-        //         penalty: 0,
-        //         time: "Not solved",
-        //         qno: i,
-        //       });
-        //     }
-        //   }
-        // }
         arr.sort(compare);
         re_map.set(users[j].username, arr);
       }
