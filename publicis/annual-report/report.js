@@ -61,9 +61,9 @@ document
   .querySelector(".twitter_btn")
   .setAttribute(
     "href",
-    `https://twitter.com/intent/tweet?text=Here’s my %40codeforces Year in Review 2020! Get a glimpse into my competitive journey over the last twelve months. ${window.location.href}`
+    `https://twitter.com/intent/tweet?text=Here’s my %40codeforces Year in Review 2021! Get a glimpse into my competitive journey over the last twelve months. ${window.location.href}`
   );
-//document.querySelector('.greet_number').innerHTML=`You completed 385 questions in 2020. That’s an average of…`
+//document.querySelector('.greet_number').innerHTML=`You completed 385 questions in 2021. That’s an average of…`
 getSetGo();
 ////console.log(handle);
 document.querySelector(".loader").classList.remove("hidden");
@@ -108,8 +108,8 @@ function getSetGo() {
       let max_rating_points_per_date = 0;
       for (let i = 0; i < jsDataQues.result.length; i++) {
         if (
-          jsDataQues.result[i].creationTimeSeconds >= 1577836800 &&
-          jsDataQues.result[i].creationTimeSeconds <= 1609459199
+          jsDataQues.result[i].creationTimeSeconds >= 1609459200 &&
+          jsDataQues.result[i].creationTimeSeconds <= 1640995199
         ) {
           let unix_timestamp = jsDataQues.result[i].creationTimeSeconds;
           var date = new Date(unix_timestamp * 1000);
@@ -271,7 +271,7 @@ function getSetGo() {
       accuracy = (correct_answer / (correct_answer + wrong_answer)) * 100;
       document.querySelector(
         ".greet_number"
-      ).innerHTML = `You completed ${quesCount} problems in 2020 with an accuracy of ${Math.ceil(
+      ).innerHTML = `You completed ${quesCount} problems in 2021 with an accuracy of ${Math.ceil(
         accuracy
       )}%. That’s an average of…`;
       $(".avg_per_day").text(`${quesDay} problems`);
@@ -489,8 +489,8 @@ function getSetGo() {
       let posCount = 0;
       for (let i = 0; i < jsDataRat.result.length; i++) {
         if (
-          jsDataRat.result[i].ratingUpdateTimeSeconds >= 1577836800 &&
-          jsDataRat.result[i].ratingUpdateTimeSeconds <= 1609459199
+          jsDataRat.result[i].ratingUpdateTimeSeconds >= 1609459200 &&
+          jsDataRat.result[i].ratingUpdateTimeSeconds <= 1640995199
         ) {
           dataPointsRatings.push({
             x: parseInt(jsDataRat.result[i].ratingUpdateTimeSeconds) * 1000,
@@ -586,8 +586,8 @@ function getSetGo() {
 
       for (let i = 0; i < jsDataHeat.result.length; i++) {
         if (
-          jsDataHeat.result[i].creationTimeSeconds >= 1577836800 &&
-          jsDataHeat.result[i].creationTimeSeconds <= 1609459199
+          jsDataHeat.result[i].creationTimeSeconds >= 1609459200 &&
+          jsDataHeat.result[i].creationTimeSeconds <= 1640995199
         ) {
           //let date = new Date(jsDataHeat.result[i].creationTimeSeconds);
           //let date = jsDataHeat.result[i].creationTimeSeconds * 1000;
@@ -621,8 +621,8 @@ function getSetGo() {
         itemName: ["Questions", "Accepted Submissions"],
         considerMissingDataAsZero: true,
         legend: [3, 7, 12, 20],
-        minDate: new Date(2020, 0),
-        maxDate: new Date(2020, 11),
+        minDate: new Date(2021, 0),
+        maxDate: new Date(2021, 11),
         cellSize: 20,
         cellPadding: 2,
         domain: "month",
@@ -636,20 +636,20 @@ function getSetGo() {
         subDomain: "x_day",
         subDomainTextFormat: "%d",
         range: 3,
-        start: new Date(2020, 0, 1),
+        start: new Date(2021, 0, 1),
       });
 
       $("#heat_but_left").on("click", function (e) {
         e.preventDefault();
         if (!cal.previous()) {
-          alert("2020 begins here, you might wanna push the other button!");
+          alert("2021 begins here, you might wanna push the other button!");
         }
       });
 
       $("#heat_but_right").on("click", function (e) {
         e.preventDefault();
         if (!cal.next()) {
-          alert("2021 is still to come, till then see what's here!");
+          alert("2022 is still to come, till then see what's here!");
         }
       });
 
@@ -675,8 +675,8 @@ function getSetGo() {
       for (let k = 0; k < jsDataSubRatOK.result.length; k++) {
         if (
           jsDataSubRatOK.result[k].verdict == "OK" &&
-          jsDataSubRatOK.result[k].creationTimeSeconds >= 1577836800 &&
-          jsDataSubRatOK.result[k].creationTimeSeconds <= 1609459199
+          jsDataSubRatOK.result[k].creationTimeSeconds >= 1609459200 &&
+          jsDataSubRatOK.result[k].creationTimeSeconds <= 1640995199
         ) {
           if (jsDataSubRatOK.result[k].problem.rating < 1200) {
             okProbRat1199++;

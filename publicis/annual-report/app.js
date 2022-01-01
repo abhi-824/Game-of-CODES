@@ -1,5 +1,5 @@
-// 1577836800 1 Jan 2020 00:00:00
-// 1609459199 31 Dec 2020 23:59:59
+// 1609459200 1 Jan 2021 00:00:00
+// 1640995199 31 Dec 2021 23:59:59
 
 var handle;
 const userStatus = "https://codeforces.com/api/user.status?handle=";
